@@ -15,7 +15,12 @@ that calls Jev or designs its questions.
 
 - A concurrent Go harness orchestrates the pipeline.
 - Two AI client interfaces, so providers stay swappable and tests use fakes:
-  - `AIClassifierClient`: Jev (TypeSafe `/v1/systemone`). Does all judging.
+  - `AIClassifierClient`: Jev via the System One API (`POST /v1/systemone`).
+    Does all judging. Served through **OpenRouter**:
+    `TYPESAFE_BASE_URL=https://openrouter.ai/api`,
+    `TYPESAFE_API_KEY=<OpenRouter key>`, `JEV_MODEL=jev-1.13` (or
+    `jev-latest`). Same request/response shapes as api.typesafe.ai; limit is
+    32k tokens per request on OpenRouter.
   - `AIGenerativeClient`: any OpenAI-compatible chat API. In V1 it only writes
     the Job Summary; it never judges Candidates or Requirements. Configured
     via `OPENAI_BASE_URL`, `OPENAI_API_KEY`, `OPENAI_MODEL` (no default model).
@@ -108,7 +113,8 @@ inside a larger resume-tailoring backend.
 - A bounded concurrency layer in front of Jev.
 - Automated tests. `go test` uses a fake Jev server with recorded responses and
   never calls the live API. `make eval` runs the golden set against live Jev
-  (needs `TYPESAFE_API_KEY`) and writes a dated report.
+  (needs `TYPESAFE_API_KEY`) and writes a dated report. Keys live in a local,
+  gitignored `.env`; never commit them.
 
 ## Test data
 

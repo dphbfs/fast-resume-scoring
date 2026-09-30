@@ -30,10 +30,12 @@ type WireAnswer struct {
 	Confidence    *float64           `json:"confidence,omitempty"`
 }
 
-// WireUsage is the token usage of one call.
+// WireUsage is the token usage of one call. Cost (USD) is only returned
+// when calling through OpenRouter.
 type WireUsage struct {
-	InputTokens  int `json:"input_tokens"`
-	OutputTokens int `json:"output_tokens"`
+	InputTokens  int      `json:"input_tokens"`
+	OutputTokens int      `json:"output_tokens"`
+	Cost         *float64 `json:"cost,omitempty"`
 }
 
 // WireResponse is the POST /v1/systemone response body.
@@ -66,6 +68,10 @@ func fromWire(w WireResponse) port.ClassifyResponse {
 	return port.ClassifyResponse{
 		Model:   w.Model,
 		Answers: answers,
-		Usage:   port.Usage{InputTokens: w.Usage.InputTokens, OutputTokens: w.Usage.OutputTokens},
+		Usage: port.Usage{
+			InputTokens:  w.Usage.InputTokens,
+			OutputTokens: w.Usage.OutputTokens,
+			CostUSD:      w.Usage.Cost,
+		},
 	}
 }

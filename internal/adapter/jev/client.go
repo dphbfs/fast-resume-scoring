@@ -1,5 +1,7 @@
-// Package jev implements port.AIClassifierClient against TypeSafe's
-// System One API (POST /v1/systemone), which serves the Jev model.
+// Package jev implements port.AIClassifierClient against the System One API
+// (POST /v1/systemone) that serves the Jev model. Both TypeSafe
+// (https://api.typesafe.ai) and OpenRouter (https://openrouter.ai/api) expose
+// it with the same request and response shapes.
 package jev
 
 import (
@@ -10,6 +12,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"math"
 	"math/rand/v2"
 	"net/http"
 	"strconv"
@@ -108,6 +111,9 @@ func (c *Client) send(ctx context.Context, body []byte, questions int) (port.Cla
 		if err == nil {
 			c.metrics.Add("jev.input_tokens", int64(resp.Usage.InputTokens))
 			c.metrics.Add("jev.output_tokens", int64(resp.Usage.OutputTokens))
+			if resp.Usage.CostUSD != nil {
+				c.metrics.Add("jev.cost_micro_usd", int64(math.Round(*resp.Usage.CostUSD*1e6)))
+			}
 			c.log.DebugContext(ctx, "classify",
 				"model", resp.Model,
 				"questions", questions,
