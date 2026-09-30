@@ -1,0 +1,25 @@
+{
+  "requirements": [
+    {"value": "4+ years software engineering", "aliases": ["4+ years of software engineering experience"], "tier": "required"},
+    {"value": "web applications at scale", "aliases": ["building web applications at scale"], "tier": "required"},
+    {"value": "interpreted language", "aliases": ["interpreted languages"], "tier": "required"},
+    {"value": "compiled language", "aliases": ["compiled languages"], "tier": "required"},
+    {"value": "component-based UI frameworks", "aliases": ["component-based frameworks"], "tier": "required"},
+    {"value": "Vue", "aliases": ["Vue.js"], "tier": "mentioned"},
+    {"value": "JavaScript", "aliases": [], "tier": "mentioned"},
+    {"value": "TypeScript", "aliases": [], "tier": "mentioned"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "mentioned"},
+    {"value": "Python", "aliases": [], "tier": "mentioned"},
+    {"value": "key-value stores", "aliases": ["key-value store"], "tier": "preferred"},
+    {"value": "MongoDB", "aliases": [], "tier": "preferred"},
+    {"value": "Memcache", "aliases": ["Memcached"], "tier": "preferred"},
+    {"value": "Redis", "aliases": [], "tier": "preferred"},
+    {"value": "browser extension development", "aliases": ["extension development"], "tier": "mentioned"},
+    {"value": "SDK development", "aliases": [], "tier": "mentioned"},
+    {"value": "mobile development", "aliases": [], "tier": "mentioned"},
+    {"value": "API architecture", "aliases": ["API backends"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["MongoDB", "Memcache", "Redis"]],
+  "filler": ["knowledge sharing", "end-user engineering"],
+  "notes": "JavaScript/TypeScript/Go/Python are 'we write in', not alternatives for the interpreted/compiled requirement, so they are 'mentioned' and ungrouped. Vue is 'we use'. MongoDB/Memcache/Redis are examples of key-value stores."
+}

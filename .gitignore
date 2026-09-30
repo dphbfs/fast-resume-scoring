@@ -30,3 +30,6 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Bulk Job Descriptions (regenerate with scripts/import_jds.py)
+testdata/jd/

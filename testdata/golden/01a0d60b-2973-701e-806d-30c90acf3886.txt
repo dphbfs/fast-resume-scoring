@@ -1,0 +1,21 @@
+Software Engineer, Backend
+
+Summary:
+Backend Software Engineer developing web applications at Minerva, focusing on seamless communication and community-driven solutions. Involves extension, SDK, and mobile development with API architecture.
+Backend Software Engineer developing robust web applications at Minerva
+Role description:
+• Own extension development
+• Own SDK development
+• Own mobile development
+• Own web development
+• Own end-user engineering
+• Contribute to API backends
+• Own API architecture
+• Cultivate and expand knowledge sharing
+Role requirements:
+• 4+ years of software engineering experience building web applications at scale
+• 2+ years experience with at least one interpreted language and one compiled language (we write in Javascript, Typescript, Go, and Python)
+• Working experience with building UIs with component-based frameworks (we use Vue)
+• Bonus points for experience with key-value stores (MongoDB, Memcache, Redis)
+Tech stack:
+JavaScript, MongoDB, Python, Redis, TypeScript, Vue.js, Go

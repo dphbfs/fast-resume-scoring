@@ -1,0 +1,30 @@
+{
+  "requirements": [
+    {"value": "3+ years software engineering", "aliases": ["3+ years of professional software engineering experience"], "tier": "required"},
+    {"value": "production systems at scale", "aliases": [], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "required"},
+    {"value": "REST APIs", "aliases": ["REST API design"], "tier": "required"},
+    {"value": "API authentication", "aliases": ["authentication"], "tier": "required"},
+    {"value": "PostgreSQL", "aliases": ["Postgres"], "tier": "required"},
+    {"value": "schema design", "aliases": [], "tier": "required"},
+    {"value": "database migrations", "aliases": ["migrations"], "tier": "required"},
+    {"value": "query optimization", "aliases": [], "tier": "required"},
+    {"value": "replication patterns", "aliases": ["replication"], "tier": "required"},
+    {"value": "distributed systems", "aliases": [], "tier": "required"},
+    {"value": "consistency models", "aliases": ["eventual consistency"], "tier": "required"},
+    {"value": "event-driven replication", "aliases": [], "tier": "required"},
+    {"value": "platform infrastructure", "aliases": ["internal developer platforms"], "tier": "preferred"},
+    {"value": "Kubernetes", "aliases": [], "tier": "preferred"},
+    {"value": "event-driven architectures", "aliases": ["outbox patterns", "message-based replication"], "tier": "preferred"},
+    {"value": "Watermill", "aliases": [], "tier": "preferred"},
+    {"value": "Kafka", "aliases": [], "tier": "preferred"},
+    {"value": "edge computing platforms", "aliases": ["edge-native runtimes", "serverless"], "tier": "preferred"},
+    {"value": "Cloudflare Workers", "aliases": [], "tier": "preferred"},
+    {"value": "microservices", "aliases": [], "tier": "mentioned"},
+    {"value": "bulk operations APIs", "aliases": [], "tier": "mentioned"},
+    {"value": "concurrency control", "aliases": ["quota enforcement"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Watermill", "Kafka"]],
+  "filler": ["navigate ambiguity", "drive alignment with engineers", "Austin (Hybrid)", "authorization to receive export-controlled technology"],
+  "notes": "Cloudflare product names in the 'Why This Role' and company sections (Zero Trust, DNS, Access, Billing, 1.1.1.1) are context, not Requirements."
+}

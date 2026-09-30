@@ -1,0 +1,29 @@
+{
+  "requirements": [
+    {"value": "Master's degree in Computer Science", "aliases": ["Master's degree", "MS in Computer Science"], "tier": "required"},
+    {"value": "Bachelor's degree in Computer Science", "aliases": ["Bachelor's degree", "BS in Computer Science"], "tier": "required"},
+    {"value": "2 years in the job offered or related", "aliases": [], "tier": "required"},
+    {"value": "5 years progressive experience", "aliases": ["5 years of progressive, post-baccalaureate experience"], "tier": "required"},
+    {"value": "2 years Java, Ruby, Python or similar", "aliases": ["programming languages"], "tier": "required"},
+    {"value": "Java", "aliases": [], "tier": "required"},
+    {"value": "Ruby", "aliases": [], "tier": "required"},
+    {"value": "Python", "aliases": [], "tier": "required"},
+    {"value": "2 years MySQL, PostgreSQL, NoSQL or similar", "aliases": ["data management systems"], "tier": "required"},
+    {"value": "MySQL", "aliases": [], "tier": "required"},
+    {"value": "PostgreSQL", "aliases": ["Postgres"], "tier": "required"},
+    {"value": "NoSQL", "aliases": [], "tier": "required"},
+    {"value": "client/server architectures", "aliases": ["client/server architecture"], "tier": "required"},
+    {"value": "application architectures", "aliases": [], "tier": "required"},
+    {"value": "large codebases", "aliases": [], "tier": "required"},
+    {"value": "cross-functional teams", "aliases": [], "tier": "required"},
+    {"value": "AI toolsets", "aliases": ["advanced AI toolsets", "AI tools"], "tier": "required"},
+    {"value": "data analysis", "aliases": ["deriving insights from complex data sets"], "tier": "required"},
+    {"value": "SQL query optimization", "aliases": ["optimize expensive SQL queries", "SQL"], "tier": "mentioned"},
+    {"value": "performance analysis", "aliases": [], "tier": "mentioned"},
+    {"value": "scalable software", "aliases": ["highly scalable software"], "tier": "mentioned"},
+    {"value": "feature rollout protocols", "aliases": ["rolling out upgrades and new features"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Master's degree in Computer Science", "Bachelor's degree in Computer Science"], ["Java", "Ruby", "Python"], ["MySQL", "PostgreSQL", "NoSQL"]],
+  "filler": ["perform other duties as assigned", "engineering quality"],
+  "notes": "Two paths are accepted: Master's + 2 years, or Bachelor's + 5 years; the degrees form an Alternative Group, the experience durations are listed separately. Formal legal-style posting (PERM), every requirement is '2 years of X'."
+}

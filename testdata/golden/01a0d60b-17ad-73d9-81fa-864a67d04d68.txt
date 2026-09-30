@@ -1,0 +1,19 @@
+Software Engineer, PHP
+
+Summary:
+Software Engineer PHP working on server-side development and database management for innovative digital solutions company. Collaborating with front-end team in an Agile environment.
+Software Engineer PHP building and maintaining server-side web applications.
+Role description:
+• Writing clean, reusable, and secure PHP code.
+• Designing and optimizing MySQL, MariaDB, or PostgreSQL databases.
+• Building and consuming RESTful APIs for third-party and frontend services.
+• Troubleshooting performance bottlenecks and fixing application bugs.
+• Working alongside front-end developers, designers, and project managers in an Agile environment.
+Role requirements:
+• Advanced knowledge of Object-Oriented PHP.
+• Proficiency in frameworks like Laravel, Symfony, CodeIgniter, or CakePHP.
+• Familiarity with HTML5, CSS3, JavaScript, and jQuery.
+• Understanding of Git version control and dependency managers like Composer.
+• Experience with WordPress, WooCommerce, or Magento.
+Tech stack:
+JavaScript, jQuery, Laravel, Magento, MariaDB, MySQL, PHP, Postgres, Symfony, WordPress

@@ -50,7 +50,11 @@ Job Description (`.txt` / `.md` file):
    each with all its Context Sentences and their Sections, so recurrence and
    Section are explicit data (Jev can't count). Per Requirement:
    - Choice: which other Requirement it duplicates, or `none` (synonym merge)
-   - Noul: specific, checkable qualification vs. Filler (Filler is dropped)
+   - Choice: which other Requirement it is offered as an alternative to
+     ("Go, Ruby, or Python"), or `none`; code builds Alternative Groups from
+     these links (connected components)
+   - Noul: specific, checkable qualification vs. Filler (Filler is dropped;
+     this includes non-skill conditions like work eligibility or on-call)
    - Score: Importance, from "mentioned in passing" to "stated as mandatory"
 6. Output: JSON contract below; `--debug` writes dropped Candidates, Filler,
    merges and raw probabilities to a separate file.
@@ -66,7 +70,12 @@ way; add a code-side formula only if it doesn't.
   "schema_version": "1",
   "model": "jev-1.13.0",
   "requirements": [
-    { "id": "req_1", "value": "Kubernetes", "refs": ["s3", "s9"], "importance": 0.82 }
+    { "id": "req_1", "value": "Kubernetes", "refs": ["s3", "s9"], "importance": 0.82 },
+    { "id": "req_2", "value": "Go", "refs": ["s5"], "importance": 0.74 },
+    { "id": "req_3", "value": "Ruby", "refs": ["s5"], "importance": 0.74 }
+  ],
+  "alternative_groups": [
+    { "id": "alt_1", "members": ["req_2", "req_3"] }
   ],
   "context": {
     "s3": { "text": "5+ years of backend experience with Go and Kubernetes in production.", "section": "required" }
@@ -74,7 +83,9 @@ way; add a code-side formula only if it doesn't.
 }
 ```
 
-Requirements are sorted by `importance`, descending.
+Requirements are sorted by `importance`, descending. A Requirement belongs to
+at most one Alternative Group; the Resume Checker will treat a group as
+satisfied when any member is present.
 
 Later (not V1): the Resume Checker (resume parsing, cheap local matching,
 Jev semantic matching, strict present/missing per Requirement), running

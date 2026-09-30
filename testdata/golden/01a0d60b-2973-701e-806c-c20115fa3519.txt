@@ -1,0 +1,33 @@
+Senior Full-stack Software Engineer
+
+Summary:
+Senior Full-stack Software Engineer developing scalable architecture for automotive solutions. Collaborating across departments to enhance operational workflows and integrate systems.
+Senior Full-stack Software Engineer building scalable platforms for automotive startup
+Role description:
+• design, develop, and maintain full stack applications and integration services
+• translate architectural patterns and design decisions into high-quality code
+• work closely with Supply Chain, Finance, and Operations teams to implement integrations
+• partner with senior engineers and architects to evaluate third-party platforms, SaaS tools
+• write clean, maintainable, and well-tested code
+• collaborate within agile teams to iterate quickly and improve practices
+Role requirements:
+• 10+ years in software engineering preferably in automotive, e-commerce, or manufacturing-adjacent environments
+• hands-on background in React.js, microservices/serverless, Kubernetes, PostgreSQL, MongoDB, and AWS
+• meaningful experience delivering supply chain, procurement, or e-commerce systems at OEM or Tier-1 scale
+• deep familiarity with AWS services, infrastructure-as-code, and cloud-native design patterns
+• strong grasp of API design, event-driven messaging, and EDI integration patterns
+• familiarity with CRM and ERP platforms and the integration patterns
+• demonstrated ability to operate in fast-moving, resource-constrained environments
+• ability to translate technical complexity into business outcomes for non-technical stakeholders
+Benefits:
+• medical
+• dental
+• vision
+• life insurance
+• disability insurance
+• vacation
+• 401k
+• equity program
+• discretionary annual incentive program
+Tech stack:
+AWS, Cloud, ERP, JavaScript, Kubernetes, Microservices, MongoDB, Postgres, React
