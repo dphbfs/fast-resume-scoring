@@ -126,6 +126,22 @@ inside a larger resume-tailoring backend.
   (needs `TYPESAFE_API_KEY`) and writes a dated report. Keys live in a local,
   gitignored `.env`; never commit them.
 
+## Eval
+
+- `make eval` builds `cmd/eval`, loads `.env`, runs every golden fixture live
+  (4 in parallel), and writes `eval/reports/<UTC timestamp>.{json,md}`
+  (committed, so changes can be compared). `EVAL_ARGS="-only <id-prefix>"`
+  runs a subset.
+- Scoring (`internal/adapter/eval`): one-to-one matching of predicted to
+  expected Requirements; strict = value/alias equality after normalization;
+  loose also accepts padding (<= 3 extra words), a multi-word label shortened
+  by one word, or token Jaccard >= 0.6. Reports recall (strict/loose, per
+  tier), precision, F1, Filler extracted, Importance tier order and
+  Alternative Group pair-F1 (n/a until the Refinement Round exists), cost.
+- Baseline 2026-09-30 (no Refinement Round): recall 90.6% loose / 70.0%
+  strict, precision 27.4%. Validation rarely picks `no_requirement`, so
+  prose chunks ("Work closely", "product managers") become Requirements.
+
 ## Test data
 
 - Job Descriptions come from the Reactive Resume MCP server (`reactive-resume`,
