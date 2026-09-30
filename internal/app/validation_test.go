@@ -23,19 +23,25 @@ func questionChunk(t *testing.T, q jev.WireQuestion) string {
 }
 
 // selectFor answers each chunk question with the option pick[chunk] (0.8),
-// or no_requirement when the chunk is not listed.
+// or the generic_trait rejection when the chunk is not listed.
 func selectFor(t *testing.T, pick map[string]string) jevtest.Responder {
 	return func(_ int, req jev.WireRequest) jevtest.Reply {
 		answers := map[string]jev.WireAnswer{}
 		for id, q := range req.Questions {
+			crit := q.Criteria.(map[string]any)
+			for opt := range rejectOptions {
+				if _, ok := crit[opt]; !ok {
+					t.Errorf("chunk %q: rejection option %q missing", questionChunk(t, q), opt)
+				}
+			}
 			choice, ok := pick[questionChunk(t, q)]
 			if !ok {
-				choice = noRequirement
+				choice = "generic_trait"
 			}
-			if _, valid := q.Criteria.(map[string]any)[choice]; !valid {
+			if _, valid := crit[choice]; !valid {
 				t.Errorf("chunk %q: %q is not an option", questionChunk(t, q), choice)
 			}
-			answers[id] = jevtest.Choice(map[string]float64{choice: 0.8, noRequirement: 0.2}, 0.7)
+			answers[id] = jevtest.Choice(map[string]float64{choice: 0.8, "action_only": 0.2}, 0.7)
 		}
 		return jevtest.Reply{Answers: answers}
 	}
@@ -96,8 +102,8 @@ func TestValidationRoundSelectsOneSpanPerChunk(t *testing.T) {
 	}
 
 	c := m.Summary().Counters
-	if c["validation.accepted"] != 3 || c["validation.no_requirement"] != 1 {
-		t.Errorf("counters = %v, want accepted=3 no_requirement=1", c)
+	if c["validation.accepted"] != 3 || c["validation.rejected.generic_trait"] != 1 {
+		t.Errorf("counters = %v, want accepted=3 rejected.generic_trait=1", c)
 	}
 }
 
@@ -110,5 +116,45 @@ func TestValidationRoundRejectsUnknownOption(t *testing.T) {
 	r.chunks = chunkSentence(r.sentences[0], 4)
 	if err := e.validationRound(context.Background(), r); err == nil {
 		t.Fatal("want error for an answer that is not an option")
+	}
+}
+
+// Rejection wins on summed mass even when a single phrase is the most
+// probable option.
+func TestValidationRoundRejectsOnSummedMass(t *testing.T) {
+	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(string, jev.WireQuestion) jev.WireAnswer {
+		return jevtest.Choice(map[string]float64{
+			"Work closely": 0.40, "generic_trait": 0.20, "action_only": 0.25, "people_or_context": 0.15,
+		}, 0.3)
+	}))
+	e, m := newTestExtractor(t, srv.URL, config.Pipeline{})
+	r := &run{sentences: []domain.ContextSentence{{Ref: "s1", Text: "Work closely", Section: domain.SectionResponsibilities}}}
+	r.chunks = chunkSentence(r.sentences[0], 4)
+	if err := e.validationRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	if len(r.accepted) != 0 {
+		t.Errorf("accepted = %q, want none (rejection mass 0.60)", acceptedTexts(r.accepted))
+	}
+	if got := m.Summary().Counters["validation.rejected.action_only"]; got != 1 {
+		t.Errorf("rejected.action_only = %d, want 1 (the most probable rejection reason)", got)
+	}
+}
+
+// When phrases split the mass, their sum still beats a single rejection.
+func TestValidationRoundAcceptsOnSummedSpanMass(t *testing.T) {
+	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(string, jev.WireQuestion) jev.WireAnswer {
+		return jevtest.Choice(map[string]float64{
+			"distributed systems": 0.35, "distributed": 0.20, "systems": 0.10, "generic_trait": 0.35,
+		}, 0.3)
+	}))
+	e, _ := newTestExtractor(t, srv.URL, config.Pipeline{})
+	r := &run{sentences: []domain.ContextSentence{{Ref: "s1", Text: "distributed systems", Section: domain.SectionRequired}}}
+	r.chunks = chunkSentence(r.sentences[0], 4)
+	if err := e.validationRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	if got := acceptedTexts(r.accepted); len(got) != 1 || got[0] != "distributed systems" {
+		t.Errorf("accepted = %q, want [distributed systems]", got)
 	}
 }

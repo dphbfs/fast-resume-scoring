@@ -156,9 +156,9 @@ var separators = map[string]bool{
 // can be selected whole.
 const maxWholeChunkWords = 8
 
-// maxChunkOptions keeps each Choice within Jev's 255-option limit
-// (one slot is noRequirement).
-const maxChunkOptions = 254
+// maxChunkOptions keeps each Choice within Jev's 255-option limit, leaving
+// room for the rejectOptions.
+const maxChunkOptions = 250
 
 // chunk is a clause-sized piece of a sentence, cut at clause breaks and list
 // words, that names at most one Requirement. Options are its Candidates.

@@ -1,0 +1,4119 @@
+{
+  "started": "2026-09-30T01:33:10.231089986Z",
+  "duration": "2m0.373s",
+  "model": "typesafe/jev-1.13-20260917",
+  "revision": "6d496ab0932b-dirty",
+  "totals": {
+    "fixtures": 20,
+    "failed": 0,
+    "expected": 510,
+    "predicted": 1511,
+    "recall_strict": 0.7607843137254902,
+    "recall_loose": 0.9137254901960784,
+    "precision_loose": 0.3084050297816016,
+    "f1_loose": 0.4611578426521524,
+    "filler_hits": 22,
+    "tiers": {
+      "mentioned": {
+        "expected": 90,
+        "matched": 80
+      },
+      "preferred": {
+        "expected": 106,
+        "matched": 97
+      },
+      "required": {
+        "expected": 314,
+        "matched": 289
+      }
+    }
+  },
+  "fixtures": [
+    {
+      "id": "01a0d60a-f7ce-7072-9e6a-9ef98a948f1b",
+      "title": "Senior Software Engineer - Bits AI SRE",
+      "expected": 14,
+      "predicted": 52,
+      "strict_matched": 10,
+      "loose_matched": 14,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 4
+        },
+        "preferred": {
+          "expected": 2,
+          "matched": 2
+        },
+        "required": {
+          "expected": 8,
+          "matched": 8
+        }
+      },
+      "matches": [
+        {
+          "expected": "LLM-based systems",
+          "predicted": "LLM-based systems",
+          "strict": true
+        },
+        {
+          "expected": "prompt engineering",
+          "predicted": "prompt engineering",
+          "strict": true
+        },
+        {
+          "expected": "LLM evaluation",
+          "predicted": "evaluation",
+          "strict": true
+        },
+        {
+          "expected": "productionizing AI features",
+          "predicted": "applied AI",
+          "strict": true
+        },
+        {
+          "expected": "AI coding tools",
+          "predicted": "AI coding tools",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes",
+          "strict": true
+        },
+        {
+          "expected": "production remediation",
+          "predicted": "operational automation",
+          "strict": true
+        },
+        {
+          "expected": "code generation",
+          "predicted": "code generation",
+          "strict": true
+        },
+        {
+          "expected": "agent design",
+          "predicted": "agent design",
+          "strict": true
+        },
+        {
+          "expected": "prototyping",
+          "predicted": "prototyping",
+          "strict": true
+        },
+        {
+          "expected": "5+ years professional experience",
+          "predicted": "years of professional experience",
+          "strict": false
+        },
+        {
+          "expected": "backend engineering",
+          "predicted": "backend engineering skills",
+          "strict": false
+        },
+        {
+          "expected": "Go",
+          "predicted": "production systems in Go",
+          "strict": false
+        },
+        {
+          "expected": "conversational AI workflows",
+          "predicted": "customer-facing systems across chat",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "product-minded engineer",
+        "ship applied AI experiences across chat",
+        "remediations",
+        "codefixes",
+        "AI-powered product experiences",
+        "prompts",
+        "evaluation loops",
+        "backend systems",
+        "production-ready",
+        "test what works in the real world",
+        "infrastructure",
+        "product logic",
+        "operational remediations",
+        "generated code changes",
+        "remediation capabilities",
+        "systems that support investigation",
+        "automation",
+        "LLM prompting",
+        "applied AI product development",
+        "engineer",
+        "similar",
+        "iteration for LLM-powered systems",
+        "improve quality through experimentation",
+        "engineering fundamentals",
+        "productionize AI features",
+        "integrating model behavior into reliable user-facing products",
+        "shipping early versions of new ideas",
+        "user experience",
+        "technical implementation",
+        "user outcomes",
+        "pragmatism when building new AI-powered workflows",
+        "Bonus",
+        "systems related to production remediation",
+        "Requirement",
+        "refine AI-generated output",
+        "building AI-enabled products"
+      ],
+      "filler_hits": [
+        "product mindset",
+        "care about product quality"
+      ],
+      "duration_ms": 12391
+    },
+    {
+      "id": "01a0d60a-f7ce-7072-9e6b-f6b5029bb128",
+      "title": "Staff Backend Engineer - Application Core Services, Stacks | USA | Remote",
+      "expected": 33,
+      "predicted": 159,
+      "strict_matched": 26,
+      "loose_matched": 29,
+      "tiers": {
+        "mentioned": {
+          "expected": 7,
+          "matched": 7
+        },
+        "preferred": {
+          "expected": 8,
+          "matched": 5
+        },
+        "required": {
+          "expected": 18,
+          "matched": 17
+        }
+      },
+      "matches": [
+        {
+          "expected": "1+ year fully remote work",
+          "predicted": "fully remote work experience",
+          "strict": true
+        },
+        {
+          "expected": "large SaaS platform",
+          "predicted": "big SaaS platform",
+          "strict": true
+        },
+        {
+          "expected": "distributed systems",
+          "predicted": "scalability",
+          "strict": true
+        },
+        {
+          "expected": "multi-tenancy",
+          "predicted": "multi-tenancy",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Golang",
+          "strict": true
+        },
+        {
+          "expected": "well-tested software",
+          "predicted": "well-tested software",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "mentoring junior engineers",
+          "strict": true
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS",
+          "strict": true
+        },
+        {
+          "expected": "GCP",
+          "predicted": "GCP",
+          "strict": true
+        },
+        {
+          "expected": "Azure",
+          "predicted": "Azure",
+          "strict": true
+        },
+        {
+          "expected": "Helm",
+          "predicted": "Helm",
+          "strict": true
+        },
+        {
+          "expected": "Terraform",
+          "predicted": "Terraform",
+          "strict": true
+        },
+        {
+          "expected": "Jsonnet",
+          "predicted": "Jsonnet",
+          "strict": true
+        },
+        {
+          "expected": "incident response",
+          "predicted": "incident response",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes operators",
+          "predicted": "reconcilers",
+          "strict": true
+        },
+        {
+          "expected": "Flux",
+          "predicted": "Flux",
+          "strict": true
+        },
+        {
+          "expected": "Argo",
+          "predicted": "Argo",
+          "strict": true
+        },
+        {
+          "expected": "SaaS provisioning",
+          "predicted": "SaaS provisioning",
+          "strict": true
+        },
+        {
+          "expected": "configuration drift",
+          "predicted": "partial failure",
+          "strict": true
+        },
+        {
+          "expected": "reconciliation loops",
+          "predicted": "reconciliation loops",
+          "strict": true
+        },
+        {
+          "expected": "eventual consistency",
+          "predicted": "eventual consistency",
+          "strict": true
+        },
+        {
+          "expected": "microservices",
+          "predicted": "Designing new microservices",
+          "strict": true
+        },
+        {
+          "expected": "AI-assisted development",
+          "predicted": "AI-assisted development",
+          "strict": true
+        },
+        {
+          "expected": "Mimir",
+          "predicted": "Mimir",
+          "strict": true
+        },
+        {
+          "expected": "Loki",
+          "predicted": "Loki",
+          "strict": true
+        },
+        {
+          "expected": "Tempo",
+          "predicted": "Tempo",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes experience in AWS",
+          "strict": false
+        },
+        {
+          "expected": "infrastructure-as-code",
+          "predicted": "infrastructure-as-code tooling",
+          "strict": false
+        },
+        {
+          "expected": "post-incident reviews",
+          "predicted": "writing high-quality post-incident reviews",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "end-to-end project delivery",
+        "TypeScript",
+        "Node.js",
+        "Tanka"
+      ],
+      "extras": [
+        "billing engine",
+        "automating provisioning after a customer signs a contract",
+        "cloud marketplaces",
+        "maintaining the user portal",
+        "create",
+        "reconcile",
+        "migrate",
+        "operate Grafana Cloud stacks at scale",
+        "backend services",
+        "plugins",
+        "dashboards",
+        "data sources",
+        "stack-level configuration",
+        "intersection of product",
+        "operations",
+        "control-plane services",
+        "workflows that keep stack state aligned across grafana.com",
+        "Stack State Service",
+        "cloud regions",
+        "Grafana Cloud infrastructure",
+        "domain works well",
+        "reliable stack creation",
+        "safe configuration rollout",
+        "predictable migrations",
+        "fewer manual operational interventions",
+        "operate reconciliation systems",
+        "SSS backend",
+        "track desired stack state",
+        "repair drift across stack templates",
+        "grafana.com state",
+        "Hosted Grafana",
+        "actual customer stack configuration",
+        "deployment configurations",
+        "observable",
+        "reducing deployment complexity",
+        "PR regional SSS deployment",
+        "Stack Config Reconciliation project",
+        "Manage rollout mechanisms for provisioned plugins",
+        "Grafana versions",
+        "release channels",
+        "new region",
+        "cluster rollouts",
+        "operational paths",
+        "recovery paths for stack misalignment",
+        "reconciliation failures",
+        "plugin rollout issues",
+        "Hosted Grafana integration failures",
+        "roadmap planning",
+        "technical design",
+        "OnCall improvements",
+        "long-term simplification of stack operations",
+        "own the production behavior",
+        "runbooks",
+        "alerts",
+        "reconciliation safety",
+        "rollout controls",
+        "recovery procedures",
+        "debugging across service boundaries",
+        "careful changes in systems",
+        "provide balanced coverage",
+        "shared ownership",
+        "AI coding assistants",
+        "choice of tools",
+        "security guidelines",
+        "company-funded usage budget",
+        "prototyping",
+        "test generation",
+        "refactors",
+        "documentation",
+        "incident follow-ups",
+        "code review",
+        "quality standards",
+        "Staff Backend Engineer",
+        "operational clarity",
+        "remote-first organization",
+        "collaborating asynchronously",
+        "ownership",
+        "team is small",
+        "high degree of independence",
+        "lead major projects",
+        "coordinate across service boundaries",
+        "technical direction",
+        "stateful systems",
+        "ambiguous lifecycle requirements",
+        "modular solutions",
+        "breaking down complex systems",
+        "communicating technical tradeoffs",
+        "could include",
+        "Writing efficient",
+        "easy to maintain code",
+        "systems",
+        "consensus on proposed solutions",
+        "UX",
+        "Responding to customer requests",
+        "Participating in team decisions",
+        "prioritization",
+        "Requirements",
+        "distributed systems problems",
+        "data isolation",
+        "HA",
+        "professional experience",
+        "backend service",
+        "application code",
+        "quality of the products",
+        "delivering projects from gathering requirements",
+        "shipping a product",
+        "write clean",
+        "tight learning loops",
+        "MVPs",
+        "progress iteratively",
+        "make your plans transparent",
+        "open to feedback",
+        "familiarity",
+        "blameless incident response",
+        "Bonus Points",
+        "Experience",
+        "TypeScript/Node.js",
+        "Kubernetes control-plane patterns",
+        "operators",
+        "desired-state systems",
+        "Jsonnet/Tanka",
+        "similar deployment/configuration tooling",
+        "tenancy",
+        "regional expansion",
+        "plugin rollout",
+        "customer lifecycle systems",
+        "incident response involving configuration drift",
+        "cross-service state mismatch"
+      ],
+      "filler_hits": [
+        "follow-the-sun OnCall rotation",
+        "work across teams"
+      ],
+      "duration_ms": 25134
+    },
+    {
+      "id": "01a0d60b-07c3-7254-8218-ecb9908e4e46",
+      "title": "Platform Engineer",
+      "expected": 19,
+      "predicted": 34,
+      "strict_matched": 12,
+      "loose_matched": 16,
+      "tiers": {
+        "mentioned": {
+          "expected": 7,
+          "matched": 5
+        },
+        "required": {
+          "expected": 12,
+          "matched": 11
+        }
+      },
+      "matches": [
+        {
+          "expected": "Linux",
+          "predicted": "Linux",
+          "strict": true
+        },
+        {
+          "expected": "GCP",
+          "predicted": "GCP",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "Bash",
+          "predicted": "Bash scripting",
+          "strict": true
+        },
+        {
+          "expected": "observability tools",
+          "predicted": "observability tools",
+          "strict": true
+        },
+        {
+          "expected": "CI/CD",
+          "predicted": "CI/CD",
+          "strict": true
+        },
+        {
+          "expected": "communication skills",
+          "predicted": "communication skills",
+          "strict": true
+        },
+        {
+          "expected": "Puppet",
+          "predicted": "puppet",
+          "strict": true
+        },
+        {
+          "expected": "Ansible",
+          "predicted": "ansible",
+          "strict": true
+        },
+        {
+          "expected": "configuration management",
+          "predicted": "Configuration management",
+          "strict": true
+        },
+        {
+          "expected": "web servers",
+          "predicted": "web servers",
+          "strict": true
+        },
+        {
+          "expected": "application servers",
+          "predicted": "application servers",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes clusters",
+          "strict": false
+        },
+        {
+          "expected": "self-hosted Kubernetes administration",
+          "predicted": "Self-hosted Kubernetes clusters administration",
+          "strict": false
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS cloud",
+          "strict": false
+        },
+        {
+          "expected": "Infrastructure as Code",
+          "predicted": "Infrastructure as a code",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "4+ years DevOps/SRE/Platform engineering",
+        "Terraform",
+        "Terragrunt"
+      ],
+      "extras": [
+        "cloud",
+        "infrastructure management",
+        "Role description",
+        "Manage Kubernetes clusters",
+        "self-hosted",
+        "cloud-based",
+        "maintenance infrastructure in the cloud",
+        "Managing Linux servers",
+        "terraform/terragrunt",
+        "Role requirements",
+        "DevOps/SRE/Platform engineer",
+        "Extensive experience",
+        "container orchestration using Kubernetes",
+        "Experience",
+        "Infrastructure-as-Code tooling",
+        "interpersonal communication skills"
+      ],
+      "filler_hits": [
+        "Troubleshooting",
+        "problem-solving skills"
+      ],
+      "duration_ms": 6553
+    },
+    {
+      "id": "01a0d60b-17ad-73d9-81f9-94d4f4ebc761",
+      "title": "Systems Engineer - Global Resource Management (Data Residency)",
+      "expected": 23,
+      "predicted": 75,
+      "strict_matched": 16,
+      "loose_matched": 22,
+      "tiers": {
+        "mentioned": {
+          "expected": 3,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 7,
+          "matched": 7
+        },
+        "required": {
+          "expected": 13,
+          "matched": 12
+        }
+      },
+      "matches": [
+        {
+          "expected": "production systems at scale",
+          "predicted": "production systems at scale",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "API authentication",
+          "predicted": "authentication",
+          "strict": true
+        },
+        {
+          "expected": "schema design",
+          "predicted": "schema design",
+          "strict": true
+        },
+        {
+          "expected": "database migrations",
+          "predicted": "migrations",
+          "strict": true
+        },
+        {
+          "expected": "query optimization",
+          "predicted": "query optimization",
+          "strict": true
+        },
+        {
+          "expected": "consistency models",
+          "predicted": "consistency models",
+          "strict": true
+        },
+        {
+          "expected": "event-driven replication",
+          "predicted": "event-driven replication",
+          "strict": true
+        },
+        {
+          "expected": "platform infrastructure",
+          "predicted": "platform infrastructure",
+          "strict": true
+        },
+        {
+          "expected": "event-driven architectures",
+          "predicted": "event-driven architectures",
+          "strict": true
+        },
+        {
+          "expected": "Watermill",
+          "predicted": "Watermill",
+          "strict": true
+        },
+        {
+          "expected": "Kafka",
+          "predicted": "Kafka",
+          "strict": true
+        },
+        {
+          "expected": "edge computing platforms",
+          "predicted": "edge computing platforms",
+          "strict": true
+        },
+        {
+          "expected": "Cloudflare Workers",
+          "predicted": "Cloudflare Workers",
+          "strict": true
+        },
+        {
+          "expected": "bulk operations APIs",
+          "predicted": "bulk operations APIs",
+          "strict": true
+        },
+        {
+          "expected": "concurrency control",
+          "predicted": "concurrency control",
+          "strict": true
+        },
+        {
+          "expected": "REST APIs",
+          "predicted": "building REST APIs",
+          "strict": false
+        },
+        {
+          "expected": "PostgreSQL",
+          "predicted": "PostgreSQL in production",
+          "strict": false
+        },
+        {
+          "expected": "replication patterns",
+          "predicted": "understanding replication patterns",
+          "strict": false
+        },
+        {
+          "expected": "distributed systems",
+          "predicted": "distributed systems tradeoffs",
+          "strict": false
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes for service deployment",
+          "strict": false
+        },
+        {
+          "expected": "microservices",
+          "predicted": "operating the microservices",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "3+ years software engineering"
+      ],
+      "extras": [
+        "REST APIs that power the tag-api platform",
+        "implement API endpoints",
+        "define data models",
+        "write migrations",
+        "build the service-layer logic that handles validation",
+        "quota enforcement",
+        "hands-on backend engineering",
+        "reliable",
+        "well-tested web services",
+        "scaling the platform",
+        "higher-throughput use cases",
+        "latency",
+        "failure-mode tradeoffs",
+        "horizontal by nature",
+        "onboard their resources",
+        "APIs",
+        "ensure the platform scales",
+        "needs",
+        "scope",
+        "team is small",
+        "manages resources at scale",
+        "designing",
+        "routing",
+        "request lifecycle",
+        "design APIs",
+        "scale",
+        "communicate technical tradeoffs",
+        "eventual consistency",
+        "implications of propagating state",
+        "edge infrastructure",
+        "internal developer platforms",
+        "ie",
+        "build on top",
+        "Familiarity",
+        "operations",
+        "Experience",
+        "outbox patterns",
+        "message-based replication",
+        "serverless/edge-native runtimes",
+        "shaping infrastructure",
+        "ownership",
+        "influence over technical decisions",
+        "ticket queue",
+        "Cross-cutting by design",
+        "role is inherently horizontal",
+        "IAM",
+        "Cloudflare works end-to-end",
+        "Greenfield systems work",
+        "projects are being designed",
+        "maintaining legacy systems",
+        "defining the patterns"
+      ],
+      "filler_hits": [
+        "Ability to navigate ambiguity",
+        "drive alignment"
+      ],
+      "duration_ms": 18775
+    },
+    {
+      "id": "01a0d60b-17ad-73d9-81fa-277b857876f9",
+      "title": "Senior Backend Engineer",
+      "expected": 20,
+      "predicted": 49,
+      "strict_matched": 19,
+      "loose_matched": 20,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 4
+        },
+        "preferred": {
+          "expected": 7,
+          "matched": 7
+        },
+        "required": {
+          "expected": 9,
+          "matched": 9
+        }
+      },
+      "matches": [
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "C++",
+          "predicted": "C++",
+          "strict": true
+        },
+        {
+          "expected": "TypeScript",
+          "predicted": "TypeScript",
+          "strict": true
+        },
+        {
+          "expected": "distributed systems",
+          "predicted": "distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "system design",
+          "predicted": "system design",
+          "strict": true
+        },
+        {
+          "expected": "API development",
+          "predicted": "API development",
+          "strict": true
+        },
+        {
+          "expected": "cloud infrastructure",
+          "predicted": "cloud infrastructure",
+          "strict": true
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS",
+          "strict": true
+        },
+        {
+          "expected": "third-party service integration",
+          "predicted": "third-party services",
+          "strict": true
+        },
+        {
+          "expected": "security/compliance-sensitive systems",
+          "predicted": "security/compliance-sensitive systems",
+          "strict": true
+        },
+        {
+          "expected": "Web3",
+          "predicted": "Web3",
+          "strict": true
+        },
+        {
+          "expected": "DeFi",
+          "predicted": "DeFi",
+          "strict": true
+        },
+        {
+          "expected": "EVM-based blockchains",
+          "predicted": "EVM-based blockchains",
+          "strict": true
+        },
+        {
+          "expected": "smart contract interactions",
+          "predicted": "smart contract interactions",
+          "strict": true
+        },
+        {
+          "expected": "KYC provider integration",
+          "predicted": "identity/KYC providers",
+          "strict": true
+        },
+        {
+          "expected": "custodian integrations",
+          "predicted": "custodians",
+          "strict": true
+        },
+        {
+          "expected": "payments infrastructure",
+          "predicted": "payments infrastructure",
+          "strict": true
+        },
+        {
+          "expected": "code reviews",
+          "predicted": "code reviews",
+          "strict": true
+        },
+        {
+          "expected": "6+ years backend software engineering",
+          "predicted": "backend software engineering experience",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "Backend Engineer",
+        "remote-first environment",
+        "Role description",
+        "scalable",
+        "secure backend systems",
+        "APIs",
+        "onchain protocols",
+        "offchain infrastructure",
+        "smart contract engineers to define interfaces",
+        "workflows between backend services",
+        "blockchain networks",
+        "EVM",
+        "non-EVM",
+        "third-party blockchain tooling",
+        "Support internal ops",
+        "automation",
+        "auditability",
+        "observability tools",
+        "enforce backend engineering standards",
+        "best practices",
+        "security protocols across the stack",
+        "architecture discussions",
+        "culture of engineering excellence",
+        "modern languages",
+        "Golang",
+        "integrating",
+        "professional experience",
+        "side projects",
+        "Familiarity"
+      ],
+      "filler_hits": [],
+      "duration_ms": 22352
+    },
+    {
+      "id": "01a0d60b-17ad-73d9-81fa-864a67d04d68",
+      "title": "Software Engineer, PHP",
+      "expected": 22,
+      "predicted": 33,
+      "strict_matched": 16,
+      "loose_matched": 20,
+      "tiers": {
+        "mentioned": {
+          "expected": 7,
+          "matched": 6
+        },
+        "required": {
+          "expected": 15,
+          "matched": 14
+        }
+      },
+      "matches": [
+        {
+          "expected": "object-oriented PHP",
+          "predicted": "Object-Oriented PHP",
+          "strict": true
+        },
+        {
+          "expected": "Laravel",
+          "predicted": "Laravel",
+          "strict": true
+        },
+        {
+          "expected": "Symfony",
+          "predicted": "Symfony",
+          "strict": true
+        },
+        {
+          "expected": "CodeIgniter",
+          "predicted": "CodeIgniter",
+          "strict": true
+        },
+        {
+          "expected": "CakePHP",
+          "predicted": "CakePHP",
+          "strict": true
+        },
+        {
+          "expected": "HTML5",
+          "predicted": "HTML5",
+          "strict": true
+        },
+        {
+          "expected": "CSS3",
+          "predicted": "CSS3",
+          "strict": true
+        },
+        {
+          "expected": "JavaScript",
+          "predicted": "JavaScript",
+          "strict": true
+        },
+        {
+          "expected": "jQuery",
+          "predicted": "jQuery",
+          "strict": true
+        },
+        {
+          "expected": "Git",
+          "predicted": "Git version control",
+          "strict": true
+        },
+        {
+          "expected": "Composer",
+          "predicted": "Composer",
+          "strict": true
+        },
+        {
+          "expected": "WordPress",
+          "predicted": "WordPress",
+          "strict": true
+        },
+        {
+          "expected": "WooCommerce",
+          "predicted": "WooCommerce",
+          "strict": true
+        },
+        {
+          "expected": "Magento",
+          "predicted": "Magento",
+          "strict": true
+        },
+        {
+          "expected": "MariaDB",
+          "predicted": "MariaDB",
+          "strict": true
+        },
+        {
+          "expected": "performance troubleshooting",
+          "predicted": "Troubleshooting performance bottlenecks",
+          "strict": true
+        },
+        {
+          "expected": "MySQL",
+          "predicted": "optimizing MySQL",
+          "strict": false
+        },
+        {
+          "expected": "PostgreSQL",
+          "predicted": "PostgreSQL databases",
+          "strict": false
+        },
+        {
+          "expected": "RESTful APIs",
+          "predicted": "consuming RESTful APIs for third-party",
+          "strict": false
+        },
+        {
+          "expected": "Agile",
+          "predicted": "Agile environment",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "PHP frameworks",
+        "database design and optimization"
+      ],
+      "extras": [
+        "server-side development",
+        "database management",
+        "front-end team in an Agile environment",
+        "Software Engineer PHP",
+        "maintaining server-side web applications",
+        "Role description",
+        "secure PHP code",
+        "fixing application bugs",
+        "Role requirements",
+        "frameworks",
+        "Familiarity",
+        "dependency managers",
+        "Experience"
+      ],
+      "filler_hits": [],
+      "duration_ms": 22834
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823b-d651f40a5362",
+      "title": "Senior FullStack Engineer - Grafana Cloud Observability| Canada | Remote",
+      "expected": 20,
+      "predicted": 81,
+      "strict_matched": 17,
+      "loose_matched": 20,
+      "tiers": {
+        "mentioned": {
+          "expected": 3,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 8,
+          "matched": 8
+        },
+        "required": {
+          "expected": 9,
+          "matched": 9
+        }
+      },
+      "matches": [
+        {
+          "expected": "full-stack development",
+          "predicted": "full stack",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "TypeScript",
+          "predicted": "Typescript",
+          "strict": true
+        },
+        {
+          "expected": "React",
+          "predicted": "React",
+          "strict": true
+        },
+        {
+          "expected": "AI-assisted development",
+          "predicted": "AI-assisted development",
+          "strict": true
+        },
+        {
+          "expected": "observability ecosystem",
+          "predicted": "observability ecosystem",
+          "strict": true
+        },
+        {
+          "expected": "Prometheus",
+          "predicted": "Prometheus",
+          "strict": true
+        },
+        {
+          "expected": "Grafana dashboards",
+          "predicted": "Grafana dashboards",
+          "strict": true
+        },
+        {
+          "expected": "alerting",
+          "predicted": "alerting",
+          "strict": true
+        },
+        {
+          "expected": "written communication",
+          "predicted": "written communication",
+          "strict": true
+        },
+        {
+          "expected": "developer tooling",
+          "predicted": "Developer Tooling",
+          "strict": true
+        },
+        {
+          "expected": "Grafana Alloy",
+          "predicted": "Grafana Alloy",
+          "strict": true
+        },
+        {
+          "expected": "OpenTelemetry Collector",
+          "predicted": "OpenTelemetry Collector",
+          "strict": true
+        },
+        {
+          "expected": "telemetry pipeline tooling",
+          "predicted": "telemetry pipeline tooling",
+          "strict": true
+        },
+        {
+          "expected": "Jsonnet",
+          "predicted": "Jsonnet",
+          "strict": true
+        },
+        {
+          "expected": "monitoring mixins",
+          "predicted": "Monitoring Mixins",
+          "strict": true
+        },
+        {
+          "expected": "design proposals",
+          "predicted": "design proposals",
+          "strict": true
+        },
+        {
+          "expected": "open source contributions",
+          "predicted": "Open Source technologies",
+          "strict": false
+        },
+        {
+          "expected": "Grafana plugins",
+          "predicted": "building Grafana plugins",
+          "strict": false
+        },
+        {
+          "expected": "on-call experience",
+          "predicted": "on-call rotation",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "OpenTelemetry",
+        "opportunity to actively contribute",
+        "software engineering expertise",
+        "observability apps",
+        "scale our infrastructure observability features in Grafana Cloud",
+        "Frontend",
+        "Backend",
+        "Golang",
+        "Day to day",
+        "Ship features end to end",
+        "backend services",
+        "dashboards",
+        "alerts",
+        "each integration",
+        "React panel",
+        "Go service",
+        "Jsonnet mixin",
+        "Own projects from problem statement to production",
+        "talking to users",
+        "checking whether what you shipped actually worked",
+        "Represent the team's work outside the team",
+        "run the demos",
+        "case for our roadmap",
+        "Contribute upstream to Prometheus",
+        "AI coding assistants",
+        "choice of tools",
+        "security guidelines",
+        "company-funded usage budget",
+        "prototyping",
+        "test generation",
+        "refactors",
+        "documentation",
+        "incident follow-ups",
+        "code review",
+        "quality standards",
+        "remote-first approach",
+        "communication skills",
+        "start from the user",
+        "deciding what to build",
+        "solid experience",
+        "comparable languages",
+        "coding agents",
+        "LLM tooling",
+        "raise concerns early",
+        "advocate for your team's work across the org",
+        "systems in production",
+        "decisions happen in docs",
+        "pull requests across several time zones",
+        "Bonus Points",
+        "Experience contributing",
+        "maintaining Open Source projects",
+        "successful pull requests",
+        "community collaboration",
+        "large user base",
+        "apps",
+        "Familiarity",
+        "configuration-as-code language",
+        "on-call for the systems",
+        "useful alert"
+      ],
+      "filler_hits": [
+        "ability to work independently",
+        "product-focused mindset"
+      ],
+      "duration_ms": 22357
+    },
+    {
+      "id": "01a0d60b-2973-701e-806c-c20115fa3519",
+      "title": "Senior Full-stack Software Engineer",
+      "expected": 25,
+      "predicted": 40,
+      "strict_matched": 18,
+      "loose_matched": 22,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 4
+        },
+        "preferred": {
+          "expected": 3,
+          "matched": 2
+        },
+        "required": {
+          "expected": 18,
+          "matched": 16
+        }
+      },
+      "matches": [
+        {
+          "expected": "10+ years software engineering",
+          "predicted": "10+ years in software engineering",
+          "strict": true
+        },
+        {
+          "expected": "automotive",
+          "predicted": "automotive",
+          "strict": true
+        },
+        {
+          "expected": "e-commerce",
+          "predicted": "e-commerce",
+          "strict": true
+        },
+        {
+          "expected": "React",
+          "predicted": "React.js",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes",
+          "strict": true
+        },
+        {
+          "expected": "PostgreSQL",
+          "predicted": "PostgreSQL",
+          "strict": true
+        },
+        {
+          "expected": "MongoDB",
+          "predicted": "MongoDB",
+          "strict": true
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS",
+          "strict": true
+        },
+        {
+          "expected": "supply chain systems",
+          "predicted": "supply chain",
+          "strict": true
+        },
+        {
+          "expected": "procurement systems",
+          "predicted": "procurement",
+          "strict": true
+        },
+        {
+          "expected": "Infrastructure as Code",
+          "predicted": "infrastructure-as-code",
+          "strict": true
+        },
+        {
+          "expected": "cloud-native design patterns",
+          "predicted": "cloud-native design patterns",
+          "strict": true
+        },
+        {
+          "expected": "API design",
+          "predicted": "API design",
+          "strict": true
+        },
+        {
+          "expected": "event-driven messaging",
+          "predicted": "event-driven messaging",
+          "strict": true
+        },
+        {
+          "expected": "CRM platforms",
+          "predicted": "CRM",
+          "strict": true
+        },
+        {
+          "expected": "ERP platforms",
+          "predicted": "ERP platforms",
+          "strict": true
+        },
+        {
+          "expected": "integration services",
+          "predicted": "integration services",
+          "strict": true
+        },
+        {
+          "expected": "Agile",
+          "predicted": "agile",
+          "strict": true
+        },
+        {
+          "expected": "e-commerce systems",
+          "predicted": "e-commerce systems at OEM",
+          "strict": false
+        },
+        {
+          "expected": "EDI integration",
+          "predicted": "EDI integration patterns",
+          "strict": false
+        },
+        {
+          "expected": "full stack development",
+          "predicted": "maintain full stack applications",
+          "strict": false
+        },
+        {
+          "expected": "third-party platform evaluation",
+          "predicted": "evaluate third-party platforms",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "manufacturing",
+        "microservices",
+        "serverless"
+      ],
+      "extras": [
+        "Senior Full-stack Software Engineer",
+        "Collaborating across departments to enhance operational workflows",
+        "integrate systems",
+        "Role description",
+        "architectural patterns",
+        "design decisions into high-quality code",
+        "implement integrations",
+        "SaaS tools",
+        "well-tested code",
+        "Role requirements",
+        "manufacturing-adjacent environments",
+        "microservices/serverless",
+        "scale",
+        "AWS services",
+        "familiarity",
+        "integration patterns",
+        "ability to translate"
+      ],
+      "filler_hits": [
+        "resource-constrained environments"
+      ],
+      "duration_ms": 21764
+    },
+    {
+      "id": "01a0d60b-2973-701e-806c-c8895b80e831",
+      "title": "Senior Full-Stack Software Engineer – Front-End Focused",
+      "expected": 44,
+      "predicted": 97,
+      "strict_matched": 31,
+      "loose_matched": 39,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 2
+        },
+        "preferred": {
+          "expected": 1,
+          "matched": 1
+        },
+        "required": {
+          "expected": 39,
+          "matched": 36
+        }
+      },
+      "matches": [
+        {
+          "expected": "front-end focus",
+          "predicted": "front-end focus",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "mentoring software engineers",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "PHP",
+          "predicted": "PHP",
+          "strict": true
+        },
+        {
+          "expected": "NestJS",
+          "predicted": "NestJS",
+          "strict": true
+        },
+        {
+          "expected": "JWT/OIDC authentication",
+          "predicted": "JWT/OIDC authentication",
+          "strict": true
+        },
+        {
+          "expected": "Auth0",
+          "predicted": "Auth0",
+          "strict": true
+        },
+        {
+          "expected": "SQL databases",
+          "predicted": "SQL",
+          "strict": true
+        },
+        {
+          "expected": "NoSQL databases",
+          "predicted": "NoSQL databases",
+          "strict": true
+        },
+        {
+          "expected": "MongoDB",
+          "predicted": "operational MongoDB",
+          "strict": true
+        },
+        {
+          "expected": "schema design",
+          "predicted": "schema design",
+          "strict": true
+        },
+        {
+          "expected": "query optimization",
+          "predicted": "query optimization",
+          "strict": true
+        },
+        {
+          "expected": "Docker",
+          "predicted": "Docker",
+          "strict": true
+        },
+        {
+          "expected": "AWS Amplify",
+          "predicted": "Amplify",
+          "strict": true
+        },
+        {
+          "expected": "API Gateway",
+          "predicted": "API Gateway",
+          "strict": true
+        },
+        {
+          "expected": "S3",
+          "predicted": "S3",
+          "strict": true
+        },
+        {
+          "expected": "CloudWatch",
+          "predicted": "CloudWatch",
+          "strict": true
+        },
+        {
+          "expected": "X-Ray",
+          "predicted": "X-Ray",
+          "strict": true
+        },
+        {
+          "expected": "IAM",
+          "predicted": "IAM",
+          "strict": true
+        },
+        {
+          "expected": "VPC",
+          "predicted": "VPC",
+          "strict": true
+        },
+        {
+          "expected": "Terraform",
+          "predicted": "Terraform",
+          "strict": true
+        },
+        {
+          "expected": "Terragrunt",
+          "predicted": "Terragrunt",
+          "strict": true
+        },
+        {
+          "expected": "CI/CD",
+          "predicted": "CI/CD",
+          "strict": true
+        },
+        {
+          "expected": "GitHub Actions",
+          "predicted": "GitHub Actions",
+          "strict": true
+        },
+        {
+          "expected": "observability",
+          "predicted": "Observability",
+          "strict": true
+        },
+        {
+          "expected": "security best practices",
+          "predicted": "security best practices",
+          "strict": true
+        },
+        {
+          "expected": "testing",
+          "predicted": "Testing",
+          "strict": true
+        },
+        {
+          "expected": "Jest",
+          "predicted": "Jest",
+          "strict": true
+        },
+        {
+          "expected": "headless CMS",
+          "predicted": "headless CMS",
+          "strict": true
+        },
+        {
+          "expected": "design systems",
+          "predicted": "design-system ownership",
+          "strict": true
+        },
+        {
+          "expected": "web performance",
+          "predicted": "performance engineering",
+          "strict": true
+        },
+        {
+          "expected": "7+ years full-stack engineering",
+          "predicted": "full-stack software engineering experience",
+          "strict": false
+        },
+        {
+          "expected": "Bachelor's degree in computer science",
+          "predicted": "master's degree in computer science",
+          "strict": false
+        },
+        {
+          "expected": "TypeScript",
+          "predicted": "Next.js/React TypeScript monorepo",
+          "strict": false
+        },
+        {
+          "expected": "Node.js",
+          "predicted": "Node.js backend",
+          "strict": false
+        },
+        {
+          "expected": "API design",
+          "predicted": "consuming APIs",
+          "strict": false
+        },
+        {
+          "expected": "microservices",
+          "predicted": "microservices architectures",
+          "strict": false
+        },
+        {
+          "expected": "AWS ECS",
+          "predicted": "container orchestration on AWS ECS",
+          "strict": false
+        },
+        {
+          "expected": "AWS",
+          "predicted": "CI/CD to AWS Amplify",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "JavaScript",
+        "JWKS",
+        "Infrastructure as Code",
+        "Next.js",
+        "React"
+      ],
+      "extras": [
+        "Senior Full-Stack Software Engineer",
+        "consumer-facing web applications",
+        "Next.js/React development",
+        "operational reliability",
+        "Role description",
+        "production-grade UX",
+        "performance",
+        "OpenAPI backend",
+        "deep front-end engineering",
+        "operational responsibility for client-side reliability",
+        "Bachelor's",
+        "engineering",
+        "related field",
+        "portfolio of production-grade work",
+        "collaboration",
+        "communication",
+        "JavaScript/TypeScript",
+        "designing",
+        "Hands-on experience",
+        "equivalent",
+        "passport-jwt/JWKS patterns",
+        "Proven experience",
+        "relational",
+        "multi-environment deployments",
+        "replication",
+        "sharding",
+        "performance tuning",
+        "Experience",
+        "task definitions",
+        "logging",
+        "ECR",
+        "Working knowledge of core AWS services",
+        "ALB/NLB",
+        "EFS",
+        "maintaining automation within cloud-native environments using IaC frameworks",
+        "GitHub OIDC for secure AWS deployments",
+        "production operations",
+        "logs",
+        "metrics",
+        "alarms",
+        "distributed tracing",
+        "production troubleshooting",
+        "IAM least-privilege",
+        "private S3 patterns",
+        "secrets management",
+        "quality discipline",
+        "integration",
+        "e2e layers",
+        "linting",
+        "formatting standards",
+        "integrating headless CMS platforms",
+        "modern front-end frameworks",
+        "Enthusiasm to contribute to Stand Together's vision",
+        "principled approach to solving problems",
+        "values",
+        "humility"
+      ],
+      "filler_hits": [
+        "cross-functional partnership skills",
+        "stewarding our culture"
+      ],
+      "duration_ms": 23127
+    },
+    {
+      "id": "01a0d60b-2973-701e-806d-30c90acf3886",
+      "title": "Software Engineer, Backend",
+      "expected": 18,
+      "predicted": 27,
+      "strict_matched": 16,
+      "loose_matched": 17,
+      "tiers": {
+        "mentioned": {
+          "expected": 9,
+          "matched": 9
+        },
+        "preferred": {
+          "expected": 4,
+          "matched": 4
+        },
+        "required": {
+          "expected": 5,
+          "matched": 4
+        }
+      },
+      "matches": [
+        {
+          "expected": "web applications at scale",
+          "predicted": "web applications at scale",
+          "strict": true
+        },
+        {
+          "expected": "interpreted language",
+          "predicted": "interpreted language",
+          "strict": true
+        },
+        {
+          "expected": "component-based UI frameworks",
+          "predicted": "component-based frameworks",
+          "strict": true
+        },
+        {
+          "expected": "Vue",
+          "predicted": "Vue",
+          "strict": true
+        },
+        {
+          "expected": "JavaScript",
+          "predicted": "Javascript",
+          "strict": true
+        },
+        {
+          "expected": "TypeScript",
+          "predicted": "Typescript",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "key-value stores",
+          "predicted": "key-value stores",
+          "strict": true
+        },
+        {
+          "expected": "MongoDB",
+          "predicted": "MongoDB",
+          "strict": true
+        },
+        {
+          "expected": "Memcache",
+          "predicted": "Memcache",
+          "strict": true
+        },
+        {
+          "expected": "Redis",
+          "predicted": "Redis",
+          "strict": true
+        },
+        {
+          "expected": "browser extension development",
+          "predicted": "extension development",
+          "strict": true
+        },
+        {
+          "expected": "SDK development",
+          "predicted": "SDK development",
+          "strict": true
+        },
+        {
+          "expected": "mobile development",
+          "predicted": "mobile development",
+          "strict": true
+        },
+        {
+          "expected": "API architecture",
+          "predicted": "API architecture",
+          "strict": true
+        },
+        {
+          "expected": "compiled language",
+          "predicted": "one compiled language",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "4+ years software engineering"
+      ],
+      "extras": [
+        "extension",
+        "SDK",
+        "web development",
+        "API backends",
+        "2+ years experience",
+        "experience",
+        "building UIs",
+        "Bonus points"
+      ],
+      "filler_hits": [
+        "end-user engineering",
+        "knowledge sharing"
+      ],
+      "duration_ms": 21576
+    },
+    {
+      "id": "01a0d60b-2973-701e-806e-33e9f0559f96",
+      "title": "Senior Software Engineer, Backend – Web Products",
+      "expected": 19,
+      "predicted": 59,
+      "strict_matched": 15,
+      "loose_matched": 19,
+      "tiers": {
+        "mentioned": {
+          "expected": 5,
+          "matched": 5
+        },
+        "preferred": {
+          "expected": 2,
+          "matched": 2
+        },
+        "required": {
+          "expected": 12,
+          "matched": 12
+        }
+      },
+      "matches": [
+        {
+          "expected": "10+ years backend programming",
+          "predicted": "backend programming",
+          "strict": true
+        },
+        {
+          "expected": "full-stack experience",
+          "predicted": "full-stack experience",
+          "strict": true
+        },
+        {
+          "expected": "Java",
+          "predicted": "Java",
+          "strict": true
+        },
+        {
+          "expected": "Scala",
+          "predicted": "Scala",
+          "strict": true
+        },
+        {
+          "expected": "Rust",
+          "predicted": "Rust",
+          "strict": true
+        },
+        {
+          "expected": "distributed systems on cloud services",
+          "predicted": "distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "high availability",
+          "predicted": "high availability",
+          "strict": true
+        },
+        {
+          "expected": "technical design documents",
+          "predicted": "Technical Design Documents",
+          "strict": true
+        },
+        {
+          "expected": "cross-functional collaboration",
+          "predicted": "cross-functional collaboration",
+          "strict": true
+        },
+        {
+          "expected": "root-cause analysis",
+          "predicted": "root-cause analysis",
+          "strict": true
+        },
+        {
+          "expected": "agentic engineering tools",
+          "predicted": "agentic engineering tools",
+          "strict": true
+        },
+        {
+          "expected": "BS in Computer Science",
+          "predicted": "MS in Computer Science",
+          "strict": true
+        },
+        {
+          "expected": "healthcare claims and payments domain",
+          "predicted": "healthcare claims",
+          "strict": true
+        },
+        {
+          "expected": "in-browser application development",
+          "predicted": "in-browser application development",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "mentor others",
+          "strict": true
+        },
+        {
+          "expected": "customer-facing web application products",
+          "predicted": "shipping customer-facing web application products",
+          "strict": false
+        },
+        {
+          "expected": "code quality",
+          "predicted": "owning code quality",
+          "strict": false
+        },
+        {
+          "expected": "machine learning techniques",
+          "predicted": "applications applying ML techniques",
+          "strict": false
+        },
+        {
+          "expected": "technical direction",
+          "predicted": "Setting technical direction",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "Backend engineer",
+        "audit products",
+        "agentic engineering practices",
+        "Set technical direction for backend development",
+        "scalable",
+        "reliable web application systems",
+        "review AI coding agents",
+        "Drive adoption of new languages",
+        "tools",
+        "agentic development practices",
+        "Write code",
+        "future product lines",
+        "Partner cross-functionally to influence product direction",
+        "payments domain",
+        "Rust services",
+        "standards",
+        "cross-team planning",
+        "support cross-functional execution",
+        "extensibility",
+        "scalability",
+        "security",
+        "customer-facing features",
+        "technical debt cleanup",
+        "Design systems",
+        "reliable application delivery",
+        "designing",
+        "experience",
+        "operating distributed systems on cloud services at scale",
+        "high throughput",
+        "systems instinct",
+        "Hands-on experience",
+        "workflows in production",
+        "reading",
+        "understanding complex code",
+        "Critical thinking",
+        "problem-solving skills",
+        "environment",
+        "BS",
+        "equivalent experience"
+      ],
+      "filler_hits": [
+        "user-driven mindset"
+      ],
+      "duration_ms": 21697
+    },
+    {
+      "id": "01a0d60b-3c3e-7713-95bd-314ca71804af",
+      "title": "Senior Software Engineer -Golang (Security Services Integrations)",
+      "expected": 25,
+      "predicted": 97,
+      "strict_matched": 22,
+      "loose_matched": 22,
+      "tiers": {
+        "mentioned": {
+          "expected": 8,
+          "matched": 8
+        },
+        "required": {
+          "expected": 17,
+          "matched": 14
+        }
+      },
+      "matches": [
+        {
+          "expected": "production backend/data systems",
+          "predicted": "production backend/data systems",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "systems language",
+          "predicted": "systems-language experience",
+          "strict": true
+        },
+        {
+          "expected": "API authentication",
+          "predicted": "OAuth2",
+          "strict": true
+        },
+        {
+          "expected": "pagination and rate limiting",
+          "predicted": "rate limiting",
+          "strict": true
+        },
+        {
+          "expected": "data pipelines",
+          "predicted": "data pipelines",
+          "strict": true
+        },
+        {
+          "expected": "log and event processing",
+          "predicted": "event processing",
+          "strict": true
+        },
+        {
+          "expected": "structured data modeling",
+          "predicted": "structured data modeling",
+          "strict": true
+        },
+        {
+          "expected": "host-level data collection",
+          "predicted": "host-level data collection",
+          "strict": true
+        },
+        {
+          "expected": "data connectors at scale",
+          "predicted": "data connectors at scale",
+          "strict": true
+        },
+        {
+          "expected": "large open-source codebases",
+          "predicted": "large open-source codebases",
+          "strict": true
+        },
+        {
+          "expected": "testing",
+          "predicted": "testing discipline",
+          "strict": true
+        },
+        {
+          "expected": "code review",
+          "predicted": "code review",
+          "strict": true
+        },
+        {
+          "expected": "LLMs / AI coding assistants",
+          "predicted": "AI coding assistants",
+          "strict": true
+        },
+        {
+          "expected": "Beats",
+          "predicted": "Beats",
+          "strict": true
+        },
+        {
+          "expected": "SIEM",
+          "predicted": "SIEM",
+          "strict": true
+        },
+        {
+          "expected": "security integrations",
+          "predicted": "identity/IdP",
+          "strict": true
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS",
+          "strict": true
+        },
+        {
+          "expected": "Azure",
+          "predicted": "Azure",
+          "strict": true
+        },
+        {
+          "expected": "GCP",
+          "predicted": "GCP",
+          "strict": true
+        },
+        {
+          "expected": "ECS mappings",
+          "predicted": "ingest pipelines",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "mentor engineers",
+          "strict": true
+        }
+      ],
+      "misses": [
+        "5+ years software engineering",
+        "third-party/cloud API integration",
+        "AI-driven automation"
+      ],
+      "extras": [
+        "lightweight host agents",
+        "endpoint",
+        "network",
+        "event data",
+        "Elastic managed integrations",
+        "cloud",
+        "security-vendor APIs",
+        "Elastic's most-used open-source repositories",
+        "elastic/beats",
+        "elastic/integrations",
+        "Beats data shippers",
+        "Filebeat inputs",
+        "modules",
+        "host/endpoint collectors",
+        "Auditbeat",
+        "Winlogbeat",
+        "Packetbeat",
+        "Osquerybeat in Go",
+        "maintain security integration packages for third-party sources",
+        "EDR/XDR",
+        "email security",
+        "firewalls",
+        "cloud security",
+        "threat intel",
+        "vulnerability management",
+        "Build robust Elastic managed/API-based collection against external vendor",
+        "cloud-provider APIs",
+        "auth",
+        "tokens",
+        "pagination",
+        "rate limits",
+        "resilience",
+        "reliability",
+        "performance",
+        "observability of collection at scale",
+        "failing-test",
+        "reliability noise",
+        "Review community",
+        "partner contributions",
+        "set technical direction across the ingestion surface",
+        "prioritize high-impact sources",
+        "unblock customer onboarding",
+        "LLMs",
+        "AI automation",
+        "scaffolding new integrations/modules",
+        "normalizing ECS mappings",
+        "generating parsers",
+        "tests from sample data",
+        "summarizing vendor API docs",
+        "triaging failing-test",
+        "AI-assisted tooling",
+        "automation",
+        "scripts",
+        "agents",
+        "CI steps",
+        "reduce toil",
+        "establish good practices for using AI safely",
+        "validation",
+        "guarding against hallucinated mappings",
+        "record of ramping quickly",
+        "Experience integrating",
+        "third-party/cloud APIs authentication",
+        "retries",
+        "handling unreliable upstreams",
+        "ETL",
+        "log",
+        "Experience",
+        "agent-based",
+        "logs",
+        "metrics",
+        "OS/endpoint telemetry",
+        "public collaboration",
+        "building AI-driven automation to accelerate engineering work",
+        "good judgment about where AI helps",
+        "needs human validation"
+      ],
+      "filler_hits": [],
+      "duration_ms": 22181
+    },
+    {
+      "id": "01a0d60b-3c3e-7713-95bd-7335f543ea1e",
+      "title": "Senior AI Data Engineer",
+      "expected": 26,
+      "predicted": 90,
+      "strict_matched": 20,
+      "loose_matched": 26,
+      "tiers": {
+        "mentioned": {
+          "expected": 3,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 9,
+          "matched": 9
+        },
+        "required": {
+          "expected": 14,
+          "matched": 14
+        }
+      },
+      "matches": [
+        {
+          "expected": "5+ years data engineering or AI engineering",
+          "predicted": "data engineering",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "SQL",
+          "predicted": "SQL",
+          "strict": true
+        },
+        {
+          "expected": "data modeling",
+          "predicted": "data modeling",
+          "strict": true
+        },
+        {
+          "expected": "agentic coding tools",
+          "predicted": "Agentic coding tools",
+          "strict": true
+        },
+        {
+          "expected": "data warehouse architectures",
+          "predicted": "data warehouse architectures",
+          "strict": true
+        },
+        {
+          "expected": "ETL/ELT",
+          "predicted": "ETL/ELT",
+          "strict": true
+        },
+        {
+          "expected": "modern data stack",
+          "predicted": "modern data stack",
+          "strict": true
+        },
+        {
+          "expected": "Databricks",
+          "predicted": "Databricks",
+          "strict": true
+        },
+        {
+          "expected": "dbt",
+          "predicted": "DBT",
+          "strict": true
+        },
+        {
+          "expected": "Snowflake",
+          "predicted": "Snowflake",
+          "strict": true
+        },
+        {
+          "expected": "BigQuery",
+          "predicted": "BigQuery",
+          "strict": true
+        },
+        {
+          "expected": "software engineering background",
+          "predicted": "software engineering background",
+          "strict": true
+        },
+        {
+          "expected": "CRM",
+          "predicted": "CRM",
+          "strict": true
+        },
+        {
+          "expected": "marketing automation",
+          "predicted": "marketing automation",
+          "strict": true
+        },
+        {
+          "expected": "web analytics",
+          "predicted": "web analytics",
+          "strict": true
+        },
+        {
+          "expected": "CDPs",
+          "predicted": "CDPs",
+          "strict": true
+        },
+        {
+          "expected": "agent orchestration",
+          "predicted": "agent orchestration",
+          "strict": true
+        },
+        {
+          "expected": "conversational analytics",
+          "predicted": "conversational analytics",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "code reviews",
+          "strict": true
+        },
+        {
+          "expected": "LLMs or agents in production",
+          "predicted": "agents in production",
+          "strict": false
+        },
+        {
+          "expected": "requirements gathering",
+          "predicted": "lead requirements gathering independently",
+          "strict": false
+        },
+        {
+          "expected": "project management",
+          "predicted": "project management skills",
+          "strict": false
+        },
+        {
+          "expected": "supporting a business function",
+          "predicted": "Experience directly supporting a business function",
+          "strict": false
+        },
+        {
+          "expected": "go-to-market data and systems",
+          "predicted": "go-to-market data",
+          "strict": false
+        },
+        {
+          "expected": "LLM evaluation and monitoring",
+          "predicted": "monitoring LLM systems in production",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "operate production AI systems",
+        "tool",
+        "API integrations",
+        "retrieval pipelines",
+        "evaluation harnesses",
+        "maintain marketing databases",
+        "datasets",
+        "pipelines",
+        "Samsara's Customer Data Platform",
+        "CDP",
+        "advanced segmentation",
+        "targeting",
+        "automation",
+        "analytics",
+        "automate manual workflows",
+        "AI",
+        "credible path to production",
+        "efficiency gains across marketing",
+        "Stand up new data pipelines end to end",
+        "discovering the schema",
+        "data processed",
+        "integrating it into our downstream systems",
+        "reliability",
+        "data quality",
+        "translate ambiguous business questions",
+        "scalable solutions",
+        "dedicated PM support",
+        "directing agentic coding tools",
+        "reviewing",
+        "verifying AI-generated work before it reaches production",
+        "Mentor engineers",
+        "help define best practices",
+        "Minimum requirements for the role",
+        "AI engineering role",
+        "hands-on data engineering experience",
+        "shipped systems that use LLMs",
+        "Claude Code",
+        "Cursor",
+        "regular workflow",
+        "ownership of AI-generated output",
+        "Deep experience",
+        "similar",
+        "bridging the gap between business needs",
+        "technical implementation",
+        "automation through exploratory conversations",
+        "team member",
+        "non-technical audiences",
+        "ideal candidate",
+        "AI engineering",
+        "taking ambiguous",
+        "unfamiliar problems",
+        "well-architected",
+        "delivered solutions",
+        "marketing",
+        "sales",
+        "finance",
+        "business operations",
+        "Familiarity",
+        "systems",
+        "Salesforce",
+        "Hightouch",
+        "Segment",
+        "evaluating"
+      ],
+      "filler_hits": [
+        "communication"
+      ],
+      "duration_ms": 23534
+    },
+    {
+      "id": "01a0d60b-3c3e-7713-95bd-f291de851333",
+      "title": "Senior Software Engineer, Android",
+      "expected": 29,
+      "predicted": 84,
+      "strict_matched": 18,
+      "loose_matched": 25,
+      "tiers": {
+        "mentioned": {
+          "expected": 1,
+          "matched": 1
+        },
+        "preferred": {
+          "expected": 16,
+          "matched": 16
+        },
+        "required": {
+          "expected": 12,
+          "matched": 8
+        }
+      },
+      "matches": [
+        {
+          "expected": "full-stack",
+          "predicted": "Full-stack",
+          "strict": true
+        },
+        {
+          "expected": "Android SDK",
+          "predicted": "Android SDK",
+          "strict": true
+        },
+        {
+          "expected": "integration design",
+          "predicted": "API contracts",
+          "strict": true
+        },
+        {
+          "expected": "data synchronization patterns",
+          "predicted": "data synchronization patterns",
+          "strict": true
+        },
+        {
+          "expected": "CRDT",
+          "predicted": "CRDT",
+          "strict": true
+        },
+        {
+          "expected": "iOS",
+          "predicted": "iOS",
+          "strict": true
+        },
+        {
+          "expected": "ATAK/TAK ecosystem",
+          "predicted": "ATAK/TAK ecosystem",
+          "strict": true
+        },
+        {
+          "expected": "CoT messaging",
+          "predicted": "CoT messaging",
+          "strict": true
+        },
+        {
+          "expected": "tactical networking",
+          "predicted": "Tactical networking",
+          "strict": true
+        },
+        {
+          "expected": "embedded databases",
+          "predicted": "Embedded databases",
+          "strict": true
+        },
+        {
+          "expected": "SQLite",
+          "predicted": "SQLite",
+          "strict": true
+        },
+        {
+          "expected": "Realm",
+          "predicted": "Realm",
+          "strict": true
+        },
+        {
+          "expected": "tactical edge deployment",
+          "predicted": "Tactical edge deployment",
+          "strict": true
+        },
+        {
+          "expected": "DoD customer experience",
+          "predicted": "federal customer experience",
+          "strict": true
+        },
+        {
+          "expected": "technical lead experience",
+          "predicted": "Technical lead experience",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "Rust",
+          "predicted": "Rust",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "production applications at scale",
+          "predicted": "maintaining production applications at scale",
+          "strict": false
+        },
+        {
+          "expected": "4+ years mobile application development",
+          "predicted": "mobile application development experience",
+          "strict": false
+        },
+        {
+          "expected": "Kotlin",
+          "predicted": "Kotlin and/or Java",
+          "strict": false
+        },
+        {
+          "expected": "technical leadership",
+          "predicted": "leadership in architectural decisions",
+          "strict": false
+        },
+        {
+          "expected": "cross-platform mobile development",
+          "predicted": "Cross-platform mobile development experience involving Android",
+          "strict": false
+        },
+        {
+          "expected": "backend or systems development",
+          "predicted": "systems development",
+          "strict": false
+        },
+        {
+          "expected": "disconnected, low-bandwidth environments",
+          "predicted": "low-bandwidth environments",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "8+ years software engineering",
+        "Java",
+        "mentoring",
+        "written and verbal communication"
+      ],
+      "extras": [
+        "edge architecture",
+        "field deployment",
+        "technical direction",
+        "Role description",
+        "design",
+        "field deployment of applications",
+        "Ditto's data synchronization capabilities",
+        "develop performant Android applications",
+        "services for tactical end-user devices in disconnected",
+        "data contracts",
+        "API boundaries",
+        "synchronization patterns for interoperability",
+        "TAK ecosystem",
+        "third-party systems",
+        "resolve complex application",
+        "integration",
+        "data-flow issues",
+        "Build tooling",
+        "practices for resolving operational issues",
+        "Mentor engineers",
+        "review designs",
+        "code",
+        "Android",
+        "ATAK/TAK",
+        "integration architecture",
+        "edge integration roadmap",
+        "Translate field usage lessons into technical insights",
+        "architectural recommendations",
+        "product requirements",
+        "Role requirements",
+        "software engineering experience",
+        "track record building",
+        "deep demonstrated expertise",
+        "Deep familiarity",
+        "integration design skills",
+        "loosely coupled systems",
+        "trade-offs",
+        "rationale communication",
+        "Track record mentoring engineers through code review",
+        "design guidance",
+        "direct coaching",
+        "problem-solving ability",
+        "written",
+        "verbal communication skills",
+        "local-first architecture",
+        "platforms",
+        "Windows",
+        "Linux",
+        "ATAK plugin development",
+        "TAK Server integration",
+        "plugin architecture",
+        "constrained",
+        "mesh",
+        "MANET radio networks",
+        "offline-first persistence",
+        "similar technologies",
+        "Department of Defense",
+        "complex cross-functional initiative",
+        "Backend"
+      ],
+      "filler_hits": [],
+      "duration_ms": 25060
+    },
+    {
+      "id": "01a0d60b-3c3e-7713-95be-b0bcbab7a6b6",
+      "title": "Senior Backend Engineer",
+      "expected": 24,
+      "predicted": 91,
+      "strict_matched": 20,
+      "loose_matched": 22,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 11,
+          "matched": 10
+        },
+        "required": {
+          "expected": 9,
+          "matched": 9
+        }
+      },
+      "matches": [
+        {
+          "expected": "backend architecture",
+          "predicted": "backend architecture",
+          "strict": true
+        },
+        {
+          "expected": "APIs",
+          "predicted": "APIs",
+          "strict": true
+        },
+        {
+          "expected": "data systems",
+          "predicted": "data systems",
+          "strict": true
+        },
+        {
+          "expected": "performance tuning",
+          "predicted": "performance tuning",
+          "strict": true
+        },
+        {
+          "expected": "modern backend languages",
+          "predicted": "modern backend languages",
+          "strict": true
+        },
+        {
+          "expected": "systems programming",
+          "predicted": "systems programming",
+          "strict": true
+        },
+        {
+          "expected": "modular backend boundaries",
+          "predicted": "bounded contexts",
+          "strict": true
+        },
+        {
+          "expected": "written communication",
+          "predicted": "clear written communication",
+          "strict": true
+        },
+        {
+          "expected": "high-throughput distributed systems",
+          "predicted": "high-throughput distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "concurrency",
+          "predicted": "concurrency",
+          "strict": true
+        },
+        {
+          "expected": "profiling",
+          "predicted": "profiling",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes",
+          "strict": true
+        },
+        {
+          "expected": "database performance",
+          "predicted": "PostgreSQL",
+          "strict": true
+        },
+        {
+          "expected": "ClickHouse",
+          "predicted": "ClickHouse",
+          "strict": true
+        },
+        {
+          "expected": "modular monoliths",
+          "predicted": "large-scale modular monoliths",
+          "strict": true
+        },
+        {
+          "expected": "event-driven systems",
+          "predicted": "event-driven systems",
+          "strict": true
+        },
+        {
+          "expected": "open-source maintenance",
+          "predicted": "open-source maintenance",
+          "strict": true
+        },
+        {
+          "expected": "developer-focused SaaS",
+          "predicted": "developer-focused SaaS",
+          "strict": true
+        },
+        {
+          "expected": "incident response",
+          "predicted": "incident response",
+          "strict": true
+        },
+        {
+          "expected": "AI in production engineering",
+          "predicted": "AI in production engineering",
+          "strict": true
+        },
+        {
+          "expected": "agentic systems in production",
+          "predicted": "operating agentic systems in production",
+          "strict": false
+        },
+        {
+          "expected": "code and design reviews",
+          "predicted": "design reviews",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "PostgreSQL",
+        "mentoring"
+      ],
+      "extras": [
+        "Senior Backend Engineer",
+        "evolve product capabilities while solving high-scope backend problems",
+        "influencing the technical",
+        "product direction",
+        "reliability",
+        "performance of our systems",
+        "work across product",
+        "security boundaries",
+        "architectural trade-offs",
+        "communicating complex ideas clearly in an asynchronous environment",
+        "helping define the standards",
+        "Technical Agency",
+        "influence team objectives",
+        "technical direction",
+        "long-range goals",
+        "problems of high scope",
+        "User-Centric Collaboration",
+        "shape requirements",
+        "complex backend features",
+        "minimal guidance",
+        "modular-monolith code",
+        "shared components",
+        "independently operated services",
+        "product quality",
+        "security",
+        "availability",
+        "performance",
+        "backend standards for style",
+        "maintainability",
+        "testing",
+        "operational readiness",
+        "Mentor",
+        "Mentor associate",
+        "remove technical blockers",
+        "improve team delivery practices through code",
+        "Operational Excellence",
+        "prevent performance/reliability issues at scale",
+        "technical owner",
+        "AI Integration",
+        "evaluate its effectiveness",
+        "coach others",
+        "you’ll bring",
+        "Backend Expertise",
+        "environment",
+        "ability to learn",
+        "Architectural Judgment",
+        "designing",
+        "evolving modular backend boundaries",
+        "migration-safe architectures",
+        "Influence",
+        "technical judgment",
+        "effectively bridging the gap between product needs",
+        "reality",
+        "Agentic AI Expertise",
+        "experience building",
+        "architecting loops",
+        "tool-use",
+        "error-handling strategies that ensure reliability at scale",
+        "Helpful experience",
+        "signals",
+        "requirements",
+        "Experience",
+        "Hands-on experience",
+        "containerized production operations",
+        "Deep database performance knowledge",
+        "schema evolution",
+        "partitioning",
+        "Public technical communication"
+      ],
+      "filler_hits": [
+        "lead through influence"
+      ],
+      "duration_ms": 25475
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-14264f84a2cb",
+      "title": "Senior Backend Engineer, Experimentation",
+      "expected": 30,
+      "predicted": 88,
+      "strict_matched": 27,
+      "loose_matched": 30,
+      "tiers": {
+        "mentioned": {
+          "expected": 2,
+          "matched": 2
+        },
+        "required": {
+          "expected": 28,
+          "matched": 28
+        }
+      },
+      "matches": [
+        {
+          "expected": "6+ years software engineering",
+          "predicted": "6+ years of professional software engineering experience",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "Rust",
+          "predicted": "Rust",
+          "strict": true
+        },
+        {
+          "expected": "C++",
+          "predicted": "C++",
+          "strict": true
+        },
+        {
+          "expected": "distributed systems",
+          "predicted": "distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "event-driven architectures",
+          "predicted": "event-driven architectures",
+          "strict": true
+        },
+        {
+          "expected": "data pipelines",
+          "predicted": "data pipelines",
+          "strict": true
+        },
+        {
+          "expected": "APIs",
+          "predicted": "APIs",
+          "strict": true
+        },
+        {
+          "expected": "data modeling",
+          "predicted": "data modeling",
+          "strict": true
+        },
+        {
+          "expected": "data-intensive services",
+          "predicted": "data-intensive services",
+          "strict": true
+        },
+        {
+          "expected": "analytical data stores",
+          "predicted": "warehouse data stores",
+          "strict": true
+        },
+        {
+          "expected": "ClickHouse",
+          "predicted": "ClickHouse",
+          "strict": true
+        },
+        {
+          "expected": "Postgres",
+          "predicted": "Postgres",
+          "strict": true
+        },
+        {
+          "expected": "Snowflake",
+          "predicted": "Snowflake",
+          "strict": true
+        },
+        {
+          "expected": "Redshift",
+          "predicted": "Redshift",
+          "strict": true
+        },
+        {
+          "expected": "BigQuery",
+          "predicted": "BigQuery",
+          "strict": true
+        },
+        {
+          "expected": "Databricks",
+          "predicted": "Databricks",
+          "strict": true
+        },
+        {
+          "expected": "observability",
+          "predicted": "observability",
+          "strict": true
+        },
+        {
+          "expected": "cloud environment",
+          "predicted": "cloud environment",
+          "strict": true
+        },
+        {
+          "expected": "infrastructure-as-code",
+          "predicted": "infrastructure-as-code",
+          "strict": true
+        },
+        {
+          "expected": "experimentation",
+          "predicted": "experimentation",
+          "strict": true
+        },
+        {
+          "expected": "A/B testing",
+          "predicted": "A/B testing",
+          "strict": true
+        },
+        {
+          "expected": "analytics",
+          "predicted": "analytics",
+          "strict": true
+        },
+        {
+          "expected": "data platforms",
+          "predicted": "data platforms",
+          "strict": true
+        },
+        {
+          "expected": "incident response",
+          "predicted": "incident response",
+          "strict": true
+        },
+        {
+          "expected": "code reviews",
+          "predicted": "code reviews",
+          "strict": true
+        },
+        {
+          "expected": "backend services in production",
+          "predicted": "operating backend services in production",
+          "strict": false
+        },
+        {
+          "expected": "AI tools in engineering workflows",
+          "predicted": "Fluency using AI tools in software engineering workflows",
+          "strict": false
+        },
+        {
+          "expected": "customer-facing scalable systems",
+          "predicted": "delivering customer-facing systems that are scalable",
+          "strict": false
+        }
+      ],
+      "misses": [],
+      "extras": [
+        "operate scalable backend services",
+        "technical discovery",
+        "testing",
+        "deployment",
+        "monitoring",
+        "continuous improvement",
+        "experiment setup",
+        "event data ingestion",
+        "metric computation",
+        "results processing",
+        "results presentation",
+        "architectural decisions",
+        "technical proposals",
+        "scalability",
+        "reliability",
+        "performance",
+        "maintainability",
+        "engineering teams to translate customer needs",
+        "reliable technical solutions",
+        "shared data flows",
+        "services",
+        "cross-team dependencies",
+        "Investigate complex production issues",
+        "identify root causes",
+        "implement durable fixes",
+        "deployment safety",
+        "operational processes",
+        "system reliability",
+        "ownership of production systems",
+        "design reviews",
+        "knowledge sharing",
+        "informal mentorship",
+        "building",
+        "judgment to direct",
+        "validate AI-generated output",
+        "designing",
+        "reliable",
+        "observable",
+        "maintainable",
+        "comparable backend language",
+        "Experience",
+        "analytical",
+        "operational",
+        "equivalent",
+        "diagnosing production issues",
+        "system reliability through metrics",
+        "logs",
+        "traces",
+        "alerting",
+        "observability practices",
+        "operations tooling",
+        "Ability to take an ambiguous problem from discovery",
+        "scoping through design",
+        "ongoing operation",
+        "collaborative approach to working",
+        "similarly data-intensive products"
+      ],
+      "filler_hits": [
+        "on-call rotation",
+        "thoughtful communication"
+      ],
+      "duration_ms": 25952
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-2f4c6c8e536d",
+      "title": "Senior Software Engineer",
+      "expected": 30,
+      "predicted": 104,
+      "strict_matched": 16,
+      "loose_matched": 21,
+      "tiers": {
+        "mentioned": {
+          "expected": 5,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 11,
+          "matched": 8
+        },
+        "required": {
+          "expected": 14,
+          "matched": 10
+        }
+      },
+      "matches": [
+        {
+          "expected": "React",
+          "predicted": "React",
+          "strict": true
+        },
+        {
+          "expected": "Python backend development",
+          "predicted": "Python backend development",
+          "strict": true
+        },
+        {
+          "expected": "AWS",
+          "predicted": "AWS",
+          "strict": true
+        },
+        {
+          "expected": "Docker",
+          "predicted": "Docker",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes",
+          "strict": true
+        },
+        {
+          "expected": "client stakeholder management",
+          "predicted": "negotiating scope",
+          "strict": true
+        },
+        {
+          "expected": "level-of-effort estimation",
+          "predicted": "level-of-effort estimation",
+          "strict": true
+        },
+        {
+          "expected": "secure software development",
+          "predicted": "secure software development",
+          "strict": true
+        },
+        {
+          "expected": "Terraform",
+          "predicted": "Terraform",
+          "strict": true
+        },
+        {
+          "expected": "Ansible",
+          "predicted": "Ansible",
+          "strict": true
+        },
+        {
+          "expected": "CMMC",
+          "predicted": "CMMC",
+          "strict": true
+        },
+        {
+          "expected": "NIST 800-171/800-53",
+          "predicted": "NIST 800-171/800-53",
+          "strict": true
+        },
+        {
+          "expected": "Certified Kubernetes Administrator",
+          "predicted": "Certified Kubernetes Administrator",
+          "strict": true
+        },
+        {
+          "expected": "Security+",
+          "predicted": "Security+",
+          "strict": true
+        },
+        {
+          "expected": "infrastructure-as-code",
+          "predicted": "Infrastructure-as-code",
+          "strict": true
+        },
+        {
+          "expected": "technical leadership",
+          "predicted": "technical leadership",
+          "strict": true
+        },
+        {
+          "expected": "FastAPI",
+          "predicted": "FastAPI and/or Django",
+          "strict": false
+        },
+        {
+          "expected": "cloud security",
+          "predicted": "cloud security practices",
+          "strict": false
+        },
+        {
+          "expected": "AWS GovCloud",
+          "predicted": "AWS GovCloud and/or FedRAMP",
+          "strict": false
+        },
+        {
+          "expected": "DoD or Intelligence Community programs",
+          "predicted": "Intelligence Community programs",
+          "strict": false
+        },
+        {
+          "expected": "CI/CD",
+          "predicted": "CI/CD pipelines",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "JavaScript",
+        "TypeScript",
+        "Django",
+        "leading software modernization efforts",
+        "FedRAMP",
+        "GitOps",
+        "AWS Solutions Architect certification",
+        "observability",
+        "CUI handling"
+      ],
+      "extras": [
+        "Python",
+        "architecture",
+        "delivery",
+        "security",
+        "client technical leadership",
+        "technical SME across frontend",
+        "backend",
+        "cloud/DevOps domains",
+        "architectural direction",
+        "engineering standards",
+        "technical goals aligned to project",
+        "mission objectives",
+        "high-impact technical decisions",
+        "ambiguous implementation problems",
+        "maintain responsive React frontends emphasizing usability",
+        "performance",
+        "accessibility",
+        "secure",
+        "scalable Python backend services",
+        "maintainable code through code review",
+        "automated testing",
+        "technical documentation",
+        "manage AWS infrastructure using infrastructure-as-code practices",
+        "Containerize applications",
+        "operate workloads on Kubernetes",
+        "observability/monitoring",
+        "automated deployment workflows",
+        "Establish goals",
+        "roadmaps",
+        "delivery plans",
+        "Estimate level of effort",
+        "task-level financial",
+        "schedule performance",
+        "tracking burn against contract funding",
+        "engineering methods",
+        "tooling",
+        "processes",
+        "adapt them to mission",
+        "program needs",
+        "control engineering activities for the client",
+        "technical requirements are met",
+        "negotiate scope",
+        "priorities",
+        "trade-offs",
+        "delivery commitments",
+        "technical strategy",
+        "communicate progress",
+        "risks",
+        "mentorship",
+        "staffing decisions",
+        "resource planning",
+        "team composition",
+        "supervise",
+        "review other engineers",
+        "secure-by-design",
+        "secure development practices in a CUI-handling",
+        "regulated environment",
+        "infrastructure",
+        "DoD/IC security requirements",
+        "organizational compliance obligations",
+        "requirements",
+        "modern JavaScript/TypeScript",
+        "Proven track record leading major software development",
+        "modernization efforts end-to-end",
+        "technical planning through delivery",
+        "operation",
+        "directing technical activities",
+        "technical direction",
+        "Experience",
+        "resource/staffing planning",
+        "task-level delivery",
+        "citizenship",
+        "security clearance",
+        "Preferred",
+        "Impact Level authorized environment",
+        "GitOps-style deployment workflows",
+        "software delivery on DoD",
+        "Familiarity",
+        "compliance frameworks",
+        "certifications",
+        "AWS Solutions Architect/DevOps",
+        "DoD 8570/8140 baseline"
+      ],
+      "filler_hits": [
+        "maintain clearance eligibility requirements throughout employment"
+      ],
+      "duration_ms": 25898
+    },
+    {
+      "id": "01a0d60b-7c6e-71b6-93b1-8276b785ff21",
+      "title": "Senior Software Engineer, Fulfillment",
+      "expected": 22,
+      "predicted": 53,
+      "strict_matched": 13,
+      "loose_matched": 19,
+      "tiers": {
+        "mentioned": {
+          "expected": 4,
+          "matched": 3
+        },
+        "required": {
+          "expected": 18,
+          "matched": 16
+        }
+      },
+      "matches": [
+        {
+          "expected": "Master's degree in Computer Science",
+          "predicted": "Master’s degree in Computer Science",
+          "strict": true
+        },
+        {
+          "expected": "Java",
+          "predicted": "Java",
+          "strict": true
+        },
+        {
+          "expected": "Ruby",
+          "predicted": "Ruby",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "MySQL",
+          "predicted": "MySQL",
+          "strict": true
+        },
+        {
+          "expected": "PostgreSQL",
+          "predicted": "PostgreSQL",
+          "strict": true
+        },
+        {
+          "expected": "NoSQL",
+          "predicted": "NoSQL",
+          "strict": true
+        },
+        {
+          "expected": "client/server architectures",
+          "predicted": "client/server architectures",
+          "strict": true
+        },
+        {
+          "expected": "application architectures",
+          "predicted": "application architectures",
+          "strict": true
+        },
+        {
+          "expected": "AI toolsets",
+          "predicted": "AI toolsets",
+          "strict": true
+        },
+        {
+          "expected": "SQL query optimization",
+          "predicted": "optimize expensive SQL queries",
+          "strict": true
+        },
+        {
+          "expected": "performance analysis",
+          "predicted": "performance analysis",
+          "strict": true
+        },
+        {
+          "expected": "scalable software",
+          "predicted": "scalable software",
+          "strict": true
+        },
+        {
+          "expected": "Bachelor's degree in Computer Science",
+          "predicted": "degree in Computer Science",
+          "strict": false
+        },
+        {
+          "expected": "2 years in the job offered or related",
+          "predicted": "2 years of experience in the job offered",
+          "strict": false
+        },
+        {
+          "expected": "5 years progressive experience",
+          "predicted": "years of progressive",
+          "strict": false
+        },
+        {
+          "expected": "2 years Java, Ruby, Python or similar",
+          "predicted": "similar programming languages",
+          "strict": false
+        },
+        {
+          "expected": "2 years MySQL, PostgreSQL, NoSQL or similar",
+          "predicted": "similar data management systems",
+          "strict": false
+        },
+        {
+          "expected": "large codebases",
+          "predicted": "large codebases on cross-functional teams",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "cross-functional teams",
+        "data analysis",
+        "feature rollout protocols"
+      ],
+      "extras": [
+        "improving architectures",
+        "AI tools",
+        "implement software solutions to optimize",
+        "scale the Instacart platform",
+        "related technologies",
+        "fulfillment operations",
+        "Develop highly scalable software using computer science",
+        "software engineering principles",
+        "Establish protocols for rapidly rolling out upgrades",
+        "new features",
+        "testing",
+        "analysis of current systems",
+        "diagnosis",
+        "troubleshooting",
+        "Determine design solutions to problematic programming",
+        "refine complex architectures",
+        "Propose new systems",
+        "operational excellence",
+        "Establish new standards",
+        "Role requirements",
+        "Software Engineering",
+        "related field",
+        "foreign equivalent",
+        "related",
+        "2 years of experience",
+        "years of experience",
+        "years of experience working",
+        "2 years of experience working",
+        "advanced AI toolsets",
+        "deriving insights",
+        "Master’s degree",
+        "2 years of related experience",
+        "post-baccalaureate experience in the job offered",
+        "accepted"
+      ],
+      "filler_hits": [],
+      "duration_ms": 23917
+    },
+    {
+      "id": "01a0eec5-0909-75df-9d3f-5ac9f349af77",
+      "title": "Senior Software Engineer, PKI \u0026 Cryptographic Systems",
+      "expected": 44,
+      "predicted": 149,
+      "strict_matched": 36,
+      "loose_matched": 42,
+      "tiers": {
+        "mentioned": {
+          "expected": 3,
+          "matched": 3
+        },
+        "preferred": {
+          "expected": 17,
+          "matched": 16
+        },
+        "required": {
+          "expected": 24,
+          "matched": 23
+        }
+      },
+      "matches": [
+        {
+          "expected": "on-call experience",
+          "predicted": "carried a pager",
+          "strict": true
+        },
+        {
+          "expected": "applied cryptography",
+          "predicted": "applied cryptography",
+          "strict": true
+        },
+        {
+          "expected": "PKI",
+          "predicted": "PKI",
+          "strict": true
+        },
+        {
+          "expected": "X.509",
+          "predicted": "X.509",
+          "strict": true
+        },
+        {
+          "expected": "ASN.1/DER",
+          "predicted": "ASN.1/DER",
+          "strict": true
+        },
+        {
+          "expected": "RFC 5280",
+          "predicted": "RFC 5280",
+          "strict": true
+        },
+        {
+          "expected": "CRL distribution",
+          "predicted": "CRL distribution",
+          "strict": true
+        },
+        {
+          "expected": "Certificate Transparency",
+          "predicted": "Certificate Transparency",
+          "strict": true
+        },
+        {
+          "expected": "ACME",
+          "predicted": "ACME",
+          "strict": true
+        },
+        {
+          "expected": "CA/Browser Forum Baseline Requirements",
+          "predicted": "CA/Browser Forum Baseline Requirements",
+          "strict": true
+        },
+        {
+          "expected": "HSMs",
+          "predicted": "HSMs",
+          "strict": true
+        },
+        {
+          "expected": "key ceremonies",
+          "predicted": "key ceremonies",
+          "strict": true
+        },
+        {
+          "expected": "systems programming",
+          "predicted": "systems programming",
+          "strict": true
+        },
+        {
+          "expected": "Rust",
+          "predicted": "Rust",
+          "strict": true
+        },
+        {
+          "expected": "C/C++",
+          "predicted": "C/C++",
+          "strict": true
+        },
+        {
+          "expected": "distributed systems",
+          "predicted": "distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "Postgres",
+          "predicted": "Postgres",
+          "strict": true
+        },
+        {
+          "expected": "threat modelling",
+          "predicted": "threat modelling",
+          "strict": true
+        },
+        {
+          "expected": "secure system design",
+          "predicted": "secure key handling",
+          "strict": true
+        },
+        {
+          "expected": "certificate authority experience",
+          "predicted": "private CA",
+          "strict": true
+        },
+        {
+          "expected": "Let's Encrypt / Boulder",
+          "predicted": "Let’s Encrypt",
+          "strict": true
+        },
+        {
+          "expected": "HashiCorp Vault PKI",
+          "predicted": "HashiCorp Vault PKI",
+          "strict": true
+        },
+        {
+          "expected": "step-ca",
+          "predicted": "step-ca",
+          "strict": true
+        },
+        {
+          "expected": "CFSSL",
+          "predicted": "CFSSL",
+          "strict": true
+        },
+        {
+          "expected": "crypto/x509",
+          "predicted": "crypto/x509",
+          "strict": true
+        },
+        {
+          "expected": "BoringSSL",
+          "predicted": "BoringSSL",
+          "strict": true
+        },
+        {
+          "expected": "WebTrust audits",
+          "predicted": "WebTrust",
+          "strict": true
+        },
+        {
+          "expected": "post-quantum cryptography",
+          "predicted": "post-quantum cryptography",
+          "strict": true
+        },
+        {
+          "expected": "Merkle Tree Certificates",
+          "predicted": "Merkle Tree Certificates",
+          "strict": true
+        },
+        {
+          "expected": "IETF / CA/B Forum participation",
+          "predicted": "IETF LAMPS",
+          "strict": true
+        },
+        {
+          "expected": "formal methods",
+          "predicted": "formal methods",
+          "strict": true
+        },
+        {
+          "expected": "differential fuzzing",
+          "predicted": "differential fuzzing",
+          "strict": true
+        },
+        {
+          "expected": "Kubernetes",
+          "predicted": "Kubernetes",
+          "strict": true
+        },
+        {
+          "expected": "technical writing",
+          "predicted": "public CA incident reports",
+          "strict": true
+        },
+        {
+          "expected": "certificate lifecycle management",
+          "predicted": "certificate lifecycle management",
+          "strict": true
+        },
+        {
+          "expected": "mentoring",
+          "predicted": "design reviews",
+          "strict": true
+        },
+        {
+          "expected": "5+ years production systems software",
+          "predicted": "production systems software experience",
+          "strict": false
+        },
+        {
+          "expected": "PKCS#11",
+          "predicted": "PKCS#11 integration",
+          "strict": false
+        },
+        {
+          "expected": "FIPS 140-2/3",
+          "predicted": "FIPS 140-2/3 validation",
+          "strict": false
+        },
+        {
+          "expected": "database schema design",
+          "predicted": "operating database schemas for high-integrity systems",
+          "strict": false
+        },
+        {
+          "expected": "CT log infrastructure",
+          "predicted": "CT monitoring at scale",
+          "strict": false
+        },
+        {
+          "expected": "property-based testing",
+          "predicted": "property-based testing for cryptographic protocol code",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "Go",
+        "OpenSSL"
+      ],
+      "extras": [
+        "Senior Software Engineer",
+        "manage certificate lifecycles",
+        "private keys at scale",
+        "hardware security modules",
+        "automate issuance",
+        "renewal",
+        "post-quantum",
+        "security engineering",
+        "Responsibilities",
+        "core PKI systems",
+        "X.509 issuance",
+        "validation logic",
+        "key parameter enforcement",
+        "policy engines",
+        "standards",
+        "CA/Browser Forum guidance",
+        "browser root program policies",
+        "cryptographic core",
+        "FIPS 140-2 Level 3",
+        "Level 4",
+        "HSMs via PKCS#11",
+        "vendor-native SDKs",
+        "key ceremony",
+        "key-lifecycle tooling",
+        "enforce strict key-usage boundaries in code",
+        "Automate at scale",
+        "ACME-based issuance",
+        "renewal pipelines",
+        "short-lived certificate rotation",
+        "revocation mechanisms",
+        "transparency",
+        "audit trails",
+        "append-only tamper-evident logging",
+        "design evidence pipelines",
+        "Maintain accreditation",
+        "respond to a changing compliance landscape",
+        "compliance under CA/B Forum",
+        "root store program frameworks",
+        "changes in relevant policies",
+        "public incident disclosure",
+        "participate in regular third-party audits",
+        "Represent Cloudflare in the WebPKI community",
+        "serve as a primary contact",
+        "clear technical writing",
+        "post-quantum migration",
+        "post-quantum encryption",
+        "authentication",
+        "cryptographic infrastructure stays ahead",
+        "production incident response",
+        "observability",
+        "runbooks",
+        "on-call posture",
+        "HSM",
+        "Mentor other engineers",
+        "engineering standards",
+        "threat models",
+        "secure-development practices",
+        "Desirable Skills",
+        "Knowledge",
+        "Experience",
+        "operational track record",
+        "cryptographer",
+        "certificate profiles",
+        "key parameters",
+        "issuance policy",
+        "Familiarity",
+        "key-attestation flows",
+        "globally replicated",
+        "availability-critical services",
+        "strict correctness guarantees",
+        "designing",
+        "equivalent",
+        "Security-hardened system design instincts",
+        "defence in depth",
+        "privilege",
+        "mis-issued",
+        "mis-revoked certificate is a public",
+        "industry-visible event",
+        "Bonus Points",
+        "Direct experience",
+        "publicly-trusted",
+        "large-scale internal PKI",
+        "Boulder",
+        "Google Trust Services",
+        "DigiCert",
+        "Sectigo",
+        "Entrust",
+        "Microsoft PKI",
+        "internal CA at scale",
+        "OpenSSL/AWS-LC",
+        "equivalent PKI codebase",
+        "WebTrust for CAs",
+        "WebTrust BR",
+        "WebTrust Network Security audit engagements",
+        "ML-DSA",
+        "ML-KEM",
+        "hybrid signature schemes",
+        "PQ signature standardisation",
+        "emerging browser trust-establishment proposals",
+        "Prior participation in the CA/Browser Forum",
+        "TLS",
+        "PLANTS",
+        "PQUIP working groups",
+        "transparency.dev community",
+        "browser root program review",
+        "automating offline key ceremonies",
+        "Certificate Transparency log infrastructure"
+      ],
+      "filler_hits": [],
+      "duration_ms": 25470
+    },
+    {
+      "id": "01a0eeca-88bd-7411-bf6d-021b7939e49d",
+      "title": "Senior Software Engineer, Backend – Overseer",
+      "expected": 23,
+      "predicted": 49,
+      "strict_matched": 20,
+      "loose_matched": 21,
+      "tiers": {
+        "mentioned": {
+          "expected": 3,
+          "matched": 2
+        },
+        "required": {
+          "expected": 20,
+          "matched": 19
+        }
+      },
+      "matches": [
+        {
+          "expected": "5+ years distributed systems",
+          "predicted": "distributed systems",
+          "strict": true
+        },
+        {
+          "expected": "financial systems",
+          "predicted": "financial systems",
+          "strict": true
+        },
+        {
+          "expected": "payments",
+          "predicted": "payments",
+          "strict": true
+        },
+        {
+          "expected": "reconciliation",
+          "predicted": "reconciliation",
+          "strict": true
+        },
+        {
+          "expected": "transactional infrastructure",
+          "predicted": "high-reliability transactional infrastructure",
+          "strict": true
+        },
+        {
+          "expected": "backend programming",
+          "predicted": "backend programming",
+          "strict": true
+        },
+        {
+          "expected": "Go",
+          "predicted": "Go",
+          "strict": true
+        },
+        {
+          "expected": "Ruby",
+          "predicted": "Ruby",
+          "strict": true
+        },
+        {
+          "expected": "Python",
+          "predicted": "Python",
+          "strict": true
+        },
+        {
+          "expected": "correctness models",
+          "predicted": "designing correctness models",
+          "strict": true
+        },
+        {
+          "expected": "streaming data infrastructure",
+          "predicted": "streaming data infrastructure",
+          "strict": true
+        },
+        {
+          "expected": "Kafka",
+          "predicted": "Kafka",
+          "strict": true
+        },
+        {
+          "expected": "Flink",
+          "predicted": "Flink",
+          "strict": true
+        },
+        {
+          "expected": "Spark",
+          "predicted": "Spark",
+          "strict": true
+        },
+        {
+          "expected": "distributed data stores",
+          "predicted": "distributed data stores",
+          "strict": true
+        },
+        {
+          "expected": "Postgres",
+          "predicted": "Postgres",
+          "strict": true
+        },
+        {
+          "expected": "DynamoDB",
+          "predicted": "DynamoDB",
+          "strict": true
+        },
+        {
+          "expected": "generative AI",
+          "predicted": "Responsible use of generative AI",
+          "strict": true
+        },
+        {
+          "expected": "invariant enforcement",
+          "predicted": "invariant enforcement",
+          "strict": true
+        },
+        {
+          "expected": "AI-powered guardrails",
+          "predicted": "AI-powered guardrails",
+          "strict": true
+        },
+        {
+          "expected": "real-time processing",
+          "predicted": "near-real-time processing contexts",
+          "strict": false
+        }
+      ],
+      "misses": [
+        "platform-level infrastructure",
+        "mentoring"
+      ],
+      "extras": [
+        "Role description",
+        "real-time invariant enforcement systems",
+        "core detection engine",
+        "invariant framework",
+        "onboarding tooling",
+        "production operation",
+        "integrity guarantees",
+        "predictive consistency models",
+        "proactive invariant discovery",
+        "design",
+        "implement correctness contracts",
+        "Translate financial rules into enforceable system invariants",
+        "distributed systems design",
+        "correctness thinking",
+        "production operational practices",
+        "5+ years building",
+        "operating large-scale distributed systems in production",
+        "Experience building platform-level infrastructure consumed by multiple teams",
+        "APIs",
+        "frameworks",
+        "detection systems",
+        "operating them through production",
+        "Experience",
+        "similar",
+        "equivalent",
+        "real-time",
+        "human oversight"
+      ],
+      "filler_hits": [
+        "Ability to own workstreams end-to-end in ambiguous environments"
+      ],
+      "duration_ms": 25339
+    }
+  ],
+  "metrics": {
+    "counters": {
+      "candidates.total": 10347,
+      "chunks.total": 1939,
+      "gen.calls": 20,
+      "jev.calls": 558,
+      "jev.cost_micro_usd": 57229,
+      "jev.input_tokens": 1362395,
+      "jev.output_tokens": 260882,
+      "requirements.total": 1511,
+      "sections.benefits": 189,
+      "sections.company": 159,
+      "sections.dropped": 566,
+      "sections.low_confidence": 105,
+      "sections.other": 218,
+      "sections.preferred": 53,
+      "sections.required": 216,
+      "sections.responsibilities": 263,
+      "sentences.total": 1098,
+      "validation.accepted": 1592,
+      "validation.rejected.action_only": 165,
+      "validation.rejected.condition": 18,
+      "validation.rejected.generic_trait": 72,
+      "validation.rejected.people_or_context": 92,
+      "validation.requests": 532
+    },
+    "durations": {
+      "gen.latency": {
+        "count": 20,
+        "p50": 5989773787,
+        "p95": 7220693009,
+        "max": 7530847247
+      },
+      "jev.latency": {
+        "count": 558,
+        "p50": 243504760,
+        "p95": 384545523,
+        "max": 1454540180
+      },
+      "stage.build_result": {
+        "count": 20,
+        "p50": 123314,
+        "p95": 330157,
+        "max": 594558
+      },
+      "stage.generate_candidates": {
+        "count": 20,
+        "p50": 925685,
+        "p95": 1627777,
+        "max": 2711363
+      },
+      "stage.job_summary": {
+        "count": 20,
+        "p50": 21861343226,
+        "p95": 24304426212,
+        "max": 24749105221
+      },
+      "stage.label_sections": {
+        "count": 20,
+        "p50": 373283923,
+        "p95": 1454814971,
+        "max": 1455575504
+      },
+      "stage.refinement_round": {
+        "count": 20,
+        "p50": 24136,
+        "p95": 89009,
+        "max": 318554
+      },
+      "stage.split_sentences": {
+        "count": 20,
+        "p50": 246818,
+        "p95": 1742575,
+        "max": 1903721
+      },
+      "stage.validation_round": {
+        "count": 20,
+        "p50": 885684104,
+        "p95": 1648567904,
+        "max": 1788524960
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"maps"
 	"slices"
 
 	"golang.org/x/sync/errgroup"
@@ -38,9 +39,9 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 	// Batch chunks by sentence, preserving order. Each batch writes only its
 	// own results, so no locking is needed.
 	type batch struct {
-		chunks []chunk
-		out    []judged
-		none   int
+		chunks   []chunk
+		out      []judged
+		rejected map[string]int
 	}
 	var batches []*batch
 	for i := 0; i < len(r.chunks); {
@@ -48,7 +49,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 		for j < len(r.chunks) && r.chunks[j].Ref == r.chunks[i].Ref && j-i < validationBatchSize {
 			j++
 		}
-		batches = append(batches, &batch{chunks: r.chunks[i:j]})
+		batches = append(batches, &batch{chunks: r.chunks[i:j], rejected: map[string]int{}})
 		i = j
 	}
 
@@ -69,16 +70,14 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 			}
 			for i, c := range b.chunks {
 				a := resp.Answers[fmt.Sprintf("chunk_%d", i)]
-				switch {
-				case a.Choice == noRequirement:
-					b.none++
-				case slices.Contains(c.Options, a.Choice):
-					b.out = append(b.out, judged{
-						Candidate: domain.Candidate{Text: a.Choice, Ref: c.Ref},
-						P:         a.Probabilities[a.Choice],
-					})
-				default:
+				if _, ok := a.Probabilities[a.Choice]; !ok || !isOption(c, a.Choice) {
 					return fmt.Errorf("sentence %s: chunk %q: answer %q is not an option", s.Ref, c.Text, a.Choice)
+				}
+				best, bestP, spanMass := decide(c, a.Probabilities)
+				if spanMass >= minRequirementMass {
+					b.out = append(b.out, judged{Candidate: domain.Candidate{Text: best, Ref: c.Ref}, P: bestP})
+				} else {
+					b.rejected[topReject(a.Probabilities)]++
 				}
 			}
 			return nil
@@ -89,13 +88,43 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 	}
 
 	r.accepted = r.accepted[:0]
-	none := 0
 	for _, b := range batches {
 		r.accepted = append(r.accepted, b.out...)
-		none += b.none
+		for reason, n := range b.rejected {
+			e.metrics.Add("validation.rejected."+reason, int64(n))
+		}
 	}
 	e.metrics.Add("validation.requests", int64(len(batches)))
 	e.metrics.Add("validation.accepted", int64(len(r.accepted)))
-	e.metrics.Add("validation.no_requirement", int64(none))
 	return nil
+}
+
+// decide sums the probability on the chunk's Candidate options and returns
+// the most probable Candidate. Grouping matters: overlapping Candidates split
+// "yes" between them, and the rejectOptions split "no".
+func decide(c chunk, probs map[string]float64) (best string, bestP, spanMass float64) {
+	for _, o := range c.Options {
+		p := probs[o]
+		spanMass += p
+		if p > bestP {
+			best, bestP = o, p
+		}
+	}
+	return best, bestP, spanMass
+}
+
+// topReject returns the most probable rejection reason.
+func topReject(probs map[string]float64) string {
+	best, bestP := "", -1.0
+	for _, k := range slices.Sorted(maps.Keys(rejectOptions)) {
+		if probs[k] > bestP {
+			best, bestP = k, probs[k]
+		}
+	}
+	return best
+}
+
+func isOption(c chunk, o string) bool {
+	_, reject := rejectOptions[o]
+	return reject || slices.Contains(c.Options, o)
 }
