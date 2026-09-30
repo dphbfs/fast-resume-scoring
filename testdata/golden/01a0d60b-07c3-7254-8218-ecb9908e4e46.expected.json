@@ -2,7 +2,7 @@
   "requirements": [
     {"value": "4+ years DevOps/SRE/Platform engineering", "aliases": ["4 to 7 years of experience as a DevOps/SRE/Platform engineer", "DevOps", "SRE", "platform engineering"], "tier": "required"},
     {"value": "Linux", "aliases": ["Linux servers"], "tier": "required"},
-    {"value": "Kubernetes", "aliases": ["container orchestration"], "tier": "required"},
+    {"value": "Kubernetes", "aliases": ["container orchestration", "container orchestration using Kubernetes"], "tier": "required"},
     {"value": "self-hosted Kubernetes administration", "aliases": ["self-hosted Kubernetes clusters"], "tier": "required"},
     {"value": "GCP", "aliases": ["Google Cloud Platform", "Google Cloud"], "tier": "required"},
     {"value": "AWS", "aliases": [], "tier": "required"},
@@ -11,16 +11,17 @@
     {"value": "Bash", "aliases": ["Bash scripting"], "tier": "required"},
     {"value": "observability tools", "aliases": ["observability"], "tier": "required"},
     {"value": "CI/CD", "aliases": [], "tier": "required"},
-    {"value": "communication skills", "aliases": ["interpersonal communication skills"], "tier": "required"},
     {"value": "Terraform", "aliases": [], "tier": "mentioned"},
     {"value": "Terragrunt", "aliases": [], "tier": "mentioned"},
     {"value": "Puppet", "aliases": [], "tier": "mentioned"},
     {"value": "Ansible", "aliases": [], "tier": "mentioned"},
     {"value": "configuration management", "aliases": [], "tier": "mentioned"},
     {"value": "web servers", "aliases": [], "tier": "mentioned"},
-    {"value": "application servers", "aliases": [], "tier": "mentioned"}
+    {"value": "application servers", "aliases": [], "tier": "mentioned"},
+    {"value": "troubleshooting", "aliases": [], "tier": "mentioned"}
   ],
   "alternative_groups": [["GCP", "AWS"], ["Python", "Bash"], ["Puppet", "Ansible"]],
-  "filler": ["analytical and problem-solving skills", "troubleshooting"],
-  "notes": "'Communication skills' kept as a Requirement since it is stated twice under requirements; relabel as Filler if you disagree. Python / Bash is written as either-or."
+  "acceptable": ["communication skills", "interpersonal communication skills", "analytical and problem-solving skills", "infrastructure management"],
+  "filler": [],
+  "notes": "'Communication skills' kept as a Requirement since it is stated twice under requirements; relabel as Filler if you disagree. Python / Bash is written as either-or. Relabeled to README rules: communication and problem-solving are soft skills (acceptable); troubleshooting is a listed duty."
 }

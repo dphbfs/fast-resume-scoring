@@ -2,13 +2,16 @@ package eval
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 	"runtime/debug"
+	"slices"
 	"sync"
 	"time"
 
 	"golang.org/x/sync/errgroup"
 
+	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
@@ -48,6 +51,7 @@ func (r *Runner) Run(ctx context.Context, fixtures []Fixture, parallel int) Repo
 				s = FixtureScore{ID: f.ID, Expected: len(f.Expected.Requirements), Error: err.Error()}
 			} else {
 				s = Score(f.Expected, res)
+				s.Result = &res
 				mu.Lock()
 				model = res.Model
 				mu.Unlock()
@@ -67,6 +71,7 @@ func (r *Runner) Run(ctx context.Context, fixtures []Fixture, parallel int) Repo
 		Model:    model,
 		Revision: revision(),
 		Pipeline: r.pipeline,
+		Labels:   LabelsHash(fixtures),
 		Totals:   totals(scores),
 		Fixtures: scores,
 		Metrics:  r.recorder.Summary(),
@@ -99,4 +104,45 @@ func ratio(a, b int) float64 {
 		return 0
 	}
 	return float64(a) / float64(b)
+}
+
+// Rescore scores the results stored in a previous report against the current
+// fixtures' labels, without calling any API. Reports written before results
+// were stored are rebuilt from their matches, extras and Filler hits (values
+// only; Importance and groups are lost).
+func Rescore(prev Report, fixtures []Fixture) Report {
+	byID := map[string]FixtureScore{}
+	for _, s := range prev.Fixtures {
+		byID[s.ID] = s
+	}
+	scores := make([]FixtureScore, 0, len(fixtures))
+	for _, f := range fixtures {
+		old, ok := byID[f.ID]
+		if !ok || old.Error != "" {
+			continue
+		}
+		res := old.Result
+		if res == nil {
+			res = &domain.Result{Model: prev.Model}
+			add := func(v string) {
+				res.Requirements = append(res.Requirements, domain.Requirement{ID: fmt.Sprintf("r%d", len(res.Requirements)+1), Value: v})
+			}
+			for _, m := range old.Matches {
+				add(m.Predicted)
+			}
+			for _, v := range slices.Concat(old.Extras, old.FillerHits, old.AcceptableHits, old.DuplicateHits) {
+				add(v)
+			}
+		}
+		s := Score(f.Expected, *res)
+		s.ID, s.Title, s.DurationMS, s.Result = f.ID, f.JD.Title, old.DurationMS, res
+		scores = append(scores, s)
+	}
+	rep := prev
+	rep.Started = time.Now().UTC()
+	rep.RescoredFrom = prev.Started.Format(time.RFC3339)
+	rep.Labels = LabelsHash(fixtures)
+	rep.Totals = totals(scores)
+	rep.Fixtures = scores
+	return rep
 }

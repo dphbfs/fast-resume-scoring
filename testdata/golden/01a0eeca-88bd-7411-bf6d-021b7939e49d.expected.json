@@ -22,9 +22,15 @@
     {"value": "generative AI", "aliases": ["responsible use of generative AI"], "tier": "required"},
     {"value": "invariant enforcement", "aliases": ["real-time invariant enforcement systems"], "tier": "mentioned"},
     {"value": "AI-powered guardrails", "aliases": [], "tier": "mentioned"},
-    {"value": "mentoring", "aliases": ["mentor junior engineers"], "tier": "mentioned"}
+    {"value": "mentoring", "aliases": ["mentor junior engineers"], "tier": "mentioned"},
+    {"value": "APIs", "aliases": [], "tier": "required"},
+    {"value": "detection systems", "aliases": [], "tier": "required"},
+    {"value": "correctness contracts", "aliases": ["implement correctness contracts"], "tier": "mentioned"},
+    {"value": "proactive invariant discovery", "aliases": [], "tier": "mentioned"},
+    {"value": "predictive consistency models", "aliases": [], "tier": "mentioned"}
   ],
-  "alternative_groups": [["Go", "Ruby", "Python"], ["Kafka", "Flink", "Spark"], ["Postgres", "DynamoDB"]],
+  "alternative_groups": [["Go", "Ruby", "Python"], ["Kafka", "Flink", "Spark"], ["Postgres", "DynamoDB"], ["APIs", "detection systems"]],
+  "acceptable": ["frameworks", "production operation", "detection engine", "invariant framework", "onboarding tooling", "Translate financial rules into enforceable system invariants", "correctness thinking", "production operational practices"],
   "filler": ["own workstreams end-to-end", "ambiguous environments", "eligible to work in the United States"],
-  "notes": "'such as' lists are Alternative Groups; the category (backend programming, streaming data infrastructure, distributed data stores) stays a separate required Requirement."
+  "notes": "'such as' lists are Alternative Groups; the category (backend programming, streaming data infrastructure, distributed data stores) stays a separate required Requirement. Relabeled to README rules: platform-level infrastructure examples (APIs, detection systems) are grouped entries."
 }

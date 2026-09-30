@@ -3,7 +3,7 @@
     {"value": "6+ years software engineering", "aliases": ["6+ years of professional software engineering experience"], "tier": "required"},
     {"value": "backend services in production", "aliases": ["backend services"], "tier": "required"},
     {"value": "AI tools in engineering workflows", "aliases": ["AI tools", "AI-generated output"], "tier": "required"},
-    {"value": "customer-facing scalable systems", "aliases": ["scalable, reliable, observable systems"], "tier": "required"},
+    {"value": "customer-facing systems", "aliases": [], "tier": "required"},
     {"value": "Go", "aliases": ["Golang"], "tier": "required"},
     {"value": "Python", "aliases": [], "tier": "required"},
     {"value": "Rust", "aliases": [], "tier": "required"},
@@ -21,7 +21,7 @@
     {"value": "Redshift", "aliases": ["Amazon Redshift"], "tier": "required"},
     {"value": "BigQuery", "aliases": [], "tier": "required"},
     {"value": "Databricks", "aliases": [], "tier": "required"},
-    {"value": "observability", "aliases": ["metrics, logs, traces, alerting"], "tier": "required"},
+    {"value": "observability", "aliases": ["observability practices", "metrics", "logs", "traces", "alerting", "monitoring"], "tier": "required"},
     {"value": "cloud environment", "aliases": ["cloud"], "tier": "required"},
     {"value": "infrastructure-as-code", "aliases": ["IaC"], "tier": "required"},
     {"value": "experimentation", "aliases": ["experimentation platforms"], "tier": "required"},
@@ -29,9 +29,14 @@
     {"value": "analytics", "aliases": [], "tier": "required"},
     {"value": "data platforms", "aliases": [], "tier": "required"},
     {"value": "incident response", "aliases": [], "tier": "mentioned"},
-    {"value": "code reviews", "aliases": ["design reviews"], "tier": "mentioned"}
+    {"value": "code reviews", "aliases": [], "tier": "mentioned"},
+    {"value": "diagnosing production issues", "aliases": ["Investigate complex production issues"], "tier": "required"},
+    {"value": "design reviews", "aliases": [], "tier": "mentioned"},
+    {"value": "testing", "aliases": [], "tier": "mentioned"},
+    {"value": "mentorship", "aliases": ["informal mentorship"], "tier": "mentioned"}
   ],
   "alternative_groups": [["Go", "Python", "Rust", "C++"], ["distributed systems", "event-driven architectures", "data pipelines", "APIs", "data modeling", "data-intensive services"], ["ClickHouse", "Postgres", "Snowflake", "Redshift", "BigQuery", "Databricks"], ["experimentation", "A/B testing", "analytics", "data platforms"]],
-  "filler": ["on-call rotation", "you-build-it-you-run-it culture", "clear, thoughtful communication", "ambiguous problem from discovery through operation"],
-  "notes": "'Go or a comparable language'; the team uses Go, so Go should rank highest in its group. The 'or' lists in distributed systems / data stores / experimentation lines are Alternative Groups."
+  "acceptable": ["clear, thoughtful communication", "ambiguous problem from discovery through operation", "Ability to take an ambiguous problem from discovery", "ongoing operation", "scoping through design", "operations tooling", "ownership of production systems", "system reliability through metrics", "comparable backend language", "architectural decisions", "technical proposals", "identify root causes", "implement durable fixes", "results processing", "experiment setup", "event data ingestion", "metric computation", "results presentation", "technical discovery", "engineering teams to translate customer needs", "cross-team dependencies", "shared data flows", "deployment safety", "knowledge sharing"],
+  "filler": ["on-call rotation", "you-build-it-you-run-it culture"],
+  "notes": "'Go or a comparable language'; the team uses Go, so Go should rank highest in its group. The 'or' lists in distributed systems / data stores / experimentation lines are Alternative Groups. Relabeled to README rules: \"customer-facing scalable systems\" was a paraphrase; design reviews separate from code reviews."
 }

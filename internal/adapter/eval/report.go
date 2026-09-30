@@ -21,9 +21,13 @@ type Report struct {
 	Model    string          `json:"model"`
 	Revision string          `json:"revision"`
 	Pipeline config.Pipeline `json:"pipeline"`
-	Totals   Totals          `json:"totals"`
-	Fixtures []FixtureScore  `json:"fixtures"`
-	Metrics  metrics.Summary `json:"metrics"`
+	// Labels fingerprints the golden labels the run was scored against.
+	Labels string `json:"labels"`
+	// RescoredFrom is the start time of the run whose results were rescored.
+	RescoredFrom string          `json:"rescored_from,omitempty"`
+	Totals       Totals          `json:"totals"`
+	Fixtures     []FixtureScore  `json:"fixtures"`
+	Metrics      metrics.Summary `json:"metrics"`
 }
 
 // Totals are micro-averaged over fixtures that ran without error.
@@ -37,6 +41,8 @@ type Totals struct {
 	PrecisionLoose float64              `json:"precision_loose"`
 	F1Loose        float64              `json:"f1_loose"`
 	FillerHits     int                  `json:"filler_hits"`
+	AcceptableHits int                  `json:"acceptable_hits"`
+	DuplicateHits  int                  `json:"duplicate_hits"`
 	Tiers          map[string]TierScore `json:"tiers"`
 	TierOrder      *float64             `json:"tier_order,omitempty"`
 	GroupF1        *float64             `json:"group_f1,omitempty"`
@@ -56,6 +62,8 @@ func totals(scores []FixtureScore) Totals {
 		strict += s.StrictMatched
 		loose += s.LooseMatched
 		t.FillerHits += len(s.FillerHits)
+		t.AcceptableHits += len(s.AcceptableHits)
+		t.DuplicateHits += len(s.DuplicateHits)
 		for tier, ts := range s.Tiers {
 			agg := t.Tiers[tier]
 			agg.Expected += ts.Expected
@@ -71,7 +79,7 @@ func totals(scores []FixtureScore) Totals {
 	}
 	t.RecallStrict = ratio(strict, t.Expected)
 	t.RecallLoose = ratio(loose, t.Expected)
-	t.PrecisionLoose = ratio(loose, t.Predicted)
+	t.PrecisionLoose = ratio(loose, t.Predicted-t.AcceptableHits-t.DuplicateHits)
 	if p, r := t.PrecisionLoose, t.RecallLoose; p+r > 0 {
 		t.F1Loose = 2 * p * r / (p + r)
 	}
@@ -99,6 +107,9 @@ func (r Report) Write(dir string) (string, error) {
 		return "", err
 	}
 	base := filepath.Join(dir, r.Started.Format("2006-01-02T15-04-05Z"))
+	if r.RescoredFrom != "" {
+		base += "-rescored"
+	}
 	raw, err := json.MarshalIndent(r, "", "  ")
 	if err != nil {
 		return "", err
@@ -131,8 +142,11 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 	t := r.Totals
 	var b strings.Builder
 	fmt.Fprintf(&b, "# Eval %s\n\n", r.Started.Format(time.RFC3339))
-	fmt.Fprintf(&b, "Model `%s` · revision `%s` · %d fixtures (%d failed) · %s\n\n",
-		r.Model, r.Revision, t.Fixtures, t.Failed, r.Duration)
+	fmt.Fprintf(&b, "Model `%s` · revision `%s` · labels `%s` · %d fixtures (%d failed) · %s\n\n",
+		r.Model, r.Revision, r.Labels, t.Fixtures, t.Failed, r.Duration)
+	if r.RescoredFrom != "" {
+		fmt.Fprintf(&b, "Rescored offline from the run of %s against the current labels.\n\n", r.RescoredFrom)
+	}
 	fmt.Fprintf(&b, "Pipeline: max window %d words · section batch %d · min requirement mass %.2f\n\n",
 		r.Pipeline.MaxWindowWords, r.Pipeline.SectionBatchSize, r.Pipeline.MinRequirementMass)
 
@@ -143,6 +157,8 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 	fmt.Fprintf(&b, "| F1 (loose) | %s |\n", pct(t.F1Loose))
 	fmt.Fprintf(&b, "| Expected / predicted | %d / %d |\n", t.Expected, t.Predicted)
 	fmt.Fprintf(&b, "| Filler extracted | %d |\n", t.FillerHits)
+	fmt.Fprintf(&b, "| Acceptable (not scored) | %d |\n", t.AcceptableHits)
+	fmt.Fprintf(&b, "| Duplicates (not scored) | %d |\n", t.DuplicateHits)
 	for _, tier := range []string{"required", "preferred", "mentioned"} {
 		ts := t.Tiers[tier]
 		fmt.Fprintf(&b, "| Recall, %s | %s (%d/%d) |\n", tier, pct(ratio(ts.Matched, ts.Expected)), ts.Matched, ts.Expected)
@@ -161,7 +177,7 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 			continue
 		}
 		fmt.Fprintf(&b, "| %s | %s | %s | %d | %d | %d | %.1fs |\n", s.Title,
-			pct(ratio(s.LooseMatched, s.Expected)), pct(ratio(s.LooseMatched, s.Predicted)),
+			pct(ratio(s.LooseMatched, s.Expected)), pct(s.Precision()),
 			s.Expected, s.Predicted, len(s.FillerHits), float64(s.DurationMS)/1000)
 	}
 

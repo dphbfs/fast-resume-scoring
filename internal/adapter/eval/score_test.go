@@ -34,6 +34,20 @@ func TestLooseMatch(t *testing.T) {
 		{[]string{"Go", "Golang"}, "Golang", true},        // alias
 		{[]string{"API design"}, "database design", false},
 		{[]string{"streaming data infrastructure"}, "streaming data", true}, // slightly shorter
+		// word forms
+		{[]string{"alerting"}, "alerts", true},
+		{[]string{"mentoring"}, "Mentor engineers", true},
+		{[]string{"mentoring"}, "mentorship", true},
+		{[]string{"threat modelling"}, "threat models", true},
+		{[]string{"certificate lifecycle management"}, "manage certificate lifecycles", true},
+		{[]string{"productionizing AI features"}, "productionize AI features", true},
+		// slash- and hyphen-joined predictions
+		{[]string{"Terraform"}, "terraform/terragrunt", true},
+		{[]string{"GitOps"}, "GitOps-style deployment workflows", true},
+		{[]string{"manufacturing"}, "manufacturing-adjacent environments", true},
+		// stems must not over-merge
+		{[]string{"database"}, "data", false},
+		{[]string{"servers"}, "services", false},
 	}
 	for _, tt := range tests {
 		if got := looseMatch(tt.expected, tt.predicted); got != tt.want {
@@ -99,6 +113,42 @@ func TestScore(t *testing.T) {
 	// Groups: expected pair {Go,Kafka}; predicted pair {Go,Kafka} -> F1 1.
 	if s.GroupF1 == nil || *s.GroupF1 != 1 {
 		t.Errorf("group F1 = %v, want 1", s.GroupF1)
+	}
+}
+
+func TestScoreAcceptable(t *testing.T) {
+	exp := Expected{
+		Requirements: []ExpectedRequirement{{Value: "Go", Tier: "required"}},
+		Acceptable:   []string{"repair drift across stack templates"},
+		Filler:       []string{"team player"},
+	}
+	res := domain.Result{Requirements: []domain.Requirement{
+		req("r1", "Go", 0), req("r2", "repair drift across stack templates", 0),
+		req("r3", "team player", 0), req("r4", "infrastructure", 0),
+	}}
+	s := Score(exp, res)
+	if !slices.Equal(s.AcceptableHits, []string{"repair drift across stack templates"}) {
+		t.Errorf("acceptable hits = %q", s.AcceptableHits)
+	}
+	if !slices.Equal(s.Extras, []string{"infrastructure"}) || !slices.Equal(s.FillerHits, []string{"team player"}) {
+		t.Errorf("extras = %q, filler = %q", s.Extras, s.FillerHits)
+	}
+	// Precision ignores acceptable hits: 1 match / (4 predicted - 1 acceptable).
+	if got := s.Precision(); got < 0.333 || got > 0.334 {
+		t.Errorf("precision = %v, want 1/3", got)
+	}
+}
+
+func TestScoreDuplicates(t *testing.T) {
+	exp := Expected{Requirements: []ExpectedRequirement{{Value: "Go", Aliases: []string{"Golang"}, Tier: "required"}}}
+	res := domain.Result{Requirements: []domain.Requirement{req("r1", "Go", 0), req("r2", "Golang", 0), req("r3", "Rust", 0)}}
+	s := Score(exp, res)
+	if !slices.Equal(s.DuplicateHits, []string{"Golang"}) || !slices.Equal(s.Extras, []string{"Rust"}) {
+		t.Errorf("duplicates = %q, extras = %q", s.DuplicateHits, s.Extras)
+	}
+	// Precision = 1 match / (3 predicted - 1 duplicate).
+	if got := s.Precision(); got != 0.5 {
+		t.Errorf("precision = %v, want 0.5", got)
 	}
 }
 

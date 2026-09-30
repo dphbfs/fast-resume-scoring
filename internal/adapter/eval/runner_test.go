@@ -71,3 +71,17 @@ func TestLoadGolden(t *testing.T) {
 		t.Fatalf("fixtures = %+v", fs)
 	}
 }
+
+func TestRescore(t *testing.T) {
+	fixtures := []Fixture{{ID: "a", JD: domain.JobDescription{Title: "A"}, Expected: Expected{
+		Requirements: []ExpectedRequirement{{Value: "Go", Tier: "required"}, {Value: "Kafka", Tier: "required"}},
+	}}}
+	// A report without stored results: rebuilt from matches and extras.
+	prev := Report{Fixtures: []FixtureScore{{
+		ID: "a", Matches: []Match{{Expected: "Golang", Predicted: "Go"}}, Extras: []string{"Kafka"},
+	}}}
+	rep := Rescore(prev, fixtures)
+	if rep.Totals.RecallLoose != 1 || rep.Totals.PrecisionLoose != 1 || rep.RescoredFrom == "" {
+		t.Errorf("rescored totals = %+v", rep.Totals)
+	}
+}
