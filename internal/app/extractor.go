@@ -93,10 +93,6 @@ func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(cont
 	return nil
 }
 
-// generateCandidates slides a window over each kept sentence and prunes
-// Candidates in code.
-func (e *Extractor) generateCandidates(context.Context, *run) error { return ErrNotImplemented }
-
 // jobSummary asks the generative client for a Job Summary, falling back to
 // the title plus required/preferred sentences.
 func (e *Extractor) jobSummary(context.Context, *run) error { return ErrNotImplemented }
