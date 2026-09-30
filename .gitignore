@@ -33,3 +33,6 @@ go.work.sum
 
 # Bulk Job Descriptions (regenerate with scripts/import_jds.py)
 testdata/jd/
+
+# Build output
+/bin/

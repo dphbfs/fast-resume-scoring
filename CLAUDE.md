@@ -121,7 +121,27 @@ inside a larger resume-tailoring backend.
 - Bulk set: gitignored, fetched by a script, used for smoke/regression runs
   (no crash, valid schema, stats), not accuracy.
 
+## Code layout (hexagonal, wired with google/wire)
+
+- `cmd/extract/`: entry point. `wire.go` is the injector (`//go:build
+  wireinject`); `wire_gen.go` is generated and committed. Run `make wire`
+  after changing any constructor signature; `make wire-check` validates.
+- `internal/domain/`: core types named after `CONTEXT.md` terms, plus the
+  schema v1 `Result`.
+- `internal/port/`: interfaces the core depends on
+  (`AIClassifierClient`, `AIGenerativeClient`, `Metrics`) and the driving port
+  `RequirementExtractor`.
+- `internal/app/`: the pipeline (`Extractor`); one method per stage.
+- `internal/adapter/`: `jev` (TypeSafe HTTP client, retries, own limiter),
+  `jev/jevtest` (fake Jev server for tests), `openai` (OpenAI-compatible chat),
+  `cli` (driving adapter).
+- `internal/platform/`: `config` (env vars), `limiter`, `metrics` (CLI run
+  summary), `logging` (slog JSON, `LOG_LEVEL`).
+- Commands: `make test`, `make race`, `make vet`, `make build`, `make wire`.
+
 ## Go skills
 
 Go skills from `samber/cc-skills-golang` are symlinked into `.claude/skills/`.
 Use the relevant `golang-*` skills when writing, reviewing, or testing Go code.
+Always load the `golang-how-to` skill for any Go coding, review, debug, or
+setup task; it selects the other `golang-*` skills to load.
