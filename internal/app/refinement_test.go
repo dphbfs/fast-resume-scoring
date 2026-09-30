@@ -1,0 +1,177 @@
+package app
+
+import (
+	"context"
+	"encoding/json"
+	"slices"
+	"strings"
+	"testing"
+
+	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev/jevtest"
+	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+)
+
+// questionRequirement returns the requirement embedded in a Refinement question.
+func questionRequirement(t *testing.T, q jev.WireQuestion) string {
+	t.Helper()
+	inst, _ := q.Instructions.(map[string]any)
+	v, ok := inst["requirement"].(string)
+	if !ok {
+		t.Fatalf("question has no embedded requirement: %+v", q.Instructions)
+	}
+	return v
+}
+
+func refinementRun() *run {
+	return &run{
+		jd:      domain.JobDescription{Title: "Backend Engineer"},
+		summary: "A backend role.",
+		sentences: []domain.ContextSentence{
+			{Ref: "s1", Text: "Kubernetes in production.", Section: domain.SectionRequired},
+			{Ref: "s2", Text: "We run K8s everywhere.", Section: domain.SectionResponsibilities},
+			{Ref: "s3", Text: "Go or Ruby.", Section: domain.SectionRequired},
+			{Ref: "s4", Text: "A team player.", Section: domain.SectionRequired},
+			{Ref: "s5", Text: "Bonus: Kafka.", Section: domain.SectionPreferred},
+		},
+		accepted: []judged{
+			{Candidate: domain.Candidate{Text: "Kubernetes", Ref: "s1"}},
+			{Candidate: domain.Candidate{Text: "K8s", Ref: "s2"}},
+			{Candidate: domain.Candidate{Text: "Go", Ref: "s3"}},
+			{Candidate: domain.Candidate{Text: "Ruby", Ref: "s3"}},
+			{Candidate: domain.Candidate{Text: "team player", Ref: "s4"}},
+			{Candidate: domain.Candidate{Text: "Kafka", Ref: "s5"}},
+		},
+	}
+}
+
+// refinementResponder stands in for Jev on the Refinement Round.
+func refinementResponder(t *testing.T) jevtest.Responder {
+	scores := map[string]float64{"Kubernetes": 3, "K8s": 1, "Go": 3, "Ruby": 3, "team player": 3, "Kafka": 2}
+	return func(_ int, req jev.WireRequest) jevtest.Reply {
+		answers := map[string]jev.WireAnswer{}
+		for id, q := range req.Questions {
+			v := questionRequirement(t, q)
+			crit, _ := q.Criteria.(map[string]any)
+			switch {
+			case strings.HasPrefix(id, "filler_"):
+				kind := "specific_requirement"
+				if v == "team player" {
+					kind = "generic_trait"
+				}
+				answers[id] = jevtest.Choice(map[string]float64{kind: 0.9, "vague_term": 0.1}, 0.8)
+			case strings.HasPrefix(id, "dup_"):
+				pick := map[string]string{"K8s": "Kubernetes", "Kubernetes": "K8s", "Kafka": "Go"}[v]
+				if pick == "" {
+					pick = "different_thing"
+				}
+				if _, ok := crit[pick]; !ok {
+					t.Errorf("dup question for %q lacks option %q", v, pick)
+				}
+				answers[id] = jevtest.Choice(map[string]float64{pick: 0.9, "broader_or_narrower": 0.1}, 0.8)
+			case strings.HasPrefix(id, "alt_"):
+				pick := map[string]string{"Go": "Ruby", "Ruby": "Go"}[v]
+				if pick == "" {
+					t.Errorf("alt question asked for %q, which shares no sentence with another requirement", v)
+					pick = "unrelated"
+				}
+				answers[id] = jevtest.Choice(map[string]float64{pick: 0.9, "required_together": 0.1}, 0.8)
+			case strings.HasPrefix(id, "importance_"):
+				s := scores[v]
+				answers[id] = jevtest.Score(s, 0.9, map[string]float64{})
+			default:
+				t.Errorf("unexpected question id %q", id)
+			}
+		}
+		return jevtest.Reply{Answers: answers}
+	}
+}
+
+func TestRefinementRound(t *testing.T) {
+	srv := jevtest.NewServer(t, refinementResponder(t))
+	e, m := newTestExtractor(t, srv.URL, config.Pipeline{})
+
+	r := refinementRun()
+	if err := e.refinementRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+
+	// Filler dropped; K8s merged into Kubernetes (canonical: first seen).
+	got := acceptedTexts(r.accepted)
+	if !slices.Equal(got, []string{"Kubernetes", "Kubernetes", "Go", "Ruby", "Kafka"}) {
+		t.Errorf("accepted = %q", got)
+	}
+	if r.accepted[1].Ref != "s2" {
+		t.Errorf("merged K8s lost its ref: %+v", r.accepted[1])
+	}
+	// Importance = score/4; merged keeps the max.
+	want := map[string]float64{"kubernetes": 0.75, "go": 0.75, "ruby": 0.75, "kafka": 0.5}
+	for k, v := range want {
+		if r.importance[k] != v {
+			t.Errorf("importance[%q] = %v, want %v", k, r.importance[k], v)
+		}
+	}
+	if len(r.groups) != 1 || !slices.Equal(r.groups[0], []string{"Go", "Ruby"}) {
+		t.Errorf("groups = %q, want [[Go Ruby]]", r.groups)
+	}
+
+	// Questions embed their data: every mention's sentence and section.
+	for _, req := range srv.Requests() {
+		raw, _ := json.Marshal(req.State)
+		if strings.Contains(string(raw), "Kafka") {
+			t.Errorf("state carries requirements; they belong in the questions: %s", raw)
+		}
+		for id, q := range req.Questions {
+			if questionRequirement(t, q) == "Kafka" && strings.HasPrefix(id, "importance_") {
+				mentions, _ := q.Instructions.(map[string]any)["mentions"].([]any)
+				if len(mentions) != 1 || !strings.Contains(mustJSON(mentions[0]), "preferred") {
+					t.Errorf("Kafka mentions = %v, want one preferred sentence", mentions)
+				}
+			}
+		}
+	}
+
+	c := m.Summary().Counters
+	// Kafka -> Go is one-way, so it does not merge.
+	if c["refinement.merged"] != 1 || c["refinement.one_way_duplicate"] != 1 ||
+		c["refinement.dropped.generic_trait"] != 1 || c["refinement.alternative_links"] != 2 {
+		t.Errorf("counters = %v", c)
+	}
+}
+
+func mustJSON(v any) string {
+	b, _ := json.Marshal(v)
+	return string(b)
+}
+
+func TestRefinementRoundBatchesBySize(t *testing.T) {
+	srv := jevtest.NewServer(t, refinementResponder(t))
+	e, _ := newTestExtractor(t, srv.URL, config.Pipeline{})
+	e.refinementBatchChars = 1 // forces one question per request
+	r := refinementRun()
+	if err := e.refinementRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	for _, req := range srv.Requests() {
+		if len(req.Questions) != 1 {
+			t.Fatalf("request has %d questions, want 1", len(req.Questions))
+		}
+	}
+}
+
+func TestDuplicateOptions(t *testing.T) {
+	values := []string{"PostgreSQL", "Postgres", "Kafka", "Kafka Streams", "Go", "AWS"}
+	// Small lists offer every other value.
+	if got := duplicateOptions(values, 0, 40); len(got) != 5 || slices.Contains(got, "PostgreSQL") {
+		t.Errorf("small list options = %q", got)
+	}
+	// Large lists offer only similar values.
+	got := duplicateOptions(values, 2, 1)
+	if !slices.Equal(got, []string{"Kafka Streams"}) {
+		t.Errorf("similar options for Kafka = %q, want [Kafka Streams]", got)
+	}
+	if got := duplicateOptions(values, 0, 1); !slices.Contains(got, "Postgres") {
+		t.Errorf("similar options for PostgreSQL = %q, want Postgres", got)
+	}
+}

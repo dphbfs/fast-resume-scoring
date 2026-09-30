@@ -66,16 +66,23 @@ Job Description (`.txt` / `.md` file):
      experience") are never offered.
    - Open tuning: long whole-Chunk picks; splitting at "and" cuts some years
      qualifiers.
-5. Refinement Round: one batched request. State is the validated Requirements,
-   each with all its Context Sentences and their Sections, so recurrence and
-   Section are explicit data (Jev can't count). Per Requirement:
-   - Choice: which other Requirement it duplicates, or `none` (synonym merge)
-   - Choice: which other Requirement it is offered as an alternative to
-     ("Go, Ruby, or Python"), or `none`; code builds Alternative Groups from
-     these links (connected components)
-   - Noul: specific, checkable qualification vs. Filler (Filler is dropped;
-     this includes non-skill conditions like work eligibility or on-call)
-   - Score: Importance, from "mentioned in passing" to "stated as mandatory"
+5. Refinement Round: state is only the job title + Job Summary. Every
+   question embeds its Requirement and all its mentions (sentence + Section),
+   so recurrence and Section are explicit data. Questions are batched by
+   size (< 32k tokens per request for OpenRouter). Per Requirement:
+   - Filler (Choice): `specific_requirement` vs vague_term / generic_trait /
+     company_context / condition; kept when `specific_requirement` >= 0.5.
+   - Duplicate (Choice): other Requirements (all when <= 40, else similar
+     ones) vs different_thing / broader_or_narrower / part_of_or_contains /
+     related_not_same. Merged only when **both** name each other (one-way
+     links were mostly related-but-different pairs); canonical value = most
+     mentions, then first seen.
+   - Alternative (Choice): Requirements sharing a sentence vs
+     required_together / unrelated; links become Alternative Groups by
+     connected components.
+   - Importance (Score, 5 situation levels from "mentioned in passing" to
+     "hard requirement, emphasized"); Importance = score / 4, merged
+     Requirements keep the max.
 6. Output: JSON contract below; `--debug` writes dropped Candidates, Filler,
    merges and raw probabilities to a separate file.
 
@@ -149,6 +156,14 @@ inside a larger resume-tailoring backend.
   - skip headings, drop generic-only Candidates: 91.2% / 32.8%
   - `PIPELINE_MIN_REQUIREMENT_MASS` sweep 0.5-0.9: recall flat to 0.7, then
     falls (88.8% at 0.8, 86.7% at 0.9); default 0.7 -> 91.2% / 35.2%
+  - Refinement Round v1 (one-way duplicate merges): 81.0% / 42.5%, Filler
+    extracted 1, tier order 85.2%, group F1 55.0%; 274 merges, mostly
+    related-but-different pairs
+  - v2, mutual duplicates only: 85.9% / 40.3%, tier order 85.7%, group F1
+    66.9%, 58 merges. Misses: ~14 from Filler drops ("Infrastructure as
+    Code", "SIEM"), ~17 where labels keep related items separate. These
+    Refinement runs used the fallback Job Summary (generative endpoint
+    unreachable), so recall vs the earlier runs is confounded.
 - Precision is capped partly by label gaps: sampled extras are ~40% real
   requirements the golden labels omit. Runs vary by ~1 point because the Job
   Summary is regenerated each run.
