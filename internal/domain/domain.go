@@ -49,8 +49,6 @@ type ContextSentence struct {
 type Candidate struct {
 	Text string
 	Ref  Ref
-	// Start and End are word offsets within the sentence, End exclusive.
-	Start, End int
 }
 
 // Requirement is one atomic thing the employer asks for.
