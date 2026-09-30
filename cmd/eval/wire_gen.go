@@ -8,6 +8,7 @@ package main
 
 import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
+	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/gencache"
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-tailoring/internal/app"
@@ -18,9 +19,9 @@ import (
 
 // Injectors from wire.go:
 
-// initRunner builds the eval Runner with every dependency wired from the
-// environment.
-func initRunner() (*eval.Runner, error) {
+// initRunner builds the eval Runner. Job Summaries go through a file cache
+// so every eval run sees the same Validation inputs.
+func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	configConfig, err := config.Load()
 	if err != nil {
 		return nil, err
@@ -37,8 +38,9 @@ func initRunner() (*eval.Runner, error) {
 	if err != nil {
 		return nil, err
 	}
+	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
 	pipeline := configConfig.Pipeline
-	extractor := app.New(client, openaiClient, recorder, logger, pipeline)
+	extractor := app.New(client, gencacheClient, recorder, logger, pipeline)
 	runner := eval.NewRunner(extractor, recorder, logger, pipeline)
 	return runner, nil
 }

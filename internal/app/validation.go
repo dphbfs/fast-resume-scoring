@@ -44,6 +44,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 		out      []judged
 		rejected map[string]int
 		trace    []domain.TraceChunk
+		splits   int
 	}
 	var batches []*batch
 	for i := 0; i < len(r.chunks); {
@@ -81,7 +82,13 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 					Top: topOptions(a.Probabilities, traceTopOptions), Candidates: c.Options,
 				}
 				if spanMass >= e.minRequirementMass() {
-					b.out = append(b.out, judged{Candidate: domain.Candidate{Text: best, Ref: c.Ref}, P: bestP})
+					parts := splitSlashSelection(best)
+					if len(parts) > 1 {
+						b.splits++
+					}
+					for _, p := range parts {
+						b.out = append(b.out, judged{Candidate: domain.Candidate{Text: p, Ref: c.Ref}, P: bestP})
+					}
 					tc.Selected, tc.SelectedP = best, bestP
 				} else {
 					reason := topReject(a.Probabilities)
@@ -102,6 +109,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 	for _, b := range batches {
 		r.accepted = append(r.accepted, b.out...)
 		r.trace.Chunks = append(r.trace.Chunks, b.trace...)
+		e.metrics.Add("validation.slash_split", int64(b.splits))
 		for reason, n := range b.rejected {
 			e.metrics.Add("validation.rejected."+reason, int64(n))
 		}
@@ -123,6 +131,23 @@ func decide(c chunk, probs map[string]float64) (best string, bestP, spanMass flo
 		}
 	}
 	return best, bestP, spanMass
+}
+
+// splitSlashSelection splits a selected Candidate that is a single
+// slash-joined token ("terraform/terragrunt", "OpenSSL/AWS-LC") into its
+// parts, which name separate Requirements. It keeps short pairs ("CI/CD")
+// and multi-word selections ("client/server architectures") whole.
+func splitSlashSelection(sel string) []string {
+	if strings.ContainsAny(sel, " \t") || !strings.Contains(sel, "/") {
+		return []string{sel}
+	}
+	parts := strings.Split(sel, "/")
+	for _, p := range parts {
+		if len([]rune(p)) < 3 || !hasLetter(p) {
+			return []string{sel}
+		}
+	}
+	return parts
 }
 
 // traceTopOptions is how many options a TraceChunk keeps.

@@ -173,3 +173,38 @@ func TestValidationRoundAcceptsOnSummedSpanMass(t *testing.T) {
 		t.Errorf("accepted = %q, want [distributed systems]", got)
 	}
 }
+
+func TestSplitSlashSelection(t *testing.T) {
+	tests := []struct {
+		in   string
+		want []string
+	}{
+		{"terraform/terragrunt", []string{"terraform", "terragrunt"}},
+		{"OpenSSL/AWS-LC", []string{"OpenSSL", "AWS-LC"}},
+		{"TypeScript/Node.js", []string{"TypeScript", "Node.js"}},
+		{"CI/CD", []string{"CI/CD"}},                                             // short parts stay whole
+		{"client/server architectures", []string{"client/server architectures"}}, // has a space
+		{"Kafka", []string{"Kafka"}},
+	}
+	for _, tt := range tests {
+		if got := splitSlashSelection(tt.in); !slices.Equal(got, tt.want) {
+			t.Errorf("splitSlashSelection(%q) = %q, want %q", tt.in, got, tt.want)
+		}
+	}
+}
+
+func TestValidationRoundSplitsSlashSelection(t *testing.T) {
+	srv := jevtest.NewServer(t, selectFor(t, map[string]string{"terraform/terragrunt": "terraform/terragrunt"}))
+	e, m := newTestExtractor(t, srv.URL, config.Pipeline{})
+	r := &run{sentences: []domain.ContextSentence{{Ref: "s1", Text: "IaC (terraform/terragrunt)", Section: domain.SectionRequired}}}
+	r.chunks = []chunk{{Ref: "s1", Text: "terraform/terragrunt", Options: []string{"terraform/terragrunt", "terraform", "terragrunt"}}}
+	if err := e.validationRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	if got := acceptedTexts(r.accepted); !slices.Equal(got, []string{"terraform", "terragrunt"}) {
+		t.Errorf("accepted = %q, want both parts", got)
+	}
+	if m.Summary().Counters["validation.slash_split"] != 1 {
+		t.Error("slash split not counted")
+	}
+}

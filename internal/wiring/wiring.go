@@ -23,10 +23,15 @@ var PlatformSet = wire.NewSet(
 	wire.Bind(new(port.Metrics), new(*metrics.Recorder)),
 )
 
-// AIClientSet provides the Jev and generative clients behind their ports.
-var AIClientSet = wire.NewSet(
+// ClassifierSet provides the Jev client behind its port.
+var ClassifierSet = wire.NewSet(
 	jev.New,
 	wire.Bind(new(port.AIClassifierClient), new(*jev.Client)),
+)
+
+// AIClientSet provides the Jev and generative clients behind their ports.
+var AIClientSet = wire.NewSet(
+	ClassifierSet,
 	openai.New,
 	wire.Bind(new(port.AIGenerativeClient), new(*openai.Client)),
 )
