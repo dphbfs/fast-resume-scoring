@@ -252,14 +252,16 @@ func newChunk(ref domain.Ref, text string, maxWords int) (chunk, bool) {
 }
 
 // generateCandidates builds the chunks, and their Candidate options, of every
-// sentence whose Section is not dropped. Heading lines ("Bonus Points") are
-// skipped: they label the sentences below them and name no Requirement.
+// sentence whose Section is not dropped. Strong heading lines ("What You
+// Bring:", markdown headings) are skipped: they label the sentences below
+// them and name no Requirement. Short unpunctuated lines are kept, because
+// in Greenhouse postings they are often unbulleted items.
 func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
 	r.chunks = r.chunks[:0]
 	r.trace.Sentences = make([]domain.TraceSentence, len(r.sentences))
 	options := 0
 	for i, s := range r.sentences {
-		dropped := droppedSections[s.Section] || (i < len(r.headings) && r.headings[i] == s.Text)
+		dropped := droppedSections[s.Section] || (i < len(r.strongHeading) && r.strongHeading[i])
 		ts := domain.TraceSentence{Ref: s.Ref, Text: s.Text, Section: s.Section, Dropped: dropped}
 		if i < len(r.headings) {
 			ts.Heading = r.headings[i]

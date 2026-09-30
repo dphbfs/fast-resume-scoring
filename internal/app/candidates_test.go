@@ -203,8 +203,28 @@ func TestGenerateCandidatesSkipsHeadings(t *testing.T) {
 	if got := chunkTexts(r.chunks); !slices.Equal(got, []string{"Kubernetes"}) {
 		t.Errorf("chunks = %q, want [Kubernetes]", got)
 	}
-	if ts := r.trace.Sentences; len(ts) != 2 || !ts[0].Dropped || ts[1].Dropped || ts[1].Heading != "Bonus Points" {
-		t.Errorf("trace sentences = %+v, want heading dropped and item kept", ts)
+	// "Bonus Points" is a weak heading: not skipped, but every Candidate is
+	// generic-only, so it yields no chunk.
+	if ts := r.trace.Sentences; len(ts) != 2 || ts[0].Dropped || ts[1].Heading != "Bonus Points" {
+		t.Errorf("trace sentences = %+v, want both kept, item under the Bonus Points heading", ts)
+	}
+}
+
+func TestGenerateCandidatesSkipsOnlyStrongHeadings(t *testing.T) {
+	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 4})
+	r := &run{}
+	r.sentences, r.headings, r.strongHeading = splitLines(
+		"What You Bring:\nExperience with TypeScript/Node.js\n## Tools\n- Kubernetes\n")
+	for i := range r.sentences {
+		r.sentences[i].Section = domain.SectionRequired
+	}
+	if err := e.generateCandidates(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	// "Experience with TypeScript/Node.js" is short and unpunctuated, so it
+	// is heading context for the next line, but it is not skipped.
+	if got := chunkTexts(r.chunks); !slices.Equal(got, []string{"TypeScript/Node.js", "Kubernetes"}) {
+		t.Errorf("chunks = %q, want [TypeScript/Node.js Kubernetes]", got)
 	}
 }
 

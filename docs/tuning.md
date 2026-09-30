@@ -94,3 +94,4 @@ Misses by stage (from the trace; `eval` reports them per miss):
 |---|---|---|---|---|---|---|
 | 2026-09-30 | Baseline after label review (rescore) | `63732feae2fb` | 93.6% (79.6%) | 87.5% | 90.4% | n/a |
 | 2026-09-30 | Live baseline with traces (tier order 81.9%, group F1 68.5%) | `63732feae2fb` | 93.4% (79.2%) | 86.8% | 90.0% | n/a |
+| 2026-09-30 | C5: skip only strong headings (":" or markdown); section_dropped 3 -> 0 | `63732feae2fb` | 94.3% (79.6%) | 86.1% | 90.0% | yes (F1 tie, recall +0.9, removes a failure class) |

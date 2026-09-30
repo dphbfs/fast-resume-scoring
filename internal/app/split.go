@@ -34,15 +34,27 @@ var abbreviations = map[string]bool{
 // Section labeling passes it to Jev directly, because Jev cannot reliably
 // locate a sentence by its position in a list.
 func splitSentences(text string) (sentences []domain.ContextSentence, headings []string) {
+	sentences, headings, _ = splitLines(text)
+	return sentences, headings
+}
+
+// splitLines is splitSentences that also reports, per sentence, whether it
+// is a strong heading: a markdown heading or a line ending with ":". Only
+// strong headings are skipped by Candidate generation; short unpunctuated
+// lines ("Experience with TypeScript/Node.js") serve as heading context but
+// may still name Requirements.
+func splitLines(text string) (sentences []domain.ContextSentence, headings []string, strong []bool) {
 	current := ""
 	for line := range strings.Lines(text) {
 		line = strings.TrimSpace(line)
 		marker := listMarker.FindString(line)
 		line = strings.TrimSpace(whitespace.ReplaceAllString(line[len(marker):], " "))
 		parts := splitLine(line)
-		if isHeading(line, marker, len(parts)) {
+		heading := isHeading(line, marker, len(parts))
+		if heading {
 			current = line
 		}
+		isStrong := heading && (strings.HasPrefix(marker, "#") || strings.HasSuffix(line, ":"))
 		for _, p := range parts {
 			if !hasAlnum(p) {
 				continue
@@ -52,9 +64,10 @@ func splitSentences(text string) (sentences []domain.ContextSentence, headings [
 				Text: p,
 			})
 			headings = append(headings, current)
+			strong = append(strong, isStrong)
 		}
 	}
-	return sentences, headings
+	return sentences, headings, strong
 }
 
 // isHeading reports whether a line (with its stripped list marker) reads as a
@@ -135,7 +148,7 @@ func hasAlnum(s string) bool {
 
 // splitSentencesStage is the pipeline stage wrapper.
 func (e *Extractor) splitSentencesStage(_ context.Context, r *run) error {
-	r.sentences, r.headings = splitSentences(r.jd.Text)
+	r.sentences, r.headings, r.strongHeading = splitLines(r.jd.Text)
 	if len(r.sentences) == 0 {
 		return fmt.Errorf("job description has no sentences")
 	}
