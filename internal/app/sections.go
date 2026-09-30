@@ -74,6 +74,7 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 		e.metrics.Add("sections."+string(s.Section), 1)
 		if droppedSections[s.Section] {
 			e.metrics.Add("sections.dropped", 1)
+			e.log.DebugContext(ctx, "sentence dropped", "ref", s.Ref, "section", s.Section, "text", s.Text)
 		}
 	}
 	return nil

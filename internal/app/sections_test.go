@@ -117,8 +117,8 @@ func TestLabelSections(t *testing.T) {
 	}
 
 	c := m.Summary().Counters
-	if c["sections.required"] != 1 || c["sections.dropped"] != 2 {
-		t.Errorf("counters = %v, want sections.required=1 sections.dropped=2", c)
+	if c["sections.required"] != 1 || c["sections.dropped"] != 3 {
+		t.Errorf("counters = %v, want sections.required=1 sections.dropped=3", c)
 	}
 }
 

@@ -36,7 +36,7 @@ Job Description (`.txt` / `.md` file):
 1. Job Description → sentence split (Context Sentences with Refs)
 2. Section labeling: one Jev Choice per sentence (`required | preferred |
    responsibilities | company | benefits | other`) in one batched request;
-   `company` / `benefits` sentences are dropped before windowing
+   `company` / `benefits` / `other` sentences are dropped before windowing
 3. Sliding-window Candidate generation, pruned in code (no leading/trailing
    stopwords, max window length from config)
 4. Validation Round: one Jev request per Context Sentence (state: Section +
