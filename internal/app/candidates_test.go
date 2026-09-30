@@ -113,6 +113,67 @@ func TestSentenceCandidatesKeepRef(t *testing.T) {
 	}
 }
 
+func chunkTexts(cs []chunk) []string {
+	out := make([]string, len(cs))
+	for i, c := range cs {
+		out[i] = c.Text
+	}
+	return out
+}
+
+func TestChunkSentence(t *testing.T) {
+	tests := []struct {
+		name     string
+		sentence string
+		want     []string
+	}{
+		{
+			name:     "such as and commas separate list items",
+			sentence: "Experience with streaming data infrastructure such as Kafka, Flink, or Spark",
+			want:     []string{"Experience", "streaming data infrastructure", "Kafka", "Flink", "Spark"},
+		},
+		{
+			name:     "and/or and brackets separate, of does not",
+			sentence: "5+ years of Go and Rust (or C++)",
+			want:     []string{"5+ years of Go", "Rust", "C++"},
+		},
+		{
+			name:     "including, e.g. and like separate",
+			sentence: "Cloud platforms including AWS; databases e.g. Postgres; tools like Terraform",
+			want:     []string{"Cloud platforms", "AWS", "databases", "Postgres", "tools", "Terraform"},
+		},
+		{
+			name:     "stopword-only pieces are dropped",
+			sentence: "You will own it, and more",
+			want:     []string{"You will own it"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := chunkTexts(chunkSentence(domain.ContextSentence{Ref: "s1", Text: tt.sentence}, 4))
+			if !slices.Equal(got, tt.want) {
+				t.Errorf("chunks\n got: %q\nwant: %q", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestChunkOptions(t *testing.T) {
+	cs := chunkSentence(domain.ContextSentence{Ref: "s2", Text: "client/server architectures"}, 4)
+	if len(cs) != 1 {
+		t.Fatalf("chunks = %q, want one", chunkTexts(cs))
+	}
+	c := cs[0]
+	if c.Ref != "s2" {
+		t.Errorf("ref = %q, want s2", c.Ref)
+	}
+	for _, want := range []string{"client/server architectures", "client/server", "architectures", "client", "server architectures"} {
+		if !slices.Contains(c.Options, want) {
+			t.Errorf("options %q missing %q", c.Options, want)
+		}
+	}
+}
+
 func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {
 	m := metrics.NewRecorder()
 	e := New(nil, nil, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 2})
@@ -125,10 +186,11 @@ func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {
 	if err := e.generateCandidates(context.Background(), r); err != nil {
 		t.Fatal(err)
 	}
-	if got := candidateTexts(r.candidates); !slices.Equal(got, []string{"Kubernetes", "Terraform"}) {
-		t.Errorf("candidates = %q", got)
+	if got := chunkTexts(r.chunks); !slices.Equal(got, []string{"Kubernetes", "Terraform"}) {
+		t.Errorf("chunks = %q", got)
 	}
-	if got := m.Summary().Counters["candidates.total"]; got != 2 {
-		t.Errorf("candidates.total = %d, want 2", got)
+	c := m.Summary().Counters
+	if c["chunks.total"] != 2 || c["candidates.total"] != 2 {
+		t.Errorf("counters = %v, want chunks.total=2 candidates.total=2", c)
 	}
 }

@@ -27,8 +27,12 @@ _Avoid_: Sentence ID, index
 The role a Context Sentence plays in the Job Description: required, preferred, responsibilities, company, benefits, or other.
 _Avoid_: Heading, block, part
 
+**Chunk**:
+A clause-sized piece of a Context Sentence, cut at clause breaks and list words, that names at most one Requirement.
+_Avoid_: Clause, segment, fragment
+
 **Candidate**:
-A phrase produced by the sliding window over a Context Sentence that has not yet been judged.
+A phrase from a Chunk that Jev may select as the name of its Requirement.
 _Avoid_: Window, n-gram, phrase, yield
 
 **Requirement**:
@@ -40,7 +44,7 @@ A set of Requirements where the employer accepts any one of them (e.g. "Go, Ruby
 _Avoid_: Any-of, options, OR-group
 
 **Validation Round**:
-The first Jev pass, which judges each Candidate against the Job Description and keeps those that are valid Requirements.
+The first Jev pass, which selects, for each Chunk, the Candidate that names its Requirement, or none.
 _Avoid_: Detection, classification pass
 
 **Refinement Round**:

@@ -82,64 +82,34 @@ const maxFallbackRunes = 1500
 
 // --- Validation Round (stage 5) ---
 
-// validationQuestion asks what kind of phrase one Candidate is. A Choice
-// over described situations separated answers better than a single Noul
-// that bundled "complete", "specific", "asked of the applicant" and
-// "single" into one judgment (live test: Nouls clustered near 0.5).
-//
-// The words around the Candidate are embedded too: judged alone, a word cut
-// out of a longer name ("distributed" from "distributed systems") looks like
-// a valid skill.
-func validationQuestion(candidate, before, after string) port.Question {
-	if before == "" {
-		before = "(start of sentence)"
+// noRequirement is the extra option meaning the chunk names no Requirement.
+const noRequirement = "no_requirement"
+
+// validationQuestion asks Jev to select the option that names the
+// Requirement in one chunk. Selecting among a chunk's overlapping spans is a
+// relative judgment; judging each span alone with a Noul or Choice accepted
+// cut-off words ("financial" from "financial systems") in live tests.
+func validationQuestion(c chunk) port.Question {
+	criteria := make(map[string]any, len(c.Options)+1)
+	for _, o := range c.Options {
+		criteria[o] = nil
 	}
-	if after == "" {
-		after = "(end of sentence)"
-	}
+	criteria[noRequirement] = "`chunk` names no specific skill, technology, qualification, " +
+		"kind of experience, or responsibility (e.g. a generic phrase like \"strong\", " +
+		"\"team player\", \"fast-paced environment\", or only a verb)."
 	return port.Question{
 		Type: port.Choice,
 		Instructions: map[string]any{
-			"candidate":    candidate,
-			"words_before": before,
-			"words_after":  after,
-			"question": "In `sentence`, `candidate` appears between `words_before` and `words_after`. " +
-				"What is `candidate`?",
+			"chunk": c.Text,
+			"question": "`chunk` is part of `sentence` in a job posting. Which option names the " +
+				"requirement stated in `chunk` completely and without extra words? Prefer the full " +
+				"name (\"distributed systems\", not \"distributed\"), and leave out words like " +
+				"\"experience\", \"own\", \"use\" or \"strong\" around it.",
 		},
-		Criteria: validationCriteria,
+		Criteria: criteria,
 	}
 }
 
-// validationCriteria are the Candidate kinds. Keys in requirementKinds are
-// accepted as Requirements.
-var validationCriteria = map[string]any{
-	"technology": "A specific tool, language, framework, platform, or standard, " +
-		"e.g. \"Kafka\", \"Go\", \"PostgreSQL\", \"X.509\".",
-	"skill_or_domain": "A specific skill, practice, or domain area, e.g. \"API design\", " +
-		"\"distributed systems\", \"payments\", \"threat modeling\".",
-	"experience_or_qualification": "A kind or amount of experience, a degree, or a " +
-		"certification, e.g. \"5+ years of backend engineering\", \"Bachelor's degree in " +
-		"Computer Science\", \"Security+\".",
-	"responsibility": "A specific piece of work the role involves, e.g. \"SDK development\", " +
-		"\"incident response\", \"mentoring engineers\".",
-	"partial_or_padded": "Cut off: `words_before` or `words_after` continues the same name or " +
-		"idea (\"distributed\" followed by \"systems\", \"development\" preceded by \"SDK\"). " +
-		"Or padded: a requirement with extra words attached (\"use Vue\", \"Own SDK development\", " +
-		"\"experience with Kafka\").",
-	"several_items": "Two or more separate requirements joined together, e.g. \"Go and " +
-		"Kubernetes\", \"Kafka Flink\".",
-	"generic": "A generic word or phrase that is not a specific requirement, e.g. " +
-		"\"strong\", \"experience\", \"team\", \"fast-paced environment\".",
-}
-
-// requirementKinds are the validationCriteria options that mean "this
-// Candidate is a Requirement".
-var requirementKinds = []string{"technology", "skill_or_domain", "experience_or_qualification", "responsibility"}
-
-// acceptCandidate is the minimum probability mass on requirementKinds for a
-// Candidate to become a validated Requirement. Tune with `make eval`.
-const acceptCandidate = 0.5
-
 // validationBatchSize caps questions per Validation request; a sentence with
-// more Candidates is split into several requests with the same state.
+// more chunks is split into several requests with the same state.
 const validationBatchSize = 150
