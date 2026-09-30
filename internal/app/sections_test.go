@@ -4,7 +4,6 @@ import (
 	"context"
 	"io"
 	"log/slog"
-	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -46,14 +45,15 @@ func sectionFor(text string) string {
 	}
 }
 
-// sentenceIndex extracts i from a "section_<i>" question ID.
-func sentenceIndex(t *testing.T, id string) int {
+// questionSentence returns the sentence embedded in a Section question.
+func questionSentence(t *testing.T, q jev.WireQuestion) string {
 	t.Helper()
-	i, err := strconv.Atoi(strings.TrimPrefix(id, "section_"))
-	if err != nil {
-		t.Fatalf("unexpected question id %q", id)
+	inst, _ := q.Instructions.(map[string]any)
+	s, ok := inst["sentence"].(string)
+	if !ok {
+		t.Fatalf("question has no embedded sentence: %+v", q.Instructions)
 	}
-	return i
+	return s
 }
 
 func TestLabelSections(t *testing.T) {
@@ -66,8 +66,8 @@ func TestLabelSections(t *testing.T) {
 	}
 	srv := jevtest.NewServer(t, func(_ int, req jev.WireRequest) jevtest.Reply {
 		answers := map[string]jev.WireAnswer{}
-		for id := range req.Questions {
-			sec := sectionFor(sentences[sentenceIndex(t, id)])
+		for id, q := range req.Questions {
+			sec := sectionFor(questionSentence(t, q))
 			answers[id] = jevtest.Choice(map[string]float64{sec: 0.9, "other": 0.1}, 0.85)
 		}
 		return jevtest.Reply{Answers: answers}
@@ -102,11 +102,8 @@ func TestLabelSections(t *testing.T) {
 			t.Errorf("request has %d questions, want <= 2", len(req.Questions))
 		}
 		state, _ := req.State.(map[string]any)
-		if got, _ := state["sentences"].([]any); len(got) != len(sentences) {
-			t.Errorf("state has %d sentences, want %d", len(got), len(sentences))
-		}
-		if state["job_title"] != "Backend Engineer" {
-			t.Errorf("state job_title = %v", state["job_title"])
+		if state["job_title"] != "Backend Engineer" || !strings.Contains(state["job_posting"].(string), "5+ years of Go.") {
+			t.Errorf("state = %v, want job title and full posting", state)
 		}
 		for id, q := range req.Questions {
 			crit, _ := q.Criteria.(map[string]any)
@@ -128,7 +125,8 @@ func TestLabelSectionsRejectsUnknownChoice(t *testing.T) {
 	}))
 	e, _ := newTestExtractor(t, srv.URL, config.Pipeline{SectionBatchSize: 10})
 
-	r := &run{sentences: splitSentences("Go.")}
+	r := &run{}
+	r.sentences, r.headings = splitSentences("Go.")
 	if err := e.labelSections(context.Background(), r); err == nil {
 		t.Fatal("want error for unknown section, got nil")
 	}

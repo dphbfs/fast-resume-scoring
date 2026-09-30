@@ -28,17 +28,24 @@ var sectionCriteria = map[string]any{
 		"application instructions, location or logistics, or anything else.",
 }
 
-// sectionQuestion asks which Section sentence i of the labeling state belongs
-// to. The state holds every sentence in order, so headings above the
-// sentence are visible.
-func sectionQuestion(i int) port.Question {
+// sectionQuestion asks which Section one sentence belongs to. The sentence
+// and its nearest heading are embedded in the question itself: Jev cannot
+// reliably find a sentence by its position in a list (live test, jev-1.13
+// labeled neighbouring sentences).
+func sectionQuestion(sentence, heading string) port.Question {
+	if heading == "" {
+		heading = "(none)"
+	}
 	return port.Question{
 		Type: port.Choice,
-		Instructions: fmt.Sprintf(
-			"Which part of the job description is `sentences[%d]`? "+
-				"Use the headings and sentences around it: an item listed under a heading "+
-				"such as \"Bonus points\" or \"Nice to have\" is preferred, even if the item "+
-				"itself does not say so.", i),
+		Instructions: map[string]any{
+			"sentence": sentence,
+			"heading":  heading,
+			"question": "Which part of the job description is `sentence`? " +
+				"`heading` is the nearest heading above it in the posting. An item under a " +
+				"heading such as \"Bonus points\" or \"Nice to have\" is preferred, and an " +
+				"item under \"Benefits\" is benefits, even if the item itself does not say so.",
+		},
 		Criteria: sectionCriteria,
 	}
 }

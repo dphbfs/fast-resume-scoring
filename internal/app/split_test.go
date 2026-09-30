@@ -66,7 +66,8 @@ func TestSplitSentences(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := texts(splitSentences(tt.in))
+			ss, _ := splitSentences(tt.in)
+			got := texts(ss)
 			if !slices.Equal(got, tt.want) {
 				t.Errorf("splitSentences()\n got: %q\nwant: %q", got, tt.want)
 			}
@@ -75,11 +76,35 @@ func TestSplitSentences(t *testing.T) {
 }
 
 func TestSplitSentencesAssignsRefs(t *testing.T) {
-	got := splitSentences("A.\nB. C.")
+	got, _ := splitSentences("A.\nB. C.")
 	want := []domain.Ref{"s1", "s2", "s3"}
 	for i, s := range got {
 		if s.Ref != want[i] {
 			t.Errorf("sentence %d ref = %q, want %q", i, s.Ref, want[i])
 		}
+	}
+}
+
+func TestSplitSentencesHeadings(t *testing.T) {
+	in := "Senior Engineer, Backend\n" +
+		"About the role\n" +
+		"We build payments.\n" +
+		"Role requirements:\n" +
+		"• 5+ years of Go\n" +
+		"• Own web development\n" +
+		"## Bonus points\n" +
+		"- Kubernetes\n" +
+		"Tech stack:\n" +
+		"JavaScript, MongoDB, Go\n"
+	_, got := splitSentences(in)
+	want := []string{
+		"",
+		"About the role", "About the role",
+		"Role requirements:", "Role requirements:", "Role requirements:",
+		"Bonus points", "Bonus points",
+		"Tech stack:", "Tech stack:",
+	}
+	if !slices.Equal(got, want) {
+		t.Errorf("headings\n got: %q\nwant: %q", got, want)
 	}
 }
