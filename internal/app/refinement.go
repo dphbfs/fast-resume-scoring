@@ -8,6 +8,7 @@ import (
 	"maps"
 	"slices"
 	"strings"
+	"unicode"
 
 	"golang.org/x/sync/errgroup"
 
@@ -27,6 +28,7 @@ type refinementState struct {
 // It then drops Filler, rewrites duplicates to their canonical value, builds
 // Alternative Groups, and records Importance.
 func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
+	titleDrops := e.dropJobTitle(ctx, r)
 	values, mentions := uniqueRequirements(r)
 	if len(values) == 0 {
 		return nil
@@ -150,7 +152,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		r.groups = append(r.groups, g)
 	}
 	slices.SortFunc(r.groups, func(a, b []string) int { return cmp.Compare(index[a[0]], index[b[0]]) })
-	r.trace.Refinement = trs
+	r.trace.Refinement = append(trs, titleDrops...)
 	r.trace.Groups = r.groups
 
 	// Apply Filler drops and duplicate rewrites to the accepted Candidates.
@@ -166,6 +168,66 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	r.accepted = kept
 	e.metrics.Add("refinement.kept", int64(len(r.importance)))
 	return nil
+}
+
+// roleWords mark a phrase as a job title rather than a skill.
+var roleWords = map[string]bool{
+	"engineer": true, "engineers": true, "developer": true, "developers": true,
+	"architect": true, "manager": true, "lead": true, "scientist": true,
+	"analyst": true, "administrator": true, "designer": true, "sre": true,
+}
+
+// titleWords lowercases s and keeps its words, dropping punctuation.
+func titleWords(s string) []string {
+	return strings.FieldsFunc(strings.ToLower(s), func(r rune) bool {
+		return !(unicode.IsLetter(r) || unicode.IsDigit(r) || r == '+' || r == '#' || r == '.')
+	})
+}
+
+// isJobTitleFragment reports whether value is the job title, or a run of two
+// or more of its words that includes a role word ("Backend Engineer" in
+// "Senior Backend Engineer"). Single words are kept: in "Senior Software
+// Engineer, Android", "Android" is a real skill.
+func isJobTitleFragment(value, title string) bool {
+	v, t := titleWords(value), titleWords(title)
+	if len(v) == 0 || len(t) == 0 {
+		return false
+	}
+	if slices.Equal(v, t) {
+		return true
+	}
+	if len(v) < 2 || !slices.ContainsFunc(v, func(w string) bool { return roleWords[w] }) {
+		return false
+	}
+	for i := 0; i+len(v) <= len(t); i++ {
+		if slices.Equal(t[i:i+len(v)], v) {
+			return true
+		}
+	}
+	return false
+}
+
+// dropJobTitle removes validated Candidates that are job title fragments
+// before any Refinement question is asked, and returns trace entries for
+// them.
+func (e *Extractor) dropJobTitle(ctx context.Context, r *run) []domain.TraceRequirement {
+	var drops []domain.TraceRequirement
+	seen := map[string]bool{}
+	kept := r.accepted[:0]
+	for _, a := range r.accepted {
+		if !isJobTitleFragment(a.Text, r.jd.Title) {
+			kept = append(kept, a)
+			continue
+		}
+		if !seen[strings.ToLower(a.Text)] {
+			seen[strings.ToLower(a.Text)] = true
+			drops = append(drops, domain.TraceRequirement{Value: a.Text, FillerKind: "job_title"})
+			e.metrics.Add("refinement.dropped.job_title", 1)
+			e.log.DebugContext(ctx, "job title dropped", "requirement", a.Text)
+		}
+	}
+	r.accepted = kept
+	return drops
 }
 
 // uniqueRequirements returns validated values unique by lowercase (first
