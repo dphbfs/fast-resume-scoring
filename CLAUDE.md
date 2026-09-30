@@ -83,8 +83,12 @@ Job Description (`.txt` / `.md` file):
    - Importance (Score, 5 situation levels from "mentioned in passing" to
      "hard requirement, emphasized"); Importance = score / 4, merged
      Requirements keep the max.
-6. Output: JSON contract below; `--debug` writes dropped Candidates, Filler,
-   merges and raw probabilities to a separate file.
+6. Output: JSON contract below. `extract -debug trace.json` writes the
+   extraction trace (`domain.Trace`): Job Summary, every sentence with
+   heading/Section/confidence/dropped, every Chunk with its Candidates, top
+   probabilities, selection or reject reason, every Refinement answer
+   (Filler kind, duplicate/alternative links, Importance), merges and groups.
+   `Extract` always returns the trace; callers ignore it when not needed.
 
 Importance is Jev's Score only (normalized to 0–1), with no code-side formula.
 **Verify in a real-world test** that Jev reflects recurrence and Section this
@@ -159,6 +163,10 @@ inside a larger resume-tailoring backend.
   when it matches.
 - `eval -rescore <report.json>` re-scores stored results against the current
   labels with no API calls; use it after any label edit.
+- Eval writes each fixture's trace to `eval/reports/<run>-traces/`
+  (gitignored) and attributes every miss to a stage (section_dropped,
+  no_candidate, validation_rejected, validation_not_selected,
+  refinement_filler, refinement_merged, scoring). Rescore reloads the traces.
 - History (no Refinement Round yet), 2026-09-30:
   - baseline, one `no_requirement` option: recall 90.6% / precision 27.4%
   - four rejection options, decide on summed mass: 91.4% / 30.8%

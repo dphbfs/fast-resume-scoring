@@ -16,12 +16,13 @@ import (
 
 type fakeExtractor map[string]domain.Result
 
-func (f fakeExtractor) Extract(_ context.Context, jd domain.JobDescription) (domain.Result, error) {
+func (f fakeExtractor) Extract(_ context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error) {
 	res, ok := f[jd.Title]
 	if !ok {
-		return domain.Result{}, errors.New("boom")
+		return domain.Result{}, domain.Trace{}, errors.New("boom")
 	}
-	return res, nil
+	tr := domain.Trace{Sentences: []domain.TraceSentence{{Ref: "s1", Text: "Bonus: Kafka", Section: domain.SectionPreferred}}}
+	return res, tr, nil
 }
 
 func TestRunAndWriteReport(t *testing.T) {
@@ -52,13 +53,21 @@ func TestRunAndWriteReport(t *testing.T) {
 		t.Fatal(err)
 	}
 	md, _ := os.ReadFile(path)
-	for _, want := range []string{"min requirement mass 0.50", "Recall (loose) | 50.0%", "error: boom", "**Missed (1):** `Kafka`", "**Extra (1):** `Terraform`"} {
+	if mc := rep.Fixtures[0].MissCauses; len(mc) != 1 || mc[0].Stage != StageNoCandidate {
+		t.Errorf("miss causes = %+v, want Kafka as no_candidate", mc)
+	}
+	for _, want := range []string{"min requirement mass 0.50", "Recall (loose) | 50.0%", "error: boom",
+		"| no_candidate | 1 |", "`Kafka` (no_candidate)", "**Extra (1):** `Terraform`"} {
 		if !strings.Contains(string(md), want) {
 			t.Errorf("markdown missing %q:\n%s", want, md)
 		}
 	}
 	if _, err := os.Stat(strings.TrimSuffix(path, ".md") + ".json"); err != nil {
 		t.Errorf("json report not written: %v", err)
+	}
+	traces, err := LoadTraces(strings.TrimSuffix(path, ".md") + ".json")
+	if err != nil || traces["a"] == nil || len(traces["a"].Sentences) != 1 {
+		t.Errorf("traces = %v, err %v", traces, err)
 	}
 }
 
@@ -80,7 +89,7 @@ func TestRescore(t *testing.T) {
 	prev := Report{Fixtures: []FixtureScore{{
 		ID: "a", Matches: []Match{{Expected: "Golang", Predicted: "Go"}}, Extras: []string{"Kafka"},
 	}}}
-	rep := Rescore(prev, fixtures)
+	rep := Rescore(prev, fixtures, nil)
 	if rep.Totals.RecallLoose != 1 || rep.Totals.PrecisionLoose != 1 || rep.RescoredFrom == "" {
 		t.Errorf("rescored totals = %+v", rep.Totals)
 	}

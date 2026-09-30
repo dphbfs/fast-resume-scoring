@@ -11,9 +11,11 @@ import (
 )
 
 // RequirementExtractor is the driving port: the CLI (and later the
-// resume-tailoring backend) calls it to extract Requirements.
+// resume-tailoring backend) calls it to extract Requirements. The Trace
+// records intermediate decisions for debugging and eval; callers that do
+// not need it ignore it.
 type RequirementExtractor interface {
-	Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, error)
+	Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error)
 }
 
 // QuestionType is the kind of judgment a classifier question asks for.

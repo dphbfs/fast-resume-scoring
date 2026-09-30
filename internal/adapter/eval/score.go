@@ -54,6 +54,10 @@ type FixtureScore struct {
 	// Result is the extractor output, stored so labels can be rescored
 	// offline (eval -rescore).
 	Result *domain.Result `json:"result,omitempty"`
+	// MissCauses attributes each miss to a pipeline stage (needs a trace).
+	MissCauses []MissCause `json:"miss_causes,omitempty"`
+	// Trace is written to a separate file next to the report.
+	Trace *domain.Trace `json:"-"`
 }
 
 var (

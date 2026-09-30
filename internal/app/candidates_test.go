@@ -203,6 +203,9 @@ func TestGenerateCandidatesSkipsHeadings(t *testing.T) {
 	if got := chunkTexts(r.chunks); !slices.Equal(got, []string{"Kubernetes"}) {
 		t.Errorf("chunks = %q, want [Kubernetes]", got)
 	}
+	if ts := r.trace.Sentences; len(ts) != 2 || !ts[0].Dropped || ts[1].Dropped || ts[1].Heading != "Bonus Points" {
+		t.Errorf("trace sentences = %+v, want heading dropped and item kept", ts)
+	}
 }
 
 func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {

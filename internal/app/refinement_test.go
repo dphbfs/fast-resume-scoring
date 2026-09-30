@@ -132,6 +132,26 @@ func TestRefinementRound(t *testing.T) {
 		}
 	}
 
+	tr := map[string]domain.TraceRequirement{}
+	for _, x := range r.trace.Refinement {
+		tr[x.Value] = x
+	}
+	if x := tr["team player"]; x.Kept || x.FillerKind != "generic_trait" {
+		t.Errorf("trace team player = %+v, want dropped as generic_trait", x)
+	}
+	if x := tr["K8s"]; x.MergedInto != "Kubernetes" || x.DuplicateOf != "Kubernetes" {
+		t.Errorf("trace K8s = %+v, want merged into Kubernetes", x)
+	}
+	if x := tr["Kafka"]; x.DuplicateOf != "Go" || x.MergedInto != "" || x.Score != 2 || x.Importance != 0.5 {
+		t.Errorf("trace Kafka = %+v, want one-way duplicate of Go, score 2", x)
+	}
+	if x := tr["Go"]; x.AlternativeOf != "Ruby" {
+		t.Errorf("trace Go = %+v, want alternative of Ruby", x)
+	}
+	if len(r.trace.Merges) != 1 || r.trace.Merges[0] != [2]string{"Kubernetes", "K8s"} || len(r.trace.Groups) != 1 {
+		t.Errorf("trace merges = %v, groups = %v", r.trace.Merges, r.trace.Groups)
+	}
+
 	c := m.Summary().Counters
 	// Kafka -> Go is one-way, so it does not merge.
 	if c["refinement.merged"] != 1 || c["refinement.one_way_duplicate"] != 1 ||
