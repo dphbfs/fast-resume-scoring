@@ -3,6 +3,8 @@
 package eval
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -25,8 +27,12 @@ type ExpectedRequirement struct {
 type Expected struct {
 	Requirements      []ExpectedRequirement `json:"requirements"`
 	AlternativeGroups [][]string            `json:"alternative_groups"`
-	Filler            []string              `json:"filler"`
-	Notes             string                `json:"notes"`
+	// Acceptable phrases may be extracted without counting as a hit or an
+	// error: defensible but not required (long responsibility clauses,
+	// company-internal system names).
+	Acceptable []string `json:"acceptable"`
+	Filler     []string `json:"filler"`
+	Notes      string   `json:"notes"`
 }
 
 // Fixture is one golden Job Description with its labels.
@@ -34,6 +40,17 @@ type Fixture struct {
 	ID       string
 	JD       domain.JobDescription
 	Expected Expected
+}
+
+// LabelsHash fingerprints the label files of fixtures, so reports scored
+// against different label versions can be told apart.
+func LabelsHash(fixtures []Fixture) string {
+	h := sha256.New()
+	for _, f := range fixtures {
+		raw, _ := json.Marshal(f.Expected)
+		fmt.Fprintf(h, "%s\n%s\n", f.ID, raw)
+	}
+	return hex.EncodeToString(h.Sum(nil))[:12]
 }
 
 // LoadGolden reads every <id>.expected.json in dir with its <id>.txt. If only

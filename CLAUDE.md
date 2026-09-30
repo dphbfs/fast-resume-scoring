@@ -144,12 +144,21 @@ inside a larger resume-tailoring backend.
   (4 in parallel), and writes `eval/reports/<UTC timestamp>.{json,md}`
   (committed, so changes can be compared). `EVAL_ARGS="-only <id-prefix>"`
   runs a subset.
-- Scoring (`internal/adapter/eval`): one-to-one matching of predicted to
-  expected Requirements; strict = value/alias equality after normalization;
-  loose also accepts padding (<= 3 extra words), a multi-word label shortened
-  by one word, or token Jaccard >= 0.6. Reports recall (strict/loose, per
-  tier), precision, F1, Filler extracted, Importance tier order and
-  Alternative Group pair-F1 (n/a until the Refinement Round exists), cost.
+- Labels follow the rules in `testdata/golden/README.md` (only employer
+  text; every named specific item is a Requirement; soft skills and long
+  duty clauses are `acceptable`; conditions, traits, headings, job titles
+  are `filler`; synonyms are one entry with aliases). `go test` lints the
+  labels (`TestGoldenLabelsAreConsistent`).
+- Scoring (`internal/adapter/eval`): one-to-one matching; strict =
+  value/alias equality after normalization; loose also accepts padding
+  (<= 3 extra words), a multi-word label shortened by one word, or token
+  Jaccard >= 0.6; words are split at `/` and `-` and compared by stem.
+  Buckets: match, miss, extra (counts against precision), filler (reported,
+  counts against precision), acceptable and duplicate (reported, excluded
+  from precision). Reports carry a labels fingerprint; compare runs only
+  when it matches.
+- `eval -rescore <report.json>` re-scores stored results against the current
+  labels with no API calls; use it after any label edit.
 - History (no Refinement Round yet), 2026-09-30:
   - baseline, one `no_requirement` option: recall 90.6% / precision 27.4%
   - four rejection options, decide on summed mass: 91.4% / 30.8%
@@ -168,9 +177,13 @@ inside a larger resume-tailoring backend.
     order 83.4%, group F1 63.0%, ~$0.0056 Jev per posting. The fallback
     confound was small (~0.6 recall); Refinement itself trades ~5 recall
     points for ~6 precision points and near-zero Filler.
-- Precision is capped partly by label gaps: sampled extras are ~40% real
-  requirements the golden labels omit. Runs vary by ~1 point because the Job
-  Summary is regenerated each run.
+- Runs vary by ~1 point because the Job Summary is regenerated each run.
+- Label review 2026-09-30 (labels `63732feae2fb`, 668 Requirements): the
+  numbers above used the old labels and are not comparable. The last clean
+  run rescored: recall 93.6% (strict 79.6%), precision 87.5%, F1 90.4%;
+  252 acceptable, 116 duplicates, 78 extras. Caveat: missing labels were
+  found by pooling the extractor's own extras, so Requirements that neither
+  the labels nor the extractor found stay invisible.
 
 ## Test data
 

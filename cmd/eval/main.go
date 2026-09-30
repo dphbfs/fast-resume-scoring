@@ -4,6 +4,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -23,6 +24,7 @@ func run() int {
 	out := flag.String("out", "eval/reports", "directory for the dated JSON and Markdown report")
 	parallel := flag.Int("parallel", 4, "fixtures extracted at once")
 	only := flag.String("only", "", "comma-separated fixture ID prefixes to run")
+	rescore := flag.String("rescore", "", "rescore the results in this report JSON against the current labels (no API calls)")
 	flag.Parse()
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -38,12 +40,27 @@ func run() int {
 		return 2
 	}
 
-	runner, err := initRunner()
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "eval:", err)
-		return 1
+	var report eval.Report
+	if *rescore != "" {
+		raw, err := os.ReadFile(*rescore)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		var prev eval.Report
+		if err := json.Unmarshal(raw, &prev); err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		report = eval.Rescore(prev, fixtures)
+	} else {
+		runner, err := initRunner()
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 1
+		}
+		report = runner.Run(ctx, fixtures, *parallel)
 	}
-	report := runner.Run(ctx, fixtures, *parallel)
 
 	path, err := report.Write(*out)
 	if err != nil {

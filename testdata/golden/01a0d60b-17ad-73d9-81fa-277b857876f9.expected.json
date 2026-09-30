@@ -14,14 +14,18 @@
     {"value": "security/compliance-sensitive systems", "aliases": ["compliance-sensitive systems"], "tier": "required"},
     {"value": "Web3", "aliases": ["Web3 or DeFi"], "tier": "required"},
     {"value": "DeFi", "aliases": [], "tier": "required"},
-    {"value": "EVM-based blockchains", "aliases": ["EVM", "blockchain"], "tier": "preferred"},
+    {"value": "EVM-based blockchains", "aliases": ["EVM", "blockchain", "blockchain networks"], "tier": "preferred"},
     {"value": "smart contract interactions", "aliases": ["smart contracts"], "tier": "preferred"},
     {"value": "KYC provider integration", "aliases": ["identity/KYC providers", "KYC"], "tier": "mentioned"},
     {"value": "custodian integrations", "aliases": ["custodians"], "tier": "mentioned"},
     {"value": "payments infrastructure", "aliases": [], "tier": "mentioned"},
-    {"value": "code reviews", "aliases": [], "tier": "mentioned"}
+    {"value": "code reviews", "aliases": [], "tier": "mentioned"},
+    {"value": "offchain infrastructure", "aliases": [], "tier": "mentioned"},
+    {"value": "onchain protocols", "aliases": [], "tier": "mentioned"},
+    {"value": "observability tools", "aliases": [], "tier": "mentioned"}
   ],
   "alternative_groups": [["Go", "Python", "C++", "TypeScript"], ["Web3", "DeFi"]],
-  "filler": ["fast-moving startup environment", "high ambiguity and high ownership", "located in a US time zone"],
-  "notes": "Languages are 'ideally ... such as', so preferred and grouped. 'AWS preferred' within a required cloud line. Web3 interest may come from side projects."
+  "acceptable": ["modern languages", "secure backend systems", "security protocols across the stack", "enforce backend engineering standards", "workflows between backend services", "deliver high-performance applications", "third-party blockchain tooling", "non-EVM", "architecture discussions", "auditability"],
+  "filler": ["fast-moving startup environment", "high ambiguity and high ownership", "located in a US time zone", "Senior Backend Engineer"],
+  "notes": "Languages are 'ideally ... such as', so preferred and grouped. 'AWS preferred' within a required cloud line. Web3 interest may come from side projects. Relabeled to README rules."
 }

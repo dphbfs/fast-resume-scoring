@@ -39,13 +39,21 @@ type FixtureScore struct {
 	TierOrder *float64 `json:"tier_order,omitempty"`
 	// GroupF1 is pair-level F1 of Alternative Groups over matched
 	// Requirements. Nil when the result has no groups.
-	GroupF1    *float64 `json:"group_f1,omitempty"`
-	Matches    []Match  `json:"matches"`
-	Misses     []string `json:"misses"`
-	Extras     []string `json:"extras"`
-	FillerHits []string `json:"filler_hits"`
-	DurationMS int64    `json:"duration_ms"`
-	Error      string   `json:"error,omitempty"`
+	GroupF1        *float64 `json:"group_f1,omitempty"`
+	Matches        []Match  `json:"matches"`
+	Misses         []string `json:"misses"`
+	Extras         []string `json:"extras"`
+	FillerHits     []string `json:"filler_hits"`
+	AcceptableHits []string `json:"acceptable_hits"`
+	// DuplicateHits are predictions matching a Requirement that another
+	// prediction already matched: a deduplication miss, not a wrong
+	// extraction.
+	DuplicateHits []string `json:"duplicate_hits"`
+	DurationMS    int64    `json:"duration_ms"`
+	Error         string   `json:"error,omitempty"`
+	// Result is the extractor output, stored so labels can be rescored
+	// offline (eval -rescore).
+	Result *domain.Result `json:"result,omitempty"`
 }
 
 var (
@@ -68,20 +76,55 @@ var stopwords = map[string]bool{
 	"experience": true, "strong": true, "proficiency": true, "knowledge": true,
 }
 
-// content returns the normalized tokens that carry meaning.
+// content returns the normalized tokens that carry meaning. Slash- and
+// hyphen-joined words are split ("terraform/terragrunt", "GitOps-style"),
+// and each token is stemmed.
 func content(s string) []string {
 	var out []string
-	for _, t := range strings.Fields(normalize(s)) {
-		if !stopwords[t] {
-			out = append(out, t)
+	for _, f := range strings.Fields(normalize(s)) {
+		for _, t := range strings.FieldsFunc(f, func(r rune) bool { return r == '/' || r == '-' }) {
+			t = strings.Trim(t, ".'")
+			if t != "" && !stopwords[t] {
+				out = append(out, stem(t))
+			}
 		}
 	}
 	return out
 }
 
+// suffixes are stripped by stem, longest first.
+var suffixes = []string{"izations", "ization", "ments", "ment", "ships", "ship", "ings", "ing", "ions", "ion", "es", "ed", "s"}
+
+// stem strips one common English suffix, keeping at least 4 letters, so
+// "alerts", "alerting" -> "alert" and "mentorship", "mentoring" -> "mentor".
+func stem(t string) string {
+	for _, suf := range suffixes {
+		if strings.HasSuffix(t, suf) && len(t)-len(suf) >= 4 {
+			return t[:len(t)-len(suf)]
+		}
+	}
+	return t
+}
+
+// tokEq matches equal stems, or stems of 5+ letters where one is a prefix
+// of the other ("modell"/"model", "productioniz"/"productionize").
+func tokEq(a, b string) bool {
+	if a == b {
+		return true
+	}
+	if min(len(a), len(b)) < 5 {
+		return false
+	}
+	return strings.HasPrefix(a, b) || strings.HasPrefix(b, a)
+}
+
+func containsTok(list []string, t string) bool {
+	return slices.ContainsFunc(list, func(x string) bool { return tokEq(x, t) })
+}
+
 func subset(a, b []string) bool {
 	for _, x := range a {
-		if !slices.Contains(b, x) {
+		if !containsTok(b, x) {
 			return false
 		}
 	}
@@ -91,7 +134,7 @@ func subset(a, b []string) bool {
 func jaccard(a, b []string) float64 {
 	inter := 0
 	for _, x := range a {
-		if slices.Contains(b, x) {
+		if containsTok(b, x) {
 			inter++
 		}
 	}
@@ -141,13 +184,15 @@ func looseMatch(variants []string, predicted string) bool {
 // Requirements are matched one-to-one, strict matches first.
 func Score(exp Expected, res domain.Result) FixtureScore {
 	s := FixtureScore{
-		Expected:   len(exp.Requirements),
-		Predicted:  len(res.Requirements),
-		Tiers:      map[string]TierScore{},
-		Matches:    []Match{},
-		Misses:     []string{},
-		Extras:     []string{},
-		FillerHits: []string{},
+		Expected:       len(exp.Requirements),
+		Predicted:      len(res.Requirements),
+		Tiers:          map[string]TierScore{},
+		Matches:        []Match{},
+		Misses:         []string{},
+		Extras:         []string{},
+		FillerHits:     []string{},
+		AcceptableHits: []string{},
+		DuplicateHits:  []string{},
 	}
 	variants := make([][]string, len(exp.Requirements))
 	for i, e := range exp.Requirements {
@@ -200,9 +245,14 @@ func Score(exp Expected, res domain.Result) FixtureScore {
 		if usedPred[j] {
 			continue
 		}
-		if looseMatch(exp.Filler, p.Value) || strictMatch(exp.Filler, p.Value) {
+		switch {
+		case looseMatch(exp.Filler, p.Value) || strictMatch(exp.Filler, p.Value):
 			s.FillerHits = append(s.FillerHits, p.Value)
-		} else {
+		case slices.ContainsFunc(variants, func(v []string) bool { return strictMatch(v, p.Value) || looseMatch(v, p.Value) }):
+			s.DuplicateHits = append(s.DuplicateHits, p.Value)
+		case looseMatch(exp.Acceptable, p.Value) || strictMatch(exp.Acceptable, p.Value):
+			s.AcceptableHits = append(s.AcceptableHits, p.Value)
+		default:
 			s.Extras = append(s.Extras, p.Value)
 		}
 	}
@@ -210,6 +260,12 @@ func Score(exp Expected, res domain.Result) FixtureScore {
 	s.TierOrder = tierOrder(exp, res, matchedPred)
 	s.GroupF1 = groupF1(exp, res, matchedPred)
 	return s
+}
+
+// Precision is loose matches over predictions that are neither acceptable
+// nor duplicates.
+func (s FixtureScore) Precision() float64 {
+	return ratio(s.LooseMatched, s.Predicted-len(s.AcceptableHits)-len(s.DuplicateHits))
 }
 
 func tierOrder(exp Expected, res domain.Result, matchedPred []int) *float64 {

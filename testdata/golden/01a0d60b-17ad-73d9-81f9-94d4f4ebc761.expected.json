@@ -3,7 +3,7 @@
     {"value": "3+ years software engineering", "aliases": ["3+ years of professional software engineering experience"], "tier": "required"},
     {"value": "production systems at scale", "aliases": [], "tier": "required"},
     {"value": "Go", "aliases": ["Golang"], "tier": "required"},
-    {"value": "REST APIs", "aliases": ["REST API design"], "tier": "required"},
+    {"value": "REST APIs", "aliases": ["REST API design", "design APIs", "API endpoints", "implement API endpoints"], "tier": "required"},
     {"value": "API authentication", "aliases": ["authentication"], "tier": "required"},
     {"value": "PostgreSQL", "aliases": ["Postgres"], "tier": "required"},
     {"value": "schema design", "aliases": [], "tier": "required"},
@@ -15,16 +15,23 @@
     {"value": "event-driven replication", "aliases": [], "tier": "required"},
     {"value": "platform infrastructure", "aliases": ["internal developer platforms"], "tier": "preferred"},
     {"value": "Kubernetes", "aliases": [], "tier": "preferred"},
-    {"value": "event-driven architectures", "aliases": ["outbox patterns", "message-based replication"], "tier": "preferred"},
+    {"value": "event-driven architectures", "aliases": ["event-driven architecture"], "tier": "preferred"},
     {"value": "Watermill", "aliases": [], "tier": "preferred"},
     {"value": "Kafka", "aliases": [], "tier": "preferred"},
     {"value": "edge computing platforms", "aliases": ["edge-native runtimes", "serverless"], "tier": "preferred"},
     {"value": "Cloudflare Workers", "aliases": [], "tier": "preferred"},
     {"value": "microservices", "aliases": [], "tier": "mentioned"},
     {"value": "bulk operations APIs", "aliases": [], "tier": "mentioned"},
-    {"value": "concurrency control", "aliases": ["quota enforcement"], "tier": "mentioned"}
+    {"value": "concurrency control", "aliases": [], "tier": "mentioned"},
+    {"value": "routing", "aliases": [], "tier": "required"},
+    {"value": "request lifecycle", "aliases": [], "tier": "required"},
+    {"value": "outbox patterns", "aliases": ["outbox pattern"], "tier": "preferred"},
+    {"value": "message-based replication", "aliases": [], "tier": "preferred"},
+    {"value": "quota enforcement", "aliases": [], "tier": "mentioned"},
+    {"value": "data modeling", "aliases": ["define data models", "data models"], "tier": "mentioned"}
   ],
-  "alternative_groups": [["Watermill", "Kafka"]],
-  "filler": ["navigate ambiguity", "drive alignment with engineers", "Austin (Hybrid)", "authorization to receive export-controlled technology"],
-  "notes": "Cloudflare product names in the 'Why This Role' and company sections (Zero Trust, DNS, Access, Billing, 1.1.1.1) are context, not Requirements."
+  "alternative_groups": [["Watermill", "Kafka"], ["event-driven architectures", "outbox patterns", "message-based replication"]],
+  "acceptable": ["communicate technical tradeoffs", "drive alignment with engineers", "implications of propagating state", "build the service-layer logic that handles validation", "scaling the platform", "edge infrastructure", "well-tested web services", "onboard their resources", "higher-throughput use cases", "failure-mode tradeoffs"],
+  "filler": ["navigate ambiguity", "Austin (Hybrid)", "authorization to receive export-controlled technology", "maintaining legacy systems"],
+  "notes": "Cloudflare product names in the 'Why This Role' and company sections (Zero Trust, DNS, Access, Billing, 1.1.1.1) are context, not Requirements. Relabeled to README rules: the \"event-driven architectures, outbox patterns, or message-based replication\" list is three grouped entries; \"not maintaining legacy systems\" is a negative, so filler."
 }
