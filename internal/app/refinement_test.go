@@ -195,3 +195,47 @@ func TestDuplicateOptions(t *testing.T) {
 		t.Errorf("similar options for PostgreSQL = %q, want Postgres", got)
 	}
 }
+
+func TestIsJobTitleFragment(t *testing.T) {
+	title := "Senior Software Engineer, PHP"
+	tests := map[string]bool{
+		"Senior Software Engineer, PHP": true, // the title
+		"Software Engineer PHP":         true, // run of the title with a role word
+		"Senior Software Engineer":      true,
+		"PHP":                           false, // one word: a real skill
+		"Software":                      false,
+		"PHP frameworks":                false, // not in the title
+	}
+	for v, want := range tests {
+		if got := isJobTitleFragment(v, title); got != want {
+			t.Errorf("isJobTitleFragment(%q) = %v, want %v", v, got, want)
+		}
+	}
+	if isJobTitleFragment("Golang services", "Senior Software Engineer -Golang (Security)") {
+		t.Error("a phrase without a role word is not a title fragment")
+	}
+}
+
+func TestRefinementRoundDropsJobTitle(t *testing.T) {
+	srv := jevtest.NewServer(t, refinementResponder(t))
+	e, m := newTestExtractor(t, srv.URL, config.Pipeline{})
+	r := refinementRun()
+	r.jd.Title = "Senior Backend Engineer"
+	r.accepted = append(r.accepted, judged{Candidate: domain.Candidate{Text: "Backend Engineer", Ref: "s1"}})
+	if err := e.refinementRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	if slices.Contains(acceptedTexts(r.accepted), "Backend Engineer") {
+		t.Errorf("accepted = %q, want the job title dropped", acceptedTexts(r.accepted))
+	}
+	if m.Summary().Counters["refinement.dropped.job_title"] != 1 {
+		t.Error("job title drop not counted")
+	}
+	for _, req := range srv.Requests() {
+		for _, q := range req.Questions {
+			if questionRequirement(t, q) == "Backend Engineer" {
+				t.Fatal("job title was sent to Jev")
+			}
+		}
+	}
+}

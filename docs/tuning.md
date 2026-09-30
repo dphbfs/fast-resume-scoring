@@ -63,11 +63,11 @@ Misses by stage (from the trace; `eval` reports them per miss):
 
 | # | Problem (count) | Examples | Proposed fix | Stage |
 |---|---|---|---|---|
-| C1 | Job title fragments extracted as Requirements (7 Filler hits) | "Senior Backend Engineer", "Software Engineer PHP" | Drop a Requirement whose normalized value equals, or is contained in, the job title | Refinement / result |
-| C2 | Slash-joined selection hides a Requirement (~8 misses) | "TypeScript/Node.js", "terraform/terragrunt", "OpenSSL/AWS-LC", "microservices/serverless" | When the selected Candidate is slash-joined and each part is also a Candidate of the Chunk, emit each part | Validation |
+| ~~C1~~ done | Job title fragments extracted as Requirements (7 Filler hits) | "Senior Backend Engineer", "Software Engineer PHP" | Drop a Requirement whose normalized value equals, or is contained in, the job title | Refinement / result |
+| ~~C2~~ done | Slash-joined selection hides a Requirement (~8 misses) | "TypeScript/Node.js", "terraform/terragrunt", "OpenSSL/AWS-LC", "microservices/serverless" | When the selected Candidate is slash-joined and each part is also a Candidate of the Chunk, emit each part | Validation |
 | C3 | Inline "Label:" prefixes read as Requirements (2 extras) | "Backend Expertise", "Architectural Judgment" (from "Deep Backend Expertise: …") | Strip a leading "Title Case words:" prefix of up to 4 words before chunking | Candidate generation |
 | C4 | Years-qualifier fragments (~10 extras) | "years experience", "years of experience working", "5+ years building", "related field", "foreign equivalent" | Add "years", "year", "related", "field", "equivalent", "foreign" to the generic-only words; never offer a Candidate that starts with "years" | Candidate generation |
-| C5 | Short unpunctuated bullet lines skipped as headings (3 misses) | "Experience with TypeScript/Node.js", "Designing new microservices or systems" | Only skip a sentence as a heading when it ends with ":" or is a markdown heading; keep the short-line rule for heading context only | Candidate generation |
+| ~~C5~~ done | Short unpunctuated bullet lines skipped as headings (3 misses) | "Experience with TypeScript/Node.js", "Designing new microservices or systems" | Only skip a sentence as a heading when it ends with ":" or is a markdown heading; keep the short-line rule for heading context only | Candidate generation |
 
 ## Step 3: Jev question tuning (Validation Round)
 
@@ -107,3 +107,4 @@ Misses by stage (from the trace; `eval` reports them per miss):
 | 2026-09-30 | Fixed inputs (fallback summaries, endpoint down): baseline (no C5, no C2) | `63732feae2fb` | 91.9% (76.6%) | 82.6% | 87.0% | reference |
 | 2026-09-30 | Fixed inputs: C5 | `63732feae2fb` | 92.5% (76.5%) | 81.6% | 86.7% | kept (within noise, mechanism verified) |
 | 2026-09-30 | Fixed inputs: C5 + C2, two runs | `63732feae2fb` | 93.3% / 93.0% | 82.5% / 82.0% | 87.6% / 87.2% | yes (+0.7 F1 vs C5, both runs) |
+| 2026-09-30 | C1: drop job-title fragments before Refinement. Offline on both C5 + C2 runs: removes 4 / 5 predictions, all Filler hits, no matches | `63732feae2fb` | unchanged | +~0.4 | +~0.2 | yes (exact, deterministic filter) |
