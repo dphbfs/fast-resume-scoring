@@ -53,7 +53,7 @@ type run struct {
 	headings   []string // headings[i] is the nearest heading above sentences[i]
 	summary    string
 	candidates []domain.Candidate
-	accepted   []domain.Candidate
+	accepted   []judged
 	result     domain.Result
 }
 
@@ -92,14 +92,6 @@ func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(cont
 	e.log.InfoContext(ctx, "stage done", "stage", name, "duration_ms", elapsed.Milliseconds())
 	return nil
 }
-
-// jobSummary asks the generative client for a Job Summary, falling back to
-// the title plus required/preferred sentences.
-func (e *Extractor) jobSummary(context.Context, *run) error { return ErrNotImplemented }
-
-// validationRound judges Candidates, one Jev request per Context Sentence,
-// then runs the compound check.
-func (e *Extractor) validationRound(context.Context, *run) error { return ErrNotImplemented }
 
 // refinementRound merges synonyms, builds Alternative Groups, drops Filler
 // and assigns Importance in one batched Jev request.
