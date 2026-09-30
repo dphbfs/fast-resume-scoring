@@ -7,7 +7,7 @@
 package main
 
 import (
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/cli"
+	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-tailoring/internal/app"
@@ -18,8 +18,9 @@ import (
 
 // Injectors from wire.go:
 
-// initApp builds the CLI with every dependency wired from the environment.
-func initApp() (*cli.App, error) {
+// initRunner builds the eval Runner with every dependency wired from the
+// environment.
+func initRunner() (*eval.Runner, error) {
 	configConfig, err := config.Load()
 	if err != nil {
 		return nil, err
@@ -38,6 +39,6 @@ func initApp() (*cli.App, error) {
 	}
 	pipeline := configConfig.Pipeline
 	extractor := app.New(client, openaiClient, recorder, logger, pipeline)
-	cliApp := cli.New(extractor, recorder, logger)
-	return cliApp, nil
+	runner := eval.NewRunner(extractor, recorder, logger)
+	return runner, nil
 }

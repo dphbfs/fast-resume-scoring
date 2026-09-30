@@ -4,7 +4,6 @@ package app
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
 	"time"
@@ -13,9 +12,6 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
-
-// ErrNotImplemented marks pipeline stages that are still scaffolding.
-var ErrNotImplemented = errors.New("not implemented")
 
 // Extractor runs the Requirement Extractor pipeline.
 type Extractor struct {
@@ -54,7 +50,10 @@ type run struct {
 	summary   string
 	chunks    []chunk
 	accepted  []judged
-	result    domain.Result
+	// Refinement Round output, keyed by lowercase Requirement value.
+	importance map[string]float64
+	groups     [][]string
+	result     domain.Result
 }
 
 // Extract turns a Job Description into Requirements.
@@ -70,6 +69,7 @@ func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (doma
 		{"job_summary", e.jobSummary},
 		{"validation_round", e.validationRound},
 		{"refinement_round", e.refinementRound},
+		{"build_result", e.buildResult},
 	}
 	for _, s := range stages {
 		if err := e.stage(ctx, s.name, r, s.fn); err != nil {
@@ -93,6 +93,11 @@ func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(cont
 	return nil
 }
 
-// refinementRound merges synonyms, builds Alternative Groups, drops Filler
-// and assigns Importance in one batched Jev request.
-func (e *Extractor) refinementRound(context.Context, *run) error { return ErrNotImplemented }
+// refinementRound will merge synonyms, build Alternative Groups, drop Filler
+// and assign Importance in one batched Jev request. Until then it passes the
+// validated Requirements through unchanged, and says so on every run.
+func (e *Extractor) refinementRound(ctx context.Context, _ *run) error {
+	e.log.WarnContext(ctx, "refinement round not implemented: no synonym merge, "+
+		"Filler drop, Alternative Groups or Importance")
+	return nil
+}
