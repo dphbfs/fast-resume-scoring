@@ -38,8 +38,16 @@ Misses by stage (from the trace; `eval` reports them per miss):
 
 - Change one thing per experiment, then run `make eval` and compare only
   reports with the same labels fingerprint.
-- Keep a change only if F1 improves without recall dropping more than about
-  1 point; runs vary by ~1 point because the Job Summary is regenerated.
+- **Noise.** Eval caches Job Summaries (`eval/cache/summaries`), so inputs
+  are fixed across runs, but Jev itself is not fully deterministic: with
+  identical inputs, 1.5% of Section labels, 3.6% of Chunk selections and
+  6.7% of Refinement decisions flipped between two runs (near-ties), moving
+  the headline by ~0.5 points. Differences under ~1 point are noise.
+- Decide small changes by **mechanism plus numbers**: the trace must show
+  the targeted misses/extras going away, and the headline must not get worse
+  beyond noise. For effects near the noise, run each variant twice.
+- Keep a change only if F1 improves (or ties within noise with its mechanism
+  verified) without recall dropping more than about 1 point.
 - Record every experiment (kept or not) in the log at the bottom.
 - Label edits are not tuning: fix labels only when they break the README
   rules, then `eval -rescore` and note the new fingerprint.
@@ -95,3 +103,7 @@ Misses by stage (from the trace; `eval` reports them per miss):
 | 2026-09-30 | Baseline after label review (rescore) | `63732feae2fb` | 93.6% (79.6%) | 87.5% | 90.4% | n/a |
 | 2026-09-30 | Live baseline with traces (tier order 81.9%, group F1 68.5%) | `63732feae2fb` | 93.4% (79.2%) | 86.8% | 90.0% | n/a |
 | 2026-09-30 | C5: skip only strong headings (":" or markdown); section_dropped 3 -> 0 | `63732feae2fb` | 94.3% (79.6%) | 86.1% | 90.0% | yes (F1 tie, recall +0.9, removes a failure class) |
+| 2026-09-30 | C2 first run (live summaries): scoring misses 7 -> 3, but headline fell; other stages moved too, which exposed run noise | `63732feae2fb` | 93.3% (79.5%) | 83.4% | 88.1% | re-tested below |
+| 2026-09-30 | Fixed inputs (fallback summaries, endpoint down): baseline (no C5, no C2) | `63732feae2fb` | 91.9% (76.6%) | 82.6% | 87.0% | reference |
+| 2026-09-30 | Fixed inputs: C5 | `63732feae2fb` | 92.5% (76.5%) | 81.6% | 86.7% | kept (within noise, mechanism verified) |
+| 2026-09-30 | Fixed inputs: C5 + C2, two runs | `63732feae2fb` | 93.3% / 93.0% | 82.5% / 82.0% | 87.6% / 87.2% | yes (+0.7 F1 vs C5, both runs) |

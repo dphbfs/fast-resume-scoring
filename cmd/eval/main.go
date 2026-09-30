@@ -13,6 +13,7 @@ import (
 	"syscall"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
+	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/gencache"
 )
 
 func main() {
@@ -25,6 +26,7 @@ func run() int {
 	parallel := flag.Int("parallel", 4, "fixtures extracted at once")
 	only := flag.String("only", "", "comma-separated fixture ID prefixes to run")
 	rescore := flag.String("rescore", "", "rescore the results in this report JSON against the current labels (no API calls)")
+	summaries := flag.String("summaries", "eval/cache/summaries", "cache directory for generated Job Summaries (keeps Validation inputs fixed across runs)")
 	flag.Parse()
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -59,7 +61,7 @@ func run() int {
 		}
 		report = eval.Rescore(prev, fixtures, traces)
 	} else {
-		runner, err := initRunner()
+		runner, err := initRunner(gencache.Dir(*summaries))
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 1

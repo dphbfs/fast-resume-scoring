@@ -161,6 +161,10 @@ inside a larger resume-tailoring backend.
   counts against precision), acceptable and duplicate (reported, excluded
   from precision). Reports carry a labels fingerprint; compare runs only
   when it matches.
+- Eval caches generated Job Summaries in `eval/cache/summaries` (keyed by
+  prompt hash; commit it) so Validation inputs are fixed across runs. Jev
+  itself varies by ~0.5 points between identical runs; see `docs/tuning.md`
+  for the experiment rules.
 - `eval -rescore <report.json>` re-scores stored results against the current
   labels with no API calls; use it after any label edit.
 - Eval writes each fixture's trace to `eval/reports/<run>-traces/`
