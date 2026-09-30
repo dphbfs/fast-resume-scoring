@@ -163,7 +163,11 @@ inside a larger resume-tailoring backend.
     66.9%, 58 merges. Misses: ~14 from Filler drops ("Infrastructure as
     Code", "SIEM"), ~17 where labels keep related items separate. These
     Refinement runs used the fallback Job Summary (generative endpoint
-    unreachable), so recall vs the earlier runs is confounded.
+    unreachable).
+  - v2 rerun with real Job Summaries: 86.5% (strict 71.4%) / 40.8%, tier
+    order 83.4%, group F1 63.0%, ~$0.0056 Jev per posting. The fallback
+    confound was small (~0.6 recall); Refinement itself trades ~5 recall
+    points for ~6 precision points and near-zero Filler.
 - Precision is capped partly by label gaps: sampled extras are ~40% real
   requirements the golden labels omit. Runs vary by ~1 point because the Job
   Summary is regenerated each run.
