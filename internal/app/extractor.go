@@ -47,14 +47,14 @@ func New(
 
 // run tracks one pipeline state across stages.
 type run struct {
-	jd         domain.JobDescription
-	model      string // versioned Jev model that answered, e.g. "jev-1.13.0"
-	sentences  []domain.ContextSentence
-	headings   []string // headings[i] is the nearest heading above sentences[i]
-	summary    string
-	candidates []domain.Candidate
-	accepted   []judged
-	result     domain.Result
+	jd        domain.JobDescription
+	model     string // versioned Jev model that answered, e.g. "jev-1.13.0"
+	sentences []domain.ContextSentence
+	headings  []string // headings[i] is the nearest heading above sentences[i]
+	summary   string
+	chunks    []chunk
+	accepted  []judged
+	result    domain.Result
 }
 
 // Extract turns a Job Description into Requirements.

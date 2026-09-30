@@ -45,8 +45,10 @@ func TestCandidateCoverageOfGoldenSet(t *testing.T) {
 		sentences, _ := splitSentences(string(text))
 		candidates := map[string]bool{}
 		for _, s := range sentences {
-			for _, c := range sentenceCandidates(s, defaultMaxWindowWords) {
-				candidates[norm(c.Text)] = true
+			for _, c := range chunkSentence(s, defaultMaxWindowWords) {
+				for _, o := range c.Options {
+					candidates[norm(o)] = true
+				}
 			}
 		}
 		for _, r := range exp.Requirements {

@@ -143,18 +143,103 @@ func isStopword(w string) bool { return stopwords[strings.ToLower(w)] }
 
 func hasLetter(s string) bool { return strings.IndexFunc(s, unicode.IsLetter) >= 0 }
 
-// generateCandidates builds Candidates from every sentence whose Section is
-// not dropped.
+// separators split a sentence into chunks and are left out of them. "such"
+// is only a separator when followed by "as".
+var separators = map[string]bool{
+	"and": true, "or": true, "nor": true, "&": true, "+": true, "plus": true,
+	"with": true, "including": true, "like": true, "e.g": true, "i.e": true,
+	"especially": true, "preferably": true, "ideally": true, "such": true,
+}
+
+// maxWholeChunkWords is the longest chunk that is itself offered as an
+// option, so long qualifiers ("5+ years of software engineering experience")
+// can be selected whole.
+const maxWholeChunkWords = 8
+
+// maxChunkOptions keeps each Choice within Jev's 255-option limit
+// (one slot is noRequirement).
+const maxChunkOptions = 254
+
+// chunk is a clause-sized piece of a sentence, cut at clause breaks and list
+// words, that names at most one Requirement. Options are its Candidates.
+type chunk struct {
+	Ref     domain.Ref
+	Text    string
+	Options []string
+}
+
+// chunkSentence cuts a sentence into chunks at clause breaks (commas,
+// brackets, dashes, sentence punctuation) and list words ("and", "or",
+// "with", "such as", "including", "e.g."). Chunks with only stopwords are
+// dropped.
+func chunkSentence(s domain.ContextSentence, maxWords int) []chunk {
+	toks := tokenize(s.Text, false)
+	var out []chunk
+	var cur []string
+	flush := func() {
+		if len(cur) == 0 {
+			return
+		}
+		text := strings.Join(cur, " ")
+		cur = cur[:0]
+		if c, ok := newChunk(s.Ref, text, maxWords); ok {
+			out = append(out, c)
+		}
+	}
+	for i, t := range toks {
+		w := strings.ToLower(t.text)
+		isSep := separators[w] && (w != "such" || (i+1 < len(toks) && strings.EqualFold(toks[i+1].text, "as")))
+		if isSep || (w == "as" && i > 0 && strings.EqualFold(toks[i-1].text, "such")) {
+			flush()
+			continue
+		}
+		cur = append(cur, t.text)
+		if t.breakAfter {
+			flush()
+		}
+	}
+	flush()
+	return out
+}
+
+// newChunk builds a chunk whose options are its pruned windows (both slash
+// tokenizations) plus the whole chunk when it is short enough.
+func newChunk(ref domain.Ref, text string, maxWords int) (chunk, bool) {
+	var opts []string
+	seen := map[string]bool{}
+	add := func(o string) {
+		if k := strings.ToLower(o); !seen[k] && len(opts) < maxChunkOptions {
+			seen[k] = true
+			opts = append(opts, o)
+		}
+	}
+	words := strings.Fields(text)
+	if len(words) <= maxWholeChunkWords && !isStopword(words[0]) && !isStopword(words[len(words)-1]) && hasLetter(text) {
+		add(text)
+	}
+	for _, c := range sentenceCandidates(domain.ContextSentence{Ref: ref, Text: text}, maxWords) {
+		add(c.Text)
+	}
+	return chunk{Ref: ref, Text: text, Options: opts}, len(opts) > 0
+}
+
+// generateCandidates builds the chunks, and their Candidate options, of every
+// sentence whose Section is not dropped.
 func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
-	r.candidates = r.candidates[:0]
+	r.chunks = r.chunks[:0]
+	options := 0
 	for _, s := range r.sentences {
 		if droppedSections[s.Section] {
 			continue
 		}
-		cs := sentenceCandidates(s, e.cfg.MaxWindowWords)
-		e.log.DebugContext(ctx, "candidates", "ref", s.Ref, "count", len(cs))
-		r.candidates = append(r.candidates, cs...)
+		cs := chunkSentence(s, e.cfg.MaxWindowWords)
+		for _, c := range cs {
+			options += len(c.Options)
+		}
+		e.log.DebugContext(ctx, "chunks", "ref", s.Ref, "count", len(cs))
+		r.chunks = append(r.chunks, cs...)
 	}
-	e.metrics.Add("candidates.total", int64(len(r.candidates)))
+	e.metrics.Add("chunks.total", int64(len(r.chunks)))
+	e.metrics.Add("candidates.total", int64(options))
 	return nil
 }

@@ -42,22 +42,25 @@ Job Description (`.txt` / `.md` file):
 2. Section labeling: one Jev Choice per sentence (`required | preferred |
    responsibilities | company | benefits | other`) in one batched request;
    `company` / `benefits` / `other` sentences are dropped before windowing
-3. Sliding-window Candidate generation, pruned in code (no leading/trailing
-   stopwords, max window length from config)
+3. Chunking and Candidate generation (code only): each kept sentence is cut
+   into Chunks at clause breaks (commas, brackets, dashes) and list words
+   (`and`, `or`, `with`, `such as`, `including`, `e.g.`, `like`). A Chunk's
+   Candidates are its pruned windows (1..`PIPELINE_MAX_WINDOW_WORDS` words,
+   no leading/trailing stopwords; slash-joined names both split and whole)
+   plus the whole Chunk when it has <= 8 words.
 4. Validation Round: one Jev request per Context Sentence (state: Section +
    sentence + Job Summary from `AIGenerativeClient`, generated once per run),
-   one Noul per Candidate asking whether it is a single atomic Requirement. Requests run through the bounded concurrency layer.
-   - Current question: one Jev Choice per Candidate (technology /
-     skill_or_domain / experience_or_qualification / responsibility vs.
-     partial_or_padded / several_items / generic) with the 3 words before and
-     after embedded; accept when mass on the first four >= 0.5. **Known
-     issue:** judged independently, single words cut from longer names
-     ("financial" from "financial systems") are accepted, so the compound
-     check drops good multi-word phrases. Redesign pending (see git log).
-   - Compound check (early versions only): if an accepted Candidate contains
-     two or more other accepted Candidates, drop it and **log a warning**. Any
-     hit means Jev failed the task or its answer was misread, so treat it as a
-     bug signal, not normal flow.
+   one Choice per Chunk: "which option names the requirement in `chunk`
+   completely and without extra words?", options = its Candidates +
+   `no_requirement`. The selected Candidate becomes a validated Requirement.
+   Requests run through the bounded concurrency layer.
+   - Why select, not judge: judging each window alone (Noul, or a Choice of
+     kinds) accepted cut-off words like "financial" from "financial
+     systems" in live tests.
+   - The compound check was removed: Chunks never overlap, so a selection
+     cannot contain other selections.
+   - Open tuning (needs `make eval`): a minimum selection probability; long
+     whole-Chunk picks; splitting at "and" cuts some years qualifiers.
 5. Refinement Round: one batched request. State is the validated Requirements,
    each with all its Context Sentences and their Sections, so recurrence and
    Section are explicit data (Jev can't count). Per Requirement:
