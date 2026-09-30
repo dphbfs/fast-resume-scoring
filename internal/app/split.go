@@ -28,23 +28,54 @@ var abbreviations = map[string]bool{
 // splitSentences turns a Job Description into Context Sentences with Refs
 // s1..sN. Each non-empty line is a sentence after list markers are stripped;
 // prose lines are further split at sentence boundaries. Heading lines are
-// kept, because Section labeling uses them as context.
-func splitSentences(text string) []domain.ContextSentence {
-	var out []domain.ContextSentence
+// kept as sentences too.
+//
+// headings[i] is the nearest heading at or above sentence i ("" if none).
+// Section labeling passes it to Jev directly, because Jev cannot reliably
+// locate a sentence by its position in a list.
+func splitSentences(text string) (sentences []domain.ContextSentence, headings []string) {
+	current := ""
 	for line := range strings.Lines(text) {
-		line = listMarker.ReplaceAllString(strings.TrimSpace(line), "")
-		line = strings.TrimSpace(whitespace.ReplaceAllString(line, " "))
-		for _, s := range splitLine(line) {
-			if !hasAlnum(s) {
+		line = strings.TrimSpace(line)
+		marker := listMarker.FindString(line)
+		line = strings.TrimSpace(whitespace.ReplaceAllString(line[len(marker):], " "))
+		parts := splitLine(line)
+		if isHeading(line, marker, len(parts)) {
+			current = line
+		}
+		for _, p := range parts {
+			if !hasAlnum(p) {
 				continue
 			}
-			out = append(out, domain.ContextSentence{
-				Ref:  domain.Ref(fmt.Sprintf("s%d", len(out)+1)),
-				Text: s,
+			sentences = append(sentences, domain.ContextSentence{
+				Ref:  domain.Ref(fmt.Sprintf("s%d", len(sentences)+1)),
+				Text: p,
 			})
+			headings = append(headings, current)
 		}
 	}
-	return out
+	return sentences, headings
+}
+
+// isHeading reports whether a line (with its stripped list marker) reads as a
+// section heading: a markdown heading, or a non-list line that ends with ":"
+// or is short, comma-free, and unpunctuated ("About the role").
+func isHeading(line, marker string, sentences int) bool {
+	if sentences != 1 || !hasAlnum(line) {
+		return false
+	}
+	if strings.HasPrefix(marker, "#") {
+		return true
+	}
+	if marker != "" {
+		return false
+	}
+	if strings.HasSuffix(line, ":") {
+		return true
+	}
+	return len(strings.Fields(line)) <= 6 &&
+		!strings.ContainsAny(line, ",") &&
+		!strings.ContainsAny(line[len(line)-1:], ".!?)")
 }
 
 // splitLine splits one line at sentence-ending punctuation that is followed
@@ -104,7 +135,7 @@ func hasAlnum(s string) bool {
 
 // splitSentencesStage is the pipeline stage wrapper.
 func (e *Extractor) splitSentencesStage(_ context.Context, r *run) error {
-	r.sentences = splitSentences(r.jd.Text)
+	r.sentences, r.headings = splitSentences(r.jd.Text)
 	if len(r.sentences) == 0 {
 		return fmt.Errorf("job description has no sentences")
 	}

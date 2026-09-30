@@ -24,7 +24,7 @@ func TestSplitSentencesBulk(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		ss := splitSentences(string(raw))
+		ss, _ := splitSentences(string(raw))
 		if len(ss) == 0 {
 			t.Errorf("%s: no sentences", filepath.Base(f))
 		}

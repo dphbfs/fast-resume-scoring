@@ -50,6 +50,7 @@ type run struct {
 	jd         domain.JobDescription
 	model      string // versioned Jev model that answered, e.g. "jev-1.13.0"
 	sentences  []domain.ContextSentence
+	headings   []string // headings[i] is the nearest heading above sentences[i]
 	summary    string
 	candidates []domain.Candidate
 	accepted   []domain.Candidate

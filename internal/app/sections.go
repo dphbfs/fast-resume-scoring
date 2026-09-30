@@ -11,21 +11,18 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
 
-// sectionState is the Jev state for Section labeling: every sentence in
-// order, so each question can use the headings around its sentence.
+// sectionState is the Jev state for Section labeling: the posting as
+// background. Each question carries its own sentence and heading.
 type sectionState struct {
-	JobTitle  string   `json:"job_title"`
-	Sentences []string `json:"sentences"`
+	JobTitle   string `json:"job_title"`
+	JobPosting string `json:"job_posting"`
 }
 
 // labelSections assigns a Section to every Context Sentence. Questions are
-// split into batches of cfg.SectionBatchSize; every batch sends the full
+// split into batches of cfg.SectionBatchSize; every batch sends the same
 // state and batches run concurrently (bounded by the Jev client's limiter).
 func (e *Extractor) labelSections(ctx context.Context, r *run) error {
-	state := sectionState{JobTitle: r.jd.Title, Sentences: make([]string, len(r.sentences))}
-	for i, s := range r.sentences {
-		state.Sentences[i] = s.Text
-	}
+	state := sectionState{JobTitle: r.jd.Title, JobPosting: r.jd.Text}
 
 	valid := make(map[string]bool, len(domain.Sections))
 	for _, s := range domain.Sections {
@@ -40,7 +37,7 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 		g.Go(func() error {
 			questions := make(map[string]port.Question, hi-lo)
 			for i := lo; i < hi; i++ {
-				questions[sectionQuestionID(i)] = sectionQuestion(i)
+				questions[sectionQuestionID(i)] = sectionQuestion(r.sentences[i].Text, r.headings[i])
 			}
 			resp, err := e.classifier.Classify(ctx, port.ClassifyRequest{State: state, Questions: questions})
 			if err != nil {
