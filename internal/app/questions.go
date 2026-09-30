@@ -82,33 +82,55 @@ const maxFallbackRunes = 1500
 
 // --- Validation Round (stage 5) ---
 
-// noRequirement is the extra option meaning the chunk names no Requirement.
-const noRequirement = "no_requirement"
+// rejectOptions are the Choice options meaning the chunk names no
+// Requirement, each describing one kind of non-requirement. Several options
+// give "no" as many ways to be described as "yes" has (one per Candidate);
+// with a single option, a padded phrase like "Work closely" often won.
+var rejectOptions = map[string]string{
+	"generic_trait": "`chunk` is a generic trait, attitude, or work style rather than a specific " +
+		"skill: \"strong judgment\", \"self-starter\", \"fast-moving environment\", \"team player\", " +
+		"\"attention to detail\".",
+	"people_or_context": "`chunk` names people, teams, the company, its product, or its customers " +
+		"rather than something the applicant must know or do: \"product managers\", \"partner " +
+		"teams\", \"our customers\", \"the platform\".",
+	"action_only": "`chunk` is only a verb or a vague activity with no specific skill or " +
+		"technology: \"Work closely\", \"Collaborate\", \"iterate rapidly\", \"ship features\", " +
+		"\"take ownership\".",
+	"condition": "`chunk` is a condition of the job rather than a skill: location, time zone, " +
+		"work authorization, citizenship, clearance, travel, schedule, or on-call.",
+}
 
 // validationQuestion asks Jev to select the option that names the
-// Requirement in one chunk. Selecting among a chunk's overlapping spans is a
-// relative judgment; judging each span alone with a Noul or Choice accepted
-// cut-off words ("financial" from "financial systems") in live tests.
+// Requirement in one chunk, or to say which kind of non-requirement it is.
+// Selecting among a chunk's overlapping spans is a relative judgment; judging
+// each span alone accepted cut-off words ("financial" from "financial
+// systems") in live tests.
 func validationQuestion(c chunk) port.Question {
-	criteria := make(map[string]any, len(c.Options)+1)
+	criteria := make(map[string]any, len(c.Options)+len(rejectOptions))
 	for _, o := range c.Options {
 		criteria[o] = nil
 	}
-	criteria[noRequirement] = "`chunk` names no specific skill, technology, qualification, " +
-		"kind of experience, or responsibility (e.g. a generic phrase like \"strong\", " +
-		"\"team player\", \"fast-paced environment\", or only a verb)."
+	for k, v := range rejectOptions {
+		criteria[k] = v
+	}
 	return port.Question{
 		Type: port.Choice,
 		Instructions: map[string]any{
 			"chunk": c.Text,
-			"question": "`chunk` is part of `sentence` in a job posting. Which option names the " +
-				"requirement stated in `chunk` completely and without extra words? Prefer the full " +
+			"question": "`chunk` is part of `sentence` in a job posting. If `chunk` states a specific " +
+				"skill, technology, qualification, kind of experience, or responsibility that a resume " +
+				"could show, which option names it completely and without extra words? Prefer the full " +
 				"name (\"distributed systems\", not \"distributed\"), and leave out words like " +
-				"\"experience\", \"own\", \"use\" or \"strong\" around it.",
+				"\"experience\", \"own\", \"use\" or \"strong\" around it. Otherwise, which kind " +
+				"of non-requirement is `chunk`?",
 		},
 		Criteria: criteria,
 	}
 }
+
+// minRequirementMass is the share of probability that must fall on the
+// Candidate options (rather than on rejectOptions) to accept a chunk.
+const minRequirementMass = 0.5
 
 // validationBatchSize caps questions per Validation request; a sentence with
 // more chunks is split into several requests with the same state.
