@@ -181,9 +181,12 @@ inside a larger resume-tailoring backend.
 - Label review 2026-09-30 (labels `63732feae2fb`, 668 Requirements): the
   numbers above used the old labels and are not comparable. The last clean
   run rescored: recall 93.6% (strict 79.6%), precision 87.5%, F1 90.4%;
-  252 acceptable, 116 duplicates, 78 extras. Caveat: missing labels were
+  276 acceptable, 92 duplicates, 78 extras. Caveat: missing labels were
   found by pooling the extractor's own extras, so Requirements that neither
   the labels nor the extractor found stay invisible.
+
+- Next tuning round: `docs/tuning.md` (prioritized backlog and experiment
+  log; record every experiment there).
 
 ## Test data
 

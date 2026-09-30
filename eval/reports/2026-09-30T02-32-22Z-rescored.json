@@ -1,5 +1,5 @@
 {
-  "started": "2026-09-30T02:21:48.495179741Z",
+  "started": "2026-09-30T02:32:22.687696471Z",
   "duration": "2m1.044s",
   "model": "typesafe/jev-1.13-20260917",
   "revision": "39add58585ea",
@@ -20,8 +20,8 @@
     "precision_loose": 0.8753501400560224,
     "f1_loose": 0.9044862518089726,
     "filler_hits": 11,
-    "acceptable_hits": 252,
-    "duplicate_hits": 116,
+    "acceptable_hits": 276,
+    "duplicate_hits": 92,
     "tiers": {
       "mentioned": {
         "expected": 165,
@@ -133,7 +133,9 @@
       "filler_hits": [],
       "acceptable_hits": [
         "customer-facing systems across chat",
+        "iteration for LLM-powered systems",
         "integrating model behavior into reliable user-facing products",
+        "refine AI-generated output",
         "ship applied AI experiences across chat",
         "AI-powered product experiences",
         "building AI-enabled products",
@@ -142,8 +144,6 @@
       "duplicate_hits": [
         "operational automation",
         "codefixes",
-        "iteration for LLM-powered systems",
-        "refine AI-generated output",
         "LLM prompting",
         "systems related to production remediation",
         "prompts",
@@ -626,6 +626,7 @@
         "control-plane services",
         "easy to maintain code",
         "repair drift across stack templates",
+        "Manage rollout mechanisms for provisioned plugins",
         "workflows that keep stack state aligned across grafana.com",
         "cluster rollouts",
         "operate Grafana Cloud stacks at scale",
@@ -653,6 +654,7 @@
         "reconciliation failures",
         "Hosted Grafana integration failures",
         "UX",
+        "test generation",
         "documentation",
         "incident follow-ups",
         "plugins"
@@ -660,9 +662,7 @@
       "duplicate_hits": [
         "blameless incident response",
         "operate reconciliation systems",
-        "Manage rollout mechanisms for provisioned plugins",
-        "modern AI coding assistants",
-        "test generation"
+        "modern AI coding assistants"
       ],
       "duration_ms": 21750,
       "result": {
@@ -2154,6 +2154,8 @@
         "enforce backend engineering standards",
         "workflows between backend services",
         "deliver high-performance applications",
+        "third-party blockchain tooling",
+        "non-EVM",
         "architecture discussions",
         "auditability"
       ],
@@ -2161,9 +2163,7 @@
         "APIs",
         "Golang",
         "blockchain networks",
-        "third-party blockchain tooling",
         "EVM",
-        "non-EVM",
         "smart contract engineers"
       ],
       "duration_ms": 22615,
@@ -2868,6 +2868,8 @@
         "talking to users",
         "run the demos",
         "roadmap in cross-team discussions",
+        "observability apps",
+        "Contribute upstream to Prometheus",
         "documentation",
         "incident follow-ups",
         "test generation"
@@ -2878,8 +2880,6 @@
         "LLM tooling",
         "configuration-as-code language",
         "dashboards",
-        "observability apps",
-        "Contribute upstream to Prometheus",
         "React panel",
         "Go service"
       ],
@@ -5233,6 +5233,7 @@
         "handling unreliable upstreams",
         "establish good practices for using AI safely",
         "reliability noise",
+        "OS/endpoint telemetry",
         "reduce toil",
         "observability of collection at scale",
         "set technical direction across the ingestion surface",
@@ -5241,24 +5242,23 @@
         "unblock customer onboarding",
         "guarding against hallucinated mappings",
         "security-vendor APIs",
+        "failing-test",
         "lightweight host agents",
         "tokens",
         "CI steps",
         "scripts",
         "scaffolding new integrations/modules",
         "summarizing vendor API docs",
-        "generating parsers"
+        "generating parsers",
+        "tests from sample data",
+        "triaging failing-test"
       ],
       "duplicate_hits": [
         "ingest pipelines",
         "LLMs",
         "cloud-provider APIs",
-        "OS/endpoint telemetry",
         "host/endpoint collectors",
-        "elastic/beats",
-        "failing-test",
-        "tests from sample data",
-        "triaging failing-test"
+        "elastic/beats"
       ],
       "duration_ms": 21951,
       "result": {
@@ -5974,20 +5974,20 @@
         "translate ambiguous business questions",
         "automation through exploratory conversations",
         "verifying AI-generated work before it reaches production",
+        "maintain marketing databases",
         "automate manual workflows",
         "define best practices",
         "API integrations",
         "integrating it into our downstream systems",
         "discovering the schema",
+        "advanced segmentation",
         "targeting",
         "communication"
       ],
       "duplicate_hits": [
         "AI engineering role",
-        "maintain marketing databases",
         "directing agentic coding tools",
-        "AI engineering",
-        "advanced segmentation"
+        "AI engineering"
       ],
       "duration_ms": 21092,
       "result": {
@@ -6580,6 +6580,7 @@
         "verbal communication skills",
         "rationale communication",
         "complex cross-functional initiative",
+        "develop performant Android applications",
         "services for tactical end-user devices in disconnected",
         "edge architecture",
         "field deployment",
@@ -6589,6 +6590,7 @@
         "design guidance",
         "direct coaching",
         "review designs",
+        "TAK integrations",
         "architectural recommendations",
         "edge integration roadmap",
         "data-flow issues",
@@ -6597,10 +6599,8 @@
       ],
       "duplicate_hits": [
         "integration design skills",
-        "develop performant Android applications",
         "Android",
         "TAK ecosystem",
-        "TAK integrations",
         "ATAK/TAK"
       ],
       "duration_ms": 24266,
@@ -7790,6 +7790,7 @@
         "operations tooling",
         "scoping through design",
         "ownership of production systems",
+        "system reliability through metrics",
         "comparable backend language",
         "architectural decisions",
         "identify root causes",
@@ -7798,7 +7799,9 @@
         "results processing",
         "technical discovery",
         "engineering teams to translate customer needs",
+        "experiment setup",
         "event data ingestion",
+        "metric computation",
         "cross-team dependencies",
         "shared data flows",
         "results presentation",
@@ -7807,14 +7810,11 @@
       ],
       "duplicate_hits": [
         "observability practices",
-        "system reliability through metrics",
         "validate AI-generated output",
         "alerting",
         "logs",
         "traces",
-        "monitoring",
-        "experiment setup",
-        "metric computation"
+        "monitoring"
       ],
       "duration_ms": 24337,
       "result": {
@@ -8459,6 +8459,7 @@
         "tracking burn against contract funding",
         "Containerize applications",
         "automated deployment workflows",
+        "client technical leadership",
         "roadmaps",
         "Relevant certifications",
         "delivery commitments",
@@ -8473,7 +8474,6 @@
         "secure-by-design",
         "responsive React frontends",
         "operate workloads on Kubernetes",
-        "client technical leadership",
         "software delivery on DoD",
         "security",
         "Python"
@@ -9814,12 +9814,16 @@
         "operational track record",
         "availability-critical services",
         "strict correctness guarantees",
+        "globally replicated",
+        "compliance under CA/B Forum",
         "cryptographic core",
         "design evidence pipelines",
         "serve as a primary contact",
+        "on-call posture",
         "establish the engineering standards",
         "renewal pipelines",
         "PQ signature standardisation",
+        "equivalent PKI codebase",
         "validation logic",
         "private keys at scale",
         "Represent Cloudflare in the WebPKI community",
@@ -9830,15 +9834,11 @@
       "duplicate_hits": [
         "automating offline key ceremonies",
         "FIPS 140-2/3 validation",
-        "globally replicated",
         "core PKI systems",
-        "compliance under CA/B Forum",
         "X.509 issuance",
-        "on-call posture",
         "ACME-based issuance",
         "large-scale internal PKI",
         "publicly-trusted",
-        "equivalent PKI codebase",
         "hardware security modules",
         "post-quantum encryption",
         "Boulder"
