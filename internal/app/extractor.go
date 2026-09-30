@@ -52,6 +52,9 @@ type run struct {
 	model     string // versioned Jev model that answered, e.g. "jev-1.13.0"
 	sentences []domain.ContextSentence
 	headings  []string // headings[i] is the nearest heading above sentences[i]
+	// strongHeading[i] marks sentences[i] as a markdown or colon-terminated
+	// heading, which Candidate generation skips.
+	strongHeading []bool
 	// sectionConf[i] is Jev's confidence in sentences[i].Section.
 	sectionConf []float64
 	summary     string
