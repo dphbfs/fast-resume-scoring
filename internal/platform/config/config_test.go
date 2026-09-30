@@ -20,7 +20,7 @@ func TestLoadDefaults(t *testing.T) {
 	if cfg.Generative.Model != "" || cfg.Generative.MaxConcurrency != 1 {
 		t.Errorf("unexpected Generative defaults: %+v", cfg.Generative)
 	}
-	if cfg.Pipeline.MaxWindowWords != 4 || cfg.Pipeline.SectionBatchSize != 60 {
+	if cfg.Pipeline.MaxWindowWords != 4 || cfg.Pipeline.SectionBatchSize != 60 || cfg.Pipeline.MinRequirementMass != 0.7 {
 		t.Errorf("unexpected Pipeline defaults: %+v", cfg.Pipeline)
 	}
 }
@@ -33,6 +33,7 @@ func TestLoadErrors(t *testing.T) {
 		{"missing api key", map[string]string{}},
 		{"bad int", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_MAX_CONCURRENCY": "many"}},
 		{"bad duration", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_TIMEOUT": "soon"}},
+		{"bad float", map[string]string{"TYPESAFE_API_KEY": "k", "PIPELINE_MIN_REQUIREMENT_MASS": "half"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

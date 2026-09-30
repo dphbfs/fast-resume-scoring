@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 )
 
@@ -35,7 +36,7 @@ func TestRunAndWriteReport(t *testing.T) {
 	ex := fakeExtractor{"A": {Model: "jev-test", Requirements: []domain.Requirement{
 		{ID: "r1", Value: "Go"}, {ID: "r2", Value: "Terraform"},
 	}}}
-	rep := NewRunner(ex, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil))).
+	rep := NewRunner(ex, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MinRequirementMass: 0.5}).
 		Run(context.Background(), fixtures, 2)
 
 	tot := rep.Totals
@@ -51,7 +52,7 @@ func TestRunAndWriteReport(t *testing.T) {
 		t.Fatal(err)
 	}
 	md, _ := os.ReadFile(path)
-	for _, want := range []string{"Recall (loose) | 50.0%", "error: boom", "**Missed (1):** `Kafka`", "**Extra (1):** `Terraform`"} {
+	for _, want := range []string{"min requirement mass 0.50", "Recall (loose) | 50.0%", "error: boom", "**Missed (1):** `Kafka`", "**Extra (1):** `Terraform`"} {
 		if !strings.Contains(string(md), want) {
 			t.Errorf("markdown missing %q:\n%s", want, md)
 		}

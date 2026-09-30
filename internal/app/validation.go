@@ -74,7 +74,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 					return fmt.Errorf("sentence %s: chunk %q: answer %q is not an option", s.Ref, c.Text, a.Choice)
 				}
 				best, bestP, spanMass := decide(c, a.Probabilities)
-				if spanMass >= minRequirementMass {
+				if spanMass >= e.minRequirementMass() {
 					b.out = append(b.out, judged{Candidate: domain.Candidate{Text: best, Ref: c.Ref}, P: bestP})
 				} else {
 					b.rejected[topReject(a.Probabilities)]++
@@ -127,4 +127,13 @@ func topReject(probs map[string]float64) string {
 func isOption(c chunk, o string) bool {
 	_, reject := rejectOptions[o]
 	return reject || slices.Contains(c.Options, o)
+}
+
+// minRequirementMass is cfg.MinRequirementMass, defaulting to 0.5 when unset
+// (as in tests that build a zero Pipeline config).
+func (e *Extractor) minRequirementMass() float64 {
+	if e.cfg.MinRequirementMass > 0 {
+		return e.cfg.MinRequirementMass
+	}
+	return 0.5
 }

@@ -39,6 +39,9 @@ type Generative struct {
 type Pipeline struct {
 	MaxWindowWords   int // PIPELINE_MAX_WINDOW_WORDS
 	SectionBatchSize int // PIPELINE_SECTION_BATCH: questions per labeling request
+	// MinRequirementMass is the share of a Validation Choice's probability
+	// that must fall on Candidates for a chunk to be accepted.
+	MinRequirementMass float64 // PIPELINE_MIN_REQUIREMENT_MASS
 }
 
 // Load reads Config from the environment, applying defaults.
@@ -65,8 +68,9 @@ func load(getenv func(string) string) (Config, error) {
 			Timeout:        e.duration("GEN_TIMEOUT", 60*time.Second),
 		},
 		Pipeline: Pipeline{
-			MaxWindowWords:   e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
-			SectionBatchSize: e.int("PIPELINE_SECTION_BATCH", 60),
+			MaxWindowWords:     e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
+			SectionBatchSize:   e.int("PIPELINE_SECTION_BATCH", 60),
+			MinRequirementMass: e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
 		},
 	}
 	if e.err != nil {
@@ -101,6 +105,18 @@ func (e *env) int(key string, def int) int {
 		e.err = fmt.Errorf("config: %s: %w", key, err)
 	}
 	return n
+}
+
+func (e *env) float(key string, def float64) float64 {
+	v := e.getenv(key)
+	if v == "" {
+		return def
+	}
+	f, err := strconv.ParseFloat(v, 64)
+	if err != nil && e.err == nil {
+		e.err = fmt.Errorf("config: %s: %w", key, err)
+	}
+	return f
 }
 
 func (e *env) duration(key string, def time.Duration) time.Duration {

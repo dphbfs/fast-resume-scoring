@@ -130,7 +130,7 @@ func TestChunkSentence(t *testing.T) {
 		{
 			name:     "such as and commas separate list items",
 			sentence: "Experience with streaming data infrastructure such as Kafka, Flink, or Spark",
-			want:     []string{"Experience", "streaming data infrastructure", "Kafka", "Flink", "Spark"},
+			want:     []string{"streaming data infrastructure", "Kafka", "Flink", "Spark"}, // "Experience" is generic-only
 		},
 		{
 			name:     "and/or and brackets separate, of does not",
@@ -171,6 +171,37 @@ func TestChunkOptions(t *testing.T) {
 		if !slices.Contains(c.Options, want) {
 			t.Errorf("options %q missing %q", c.Options, want)
 		}
+	}
+}
+
+func TestGenericOnlyCandidatesAreDropped(t *testing.T) {
+	cs := chunkSentence(domain.ContextSentence{Ref: "s1", Text: "Hands-on experience, deep demonstrated expertise, Go experience"}, 4)
+	var opts []string
+	for _, c := range cs {
+		opts = append(opts, c.Options...)
+	}
+	for _, bad := range []string{"Hands-on experience", "Hands-on", "experience", "deep demonstrated expertise"} {
+		if slices.Contains(opts, bad) {
+			t.Errorf("options %q contain generic-only %q", opts, bad)
+		}
+	}
+	if !slices.Contains(opts, "Go experience") || !slices.Contains(opts, "Go") {
+		t.Errorf("options %q lost \"Go experience\" or \"Go\"", opts)
+	}
+}
+
+func TestGenerateCandidatesSkipsHeadings(t *testing.T) {
+	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 2})
+	r := &run{}
+	r.sentences, r.headings = splitSentences("Bonus Points\n- Kubernetes\n")
+	for i := range r.sentences {
+		r.sentences[i].Section = domain.SectionPreferred
+	}
+	if err := e.generateCandidates(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	if got := chunkTexts(r.chunks); !slices.Equal(got, []string{"Kubernetes"}) {
+		t.Errorf("chunks = %q, want [Kubernetes]", got)
 	}
 }
 

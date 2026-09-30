@@ -66,7 +66,7 @@ func TestValidationRoundSelectsOneSpanPerChunk(t *testing.T) {
 	r := &run{
 		summary: "A backend role.",
 		sentences: []domain.ContextSentence{
-			{Ref: "s1", Text: "Experience with streaming data infrastructure such as Kafka", Section: domain.SectionRequired},
+			{Ref: "s1", Text: "Work closely with streaming data infrastructure such as Kafka", Section: domain.SectionRequired},
 			{Ref: "s2", Text: "Dental", Section: domain.SectionBenefits},
 			{Ref: "s3", Text: "5+ years of backend work", Section: domain.SectionRequired},
 		},

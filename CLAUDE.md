@@ -59,8 +59,13 @@ Job Description (`.txt` / `.md` file):
      systems" in live tests.
    - The compound check was removed: Chunks never overlap, so a selection
      cannot contain other selections.
-   - Open tuning (needs `make eval`): a minimum selection probability; long
-     whole-Chunk picks; splitting at "and" cuts some years qualifiers.
+   - Options also include four rejection kinds (generic_trait,
+     people_or_context, action_only, condition); a Chunk is accepted when its
+     Candidates hold >= `PIPELINE_MIN_REQUIREMENT_MASS` (default 0.7) of the
+     probability. Heading lines and generic-only Candidates ("Hands-on
+     experience") are never offered.
+   - Open tuning: long whole-Chunk picks; splitting at "and" cuts some years
+     qualifiers.
 5. Refinement Round: one batched request. State is the validated Requirements,
    each with all its Context Sentences and their Sections, so recurrence and
    Section are explicit data (Jev can't count). Per Requirement:
@@ -138,9 +143,15 @@ inside a larger resume-tailoring backend.
   by one word, or token Jaccard >= 0.6. Reports recall (strict/loose, per
   tier), precision, F1, Filler extracted, Importance tier order and
   Alternative Group pair-F1 (n/a until the Refinement Round exists), cost.
-- Baseline 2026-09-30 (no Refinement Round): recall 90.6% loose / 70.0%
-  strict, precision 27.4%. Validation rarely picks `no_requirement`, so
-  prose chunks ("Work closely", "product managers") become Requirements.
+- History (no Refinement Round yet), 2026-09-30:
+  - baseline, one `no_requirement` option: recall 90.6% / precision 27.4%
+  - four rejection options, decide on summed mass: 91.4% / 30.8%
+  - skip headings, drop generic-only Candidates: 91.2% / 32.8%
+  - `PIPELINE_MIN_REQUIREMENT_MASS` sweep 0.5-0.9: recall flat to 0.7, then
+    falls (88.8% at 0.8, 86.7% at 0.9); default 0.7 -> 91.2% / 35.2%
+- Precision is capped partly by label gaps: sampled extras are ~40% real
+  requirements the golden labels omit. Runs vary by ~1 point because the Job
+  Summary is regenerated each run.
 
 ## Test data
 
