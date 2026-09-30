@@ -248,10 +248,10 @@ func Score(exp Expected, res domain.Result) FixtureScore {
 		switch {
 		case looseMatch(exp.Filler, p.Value) || strictMatch(exp.Filler, p.Value):
 			s.FillerHits = append(s.FillerHits, p.Value)
-		case slices.ContainsFunc(variants, func(v []string) bool { return strictMatch(v, p.Value) || looseMatch(v, p.Value) }):
-			s.DuplicateHits = append(s.DuplicateHits, p.Value)
 		case looseMatch(exp.Acceptable, p.Value) || strictMatch(exp.Acceptable, p.Value):
 			s.AcceptableHits = append(s.AcceptableHits, p.Value)
+		case slices.ContainsFunc(variants, func(v []string) bool { return strictMatch(v, p.Value) || looseMatch(v, p.Value) }):
+			s.DuplicateHits = append(s.DuplicateHits, p.Value)
 		default:
 			s.Extras = append(s.Extras, p.Value)
 		}
