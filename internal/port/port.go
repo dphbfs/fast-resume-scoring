@@ -61,6 +61,8 @@ type Answer struct {
 type Usage struct {
 	InputTokens  int
 	OutputTokens int
+	// CostUSD is set when the provider reports it (OpenRouter does).
+	CostUSD *float64
 }
 
 // ClassifyResponse holds one Answer per question ID.

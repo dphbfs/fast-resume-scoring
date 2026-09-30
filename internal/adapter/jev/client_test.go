@@ -6,6 +6,7 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
+	"net/http/httptest"
 	"testing"
 	"time"
 
@@ -65,6 +66,28 @@ func TestClassifyMapsAnswers(t *testing.T) {
 	}
 	if got := m.Summary().Counters["jev.input_tokens"]; got != 100 {
 		t.Errorf("jev.input_tokens = %d, want 100", got)
+	}
+}
+
+func TestClassifyAcceptsOpenRouterResponse(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(`{"id":"gen-dec-1","model":"typesafe/jev-1.13-20260917","provider":"TypeSafe",` +
+			`"answers":{"is_urgent":{"type":"noul","noul":0.98}},` +
+			`"usage":{"input_tokens":275,"output_tokens":20,"cost":0.00003}}`))
+	}))
+	defer srv.Close()
+	m := metrics.NewRecorder()
+	c := newClient(t, srv.URL, m)
+
+	resp, err := c.Classify(context.Background(), port.ClassifyRequest{State: "x", Questions: urgentQuestion})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if resp.Model != "typesafe/jev-1.13-20260917" || *resp.Answers["is_urgent"].Noul != 0.98 {
+		t.Errorf("resp = %+v", resp)
+	}
+	if got := m.Summary().Counters["jev.cost_micro_usd"]; got != 30 {
+		t.Errorf("jev.cost_micro_usd = %d, want 30", got)
 	}
 }
 
