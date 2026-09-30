@@ -20,6 +20,9 @@ type Extractor struct {
 	metrics    port.Metrics
 	log        *slog.Logger
 	cfg        config.Pipeline
+	// refinementBatchChars caps question JSON per Refinement request;
+	// replaced in tests.
+	refinementBatchChars int
 }
 
 var _ port.RequirementExtractor = (*Extractor)(nil)
@@ -38,6 +41,8 @@ func New(
 		metrics:    m,
 		log:        log.With("component", "extractor"),
 		cfg:        cfg,
+
+		refinementBatchChars: refinementBatchChars,
 	}
 }
 
@@ -90,14 +95,5 @@ func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(cont
 		return fmt.Errorf("%s: %w", name, err)
 	}
 	e.log.InfoContext(ctx, "stage done", "stage", name, "duration_ms", elapsed.Milliseconds())
-	return nil
-}
-
-// refinementRound will merge synonyms, build Alternative Groups, drop Filler
-// and assign Importance in one batched Jev request. Until then it passes the
-// validated Requirements through unchanged, and says so on every run.
-func (e *Extractor) refinementRound(ctx context.Context, _ *run) error {
-	e.log.WarnContext(ctx, "refinement round not implemented: no synonym merge, "+
-		"Filler drop, Alternative Groups or Importance")
 	return nil
 }

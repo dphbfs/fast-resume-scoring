@@ -131,3 +131,157 @@ func validationQuestion(c chunk) port.Question {
 // validationBatchSize caps questions per Validation request; a sentence with
 // more chunks is split into several requests with the same state.
 const validationBatchSize = 150
+
+// --- Refinement Round (stage 5) ---
+//
+// Every Refinement question embeds its Requirement and all its mentions
+// (sentence + Section), so recurrence and Section are explicit data and Jev
+// never has to look anything up by position.
+
+// mention is one sentence where a Requirement appears.
+type mention struct {
+	Section  domain.Section `json:"section"`
+	Sentence string         `json:"sentence"`
+}
+
+func refinementInstructions(requirement string, mentions []mention, question string) map[string]any {
+	return map[string]any{"requirement": requirement, "mentions": mentions, "question": question}
+}
+
+// fillerKeep is the option meaning the Requirement is kept.
+const fillerKeep = "specific_requirement"
+
+// fillerReasons are the Filler kinds a Requirement can be dropped as.
+var fillerReasons = map[string]string{
+	"vague_term": "Too broad to check on a resume by itself: \"backend\", \"scalable\", " +
+		"\"resilience\", \"operations\", \"quality\", \"integration\".",
+	"generic_trait": "A personal trait, attitude, or work style: \"team player\", \"self-starter\", " +
+		"\"strong judgment\", \"fast-paced environment\", \"ownership\".",
+	"company_context": "A name or idea specific to this company, its internal systems, teams, or " +
+		"customers rather than a transferable skill: \"FinHub\", \"Overseer's integrity " +
+		"guarantees\", \"our merchants\".",
+	"condition": "A condition of the job rather than a skill: work authorization, citizenship, " +
+		"clearance, location, time zone, travel, schedule, or on-call rotation.",
+}
+
+// fillerQuestion asks whether a Requirement is specific enough to check
+// against a resume, or which kind of Filler it is.
+func fillerQuestion(requirement string, mentions []mention) port.Question {
+	criteria := map[string]any{
+		fillerKeep: "A specific skill, technology, domain, qualification, kind of experience, or " +
+			"responsibility that a resume could show: \"Kubernetes\", \"payments\", \"5+ years of Go\", " +
+			"\"API design\", \"mentoring engineers\".",
+	}
+	for k, v := range fillerReasons {
+		criteria[k] = v
+	}
+	return port.Question{
+		Type: port.Choice,
+		Instructions: refinementInstructions(requirement, mentions,
+			"`requirement` was extracted from the job posting sentences in `mentions`. What is it?"),
+		Criteria: criteria,
+	}
+}
+
+// minKeepMass is the minimum probability on fillerKeep to keep a Requirement.
+const minKeepMass = 0.5
+
+// duplicateReasons are the options meaning "no other option is the same".
+// Each names a failure mode seen in eval, where Jev merged related
+// Requirements that are not synonyms.
+var duplicateReasons = map[string]string{
+	"different_thing": "Every option names something different from `requirement` " +
+		"(\"Kafka\" and \"Kafka Streams\", \"Go\" and \"Rust\").",
+	"broader_or_narrower": "The closest option is a broader or narrower concept, not the same " +
+		"thing (\"cloud\" and \"AWS\", \"Master's degree\" and \"Master's degree in " +
+		"Computer Science\").",
+	"part_of_or_contains": "The closest option contains `requirement` or is contained in it, " +
+		"so one is more specific (\"dashboards\" and \"Grafana dashboards\", \"tools\" and " +
+		"\"agentic engineering tools\").",
+	"related_not_same": "The closest option is related or used together with `requirement` but " +
+		"is a different skill (\"Terraform\" and \"Infrastructure as Code\", \"API " +
+		"boundaries\" and \"API contracts\", \"security\" and \"secure development\").",
+}
+
+// duplicateQuestion asks which other Requirement names the same thing.
+func duplicateQuestion(requirement string, mentions []mention, options []string) port.Question {
+	criteria := make(map[string]any, len(options)+len(duplicateReasons))
+	for _, o := range options {
+		criteria[o] = nil
+	}
+	for k, v := range duplicateReasons {
+		criteria[k] = v
+	}
+	return port.Question{
+		Type: port.Choice,
+		Instructions: refinementInstructions(requirement, mentions,
+			"Which option names the same thing as `requirement`: a synonym, abbreviation, or "+
+				"different spelling (\"K8s\" and \"Kubernetes\", \"Postgres\" and \"PostgreSQL\")?"),
+		Criteria: criteria,
+	}
+}
+
+// minMergeMass is the minimum probability on the Requirement options to
+// link a duplicate. Two Requirements merge only when each links the other.
+const minMergeMass = 0.7
+
+// maxAllDuplicateOptions is the list size up to which every other
+// Requirement is offered as a duplicate; beyond it only similar ones are.
+const maxAllDuplicateOptions = 40
+
+// alternativeReasons are the options meaning "not an alternative".
+var alternativeReasons = map[string]string{
+	"required_together": "The sentence asks for `requirement` together with the others, not " +
+		"either one (\"Go and Kubernetes\").",
+	"unrelated": "No option is offered as an alternative to `requirement`; they are listed for " +
+		"different purposes.",
+}
+
+// alternativeQuestion asks which Requirement from the same sentence is
+// offered as an interchangeable alternative.
+func alternativeQuestion(requirement string, mentions []mention, options []string) port.Question {
+	criteria := make(map[string]any, len(options)+len(alternativeReasons))
+	for _, o := range options {
+		criteria[o] = nil
+	}
+	for k, v := range alternativeReasons {
+		criteria[k] = v
+	}
+	return port.Question{
+		Type: port.Choice,
+		Instructions: refinementInstructions(requirement, mentions,
+			"In `mentions`, which option does the employer accept instead of `requirement`, so "+
+				"that having either one is enough (\"Go, Ruby, or Python\", \"AWS or GCP\")?"),
+		Criteria: criteria,
+	}
+}
+
+// minAlternativeMass is the minimum probability on the Requirement options
+// to link an alternative.
+const minAlternativeMass = 0.7
+
+// importanceLevels describe situations, lowest first; Importance is the
+// Score divided by the top level index.
+var importanceLevels = []any{
+	"Mentioned only in passing: an example in a list, a tech-stack entry, or context.",
+	"Part of the day-to-day work the posting describes, but not stated as a requirement.",
+	"Listed as preferred, a bonus, a plus, or nice to have.",
+	"Stated as a requirement for the role.",
+	"Stated as a hard requirement and emphasized or repeated in several places.",
+}
+
+// importanceQuestion asks how much the employer cares about a Requirement.
+func importanceQuestion(requirement string, mentions []mention) port.Question {
+	return port.Question{
+		Type: port.Score,
+		Instructions: refinementInstructions(requirement, mentions,
+			"How important is `requirement` to the employer, judging by every sentence in "+
+				"`mentions` and its section?"),
+		Criteria: importanceLevels,
+	}
+}
+
+// refinementBatchChars caps the JSON size of the questions in one Refinement
+// request (~4 chars per token), keeping requests under OpenRouter's 32k-token
+// limit with room for the state.
+const refinementBatchChars = 80_000
