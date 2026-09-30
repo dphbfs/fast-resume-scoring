@@ -48,6 +48,7 @@ func New(
 // run tracks one pipeline state across stages.
 type run struct {
 	jd         domain.JobDescription
+	model      string // versioned Jev model that answered, e.g. "jev-1.13.0"
 	sentences  []domain.ContextSentence
 	summary    string
 	candidates []domain.Candidate
@@ -62,7 +63,7 @@ func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (doma
 		name string
 		fn   func(context.Context, *run) error
 	}{
-		{"split_sentences", e.splitSentences},
+		{"split_sentences", e.splitSentencesStage},
 		{"label_sections", e.labelSections},
 		{"generate_candidates", e.generateCandidates},
 		{"job_summary", e.jobSummary},
@@ -90,13 +91,6 @@ func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(cont
 	e.log.InfoContext(ctx, "stage done", "stage", name, "duration_ms", elapsed.Milliseconds())
 	return nil
 }
-
-// splitSentences splits the Job Description into Context Sentences with Refs.
-func (e *Extractor) splitSentences(context.Context, *run) error { return ErrNotImplemented }
-
-// labelSections assigns a Section to each Context Sentence (one batched Jev
-// Choice request) and drops company/benefits sentences from windowing.
-func (e *Extractor) labelSections(context.Context, *run) error { return ErrNotImplemented }
 
 // generateCandidates slides a window over each kept sentence and prunes
 // Candidates in code.

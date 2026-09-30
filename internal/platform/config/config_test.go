@@ -20,8 +20,8 @@ func TestLoadDefaults(t *testing.T) {
 	if cfg.Generative.Model != "" || cfg.Generative.MaxConcurrency != 1 {
 		t.Errorf("unexpected Generative defaults: %+v", cfg.Generative)
 	}
-	if cfg.Pipeline.MaxWindowWords != 4 {
-		t.Errorf("MaxWindowWords = %d, want 4", cfg.Pipeline.MaxWindowWords)
+	if cfg.Pipeline.MaxWindowWords != 4 || cfg.Pipeline.SectionBatchSize != 60 {
+		t.Errorf("unexpected Pipeline defaults: %+v", cfg.Pipeline)
 	}
 }
 

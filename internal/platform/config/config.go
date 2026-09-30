@@ -37,7 +37,8 @@ type Generative struct {
 
 // Pipeline tunes the Requirement Extractor.
 type Pipeline struct {
-	MaxWindowWords int // PIPELINE_MAX_WINDOW_WORDS
+	MaxWindowWords   int // PIPELINE_MAX_WINDOW_WORDS
+	SectionBatchSize int // PIPELINE_SECTION_BATCH: questions per labeling request
 }
 
 // Load reads Config from the environment, applying defaults.
@@ -64,7 +65,8 @@ func load(getenv func(string) string) (Config, error) {
 			Timeout:        e.duration("GEN_TIMEOUT", 60*time.Second),
 		},
 		Pipeline: Pipeline{
-			MaxWindowWords: e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
+			MaxWindowWords:   e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
+			SectionBatchSize: e.int("PIPELINE_SECTION_BATCH", 60),
 		},
 	}
 	if e.err != nil {
