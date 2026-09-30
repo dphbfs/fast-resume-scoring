@@ -39,6 +39,6 @@ func initRunner() (*eval.Runner, error) {
 	}
 	pipeline := configConfig.Pipeline
 	extractor := app.New(client, openaiClient, recorder, logger, pipeline)
-	runner := eval.NewRunner(extractor, recorder, logger)
+	runner := eval.NewRunner(extractor, recorder, logger, pipeline)
 	return runner, nil
 }

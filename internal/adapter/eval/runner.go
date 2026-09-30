@@ -9,6 +9,7 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -18,11 +19,13 @@ type Runner struct {
 	extractor port.RequirementExtractor
 	recorder  *metrics.Recorder
 	log       *slog.Logger
+	pipeline  config.Pipeline
 }
 
-// NewRunner builds a Runner.
-func NewRunner(extractor port.RequirementExtractor, recorder *metrics.Recorder, log *slog.Logger) *Runner {
-	return &Runner{extractor: extractor, recorder: recorder, log: log.With("component", "eval")}
+// NewRunner builds a Runner. pipeline is recorded in each report so runs
+// with different settings can be compared.
+func NewRunner(extractor port.RequirementExtractor, recorder *metrics.Recorder, log *slog.Logger, pipeline config.Pipeline) *Runner {
+	return &Runner{extractor: extractor, recorder: recorder, log: log.With("component", "eval"), pipeline: pipeline}
 }
 
 // Run extracts and scores every fixture, at most parallel at a time. A
@@ -63,6 +66,7 @@ func (r *Runner) Run(ctx context.Context, fixtures []Fixture, parallel int) Repo
 		Duration: time.Since(start).Round(time.Millisecond).String(),
 		Model:    model,
 		Revision: revision(),
+		Pipeline: r.pipeline,
 		Totals:   totals(scores),
 		Fixtures: scores,
 		Metrics:  r.recorder.Summary(),

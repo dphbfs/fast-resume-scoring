@@ -128,10 +128,6 @@ func validationQuestion(c chunk) port.Question {
 	}
 }
 
-// minRequirementMass is the share of probability that must fall on the
-// Candidate options (rather than on rejectOptions) to accept a chunk.
-const minRequirementMass = 0.5
-
 // validationBatchSize caps questions per Validation request; a sentence with
 // more chunks is split into several requests with the same state.
 const validationBatchSize = 150

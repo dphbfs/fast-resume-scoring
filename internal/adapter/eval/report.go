@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 )
 
@@ -19,6 +20,7 @@ type Report struct {
 	Duration string          `json:"duration"`
 	Model    string          `json:"model"`
 	Revision string          `json:"revision"`
+	Pipeline config.Pipeline `json:"pipeline"`
 	Totals   Totals          `json:"totals"`
 	Fixtures []FixtureScore  `json:"fixtures"`
 	Metrics  metrics.Summary `json:"metrics"`
@@ -131,6 +133,8 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 	fmt.Fprintf(&b, "# Eval %s\n\n", r.Started.Format(time.RFC3339))
 	fmt.Fprintf(&b, "Model `%s` · revision `%s` · %d fixtures (%d failed) · %s\n\n",
 		r.Model, r.Revision, t.Fixtures, t.Failed, r.Duration)
+	fmt.Fprintf(&b, "Pipeline: max window %d words · section batch %d · min requirement mass %.2f\n\n",
+		r.Pipeline.MaxWindowWords, r.Pipeline.SectionBatchSize, r.Pipeline.MinRequirementMass)
 
 	b.WriteString("| Metric | Value |\n|---|---|\n")
 	fmt.Fprintf(&b, "| Recall (strict) | %s |\n", pct(t.RecallStrict))

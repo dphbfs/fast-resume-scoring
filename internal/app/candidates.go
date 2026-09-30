@@ -143,6 +143,31 @@ func isStopword(w string) bool { return stopwords[strings.ToLower(w)] }
 
 func hasLetter(s string) bool { return strings.IndexFunc(s, unicode.IsLetter) >= 0 }
 
+// genericWords carry no requirement on their own. A Candidate made only of
+// generic words and stopwords ("Hands-on experience", "Bonus") is dropped.
+var genericWords = map[string]bool{
+	"experience": true, "experiences": true, "skill": true, "skills": true,
+	"ability": true, "abilities": true, "knowledge": true, "background": true,
+	"expertise": true, "familiarity": true, "proficiency": true,
+	"understanding": true, "bonus": true, "plus": true, "points": true,
+	"requirement": true, "requirements": true, "qualifications": true,
+	"hands-on": true, "strong": true, "solid": true, "deep": true,
+	"proven": true, "demonstrated": true, "excellent": true, "good": true,
+	"great": true, "working": true, "professional": true, "relevant": true,
+	"related": true, "similar": true, "equivalent": true, "track": true,
+	"record": true, "comfort": true, "passion": true, "interest": true,
+}
+
+// isGenericOnly reports whether every word of s is generic or a stopword.
+func isGenericOnly(s string) bool {
+	for _, w := range strings.Fields(strings.ToLower(s)) {
+		if !genericWords[w] && !stopwords[w] {
+			return false
+		}
+	}
+	return true
+}
+
 // separators split a sentence into chunks and are left out of them. "such"
 // is only a separator when followed by "as".
 var separators = map[string]bool{
@@ -208,6 +233,9 @@ func newChunk(ref domain.Ref, text string, maxWords int) (chunk, bool) {
 	var opts []string
 	seen := map[string]bool{}
 	add := func(o string) {
+		if isGenericOnly(o) {
+			return
+		}
 		if k := strings.ToLower(o); !seen[k] && len(opts) < maxChunkOptions {
 			seen[k] = true
 			opts = append(opts, o)
@@ -224,12 +252,13 @@ func newChunk(ref domain.Ref, text string, maxWords int) (chunk, bool) {
 }
 
 // generateCandidates builds the chunks, and their Candidate options, of every
-// sentence whose Section is not dropped.
+// sentence whose Section is not dropped. Heading lines ("Bonus Points") are
+// skipped: they label the sentences below them and name no Requirement.
 func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
 	r.chunks = r.chunks[:0]
 	options := 0
-	for _, s := range r.sentences {
-		if droppedSections[s.Section] {
+	for i, s := range r.sentences {
+		if droppedSections[s.Section] || (i < len(r.headings) && r.headings[i] == s.Text) {
 			continue
 		}
 		cs := chunkSentence(s, e.cfg.MaxWindowWords)
