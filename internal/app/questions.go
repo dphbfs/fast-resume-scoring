@@ -46,10 +46,12 @@ func sectionQuestion(i int) port.Question {
 // sectionQuestionID is the question ID for sentence i.
 func sectionQuestionID(i int) string { return fmt.Sprintf("section_%d", i) }
 
-// droppedSections are excluded from Candidate generation.
+// droppedSections are excluded from Candidate generation. `other` covers
+// headings, legal/EEO text, location and application logistics.
 var droppedSections = map[domain.Section]bool{
 	domain.SectionCompany:  true,
 	domain.SectionBenefits: true,
+	domain.SectionOther:    true,
 }
 
 // lowSectionConfidence marks a Section label as uncertain in logs and metrics.
