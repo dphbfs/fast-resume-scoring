@@ -174,6 +174,45 @@ func TestChunkOptions(t *testing.T) {
 	}
 }
 
+func TestStripLabelPrefix(t *testing.T) {
+	tests := map[string]string{
+		"Deep Backend Expertise: A strong command of backend architecture": "A strong command of backend architecture",
+		"Raise the Bar: Advocate for product quality":                      "Advocate for product quality",
+		"Mentor & Lead: Mentor associate engineers":                        "Mentor associate engineers",
+		"Bonus: you have experience with Kubernetes":                       "you have experience with Kubernetes",
+		"Kubernetes: operators and controllers":                            "Kubernetes: operators and controllers", // a skill, not a label
+		"Tech stack: Go, Kafka":                                            "Tech stack: Go, Kafka",                 // lowercase word
+		"5+ years of Go":                                                   "5+ years of Go",
+		"A Very Long Label With Many Words: text":                          "A Very Long Label With Many Words: text",
+	}
+	for in, want := range tests {
+		if got := stripLabelPrefix(in); got != want {
+			t.Errorf("stripLabelPrefix(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
+func TestYearsFragmentsAreNotOffered(t *testing.T) {
+	cs := chunkSentence(domain.ContextSentence{Ref: "s1", Text: "2 years of experience working with Java, related field, or foreign equivalent"}, 4)
+	var opts []string
+	for _, c := range cs {
+		opts = append(opts, c.Options...)
+	}
+	for _, bad := range []string{"years", "years of experience working", "2 years of experience working", "related field", "foreign equivalent", "equivalent"} {
+		if slices.Contains(opts, bad) {
+			t.Errorf("options %q contain years/qualification fragment %q", opts, bad)
+		}
+	}
+	if !slices.Contains(opts, "Java") {
+		t.Errorf("options %q lost Java", opts)
+	}
+	// A years qualifier attached to a skill stays available.
+	cs = chunkSentence(domain.ContextSentence{Ref: "s2", Text: "5+ years of Go"}, 4)
+	if len(cs) != 1 || !slices.Contains(cs[0].Options, "5+ years of Go") {
+		t.Errorf("chunks = %+v, want the qualified skill offered", cs)
+	}
+}
+
 func TestGenericOnlyCandidatesAreDropped(t *testing.T) {
 	cs := chunkSentence(domain.ContextSentence{Ref: "s1", Text: "Hands-on experience, deep demonstrated expertise, Go experience"}, 4)
 	var opts []string

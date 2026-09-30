@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"unicode"
 
@@ -156,16 +157,51 @@ var genericWords = map[string]bool{
 	"great": true, "working": true, "professional": true, "relevant": true,
 	"related": true, "similar": true, "equivalent": true, "track": true,
 	"record": true, "comfort": true, "passion": true, "interest": true,
+	// Years and qualification boilerplate ("2 years of experience working",
+	// "related field", "or foreign equivalent").
+	"year": true, "years": true, "month": true, "months": true,
+	"field": true, "foreign": true,
 }
 
-// isGenericOnly reports whether every word of s is generic or a stopword.
+// isGenericOnly reports whether every word of s is generic, a stopword, or
+// has no letters ("5+"), or s starts with "years" ("years of Go" is a cut
+// qualifier; "5+ years of Go" is offered instead).
 func isGenericOnly(s string) bool {
-	for _, w := range strings.Fields(strings.ToLower(s)) {
-		if !genericWords[w] && !stopwords[w] {
+	words := strings.Fields(strings.ToLower(s))
+	if len(words) > 0 && (words[0] == "years" || words[0] == "year") {
+		return true
+	}
+	for _, w := range words {
+		if !genericWords[w] && !stopwords[w] && hasLetter(w) {
 			return false
 		}
 	}
 	return true
+}
+
+// labelPrefix matches an inline label at the start of a sentence: 2-4 words,
+// each capitalized or a short connective, followed by ":" and text ("Deep
+// Backend Expertise: A strong command of ...").
+var labelPrefix = regexp.MustCompile(`^([A-Z][\w&'’/+-]*(?:\s+(?:[A-Z][\w&'’/+-]*|&|and|of|the|to|for|in)){1,3}):\s+(\S.*)$`)
+
+// singleWordLabels are one-word inline labels that are never skills.
+var singleWordLabels = map[string]bool{
+	"bonus": true, "plus": true, "preferred": true, "required": true,
+	"requirement": true, "requirements": true, "note": true, "ideally": true,
+}
+
+// stripLabelPrefix removes an inline label ("Deep Backend Expertise:",
+// "Bonus:") so the label does not become a Candidate. A single capitalized
+// word before ":" is kept unless it is a known label word, because it may be
+// a skill ("Kubernetes: operators").
+func stripLabelPrefix(s string) string {
+	if m := labelPrefix.FindStringSubmatch(s); m != nil {
+		return m[2]
+	}
+	if i := strings.Index(s, ": "); i > 0 && singleWordLabels[strings.ToLower(s[:i])] {
+		return strings.TrimSpace(s[i+2:])
+	}
+	return s
 }
 
 // separators split a sentence into chunks and are left out of them. "such"
@@ -273,7 +309,7 @@ func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
 		if dropped {
 			continue
 		}
-		cs := chunkSentence(s, e.cfg.MaxWindowWords)
+		cs := chunkSentence(domain.ContextSentence{Ref: s.Ref, Text: stripLabelPrefix(s.Text)}, e.cfg.MaxWindowWords)
 		for _, c := range cs {
 			options += len(c.Options)
 		}
