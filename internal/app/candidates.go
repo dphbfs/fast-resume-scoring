@@ -256,9 +256,19 @@ func newChunk(ref domain.Ref, text string, maxWords int) (chunk, bool) {
 // skipped: they label the sentences below them and name no Requirement.
 func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
 	r.chunks = r.chunks[:0]
+	r.trace.Sentences = make([]domain.TraceSentence, len(r.sentences))
 	options := 0
 	for i, s := range r.sentences {
-		if droppedSections[s.Section] || (i < len(r.headings) && r.headings[i] == s.Text) {
+		dropped := droppedSections[s.Section] || (i < len(r.headings) && r.headings[i] == s.Text)
+		ts := domain.TraceSentence{Ref: s.Ref, Text: s.Text, Section: s.Section, Dropped: dropped}
+		if i < len(r.headings) {
+			ts.Heading = r.headings[i]
+		}
+		if i < len(r.sectionConf) {
+			ts.Confidence = r.sectionConf[i]
+		}
+		r.trace.Sentences[i] = ts
+		if dropped {
 			continue
 		}
 		cs := chunkSentence(s, e.cfg.MaxWindowWords)

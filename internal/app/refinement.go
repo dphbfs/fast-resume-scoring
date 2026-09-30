@@ -51,14 +51,18 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	}
 
 	// 1. Filler.
+	trs := make([]domain.TraceRequirement, len(values))
 	keep := make([]bool, len(values))
 	for i := range values {
 		a := answers[fmt.Sprintf("filler_%d", i)]
+		trs[i] = domain.TraceRequirement{Value: values[i], Mentions: len(mentions[i]), KeepP: a.Probabilities[fillerKeep]}
 		if a.Probabilities[fillerKeep] >= minKeepMass {
 			keep[i] = true
+			trs[i].Kept = true
 			continue
 		}
-		e.metrics.Add("refinement.dropped."+topOption(a.Probabilities, fillerReasons), 1)
+		trs[i].FillerKind = topOption(a.Probabilities, fillerReasons)
+		e.metrics.Add("refinement.dropped."+trs[i].FillerKind, 1)
 		e.log.DebugContext(ctx, "filler dropped", "requirement", values[i])
 	}
 
@@ -75,6 +79,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		if a, ok := answers[fmt.Sprintf("dup_%d", i)]; ok && keep[i] {
 			if j, ok := linkedValue(a, duplicateReasons, index, minMergeMass); ok && keep[j] {
 				dupOf[i] = j
+				trs[i].DuplicateOf = values[j]
 			}
 		}
 	}
@@ -82,6 +87,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	for i, j := range dupOf {
 		if j > i && dupOf[j] == i {
 			dups.union(i, j)
+			r.trace.Merges = append(r.trace.Merges, [2]string{values[i], values[j]})
 			e.metrics.Add("refinement.merged", 1)
 			e.log.DebugContext(ctx, "duplicate merged", "requirement", values[i], "and", values[j])
 		} else if j >= 0 && dupOf[j] != i {
@@ -95,6 +101,9 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		})
 		for _, m := range members {
 			canonical[m] = best
+			if m != best {
+				trs[m].MergedInto = values[best]
+			}
 		}
 	}
 
@@ -111,6 +120,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		}
 		k := strings.ToLower(values[canonical[i]])
 		r.importance[k] = max(r.importance[k], *a.Score/top)
+		trs[i].Score, trs[i].Importance = *a.Score, *a.Score/top
 	}
 
 	// 4. Alternatives between kept canonical Requirements.
@@ -123,6 +133,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		if j, ok := linkedValue(a, alternativeReasons, index, minAlternativeMass); ok && keep[j] &&
 			canonical[i] != canonical[j] {
 			alts.union(canonical[i], canonical[j])
+			trs[i].AlternativeOf = values[j]
 			e.metrics.Add("refinement.alternative_links", 1)
 		}
 	}
@@ -139,6 +150,8 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		r.groups = append(r.groups, g)
 	}
 	slices.SortFunc(r.groups, func(a, b []string) int { return cmp.Compare(index[a[0]], index[b[0]]) })
+	r.trace.Refinement = trs
+	r.trace.Groups = r.groups
 
 	// Apply Filler drops and duplicate rewrites to the accepted Candidates.
 	kept := r.accepted[:0]

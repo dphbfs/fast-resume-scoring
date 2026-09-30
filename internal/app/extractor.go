@@ -52,17 +52,20 @@ type run struct {
 	model     string // versioned Jev model that answered, e.g. "jev-1.13.0"
 	sentences []domain.ContextSentence
 	headings  []string // headings[i] is the nearest heading above sentences[i]
-	summary   string
-	chunks    []chunk
-	accepted  []judged
+	// sectionConf[i] is Jev's confidence in sentences[i].Section.
+	sectionConf []float64
+	summary     string
+	chunks      []chunk
+	accepted    []judged
 	// Refinement Round output, keyed by lowercase Requirement value.
 	importance map[string]float64
 	groups     [][]string
 	result     domain.Result
+	trace      domain.Trace
 }
 
 // Extract turns a Job Description into Requirements.
-func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, error) {
+func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error) {
 	r := &run{jd: jd}
 	stages := []struct {
 		name string
@@ -78,10 +81,10 @@ func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (doma
 	}
 	for _, s := range stages {
 		if err := e.stage(ctx, s.name, r, s.fn); err != nil {
-			return domain.Result{}, err
+			return domain.Result{}, r.trace, err
 		}
 	}
-	return r.result, nil
+	return r.result, r.trace, nil
 }
 
 // stage runs fn with timing, metrics and structured logs.

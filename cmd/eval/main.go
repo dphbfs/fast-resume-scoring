@@ -52,7 +52,12 @@ func run() int {
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 2
 		}
-		report = eval.Rescore(prev, fixtures)
+		traces, err := eval.LoadTraces(*rescore)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		report = eval.Rescore(prev, fixtures, traces)
 	} else {
 		runner, err := initRunner()
 		if err != nil {

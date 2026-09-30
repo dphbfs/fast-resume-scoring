@@ -45,8 +45,9 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 	fs.SetOutput(stderr)
 	out := fs.String("o", "", "write the result JSON to this file instead of stdout")
 	quiet := fs.Bool("q", false, "don't print the run summary to stderr")
+	debug := fs.String("debug", "", "write the extraction trace (dropped sentences, chunk choices, Filler, merges, probabilities) to this JSON file")
 	fs.Usage = func() {
-		fmt.Fprintln(stderr, "usage: extract [-o result.json] [-q] <job-description.txt|.md>")
+		fmt.Fprintln(stderr, "usage: extract [-o result.json] [-debug trace.json] [-q] <job-description.txt|.md>")
 		fs.PrintDefaults()
 	}
 	if err := fs.Parse(args); err != nil {
@@ -63,16 +64,24 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 		return ExitUsage
 	}
 
-	result, err := a.extractor.Extract(ctx, jd)
+	result, trace, err := a.extractor.Extract(ctx, jd)
 	if !*quiet {
 		defer a.printSummary(stderr)
+	}
+	// The trace is written even when extraction fails: it shows how far the
+	// pipeline got.
+	if *debug != "" {
+		if werr := writeJSON(trace, *debug, nil); werr != nil {
+			fmt.Fprintln(stderr, "extract: debug:", werr)
+			return ExitError
+		}
 	}
 	if err != nil {
 		fmt.Fprintln(stderr, "extract:", err)
 		return ExitError
 	}
 
-	if err := writeResult(result, *out, stdout); err != nil {
+	if err := writeJSON(result, *out, stdout); err != nil {
 		fmt.Fprintln(stderr, "extract:", err)
 		return ExitError
 	}
@@ -113,7 +122,8 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 	return domain.JobDescription{Title: title, Text: text}, nil
 }
 
-func writeResult(result domain.Result, path string, stdout io.Writer) error {
+// writeJSON writes v as indented JSON to path, or to stdout when path is empty.
+func writeJSON(v any, path string, stdout io.Writer) error {
 	w := stdout
 	if path != "" {
 		f, err := os.Create(path)
@@ -125,5 +135,5 @@ func writeResult(result domain.Result, path string, stdout io.Writer) error {
 	}
 	enc := json.NewEncoder(w)
 	enc.SetIndent("", "  ")
-	return enc.Encode(result)
+	return enc.Encode(v)
 }

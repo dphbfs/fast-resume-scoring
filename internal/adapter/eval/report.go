@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	"path/filepath"
 	"slices"
 	"strings"
 	"time"
 
+	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 )
@@ -44,8 +46,10 @@ type Totals struct {
 	AcceptableHits int                  `json:"acceptable_hits"`
 	DuplicateHits  int                  `json:"duplicate_hits"`
 	Tiers          map[string]TierScore `json:"tiers"`
-	TierOrder      *float64             `json:"tier_order,omitempty"`
-	GroupF1        *float64             `json:"group_f1,omitempty"`
+	// MissStages counts misses per attributed pipeline stage.
+	MissStages map[string]int `json:"miss_stages,omitempty"`
+	TierOrder  *float64       `json:"tier_order,omitempty"`
+	GroupF1    *float64       `json:"group_f1,omitempty"`
 }
 
 func totals(scores []FixtureScore) Totals {
@@ -63,6 +67,12 @@ func totals(scores []FixtureScore) Totals {
 		loose += s.LooseMatched
 		t.FillerHits += len(s.FillerHits)
 		t.AcceptableHits += len(s.AcceptableHits)
+		for _, mc := range s.MissCauses {
+			if t.MissStages == nil {
+				t.MissStages = map[string]int{}
+			}
+			t.MissStages[mc.Stage]++
+		}
 		t.DuplicateHits += len(s.DuplicateHits)
 		for tier, ts := range s.Tiers {
 			agg := t.Tiers[tier]
@@ -117,6 +127,9 @@ func (r Report) Write(dir string) (string, error) {
 	if err := os.WriteFile(base+".json", append(raw, '\n'), 0o644); err != nil {
 		return "", err
 	}
+	if err := r.writeTraces(base + "-traces"); err != nil {
+		return "", err
+	}
 	f, err := os.Create(base + ".md")
 	if err != nil {
 		return "", err
@@ -126,6 +139,49 @@ func (r Report) Write(dir string) (string, error) {
 		return "", err
 	}
 	return base + ".md", nil
+}
+
+// writeTraces saves each fixture's trace as <dir>/<id>.json.
+func (r Report) writeTraces(dir string) error {
+	for _, s := range r.Fixtures {
+		if s.Trace == nil {
+			continue
+		}
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			return err
+		}
+		raw, err := json.MarshalIndent(s.Trace, "", "  ")
+		if err != nil {
+			return err
+		}
+		if err := os.WriteFile(filepath.Join(dir, s.ID+".json"), append(raw, '\n'), 0o644); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// LoadTraces reads the trace files written next to a report JSON, keyed by
+// fixture ID. A report without traces yields an empty map.
+func LoadTraces(reportJSON string) (map[string]*domain.Trace, error) {
+	dir := strings.TrimSuffix(reportJSON, ".json") + "-traces"
+	files, err := filepath.Glob(filepath.Join(dir, "*.json"))
+	if err != nil {
+		return nil, err
+	}
+	out := map[string]*domain.Trace{}
+	for _, f := range files {
+		raw, err := os.ReadFile(f)
+		if err != nil {
+			return nil, err
+		}
+		var tr domain.Trace
+		if err := json.Unmarshal(raw, &tr); err != nil {
+			return nil, fmt.Errorf("%s: %w", f, err)
+		}
+		out[strings.TrimSuffix(filepath.Base(f), ".json")] = &tr
+	}
+	return out, nil
 }
 
 func pct(v float64) string { return fmt.Sprintf("%.1f%%", 100*v) }
@@ -170,6 +226,14 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 	}
 	fmt.Fprintf(&b, "| Jev calls | %d |\n\n", r.Metrics.Counters["jev.calls"])
 
+	if len(t.MissStages) > 0 {
+		b.WriteString("## Misses by stage\n\n| Stage | Misses |\n|---|---|\n")
+		for _, st := range slices.Sorted(maps.Keys(t.MissStages)) {
+			fmt.Fprintf(&b, "| %s | %d |\n", st, t.MissStages[st])
+		}
+		b.WriteString("\n")
+	}
+
 	b.WriteString("## Fixtures\n\n| Fixture | Recall (loose) | Precision | Expected | Predicted | Filler | Time |\n|---|---|---|---|---|---|---|\n")
 	for _, s := range r.Fixtures {
 		if s.Error != "" {
@@ -187,7 +251,14 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 			continue
 		}
 		fmt.Fprintf(&b, "\n### %s\n\n", s.Title)
-		fmt.Fprintf(&b, "- **Missed (%d):** %s\n", len(s.Misses), quoteList(s.Misses))
+		if len(s.MissCauses) > 0 {
+			fmt.Fprintf(&b, "- **Missed (%d):**\n", len(s.Misses))
+			for _, mc := range s.MissCauses {
+				fmt.Fprintf(&b, "  - `%s` (%s): %s\n", mc.Expected, mc.Stage, mc.Detail)
+			}
+		} else {
+			fmt.Fprintf(&b, "- **Missed (%d):** %s\n", len(s.Misses), quoteList(s.Misses))
+		}
 		fmt.Fprintf(&b, "- **Extra (%d):** %s\n", len(s.Extras), quoteList(s.Extras))
 		if len(s.FillerHits) > 0 {
 			fmt.Fprintf(&b, "- **Filler extracted:** %s\n", quoteList(s.FillerHits))

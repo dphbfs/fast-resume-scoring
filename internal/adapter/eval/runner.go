@@ -44,7 +44,7 @@ func (r *Runner) Run(ctx context.Context, fixtures []Fixture, parallel int) Repo
 	for i, f := range fixtures {
 		g.Go(func() error {
 			t0 := time.Now()
-			res, err := r.extractor.Extract(gctx, f.JD)
+			res, tr, err := r.extractor.Extract(gctx, f.JD)
 			var s FixtureScore
 			if err != nil {
 				r.log.ErrorContext(gctx, "fixture failed", "id", f.ID, "error", err)
@@ -52,11 +52,13 @@ func (r *Runner) Run(ctx context.Context, fixtures []Fixture, parallel int) Repo
 			} else {
 				s = Score(f.Expected, res)
 				s.Result = &res
+				s.MissCauses = attributeMisses(f.Expected, s, &tr)
 				mu.Lock()
 				model = res.Model
 				mu.Unlock()
 			}
 			s.ID, s.Title, s.DurationMS = f.ID, f.JD.Title, time.Since(t0).Milliseconds()
+			s.Trace = &tr
 			scores[i] = s
 			r.log.InfoContext(gctx, "fixture scored", "id", f.ID,
 				"recall_loose", ratio(s.LooseMatched, s.Expected), "predicted", s.Predicted)
@@ -109,8 +111,9 @@ func ratio(a, b int) float64 {
 // Rescore scores the results stored in a previous report against the current
 // fixtures' labels, without calling any API. Reports written before results
 // were stored are rebuilt from their matches, extras and Filler hits (values
-// only; Importance and groups are lost).
-func Rescore(prev Report, fixtures []Fixture) Report {
+// only; Importance and groups are lost). traces, keyed by fixture ID, come
+// from the previous run's trace files and enable miss attribution.
+func Rescore(prev Report, fixtures []Fixture, traces map[string]*domain.Trace) Report {
 	byID := map[string]FixtureScore{}
 	for _, s := range prev.Fixtures {
 		byID[s.ID] = s
@@ -136,6 +139,8 @@ func Rescore(prev Report, fixtures []Fixture) Report {
 		}
 		s := Score(f.Expected, *res)
 		s.ID, s.Title, s.DurationMS, s.Result = f.ID, f.JD.Title, old.DurationMS, res
+		s.Trace = traces[f.ID]
+		s.MissCauses = attributeMisses(f.Expected, s, s.Trace)
 		scores = append(scores, s)
 	}
 	rep := prev

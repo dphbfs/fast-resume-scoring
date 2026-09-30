@@ -13,26 +13,28 @@ import (
 // title plus the required and preferred sentences when the client is absent,
 // unconfigured, failing, or returns nothing.
 func (e *Extractor) jobSummary(ctx context.Context, r *run) error {
+	reason := "no generative client"
 	if e.generator != nil {
 		text, err := e.generator.Generate(ctx, summarySystemPrompt, r.jd.Text)
 		text = strings.TrimSpace(text)
 		switch {
 		case err == nil && text != "":
 			r.summary = truncateWords(text, maxSummaryRunes)
+			r.trace.JobSummary = domain.TraceSummary{Text: r.summary}
 			return nil
 		case errors.Is(err, port.ErrGenerativeUnavailable):
-			e.log.WarnContext(ctx, "job summary: generative client not configured, using fallback")
+			reason = "generative client not configured"
 		case err != nil:
-			e.log.WarnContext(ctx, "job summary: generation failed, using fallback", "error", err)
+			reason = "generation failed: " + err.Error()
 		default:
-			e.log.WarnContext(ctx, "job summary: empty reply, using fallback")
+			reason = "empty reply"
 		}
-	} else {
-		e.log.WarnContext(ctx, "job summary: no generative client, using fallback")
 	}
 
+	e.log.WarnContext(ctx, "job summary: using fallback", "reason", reason)
 	e.metrics.Add("summary.fallback", 1)
 	r.summary = fallbackSummary(r)
+	r.trace.JobSummary = domain.TraceSummary{Text: r.summary, Fallback: true, Reason: reason}
 	return nil
 }
 

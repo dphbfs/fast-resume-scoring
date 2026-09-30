@@ -84,6 +84,21 @@ func TestValidationRoundSelectsOneSpanPerChunk(t *testing.T) {
 		t.Errorf("accepted = %+v", r.accepted)
 	}
 
+	if len(r.trace.Chunks) != 4 {
+		t.Fatalf("trace chunks = %d, want 4", len(r.trace.Chunks))
+	}
+	for _, tc := range r.trace.Chunks {
+		if len(tc.Top) == 0 || len(tc.Candidates) != tc.Options {
+			t.Errorf("trace chunk %+v lacks top options or candidates", tc)
+		}
+		if (tc.Selected == "") == (tc.RejectReason == "") {
+			t.Errorf("trace chunk %q: want exactly one of selected/reject reason, got %+v", tc.Text, tc)
+		}
+	}
+	if tc := r.trace.Chunks[0]; tc.Text != "Work closely" || tc.RejectReason != "generic_trait" {
+		t.Errorf("first trace chunk = %+v, want Work closely rejected as generic_trait", tc)
+	}
+
 	// One request per sentence with chunks (s1, s3); s1 has 3 chunks.
 	reqs := srv.Requests()
 	if len(reqs) != 2 {

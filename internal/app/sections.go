@@ -29,6 +29,7 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 		valid[string(s)] = true
 	}
 
+	r.sectionConf = make([]float64, len(r.sentences))
 	batch := max(1, e.cfg.SectionBatchSize)
 	var mu sync.Mutex
 	g, ctx := errgroup.WithContext(ctx)
@@ -53,6 +54,9 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 					return fmt.Errorf("sentence %s: unknown section %q", r.sentences[i].Ref, a.Choice)
 				}
 				r.sentences[i].Section = domain.Section(a.Choice)
+				if a.Confidence != nil {
+					r.sectionConf[i] = *a.Confidence
+				}
 				if a.Confidence != nil && *a.Confidence < lowSectionConfidence {
 					e.metrics.Add("sections.low_confidence", 1)
 					e.log.DebugContext(ctx, "uncertain section",

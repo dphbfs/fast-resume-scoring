@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+	"strings"
 
 	"golang.org/x/sync/errgroup"
 
@@ -42,6 +43,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 		chunks   []chunk
 		out      []judged
 		rejected map[string]int
+		trace    []domain.TraceChunk
 	}
 	var batches []*batch
 	for i := 0; i < len(r.chunks); {
@@ -74,11 +76,19 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 					return fmt.Errorf("sentence %s: chunk %q: answer %q is not an option", s.Ref, c.Text, a.Choice)
 				}
 				best, bestP, spanMass := decide(c, a.Probabilities)
+				tc := domain.TraceChunk{
+					Ref: c.Ref, Text: c.Text, Options: len(c.Options), RequirementMass: spanMass,
+					Top: topOptions(a.Probabilities, traceTopOptions), Candidates: c.Options,
+				}
 				if spanMass >= e.minRequirementMass() {
 					b.out = append(b.out, judged{Candidate: domain.Candidate{Text: best, Ref: c.Ref}, P: bestP})
+					tc.Selected, tc.SelectedP = best, bestP
 				} else {
-					b.rejected[topReject(a.Probabilities)]++
+					reason := topReject(a.Probabilities)
+					b.rejected[reason]++
+					tc.RejectReason = reason
 				}
+				b.trace = append(b.trace, tc)
 			}
 			return nil
 		})
@@ -88,8 +98,10 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 	}
 
 	r.accepted = r.accepted[:0]
+	r.trace.Chunks = nil
 	for _, b := range batches {
 		r.accepted = append(r.accepted, b.out...)
+		r.trace.Chunks = append(r.trace.Chunks, b.trace...)
 		for reason, n := range b.rejected {
 			e.metrics.Add("validation.rejected."+reason, int64(n))
 		}
@@ -111,6 +123,27 @@ func decide(c chunk, probs map[string]float64) (best string, bestP, spanMass flo
 		}
 	}
 	return best, bestP, spanMass
+}
+
+// traceTopOptions is how many options a TraceChunk keeps.
+const traceTopOptions = 5
+
+// topOptions returns the n most probable options, highest first.
+func topOptions(probs map[string]float64, n int) []domain.TraceOption {
+	out := make([]domain.TraceOption, 0, len(probs))
+	for o, p := range probs {
+		out = append(out, domain.TraceOption{Option: o, P: p})
+	}
+	slices.SortFunc(out, func(a, b domain.TraceOption) int {
+		if a.P != b.P {
+			if a.P > b.P {
+				return -1
+			}
+			return 1
+		}
+		return strings.Compare(a.Option, b.Option)
+	})
+	return out[:min(n, len(out))]
 }
 
 // topReject returns the most probable rejection reason.

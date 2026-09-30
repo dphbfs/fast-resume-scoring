@@ -18,12 +18,13 @@ type fakeExtractor struct {
 	got domain.JobDescription
 }
 
-func (f *fakeExtractor) Extract(_ context.Context, jd domain.JobDescription) (domain.Result, error) {
+func (f *fakeExtractor) Extract(_ context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error) {
 	f.got = jd
 	return domain.Result{
-		SchemaVersion: domain.SchemaVersion,
-		Requirements:  []domain.Requirement{{ID: "req_1", Value: "Go", Refs: []domain.Ref{"s1"}, Importance: 0.9}},
-	}, nil
+			SchemaVersion: domain.SchemaVersion,
+			Requirements:  []domain.Requirement{{ID: "req_1", Value: "Go", Refs: []domain.Ref{"s1"}, Importance: 0.9}},
+		}, domain.Trace{Chunks: []domain.TraceChunk{{Ref: "s1", Text: "Go", Selected: "Go"}}},
+		nil
 }
 
 func writeFile(t *testing.T, name, content string) string {
@@ -53,6 +54,25 @@ func TestRunWritesResult(t *testing.T) {
 	}
 	if len(res.Requirements) != 1 || res.Requirements[0].Value != "Go" {
 		t.Errorf("result = %+v", res)
+	}
+}
+
+func TestRunWritesDebugTrace(t *testing.T) {
+	app := New(&fakeExtractor{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	path := writeFile(t, "jd.txt", "Go engineer\nGo.\n")
+	tracePath := filepath.Join(t.TempDir(), "trace.json")
+
+	var stdout, stderr bytes.Buffer
+	if code := app.Run(context.Background(), []string{"-q", "-debug", tracePath, path}, &stdout, &stderr); code != ExitOK {
+		t.Fatalf("exit = %d, stderr: %s", code, stderr.String())
+	}
+	raw, err := os.ReadFile(tracePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var tr domain.Trace
+	if err := json.Unmarshal(raw, &tr); err != nil || len(tr.Chunks) != 1 || tr.Chunks[0].Selected != "Go" {
+		t.Errorf("trace = %s (err %v)", raw, err)
 	}
 }
 

@@ -36,3 +36,6 @@ testdata/jd/
 
 # Build output
 /bin/
+
+# Per-fixture extraction traces written next to eval reports
+eval/reports/*-traces/

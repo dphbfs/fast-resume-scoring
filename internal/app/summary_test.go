@@ -84,6 +84,9 @@ func TestJobSummaryFallback(t *testing.T) {
 			if m.Summary().Counters["summary.fallback"] != 1 {
 				t.Error("fallback not counted")
 			}
+			if !r.trace.JobSummary.Fallback || r.trace.JobSummary.Reason == "" || r.trace.JobSummary.Text != want {
+				t.Errorf("trace summary = %+v", r.trace.JobSummary)
+			}
 		})
 	}
 }
