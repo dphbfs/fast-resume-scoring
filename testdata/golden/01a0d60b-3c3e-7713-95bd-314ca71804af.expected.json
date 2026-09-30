@@ -1,0 +1,32 @@
+{
+  "requirements": [
+    {"value": "5+ years software engineering", "aliases": ["5+ years of software engineering experience"], "tier": "required"},
+    {"value": "production backend/data systems", "aliases": ["backend systems", "data systems"], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "required"},
+    {"value": "systems language", "aliases": ["systems-language experience"], "tier": "required"},
+    {"value": "third-party/cloud API integration", "aliases": ["third-party APIs", "cloud APIs"], "tier": "required"},
+    {"value": "API authentication", "aliases": ["OAuth2"], "tier": "required"},
+    {"value": "pagination and rate limiting", "aliases": ["rate limiting", "pagination"], "tier": "required"},
+    {"value": "data pipelines", "aliases": ["ETL"], "tier": "required"},
+    {"value": "log and event processing", "aliases": ["event processing", "log processing"], "tier": "required"},
+    {"value": "structured data modeling", "aliases": ["data modeling"], "tier": "required"},
+    {"value": "host-level data collection", "aliases": ["agent-based data collection", "endpoint telemetry"], "tier": "required"},
+    {"value": "data connectors at scale", "aliases": ["data connectors"], "tier": "required"},
+    {"value": "large open-source codebases", "aliases": ["open source"], "tier": "required"},
+    {"value": "testing", "aliases": ["testing discipline"], "tier": "required"},
+    {"value": "code review", "aliases": [], "tier": "required"},
+    {"value": "LLMs / AI coding assistants", "aliases": ["AI coding assistants", "LLMs"], "tier": "required"},
+    {"value": "AI-driven automation", "aliases": [], "tier": "required"},
+    {"value": "Beats", "aliases": ["Filebeat", "Auditbeat", "Winlogbeat", "Packetbeat", "Osquerybeat"], "tier": "mentioned"},
+    {"value": "SIEM", "aliases": ["Elastic Security"], "tier": "mentioned"},
+    {"value": "security integrations", "aliases": ["EDR/XDR", "identity/IdP", "threat intel"], "tier": "mentioned"},
+    {"value": "AWS", "aliases": [], "tier": "mentioned"},
+    {"value": "Azure", "aliases": [], "tier": "mentioned"},
+    {"value": "GCP", "aliases": [], "tier": "mentioned"},
+    {"value": "ECS mappings", "aliases": ["ingest pipelines"], "tier": "mentioned"},
+    {"value": "mentoring", "aliases": ["mentor engineers"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Go", "systems language"], ["host-level data collection", "data connectors at scale"], ["AWS", "Azure", "GCP"]],
+  "filler": ["export license"],
+  "notes": "Greenhouse original: long company boilerplate, EEO text, and an export-control paragraph that should all yield nothing. HTML entities (&amp;, &nbsp;) appear in the text."
+}

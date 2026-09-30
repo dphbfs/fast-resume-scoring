@@ -1,0 +1,36 @@
+Senior Backend Engineer, Experimentation
+
+Summary:
+Senior Backend Engineer building scalable services for LaunchDarkly’s experimentation platform. Enabling engineering teams to make statistically confident product decisions through experiment analysis.
+Senior Backend Engineer building LaunchDarkly’s experimentation platform for data-driven software decisions
+Role description:
+• Design, build, and operate scalable backend services and APIs powering LaunchDarkly’s Experimentation product.
+• Own backend components through technical discovery, design, implementation, testing, deployment, monitoring, incident response, and continuous improvement.
+• Build and evolve systems supporting experiment setup, event data ingestion, metric computation, results processing, and results presentation.
+• Contribute to architectural decisions and technical proposals, balancing scalability, reliability, performance, cost, and maintainability.
+• Partner with product managers, designers, data scientists, and engineering teams to translate customer needs and product goals into reliable technical solutions.
+• Collaborate with Data Platform, Warehouse Integrations, SDK, and other teams on shared data flows, services, and cross-team dependencies.
+• Investigate complex production issues, identify root causes, and implement durable fixes.
+• Improve observability, testing, deployment safety, operational processes, and system reliability.
+• Participate in the on-call rotation and take ownership of production systems in a you-build-it-you-run-it culture.
+• Support teammates through code reviews, design reviews, knowledge sharing, and informal mentorship.
+Role requirements:
+• 6+ years of professional software engineering experience, including significant experience building and operating backend services in production.
+• Fluency using AI tools in software engineering workflows, including the judgment to direct, evaluate, and validate AI-generated output.
+• Experience designing and delivering customer-facing systems that are scalable, reliable, observable, and maintainable.
+• Strong programming experience in Go or a comparable backend language such as Python, Rust, or C++. The team is using Go.
+• Experience with distributed systems, event-driven architectures, data pipelines, APIs, data modeling, or data-intensive services.
+• Familiarity with analytical, operational, or warehouse data stores such as ClickHouse, Postgres, Snowflake, Redshift, BigQuery, Databricks, or equivalent technologies.
+• Experience diagnosing production issues and improving system reliability through metrics, logs, traces, alerting, and other observability practices.
+• Experience working in a cloud environment and with infrastructure-as-code or equivalent deployment and operations tooling.
+• Ability to take an ambiguous problem from discovery and scoping through design, implementation, launch, and ongoing operation.
+• Clear, thoughtful communication and a collaborative approach to working with technical and non-technical partners.
+• Experience with experimentation, A/B testing, analytics, data platforms, or similarly data-intensive products.
+Benefits:
+• Restricted Stock Units (RSUs)
+• Health insurance
+• Vision insurance
+• Dental insurance
+• Mental health benefits
+Tech stack:
+Amazon Redshift, BigQuery, Cloud, Distributed Systems, Postgres, Python, Rust, Go

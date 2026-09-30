@@ -1,0 +1,33 @@
+{
+  "requirements": [
+    {"value": "5+ years data engineering or AI engineering", "aliases": ["5+ years of working experience in a data engineering or AI engineering role", "data engineering", "AI engineering"], "tier": "required"},
+    {"value": "Python", "aliases": ["expert Python"], "tier": "required"},
+    {"value": "SQL", "aliases": ["expert SQL"], "tier": "required"},
+    {"value": "data modeling", "aliases": [], "tier": "required"},
+    {"value": "LLMs or agents in production", "aliases": ["LLMs", "AI agents"], "tier": "required"},
+    {"value": "agentic coding tools", "aliases": ["Claude Code", "Cursor"], "tier": "required"},
+    {"value": "data warehouse architectures", "aliases": ["data warehouse"], "tier": "required"},
+    {"value": "ETL/ELT", "aliases": ["ETL", "ELT"], "tier": "required"},
+    {"value": "modern data stack", "aliases": [], "tier": "required"},
+    {"value": "Databricks", "aliases": [], "tier": "preferred"},
+    {"value": "dbt", "aliases": ["DBT"], "tier": "required"},
+    {"value": "Snowflake", "aliases": [], "tier": "required"},
+    {"value": "BigQuery", "aliases": [], "tier": "required"},
+    {"value": "requirements gathering", "aliases": [], "tier": "required"},
+    {"value": "project management", "aliases": [], "tier": "required"},
+    {"value": "software engineering background", "aliases": [], "tier": "preferred"},
+    {"value": "supporting a business function", "aliases": ["marketing, sales, finance, or business operations"], "tier": "preferred"},
+    {"value": "go-to-market data and systems", "aliases": ["go-to-market"], "tier": "preferred"},
+    {"value": "CRM", "aliases": ["Salesforce"], "tier": "preferred"},
+    {"value": "marketing automation", "aliases": [], "tier": "preferred"},
+    {"value": "web analytics", "aliases": [], "tier": "preferred"},
+    {"value": "CDPs", "aliases": ["Customer Data Platform", "Hightouch", "Segment"], "tier": "preferred"},
+    {"value": "LLM evaluation and monitoring", "aliases": ["evaluating and monitoring LLM systems"], "tier": "preferred"},
+    {"value": "agent orchestration", "aliases": ["evaluation harnesses", "retrieval pipelines"], "tier": "mentioned"},
+    {"value": "conversational analytics", "aliases": [], "tier": "mentioned"},
+    {"value": "mentoring", "aliases": ["code reviews"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Databricks", "dbt", "Snowflake", "BigQuery"], ["CRM", "marketing automation", "web analytics", "CDPs"]],
+  "filler": ["self-starter", "strong communication", "residing in the US except the San Francisco Bay Metro Area, NYC Metro Area, and Washington, D.C. Metro Area", "legal right to work"],
+  "notes": "Databricks appears twice (as a data-stack example under minimum requirements and on its own under 'ideal'); it should come out as one Requirement. The 'You should apply if' block is company pitch and should yield nothing. Fraud-notice email domains should not be extracted."
+}

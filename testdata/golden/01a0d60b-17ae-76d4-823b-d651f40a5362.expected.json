@@ -1,0 +1,27 @@
+{
+  "requirements": [
+    {"value": "full-stack development", "aliases": ["full stack", "backend and frontend experience"], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "required"},
+    {"value": "TypeScript", "aliases": [], "tier": "required"},
+    {"value": "React", "aliases": [], "tier": "mentioned"},
+    {"value": "AI-assisted development", "aliases": ["coding agents", "LLM tooling"], "tier": "required"},
+    {"value": "observability ecosystem", "aliases": ["observability"], "tier": "required"},
+    {"value": "Prometheus", "aliases": [], "tier": "required"},
+    {"value": "Grafana dashboards", "aliases": ["Grafana"], "tier": "required"},
+    {"value": "alerting", "aliases": [], "tier": "required"},
+    {"value": "written communication", "aliases": ["strong written communication"], "tier": "required"},
+    {"value": "open source contributions", "aliases": ["open source"], "tier": "preferred"},
+    {"value": "developer tooling", "aliases": [], "tier": "preferred"},
+    {"value": "Grafana plugins", "aliases": ["Grafana apps"], "tier": "preferred"},
+    {"value": "Grafana Alloy", "aliases": ["Alloy"], "tier": "preferred"},
+    {"value": "OpenTelemetry Collector", "aliases": ["OpenTelemetry"], "tier": "preferred"},
+    {"value": "telemetry pipeline tooling", "aliases": [], "tier": "preferred"},
+    {"value": "Jsonnet", "aliases": ["configuration-as-code"], "tier": "preferred"},
+    {"value": "on-call experience", "aliases": ["on-call for the systems you instrument"], "tier": "preferred"},
+    {"value": "monitoring mixins", "aliases": [], "tier": "mentioned"},
+    {"value": "design proposals", "aliases": [], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Grafana Alloy", "OpenTelemetry Collector", "telemetry pipeline tooling"]],
+  "filler": ["product-focused mindset", "comfort being visible", "work independently", "US and Canada only (EST time zone)"],
+  "notes": "'We use Go and TypeScript; comparable languages translate well' keeps Go/TypeScript required but not strictly. On-call experience under Bonus is a skill (past on-call), unlike 'join the on-call rotation', which is a condition."
+}

@@ -1,0 +1,27 @@
+{
+  "requirements": [
+    {"value": "6+ years backend software engineering", "aliases": ["6+ years of backend software engineering experience", "backend software engineering"], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "preferred"},
+    {"value": "Python", "aliases": [], "tier": "preferred"},
+    {"value": "C++", "aliases": [], "tier": "preferred"},
+    {"value": "TypeScript", "aliases": [], "tier": "preferred"},
+    {"value": "distributed systems", "aliases": [], "tier": "required"},
+    {"value": "system design", "aliases": [], "tier": "required"},
+    {"value": "API development", "aliases": ["APIs"], "tier": "required"},
+    {"value": "cloud infrastructure", "aliases": [], "tier": "required"},
+    {"value": "AWS", "aliases": [], "tier": "preferred"},
+    {"value": "third-party service integration", "aliases": ["third-party services"], "tier": "required"},
+    {"value": "security/compliance-sensitive systems", "aliases": ["compliance-sensitive systems"], "tier": "required"},
+    {"value": "Web3", "aliases": ["Web3 or DeFi"], "tier": "required"},
+    {"value": "DeFi", "aliases": [], "tier": "required"},
+    {"value": "EVM-based blockchains", "aliases": ["EVM", "blockchain"], "tier": "preferred"},
+    {"value": "smart contract interactions", "aliases": ["smart contracts"], "tier": "preferred"},
+    {"value": "KYC provider integration", "aliases": ["identity/KYC providers", "KYC"], "tier": "mentioned"},
+    {"value": "custodian integrations", "aliases": ["custodians"], "tier": "mentioned"},
+    {"value": "payments infrastructure", "aliases": [], "tier": "mentioned"},
+    {"value": "code reviews", "aliases": [], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Go", "Python", "C++", "TypeScript"], ["Web3", "DeFi"]],
+  "filler": ["fast-moving startup environment", "high ambiguity and high ownership", "located in a US time zone"],
+  "notes": "Languages are 'ideally ... such as', so preferred and grouped. 'AWS preferred' within a required cloud line. Web3 interest may come from side projects."
+}

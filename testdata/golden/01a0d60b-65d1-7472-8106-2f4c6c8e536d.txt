@@ -1,0 +1,52 @@
+Senior Software Engineer
+
+Summary:
+Senior software engineer leading React, Python, AWS, Docker, and Kubernetes solutions for IAMUS Consulting's DoD/IC missions. Driving architecture, delivery, security, and client technical leadership.
+Senior software engineer leading full-stack, AWS, and secure DoD/IC mission solutions for IAMUS Consulting
+Role description:
+• Serve as the authoritative technical SME across frontend, backend, and cloud/DevOps domains
+• Establish architectural direction, engineering standards, and technical goals aligned to project and mission objectives
+• Make high-impact technical decisions and resolve complex, ambiguous implementation problems
+• Design, build, and maintain responsive React frontends emphasizing usability, performance, and accessibility
+• Develop secure, scalable Python backend services and APIs using FastAPI and/or Django
+• Deliver clean, testable, maintainable code through code review, automated testing, and technical documentation
+• Architect, provision, and manage AWS infrastructure using infrastructure-as-code practices
+• Containerize applications with Docker and deploy, scale, and operate workloads on Kubernetes
+• Design and maintain CI/CD pipelines, observability/monitoring, and automated deployment workflows
+• Establish goals, roadmaps, and delivery plans
+• Estimate level of effort and own task-level financial and schedule performance, including tracking burn against contract funding
+• Define engineering methods, tooling, and processes and adapt them to mission and program needs
+• Direct and control engineering activities for the client and ensure technical requirements are met
+• Interface with client senior management and program stakeholders; negotiate scope, priorities, trade-offs, and delivery commitments
+• Translate mission and operational requirements into technical strategy and communicate progress, risks, and options to leadership
+• Provide technical leadership and mentorship
+• Contribute to staffing decisions, resource planning, and team composition
+• May supervise, direct, and review other engineers
+• Champion secure-by-design and secure development practices in a CUI-handling, regulated environment
+• Ensure software and infrastructure align with DoD/IC security requirements and organizational compliance obligations
+Role requirements:
+• SME-level mastery across React, modern JavaScript/TypeScript, Python backend development with FastAPI and/or Django, AWS, Docker, and Kubernetes
+• Proven track record leading major software development or modernization efforts end-to-end, from technical planning through delivery and operation
+• Experience directing technical activities and interfacing directly with senior client stakeholders, including negotiating scope, priorities, and technical direction
+• Experience with level-of-effort estimation, resource/staffing planning, and ownership of task-level delivery
+• Strong grounding in secure software development and cloud security practices
+• U.S. citizenship
+• Active U.S. security clearance or eligibility to obtain one at the level required by the program
+• Ability to meet and maintain clearance eligibility requirements throughout employment
+• Preferred: AWS GovCloud and/or FedRAMP or DoD Impact Level authorized environment experience
+• Preferred: Infrastructure-as-code such as Terraform and Ansible and GitOps-style deployment workflows
+• Preferred: Prior software delivery on DoD or Intelligence Community programs
+• Preferred: Familiarity with CMMC, NIST 800-171/800-53, or comparable compliance frameworks
+• Preferred: Relevant certifications such as AWS Solutions Architect/DevOps, Certified Kubernetes Administrator, Security+, or equivalent DoD 8570/8140 baseline
+Benefits:
+• Health insurance
+• Life insurance
+• Disability insurance
+• Financial and retirement plans
+• Paid leave
+• Professional development
+• Tuition assistance
+• Dependent care
+• Support for the team both in the office and beyond
+Tech stack:
+Ansible, AWS, Cloud, Django, Docker, JavaScript, Kubernetes, Python, React, Terraform, TypeScript

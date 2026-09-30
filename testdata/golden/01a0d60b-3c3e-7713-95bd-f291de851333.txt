@@ -1,0 +1,49 @@
+Senior Software Engineer, Android
+
+Summary:
+Senior Android Engineer building resilient data-sync applications and TAK integrations for defense users at Ditto. Owning edge architecture, field deployment, and technical direction.
+Senior Android Engineer building resilient edge-sync integrations for defense users at Ditto
+Role description:
+• Drive the design, development, and field deployment of applications and plugins integrating Ditto's data synchronization capabilities into warfighter situational-awareness tools
+• Architect and develop performant Android applications and services for tactical end-user devices in disconnected, intermittent, and low-bandwidth environments
+• Define data contracts, API boundaries, and synchronization patterns for interoperability with the TAK ecosystem and third-party systems
+• Diagnose and resolve complex application, integration, and data-flow issues on end-user devices in live operational environments
+• Build tooling and practices for resolving operational issues
+• Mentor engineers, review designs and code, and strengthen team expertise in Android, ATAK/TAK, and integration architecture
+• Partner with product and engineering leadership to define the edge integration roadmap
+• Translate field usage lessons into technical insights, architectural recommendations, and product requirements
+Role requirements:
+• 8+ years of software engineering experience
+• Strong track record building, shipping, and maintaining production applications at scale
+• Full-stack comfort and deep demonstrated expertise in at least one technical area
+• 4+ years of mobile application development experience
+• Deep familiarity with the Android SDK, Kotlin and/or Java
+• Strong integration design skills, including API contracts, data synchronization patterns, and loosely coupled systems
+• Demonstrated technical leadership in architectural decisions, technical direction, trade-offs, and rationale communication
+• Track record mentoring engineers through code review, design guidance, or direct coaching
+• Adaptability and problem-solving ability in ambiguous, fast-moving operational situations
+• Strong written and verbal communication skills
+• CRDT or local-first architecture experience
+• Cross-platform mobile development experience involving Android and platforms such as iOS, Windows, or Linux
+• ATAK/TAK ecosystem experience, including ATAK plugin development, CoT messaging, TAK Server integration, and plugin architecture
+• Tactical networking familiarity, including constrained, mesh, or MANET radio networks
+• Embedded databases and offline-first persistence experience with SQLite, Realm, or similar technologies
+• Tactical edge deployment experience
+• SOCOM, Department of Defense, or federal customer experience
+• Technical lead experience on a small team or complex cross-functional initiative
+• Backend or systems development experience with Go, Rust, or Python
+Benefits:
+• Competitive salary
+• Meaningful equity
+• Health insurance
+• Dental insurance
+• Vision insurance
+• Life insurance
+• Disability insurance
+• 401(k)
+• Flexible spending accounts
+• Flexible time off
+• Remote work
+• Atlanta office available as an optional place to work or meet with teammates
+Tech stack:
+Android, iOS, Java, Kotlin, Linux, Python, Realm, Rust, SQLite, Go

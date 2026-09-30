@@ -35,6 +35,10 @@ _Avoid_: Window, n-gram, phrase, yield
 One atomic thing the employer asks for (e.g. "Go", "Kubernetes", "5+ years backend"), linked to every Context Sentence it came from.
 _Avoid_: Keyword, skill, tag, term
 
+**Alternative Group**:
+A set of Requirements where the employer accepts any one of them (e.g. "Go, Ruby, or Python").
+_Avoid_: Any-of, options, OR-group
+
 **Validation Round**:
 The first Jev pass, which judges each Candidate against the Job Description and keeps those that are valid Requirements.
 _Avoid_: Detection, classification pass
@@ -44,7 +48,7 @@ The second Jev pass, which sees all validated Requirements together, filters the
 _Avoid_: Ranking pass, dedup pass
 
 **Filler**:
-A validated phrase too generic to check against a resume (e.g. "team player", "fast-paced environment"); dropped in the Refinement Round.
+A validated phrase that can't be checked against a resume, either because it is too generic ("team player", "fast-paced environment") or because it is a condition rather than a skill ("eligible to work in the US", "background check", "on-call"); dropped in the Refinement Round.
 _Avoid_: Fluff, noise, soft requirement
 
 **Importance**:

@@ -1,0 +1,48 @@
+Senior Software Engineer, Backend – Web Products
+
+Summary:
+Backend engineer shaping scalable AI-powered healthcare payment and audit products at Machinify. Setting technical direction, building distributed systems, and advancing agentic engineering practices.
+Backend engineer shaping AI-powered healthcare payment and audit products at Machinify
+Role description:
+• Set technical direction for backend development and design and build scalable, reliable web application systems
+• Direct and review AI coding agents’ output while maintaining engineering quality
+• Drive adoption of new languages, tools, and agentic development practices across the team
+• Write code impacting customers and future product lines
+• Partner cross-functionally to influence product direction and work directly with customers
+• Understand the healthcare claims and payments domain
+• Build production-grade Java, Scala, and/or Rust services; contribute standards and mentor others
+• Serve as the backend voice in cross-team planning and support cross-functional execution
+• Contribute to complex in-browser application development, ensuring extensibility, scalability, and security
+• Balance customer-facing features with technical debt cleanup
+• Architect and implement applications applying ML techniques to large volumes of data
+• Design systems for performant and reliable application delivery
+• Bring agentic engineering practices into day-to-day team work and help adoption
+Role requirements:
+• 10+ years of experience across backend programming; additional full-stack experience highly desired
+• Proven experience designing and shipping customer-facing web application products
+• Meaningful experience with Java or Scala; Rust highly desired
+• Experience designing, building, and operating distributed systems on cloud services at scale, with high throughput and high availability
+• Ability to write Technical Design Documents that translate ambiguous product intent into concrete backend design
+• Product- and user-driven mindset
+• Strong cross-functional collaboration with engineering peers, senior PM, ML/DS partners, and leadership
+• Pragmatic approach with strong systems instinct and root-cause analysis
+• Hands-on experience with agentic engineering tools and workflows in production
+• Experience reading and understanding complex code, owning code quality, and improving it
+• Critical thinking and problem-solving skills in a high-growth, high-stakes environment
+• Comfort with complexity and curiosity to define the path forward
+• BS or MS in Computer Science (or equivalent experience)
+Benefits:
+• Work from anywhere in the US
+• Top Medical/Dental/Vision offerings
+• FSA/HSA
+• Tuition reimbursement
+• Competitive salary
+• 401(k) with company match
+• Unlimited PTO
+• Additional health and wellness benefits and perks
+• Flexible and trusting environment where you’ll feel empowered to do your best work
+• Meaningful equity
+• Excellent healthcare
+• Flexible time off
+Tech stack:
+Cloud, Distributed Systems, Java, Rust, Scala

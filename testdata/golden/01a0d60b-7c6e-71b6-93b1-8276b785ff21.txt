@@ -1,0 +1,36 @@
+Senior Software Engineer, Fulfillment
+
+Summary:
+Senior Software Engineer optimizing Instacart’s grocery delivery fulfillment platform. Building scalable software, improving architectures, and leveraging AI tools for engineering excellence.
+Senior Software Engineer optimizing Instacart’s grocery fulfillment platform
+Role description:
+• Design, build, and implement software solutions to optimize and scale the Instacart platform and related technologies, emphasizing fulfillment operations
+• Develop highly scalable software using computer science and software engineering principles
+• Establish protocols for rapidly rolling out upgrades and new features
+• Analyze and optimize expensive SQL queries
+• Execute ongoing testing and analysis of current systems
+• Independently perform performance analysis, diagnosis, and troubleshooting
+• Determine design solutions to problematic programming
+• Analyze and refine complex architectures
+• Propose new systems to improve delivery and operational excellence
+• Leverage AI toolsets to accelerate development processes
+• Establish new standards to improve engineering quality of partner-centric products
+• Perform other duties as assigned
+Role requirements:
+• Master’s degree in Computer Science, Software Engineering, or related field (or foreign equivalent)
+• 2 years of experience in the job offered or related
+• 2 years of experience working with Java, Ruby, Python, or similar programming languages
+• 2 years of experience working with MySQL, PostgreSQL, NoSQL, or similar data management systems
+• 2 years of experience working with client/server architectures and application architectures
+• 2 years of experience working with large codebases on cross-functional teams
+• 2 years of experience employing advanced AI toolsets to accelerate development processes
+• 2 years of experience deriving insights from complex data sets
+• In lieu of a Master’s degree and 2 years of related experience, a Bachelor’s degree in Computer Science, Software Engineering, or related field (or foreign equivalent) and 5 years of progressive, post-baccalaureate experience in the job offered or related is accepted
+Benefits:
+• Flexibility to work from home, an office, or a favorite coffee shop
+• Regular in-person events
+• New hire equity grant
+• Annual refresh grants
+• Market-competitive compensation and benefits dependent on work location
+Tech stack:
+Java, MySQL, NoSQL, Postgres, Python, Ruby, SQL
