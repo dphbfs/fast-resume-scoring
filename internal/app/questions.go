@@ -63,3 +63,83 @@ var droppedSections = map[domain.Section]bool{
 
 // lowSectionConfidence marks a Section label as uncertain in logs and metrics.
 const lowSectionConfidence = 0.5
+
+// --- Job Summary (stage 4) ---
+
+// summarySystemPrompt instructs the generative model. The summary is
+// background for judging Candidates, so it names the role, not requirements.
+const summarySystemPrompt = "You summarize job postings. Reply with 2 or 3 plain sentences " +
+	"describing the role: its title and seniority, the product or domain, and the core " +
+	"technologies. No lists, no benefits, no company marketing, no requirements beyond the core stack."
+
+// maxSummaryRunes caps the generated summary sent to Jev on every
+// Validation request.
+const maxSummaryRunes = 600
+
+// maxFallbackRunes caps the fallback summary built from the title and the
+// required/preferred sentences.
+const maxFallbackRunes = 1500
+
+// --- Validation Round (stage 5) ---
+
+// validationQuestion asks what kind of phrase one Candidate is. A Choice
+// over described situations separated answers better than a single Noul
+// that bundled "complete", "specific", "asked of the applicant" and
+// "single" into one judgment (live test: Nouls clustered near 0.5).
+//
+// The words around the Candidate are embedded too: judged alone, a word cut
+// out of a longer name ("distributed" from "distributed systems") looks like
+// a valid skill.
+func validationQuestion(candidate, before, after string) port.Question {
+	if before == "" {
+		before = "(start of sentence)"
+	}
+	if after == "" {
+		after = "(end of sentence)"
+	}
+	return port.Question{
+		Type: port.Choice,
+		Instructions: map[string]any{
+			"candidate":    candidate,
+			"words_before": before,
+			"words_after":  after,
+			"question": "In `sentence`, `candidate` appears between `words_before` and `words_after`. " +
+				"What is `candidate`?",
+		},
+		Criteria: validationCriteria,
+	}
+}
+
+// validationCriteria are the Candidate kinds. Keys in requirementKinds are
+// accepted as Requirements.
+var validationCriteria = map[string]any{
+	"technology": "A specific tool, language, framework, platform, or standard, " +
+		"e.g. \"Kafka\", \"Go\", \"PostgreSQL\", \"X.509\".",
+	"skill_or_domain": "A specific skill, practice, or domain area, e.g. \"API design\", " +
+		"\"distributed systems\", \"payments\", \"threat modeling\".",
+	"experience_or_qualification": "A kind or amount of experience, a degree, or a " +
+		"certification, e.g. \"5+ years of backend engineering\", \"Bachelor's degree in " +
+		"Computer Science\", \"Security+\".",
+	"responsibility": "A specific piece of work the role involves, e.g. \"SDK development\", " +
+		"\"incident response\", \"mentoring engineers\".",
+	"partial_or_padded": "Cut off: `words_before` or `words_after` continues the same name or " +
+		"idea (\"distributed\" followed by \"systems\", \"development\" preceded by \"SDK\"). " +
+		"Or padded: a requirement with extra words attached (\"use Vue\", \"Own SDK development\", " +
+		"\"experience with Kafka\").",
+	"several_items": "Two or more separate requirements joined together, e.g. \"Go and " +
+		"Kubernetes\", \"Kafka Flink\".",
+	"generic": "A generic word or phrase that is not a specific requirement, e.g. " +
+		"\"strong\", \"experience\", \"team\", \"fast-paced environment\".",
+}
+
+// requirementKinds are the validationCriteria options that mean "this
+// Candidate is a Requirement".
+var requirementKinds = []string{"technology", "skill_or_domain", "experience_or_qualification", "responsibility"}
+
+// acceptCandidate is the minimum probability mass on requirementKinds for a
+// Candidate to become a validated Requirement. Tune with `make eval`.
+const acceptCandidate = 0.5
+
+// validationBatchSize caps questions per Validation request; a sentence with
+// more Candidates is split into several requests with the same state.
+const validationBatchSize = 150

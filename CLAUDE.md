@@ -47,6 +47,13 @@ Job Description (`.txt` / `.md` file):
 4. Validation Round: one Jev request per Context Sentence (state: Section +
    sentence + Job Summary from `AIGenerativeClient`, generated once per run),
    one Noul per Candidate asking whether it is a single atomic Requirement. Requests run through the bounded concurrency layer.
+   - Current question: one Jev Choice per Candidate (technology /
+     skill_or_domain / experience_or_qualification / responsibility vs.
+     partial_or_padded / several_items / generic) with the 3 words before and
+     after embedded; accept when mass on the first four >= 0.5. **Known
+     issue:** judged independently, single words cut from longer names
+     ("financial" from "financial systems") are accepted, so the compound
+     check drops good multi-word phrases. Redesign pending (see git log).
    - Compound check (early versions only): if an accepted Candidate contains
      two or more other accepted Candidates, drop it and **log a warning**. Any
      hit means Jev failed the task or its answer was misread, so treat it as a
