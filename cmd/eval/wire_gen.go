@@ -44,3 +44,22 @@ func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	runner := eval.NewRunner(extractor, recorder, logger, pipeline)
 	return runner, nil
 }
+
+// initCheckerRunner builds the Resume Checker eval runner.
+func initCheckerRunner() (*eval.CheckerRunner, error) {
+	configConfig, err := config.Load()
+	if err != nil {
+		return nil, err
+	}
+	configJev := configConfig.Jev
+	recorder := metrics.NewRecorder()
+	logger := logging.New()
+	client, err := jev.New(configJev, recorder, logger)
+	if err != nil {
+		return nil, err
+	}
+	checker := configConfig.Checker
+	appChecker := app.NewChecker(client, recorder, logger, checker)
+	checkerRunner := eval.NewCheckerRunner(appChecker, recorder, logger, checker)
+	return checkerRunner, nil
+}

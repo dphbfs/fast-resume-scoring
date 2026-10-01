@@ -3,8 +3,10 @@
 ## Goal
 
 A Go-based tool that uses Jev to extract and prioritize the Requirements in a
-Job Description. Later, a Resume Checker will mark each Requirement present or
-missing in a resume.
+Job Description (Requirement Extractor, done), then link a Resume's Evidence
+Units to those Requirements and report each Requirement's Coverage (Resume
+Checker, current milestone). No importance ranking, rewriting, generation,
+or caching in the Resume Checker milestone.
 
 Jev is TypeSafe AI's System One model (https://docs.typesafe.ai/introduction):
 a fast, typed classifier, not a text generator. Use the official TypeSafe
@@ -101,9 +103,9 @@ way; add a code-side formula only if it doesn't.
   "schema_version": "1",
   "model": "jev-1.13.0",
   "requirements": [
-    { "id": "req_1", "value": "Kubernetes", "refs": ["s3", "s9"], "importance": 0.82 },
-    { "id": "req_2", "value": "Go", "refs": ["s5"], "importance": 0.74 },
-    { "id": "req_3", "value": "Ruby", "refs": ["s5"], "importance": 0.74 }
+    { "id": "req_1", "value": "Kubernetes", "refs": ["s3", "s9"], "tier": "required", "importance": 0.82 },
+    { "id": "req_2", "value": "Go", "refs": ["s5"], "tier": "required", "importance": 0.74 },
+    { "id": "req_3", "value": "Ruby", "refs": ["s5"], "tier": "required", "importance": 0.74 }
   ],
   "alternative_groups": [
     { "id": "alt_1", "members": ["req_2", "req_3"] }
@@ -115,20 +117,101 @@ way; add a code-side formula only if it doesn't.
 ```
 
 Requirements are sorted by `importance`, descending. A Requirement belongs to
-at most one Alternative Group; the Resume Checker will treat a group as
-satisfied when any member is present.
+at most one Alternative Group; the Resume Checker gives a group its best
+member's Coverage.
 
-Later (not V1): the Resume Checker (resume parsing, cheap local matching,
-Jev semantic matching, strict present/missing per Requirement), running
-inside a larger resume-tailoring backend.
+The extractor Result also carries `tier` per Requirement (`required |
+preferred | mentioned`, same values as golden labels), derived in code from
+the strongest Section among its Context Sentences: required > preferred >
+responsibilities (-> `mentioned`). Tier is independent of Importance.
 
-## Deferred ideas (keep for the Resume Checker)
+## Resume Checker (current milestone)
 
-- Requirement category (technology / experience / education / certification /
-  soft skill / domain), assigned by a Jev Choice, so each type can be checked
-  differently.
-- Record Jev's raw probability and the resume evidence line with each
-  present/missing outcome.
+Goal: given extractor Requirements and a plain-text Resume, produce an
+evaluated many-to-many set of Evidence Links and per-Requirement Coverage.
+Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
+
+1. Resume parsing (code only). Markdown convention:
+   `# <Resume Section>`, `## <Role> | <Company or Project> | <dates>`, bullets
+   `-` / `•` / `*` (wrapped lines joined). Every Resume Section yields
+   Evidence Units, kept verbatim: one per bullet, per prose sentence, per
+   Skills line, per Education/Certification entry. Non-conforming input
+   parses with blank metadata.
+2. Retrieval Round (default `narrow`): a Choice over all Requirements +
+   `none` (`none` is a sink only; option description = Requirement + its
+   shortest Context Sentence), repeated over the best
+   `CHECKER_NARROW_SIZES` (16, then 8) of the previous round; keep the top
+   K=8 with p >= 0.01. Other `CHECKER_RETRIEVAL_MODE`s: `single` (one
+   Choice), `peel` (take the winner, remove it, ask again), `noul` (one
+   yes/no per Requirement). Nothing is linked yet.
+3. Strength Round: one Jev request per Evidence Unit with, per retrieved
+   Requirement, a gate Noul and a grading Choice (TypeSafe's "Choice
+   grades, Noul decides whether" pattern):
+   - Gate (`CHECKER_GATE_THRESHOLD` 0.5, wording `v2`): "is `statement`
+     evidence the candidate has this requirement?" Yes = work with it, a
+     specific instance, a part/prerequisite, or its broader practice, or
+     named as their own skill/degree/certificate. Links when P >= 0.5.
+   - Grading Choice (`CHECKER_STRENGTH_CRITERIA` `v5`): options are
+     `{what, not_for, examples}` objects: strong (the Requirement itself
+     is what the work was done with or on; degree/certificate entries are
+     strong for what they name), partial (a part, prerequisite, broader
+     practice, or minor use), weak (named/listed/claimed only), plus
+     non-evidence options `none`, `alternative_tool`,
+     `shared_words_only`, `different_skill`, `context_only`. Strength =
+     argmax of strong/partial/weak. Examples never come from eval
+     fixtures.
+   - Skills and Summary units are capped at weak in code. Gate off
+     (`CHECKER_GATE_THRESHOLD=0`) falls back to P(strong+partial+weak) >=
+     `CHECKER_MIN_EVIDENCE_MASS`. `CHECKER_STRENGTH_MODE=score` (3-level
+     Score instead of the Choice) was worse; kept for experiments.
+4. Coverage: best Evidence Strength per Requirement, or `none` (flagged,
+   never invented). Alternative Group Coverage = best member's Coverage. No
+   counts, no Match Score, no Importance use. No years-qualifier special
+   handling. Job Summary not used.
+5. CLI: `cmd/check -requirements <result.json> -resume <resume.md>
+   [-debug trace.json]`. Output (coverage schema v1):
+
+```json
+{
+  "schema_version": "1", "model": "jev-1.13.0",
+  "requirements": [
+    { "id": "req_1", "value": "Kubernetes", "tier": "required",
+      "coverage": "partial",
+      "evidence": [ { "unit": "e4", "strength": "partial", "p": 0.71 } ] }
+  ],
+  "alternative_groups": [ { "id": "alt_1", "members": ["req_2", "req_3"], "coverage": "strong" } ],
+  "evidence_units": { "e4": { "text": "...", "resume_section": "experience",
+      "role": "...", "company": "...", "dates": "2021-03 – 2024-06" } }
+}
+```
+
+Same non-negotiables as the extractor: slog per stage, metrics, the bounded
+Jev limiter, and a trace logging every retrieved pair, its probabilities,
+and the accept/reject decision.
+
+### Resume Checker eval
+
+- Fixture = (golden Job Description, Resume) pair; 10-12 pairs:
+  synthetic Resumes written against golden Job Descriptions (mixing strong,
+  partial, weak, missing, and decoy cases) plus the user's real Resumes,
+  each paired with 2 golden Job Descriptions.
+- Input Requirements are the golden labels only (V1). Their option
+  description is the first Job Description sentence containing the value or
+  an alias, found by code; none when no hit.
+- Files: `testdata/resumes/<id>.md`, `testdata/checker/<pair>.expected.json`
+  listing, per golden Requirement, supporting units (quoted text snippet,
+  not a parser ID) with strength; unlisted pairs are none. Years-qualifier
+  Requirements are `acceptable` (not scored). Claude drafts, the user
+  corrects.
+- `cmd/eval -checker` reports retrieval recall, Evidence Link
+  precision/recall, strength accuracy (exact and off-by-one), and Coverage
+  accuracy per Requirement split by Tier (the main number).
+- Identical runs vary by up to ~0.5 points; compare configs on 3+ runs
+  each (mean and range), never on one.
+- `make eval-checker` runs it live into `eval/reports/checker/`;
+  `eval -checker -rescore <report.json>` rescores offline after label edits.
+  Labels: `testdata/checker/README.md`. Tuning log: `docs/tuning.md`
+  ("Resume Checker experiment log"). Tasks: `docs/resume-checker-tasks.md`.
 
 ## V1 non-negotiables
 
@@ -203,8 +286,11 @@ inside a larger resume-tailoring backend.
 ## Test data
 
 - Job Descriptions come from the Reactive Resume MCP server (`reactive-resume`,
-  local-scope config). Pull Job Descriptions only, never resumes; strip
-  recruiter names and emails.
+  local-scope config); strip recruiter names and emails.
+- The user's own Resumes may be pulled from Reactive Resume only to build
+  Resume Checker fixtures, and must be masked before committing: fake name,
+  contacts, links, companies, and schools; keep dates, technologies, and
+  metrics. The user reviews masked Resumes before commit.
 - `testdata/jd/<id>.txt` plus a metadata sidecar (source, date, title).
 - Golden set: ~20 hand-reviewed fixtures with expected Requirements, committed.
   Claude drafts the labels, the user corrects them.

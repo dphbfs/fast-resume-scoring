@@ -1,0 +1,218 @@
+{
+ "job": "01a0d60b-7c6e-71b6-93b1-8276b785ff21",
+ "resume": "syn-fulfillment",
+ "skip": [
+  "5 years progressive experience"
+ ],
+ "links": {
+  "Master's degree in Computer Science": [
+   {
+    "quote": "MSc Computer Science",
+    "strength": "strong"
+   }
+  ],
+  "Bachelor's degree in Computer Science": [
+   {
+    "quote": "BSc Computer Science",
+    "strength": "strong"
+   }
+  ],
+  "programming languages": [
+   {
+    "quote": "Built Java services that assign grocery orders",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built Python services for store inventory sync",
+    "strength": "strong"
+   },
+   {
+    "quote": "Languages: Java, Python, Kotlin, SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Software engineer with 8 years in Java",
+    "strength": "weak"
+   },
+   {
+    "quote": "Wrote a client/server desktop app",
+    "strength": "strong"
+   }
+  ],
+  "Java": [
+   {
+    "quote": "Built Java services that assign grocery orders",
+    "strength": "strong"
+   },
+   {
+    "quote": "Wrote a client/server desktop app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Led the split of a 600k-line Java monolith",
+    "strength": "strong"
+   },
+   {
+    "quote": "Languages: Java, Python, Kotlin, SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Software engineer with 8 years in Java",
+    "strength": "weak"
+   }
+  ],
+  "Python": [
+   {
+    "quote": "Built Python services for store inventory sync",
+    "strength": "strong"
+   },
+   {
+    "quote": "Analyzed six months of picking data",
+    "strength": "partial"
+   },
+   {
+    "quote": "Languages: Java, Python, Kotlin, SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Software engineer with 8 years in Java",
+    "strength": "weak"
+   }
+  ],
+  "data management systems": [
+   {
+    "quote": "Optimized slow PostgreSQL queries",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built Python services for store inventory sync",
+    "strength": "partial"
+   },
+   {
+    "quote": "Data: PostgreSQL, MySQL, DynamoDB, Redis",
+    "strength": "weak"
+   }
+  ],
+  "MySQL": [
+   {
+    "quote": "Data: PostgreSQL, MySQL, DynamoDB, Redis",
+    "strength": "weak"
+   }
+  ],
+  "PostgreSQL": [
+   {
+    "quote": "Optimized slow PostgreSQL queries",
+    "strength": "strong"
+   },
+   {
+    "quote": "Data: PostgreSQL, MySQL, DynamoDB, Redis",
+    "strength": "weak"
+   }
+  ],
+  "NoSQL": [
+   {
+    "quote": "Built Python services for store inventory sync",
+    "strength": "strong"
+   },
+   {
+    "quote": "Data: PostgreSQL, MySQL, DynamoDB, Redis",
+    "strength": "weak"
+   }
+  ],
+  "client/server architectures": [
+   {
+    "quote": "Wrote a client/server desktop app",
+    "strength": "strong"
+   }
+  ],
+  "application architectures": [
+   {
+    "quote": "Led the split of a 600k-line Java monolith",
+    "strength": "strong"
+   },
+   {
+    "quote": "Wrote a client/server desktop app",
+    "strength": "strong"
+   }
+  ],
+  "large codebases": [
+   {
+    "quote": "Led the split of a 600k-line Java monolith",
+    "strength": "strong"
+   }
+  ],
+  "AI toolsets": [
+   {
+    "quote": "Used GitHub Copilot and Claude",
+    "strength": "strong"
+   }
+  ],
+  "deriving insights from complex data sets": [
+   {
+    "quote": "Analyzed six months of picking data",
+    "strength": "strong"
+   }
+  ],
+  "SQL query optimization": [
+   {
+    "quote": "Optimized slow PostgreSQL queries",
+    "strength": "strong"
+   }
+  ],
+  "performance analysis": [
+   {
+    "quote": "Optimized slow PostgreSQL queries",
+    "strength": "strong"
+   },
+   {
+    "quote": "Added load tests",
+    "strength": "partial"
+   },
+   {
+    "quote": "Analyzed six months of picking data",
+    "strength": "partial"
+   }
+  ],
+  "scalable software": [
+   {
+    "quote": "Built Java services that assign grocery orders",
+    "strength": "partial"
+   },
+   {
+    "quote": "Added load tests",
+    "strength": "partial"
+   },
+   {
+    "quote": "Led the split of a 600k-line Java monolith",
+    "strength": "partial"
+   }
+  ],
+  "troubleshooting": [
+   {
+    "quote": "Investigated production incidents",
+    "strength": "strong"
+   }
+  ],
+  "fulfillment operations": [
+   {
+    "quote": "Built Java services that assign grocery orders",
+    "strength": "strong"
+   },
+   {
+    "quote": "Analyzed six months of picking data",
+    "strength": "strong"
+   }
+  ],
+  "testing": [
+   {
+    "quote": "Added load tests",
+    "strength": "strong"
+   },
+   {
+    "quote": "Used GitHub Copilot and Claude",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Missing on purpose: Ruby. Decoy: Kotlin in Skills."
+}

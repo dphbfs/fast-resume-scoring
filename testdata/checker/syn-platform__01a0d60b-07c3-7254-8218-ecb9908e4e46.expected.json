@@ -1,0 +1,178 @@
+{
+ "job": "01a0d60b-07c3-7254-8218-ecb9908e4e46",
+ "resume": "syn-platform",
+ "skip": [
+  "4+ years DevOps/SRE/Platform engineering"
+ ],
+ "links": {
+  "Linux": [
+   {
+    "quote": "Debugged kernel-level network issues on Linux hosts",
+    "strength": "strong"
+   },
+   {
+    "quote": "configuring 200 Ubuntu servers",
+    "strength": "strong"
+   },
+   {
+    "quote": "running Linux infrastructure",
+    "strength": "weak"
+   }
+  ],
+  "Kubernetes": [
+   {
+    "quote": "self-managed Kubernetes clusters with kubeadm",
+    "strength": "strong"
+   },
+   {
+    "quote": "Certified Kubernetes Administrator",
+    "strength": "strong"
+   },
+   {
+    "quote": "Tools: Kubernetes, Helm",
+    "strength": "weak"
+   },
+   {
+    "quote": "running Linux infrastructure",
+    "strength": "weak"
+   },
+   {
+    "quote": "nginx ingress controllers",
+    "strength": "partial"
+   }
+  ],
+  "self-hosted Kubernetes administration": [
+   {
+    "quote": "self-managed Kubernetes clusters with kubeadm",
+    "strength": "strong"
+   },
+   {
+    "quote": "Certified Kubernetes Administrator",
+    "strength": "partial"
+   },
+   {
+    "quote": "running Linux infrastructure",
+    "strength": "weak"
+   }
+  ],
+  "GCP": [
+   {
+    "quote": "Wrote Terraform modules for GCP",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cloud: GCP, AWS",
+    "strength": "weak"
+   }
+  ],
+  "AWS": [
+   {
+    "quote": "Managed EC2 fleets and S3 buckets",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cloud: GCP, AWS",
+    "strength": "weak"
+   }
+  ],
+  "Infrastructure as Code": [
+   {
+    "quote": "Wrote Terraform modules for GCP",
+    "strength": "strong"
+   },
+   {
+    "quote": "Managed EC2 fleets and S3 buckets",
+    "strength": "strong"
+   },
+   {
+    "quote": "configuring 200 Ubuntu servers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Tools: Kubernetes, Helm",
+    "strength": "weak"
+   }
+  ],
+  "Python": [
+   {
+    "quote": "Wrote Python scripts",
+    "strength": "strong"
+   },
+   {
+    "quote": "Languages: Python, Bash, Go",
+    "strength": "weak"
+   }
+  ],
+  "Bash": [
+   {
+    "quote": "Wrote Bash tooling",
+    "strength": "strong"
+   },
+   {
+    "quote": "Languages: Python, Bash, Go",
+    "strength": "weak"
+   }
+  ],
+  "observability tools": [
+   {
+    "quote": "Set up Prometheus, Alertmanager, and Grafana",
+    "strength": "strong"
+   }
+  ],
+  "CI/CD": [
+   {
+    "quote": "Migrated CI from Jenkins to GitLab CI",
+    "strength": "strong"
+   }
+  ],
+  "Terraform": [
+   {
+    "quote": "Wrote Terraform modules for GCP",
+    "strength": "strong"
+   },
+   {
+    "quote": "Tools: Kubernetes, Helm",
+    "strength": "weak"
+   }
+  ],
+  "Ansible": [
+   {
+    "quote": "configuring 200 Ubuntu servers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Tools: Kubernetes, Helm",
+    "strength": "weak"
+   }
+  ],
+  "configuration management": [
+   {
+    "quote": "configuring 200 Ubuntu servers",
+    "strength": "strong"
+   }
+  ],
+  "web servers": [
+   {
+    "quote": "Tuned nginx and php-fpm",
+    "strength": "strong"
+   },
+   {
+    "quote": "nginx ingress controllers",
+    "strength": "partial"
+   }
+  ],
+  "application servers": [
+   {
+    "quote": "Tuned nginx and php-fpm",
+    "strength": "partial"
+   }
+  ],
+  "troubleshooting": [
+   {
+    "quote": "Debugged kernel-level network issues on Linux hosts",
+    "strength": "strong"
+   }
+  ]
+ },
+ "notes": "Missing on purpose: Terragrunt, Puppet."
+}

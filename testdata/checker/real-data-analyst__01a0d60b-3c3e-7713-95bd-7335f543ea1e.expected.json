@@ -1,0 +1,310 @@
+{
+ "job": "01a0d60b-3c3e-7713-95bd-7335f543ea1e",
+ "resume": "real-data-analyst",
+ "skip": [
+  "5+ years data engineering or AI engineering"
+ ],
+ "links": {
+  "SQL": [
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Calculated each refund in SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "strong"
+   },
+   {
+    "quote": "Data & Reporting: SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "wrote the SQL behind driver refunds",
+    "strength": "weak"
+   },
+   {
+    "quote": "Designed relational database schemas and queries",
+    "strength": "strong"
+   },
+   {
+    "quote": "Brings an engineer's view",
+    "strength": "weak"
+   }
+  ],
+  "data modeling": [
+   {
+    "quote": "Designed relational database schemas and queries",
+    "strength": "strong"
+   }
+  ],
+  "data warehouse architectures": [
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "partial"
+   }
+  ],
+  "ETL/ELT": [
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "partial"
+   },
+   {
+    "quote": "Automated the race results data feed",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated complex product inventory data",
+    "strength": "partial"
+   },
+   {
+    "quote": "Brings an engineer's view",
+    "strength": "weak"
+   }
+  ],
+  "modern data stack": [
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "partial"
+   },
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "partial"
+   }
+  ],
+  "requirements gathering": [
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "partial"
+   }
+  ],
+  "project management": [
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Separated core business records",
+    "strength": "partial"
+   }
+  ],
+  "software engineering background": [
+   {
+    "quote": "Separated core business records",
+    "strength": "strong"
+   },
+   {
+    "quote": "Senior software engineer with 10+ years",
+    "strength": "weak"
+   },
+   {
+    "quote": "Maintained the financial report",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built a Grafana dashboard tracking activation KPIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built event reservation",
+    "strength": "strong"
+   },
+   {
+    "quote": "Delivered custom client solutions",
+    "strength": "strong"
+   },
+   {
+    "quote": "Automated the race results data feed",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated complex product inventory data",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed relational database schemas and queries",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built integrations with cloud providers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "partial"
+   },
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "partial"
+   },
+   {
+    "quote": "Created the first documentation and diagrams",
+    "strength": "partial"
+   },
+   {
+    "quote": "Found a billing error",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Background: Java, Go",
+    "strength": "weak"
+   },
+   {
+    "quote": "Bachelor's Degree, Computer Science",
+    "strength": "partial"
+   }
+  ],
+  "supporting a business function": [
+   {
+    "quote": "Found a billing error",
+    "strength": "strong"
+   },
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "strong"
+   },
+   {
+    "quote": "Brings an engineer's view",
+    "strength": "weak"
+   },
+   {
+    "quote": "Calculated each refund in SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "strong"
+   },
+   {
+    "quote": "Maintained the financial report",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Grafana dashboard tracking activation KPIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built event reservation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Senior software engineer with 10+ years",
+    "strength": "weak"
+   }
+  ],
+  "marketing automation": [
+   {
+    "quote": "personalized invitation email systems",
+    "strength": "partial"
+   }
+  ],
+  "marketing": [
+   {
+    "quote": "personalized invitation email systems",
+    "strength": "partial"
+   }
+  ],
+  "finance": [
+   {
+    "quote": "Calculated each refund in SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Maintained the financial report",
+    "strength": "strong"
+   },
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "strong"
+   },
+   {
+    "quote": "wrote the SQL behind driver refunds",
+    "strength": "weak"
+   },
+   {
+    "quote": "Found a billing error",
+    "strength": "strong"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Brings an engineer's view",
+    "strength": "weak"
+   }
+  ],
+  "business operations": [
+   {
+    "quote": "Built a Grafana dashboard tracking activation KPIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Found a billing error",
+    "strength": "partial"
+   },
+   {
+    "quote": "Calculated each refund in SQL",
+    "strength": "partial"
+   },
+   {
+    "quote": "Maintained the financial report",
+    "strength": "partial"
+   },
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built event reservation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Senior software engineer with 10+ years",
+    "strength": "weak"
+   }
+  ],
+  "data quality": [
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "strong"
+   },
+   {
+    "quote": "Found a billing error",
+    "strength": "strong"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built a Grafana dashboard tracking activation KPIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Brings an engineer's view",
+    "strength": "weak"
+   }
+  ]
+ },
+ "notes": "Missing: Python, LLM/agent work, dbt/Snowflake/BigQuery/Databricks, CRM tools."
+}

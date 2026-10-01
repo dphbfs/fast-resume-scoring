@@ -1,0 +1,388 @@
+{
+ "job": "01a0d60b-65d1-7472-8106-14264f84a2cb",
+ "resume": "real-backend",
+ "skip": [
+  "6+ years software engineering"
+ ],
+ "links": {
+  "backend services in production": [
+   {
+    "quote": "Built backend services for EV charging fleet management",
+    "strength": "strong"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "strong"
+   },
+   {
+    "quote": "10+ years of experience building backend systems",
+    "strength": "weak"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "strong"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed backend systems, REST APIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Extracted core domain services",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed backend services and REST APIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed backend features for events system",
+    "strength": "partial"
+   },
+   {
+    "quote": "Cut financial report generation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed and deployed containerized services on AWS",
+    "strength": "partial"
+   },
+   {
+    "quote": "Simplified microservice setup process",
+    "strength": "partial"
+   },
+   {
+    "quote": "Contributed to system design and migration planning",
+    "strength": "partial"
+   },
+   {
+    "quote": "Strong background in Java and microservice",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built scalable, high-availability systems",
+    "strength": "weak"
+   },
+   {
+    "quote": "Interested in building backend systems",
+    "strength": "weak"
+   }
+  ],
+  "AI tools in engineering workflows": [
+   {
+    "quote": "AI Tools: AI-assisted engineering",
+    "strength": "weak"
+   }
+  ],
+  "customer-facing systems": [
+   {
+    "quote": "Participated in production support and troubleshooting of customer-facing",
+    "strength": "strong"
+   },
+   {
+    "quote": "Improved performance and user experience",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built scalable, high-availability systems",
+    "strength": "weak"
+   }
+  ],
+  "Go": [
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "strong"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "hands-on experience in Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Interested in building backend systems using Golang",
+    "strength": "weak"
+   }
+  ],
+  "distributed systems": [
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "10+ years of experience building backend systems",
+    "strength": "weak"
+   },
+   {
+    "quote": "Simplified microservice setup process",
+    "strength": "partial"
+   },
+   {
+    "quote": "Extracted core domain services",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "partial"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built scalable, high-availability systems",
+    "strength": "weak"
+   }
+  ],
+  "event-driven architectures": [
+   {
+    "quote": "Built backend services for EV charging fleet management",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "strong"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "partial"
+   }
+  ],
+  "data pipelines": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   }
+  ],
+  "APIs": [
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed backend services and REST APIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed backend systems, REST APIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built integrations with external APIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "strong"
+   }
+  ],
+  "data modeling": [
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "strong"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   }
+  ],
+  "data-intensive services": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "partial"
+   },
+   {
+    "quote": "Cut financial report generation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   }
+  ],
+  "analytical data stores": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   }
+  ],
+  "Postgres": [
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "strong"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   }
+  ],
+  "observability": [
+   {
+    "quote": "Improved observability through Prometheus",
+    "strength": "strong"
+   }
+  ],
+  "cloud environment": [
+   {
+    "quote": "Developed and deployed containerized services on AWS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "strong"
+   }
+  ],
+  "experimentation": [
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Extracted core domain services",
+    "strength": "partial"
+   }
+  ],
+  "analytics": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "partial"
+   }
+  ],
+  "data platforms": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   }
+  ],
+  "incident response": [
+   {
+    "quote": "Participated in production support and troubleshooting",
+    "strength": "partial"
+   },
+   {
+    "quote": "Improved observability through Prometheus",
+    "strength": "partial"
+   },
+   {
+    "quote": "Contributed to system design and migration planning",
+    "strength": "partial"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   }
+  ],
+  "diagnosing production issues": [
+   {
+    "quote": "Participated in production support and troubleshooting",
+    "strength": "strong"
+   },
+   {
+    "quote": "Improved observability through Prometheus",
+    "strength": "partial"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   }
+  ],
+  "design reviews": [
+   {
+    "quote": "Contributed to system design and migration planning",
+    "strength": "partial"
+   }
+  ],
+  "testing": [
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   }
+  ]
+ },
+ "notes": "Feature flags are partial evidence of experimentation, not A/B testing."
+}
