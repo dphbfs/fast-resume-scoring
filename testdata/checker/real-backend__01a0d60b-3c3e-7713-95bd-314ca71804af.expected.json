@@ -1,0 +1,296 @@
+{
+ "job": "01a0d60b-3c3e-7713-95bd-314ca71804af",
+ "resume": "real-backend",
+ "skip": [
+  "5+ years software engineering"
+ ],
+ "links": {
+  "production backend/data systems": [
+   {
+    "quote": "Built backend services for EV charging fleet management",
+    "strength": "strong"
+   },
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   },
+   {
+    "quote": "10+ years of experience building backend systems",
+    "strength": "weak"
+   },
+   {
+    "quote": "Extracted core domain services",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "strong"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "strong"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cut financial report generation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed backend services and REST APIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed backend features for events system",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed backend systems, REST APIs",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed and deployed containerized services on AWS",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in production support",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   },
+   {
+    "quote": "Improved observability through Prometheus",
+    "strength": "partial"
+   },
+   {
+    "quote": "Contributed to system design and migration planning",
+    "strength": "partial"
+   },
+   {
+    "quote": "Strong background in Java and microservice",
+    "strength": "weak"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built scalable, high-availability systems",
+    "strength": "weak"
+   },
+   {
+    "quote": "Interested in building backend systems",
+    "strength": "weak"
+   }
+  ],
+  "Go": [
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "strong"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "hands-on experience in Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Interested in building backend systems using Golang",
+    "strength": "weak"
+   }
+  ],
+  "systems language": [
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "strong"
+   },
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Strong background in Java and microservice",
+    "strength": "weak"
+   },
+   {
+    "quote": "Interested in building backend systems",
+    "strength": "weak"
+   }
+  ],
+  "third-party/cloud API integration": [
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built integrations with external APIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "partial"
+   }
+  ],
+  "API authentication": [
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "partial"
+   }
+  ],
+  "data pipelines": [
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built backend services for EV charging fleet management",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   }
+  ],
+  "log and event processing": [
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built backend services for EV charging fleet management",
+    "strength": "partial"
+   },
+   {
+    "quote": "Improved observability through Prometheus",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed REST APIs, service integrations, and Kafka-based",
+    "strength": "partial"
+   },
+   {
+    "quote": "Experienced in designing REST APIs",
+    "strength": "weak"
+   }
+  ],
+  "structured data modeling": [
+   {
+    "quote": "Designed and optimized relational database schemas",
+    "strength": "partial"
+   },
+   {
+    "quote": "Participated in migration of enterprise product data",
+    "strength": "partial"
+   }
+  ],
+  "data connectors at scale": [
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "partial"
+   }
+  ],
+  "testing": [
+   {
+    "quote": "Owned home charger activation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   }
+  ],
+  "LLMs / AI coding assistants": [
+   {
+    "quote": "AI Tools: AI-assisted engineering",
+    "strength": "weak"
+   }
+  ],
+  "AI-driven automation": [
+   {
+    "quote": "AI Tools: AI-assisted engineering",
+    "strength": "weak"
+   }
+  ],
+  "AWS": [
+   {
+    "quote": "Developed and deployed containerized services on AWS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Replaced an OpenSearch-based analytics solution",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Golang CLI",
+    "strength": "strong"
+   },
+   {
+    "quote": "Technical Stack: Java, Golang",
+    "strength": "weak"
+   },
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed media processing pipelines",
+    "strength": "strong"
+   }
+  ],
+  "Azure": [
+   {
+    "quote": "Worked on integrations with AWS, Azure",
+    "strength": "partial"
+   }
+  ],
+  "identity/IdP": [
+   {
+    "quote": "Built and owned shared Spring Boot libraries",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Decoy: 'ECS' in Skills is AWS ECS, not Elastic Common Schema (ECS mappings = none)."
+}

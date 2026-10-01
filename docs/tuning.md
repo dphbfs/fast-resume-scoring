@@ -118,3 +118,188 @@ fallback runs.
 | 2026-09-30 | Fixed inputs: C5 + C2, two runs | `63732feae2fb` | 93.3% / 93.0% | 82.5% / 82.0% | 87.6% / 87.2% | yes (+0.7 F1 vs C5, both runs) |
 | 2026-09-30 | C1: drop job-title fragments before Refinement. Offline on both C5 + C2 runs: removes 4 / 5 predictions, all Filler hits, no matches | `63732feae2fb` | unchanged | +~0.4 | +~0.2 | yes (exact, deterministic filter) |
 | 2026-09-30 | C3 + C4 (label prefixes stripped; years/qualification fragments not offered), two fixed-input runs with C1-C5. Trace: label-prefix extras 1 -> 0, years/qualification extras 7-8 -> 0-1 | `63732feae2fb` | 93.0% / 93.0% | 82.7% / 82.9% | 87.5% / 87.6% | yes (mechanisms verified, +~0.5 precision, Filler 8-9 -> 3-6 incl. C1) |
+| 2026-10-01 | Tier added to Requirements (code rule: strongest Section wins). Offline rescore of the 2026-09-30T02-46-18Z run, Tier derived from stored Context: accuracy required 96.0% (314/327), preferred 73.8% (107/145), mentioned 88.7% (134/151) | `63732feae2fb` | unchanged | unchanged | unchanged | yes (preferred is the weak spot; revisit only if Resume Checker eval needs it) |
+
+## Resume Checker experiment log
+
+Run with `make eval-checker` (11 pairs in `testdata/checker`). Labels are
+Claude's first draft, not yet reviewed by the user; real-resume labels are
+known to be under-inclusive (many "false links" are valid evidence), so
+link precision is understated. Retrieval recall is the most trustworthy
+number until the review.
+
+| Date | Change | Labels | Coverage | Retrieval recall (S+P) | Link P / R | Strength exact | Report |
+|---|---|---|---|---|---|---|---|
+| 2026-10-01 | Baseline: K 5, floor 0.02, mass 0.5 | `25ff7643d0b3` | 81.1% | 83.8% (80.5%) | 57.5% / 83.8% | 85.9% | `2026-10-01T01-26-55Z` |
+| 2026-10-01 | K 8 | `25ff7643d0b3` | 81.1% | 83.8% | 56.0% / 83.8% | 85.9% | `2026-10-01T01-27-26Z` |
+| 2026-10-01 | K 12 | `25ff7643d0b3` | 81.8% | 83.5% | 55.9% / 83.5% | 86.9% | `2026-10-01T01-27-36Z` |
+| 2026-10-01 | K 8, floor 0.005 | `25ff7643d0b3` | 81.8% | 90.7% | 49.9% / 90.3% | 85.9% | `2026-10-01T01-27-53Z` |
+| 2026-10-01 | K 8, floor 0.001 | `25ff7643d0b3` | 81.1% | 89.4% | 50.2% / 89.1% | 86.0% | `2026-10-01T01-28-04Z` |
+
+Findings:
+
+- Link recall equals retrieval recall in every run: the Strength Round
+  links nearly every labeled pair it sees, so retrieval is the recall
+  bottleneck.
+- K is not the limit; the floor is. The retrieval Choice concentrates mass
+  on one Requirement, so a bullet that supports 6+ Requirements (e.g. the
+  real-backend analytics-pipeline bullet) leaves the others below 0.02.
+  Even at floor 0.005 recall is 90.7%, under the ADR 0001 trigger (95%):
+  next experiment is Noul retrieval (one independent yes/no per
+  Requirement).
+- Strength: the model rates labeled-partial pairs strong 20 times
+  (confusion row partial: 20 strong / 19 partial). Either the partial
+  definition needs sharper contrasts or the labels are strict; decide
+  after the label review.
+
+### 2026-10-01: label gaps, negative options, multi-round retrieval
+
+Labels: 163 links added from the baseline's false links (broad
+Requirements now labeled on every supporting bullet), and a policy fix: a
+competing tool of the same kind is not evidence (Docker Swarm for
+Kubernetes removed). New labels fingerprint after the fix; the old rows
+above are not comparable. Pooling bias: the added links came from
+single-mode predictions, so link precision is inflated for single mode and
+understated for modes that find new pairs.
+
+Noise: identical runs vary by up to ~0.5 points on every metric. Each row
+below is the mean [min-max] of 3-4 runs.
+
+| Config | Runs | Coverage | Retrieval R | Link P | Link R | Strength exact | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v1 criteria, single | 4 | 81.3 [80.8-81.5] | 88.0 | 90.4 | 88.0 | 84.4 | 0.022 |
+| v2 (sharpened strong/partial), single | 1 | 81.8 | 87.8 | 87.8 | 87.8 | 84.7 | |
+| **v3 (v2 + negatives), single (new default)** | 4 | **84.7 [84.6-85.0]** | 88.0 | 92.9 | 86.9 | 86.6 | 0.027 |
+| v3, peel K 6 (no shortlist) | 1 | 82.5 | 91.3 | 73.9 | 90.1 | 86.0 | |
+| v3, peel K 6, shortlist 12 | 4 | 83.9 [83.6-84.3] | 90.6 | 79.0 | 89.5 | 85.9 | 0.057 |
+| v3, narrow 12,4, K 6 | 1 | 81.8 | 82.2 | 92.0 | 81.0 | 87.7 | |
+| v3, narrow 16,8, K 8, floor 0.01 | 4 | 84.4 [83.9-85.0] | 91.6 | 85.7 | 90.3 | 86.7 | 0.044 |
+| same, mass 0.65 | 3 | 85.1 [85.0-85.3] | 91.6 | 87.6 | 88.4 | 87.0 | |
+| same, mass 0.8 | 3 | 85.4 [85.0-85.7] | 91.8 | 90.8 | 83.3 | 86.9 | |
+| v3, single, mass 0.65 | 3 | 83.9 [83.2-84.3] | 87.9 | 94.3 | 84.9 | 86.5 | |
+
+Findings:
+
+- Negative options (v3) are the clear win: +3.4 Coverage over v1, ranges
+  do not overlap, link precision up, required-tier Coverage 79.1 -> 85.0.
+  Sharpening strong/partial alone (v2) did nothing measurable.
+- Multi-round retrieval works as designed: peel and narrow raise retrieval
+  recall by 2.6-3.8 points (the softmax-splitting problem). But the extra
+  pairs are mostly borderline, and v3 still links many of them, so Coverage
+  does not rise unless the evidence-mass threshold rises with it (narrow +
+  mass 0.65-0.8: +0.4 to +0.7 over v3 single, at 1.6x cost). Within the
+  label-bias margin: re-test after the user's label review before making
+  narrow the default.
+- Peel without a shortlist is the worst: each extra round over ~40 options
+  lets the model pick a loosely related Requirement instead of none.
+- Retrieval recall still tops out near 92% (ADR 0001 trigger: 95%).
+  Noul retrieval is still untested.
+- Remaining stable false links that v3 lets through, for the next negative
+  option: inferring a Requirement from a capability the work would need
+  (API authentication <- "integrations with AWS, Azure"; OAuth2 <- "auth
+  libraries"; SQL <- "maintained the financial report").
+
+### 2026-10-01: Noul retrieval and the needed_capability negative
+
+Same labels as the previous section. Mean [min-max] of 3 runs each, plus a
+fresh v3 control in the same session.
+
+| Config | Coverage | Retrieval R | Link P | Link R | Strength exact | Required Cov | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v3, single (control) | 84.3 [84.3-84.3] | 88.0 | 92.3 | 86.9 | 86.3 | 85.1 | 0.027 |
+| v4 (v3 + needed_capability), single | 83.9 [83.6-84.3] | 87.7 | 94.1 | 85.0 | 84.2 | 83.4 | 0.028 |
+| v3, noul K 8, threshold 0.5 | 83.1 [82.5-83.6] | **97.0** | 62.2 | 96.0 | 87.0 | 84.6 | 0.061 |
+| v3, noul K 8, threshold 0.3 | 79.8 [79.7-80.1] | 97.9 | 58.4 | 96.3 | 86.4 | 83.2 | 0.066 |
+| v4, noul 0.5 | 81.5 [80.8-82.5] | 97.1 | 65.1 | 94.1 | 83.2 | 83.7 | 0.063 |
+| v3, noul 0.5, mass 0.8 | 83.2 [83.2-83.2] | 96.9 | 71.7 | 88.8 | 86.2 | 83.4 | 0.061 |
+| v4, noul 0.5, mass 0.8 | 81.8 [81.5-82.5] | 96.8 | 77.8 | 80.6 | 82.9 | 80.7 | 0.063 |
+| **v3, noul 0.7, mass 0.8** | **85.1 [85.0-85.3]** | 90.8 | 76.8 | 86.5 | 86.7 | 84.1 | 0.056 |
+
+Findings:
+
+- Noul retrieval fixes retrieval recall (97.0%, past the ADR 0001 95%
+  trigger): independent yes/no answers do not split mass the way one
+  Choice does. But it hands the Strength Round ~3x more borderline pairs,
+  and v3 links too many (link precision 62%), so Coverage falls.
+- A sample of 45 stable noul-only false links: ~1 in 4 are label gaps
+  (compiled language <- "shipped an iOS app in Swift"), ~3 in 4 real false
+  positives (Kotlin <- "Android apps in Java"; customer-facing <- "designed
+  backend services"). The precision drop is mostly real.
+- Best Coverage so far: noul 0.7 + mass 0.8 at 85.1, +0.8 over v3 single
+  with non-overlapping ranges, at 2x cost; required-tier Coverage is not
+  better (84.1 vs 85.1). Not adopted: the gain is small, and the Strength
+  Round, not retrieval, now limits Coverage.
+- needed_capability (v4) raises link precision but costs recall and strength
+  accuracy (it takes probability from partial); no gain in any
+  combination. Kept selectable, not default.
+- Next lever is the Strength Round's precision on borderline pairs (most
+  surviving false positives are partial links), not more retrieval.
+
+### 2026-10-01: TypeSafe guidance review, then A (structured options), B (gate Noul), C (Score grading)
+
+Guidance from docs.typesafe.ai (Jev 1.13 jaggedness, building guide,
+primitives, structure, confidence, composite scoring, skill-suggestion and
+citation-check cookbooks) that applies here:
+
+- One judgment per question; split mixed judgments and combine in code.
+  Our Strength Choice mixed "is it evidence", "why not", and "how strong".
+- Ordinal judgments ("how strong") suit a Score with concrete levels.
+- Choice options can be `{what, not_for, examples}` objects; `not_for`
+  sharpens boundaries.
+- Rank with a Choice, decide "whether" with an absolute Noul per candidate
+  (skill-suggestion cookbook). Our earlier Noul retrieval used Nouls as the
+  ranker over all Requirements, which the docs do not recommend.
+- Literal reading: align instructions and criteria; when explaining a
+  wrong answer, that explanation is the missing instruction.
+- Choice and Noul thresholds are not interchangeable.
+
+Results, mean [min-max] of 3 runs each, same labels as the sections above:
+
+| Config | Coverage | Retrieval R | Link P | Link R | Strength exact | Required Cov | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v3, single (control) | 83.9 [83.6-84.3] | 88.3 | 92.5 | 87.2 | 86.5 | 83.9 | 0.027 |
+| A: v5 (structured options), single | 84.8 [84.6-85.0] | 87.8 | 93.0 | 86.4 | 86.6 | 85.1 | 0.033 |
+| B: v3 + gate 0.5, single | 83.0 [82.5-83.6] | 88.5 | 98.0 | 77.2 | 85.8 | 81.4 | 0.030 |
+| A+B: v5 + gate 0.5, single | 83.6 [83.6-83.6] | 88.1 | 97.7 | 76.9 | 85.3 | 81.6 | 0.036 |
+| v3 + gate 0.5, narrow 16,8 | 84.6 [84.6-84.6] | 91.8 | 93.8 | 79.9 | 85.8 | 83.4 | 0.048 |
+| v3 + gate 0.5, noul retrieval | 84.6 [84.3-85.0] | 96.8 | 80.2 | 85.6 | 85.5 | 83.9 | 0.066 |
+| v3 + gate 0.4, noul retrieval | 86.0 [85.3-86.4] | 97.0 | 75.3 | 91.6 | 86.4 | 85.5 | 0.066 |
+| v5 + gate 0.4, noul retrieval | 86.4 [86.0-86.7] | 97.0 | 75.2 | 91.3 | 85.2 | 86.4 | 0.076 |
+| v5 + gate 0.4 (v1 wording), narrow 16,8 | 86.6 [86.4-87.1] | 91.9 | 90.9 | 85.7 | 85.7 | 86.4 | 0.055 |
+| **v5 + gate 0.5 (v2 wording), narrow 16,8 (new default)** | **86.9 [86.7-87.4]** | 91.6 | 90.8 | 84.7 | 85.7 | **87.6** | 0.055 |
+| C: Score grading + gate 0.4 v2, narrow | 82.6 [82.5-82.9] | 91.4 | 88.6 | 87.4 | 80.3 | 83.2 | 0.042 |
+| C: Score grading + gate 0.4 v1, narrow | 84.3 [83.9-84.6] | 91.6 | 91.3 | 85.2 | 79.5 | 82.8 | 0.041 |
+
+Gate thresholds were swept offline from traces (gate P is recorded per
+pair; the re-scorer reproduced live numbers exactly at the run's own
+threshold). v1 wording peaked at 0.4 in all four retrieval configs; v2
+wording peaked at 0.5 (offline 87.5, live 86.9: the offline gain shrank,
+a sign threshold picking on 11 pairs is near its limit).
+
+Findings:
+
+- A (structured `{what, not_for, examples}` options) is a small, real
+  gain (+0.9, ranges do not overlap); the same boundaries as prose (v2)
+  did nothing.
+- B (gate Noul deciding links) is what makes high-recall retrieval pay
+  off: with narrow or noul retrieval it removes all false links on
+  Requirements with no evidence (label none -> predicted partial: 5.3 per
+  run -> 0). Coverage +2.7 over the control overall, +3.7 on required.
+- The v1 gate wording ("the requirement itself") contradicted the partial
+  criterion and dropped partial pairs; v2 includes part/prerequisite/
+  broader practice. Equal Coverage, +1.2 on required; adopted because it
+  removes the contradiction.
+- C (3-level Score instead of the grading Choice) is worse: strength
+  accuracy falls ~6 points. The Choice with structured options and
+  negatives grades better than ordered levels here. Not adopted.
+- Remaining errors are almost all in the partial row: ~15 labeled-partial
+  pairs graded strong, ~14 dropped by the gate. Partial is also the most
+  subjective label; review it before tuning further.
+- Overfitting risk: thresholds and options have now been picked on these
+  11 pairs. Before the next round, add fresh pairs (or hold out a few) to
+  confirm the gains.
+
+Reports kept in `eval/reports/checker/`: the five first-round runs cited
+above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
+`02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90
+experiment reports were pruned; their numbers are in the tables above.

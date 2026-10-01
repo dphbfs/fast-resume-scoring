@@ -1,0 +1,110 @@
+{
+ "job": "01a0d60b-2973-701e-806d-30c90acf3886",
+ "resume": "syn-android",
+ "skip": [
+  "4+ years software engineering"
+ ],
+ "links": {
+  "interpreted language": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "strong"
+   },
+   {
+    "quote": "Other: Python, Linux, Git",
+    "strength": "weak"
+   }
+  ],
+  "compiled language": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built Android apps in Java for retail clients",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "component-based UI frameworks": [
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "Python": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "strong"
+   },
+   {
+    "quote": "Other: Python, Linux, Git",
+    "strength": "weak"
+   }
+  ],
+  "mobile development": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built Android apps in Java for retail clients",
+    "strength": "strong"
+   },
+   {
+    "quote": "Shipped an iOS companion app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Android engineer with 9 years",
+    "strength": "weak"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   },
+   {
+    "quote": "Integrated Bluetooth LE sensors",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "partial"
+   },
+   {
+    "quote": "Led a team of 5 Android engineers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "partial"
+   }
+  ],
+  "API architecture": [
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "partial"
+   }
+  ],
+  "web development": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "partial"
+   }
+  ],
+  "API backends": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "strong"
+   }
+  ]
+ },
+ "notes": "Decoy pair: Android resume against a web backend posting; most Requirements have no evidence. Jetpack Compose (Skills) is the only component-based UI evidence."
+}

@@ -39,3 +39,4 @@ testdata/jd/
 
 # Per-fixture extraction traces written next to eval reports
 eval/reports/*-traces/
+eval/reports/checker/*-traces/

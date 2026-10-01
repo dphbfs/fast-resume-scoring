@@ -25,3 +25,9 @@ func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	)
 	return nil, nil
 }
+
+// initCheckerRunner builds the Resume Checker eval runner.
+func initCheckerRunner() (*eval.CheckerRunner, error) {
+	wire.Build(wiring.PlatformSet, wiring.ClassifierSet, wiring.CheckerSet, eval.NewCheckerRunner)
+	return nil, nil
+}

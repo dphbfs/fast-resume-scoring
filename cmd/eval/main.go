@@ -27,6 +27,7 @@ func run() int {
 	only := flag.String("only", "", "comma-separated fixture ID prefixes to run")
 	rescore := flag.String("rescore", "", "rescore the results in this report JSON against the current labels (no API calls)")
 	summaries := flag.String("summaries", "eval/cache/summaries", "cache directory for generated Job Summaries (keeps Validation inputs fixed across runs)")
+	checker := flag.Bool("checker", false, "evaluate the Resume Checker on testdata/checker pairs instead of the Requirement Extractor")
 	flag.Parse()
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -35,6 +36,13 @@ func run() int {
 	var prefixes []string
 	if *only != "" {
 		prefixes = strings.Split(*only, ",")
+	}
+	if *checker {
+		dir := *out
+		if dir == "eval/reports" {
+			dir = "eval/reports/checker"
+		}
+		return runChecker(ctx, *golden, dir, *rescore, prefixes, *parallel)
 	}
 	fixtures, err := eval.LoadGolden(*golden, prefixes)
 	if err != nil {
@@ -77,6 +85,58 @@ func run() int {
 	t := report.Totals
 	fmt.Printf("recall %.1f%% (strict %.1f%%)  precision %.1f%%  F1 %.1f%%  filler %d  failed %d/%d\nreport: %s\n",
 		100*t.RecallLoose, 100*t.RecallStrict, 100*t.PrecisionLoose, 100*t.F1Loose, t.FillerHits, t.Failed, t.Fixtures, path)
+	if t.Failed > 0 {
+		return 1
+	}
+	return 0
+}
+
+// runChecker evaluates the Resume Checker on the (Job Description, Resume)
+// pairs in testdata/checker, or rescores a previous checker report.
+func runChecker(ctx context.Context, golden, out, rescore string, prefixes []string, parallel int) int {
+	fixtures, err := eval.LoadCheckerGolden("testdata/checker", golden, "testdata/resumes", prefixes)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "eval:", err)
+		return 2
+	}
+	var report eval.CheckerReport
+	if rescore != "" {
+		raw, err := os.ReadFile(rescore)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		var prev eval.CheckerReport
+		if err := json.Unmarshal(raw, &prev); err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		traces, err := eval.LoadCheckTraces(rescore)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		if report, err = eval.RescoreChecker(prev, fixtures, traces); err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+	} else {
+		runner, err := initCheckerRunner()
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 1
+		}
+		report = runner.Run(ctx, fixtures, parallel)
+	}
+
+	path, err := report.Write(out)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "eval:", err)
+		return 1
+	}
+	t := report.Totals
+	fmt.Printf("coverage %.1f%%  retrieval recall %.1f%%  links P %.1f%% R %.1f%%  strength exact %.1f%%  failed %d/%d\nreport: %s\n",
+		100*t.CoverageExact, 100*t.RetrievalRecall, 100*t.LinkPrecision, 100*t.LinkRecall, 100*t.StrengthExact, t.Failed, t.Fixtures, path)
 	if t.Failed > 0 {
 		return 1
 	}
