@@ -47,6 +47,10 @@ func TestBuildResult(t *testing.T) {
 	if goReq.Value != "Go" || !slices.Equal(goReq.Refs, []domain.Ref{"s1", "s3"}) || goReq.ID != "req_2" {
 		t.Errorf("second = %+v, want Go refs [s1 s3] req_2", goReq)
 	}
+	// Tier comes from the strongest Section among the mentions.
+	if goReq.Tier != domain.TierRequired {
+		t.Errorf("Go tier = %q, want required (required beats preferred)", goReq.Tier)
+	}
 	// Context holds only referenced sentences.
 	if _, ok := res.Context["s2"]; ok || len(res.Context) != 2 {
 		t.Errorf("context = %v, want s1 and s3 only", res.Context)

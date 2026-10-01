@@ -18,10 +18,16 @@ type Match struct {
 	Strict    bool   `json:"strict"`
 }
 
-// TierScore is recall within one tier.
+// TierScore is recall within one tier, and how often matched predictions
+// carry that tier.
 type TierScore struct {
 	Expected int `json:"expected"`
 	Matched  int `json:"matched"`
+	// TierChecked counts matched predictions with a known Tier (stored or
+	// derived from Context); TierCorrect those whose Tier equals the
+	// label's.
+	TierChecked int `json:"tier_checked,omitempty"`
+	TierCorrect int `json:"tier_correct,omitempty"`
 }
 
 // FixtureScore is the evaluation of one fixture.
@@ -238,8 +244,14 @@ func Score(exp Expected, res domain.Result) FixtureScore {
 	for i, e := range exp.Requirements {
 		ts := s.Tiers[e.Tier]
 		ts.Expected++
-		if matchedPred[i] >= 0 {
+		if j := matchedPred[i]; j >= 0 {
 			ts.Matched++
+			if tier := tierOf(res, j); tier != "" {
+				ts.TierChecked++
+				if string(tier) == e.Tier {
+					ts.TierCorrect++
+				}
+			}
 		} else {
 			s.Misses = append(s.Misses, e.Value)
 		}
@@ -264,6 +276,26 @@ func Score(exp Expected, res domain.Result) FixtureScore {
 	s.TierOrder = tierOrder(exp, res, matchedPred)
 	s.GroupF1 = groupF1(exp, res, matchedPred)
 	return s
+}
+
+// tierOf returns a prediction's Tier, deriving it from its Context
+// Sentences for results stored before Tier existed; empty when neither is
+// available.
+func tierOf(res domain.Result, j int) domain.Tier {
+	p := res.Requirements[j]
+	if p.Tier != "" {
+		return p.Tier
+	}
+	var sections []domain.Section
+	for _, ref := range p.Refs {
+		if cs, ok := res.Context[ref]; ok {
+			sections = append(sections, cs.Section)
+		}
+	}
+	if len(sections) == 0 {
+		return ""
+	}
+	return domain.TierFor(sections)
 }
 
 // Precision is loose matches over predictions that are neither acceptable

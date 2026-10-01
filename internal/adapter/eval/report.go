@@ -78,6 +78,8 @@ func totals(scores []FixtureScore) Totals {
 			agg := t.Tiers[tier]
 			agg.Expected += ts.Expected
 			agg.Matched += ts.Matched
+			agg.TierChecked += ts.TierChecked
+			agg.TierCorrect += ts.TierCorrect
 			t.Tiers[tier] = agg
 		}
 		if s.TierOrder != nil {
@@ -218,6 +220,11 @@ func (r Report) WriteMarkdown(w io.Writer) error {
 	for _, tier := range []string{"required", "preferred", "mentioned"} {
 		ts := t.Tiers[tier]
 		fmt.Fprintf(&b, "| Recall, %s | %s (%d/%d) |\n", tier, pct(ratio(ts.Matched, ts.Expected)), ts.Matched, ts.Expected)
+	}
+	for _, tier := range []string{"required", "preferred", "mentioned"} {
+		if ts := t.Tiers[tier]; ts.TierChecked > 0 {
+			fmt.Fprintf(&b, "| Tier accuracy, %s | %s (%d/%d) |\n", tier, pct(ratio(ts.TierCorrect, ts.TierChecked)), ts.TierCorrect, ts.TierChecked)
+		}
 	}
 	fmt.Fprintf(&b, "| Importance tier order | %s |\n", optPct(t.TierOrder))
 	fmt.Fprintf(&b, "| Alternative Group F1 | %s |\n", optPct(t.GroupF1))
