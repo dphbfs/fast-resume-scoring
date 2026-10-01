@@ -1,7 +1,7 @@
 # fast-resume-tailoring
 
-Turns a job description into a prioritized list of what the employer asks for. It will later
-feed a Resume Checker inside a larger resume-tailoring backend.
+Turns a job description into a prioritized list of what the employer asks for, then maps a
+resume's evidence onto that list. Later part of a larger resume-tailoring backend.
 
 ## Language
 
@@ -55,9 +55,47 @@ _Avoid_: Ranking pass, dedup pass
 A validated phrase that can't be checked against a resume, either because it is too generic ("team player", "fast-paced environment") or because it is a condition rather than a skill ("eligible to work in the US", "background check", "on-call"); dropped in the Refinement Round.
 _Avoid_: Fluff, noise, soft requirement
 
+**Tier**:
+How firmly the employer asks for a Requirement: required, preferred, or mentioned (named only in responsibilities). Taken from the strongest Section among its Context Sentences. Independent of Importance.
+_Avoid_: Level, optional, priority
+
 **Importance**:
 How much the employer cares about a Requirement, as judged by Jev in the Refinement Round.
 _Avoid_: Priority, weight, rank
+
+### Evidence
+
+**Resume**:
+The plain-text resume a Resume Checker run reads; one Resume per run.
+_Avoid_: CV, profile
+
+**Resume Section**:
+A headed part of the Resume (experience, projects, skills, summary, education, certifications).
+_Avoid_: Section (that term means a Context Sentence's role in the Job Description)
+
+**Evidence Unit**:
+One whole piece of the Resume, kept verbatim with its Resume Section and, when present, company or project, role, and dates: a bullet, a prose sentence, a skills line, or an education or certification entry.
+_Avoid_: Bullet, keyword, line, evidence item
+
+**Evidence Link**:
+A Requirement paired with an Evidence Unit that demonstrates it, with an Evidence Strength. Many-to-many: one Evidence Unit can support several Requirements and one Requirement can have several Evidence Units.
+_Avoid_: Match, mapping, binding
+
+**Evidence Strength**:
+How well an Evidence Unit demonstrates a Requirement: strong, partial, or weak. A pair with no evidence gets no Evidence Link.
+_Avoid_: Score, confidence, match level
+
+**Coverage**:
+A Requirement's best Evidence Strength across its Evidence Links, or none.
+_Avoid_: Match, present/missing, hit
+
+**Retrieval Round**:
+The first Resume Checker pass, which proposes, per Evidence Unit, the Requirements it might support. Nothing is linked yet.
+_Avoid_: Candidate generation, matching pass
+
+**Strength Round**:
+The second Resume Checker pass, which judges each proposed Requirement–Evidence Unit pair and creates the Evidence Links.
+_Avoid_: Verification Round (too close to Validation Round), scoring pass
 
 ### Components
 
@@ -66,5 +104,5 @@ The part that turns a Job Description into Requirements, Context Sentences, and 
 _Avoid_: Keyword extractor, parser, JD analyzer
 
 **Resume Checker**:
-The later part (not in V1) that takes Requirements and a resume and marks each Requirement present or missing.
+The part that takes Requirements and a Resume, creates Evidence Links, and reports each Requirement's Coverage.
 _Avoid_: Matcher, scorer, classifier

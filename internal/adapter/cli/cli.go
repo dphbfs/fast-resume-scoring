@@ -1,5 +1,5 @@
 // Package cli is the command-line driving adapter for the Requirement
-// Extractor.
+// Extractor (extract) and the Resume Checker (check).
 package cli
 
 import (
@@ -66,7 +66,7 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 
 	result, trace, err := a.extractor.Extract(ctx, jd)
 	if !*quiet {
-		defer a.printSummary(stderr)
+		defer printSummary(a.recorder, a.log, stderr)
 	}
 	// The trace is written even when extraction fails: it shows how far the
 	// pipeline got.
@@ -88,10 +88,10 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 	return ExitOK
 }
 
-func (a *App) printSummary(w io.Writer) {
+func printSummary(recorder *metrics.Recorder, log *slog.Logger, w io.Writer) {
 	fmt.Fprintln(w, "--- run summary ---")
-	if err := a.recorder.Summary().WriteText(w); err != nil {
-		a.log.Warn("write run summary", "error", err)
+	if err := recorder.Summary().WriteText(w); err != nil {
+		log.Warn("write run summary", "error", err)
 	}
 }
 
