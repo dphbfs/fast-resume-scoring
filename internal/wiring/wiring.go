@@ -1,5 +1,5 @@
 // Package wiring holds the google/wire provider sets shared by the
-// command-line entry points (cmd/extract, cmd/eval).
+// command-line entry points (cmd/extract, cmd/check, cmd/eval).
 package wiring
 
 import (
@@ -17,7 +17,7 @@ import (
 // PlatformSet provides config, logging and the metrics recorder.
 var PlatformSet = wire.NewSet(
 	config.Load,
-	wire.FieldsOf(new(config.Config), "Jev", "Generative", "Pipeline"),
+	wire.FieldsOf(new(config.Config), "Jev", "Generative", "Pipeline", "Checker"),
 	logging.New,
 	metrics.NewRecorder,
 	wire.Bind(new(port.Metrics), new(*metrics.Recorder)),
@@ -40,4 +40,10 @@ var AIClientSet = wire.NewSet(
 var ExtractorSet = wire.NewSet(
 	app.New,
 	wire.Bind(new(port.RequirementExtractor), new(*app.Extractor)),
+)
+
+// CheckerSet provides the Resume Checker behind its driving port.
+var CheckerSet = wire.NewSet(
+	app.NewChecker,
+	wire.Bind(new(port.ResumeChecker), new(*app.Checker)),
 )

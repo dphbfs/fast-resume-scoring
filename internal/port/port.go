@@ -18,6 +18,13 @@ type RequirementExtractor interface {
 	Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error)
 }
 
+// ResumeChecker is the driving port that links a Resume's Evidence Units
+// to extracted Requirements and reports their Coverage. The CheckTrace
+// records intermediate decisions; callers that do not need it ignore it.
+type ResumeChecker interface {
+	Check(ctx context.Context, reqs domain.Result, resume domain.Resume) (domain.CoverageResult, domain.CheckTrace, error)
+}
+
 // QuestionType is the kind of judgment a classifier question asks for.
 type QuestionType string
 

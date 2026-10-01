@@ -74,3 +74,45 @@ type TraceRequirement struct {
 	Score      float64 `json:"score"`
 	Importance float64 `json:"importance"`
 }
+
+// CheckTrace records the Resume Checker's intermediate decisions, one entry
+// per Evidence Unit. It is not part of the coverage contract.
+type CheckTrace struct {
+	Units []TraceUnit `json:"units"`
+}
+
+// TraceUnit is one Evidence Unit's Retrieval and Strength Round answers.
+type TraceUnit struct {
+	ID            string        `json:"id"`
+	Text          string        `json:"text"`
+	ResumeSection ResumeSection `json:"resume_section"`
+	// Rounds are the Retrieval Round's Choice requests, in order.
+	Rounds []TraceRound `json:"rounds"`
+	// Retrieved are the Requirement values passed to the Strength Round.
+	Retrieved []string    `json:"retrieved"`
+	Pairs     []TracePair `json:"pairs"`
+}
+
+// TracePair is one Strength Round answer for a retrieved Requirement.
+type TracePair struct {
+	Requirement   string             `json:"requirement"`
+	Probabilities map[string]float64 `json:"probabilities"`
+	EvidenceMass  float64            `json:"evidence_mass"`
+	// Gate is P(yes) of the gate Noul, when the gate is on.
+	Gate     *float64         `json:"gate,omitempty"`
+	Linked   bool             `json:"linked"`
+	Strength EvidenceStrength `json:"strength,omitempty"`
+	// RejectReason is the most probable non-evidence option (none or a
+	// negative) when the pair was not linked.
+	RejectReason string `json:"reject_reason,omitempty"`
+	// Capped means the Resume Section cap lowered the strength to weak.
+	Capped bool `json:"capped,omitempty"`
+}
+
+// TraceRound is one Retrieval Choice: how many options it offered, the most
+// probable ones ("none" included), and the Requirements it kept.
+type TraceRound struct {
+	Options int           `json:"options"`
+	Top     []TraceOption `json:"top"`
+	Kept    []string      `json:"kept"`
+}

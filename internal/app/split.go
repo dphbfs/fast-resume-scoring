@@ -155,3 +155,11 @@ func (e *Extractor) splitSentencesStage(_ context.Context, r *run) error {
 	e.metrics.Add("sentences.total", int64(len(r.sentences)))
 	return nil
 }
+
+// SplitSentences splits a Job Description into Context Sentences s1..sN,
+// for callers outside the pipeline (eval builds Requirement context from
+// golden labels with it).
+func SplitSentences(text string) []domain.ContextSentence {
+	s, _ := splitSentences(text)
+	return s
+}

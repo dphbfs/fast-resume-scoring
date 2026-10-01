@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -13,6 +14,7 @@ type Config struct {
 	Jev        Jev
 	Generative Generative
 	Pipeline   Pipeline
+	Checker    Checker
 }
 
 // Jev configures the TypeSafe classifier client.
@@ -44,6 +46,43 @@ type Pipeline struct {
 	MinRequirementMass float64 // PIPELINE_MIN_REQUIREMENT_MASS
 }
 
+// Checker tunes the Resume Checker.
+type Checker struct {
+	// RetrievalK is how many Requirements per Evidence Unit the Retrieval
+	// Round passes on; RetrievalFloor is the least probability they need.
+	RetrievalK     int     // CHECKER_RETRIEVAL_K
+	RetrievalFloor float64 // CHECKER_RETRIEVAL_FLOOR
+	// MinEvidenceMass is the P(strong+partial+weak) a Strength Round answer
+	// needs to create an Evidence Link.
+	MinEvidenceMass float64 // CHECKER_MIN_EVIDENCE_MASS
+	// RetrievalMode is single (one Choice, keep top K above the floor),
+	// narrow (repeat the Choice over the best NarrowSizes[i] options of the
+	// previous round), or peel (take the winner, remove it, ask again until
+	// none wins or K are taken; PeelShortlist > 0 first narrows to that many
+	// options with one Choice).
+	//
+	// noul asks one yes/no question per Requirement instead of a Choice and
+	// keeps the top RetrievalK with P(yes) >= NoulThreshold.
+	RetrievalMode string  // CHECKER_RETRIEVAL_MODE
+	NoulThreshold float64 // CHECKER_NOUL_THRESHOLD
+	NarrowSizes   []int   // CHECKER_NARROW_SIZES, e.g. "12,4"
+	PeelShortlist int     // CHECKER_PEEL_SHORTLIST
+	// StrengthCriteria picks the Strength Round options: v1, v2 (sharpened
+	// strong/partial), v3 (v2 plus negative options), v4 (v3 plus the
+	// needed_capability negative), or v5 (v3 as {what, not_for, examples}).
+	StrengthCriteria string // CHECKER_STRENGTH_CRITERIA
+	// GateThreshold > 0 adds one gate Noul per pair ("is this evidence the
+	// candidate has the requirement?") and links on gate >= threshold
+	// instead of MinEvidenceMass. 0 turns the gate off.
+	GateThreshold float64 // CHECKER_GATE_THRESHOLD
+	// GateWording is the gate Noul's yes criterion: v1 (the requirement
+	// itself) or v2 (also a part, prerequisite, or broader practice).
+	GateWording string // CHECKER_GATE_WORDING
+	// StrengthMode grades linked pairs with the StrengthCriteria Choice
+	// ("choice") or a 3-level Score ("score", needs the gate).
+	StrengthMode string // CHECKER_STRENGTH_MODE
+}
+
 // Load reads Config from the environment, applying defaults.
 func Load() (Config, error) {
 	return load(os.Getenv)
@@ -72,9 +111,46 @@ func load(getenv func(string) string) (Config, error) {
 			SectionBatchSize:   e.int("PIPELINE_SECTION_BATCH", 60),
 			MinRequirementMass: e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
 		},
+		Checker: Checker{
+			RetrievalK:       e.int("CHECKER_RETRIEVAL_K", 8),
+			RetrievalFloor:   e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
+			MinEvidenceMass:  e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
+			RetrievalMode:    e.str("CHECKER_RETRIEVAL_MODE", "narrow"),
+			NarrowSizes:      e.ints("CHECKER_NARROW_SIZES", []int{16, 8}),
+			PeelShortlist:    e.int("CHECKER_PEEL_SHORTLIST", 0),
+			NoulThreshold:    e.float("CHECKER_NOUL_THRESHOLD", 0.5),
+			StrengthCriteria: e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
+			GateThreshold:    e.float("CHECKER_GATE_THRESHOLD", 0.5),
+			GateWording:      e.str("CHECKER_GATE_WORDING", "v2"),
+			StrengthMode:     e.str("CHECKER_STRENGTH_MODE", "choice"),
+		},
 	}
 	if e.err != nil {
 		return Config{}, e.err
+	}
+	switch cfg.Checker.RetrievalMode {
+	case "single", "narrow", "peel", "noul":
+	default:
+		return Config{}, fmt.Errorf("config: CHECKER_RETRIEVAL_MODE %q: want single, narrow, peel or noul", cfg.Checker.RetrievalMode)
+	}
+	switch cfg.Checker.StrengthCriteria {
+	case "v1", "v2", "v3", "v4", "v5":
+	default:
+		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_CRITERIA %q: want v1..v5", cfg.Checker.StrengthCriteria)
+	}
+	switch cfg.Checker.StrengthMode {
+	case "choice":
+	case "score":
+		if cfg.Checker.GateThreshold <= 0 {
+			return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_MODE=score needs CHECKER_GATE_THRESHOLD > 0")
+		}
+	default:
+		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_MODE %q: want choice or score", cfg.Checker.StrengthMode)
+	}
+	switch cfg.Checker.GateWording {
+	case "v1", "v2":
+	default:
+		return Config{}, fmt.Errorf("config: CHECKER_GATE_WORDING %q: want v1 or v2", cfg.Checker.GateWording)
 	}
 	if cfg.Jev.APIKey == "" {
 		return Config{}, fmt.Errorf("config: TYPESAFE_API_KEY is required")
@@ -105,6 +181,23 @@ func (e *env) int(key string, def int) int {
 		e.err = fmt.Errorf("config: %s: %w", key, err)
 	}
 	return n
+}
+
+// ints reads a comma-separated list of positive integers.
+func (e *env) ints(key string, def []int) []int {
+	v := e.getenv(key)
+	if v == "" {
+		return def
+	}
+	var out []int
+	for _, f := range strings.Split(v, ",") {
+		n, err := strconv.Atoi(strings.TrimSpace(f))
+		if (err != nil || n < 1) && e.err == nil {
+			e.err = fmt.Errorf("config: %s: %q is not a positive integer", key, f)
+		}
+		out = append(out, n)
+	}
+	return out
 }
 
 func (e *env) float(key string, def float64) float64 {
