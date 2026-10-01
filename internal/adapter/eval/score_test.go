@@ -84,6 +84,11 @@ func TestScore(t *testing.T) {
 		AlternativeGroups: []domain.AlternativeGroup{{ID: "a1", Members: []string{"r1", "r2"}}},
 	}
 
+	res.Requirements[0].Tier = domain.TierRequired  // Go: correct
+	res.Requirements[1].Tier = domain.TierPreferred // Kafka: wrong
+	res.Requirements[3].Tier = domain.TierPreferred // Kubernetes: correct
+	// distributed systems has no Tier and no Context: not checked.
+
 	s := Score(exp, res)
 
 	if s.Expected != 5 || s.Predicted != 6 || s.StrictMatched != 2 || s.LooseMatched != 4 {
@@ -91,6 +96,12 @@ func TestScore(t *testing.T) {
 	}
 	if got := s.Tiers["required"]; got.Expected != 3 || got.Matched != 3 {
 		t.Errorf("required tier = %+v, want 3/3", got)
+	}
+	if got := s.Tiers["required"]; got.TierChecked != 2 || got.TierCorrect != 1 {
+		t.Errorf("required tier accuracy = %d/%d, want 1/2", got.TierCorrect, got.TierChecked)
+	}
+	if got := s.Tiers["preferred"]; got.TierChecked != 1 || got.TierCorrect != 1 {
+		t.Errorf("preferred tier accuracy = %d/%d, want 1/1", got.TierCorrect, got.TierChecked)
 	}
 	if got := s.Tiers["mentioned"]; got.Expected != 1 || got.Matched != 0 {
 		t.Errorf("mentioned tier = %+v, want 0/1", got)

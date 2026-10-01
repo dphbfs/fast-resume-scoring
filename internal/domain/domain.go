@@ -51,11 +51,39 @@ type Candidate struct {
 	Ref  Ref
 }
 
+// Tier is how firmly the employer asks for a Requirement. It is independent
+// of Importance.
+type Tier string
+
+const (
+	TierRequired  Tier = "required"
+	TierPreferred Tier = "preferred"
+	// TierMentioned covers Requirements named only in responsibilities (or
+	// any other kept Section).
+	TierMentioned Tier = "mentioned"
+)
+
+// TierFor returns the Tier of a Requirement mentioned in the given Sections:
+// the strongest one wins (required > preferred > anything else).
+func TierFor(sections []Section) Tier {
+	tier := TierMentioned
+	for _, s := range sections {
+		switch s {
+		case SectionRequired:
+			return TierRequired
+		case SectionPreferred:
+			tier = TierPreferred
+		}
+	}
+	return tier
+}
+
 // Requirement is one atomic thing the employer asks for.
 type Requirement struct {
 	ID    string `json:"id"`
 	Value string `json:"value"`
 	Refs  []Ref  `json:"refs"`
+	Tier  Tier   `json:"tier"`
 	// Importance is Jev's Score normalized to 0..1.
 	Importance float64 `json:"importance"`
 }

@@ -11,6 +11,7 @@ import (
 
 // buildResult assembles the schema v1 Result: validated Requirements merged
 // by case-insensitive value (keeping the first spelling and every Ref),
+// Tier from the strongest Section of its Context Sentences,
 // Importance and Alternative Groups from the Refinement Round, and the
 // Context Sentences that any Requirement refers to.
 func (e *Extractor) buildResult(_ context.Context, r *run) error {
@@ -61,12 +62,15 @@ func (e *Extractor) buildResult(_ context.Context, r *run) error {
 		en := byKey[k]
 		id := fmt.Sprintf("req_%d", i+1)
 		ids[k] = id
-		res.Requirements = append(res.Requirements, domain.Requirement{
-			ID: id, Value: en.value, Refs: en.refs, Importance: r.importance[k],
-		})
+		sections := make([]domain.Section, 0, len(en.refs))
 		for _, ref := range en.refs {
 			res.Context[ref] = sentences[ref]
+			sections = append(sections, sentences[ref].Section)
 		}
+		res.Requirements = append(res.Requirements, domain.Requirement{
+			ID: id, Value: en.value, Refs: en.refs, Tier: domain.TierFor(sections),
+			Importance: r.importance[k],
+		})
 	}
 	for i, g := range r.groups {
 		var members []string
