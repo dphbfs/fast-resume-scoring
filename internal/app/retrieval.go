@@ -20,7 +20,9 @@ const traceTopRetrieval = 8
 //   - narrow: the same, repeated: each round offers only the best
 //     NarrowSizes[i] Requirements of the previous round, so probability
 //     the dropped options held is redistributed among the survivors. The
-//     last round keeps its top RetrievalK at or above the floor.
+//     last round keeps its top RetrievalK at or above the floor. With
+//     NarrowStopP > 0, a round whose top option reaches it ends the
+//     narrowing and keeps that round's top RetrievalK.
 //   - noul: one yes/no question per Requirement, in one request; keep the
 //     top RetrievalK with P(yes) >= NoulThreshold. Probabilities are
 //     independent, so a unit that supports many Requirements does not
@@ -89,6 +91,14 @@ func (c *Checker) retrieve(ctx context.Context, u domain.EvidenceUnit, creqs []c
 			if size == 0 || r == len(sizes)-1 {
 				retrieved = best(ranked, c.retrievalK(), c.retrievalFloor())
 				keep(retrieved)
+				break
+			}
+			if stop := c.cfg.NarrowStopP; stop > 0 && len(ranked) > 0 && ranked[0].P >= stop {
+				// One option already holds nearly all the probability;
+				// another round would not reorder the rest.
+				retrieved = best(ranked, c.retrievalK(), c.retrievalFloor())
+				keep(retrieved)
+				c.metrics.Add("checker.retrieval.stopped_early", 1)
 				break
 			}
 			next := best(ranked, size, 0)

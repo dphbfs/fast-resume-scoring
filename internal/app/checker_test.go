@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"maps"
 	"math"
 	"reflect"
 	"slices"
@@ -595,5 +596,110 @@ func TestLevelStrength(t *testing.T) {
 		if got := levelStrength(tt.probs); got != tt.want {
 			t.Errorf("levelStrength(%v) = %s, want %s", tt.probs, got, tt.want)
 		}
+	}
+}
+
+// gateFake answers retrieval with Go and Kubernetes, gates Go no (0.2) and
+// Kubernetes yes (0.8), and grades every pair strong.
+func gateFake(t *testing.T) *jevtest.Server {
+	return jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
+		if id == "retrieval" {
+			return jevtest.Choice(map[string]float64{"Go": 0.5, "Kubernetes": 0.4, "none": 0.1}, 0.5)
+		}
+		if strings.HasPrefix(id, "gate_") {
+			if q.Instructions.(map[string]any)["requirement"] == "Go" {
+				return jevtest.Noul(0.2)
+			}
+			return jevtest.Noul(0.8)
+		}
+		return jevtest.Choice(map[string]float64{"strong": 0.9, "none": 0.1}, 0.8)
+	}))
+}
+
+// strengthQuestions lists the question IDs of each Strength request.
+func strengthQuestions(srv *jevtest.Server) [][]string {
+	var out [][]string
+	for _, r := range srv.Requests() {
+		if _, ok := r.Questions["retrieval"]; ok {
+			continue
+		}
+		out = append(out, slices.Sorted(maps.Keys(r.Questions)))
+	}
+	return out
+}
+
+func TestStrengthGateFirstGradesOnlyPassedPairs(t *testing.T) {
+	srv := gateFake(t)
+	c, m := newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5, GateFirst: true})
+	res, trace, err := c.Check(context.Background(), checkInput(), domain.Resume{Text: "- Ran Go services on Nomad\n"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.Requirements[0].Coverage != domain.StrengthNone || res.Requirements[1].Coverage != domain.StrengthStrong {
+		t.Errorf("coverage = Go %s, Kubernetes %s; want none, strong", res.Requirements[0].Coverage, res.Requirements[1].Coverage)
+	}
+	// Retrieval order: Go is pair 0, Kubernetes pair 1.
+	want := [][]string{{"gate_0", "gate_1"}, {"req_1"}}
+	if got := strengthQuestions(srv); !reflect.DeepEqual(got, want) {
+		t.Errorf("strength requests = %v, want %v", got, want)
+	}
+	if p := trace.Units[0].Pairs[0]; p.Linked || p.RejectReason != "gate" || p.Probabilities != nil {
+		t.Errorf("Go pair = %+v, want rejected by the gate, ungraded", p)
+	}
+	if n := m.Summary().Counters["checker.strength.requests"]; n != 2 {
+		t.Errorf("strength requests = %d, want 2", n)
+	}
+}
+
+func TestStrengthSkipCappedGrading(t *testing.T) {
+	srv := gateFake(t)
+	c, _ := newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5, SkipCappedGrading: true})
+	resume := "# Skills\n- Go, Kubernetes\n\n# Experience\n## Engineer | Acme | 2020 – 2024\n- Ran Go services on Nomad\n"
+	res, trace, err := c.Check(context.Background(), checkInput(), domain.Resume{Text: resume})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Skills unit: gates only, Kubernetes linked weak on the gate's P.
+	// Experience unit: gates and grades in one request.
+	want := [][]string{{"gate_0", "gate_1"}, {"gate_0", "gate_1", "req_0", "req_1"}}
+	got := strengthQuestions(srv)
+	slices.SortFunc(got, func(a, b []string) int { return len(a) - len(b) })
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("strength requests = %v, want %v", got, want)
+	}
+	if res.Requirements[1].Coverage != domain.StrengthStrong {
+		t.Errorf("Kubernetes coverage = %s, want strong (experience unit)", res.Requirements[1].Coverage)
+	}
+	var skills domain.TraceUnit
+	for _, u := range trace.Units {
+		if u.ResumeSection == domain.ResumeSkills {
+			skills = u
+		}
+	}
+	for _, p := range skills.Pairs {
+		if p.Requirement == "Kubernetes" && (!p.Linked || p.Strength != domain.StrengthWeak || p.EvidenceMass != 0) {
+			t.Errorf("skills Kubernetes pair = %+v, want linked weak, ungraded", p)
+		}
+	}
+	for _, r := range res.Requirements {
+		for _, l := range r.Evidence {
+			if l.Strength == domain.StrengthWeak && l.P != 0.8 {
+				t.Errorf("%s weak link P = %v, want the gate's 0.8", r.Value, l.P)
+			}
+		}
+	}
+}
+
+func TestRetrieveNarrowStopsEarly(t *testing.T) {
+	reqs := []domain.Requirement{{ID: "A", Value: "A"}, {ID: "B", Value: "B"}, {ID: "C", Value: "C"}}
+	creqs := checkRequirements(domain.Result{Requirements: reqs})
+	srv := jevtest.NewServer(t, softmaxOver(map[string]float64{"A": 0.995, "B": 0.004, "none": 0.001}))
+	c, m := newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "narrow", NarrowSizes: []int{2}, RetrievalK: 5, RetrievalFloor: 0.01, NarrowStopP: 0.99})
+	got, rounds, _, err := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, creqs)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !slices.Equal(got, []int{0}) || len(rounds) != 1 || m.Summary().Counters["checker.retrieval.stopped_early"] != 1 {
+		t.Errorf("retrieved %v over %d rounds, want [0] after 1 round", got, len(rounds))
 	}
 }

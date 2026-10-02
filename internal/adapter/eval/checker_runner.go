@@ -428,6 +428,8 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 	fmt.Fprintf(&b, "Checker: retrieval %s (K %d · floor %.3f · narrow %v · peel shortlist %d · noul threshold %.2f) · strength criteria %s · min evidence mass %.2f · gate %.2f (%s) · veto %.2f · grading %s\n\n",
 		r.Checker.RetrievalMode, r.Checker.RetrievalK, r.Checker.RetrievalFloor, r.Checker.NarrowSizes, r.Checker.PeelShortlist, r.Checker.NoulThreshold,
 		r.Checker.StrengthCriteria, r.Checker.MinEvidenceMass, r.Checker.GateThreshold, r.Checker.GateWording, r.Checker.VetoThreshold, r.Checker.StrengthMode)
+	fmt.Fprintf(&b, "Cost options: narrow stop p %.2f · skip capped grading %v · gate first %v\n\n",
+		r.Checker.NarrowStopP, r.Checker.SkipCappedGrading, r.Checker.GateFirst)
 
 	b.WriteString("| Metric | Value |\n|---|---|\n")
 	fmt.Fprintf(&b, "| **Coverage accuracy** | **%s** |\n", pct(t.CoverageExact))
@@ -447,7 +449,9 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 	if c, ok := r.Metrics.Counters["jev.cost_micro_usd"]; ok {
 		fmt.Fprintf(&b, "| Jev cost | $%.4f |\n", float64(c)/1e6)
 	}
-	fmt.Fprintf(&b, "| Jev calls | %d |\n\n", r.Metrics.Counters["jev.calls"])
+	fmt.Fprintf(&b, "| Jev calls | %d |\n", r.Metrics.Counters["jev.calls"])
+	fmt.Fprintf(&b, "| Jev input tokens (retrieval / strength) | %d (%d / %d) |\n\n", r.Metrics.Counters["jev.input_tokens"],
+		r.Metrics.Counters["checker.retrieval.input_tokens"], r.Metrics.Counters["checker.strength.input_tokens"])
 
 	writeBaseline(&b, r)
 	b.WriteString("## Coverage confusion (rows: label, columns: predicted)\n\n| | strong | partial | weak | none |\n|---|---|---|---|---|\n")

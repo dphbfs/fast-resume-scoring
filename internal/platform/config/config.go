@@ -87,6 +87,15 @@ type Checker struct {
 	// StrengthMode grades linked pairs with the StrengthCriteria Choice
 	// ("choice") or a 3-level Score ("score", needs the gate).
 	StrengthMode string // CHECKER_STRENGTH_MODE
+	// NarrowStopP > 0 ends narrow retrieval early when a round's top option
+	// has at least this probability. 0 always runs every round.
+	NarrowStopP float64 // CHECKER_NARROW_STOP_P
+	// SkipCappedGrading (needs the gate) asks only the gate on Skills and
+	// Summary units: they are capped at weak, so the grade is never used.
+	SkipCappedGrading bool // CHECKER_SKIP_CAPPED_GRADING
+	// GateFirst (needs the gate) asks the gates in one request and grades
+	// only the pairs that passed, in a second.
+	GateFirst bool // CHECKER_GATE_FIRST
 }
 
 // Load reads Config from the environment, applying defaults.
@@ -118,18 +127,21 @@ func load(getenv func(string) string) (Config, error) {
 			MinRequirementMass: e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
 		},
 		Checker: Checker{
-			RetrievalK:       e.int("CHECKER_RETRIEVAL_K", 8),
-			RetrievalFloor:   e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
-			MinEvidenceMass:  e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
-			RetrievalMode:    e.str("CHECKER_RETRIEVAL_MODE", "narrow"),
-			NarrowSizes:      e.ints("CHECKER_NARROW_SIZES", []int{16, 8}),
-			PeelShortlist:    e.int("CHECKER_PEEL_SHORTLIST", 0),
-			NoulThreshold:    e.float("CHECKER_NOUL_THRESHOLD", 0.5),
-			StrengthCriteria: e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
-			GateThreshold:    e.float("CHECKER_GATE_THRESHOLD", 0.5),
-			VetoThreshold:    e.float("CHECKER_VETO_THRESHOLD", 0),
-			GateWording:      e.str("CHECKER_GATE_WORDING", "v2"),
-			StrengthMode:     e.str("CHECKER_STRENGTH_MODE", "choice"),
+			RetrievalK:        e.int("CHECKER_RETRIEVAL_K", 8),
+			RetrievalFloor:    e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
+			MinEvidenceMass:   e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
+			RetrievalMode:     e.str("CHECKER_RETRIEVAL_MODE", "narrow"),
+			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", []int{16, 8}),
+			PeelShortlist:     e.int("CHECKER_PEEL_SHORTLIST", 0),
+			NoulThreshold:     e.float("CHECKER_NOUL_THRESHOLD", 0.5),
+			StrengthCriteria:  e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
+			GateThreshold:     e.float("CHECKER_GATE_THRESHOLD", 0.5),
+			VetoThreshold:     e.float("CHECKER_VETO_THRESHOLD", 0),
+			GateWording:       e.str("CHECKER_GATE_WORDING", "v2"),
+			StrengthMode:      e.str("CHECKER_STRENGTH_MODE", "choice"),
+			NarrowStopP:       e.float("CHECKER_NARROW_STOP_P", 0),
+			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", false),
+			GateFirst:         e.bool("CHECKER_GATE_FIRST", false),
 		},
 	}
 	if e.err != nil {
@@ -147,6 +159,9 @@ func load(getenv func(string) string) (Config, error) {
 	}
 	if cfg.Checker.VetoThreshold > 0 && (cfg.Checker.GateThreshold <= 0 || cfg.Checker.StrengthMode != "choice") {
 		return Config{}, fmt.Errorf("config: CHECKER_VETO_THRESHOLD needs CHECKER_GATE_THRESHOLD > 0 and CHECKER_STRENGTH_MODE=choice")
+	}
+	if (cfg.Checker.SkipCappedGrading || cfg.Checker.GateFirst) && cfg.Checker.GateThreshold <= 0 {
+		return Config{}, fmt.Errorf("config: CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0")
 	}
 	switch cfg.Checker.StrengthMode {
 	case "choice":
@@ -191,6 +206,18 @@ func (e *env) int(key string, def int) int {
 		e.err = fmt.Errorf("config: %s: %w", key, err)
 	}
 	return n
+}
+
+func (e *env) bool(key string, def bool) bool {
+	v := e.getenv(key)
+	if v == "" {
+		return def
+	}
+	b, err := strconv.ParseBool(v)
+	if err != nil && e.err == nil {
+		e.err = fmt.Errorf("config: %s: %w", key, err)
+	}
+	return b
 }
 
 // ints reads a comma-separated list of positive integers.
