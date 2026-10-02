@@ -406,3 +406,35 @@ compares both against the Fit Score of the labeled Coverage.
   fit, which favors Jev by construction. Real outcomes (interview vs
   rejection) are still the only neutral target.
 - Coverage in these runs: 86.7-87.1%, in line with the reference runs.
+
+### Cheaper Jev: skip unused questions (2026-10-02, branch `exp/cheaper-jev`)
+
+Jev bills input tokens only (~$0.042 per M; every report fits with output
+at $0). Default split: retrieval 53%, strength 47%. On 4 runs' traces,
+half of the grading Choices went unused (29% Skills/Summary pairs, capped
+at weak; 28% gate-rejected), and the third narrow round changed 1 of 1786
+labeled retrieved pairs. Options built (opt-in):
+`CHECKER_SKIP_CAPPED_GRADING`, `CHECKER_GATE_FIRST`,
+`CHECKER_NARROW_STOP_P`; plus `CHECKER_NARROW_SIZES=16`.
+
+3 runs each (default: 4 runs, `02-28-38Z`..`02-49-03Z`):
+
+| Config | Coverage | Required | Link P / R | Fit err | $/pair | ms/pair |
+|---|---|---|---|---|---|---|
+| default | 86.8 (86.4-87.1) | 87.4 | 88.9 / 85.4 | 4.0 | 0.0053 | 7.4s |
+| A skip capped | 86.7 (86.4-87.1) | 87.4 | 88.5 / 86.0 | 3.8 | 0.0048 | 8.4s |
+| B A + gate first | 87.3 (86.7-87.8) | 87.8 | 88.9 / 85.2 | 3.9 | 0.0046 | 9.7s |
+| C B + narrow 16 | 87.4 (87.1-87.8) | 88.0 | 88.2 / 86.8 | 3.2 | 0.0041 | 7.4s |
+| D B + stop 0.99 | 86.7 (86.4-87.1) | 87.8 | 88.8 / 85.4 | 4.1 | 0.0043 | 9.0s |
+| E all four | 87.2 (86.7-87.8) | 88.0 | 88.3 / 86.4 | 3.9 | 0.0039 | 8.2s |
+
+- No accuracy loss in any config: every Coverage range overlaps the
+  default's. Narrow 16 trades ~0.6 link precision for ~1.4 link recall
+  (more pairs reach Strength), and the gate still filters them.
+- E is the cheapest: -26% ($0.0053 -> $0.0039 per pair), about 7.4x
+  cheaper than the generative baseline ($0.029). C is -23% with default
+  latency.
+- Gate first saved less than estimated (-4% vs ~-8%): its second request
+  resends the state, and gates are a larger share of strength than the
+  rubric-size estimate assumed. It adds ~1.3s per pair (two sequential
+  requests per unit); dropping the third narrow round wins that back.
