@@ -375,39 +375,88 @@ func scoreQuestion(r checkRequirement) port.Question {
 	return port.Question{Type: port.Score, Instructions: inst, Criteria: strengthLevels}
 }
 
-// judgeStrength asks one Strength question per retrieved Requirement, in one
-// request, and records the Evidence Links that pass: the gate Noul at or
-// above GateThreshold when the gate is on, else MinEvidenceMass.
+// judgeStrength grades every retrieved Requirement for one unit and records
+// the Evidence Links that pass: the gate Noul at or above GateThreshold when
+// the gate is on, else MinEvidenceMass.
+//
+// With the gate on, two options skip grading questions whose answer would
+// not be used: SkipCappedGrading drops them on Skills and Summary units
+// (capped at weak, so the gate alone decides), and GateFirst asks the gates
+// in one request and grades only the pairs that passed in a second.
 func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creqs []checkRequirement, retrieved []int, m *unitMatch) error {
 	criteria := c.strengthCriteria()
-	questions := make(map[string]port.Question, len(retrieved))
-	for k, ri := range retrieved {
+	capped := u.ResumeSection == domain.ResumeSkills || u.ResumeSection == domain.ResumeSummary
+	gated := c.cfg.GateThreshold > 0
+	gradeQuestion := func(ri int) port.Question {
 		if c.cfg.StrengthMode == "score" {
-			questions[fmt.Sprintf("req_%d", k)] = scoreQuestion(creqs[ri])
-		} else {
-			questions[fmt.Sprintf("req_%d", k)] = strengthQuestion(creqs[ri], criteria)
+			return scoreQuestion(creqs[ri])
 		}
-		if c.cfg.GateThreshold > 0 {
+		return strengthQuestion(creqs[ri], criteria)
+	}
+	needsGrade := func(k int, answers map[string]port.Answer) bool {
+		if !gated {
+			return true
+		}
+		if capped && c.cfg.SkipCappedGrading {
+			return false
+		}
+		if !c.cfg.GateFirst {
+			return true
+		}
+		g := answers[fmt.Sprintf("gate_%d", k)]
+		return g.Noul != nil && *g.Noul >= c.cfg.GateThreshold
+	}
+
+	answers := map[string]port.Answer{}
+	ask := func(questions map[string]port.Question) error {
+		if len(questions) == 0 {
+			return nil
+		}
+		resp, err := c.classifier.Classify(ctx, port.ClassifyRequest{State: stateOf(u), Questions: questions})
+		if err != nil {
+			return err
+		}
+		c.metrics.Add("checker.strength.requests", 1)
+		c.addUsage("checker.strength", resp.Usage)
+		maps.Copy(answers, resp.Answers)
+		return nil
+	}
+	questions := make(map[string]port.Question, 2*len(retrieved))
+	for k, ri := range retrieved {
+		if gated {
 			questions[fmt.Sprintf("gate_%d", k)] = gateQuestion(creqs[ri], c.gateWording())
 		}
+		if !c.cfg.GateFirst && needsGrade(k, nil) {
+			questions[fmt.Sprintf("req_%d", k)] = gradeQuestion(ri)
+		}
 	}
-	resp, err := c.classifier.Classify(ctx, port.ClassifyRequest{State: stateOf(u), Questions: questions})
-	if err != nil {
+	if err := ask(questions); err != nil {
 		return err
 	}
-	c.metrics.Add("checker.strength.requests", 1)
-	c.addUsage("checker.strength", resp.Usage)
-	capped := u.ResumeSection == domain.ResumeSkills || u.ResumeSection == domain.ResumeSummary
+	if c.cfg.GateFirst && gated {
+		questions = map[string]port.Question{}
+		for k, ri := range retrieved {
+			if needsGrade(k, answers) {
+				questions[fmt.Sprintf("req_%d", k)] = gradeQuestion(ri)
+			}
+		}
+		if err := ask(questions); err != nil {
+			return err
+		}
+	}
+
 	for k, ri := range retrieved {
-		a := resp.Answers[fmt.Sprintf("req_%d", k)]
-		var strength domain.EvidenceStrength
-		var mass float64
-		if c.cfg.StrengthMode == "score" {
+		a, graded := answers[fmt.Sprintf("req_%d", k)]
+		strength, mass := domain.StrengthWeak, 0.0
+		switch {
+		case !graded:
+			c.metrics.Add("checker.strength.ungraded", 1)
+		case c.cfg.StrengthMode == "score":
 			if a.Score == nil {
 				return fmt.Errorf("requirement %q: no score answer", creqs[ri].Value)
 			}
 			strength, mass = levelStrength(a.Probabilities), 1
-		} else {
+		default:
 			if _, ok := criteria[a.Choice]; !ok {
 				return fmt.Errorf("requirement %q: answer %q is not a strength", creqs[ri].Value, a.Choice)
 			}
@@ -415,22 +464,29 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 		}
 		tp := domain.TracePair{Requirement: creqs[ri].Value, Probabilities: a.Probabilities, EvidenceMass: mass}
 		pass := mass >= c.minEvidenceMass()
-		if c.cfg.GateThreshold > 0 {
-			g := resp.Answers[fmt.Sprintf("gate_%d", k)]
+		if gated {
+			g := answers[fmt.Sprintf("gate_%d", k)]
 			if g.Noul == nil {
 				return fmt.Errorf("requirement %q: no gate answer", creqs[ri].Value)
 			}
 			tp.Gate = g.Noul
 			pass = *g.Noul >= c.cfg.GateThreshold
+			if !graded {
+				// Only the gate was asked: its P is the link's probability.
+				mass = *g.Noul
+			}
 			// The gate said yes, but the grader is confident it is not
 			// evidence (e.g. alternative_tool for Golang -> Node.js).
-			if o := topRejection(a.Probabilities); pass && c.cfg.VetoThreshold > 0 && c.cfg.StrengthMode != "score" && a.Probabilities[o] >= c.cfg.VetoThreshold {
+			if o := topRejection(a.Probabilities); graded && pass && c.cfg.VetoThreshold > 0 && c.cfg.StrengthMode != "score" && a.Probabilities[o] >= c.cfg.VetoThreshold {
 				pass, tp.Vetoed = false, true
 				c.metrics.Add("checker.strength.vetoed."+o, 1)
 			}
 		}
 		if !pass {
-			tp.RejectReason = topRejection(a.Probabilities)
+			tp.RejectReason = "gate"
+			if graded {
+				tp.RejectReason = topRejection(a.Probabilities)
+			}
 			c.metrics.Add("checker.strength.rejected."+tp.RejectReason, 1)
 			c.log.DebugContext(ctx, "evidence rejected", "unit", u.ID, "requirement", creqs[ri].Value,
 				"evidence_mass", mass, "reason", tp.RejectReason)
