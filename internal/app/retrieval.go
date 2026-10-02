@@ -154,6 +154,7 @@ func (c *Checker) askRetrieval(ctx context.Context, u domain.EvidenceUnit, creqs
 		return nil, "", err
 	}
 	c.metrics.Add("checker.retrieval.requests", 1)
+	c.addUsage("checker.retrieval", resp.Usage)
 	a := resp.Answers["retrieval"]
 	if a.Choice != noneOption && !slices.ContainsFunc(opts, func(r checkRequirement) bool { return r.option == a.Choice }) {
 		return nil, "", fmt.Errorf("answer %q is not an option", a.Choice)

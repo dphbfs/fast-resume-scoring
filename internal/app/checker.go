@@ -396,6 +396,7 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 		return err
 	}
 	c.metrics.Add("checker.strength.requests", 1)
+	c.addUsage("checker.strength", resp.Usage)
 	capped := u.ResumeSection == domain.ResumeSkills || u.ResumeSection == domain.ResumeSummary
 	for k, ri := range retrieved {
 		a := resp.Answers[fmt.Sprintf("req_%d", k)]
@@ -594,6 +595,12 @@ func (c *Checker) minEvidenceMass() float64 {
 }
 
 // stage runs fn with timing, metrics and structured logs.
+// addUsage records a stage's Jev tokens, so cost can be split by stage.
+func (c *Checker) addUsage(stage string, u port.Usage) {
+	c.metrics.Add(stage+".input_tokens", int64(u.InputTokens))
+	c.metrics.Add(stage+".output_tokens", int64(u.OutputTokens))
+}
+
 func (c *Checker) stage(ctx context.Context, name string, fn func(context.Context) error) error {
 	start := time.Now()
 	err := fn(ctx)
