@@ -370,3 +370,39 @@ Reports kept in `eval/reports/checker/`: the five first-round runs cited
 above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
 `02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90
 experiment reports were pruned; their numbers are in the tables above.
+
+### Generative baseline (2026-10-02, branch `exp/generative-baseline`)
+
+Question: is the Jev Resume Checker a cheaper replacement for the
+traditional one-prompt generative match score, at the same accuracy?
+`eval -checker -baseline` also scores each pair with the generative scorer's
+match-score prompt (`packages/api/src/features/applications/ai.ts`,
+verbatim, Resume as markdown) through `OPENAI_*`, uncached, and
+compares both against the Fit Score of the labeled Coverage.
+`-baseline-price-in/-out` (USD per M tokens) price the calls; with
+`-rescore` they reprice stored runs.
+
+3 runs (`2026-10-02T02-28-38Z`, `02-29-42Z`, `02-31-42Z`; priced in the
+`-rescored` reports), `claude-opus-5` at $5 / $25 per M tokens:
+
+| | Jev (Resume Checker) | Generative |
+|---|---|---|
+| Fit error vs labeled, mean (range) | 4.0 (3.6-4.3) | 6.4 (5.5-7.3) |
+| Fit error max | 9-13 | 22-26 |
+| Fit bias | -1.8 to -2.5 | -1.5 to 0.0 |
+| Time per pair, mean | 6.3s | 16.6s (13.4-19.7) |
+| Cost per pair | $0.0054 | $0.029 |
+
+- Jev is ~5.4× cheaper per pair for the Resume Checker alone. Adding
+  the Requirement Extractor (~$0.0056, once per Job Description) gives
+  ~$0.011 when each posting is scored against one Resume: ~2.7×
+  cheaper. Generative output tokens are ~3/4 of its cost (~840 out).
+- Generative input tokens are estimated (prompt chars / 4): the local
+  proxy reports `prompt_tokens: 2` for every prompt.
+- The largest generative misses are domain-heavy postings it rates
+  holistically (Golang security integrations: labeled 36, generative
+  62). Caveat: the target is our own labeled Coverage under the Fit
+  Score formula, so this measures agreement with the Coverage view of
+  fit, which favors Jev by construction. Real outcomes (interview vs
+  rejection) are still the only neutral target.
+- Coverage in these runs: 86.7-87.1%, in line with the reference runs.

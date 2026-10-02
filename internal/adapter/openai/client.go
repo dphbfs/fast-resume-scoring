@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"math"
 	"net/http"
 	"strings"
 	"time"
@@ -59,44 +60,73 @@ type chatResponse struct {
 	Choices []struct {
 		Message message `json:"message"`
 	} `json:"choices"`
+	Usage Usage `json:"usage"`
+}
+
+// Usage is the token usage of one call. Cost (USD) is only set when the
+// provider reports it (OpenRouter does).
+type Usage struct {
+	InputTokens  int      `json:"prompt_tokens"`
+	OutputTokens int      `json:"completion_tokens"`
+	Cost         *float64 `json:"cost,omitempty"`
+}
+
+// Reply is one chat completion with its usage and the time the HTTP call
+// took (queueing in the limiter excluded).
+type Reply struct {
+	Text    string
+	Usage   Usage
+	Latency time.Duration
 }
 
 // Generate returns the model's reply to prompt under the system message.
 func (c *Client) Generate(ctx context.Context, system, prompt string) (string, error) {
+	r, err := c.Complete(ctx, system, prompt)
+	return r.Text, err
+}
+
+// Complete is Generate plus the call's usage and latency. An empty system
+// sends the prompt as the only message.
+func (c *Client) Complete(ctx context.Context, system, prompt string) (Reply, error) {
 	if c.cfg.Model == "" {
-		return "", port.ErrGenerativeUnavailable
+		return Reply{}, port.ErrGenerativeUnavailable
 	}
-	body, err := json.Marshal(chatRequest{
-		Model: c.cfg.Model,
-		Messages: []message{
-			{Role: "system", Content: system},
-			{Role: "user", Content: prompt},
-		},
-	})
+	var msgs []message
+	if system != "" {
+		msgs = append(msgs, message{Role: "system", Content: system})
+	}
+	msgs = append(msgs, message{Role: "user", Content: prompt})
+	body, err := json.Marshal(chatRequest{Model: c.cfg.Model, Messages: msgs})
 	if err != nil {
-		return "", fmt.Errorf("openai: encode request: %w", err)
+		return Reply{}, fmt.Errorf("openai: encode request: %w", err)
 	}
 
-	var out string
+	var out Reply
 	err = c.limiter.Do(ctx, func(ctx context.Context) error {
 		start := time.Now()
 		out, err = c.post(ctx, body)
+		out.Latency = time.Since(start)
 		c.metrics.Add("gen.calls", 1)
-		c.metrics.ObserveDuration("gen.latency", time.Since(start))
+		c.metrics.ObserveDuration("gen.latency", out.Latency)
 		return err
 	})
 	if err != nil {
 		c.metrics.Add("gen.errors", 1)
-		return "", err
+		return Reply{}, err
+	}
+	c.metrics.Add("gen.input_tokens", int64(out.Usage.InputTokens))
+	c.metrics.Add("gen.output_tokens", int64(out.Usage.OutputTokens))
+	if out.Usage.Cost != nil {
+		c.metrics.Add("gen.cost_micro_usd", int64(math.Round(*out.Usage.Cost*1e6)))
 	}
 	return out, nil
 }
 
-func (c *Client) post(ctx context.Context, body []byte) (string, error) {
+func (c *Client) post(ctx context.Context, body []byte) (Reply, error) {
 	url := strings.TrimRight(c.cfg.BaseURL, "/") + "/chat/completions"
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(body))
 	if err != nil {
-		return "", fmt.Errorf("openai: build request: %w", err)
+		return Reply{}, fmt.Errorf("openai: build request: %w", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
 	if c.cfg.APIKey != "" {
@@ -105,24 +135,24 @@ func (c *Client) post(ctx context.Context, body []byte) (string, error) {
 
 	resp, err := c.http.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("openai: %w", err)
+		return Reply{}, fmt.Errorf("openai: %w", err)
 	}
 	defer resp.Body.Close()
 
 	raw, err := io.ReadAll(io.LimitReader(resp.Body, 10<<20))
 	if err != nil {
-		return "", fmt.Errorf("openai: read response: %w", err)
+		return Reply{}, fmt.Errorf("openai: read response: %w", err)
 	}
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("openai: HTTP %d: %s", resp.StatusCode, raw)
+		return Reply{}, fmt.Errorf("openai: HTTP %d: %s", resp.StatusCode, raw)
 	}
 
 	var cr chatResponse
 	if err := json.Unmarshal(raw, &cr); err != nil {
-		return "", fmt.Errorf("openai: decode response: %w", err)
+		return Reply{}, fmt.Errorf("openai: decode response: %w", err)
 	}
 	if len(cr.Choices) == 0 {
-		return "", fmt.Errorf("openai: response has no choices")
+		return Reply{}, fmt.Errorf("openai: response has no choices")
 	}
-	return strings.TrimSpace(cr.Choices[0].Message.Content), nil
+	return Reply{Text: strings.TrimSpace(cr.Choices[0].Message.Content), Usage: cr.Usage}, nil
 }

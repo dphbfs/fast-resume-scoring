@@ -28,6 +28,9 @@ func run() int {
 	rescore := flag.String("rescore", "", "rescore the results in this report JSON against the current labels (no API calls)")
 	summaries := flag.String("summaries", "eval/cache/summaries", "cache directory for generated Job Summaries (keeps Validation inputs fixed across runs)")
 	checker := flag.Bool("checker", false, "evaluate the Resume Checker on testdata/checker pairs instead of the Requirement Extractor")
+	baseline := flag.Bool("baseline", false, "with -checker: also score each pair with one generative prompt (OPENAI_*) and compare")
+	priceIn := flag.Float64("baseline-price-in", 0, "baseline input price, USD per million tokens (used when the provider reports no cost; with -rescore, reprices stored calls)")
+	priceOut := flag.Float64("baseline-price-out", 0, "baseline output price, USD per million tokens (used when the provider reports no cost)")
 	flag.Parse()
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -42,7 +45,8 @@ func run() int {
 		if dir == "eval/reports" {
 			dir = "eval/reports/checker"
 		}
-		return runChecker(ctx, *golden, dir, *rescore, prefixes, *parallel)
+		bcfg := eval.BaselineConfig{Enabled: *baseline, PriceInPerM: *priceIn, PriceOutPerM: *priceOut}
+		return runChecker(ctx, *golden, dir, *rescore, prefixes, *parallel, bcfg)
 	}
 	fixtures, err := eval.LoadGolden(*golden, prefixes)
 	if err != nil {
@@ -93,7 +97,7 @@ func run() int {
 
 // runChecker evaluates the Resume Checker on the (Job Description, Resume)
 // pairs in testdata/checker, or rescores a previous checker report.
-func runChecker(ctx context.Context, golden, out, rescore string, prefixes []string, parallel int) int {
+func runChecker(ctx context.Context, golden, out, rescore string, prefixes []string, parallel int, baseline eval.BaselineConfig) int {
 	fixtures, err := eval.LoadCheckerGolden("testdata/checker", golden, "testdata/resumes", prefixes)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "eval:", err)
@@ -111,6 +115,9 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 2
 		}
+		if baseline.PriceInPerM > 0 || baseline.PriceOutPerM > 0 {
+			eval.RepriceBaseline(&prev, baseline)
+		}
 		traces, err := eval.LoadCheckTraces(rescore)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "eval:", err)
@@ -121,7 +128,7 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 			return 2
 		}
 	} else {
-		runner, err := initCheckerRunner()
+		runner, err := initCheckerRunner(baseline)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 1
@@ -137,6 +144,10 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 	t := report.Totals
 	fmt.Printf("coverage %.1f%%  retrieval recall %.1f%%  links P %.1f%% R %.1f%%  strength exact %.1f%%  failed %d/%d\nreport: %s\n",
 		100*t.CoverageExact, 100*t.RetrievalRecall, 100*t.LinkPrecision, 100*t.LinkRecall, 100*t.StrengthExact, t.Failed, t.Fixtures, path)
+	if b := t.Baseline; b != nil {
+		fmt.Printf("fit error vs labels over %d pairs: generative %.1f (max %d)  jev %.1f (max %d)  baseline failed %d/%d\n",
+			b.Pairs, b.FitError, b.FitErrorMax, b.JevFitError, b.JevFitErrorMax, b.Failed, b.Ran)
+	}
 	if t.Failed > 0 {
 		return 1
 	}
