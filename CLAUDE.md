@@ -142,13 +142,19 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
 2. Retrieval Round (default `narrow`): a Choice over all Requirements +
    `none` (`none` is a sink only; option description = Requirement + its
    shortest Context Sentence), repeated over the best
-   `CHECKER_NARROW_SIZES` (16, then 8) of the previous round; keep the top
-   K=8 with p >= 0.01. Other `CHECKER_RETRIEVAL_MODE`s: `single` (one
+   `CHECKER_NARROW_SIZES` (16) of the previous round; keep the top
+   K=8 with p >= 0.01. A third round (16, then 8) cost 11% more and
+   changed nothing measurable. `CHECKER_NARROW_STOP_P` (> 0) ends
+   narrowing once a round's top option reaches it (default 0, off). Other `CHECKER_RETRIEVAL_MODE`s: `single` (one
    Choice), `peel` (take the winner, remove it, ask again), `noul` (one
    yes/no per Requirement). Nothing is linked yet.
-3. Strength Round: one Jev request per Evidence Unit with, per retrieved
-   Requirement, a gate Noul and a grading Choice (TypeSafe's "Choice
-   grades, Noul decides whether" pattern):
+3. Strength Round: per Evidence Unit, per retrieved Requirement, a gate
+   Noul and a grading Choice (TypeSafe's "Choice grades, Noul decides
+   whether" pattern). Only questions whose answer is used are asked
+   (Jev bills input tokens only): `CHECKER_GATE_FIRST` (default on) asks
+   the gates in one request and grades only gate-passed pairs in a
+   second; `CHECKER_SKIP_CAPPED_GRADING` (default on) asks Skills and
+   Summary units only the gate (linked weak on the gate's P).
    - Gate (`CHECKER_GATE_THRESHOLD` 0.5, wording `v2`): "is `statement`
      evidence the candidate has this requirement?" Yes = work with it, a
      specific instance, a part/prerequisite, or its broader practice, or

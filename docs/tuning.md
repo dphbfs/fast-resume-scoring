@@ -438,3 +438,7 @@ labeled retrieved pairs. Options built (opt-in):
   resends the state, and gates are a larger share of strength than the
   rubric-size estimate assumed. It adds ~1.3s per pair (two sequential
   requests per unit); dropping the third narrow round wins that back.
+- Decision: C is the default (`CHECKER_NARROW_SIZES=16`,
+  `CHECKER_SKIP_CAPPED_GRADING=true`, `CHECKER_GATE_FIRST=true`): -23%
+  cost, default latency, the best mean Coverage and Fit error (3.2,
+  range 3.0-3.6 vs the old default's 3.6-4.3).
