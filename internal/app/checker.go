@@ -262,6 +262,23 @@ var strengthCriteriaV5 = map[string]any{
 	},
 }
 
+// strengthCriteriaV6 is v5 with an alternative_tool boundary for broad
+// Requirements: live runs graded AWS for "major cloud platform" and
+// Prometheus for "monitoring" as alternative_tool (p 0.75-0.86), the same
+// range as real competing tools (Golang for Node.js), so no veto threshold
+// could separate them.
+var strengthCriteriaV6 = func() map[string]any {
+	out := maps.Clone(strengthCriteriaV5)
+	out["alternative_tool"] = map[string]any{
+		"what": "The statement uses a different tool, product, or framework of the same kind, one that could replace the requirement.",
+		"not_for": "A tool that is part of or built on the requirement (that is partial or strong). A specific product " +
+			"that is an instance of a broader requirement (that is the requirement itself, so strong or weak).",
+		"examples": []string{"requirement Spark: built Flink jobs", "requirement Git: used Mercurial",
+			"not alternative_tool: requirement message broker: ran RabbitMQ queues (an instance, so strong)"},
+	}
+	return out
+}()
+
 // strengthCriteria returns the Strength options for cfg.StrengthCriteria:
 // v1, v2 (sharpened), v3 (v2 plus the negative options, the default), or
 // v4 (v3 plus needed_capability), or v5 (v3 as structured rubric objects).
@@ -273,6 +290,8 @@ func (c *Checker) strengthCriteria() map[string]any {
 		return strengthCriteriaV2
 	case "v5":
 		return strengthCriteriaV5
+	case "v6":
+		return strengthCriteriaV6
 	}
 	out := maps.Clone(strengthCriteriaV2)
 	maps.Copy(out, strengthNegatives)
@@ -402,6 +421,12 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 			}
 			tp.Gate = g.Noul
 			pass = *g.Noul >= c.cfg.GateThreshold
+			// The gate said yes, but the grader is confident it is not
+			// evidence (e.g. alternative_tool for Golang -> Node.js).
+			if o := topRejection(a.Probabilities); pass && c.cfg.VetoThreshold > 0 && c.cfg.StrengthMode != "score" && a.Probabilities[o] >= c.cfg.VetoThreshold {
+				pass, tp.Vetoed = false, true
+				c.metrics.Add("checker.strength.vetoed."+o, 1)
+			}
 		}
 		if !pass {
 			tp.RejectReason = topRejection(a.Probabilities)

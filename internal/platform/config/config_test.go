@@ -41,6 +41,8 @@ func TestLoadErrors(t *testing.T) {
 		{"bad float", map[string]string{"TYPESAFE_API_KEY": "k", "PIPELINE_MIN_REQUIREMENT_MASS": "half"}},
 		{"bad ints", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_NARROW_SIZES": "12,x"}},
 		{"bad mode", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_RETRIEVAL_MODE": "fuzzy"}},
+		{"veto without gate", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_VETO_THRESHOLD": "0.6", "CHECKER_GATE_THRESHOLD": "0"}},
+		{"veto with score mode", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_VETO_THRESHOLD": "0.6", "CHECKER_STRENGTH_MODE": "score"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

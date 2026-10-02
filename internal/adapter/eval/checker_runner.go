@@ -309,9 +309,9 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 	if r.RescoredFrom != "" {
 		fmt.Fprintf(&b, "Rescored offline from the run of %s against the current labels.\n\n", r.RescoredFrom)
 	}
-	fmt.Fprintf(&b, "Checker: retrieval %s (K %d · floor %.3f · narrow %v · peel shortlist %d · noul threshold %.2f) · strength criteria %s · min evidence mass %.2f · gate %.2f (%s) · grading %s\n\n",
+	fmt.Fprintf(&b, "Checker: retrieval %s (K %d · floor %.3f · narrow %v · peel shortlist %d · noul threshold %.2f) · strength criteria %s · min evidence mass %.2f · gate %.2f (%s) · veto %.2f · grading %s\n\n",
 		r.Checker.RetrievalMode, r.Checker.RetrievalK, r.Checker.RetrievalFloor, r.Checker.NarrowSizes, r.Checker.PeelShortlist, r.Checker.NoulThreshold,
-		r.Checker.StrengthCriteria, r.Checker.MinEvidenceMass, r.Checker.GateThreshold, r.Checker.GateWording, r.Checker.StrengthMode)
+		r.Checker.StrengthCriteria, r.Checker.MinEvidenceMass, r.Checker.GateThreshold, r.Checker.GateWording, r.Checker.VetoThreshold, r.Checker.StrengthMode)
 
 	b.WriteString("| Metric | Value |\n|---|---|\n")
 	fmt.Fprintf(&b, "| **Coverage accuracy** | **%s** |\n", pct(t.CoverageExact))

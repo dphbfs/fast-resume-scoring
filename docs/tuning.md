@@ -330,6 +330,42 @@ Findings:
   `alternative_tool` (evidence mass 0.26). Gate and grader disagree;
   consider rejecting when a non-evidence option wins the grading Choice.
 
+### Gate vs grader: competing-tool links (2026-10-02)
+
+- Offline simulation on the traces of the 3 skills-split runs (unlink a
+  gate-passed pair when the grading Choice puts >= t on a non-evidence
+  option): at t 0.5-0.7 only 0-3 pairs per 3 runs are vetoed, Coverage
+  86.2-86.4 vs 86.4; "veto when a negative is the top option" vetoes
+  8-16 pairs, mostly correct ones (Coverage 85.8). The eval set barely
+  contains this error.
+- On the 10 live applications the same veto would also remove correct
+  links: AWS for "major cloud platform" (alternative_tool 0.77) and
+  Prometheus/Grafana for "observability"/"monitoring" (0.76-0.86) sit in
+  the same range as the real error (Golang CLI for Node.js, 0.73-0.82).
+  The grader reads "an instance of a broad Requirement" as a competing
+  tool, so no threshold separates them.
+- Built, not yet measured: criteria `v6` (v5 plus an alternative_tool
+  `not_for`: an instance of a broader requirement is the requirement
+  itself) and `CHECKER_VETO_THRESHOLD` (default 0 = off). Plan: 3 runs each
+  of v6 and v6 + veto 0.6, plus the 10 applications to check that AWS and
+  Prometheus stop scoring alternative_tool while Golang -> Node.js still
+  does. Blocked: OpenRouter key hit its monthly limit (HTTP 403) on the
+  first v6 run; partial reports deleted.
+- 10 live applications, one run each, same Requirements (v5 / v6 /
+  v6 + veto 0.6): Fit vs RR Spearman -0.07 / -0.02 / -0.10. v6 lowers
+  alternative_tool on instances only a little (AWS 0.77 -> 0.66-0.72,
+  Prometheus for monitoring 0.86 -> 0.73). Veto 0.6 removed 5 links: 4
+  correct (observability, monitoring, AWS x2 for "major cloud platform")
+  and 1 wrong (NestJS <- Java/Golang skills chunk). Veto rejected at 0.6.
+- The Golang CLI -> Node.js link disappeared under v6, but not because of
+  v6: the Retrieval Round proposed Node.js for that unit in only 1 of 4
+  runs (v5 runs included). The error is rare and retrieval-dependent.
+- Eval, v6, 3 runs (`2026-10-02T01-56-55Z`, `01-57-21Z`, `01-57-50Z`) vs
+  v5 (skills-split runs above): Coverage 86.6% (86.0-87.1) vs 86.4%
+  (85.7-87.1); required 86.9% vs 86.7%; link P 88.4% vs 88.8%; Fit Score
+  error 3.8 vs 3.8; alternative_tool rejections 14-15 vs 15-17. No
+  difference beyond noise. Default stays v5; v6 kept as an option.
+
 Reports kept in `eval/reports/checker/`: the five first-round runs cited
 above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
 `02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90

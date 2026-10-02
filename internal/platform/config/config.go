@@ -69,12 +69,18 @@ type Checker struct {
 	PeelShortlist int     // CHECKER_PEEL_SHORTLIST
 	// StrengthCriteria picks the Strength Round options: v1, v2 (sharpened
 	// strong/partial), v3 (v2 plus negative options), v4 (v3 plus the
-	// needed_capability negative), or v5 (v3 as {what, not_for, examples}).
+	// needed_capability negative), v5 (v3 as {what, not_for, examples}), or
+	// v6 (v5 with "an instance of a broad requirement is not
+	// alternative_tool").
 	StrengthCriteria string // CHECKER_STRENGTH_CRITERIA
 	// GateThreshold > 0 adds one gate Noul per pair ("is this evidence the
 	// candidate has the requirement?") and links on gate >= threshold
 	// instead of MinEvidenceMass. 0 turns the gate off.
 	GateThreshold float64 // CHECKER_GATE_THRESHOLD
+	// VetoThreshold > 0 (needs the gate) rejects a pair the gate passed when
+	// one non-evidence option of the grading Choice has at least this
+	// probability. 0 turns the veto off.
+	VetoThreshold float64 // CHECKER_VETO_THRESHOLD
 	// GateWording is the gate Noul's yes criterion: v1 (the requirement
 	// itself) or v2 (also a part, prerequisite, or broader practice).
 	GateWording string // CHECKER_GATE_WORDING
@@ -121,6 +127,7 @@ func load(getenv func(string) string) (Config, error) {
 			NoulThreshold:    e.float("CHECKER_NOUL_THRESHOLD", 0.5),
 			StrengthCriteria: e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
 			GateThreshold:    e.float("CHECKER_GATE_THRESHOLD", 0.5),
+			VetoThreshold:    e.float("CHECKER_VETO_THRESHOLD", 0),
 			GateWording:      e.str("CHECKER_GATE_WORDING", "v2"),
 			StrengthMode:     e.str("CHECKER_STRENGTH_MODE", "choice"),
 		},
@@ -134,9 +141,12 @@ func load(getenv func(string) string) (Config, error) {
 		return Config{}, fmt.Errorf("config: CHECKER_RETRIEVAL_MODE %q: want single, narrow, peel or noul", cfg.Checker.RetrievalMode)
 	}
 	switch cfg.Checker.StrengthCriteria {
-	case "v1", "v2", "v3", "v4", "v5":
+	case "v1", "v2", "v3", "v4", "v5", "v6":
 	default:
-		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_CRITERIA %q: want v1..v5", cfg.Checker.StrengthCriteria)
+		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_CRITERIA %q: want v1..v6", cfg.Checker.StrengthCriteria)
+	}
+	if cfg.Checker.VetoThreshold > 0 && (cfg.Checker.GateThreshold <= 0 || cfg.Checker.StrengthMode != "choice") {
+		return Config{}, fmt.Errorf("config: CHECKER_VETO_THRESHOLD needs CHECKER_GATE_THRESHOLD > 0 and CHECKER_STRENGTH_MODE=choice")
 	}
 	switch cfg.Checker.StrengthMode {
 	case "choice":
