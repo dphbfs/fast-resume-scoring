@@ -237,11 +237,15 @@
     "strength": "partial"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: ECS, Lambda",
     "strength": "weak"
    }
   ],
   "LLMs / AI coding assistants": [
+   {
+    "quote": "AI Tools: Claude Code",
+    "strength": "weak"
+   },
    {
     "quote": "AI Tools: AI-assisted engineering",
     "strength": "weak"
@@ -267,7 +271,11 @@
     "strength": "strong"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: JavaScript, TypeScript",
+    "strength": "weak"
+   },
+   {
+    "quote": "Technical Stack: ECS, Lambda",
     "strength": "weak"
    },
    {

@@ -83,6 +83,10 @@
    {
     "quote": "AI Tools: AI-assisted engineering",
     "strength": "weak"
+   },
+   {
+    "quote": "AI Tools: Claude Code",
+    "strength": "weak"
    }
   ],
   "customer-facing systems": [
@@ -131,7 +135,7 @@
     "strength": "partial"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: Distributed Systems",
     "strength": "weak"
    },
    {
@@ -209,7 +213,7 @@
     "strength": "weak"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: Docker, DynamoDB",
     "strength": "weak"
    },
    {
@@ -277,7 +281,7 @@
     "strength": "strong"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: JavaScript, TypeScript",
     "strength": "weak"
    }
   ],
@@ -297,7 +301,11 @@
     "strength": "strong"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: JavaScript, TypeScript",
+    "strength": "weak"
+   },
+   {
+    "quote": "Technical Stack: ECS, Lambda",
     "strength": "weak"
    },
    {
@@ -379,7 +387,7 @@
     "strength": "partial"
    },
    {
-    "quote": "Technical Stack: Java, Golang",
+    "quote": "Technical Stack: ECS, Lambda",
     "strength": "weak"
    }
   ]

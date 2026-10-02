@@ -42,3 +42,7 @@ Next (after the user reviews masking and labels):
 - [ ] Fit Score on extractor output (end-to-end), not only golden
       Requirements.
 - [ ] Check whether years-qualifier Requirements skew the Fit Score.
+- [x] Split long Skills lines (> 6 items) so retrieval's K=8 cap doesn't
+      hide listed skills.
+- [ ] Gate vs grader disagreement: gate links while the grading Choice's
+      top option is non-evidence (e.g. Golang CLI -> Node.js, strong).

@@ -63,6 +63,49 @@ func TestParseResumeSkillsLinesAreNotSentenceSplit(t *testing.T) {
 	})
 }
 
+func TestParseResumeSplitsLongSkillsLines(t *testing.T) {
+	got := ParseResume("# Skills\n" +
+		"- Stack: Java, Go, AWS (S3, Lambda), Kafka, Redis, Docker, Linux, MySQL\n" +
+		"- Java, Go, PHP, Kafka, Redis, Docker, Linux\n" +
+		"- Cloud: AWS, GCP, Azure, Docker, Helm, Terraform\n")
+	assertUnits(t, got, []domain.EvidenceUnit{
+		// 8 items (parentheses kept whole) -> 4 + 4, label repeated.
+		{ID: "e1", Text: "Stack: Java, Go, AWS (S3, Lambda), Kafka", ResumeSection: domain.ResumeSkills},
+		{ID: "e2", Text: "Stack: Redis, Docker, Linux, MySQL", ResumeSection: domain.ResumeSkills},
+		// No label: 7 items -> 4 + 3.
+		{ID: "e3", Text: "Java, Go, PHP, Kafka", ResumeSection: domain.ResumeSkills},
+		{ID: "e4", Text: "Redis, Docker, Linux", ResumeSection: domain.ResumeSkills},
+		// 6 items fit in one unit, kept verbatim.
+		{ID: "e5", Text: "Cloud: AWS, GCP, Azure, Docker, Helm, Terraform", ResumeSection: domain.ResumeSkills},
+	})
+}
+
+func TestSplitSkillsLine(t *testing.T) {
+	tests := []struct {
+		line string
+		want []string
+	}{
+		{"Go. Python. SQL", []string{"Go. Python. SQL"}},
+		// A label has at most 4 words and ends before the first comma.
+		{"These are my main tools: a, b, c, d, e, f, g", []string{"These are my main tools: a, b, c, d", "e, f, g"}},
+		{"a, b: c, d, e, f, g, h", []string{"a, b: c, d, e", "f, g, h"}},
+		{"Stack: " + "a,b,c,d,e,f,g,h,i,j,k,l,m", []string{"Stack: a, b, c, d, e", "Stack: f, g, h, i", "Stack: j, k, l, m"}},
+	}
+	for _, tt := range tests {
+		got := splitSkillsLine(tt.line)
+		if len(got) != len(tt.want) {
+			t.Errorf("splitSkillsLine(%q) = %q, want %q", tt.line, got, tt.want)
+			continue
+		}
+		for i := range got {
+			if got[i] != tt.want[i] {
+				t.Errorf("splitSkillsLine(%q) = %q, want %q", tt.line, got, tt.want)
+				break
+			}
+		}
+	}
+}
+
 func TestParseResumeWithoutHeadings(t *testing.T) {
 	got := ParseResume("- Built a Kafka pipeline.\n- Wrote Terraform modules.\n")
 	assertUnits(t, got, []domain.EvidenceUnit{
