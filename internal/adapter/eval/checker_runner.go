@@ -10,6 +10,7 @@ import (
 	"log/slog"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -67,6 +68,11 @@ type CheckerTotals struct {
 	CoverageCovered float64                   `json:"coverage_covered"`
 	Coverage        map[string]CoverageTally  `json:"coverage"`
 	Confusion       map[string]map[string]int `json:"confusion"`
+	// FitError is the mean absolute difference between the predicted and
+	// the labeled Fit Score over FitPairs; FitErrorMax the largest one.
+	FitError    float64 `json:"fit_error"`
+	FitErrorMax int     `json:"fit_error_max"`
+	FitPairs    int     `json:"fit_pairs"`
 
 	LabeledPairs   int `json:"labeled_pairs"`
 	PredictedLinks int `json:"predicted_links"`
@@ -168,7 +174,7 @@ func CheckerLabelsHash(fixtures []CheckerFixture) string {
 
 func checkerTotals(scores []CheckerScore) CheckerTotals {
 	t := CheckerTotals{Fixtures: len(scores), Coverage: map[string]CoverageTally{}, Confusion: map[string]map[string]int{}}
-	var retrieved, labeledSP, retrievedSP, exact, near int
+	var retrieved, labeledSP, retrievedSP, exact, near, fitErr int
 	var cov CoverageTally
 	for _, s := range scores {
 		if s.Error != "" {
@@ -183,6 +189,12 @@ func checkerTotals(scores []CheckerScore) CheckerTotals {
 		retrievedSP += s.RetrievedStrongPartial
 		exact += s.StrengthExact
 		near += s.StrengthNear
+		if s.FitGot != nil && s.FitWant != nil {
+			d := max(*s.FitGot-*s.FitWant, *s.FitWant-*s.FitGot)
+			fitErr += d
+			t.FitErrorMax = max(t.FitErrorMax, d)
+			t.FitPairs++
+		}
 		for tier, c := range s.Coverage {
 			agg := t.Coverage[tier]
 			agg.Total += c.Total
@@ -213,6 +225,9 @@ func checkerTotals(scores []CheckerScore) CheckerTotals {
 	t.StrengthNear = ratio(near, t.CorrectLinks)
 	t.CoverageExact = ratio(cov.Exact, cov.Total)
 	t.CoverageCovered = ratio(cov.Covered, cov.Total)
+	if t.FitPairs > 0 {
+		t.FitError = float64(fitErr) / float64(t.FitPairs)
+	}
 	return t
 }
 
@@ -306,6 +321,7 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 		}
 	}
 	fmt.Fprintf(&b, "| Covered vs none agreement | %s |\n", pct(t.CoverageCovered))
+	fmt.Fprintf(&b, "| Fit Score error, mean / max (points) | %.1f / %d |\n", t.FitError, t.FitErrorMax)
 	fmt.Fprintf(&b, "| Retrieval recall (all labels) | %s |\n", pct(t.RetrievalRecall))
 	fmt.Fprintf(&b, "| Retrieval recall (strong + partial) | %s |\n", pct(t.RetrievalRecallStrongPartial))
 	fmt.Fprintf(&b, "| Link precision | %s (%d/%d) |\n", pct(t.LinkPrecision), t.CorrectLinks, t.PredictedLinks)
@@ -326,10 +342,10 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 		b.WriteString("\n")
 	}
 
-	b.WriteString("\n## Fixtures\n\n| Pair | Resume | Coverage | Link P | Link R | Time |\n|---|---|---|---|---|---|\n")
+	b.WriteString("\n## Fixtures\n\n| Pair | Resume | Coverage | Fit (predicted / labeled) | Link P | Link R | Time |\n|---|---|---|---|---|---|---|\n")
 	for _, s := range r.Fixtures {
 		if s.Error != "" {
-			fmt.Fprintf(&b, "| %s | %s | error: %s | | | |\n", s.Title, s.Resume, s.Error)
+			fmt.Fprintf(&b, "| %s | %s | error: %s | | | | |\n", s.Title, s.Resume, s.Error)
 			continue
 		}
 		var total, exact int
@@ -337,8 +353,8 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 			total += c.Total
 			exact += c.Exact
 		}
-		fmt.Fprintf(&b, "| %s | %s | %s | %s | %s | %.1fs |\n", s.Title, s.Resume, pct(ratio(exact, total)),
-			pct(ratio(s.CorrectLinks, s.PredictedLinks)), pct(ratio(s.CorrectLinks, s.LabeledPairs)), float64(s.DurationMS)/1000)
+		fmt.Fprintf(&b, "| %s | %s | %s | %s / %s | %s | %s | %.1fs |\n", s.Title, s.Resume, pct(ratio(exact, total)),
+			fitText(s.FitGot), fitText(s.FitWant), pct(ratio(s.CorrectLinks, s.PredictedLinks)), pct(ratio(s.CorrectLinks, s.LabeledPairs)), float64(s.DurationMS)/1000)
 	}
 
 	b.WriteString("\n## Disagreements\n")
@@ -354,6 +370,13 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 	}
 	_, err := io.WriteString(w, b.String())
 	return err
+}
+
+func fitText(score *int) string {
+	if score == nil {
+		return "–"
+	}
+	return strconv.Itoa(*score)
 }
 
 func writeNotes(b *strings.Builder, title string, notes []PairNote, withUnit bool) {

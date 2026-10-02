@@ -518,6 +518,11 @@ func (c *Checker) buildCoverage(reqs domain.Result, creqs []checkRequirement, un
 		}
 		res.AlternativeGroups = append(res.AlternativeGroups, domain.GroupCoverage{ID: g.ID, Members: g.Members, Coverage: best})
 	}
+	res.Fit = domain.ScoreFit(res.Requirements, res.AlternativeGroups)
+	c.metrics.Add("checker.gaps", int64(len(res.Fit.Gaps)))
+	if res.Fit.Score != nil {
+		c.log.Info("fit score", "score", *res.Fit.Score, "by_tier", res.Fit.ByTier, "gaps", len(res.Fit.Gaps))
+	}
 	return res
 }
 

@@ -114,6 +114,10 @@ type CheckerScore struct {
 	Confusion map[string]map[string]int `json:"confusion"`
 	// CoverageErrors are scored Requirements whose Coverage is wrong.
 	CoverageErrors []PairNote `json:"coverage_errors"`
+	// FitGot is the Fit Score of the predicted Coverage, FitWant the one of
+	// the labeled Coverage, both over the scored (non-Skip) Requirements.
+	FitGot  *int `json:"fit_got"`
+	FitWant *int `json:"fit_want"`
 	// MissedLinks are labeled pairs with no predicted link; FalseLinks are
 	// predicted links with no label; StrengthDiffs disagree on strength.
 	MissedLinks   []PairNote `json:"missed_links"`
@@ -161,10 +165,14 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 		}
 	}
 
+	var gotCovs, wantCovs []domain.RequirementCoverage
 	for _, r := range res.Requirements {
 		if skip[r.Value] {
 			continue
 		}
+		gotCovs = append(gotCovs, r)
+		wantCovs = append(wantCovs, domain.RequirementCoverage{ID: r.ID, Tier: r.Tier,
+			Coverage: domain.EvidenceStrength(bestStrength(want[r.Value]))})
 		got := map[string]string{}
 		for _, l := range r.Evidence {
 			got[l.Unit] = string(l.Strength)
@@ -225,6 +233,8 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 		}
 		s.Confusion[wantCov][gotCov]++
 	}
+	s.FitGot = domain.ScoreFit(gotCovs, res.AlternativeGroups).Score
+	s.FitWant = domain.ScoreFit(wantCovs, res.AlternativeGroups).Score
 	return s, nil
 }
 
