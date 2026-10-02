@@ -135,7 +135,9 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
    `# <Resume Section>`, `## <Role> | <Company or Project> | <dates>`, bullets
    `-` / `•` / `*` (wrapped lines joined). Every Resume Section yields
    Evidence Units, kept verbatim: one per bullet, per prose sentence, per
-   Skills line, per Education/Certification entry. Non-conforming input
+   Skills line, per Education/Certification entry. A Skills line with more
+   than 6 comma-separated items is cut into balanced chunks that repeat its
+   label (retrieval keeps at most K=8 Requirements per unit). Non-conforming input
    parses with blank metadata.
 2. Retrieval Round (default `narrow`): a Choice over all Requirements +
    `none` (`none` is a sink only; option description = Requirement + its

@@ -309,6 +309,27 @@ Findings:
   77) and syn-android × Android (61 vs 70). Pair ranking mostly holds.
   Years qualifiers are Skip in eval, so their effect is not measured here.
 
+### Skills line split (2026-10-02)
+
+- Bug: retrieval keeps at most K=8 Requirements per Evidence Unit, so the
+  real 26-item "Technical Stack" line could support only 8. Found on 10
+  live applications: TypeScript, Redis, GitHub Actions were Gaps though
+  listed. Fix: the parser cuts Skills lines with > 6 items into balanced
+  chunks that repeat the label; real-backend labels remapped to the chunk
+  holding each item (data-analyst labels unchanged).
+- Eval, 3 runs (`2026-10-02T01-39-37Z`, `01-40-08Z`, `01-40-44Z`):
+  Coverage 86.4% (85.7-87.1) vs 86.9% baseline, link P ~88.8% (was ~91),
+  Fit Score error 3.8-3.9. Flat: in the fixtures, skills-line
+  Requirements almost always also have stronger bullet evidence.
+- 10 live applications, same extracted Requirements, check only: 17
+  Requirements moved from none to linked (mostly weak skills hits:
+  TypeScript, Redis, GitHub Actions, NoSQL, ECS); Gaps 69 -> 62; Everest
+  36 -> 39, Automox 56 -> 58; other Fit Scores within +-3 (run noise).
+- Seen in passing, separate issue: gate 0.69 linked "Built a Golang CLI"
+  to Node.js as strong while the grading Choice put 0.73 on
+  `alternative_tool` (evidence mass 0.26). Gate and grader disagree;
+  consider rejecting when a non-evidence option wins the grading Choice.
+
 Reports kept in `eval/reports/checker/`: the five first-round runs cited
 above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
 `02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90

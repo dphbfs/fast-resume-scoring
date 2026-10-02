@@ -25,6 +25,9 @@ follow `CONTEXT.md`.
   listed has Coverage none.
 - `quote` is a substring of exactly one Evidence Unit (as `ParseResume`
   splits the Resume), so labels survive parser ID changes.
+  Long Skills lines are split into chunks that repeat the label
+  ("Technical Stack: ECS, Lambda, ..."): quote the chunk that holds the
+  item.
 - `skip`: Requirements left out of scoring (years qualifiers).
 - Coverage = the best labeled strength.
 
