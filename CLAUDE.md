@@ -220,6 +220,10 @@ and the accept/reject decision.
   error (predicted vs labeled Coverage's Fit Score per pair, mean and max).
 - Identical runs vary by up to ~0.5 points; compare configs on 3+ runs
   each (mean and range), never on one.
+- `eval -checker -baseline` adds a generative baseline arm (Reactive
+  Resume's one-prompt match score via `OPENAI_*`, uncached) and reports
+  both arms' Fit error vs labeled, time, and cost per pair;
+  `-baseline-price-in/-out` price it (and reprice on `-rescore`).
 - `make eval-checker` runs it live into `eval/reports/checker/`;
   `eval -checker -rescore <report.json>` rescores offline after label edits.
   Labels: `testdata/checker/README.md`. Tuning log: `docs/tuning.md`

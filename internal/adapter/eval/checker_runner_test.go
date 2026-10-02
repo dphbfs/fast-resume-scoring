@@ -46,7 +46,7 @@ func (echoChecker) Check(_ context.Context, reqs domain.Result, resume domain.Re
 
 func TestCheckerRunWriteAndRescore(t *testing.T) {
 	f := checkerFixture()
-	r := NewCheckerRunner(echoChecker{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{RetrievalK: 5})
+	r := NewCheckerRunner(echoChecker{}, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{RetrievalK: 5})
 	rep := r.Run(context.Background(), []CheckerFixture{f}, 2)
 
 	tot := rep.Totals

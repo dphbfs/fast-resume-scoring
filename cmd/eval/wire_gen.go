@@ -45,8 +45,10 @@ func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	return runner, nil
 }
 
-// initCheckerRunner builds the Resume Checker eval runner.
-func initCheckerRunner() (*eval.CheckerRunner, error) {
+// initCheckerRunner builds the Resume Checker eval runner. The generative
+// baseline arm runs when baseline is enabled; it calls the model directly
+// (no cache) so its cost and latency are real.
+func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error) {
 	configConfig, err := config.Load()
 	if err != nil {
 		return nil, err
@@ -60,6 +62,12 @@ func initCheckerRunner() (*eval.CheckerRunner, error) {
 	}
 	checker := configConfig.Checker
 	appChecker := app.NewChecker(client, recorder, logger, checker)
-	checkerRunner := eval.NewCheckerRunner(appChecker, recorder, logger, checker)
+	generative := configConfig.Generative
+	openaiClient, err := openai.New(generative, recorder, logger)
+	if err != nil {
+		return nil, err
+	}
+	evalBaseline := eval.NewBaseline(openaiClient, generative, baseline)
+	checkerRunner := eval.NewCheckerRunner(appChecker, evalBaseline, recorder, logger, checker)
 	return checkerRunner, nil
 }

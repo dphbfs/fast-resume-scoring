@@ -118,6 +118,9 @@ type CheckerScore struct {
 	// the labeled Coverage, both over the scored (non-Skip) Requirements.
 	FitGot  *int `json:"fit_got"`
 	FitWant *int `json:"fit_want"`
+	// GapsWant are the labeled Gaps (required items with Coverage none), by
+	// value; a group lists its members joined by " / ".
+	GapsWant []string `json:"gaps_want"`
 	// MissedLinks are labeled pairs with no predicted link; FalseLinks are
 	// predicted links with no label; StrengthDiffs disagree on strength.
 	MissedLinks   []PairNote `json:"missed_links"`
@@ -125,6 +128,8 @@ type CheckerScore struct {
 	StrengthDiffs []PairNote `json:"strength_diffs"`
 	DurationMS    int64      `json:"duration_ms"`
 	Error         string     `json:"error,omitempty"`
+	// Baseline is the generative baseline's answer for the pair, when run.
+	Baseline *BaselineScore `json:"baseline,omitempty"`
 	// Result is stored so labels can be rescored offline; Trace is written
 	// to a separate file next to the report (retrieval recall needs it).
 	Result *domain.CoverageResult `json:"result,omitempty"`
@@ -234,8 +239,30 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 		s.Confusion[wantCov][gotCov]++
 	}
 	s.FitGot = domain.ScoreFit(gotCovs, res.AlternativeGroups).Score
-	s.FitWant = domain.ScoreFit(wantCovs, res.AlternativeGroups).Score
+	wantFit := domain.ScoreFit(wantCovs, res.AlternativeGroups)
+	s.FitWant = wantFit.Score
+	s.GapsWant = gapValues(wantFit.Gaps, res)
 	return s, nil
+}
+
+// gapValues turns Gap IDs (Requirement or Alternative Group) into values.
+func gapValues(ids []string, res domain.CoverageResult) []string {
+	value := map[string]string{}
+	for _, r := range res.Requirements {
+		value[r.ID] = r.Value
+	}
+	for _, g := range res.AlternativeGroups {
+		var vs []string
+		for _, m := range g.Members {
+			vs = append(vs, value[m])
+		}
+		value[g.ID] = strings.Join(vs, " / ")
+	}
+	out := []string{}
+	for _, id := range ids {
+		out = append(out, value[id])
+	}
+	return out
 }
 
 // bestStrength is the Coverage the labels imply.

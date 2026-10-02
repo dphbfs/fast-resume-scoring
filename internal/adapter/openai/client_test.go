@@ -58,3 +58,33 @@ func TestGenerate(t *testing.T) {
 		t.Errorf("request = %+v", got)
 	}
 }
+
+func TestCompleteUsageAndNoEmptySystem(t *testing.T) {
+	var got chatRequest
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		_ = json.NewDecoder(r.Body).Decode(&got)
+		_, _ = w.Write([]byte(`{"choices":[{"message":{"role":"assistant","content":"{}"}}],
+			"usage":{"prompt_tokens":120,"completion_tokens":7,"cost":0.0003}}`))
+	}))
+	defer srv.Close()
+
+	rec := metrics.NewRecorder()
+	c, err := New(config.Generative{BaseURL: srv.URL, Model: "m", MaxConcurrency: 1, Timeout: 5 * time.Second}, rec, discard)
+	if err != nil {
+		t.Fatal(err)
+	}
+	r, err := c.Complete(context.Background(), "", "score this")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got.Messages) != 1 || got.Messages[0].Role != "user" {
+		t.Errorf("messages = %+v, want only the user prompt", got.Messages)
+	}
+	if r.Usage.InputTokens != 120 || r.Usage.OutputTokens != 7 || r.Usage.Cost == nil || *r.Usage.Cost != 0.0003 {
+		t.Errorf("usage = %+v", r.Usage)
+	}
+	s := rec.Summary()
+	if s.Counters["gen.input_tokens"] != 120 || s.Counters["gen.cost_micro_usd"] != 300 {
+		t.Errorf("counters = %v", s.Counters)
+	}
+}
