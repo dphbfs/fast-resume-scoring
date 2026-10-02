@@ -25,7 +25,8 @@ func TestLoadDefaults(t *testing.T) {
 		t.Errorf("unexpected Pipeline defaults: %+v", cfg.Pipeline)
 	}
 	if !reflect.DeepEqual(cfg.Checker, Checker{RetrievalK: 8, RetrievalFloor: 0.01, MinEvidenceMass: 0.5,
-		RetrievalMode: "narrow", NarrowSizes: []int{16, 8}, NoulThreshold: 0.5, StrengthCriteria: "v5", GateThreshold: 0.5, GateWording: "v2", StrengthMode: "choice"}) {
+		RetrievalMode: "narrow", NarrowSizes: []int{16}, NoulThreshold: 0.5, StrengthCriteria: "v5", GateThreshold: 0.5, GateWording: "v2", StrengthMode: "choice",
+		SkipCappedGrading: true, GateFirst: true}) {
 		t.Errorf("unexpected Checker defaults: %+v", cfg.Checker)
 	}
 }

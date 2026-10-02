@@ -131,7 +131,7 @@ func load(getenv func(string) string) (Config, error) {
 			RetrievalFloor:    e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
 			MinEvidenceMass:   e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
 			RetrievalMode:     e.str("CHECKER_RETRIEVAL_MODE", "narrow"),
-			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", []int{16, 8}),
+			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", []int{16}),
 			PeelShortlist:     e.int("CHECKER_PEEL_SHORTLIST", 0),
 			NoulThreshold:     e.float("CHECKER_NOUL_THRESHOLD", 0.5),
 			StrengthCriteria:  e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
@@ -140,8 +140,8 @@ func load(getenv func(string) string) (Config, error) {
 			GateWording:       e.str("CHECKER_GATE_WORDING", "v2"),
 			StrengthMode:      e.str("CHECKER_STRENGTH_MODE", "choice"),
 			NarrowStopP:       e.float("CHECKER_NARROW_STOP_P", 0),
-			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", false),
-			GateFirst:         e.bool("CHECKER_GATE_FIRST", false),
+			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", true),
+			GateFirst:         e.bool("CHECKER_GATE_FIRST", true),
 		},
 	}
 	if e.err != nil {
