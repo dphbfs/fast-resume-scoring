@@ -61,5 +61,6 @@ type CoverageResult struct {
 	Model             string                  `json:"model"`
 	Requirements      []RequirementCoverage   `json:"requirements"`
 	AlternativeGroups []GroupCoverage         `json:"alternative_groups"`
+	Fit               Fit                     `json:"fit"`
 	EvidenceUnits     map[string]EvidenceUnit `json:"evidence_units"`
 }

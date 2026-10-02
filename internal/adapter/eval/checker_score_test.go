@@ -128,4 +128,9 @@ func TestScoreCheck(t *testing.T) {
 	if len(s.CoverageErrors) != 3 {
 		t.Errorf("coverage errors = %+v", s.CoverageErrors)
 	}
+	// Fit over Go, Kubernetes, Nomad, Terraform (weights 3, 1.5, 1.5, 1):
+	// predicted 3 + 0.9 + 0 + 0.6 = 4.5 of 7; labeled 3 + 1.5 + 0.45 + 0 = 4.95.
+	if s.FitGot == nil || *s.FitGot != 64 || s.FitWant == nil || *s.FitWant != 71 {
+		t.Errorf("fit got %v want %v, want 64 and 71", s.FitGot, s.FitWant)
+	}
 }

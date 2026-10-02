@@ -299,6 +299,16 @@ Findings:
   11 pairs. Before the next round, add fresh pairs (or hold out a few) to
   confirm the gains.
 
+### Fit Score (2026-10-02)
+
+- Fit Score added (ADR 0002) with Fit Score error in the report: the Fit
+  Score of predicted vs labeled Coverage per pair, over non-Skip
+  Requirements. Offline rescore of `02-16-53Z`
+  (`2026-10-02T01-23-18Z-rescored`): mean 3.9, max 11 points. Mostly low
+  (partial predicted none); worst on real-backend × Experimentation (66 vs
+  77) and syn-android × Android (61 vs 70). Pair ranking mostly holds.
+  Years qualifiers are Skip in eval, so their effect is not measured here.
+
 Reports kept in `eval/reports/checker/`: the five first-round runs cited
 above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
 `02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90

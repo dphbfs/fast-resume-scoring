@@ -161,6 +161,10 @@ func TestCheck(t *testing.T) {
 	if len(res.AlternativeGroups) != 1 || res.AlternativeGroups[0].Coverage != domain.StrengthStrong {
 		t.Errorf("groups = %+v, want alt_1 strong (best member)", res.AlternativeGroups)
 	}
+	// alt_1 required strong (3 × 1) + Kubernetes preferred partial (1.5 × 0.6) = 3.9 of 4.5.
+	if fit := res.Fit; fit.Score == nil || *fit.Score != 87 || fit.ByTier[domain.TierPreferred] != 60 || len(fit.Gaps) != 0 {
+		t.Errorf("fit = %+v, want 87, preferred 60, no gaps", fit)
+	}
 	if _, ok := res.EvidenceUnits["e2"]; ok || len(res.EvidenceUnits) != 2 {
 		t.Errorf("evidence units = %v, want e1 and e3 only", res.EvidenceUnits)
 	}

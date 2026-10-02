@@ -36,3 +36,9 @@ Next (after the user reviews masking and labels):
 - [ ] Partial boundary: ~15 partial->strong, ~14 partial->none left;
       review partial labels first.
 - [ ] Sharpen strong vs partial (v2 wording had no effect).
+- [x] Fit Score (ADR 0002): `domain.ScoreFit`, `fit` block in the coverage
+      output, Fit Score error in `eval -checker` (first rescore: mean 3.9,
+      max 11 points).
+- [ ] Fit Score on extractor output (end-to-end), not only golden
+      Requirements.
+- [ ] Check whether years-qualifier Requirements skew the Fit Score.

@@ -89,6 +89,14 @@ _Avoid_: Score, confidence, match level
 A Requirement's best Evidence Strength across its Evidence Links, or none.
 _Avoid_: Match, present/missing, hit
 
+**Fit Score**:
+How well a Resume covers a Job Description as one number from 0 to 100: the Tier-weighted average of the Coverage of each Requirement and Alternative Group.
+_Avoid_: Match Score, match rate, ATS score
+
+**Gap**:
+A required Requirement or Alternative Group whose Coverage is none.
+_Avoid_: Missing skill, miss
+
 **Retrieval Round**:
 The first Resume Checker pass, which proposes, per Evidence Unit, the Requirements it might support. Nothing is linked yet.
 _Avoid_: Candidate generation, matching pass
@@ -104,5 +112,5 @@ The part that turns a Job Description into Requirements, Context Sentences, and 
 _Avoid_: Keyword extractor, parser, JD analyzer
 
 **Resume Checker**:
-The part that takes Requirements and a Resume, creates Evidence Links, and reports each Requirement's Coverage.
+The part that takes Requirements and a Resume, creates Evidence Links, and reports each Requirement's Coverage, the Gaps, and the Fit Score.
 _Avoid_: Matcher, scorer, classifier

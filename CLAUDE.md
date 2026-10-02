@@ -166,8 +166,13 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
      Score instead of the Choice) was worse; kept for experiments.
 4. Coverage: best Evidence Strength per Requirement, or `none` (flagged,
    never invented). Alternative Group Coverage = best member's Coverage. No
-   counts, no Match Score, no Importance use. No years-qualifier special
-   handling. Job Summary not used.
+   counts, no Importance use. No years-qualifier special handling. Job
+   Summary not used.
+   Fit Score (`docs/adr/0002`, code only, `domain.ScoreFit`): Tier-weighted
+   average of Coverage credit (strong 1, partial 0.6, weak 0.3; required 3,
+   preferred 1.5, mentioned 1), an Alternative Group counting once; plus a
+   score per Tier and the Gaps (required items with none). Null when there
+   is nothing to score.
 5. CLI: `cmd/check -requirements <result.json> -resume <resume.md>
    [-debug trace.json]`. Output (coverage schema v1):
 
@@ -180,6 +185,7 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
       "evidence": [ { "unit": "e4", "strength": "partial", "p": 0.71 } ] }
   ],
   "alternative_groups": [ { "id": "alt_1", "members": ["req_2", "req_3"], "coverage": "strong" } ],
+  "fit": { "score": 57, "by_tier": { "required": 58, "preferred": 50 }, "gaps": ["req_5"] },
   "evidence_units": { "e4": { "text": "...", "resume_section": "experience",
       "role": "...", "company": "...", "dates": "2021-03 – 2024-06" } }
 }
@@ -205,7 +211,8 @@ and the accept/reject decision.
   corrects.
 - `cmd/eval -checker` reports retrieval recall, Evidence Link
   precision/recall, strength accuracy (exact and off-by-one), and Coverage
-  accuracy per Requirement split by Tier (the main number).
+  accuracy per Requirement split by Tier (the main number), and Fit Score
+  error (predicted vs labeled Coverage's Fit Score per pair, mean and max).
 - Identical runs vary by up to ~0.5 points; compare configs on 3+ runs
   each (mean and range), never on one.
 - `make eval-checker` runs it live into `eval/reports/checker/`;
