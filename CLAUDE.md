@@ -161,7 +161,10 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
      non-evidence options `none`, `alternative_tool`,
      `shared_words_only`, `different_skill`, `context_only`. Strength =
      argmax of strong/partial/weak. Examples never come from eval
-     fixtures.
+     fixtures. Experimental: `v6` (an instance of a broad Requirement is
+     not `alternative_tool`) and `CHECKER_VETO_THRESHOLD` (> 0: reject a
+     gate-passed pair when one non-evidence option has p >= threshold;
+     default 0, off); see `docs/tuning.md`.
    - Skills and Summary units are capped at weak in code. Gate off
      (`CHECKER_GATE_THRESHOLD=0`) falls back to P(strong+partial+weak) >=
      `CHECKER_MIN_EVIDENCE_MASS`. `CHECKER_STRENGTH_MODE=score` (3-level

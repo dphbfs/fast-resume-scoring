@@ -44,5 +44,10 @@ Next (after the user reviews masking and labels):
 - [ ] Check whether years-qualifier Requirements skew the Fit Score.
 - [x] Split long Skills lines (> 6 items) so retrieval's K=8 cap doesn't
       hide listed skills.
-- [ ] Gate vs grader disagreement: gate links while the grading Choice's
+- [~] Gate vs grader disagreement: gate links while the grading Choice's
       top option is non-evidence (e.g. Golang CLI -> Node.js, strong).
+      `v6` criteria + `CHECKER_VETO_THRESHOLD` built (off by default);
+      Veto 0.6 rejected on live applications (4 of 5 vetoes were
+      correct links). v6: eval flat (86.6 vs 86.4), default stays v5.
+      Open: the error is rare and retrieval-dependent; revisit with a
+      labeled competing-tool fixture.

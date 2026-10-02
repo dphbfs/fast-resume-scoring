@@ -6,6 +6,7 @@ import (
 	"io"
 	"log/slog"
 	"math"
+	"reflect"
 	"slices"
 	"strings"
 	"testing"
@@ -474,6 +475,62 @@ func TestStrengthGateDecidesLinks(t *testing.T) {
 	res, _, _ = c.Check(context.Background(), checkInput(), domain.Resume{Text: "- Ran Go services on Nomad\n"})
 	if res.Requirements[0].Coverage != domain.StrengthStrong || res.Requirements[1].Coverage != domain.StrengthNone {
 		t.Errorf("gate off: coverage = %s, %s; want strong, none", res.Requirements[0].Coverage, res.Requirements[1].Coverage)
+	}
+}
+
+func TestStrengthVeto(t *testing.T) {
+	// Both gates pass; Kubernetes's grading Choice puts 0.7 on
+	// alternative_tool, Go's puts 0.4 on none.
+	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
+		if id == "retrieval" {
+			return jevtest.Choice(map[string]float64{"Go": 0.5, "Kubernetes": 0.4, "none": 0.1}, 0.5)
+		}
+		if strings.HasPrefix(id, "gate_") {
+			return jevtest.Noul(0.8)
+		}
+		if q.Instructions.(map[string]any)["requirement"] == "Go" {
+			return jevtest.Choice(map[string]float64{"strong": 0.6, "none": 0.4}, 0.6)
+		}
+		return jevtest.Choice(map[string]float64{"strong": 0.3, "alternative_tool": 0.7}, 0.7)
+	}))
+	resume := domain.Resume{Text: "- Ran Go services on Nomad\n"}
+
+	c, m := newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5, VetoThreshold: 0.6})
+	res, trace, err := c.Check(context.Background(), checkInput(), resume)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.Requirements[0].Coverage != domain.StrengthStrong || res.Requirements[1].Coverage != domain.StrengthNone {
+		t.Errorf("coverage = Go %s, Kubernetes %s; want strong, none", res.Requirements[0].Coverage, res.Requirements[1].Coverage)
+	}
+	for _, p := range trace.Units[0].Pairs {
+		if p.Requirement == "Kubernetes" && (!p.Vetoed || p.Linked || p.RejectReason != "alternative_tool") {
+			t.Errorf("Kubernetes pair = %+v, want vetoed as alternative_tool", p)
+		}
+	}
+	if m.Summary().Counters["checker.strength.vetoed.alternative_tool"] != 1 {
+		t.Errorf("counters = %v", m.Summary().Counters)
+	}
+
+	// Veto off (default): the gate alone decides.
+	c, _ = newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5})
+	res, _, _ = c.Check(context.Background(), checkInput(), resume)
+	if res.Requirements[1].Coverage != domain.StrengthStrong {
+		t.Errorf("veto off: Kubernetes = %s, want strong", res.Requirements[1].Coverage)
+	}
+}
+
+func TestStrengthCriteriaV6ChangesOnlyAlternativeTool(t *testing.T) {
+	v5 := (&Checker{cfg: config.Checker{StrengthCriteria: "v5"}}).strengthCriteria()
+	v6 := (&Checker{cfg: config.Checker{StrengthCriteria: "v6"}}).strengthCriteria()
+	if len(v6) != len(v5) {
+		t.Fatalf("v6 has %d options, want %d", len(v6), len(v5))
+	}
+	for o := range v5 {
+		same := reflect.DeepEqual(v5[o], v6[o])
+		if o == "alternative_tool" && same || o != "alternative_tool" && !same {
+			t.Errorf("option %q: changed = %v", o, !same)
+		}
 	}
 }
 
