@@ -38,7 +38,7 @@ func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error
 // Summaries through the file cache, as in initRunner) and checking.
 func initE2ERunner(cacheDir gencache.Dir) (*eval.E2ERunner, error) {
 	wire.Build(
-		wiring.PlatformSet, wiring.ClassifierSet, wiring.ExtractorSet, wiring.CheckerSet,
+		wiring.PlatformSet, wiring.ClassifierSet, wiring.ExtractorSet, wiring.CheckerSet, wiring.HolisticSet,
 		openai.New, wire.Bind(new(gencache.Inner), new(*openai.Client)), gencache.New,
 		wire.Bind(new(port.AIGenerativeClient), new(*gencache.Client)),
 		eval.NewE2ERunner,

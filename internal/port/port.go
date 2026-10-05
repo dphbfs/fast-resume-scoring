@@ -25,6 +25,12 @@ type ResumeChecker interface {
 	Check(ctx context.Context, reqs domain.Result, resume domain.Resume) (domain.CoverageResult, domain.CheckTrace, error)
 }
 
+// HolisticJudge is the driving port that judges a whole Resume against a
+// whole posting (the Holistic Round), independently of extraction.
+type HolisticJudge interface {
+	Judge(ctx context.Context, jd domain.JobDescription, resume domain.Resume) (domain.Holistic, error)
+}
+
 // QuestionType is the kind of judgment a classifier question asks for.
 type QuestionType string
 

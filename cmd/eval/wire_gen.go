@@ -96,6 +96,7 @@ func initE2ERunner(cacheDir gencache.Dir) (*eval.E2ERunner, error) {
 	extractor := app.New(client, gencacheClient, recorder, logger, pipeline)
 	checker := configConfig.Checker
 	appChecker := app.NewChecker(client, recorder, logger, checker)
-	e2ERunner := eval.NewE2ERunner(extractor, appChecker, recorder, logger, configJev, pipeline, checker)
+	holisticJudge := app.NewHolisticJudge(client, recorder, logger)
+	e2ERunner := eval.NewE2ERunner(extractor, appChecker, holisticJudge, recorder, logger, configJev, pipeline, checker)
 	return e2ERunner, nil
 }

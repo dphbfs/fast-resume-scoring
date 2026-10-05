@@ -29,6 +29,13 @@ func (e *titleExtractor) Extract(_ context.Context, jd domain.JobDescription) (d
 	return domain.Result{Requirements: []domain.Requirement{{ID: "req_1", Value: jd.Title, Tier: domain.TierRequired}}}, domain.Trace{}, nil
 }
 
+// fixedJudge returns the same Holistic judgment for every pair.
+type fixedJudge struct{}
+
+func (fixedJudge) Judge(context.Context, domain.JobDescription, domain.Resume) (domain.Holistic, error) {
+	return domain.Holistic{CoreWork: 0.5, Blocker: 0.1}, nil
+}
+
 // fitChecker returns the Fit Score fits[first Requirement value].
 type fitChecker map[string]int
 
@@ -101,7 +108,7 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 		t.Fatal(err)
 	}
 	ex := &titleExtractor{}
-	r := NewE2ERunner(ex, fitChecker{"Alpha": 54, "Beta": 58, "Gamma": 90}, metrics.NewRecorder(),
+	r := NewE2ERunner(ex, fitChecker{"Alpha": 54, "Beta": 58, "Gamma": 90}, fixedJudge{}, metrics.NewRecorder(),
 		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{Model: "m"}, config.Pipeline{}, config.Checker{})
 	cache := filepath.Join(t.TempDir(), "extract")
 
@@ -128,6 +135,9 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 	if !strings.Contains(string(raw), "**MAE vs reference** | **8.0**") {
 		t.Errorf("markdown:\n%s", raw)
 	}
+	if rep.Pairs[0].Holistic == nil || rep.Pairs[0].Holistic.CoreWork != 0.5 {
+		t.Errorf("holistic = %+v", rep.Pairs[0].Holistic)
+	}
 	if _, err := os.Stat(strings.TrimSuffix(md, ".md") + "-traces/a.json"); err != nil {
 		t.Errorf("trace not written: %v", err)
 	}
@@ -135,7 +145,7 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 
 func TestE2ERunReportsFailedPair(t *testing.T) {
 	pairs := []E2EPair{{ID: "x", JD: domain.JobDescription{Title: "boom"}}}
-	r := NewE2ERunner(&titleExtractor{}, fitChecker{}, metrics.NewRecorder(),
+	r := NewE2ERunner(&titleExtractor{}, fitChecker{}, fixedJudge{}, metrics.NewRecorder(),
 		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{})
 	rep := r.Run(context.Background(), pairs, 1, "")
 	if rep.Totals.Failed != 1 || !strings.Contains(rep.Pairs[0].Error, "extract: boom") {

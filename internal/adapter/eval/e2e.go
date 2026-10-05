@@ -139,6 +139,7 @@ func readJSON(path string, v any) error {
 type E2ERunner struct {
 	extractor port.RequirementExtractor
 	checker   port.ResumeChecker
+	holistic  port.HolisticJudge
 	recorder  *metrics.Recorder
 	log       *slog.Logger
 	jev       config.Jev
@@ -148,9 +149,9 @@ type E2ERunner struct {
 
 // NewE2ERunner builds an E2ERunner. The configs are recorded in each report
 // and key the extraction cache.
-func NewE2ERunner(extractor port.RequirementExtractor, checker port.ResumeChecker, recorder *metrics.Recorder, log *slog.Logger,
-	jev config.Jev, pipeline config.Pipeline, cfg config.Checker) *E2ERunner {
-	return &E2ERunner{extractor: extractor, checker: checker, recorder: recorder, log: log.With("component", "eval"),
+func NewE2ERunner(extractor port.RequirementExtractor, checker port.ResumeChecker, holistic port.HolisticJudge, recorder *metrics.Recorder,
+	log *slog.Logger, jev config.Jev, pipeline config.Pipeline, cfg config.Checker) *E2ERunner {
+	return &E2ERunner{extractor: extractor, checker: checker, holistic: holistic, recorder: recorder, log: log.With("component", "eval"),
 		jev: jev, pipeline: pipeline, cfg: cfg}
 }
 
@@ -161,8 +162,11 @@ type E2EScore struct {
 	Reference *float64 `json:"reference,omitempty"`
 	Saved     int      `json:"saved"`
 	// Fit is the production Fit Score (nil when there was nothing to score).
-	Fit          *int                   `json:"fit"`
+	Fit *int `json:"fit"`
+	// Match is the Match Score: Fit Score blended with the Holistic Round.
+	Match        *int                   `json:"match,omitempty"`
 	Requirements int                    `json:"requirements"`
+	Holistic     *domain.Holistic       `json:"holistic,omitempty"`
 	Cached       bool                   `json:"extraction_cached,omitempty"`
 	ExtractMS    int64                  `json:"extract_ms"`
 	CheckMS      int64                  `json:"check_ms"`
@@ -203,6 +207,8 @@ type E2ETotals struct {
 	// Ranking against the saved scores, over every pair with a Fit Score.
 	SavedPairs int     `json:"saved_pairs"`
 	SavedTauB  float64 `json:"saved_tau_b"`
+	// Match is the same comparison for the Match Score.
+	Match *Agreement `json:"match,omitempty"`
 	// Cold pairs ran extraction (not served from the cache).
 	ColdPairs      int     `json:"cold_pairs"`
 	JevCostPerPair float64 `json:"jev_cost_per_pair_usd"`
@@ -211,7 +217,8 @@ type E2ETotals struct {
 
 // Run scores every pair, at most parallel at a time. Each pair is extracted
 // (or read from cacheDir when it is set) and then checked, so checking one
-// pair overlaps with extracting others. A failed pair is reported with its
+// pair overlaps with extracting others; the Holistic Round runs alongside
+// both. A failed pair is reported with its
 // error; the run continues.
 func (r *E2ERunner) Run(ctx context.Context, pairs []E2EPair, parallel int, cacheDir string) E2EReport {
 	start := time.Now()
@@ -255,19 +262,35 @@ func (r *E2ERunner) Run(ctx context.Context, pairs []E2EPair, parallel int, cach
 }
 
 func (r *E2ERunner) score(ctx context.Context, p E2EPair, cacheDir string, s *E2EScore) error {
-	t0 := time.Now()
-	res, cached, err := r.extract(ctx, p.JD, cacheDir)
-	if err != nil {
-		return fmt.Errorf("extract: %w", err)
+	g, gctx := errgroup.WithContext(ctx)
+	g.Go(func() error {
+		h, err := r.holistic.Judge(gctx, p.JD, p.Resume)
+		if err != nil {
+			return fmt.Errorf("holistic: %w", err)
+		}
+		s.Holistic = &h
+		return nil
+	})
+	g.Go(func() error {
+		t0 := time.Now()
+		res, cached, err := r.extract(gctx, p.JD, cacheDir)
+		if err != nil {
+			return fmt.Errorf("extract: %w", err)
+		}
+		s.ExtractMS, s.Cached, s.Requirements = time.Since(t0).Milliseconds(), cached, len(res.Requirements)
+		t0 = time.Now()
+		cov, tr, err := r.checker.Check(gctx, res, p.Resume)
+		if err != nil {
+			return fmt.Errorf("check: %w", err)
+		}
+		s.CheckMS = time.Since(t0).Milliseconds()
+		s.Fit, s.Result, s.Coverage, s.Trace = cov.Fit.Score, &res, &cov, &tr
+		return nil
+	})
+	if err := g.Wait(); err != nil {
+		return err
 	}
-	s.ExtractMS, s.Cached, s.Requirements = time.Since(t0).Milliseconds(), cached, len(res.Requirements)
-	t0 = time.Now()
-	cov, tr, err := r.checker.Check(ctx, res, p.Resume)
-	if err != nil {
-		return fmt.Errorf("check: %w", err)
-	}
-	s.CheckMS = time.Since(t0).Milliseconds()
-	s.Fit, s.Result, s.Coverage, s.Trace = cov.Fit.Score, &res, &cov, &tr
+	s.Match = domain.MatchScore(s.Coverage.Fit, *s.Holistic)
 	return nil
 }
 
@@ -328,9 +351,48 @@ func writeFileAtomic(path string, v any) error {
 	return os.Rename(f.Name(), path)
 }
 
+// Agreement compares one score with the reference scores.
+type Agreement struct {
+	Scored   int     `json:"scored"`
+	MAE      float64 `json:"mae"`
+	Bias     float64 `json:"bias"`
+	Within5  float64 `json:"within_5"`
+	Within10 float64 `json:"within_10"`
+	MaxError float64 `json:"max_error"`
+	Pearson  float64 `json:"pearson"`
+	TauB     float64 `json:"tau_b"`
+}
+
+// agree compares pred with ref; the zero Agreement when there are none.
+func agree(pred, ref []float64) Agreement {
+	a := Agreement{Scored: len(pred)}
+	if len(pred) == 0 {
+		return a
+	}
+	var within5, within10 int
+	for i := range pred {
+		d := pred[i] - ref[i]
+		a.Bias += d
+		a.MAE += math.Abs(d)
+		a.MaxError = max(a.MaxError, math.Abs(d))
+		if math.Abs(d) <= 5 {
+			within5++
+		}
+		if math.Abs(d) <= 10 {
+			within10++
+		}
+	}
+	n := float64(len(pred))
+	a.Bias, a.MAE = a.Bias/n, a.MAE/n
+	a.Within5, a.Within10 = float64(within5)/n, float64(within10)/n
+	a.Pearson = pearson(pred, ref)
+	a.TauB = kendallTauB(pred, ref)
+	return a
+}
+
 func e2eTotals(scores []E2EScore, costMicro int64) E2ETotals {
 	t := E2ETotals{Pairs: len(scores)}
-	var fit, ref, saved, savedFit []float64
+	var fit, ref, saved, savedFit, match, matchRef []float64
 	var ms int64
 	for _, s := range scores {
 		if s.Error != "" {
@@ -346,38 +408,29 @@ func e2eTotals(scores []E2EScore, costMicro int64) E2ETotals {
 		}
 		savedFit = append(savedFit, float64(*s.Fit))
 		saved = append(saved, float64(s.Saved))
-		if s.Reference != nil {
-			fit = append(fit, float64(*s.Fit))
-			ref = append(ref, *s.Reference)
+		if s.Reference == nil {
+			continue
+		}
+		fit = append(fit, float64(*s.Fit))
+		ref = append(ref, *s.Reference)
+		if s.Match != nil {
+			match = append(match, float64(*s.Match))
+			matchRef = append(matchRef, *s.Reference)
 		}
 	}
 	if ran := t.Pairs - t.Failed; ran > 0 {
 		t.MeanMS = ms / int64(ran)
 		t.JevCostPerPair = float64(costMicro) / 1e6 / float64(ran)
 	}
-	t.Scored, t.SavedPairs = len(fit), len(savedFit)
+	t.SavedPairs = len(savedFit)
 	t.SavedTauB = kendallTauB(savedFit, saved)
-	if len(fit) == 0 {
-		return t
+	f := agree(fit, ref)
+	t.Scored, t.MAE, t.Bias, t.Within5, t.Within10, t.MaxError, t.Pearson, t.TauB =
+		f.Scored, f.MAE, f.Bias, f.Within5, f.Within10, f.MaxError, f.Pearson, f.TauB
+	if len(match) > 0 {
+		m := agree(match, matchRef)
+		t.Match = &m
 	}
-	var within5, within10 int
-	for i := range fit {
-		d := fit[i] - ref[i]
-		t.Bias += d
-		t.MAE += math.Abs(d)
-		t.MaxError = max(t.MaxError, math.Abs(d))
-		if math.Abs(d) <= 5 {
-			within5++
-		}
-		if math.Abs(d) <= 10 {
-			within10++
-		}
-	}
-	n := float64(len(fit))
-	t.Bias, t.MAE = t.Bias/n, t.MAE/n
-	t.Within5, t.Within10 = float64(within5)/n, float64(within10)/n
-	t.Pearson = pearson(fit, ref)
-	t.TauB = kendallTauB(fit, ref)
 	return t
 }
 
@@ -444,7 +497,8 @@ func (r E2EReport) Write(dir string) (string, error) {
 			Result   *domain.Result         `json:"result"`
 			Coverage *domain.CoverageResult `json:"coverage"`
 			Trace    *domain.CheckTrace     `json:"trace"`
-		}{s.Result, s.Coverage, s.Trace}
+			Holistic *domain.Holistic       `json:"holistic,omitempty"`
+		}{s.Result, s.Coverage, s.Trace, s.Holistic}
 		if err := writeFileAtomic(filepath.Join(base+"-traces", s.ID+".json"), v); err != nil {
 			return "", err
 		}
@@ -474,18 +528,27 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 	fmt.Fprintf(&b, "| Max error | %.0f |\n", t.MaxError)
 	fmt.Fprintf(&b, "| Pearson / Kendall τ-b vs reference | %.2f / %.2f |\n", t.Pearson, t.TauB)
 	fmt.Fprintf(&b, "| Kendall τ-b vs saved scores | %.2f (%d pairs) |\n", t.SavedTauB, t.SavedPairs)
+	if m := t.Match; m != nil {
+		fmt.Fprintf(&b, "| **Match Score MAE** | **%.1f** (%d pairs) |\n", m.MAE, m.Scored)
+		fmt.Fprintf(&b, "| Match bias / within ±5 / ±10 / max | %+.1f / %.0f%% / %.0f%% / %.0f |\n", m.Bias, 100*m.Within5, 100*m.Within10, m.MaxError)
+		fmt.Fprintf(&b, "| Match Pearson / Kendall τ-b | %.2f / %.2f |\n", m.Pearson, m.TauB)
+	}
 	fmt.Fprintf(&b, "| Jev cost per pair | $%.4f (%d cold extractions) |\n", t.JevCostPerPair, t.ColdPairs)
 	fmt.Fprintf(&b, "| Mean time per pair | %.1fs |\n\n", float64(t.MeanMS)/1000)
 
 	pairs := slices.Clone(r.Pairs)
 	errOf := func(s E2EScore) float64 {
-		if s.Fit == nil || s.Reference == nil {
+		score := s.Match
+		if score == nil {
+			score = s.Fit
+		}
+		if score == nil || s.Reference == nil {
 			return -1
 		}
-		return math.Abs(float64(*s.Fit) - *s.Reference)
+		return math.Abs(float64(*score) - *s.Reference)
 	}
 	slices.SortStableFunc(pairs, func(a, b E2EScore) int { return cmp.Compare(errOf(b), errOf(a)) })
-	b.WriteString("| Pair | Fit | Reference | Saved | Requirements | Time |\n|---|---|---|---|---|---|\n")
+	b.WriteString("| Pair | Match | Fit | Reference | Saved | Core work | Blocker | Requirements | Time |\n|---|---|---|---|---|---|---|---|---|\n")
 	for _, s := range pairs {
 		ref := "–"
 		if s.Reference != nil {
@@ -495,8 +558,12 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 		if s.Error != "" {
 			fit = "error: " + cell(s.Error)
 		}
-		fmt.Fprintf(&b, "| %s | %s | %s | %d | %d | %.1fs |\n", cell(s.Title), fit, ref, s.Saved, s.Requirements,
-			float64(s.ExtractMS+s.CheckMS)/1000)
+		core, blocker := "–", "–"
+		if h := s.Holistic; h != nil {
+			core, blocker = fmt.Sprintf("%.2f", h.CoreWork), fmt.Sprintf("%.2f", h.Blocker)
+		}
+		fmt.Fprintf(&b, "| %s | %s | %s | %s | %d | %s | %s | %d | %.1fs |\n", cell(s.Title), fitText(s.Match), fit, ref, s.Saved, core, blocker,
+			s.Requirements, float64(s.ExtractMS+s.CheckMS)/1000)
 	}
 	_, err := io.WriteString(w, b.String())
 	return err
