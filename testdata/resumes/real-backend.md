@@ -1,5 +1,6 @@
 Alex Rivera
 Senior Software Engineer
+Tampa, FL
 
 # Skills
 - Technical Stack: Java, Golang, PHP, MySQL, SpringBoot, Kafka, JavaScript, TypeScript, Linux, PostgresSQL, AWS, ECS, Lambda, S3, JUnit, Testcontainers, Docker, DynamoDB, Redis, Rest APIs, System Design, Distributed Systems, Microservices, CI/CD, Github Actions, Jenkins
