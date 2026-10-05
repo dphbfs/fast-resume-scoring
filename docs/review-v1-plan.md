@@ -156,9 +156,12 @@ grades).
 
 ## Phase 3b: Holistic Round (added 2026-10-05)
 
-- [x] H-R1. Holistic Round (`core_work` Score + `blocker` Noul) and the
-      Match Score (ADR 0003, proposed): subset MAE 8.4-8.6, τ-b 0.66-0.67
-      over 2 repeats; leave-one-out MAE 8.8. Confirm on the final set.
+- [x] H-R1. Holistic Round and the Match Score (ADR 0003, proposed).
+- [x] H-R2. Gap analysis (`docs/gap-analysis-2026-10-05.md`) and new
+      signals; Match Score = Fit + responsibilities − domain_mismatch,
+      × (1 − blocker): subset MAE 5.8-6.3, τ-b 0.80-0.82 over 2 repeats
+      with fixed weights, scoring mode ~$0.0092/pair. Confirm on the
+      final set (also decides primary_gap, soft_eligibility, gap months).
 
 ## Phase 4: latency and cost (required to reach ~$0.010 per pair cold)
 

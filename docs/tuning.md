@@ -618,3 +618,19 @@ confirm it. Side finding: the full-mode runs filtered offline to
 required/preferred give Match τ-b 0.70-0.72 vs 0.64-0.66 in scoring mode,
 so dropping responsibilities sentences may cost ranking; re-check with the
 new signals.
+
+**Adopted (ADR 0003).** Two repeat runs with the candidate weights fixed
+from run 12-05-12Z:
+
+| Run | Match MAE | Bias | Within ±10 | Max | τ-b | LOO refit MAE / τ-b |
+|---|---|---|---|---|---|---|
+| 12-10-08Z | 6.3 | +0.2 | 83% | 20 | 0.80 | 7.0 / 0.78 |
+| 12-11-25Z | 5.8 | -0.1 | 83% | 25 | 0.82 | 6.7 / 0.81 |
+
+Refit weights per run: fit 51-52, resp 37-38, domain_mm about -20 (first
+run: 48.4 / 38.9 / -19.4). Match Score is now
+`(42.8 + 48.4 fit + 38.9 resp − 19.4 domain_mm) × (1 − blocker)`
+(was the core_work blend, MAE 8.4-9.5). Keeping responsibilities
+sentences (`PIPELINE_SKIP_RESPONSIBILITIES=false`, run 12-13-20Z): Match
+6.0 / τ-b 0.80 at $0.0107 per pair cold vs ~$0.0092, so scoring mode
+keeps skipping them; the earlier side finding came from the old signals.
