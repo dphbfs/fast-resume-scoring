@@ -66,9 +66,9 @@ type CoverageResult struct {
 }
 
 // Holistic is the Holistic Round's judgment of the whole Resume against the
-// whole posting. It feeds the Match Score, not the Fit Score. CoreWork and
-// Blocker are used by the Match Score; the other signals are recorded for
-// evaluation (docs/gap-analysis-2026-10-05.md).
+// whole posting. It feeds the Match Score, not the Fit Score. The Match Score
+// uses Responsibilities, DomainMismatch, and Blocker; the other signals are
+// recorded for evaluation (docs/adr/0003).
 type Holistic struct {
 	Model string `json:"model"`
 	// CoreWork is how much of the job's core work the candidate has done,

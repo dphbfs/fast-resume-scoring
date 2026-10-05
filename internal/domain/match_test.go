@@ -10,10 +10,13 @@ func TestMatchScore(t *testing.T) {
 		h    Holistic
 		want *int
 	}{
-		{"blend", score(50), Holistic{CoreWork: 0.5}, ptr(71)}, // 21.5 + 99.9*0.5
-		{"blocker discounts", score(50), Holistic{CoreWork: 0.5, Blocker: 1}, ptr(22)},
-		{"clamped", score(100), Holistic{CoreWork: 1}, ptr(100)},
-		{"no fit score", Fit{}, Holistic{CoreWork: 1}, nil},
+		// 42.8 + 48.4*0.5 + 38.9*0.5 - 19.4*0 = 86.45
+		{"blend", score(50), Holistic{Responsibilities: 0.5}, ptr(86)},
+		// 42.8 + 0 + 0 - 19.4 = 23.4
+		{"domain mismatch", score(0), Holistic{DomainMismatch: 1}, ptr(23)},
+		{"blocker discounts", score(50), Holistic{Responsibilities: 0.5, Blocker: 0.5}, ptr(43)},
+		{"clamped", score(100), Holistic{Responsibilities: 1}, ptr(100)},
+		{"no fit score", Fit{}, Holistic{Responsibilities: 1}, nil},
 	} {
 		got := MatchScore(tt.fit, tt.h)
 		if (got == nil) != (tt.want == nil) || (got != nil && *got != *tt.want) {
