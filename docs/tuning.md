@@ -582,3 +582,39 @@ without losing Match Score accuracy. 30-pair subset, one change at a time
   repeat runs MAE 9.0 and 8.9, bias ~0; leave-one-out 9.3 (full mode
   8.8). Scoring mode trades ~0.5 MAE for ~40% lower cost: ~$0.0092 vs
   ~$0.05 for an Opus 5 call, about 5.4× cheaper.
+
+### Holistic signals from the gap analysis (2026-10-05)
+
+Following `docs/gap-analysis-2026-10-05.md`: the masked Main resume now
+keeps its location line (Orlando, FL, as the reference sees it); the
+Holistic Round adds `responsibilities` (Score, day-to-day
+responsibilities in any domain), `primary_gap`, `domain_mismatch`, and
+`soft_eligibility` (Nouls); the employment gap is computed from Resume
+dates. Importance weighting of the Fit Score was replayed offline on the
+full-mode runs and did not help (Match τ-b 0.69-0.70 vs 0.70-0.72
+unweighted), so the primary-technology question replaces it.
+
+One scoring-mode run (`eval/reports/e2e/2026-10-05T12-05-12Z`, current
+Match MAE 8.7, τ-b 0.67). Per signal, τ-b against the reference:
+responsibilities +0.60, core_work +0.53, primary_gap −0.52, fit +0.44,
+soft_eligibility −0.40, blocker −0.35, domain_mismatch −0.21. The
+employment gap is constant (11 months) because every subset pair uses one
+resume; it can only matter on the final set.
+
+Linear blends, multiplied by (1 − blocker), leave-one-out on 30 pairs:
+
+| Inputs | LOO MAE | max | τ-b |
+|---|---|---|---|
+| fit + core (current form) | 9.3 | 21 | 0.67 |
+| fit + resp | 7.1 | 25 | 0.74 |
+| **fit + resp + domain_mm** | **6.6** | 24 | **0.77** |
+| fit + core + resp + domain_mm | 6.4 | 24 | 0.77 (core weight negative: collinear) |
+| fit + resp + primary_gap | 7.6 | 24 | 0.73 |
+| all signals | 7.5 | 20 | 0.77 |
+
+Candidate: `(42.8 + 48.4 fit + 38.9 resp − 19.4 domain_mm) × (1 − blocker)`.
+Picked from 16 combinations on one run, so not adopted until repeat runs
+confirm it. Side finding: the full-mode runs filtered offline to
+required/preferred give Match τ-b 0.70-0.72 vs 0.64-0.66 in scoring mode,
+so dropping responsibilities sentences may cost ranking; re-check with the
+new signals.
