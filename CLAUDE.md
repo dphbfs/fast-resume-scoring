@@ -139,15 +139,16 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
    than 6 comma-separated items is cut into balanced chunks that repeat its
    label (retrieval keeps at most K=8 Requirements per unit). Non-conforming input
    parses with blank metadata.
-2. Retrieval Round (default `narrow`): a Choice over all Requirements +
+2. Retrieval Round: a Choice over all Requirements +
    `none` (`none` is a sink only; option description = Requirement + its
    shortest Context Sentence), repeated over the best
    `CHECKER_NARROW_SIZES` (16) of the previous round; keep the top
    K=8 with p >= 0.01. A third round (16, then 8) cost 11% more and
-   changed nothing measurable. `CHECKER_NARROW_STOP_P` (> 0) ends
-   narrowing once a round's top option reaches it (default 0, off). Other `CHECKER_RETRIEVAL_MODE`s: `single` (one
-   Choice), `peel` (take the winner, remove it, ask again), `noul` (one
-   yes/no per Requirement). Nothing is linked yet.
+   changed nothing measurable. Empty `CHECKER_NARROW_SIZES` asks one
+   round. Nothing is linked yet. The losing variants (peel, noul,
+   narrow-stop, Score grading, criteria v1-v4/v6, gate wording v1, veto)
+   were deleted after review v1; their results are in `docs/tuning.md`,
+   and setting their env vars is a config error.
 3. Strength Round: per Evidence Unit, per retrieved Requirement, a gate
    Noul and a grading Choice (TypeSafe's "Choice grades, Noul decides
    whether" pattern). Only questions whose answer is used are asked
@@ -155,11 +156,11 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
    the gates in one request and grades only gate-passed pairs in a
    second; `CHECKER_SKIP_CAPPED_GRADING` (default on) asks Skills and
    Summary units only the gate (linked weak on the gate's P).
-   - Gate (`CHECKER_GATE_THRESHOLD` 0.5, wording `v2`): "is `statement`
+   - Gate (`CHECKER_GATE_THRESHOLD` 0.5): "is `statement`
      evidence the candidate has this requirement?" Yes = work with it, a
      specific instance, a part/prerequisite, or its broader practice, or
      named as their own skill/degree/certificate. Links when P >= 0.5.
-   - Grading Choice (`CHECKER_STRENGTH_CRITERIA` `v5`): options are
+   - Grading Choice (criteria v5): options are
      `{what, not_for, examples}` objects: strong (the Requirement itself
      is what the work was done with or on; degree/certificate entries are
      strong for what they name), partial (a part, prerequisite, broader
@@ -167,14 +168,10 @@ Terms in `CONTEXT.md`; design rationale in `docs/adr/0001`.
      non-evidence options `none`, `alternative_tool`,
      `shared_words_only`, `different_skill`, `context_only`. Strength =
      argmax of strong/partial/weak. Examples never come from eval
-     fixtures. Experimental: `v6` (an instance of a broad Requirement is
-     not `alternative_tool`) and `CHECKER_VETO_THRESHOLD` (> 0: reject a
-     gate-passed pair when one non-evidence option has p >= threshold;
-     default 0, off); see `docs/tuning.md`.
+     fixtures.
    - Skills and Summary units are capped at weak in code. Gate off
      (`CHECKER_GATE_THRESHOLD=0`) falls back to P(strong+partial+weak) >=
-     `CHECKER_MIN_EVIDENCE_MASS`. `CHECKER_STRENGTH_MODE=score` (3-level
-     Score instead of the Choice) was worse; kept for experiments.
+     `CHECKER_MIN_EVIDENCE_MASS`.
 4. Coverage: best Evidence Strength per Requirement, or `none` (flagged,
    never invented). Alternative Group Coverage = best member's Coverage. No
    counts, no Importance use. No years-qualifier special handling. Job

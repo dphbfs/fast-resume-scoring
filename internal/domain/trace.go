@@ -107,9 +107,6 @@ type TracePair struct {
 	RejectReason string `json:"reject_reason,omitempty"`
 	// Capped means the Resume Section cap lowered the strength to weak.
 	Capped bool `json:"capped,omitempty"`
-	// Vetoed means the gate passed but the grading Choice put at least
-	// CHECKER_VETO_THRESHOLD on RejectReason, so the pair was not linked.
-	Vetoed bool `json:"vetoed,omitempty"`
 }
 
 // TraceRound is one Retrieval Choice: how many options it offered, the most

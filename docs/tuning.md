@@ -442,3 +442,14 @@ labeled retrieved pairs. Options built (opt-in):
   `CHECKER_SKIP_CAPPED_GRADING=true`, `CHECKER_GATE_FIRST=true`): -23%
   cost, default latency, the best mean Coverage and Fit error (3.2,
   range 3.0-3.6 vs the old default's 3.6-4.3).
+
+### Losing variants deleted (2026-10-04, review v1)
+
+Deleted from the code after Product Review v1: retrieval modes `single`
+(now narrow with empty `CHECKER_NARROW_SIZES`), `peel`, `noul`;
+`CHECKER_NARROW_STOP_P`; Score grading (`CHECKER_STRENGTH_MODE=score`);
+criteria v1-v4 and v6 (v5 is the only rubric); gate wording v1; the veto
+(`CHECKER_VETO_THRESHOLD`). Their results stay in the entries above and in
+the committed reports; setting a removed env var is a config error.
+Directly constructed Checkers now get criteria v5 and gate wording v2
+(before: v3 and v1, unlike the env defaults).

@@ -282,31 +282,6 @@ func abcdRequirements() []checkRequirement {
 	return checkRequirements(domain.Result{Requirements: reqs})
 }
 
-func TestRetrievePeel(t *testing.T) {
-	scores := map[string]float64{"A": 0.5, "B": 0.25, "C": 0.12, "D": 0.01, "none": 0.05}
-	srv := jevtest.NewServer(t, softmaxOver(scores))
-	c, _ := newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "peel", RetrievalK: 5})
-	got, rounds, _, err := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, abcdRequirements())
-	if err != nil {
-		t.Fatal(err)
-	}
-	// A, B and C each win a round once the winners above them are removed;
-	// then none (0.05) beats D (0.01) and the loop ends.
-	if !slices.Equal(got, []int{0, 1, 2}) || len(rounds) != 4 {
-		t.Errorf("retrieved = %v in %d rounds, want [0 1 2] in 4", got, len(rounds))
-	}
-	if n := rounds[3].Options; n != 2 {
-		t.Errorf("last round offered %d options, want D + none", n)
-	}
-
-	c, _ = newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "peel", RetrievalK: 2, PeelShortlist: 3})
-	got, rounds, _, _ = c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, abcdRequirements())
-	// The shortlist round keeps A, B, C; K=2 stops after two peels.
-	if !slices.Equal(got, []int{0, 1}) || len(rounds) != 3 || !slices.Equal(rounds[0].Kept, []string{"A", "B", "C"}) {
-		t.Errorf("shortlist peel = %v, rounds %+v", got, rounds)
-	}
-}
-
 func TestRetrieveNarrow(t *testing.T) {
 	// Ten filler Requirements hold 0.2 of the mass in the first round, which
 	// keeps C (0.035) under the 0.04 floor. Narrowing to the best 3 drops
@@ -321,12 +296,12 @@ func TestRetrieveNarrow(t *testing.T) {
 	creqs := checkRequirements(domain.Result{Requirements: reqs})
 	srv := jevtest.NewServer(t, softmaxOver(scores))
 
-	c, _ := newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "single", RetrievalK: 5, RetrievalFloor: 0.04})
+	c, _ := newTestChecker(t, srv.URL, config.Checker{RetrievalK: 5, RetrievalFloor: 0.04})
 	if got, _, _, _ := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, creqs); !slices.Equal(got, []int{0, 1}) {
-		t.Errorf("single = %v, want [0 1]", got)
+		t.Errorf("one round = %v, want [0 1]", got)
 	}
 
-	c, _ = newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "narrow", NarrowSizes: []int{3}, RetrievalK: 5, RetrievalFloor: 0.04})
+	c, _ = newTestChecker(t, srv.URL, config.Checker{NarrowSizes: []int{3}, RetrievalK: 5, RetrievalFloor: 0.04})
 	got, rounds, _, err := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, creqs)
 	if err != nil {
 		t.Fatal(err)
@@ -344,7 +319,7 @@ func TestStrengthNegativesRejectWithReason(t *testing.T) {
 		crit := q.Criteria.(map[string]any)
 		for _, neg := range []string{"alternative_tool", "shared_words_only", "different_skill", "context_only", "none"} {
 			if _, ok := crit[neg]; !ok {
-				t.Errorf("v3 criteria lack %q", neg)
+				t.Errorf("criteria lack %q", neg)
 			}
 		}
 		if q.Instructions.(map[string]any)["requirement"] == "Kubernetes" {
@@ -352,7 +327,7 @@ func TestStrengthNegativesRejectWithReason(t *testing.T) {
 		}
 		return jevtest.Choice(map[string]float64{"strong": 0.9, "different_skill": 0.1}, 0.5)
 	}))
-	c, m := newTestChecker(t, srv.URL, config.Checker{StrengthCriteria: "v3"})
+	c, m := newTestChecker(t, srv.URL, config.Checker{})
 	res, trace, err := c.Check(context.Background(), checkInput(), domain.Resume{Text: "- Ran Go services on Nomad\n"})
 	if err != nil {
 		t.Fatal(err)
@@ -366,70 +341,6 @@ func TestStrengthNegativesRejectWithReason(t *testing.T) {
 	}
 	if m.Summary().Counters["checker.strength.rejected.alternative_tool"] != 1 {
 		t.Errorf("counters = %v", m.Summary().Counters)
-	}
-}
-
-func TestRetrieveNoul(t *testing.T) {
-	// Independent probabilities: four Requirements can all clear 0.5, which
-	// a single Choice (one softmax) cannot express.
-	yes := map[string]float64{"A": 0.9, "B": 0.8, "C": 0.6, "D": 0.2}
-	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(_ string, q jev.WireQuestion) jev.WireAnswer {
-		if q.Type != "noul" {
-			t.Errorf("question type = %q, want noul", q.Type)
-		}
-		inst := q.Instructions.(map[string]any)
-		return jevtest.Noul(yes[inst["requirement"].(string)])
-	}))
-	c, m := newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "noul", RetrievalK: 5, NoulThreshold: 0.5})
-	got, rounds, _, err := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, abcdRequirements())
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !slices.Equal(got, []int{0, 1, 2}) {
-		t.Errorf("retrieved = %v, want [0 1 2] (D below threshold)", got)
-	}
-	if len(srv.Requests()) != 1 || len(srv.Requests()[0].Questions) != 4 {
-		t.Errorf("want one request with 4 nouls, got %+v", srv.Requests())
-	}
-	if len(rounds) != 1 || rounds[0].Top[0].Option != "A" || !slices.Equal(rounds[0].Kept, []string{"A", "B", "C"}) {
-		t.Errorf("rounds = %+v", rounds)
-	}
-	if m.Summary().Counters["checker.retrieval.requests"] != 1 {
-		t.Errorf("counters = %v", m.Summary().Counters)
-	}
-
-	c, _ = newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "noul", RetrievalK: 2, NoulThreshold: 0.5})
-	if got, _, _, _ := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, abcdRequirements()); !slices.Equal(got, []int{0, 1}) {
-		t.Errorf("K=2: retrieved = %v, want [0 1]", got)
-	}
-}
-
-func TestStrengthCriteriaVersions(t *testing.T) {
-	for _, tt := range []struct {
-		version string
-		has     []string
-		lacks   []string
-	}{
-		{"v1", []string{"strong", "none"}, []string{"alternative_tool", "needed_capability"}},
-		{"v3", []string{"alternative_tool", "context_only"}, []string{"needed_capability"}},
-		{"v4", []string{"alternative_tool", "needed_capability"}, nil},
-		{"", []string{"alternative_tool"}, []string{"needed_capability"}}, // default v3
-	} {
-		crit := (&Checker{cfg: config.Checker{StrengthCriteria: tt.version}}).strengthCriteria()
-		for _, o := range tt.has {
-			if _, ok := crit[o]; !ok {
-				t.Errorf("%q: missing %q", tt.version, o)
-			}
-		}
-		for _, o := range tt.lacks {
-			if _, ok := crit[o]; ok {
-				t.Errorf("%q: unexpected %q", tt.version, o)
-			}
-		}
-	}
-	// v4 must not change the shared v3 map.
-	if _, ok := strengthNegatives["needed_capability"]; ok {
-		t.Error("v4 leaked into strengthNegatives")
 	}
 }
 
@@ -479,128 +390,18 @@ func TestStrengthGateDecidesLinks(t *testing.T) {
 	}
 }
 
-func TestStrengthVeto(t *testing.T) {
-	// Both gates pass; Kubernetes's grading Choice puts 0.7 on
-	// alternative_tool, Go's puts 0.4 on none.
-	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
-		if id == "retrieval" {
-			return jevtest.Choice(map[string]float64{"Go": 0.5, "Kubernetes": 0.4, "none": 0.1}, 0.5)
-		}
-		if strings.HasPrefix(id, "gate_") {
-			return jevtest.Noul(0.8)
-		}
-		if q.Instructions.(map[string]any)["requirement"] == "Go" {
-			return jevtest.Choice(map[string]float64{"strong": 0.6, "none": 0.4}, 0.6)
-		}
-		return jevtest.Choice(map[string]float64{"strong": 0.3, "alternative_tool": 0.7}, 0.7)
-	}))
-	resume := domain.Resume{Text: "- Ran Go services on Nomad\n"}
-
-	c, m := newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5, VetoThreshold: 0.6})
-	res, trace, err := c.Check(context.Background(), checkInput(), resume)
-	if err != nil {
-		t.Fatal(err)
+func TestStrengthCriteriaAreStructured(t *testing.T) {
+	want := []string{"strong", "partial", "weak", "none", "alternative_tool", "shared_words_only", "different_skill", "context_only"}
+	if got := slices.Sorted(maps.Keys(strengthCriteria)); !slices.Equal(got, slices.Sorted(slices.Values(want))) {
+		t.Errorf("options = %v, want %v", got, want)
 	}
-	if res.Requirements[0].Coverage != domain.StrengthStrong || res.Requirements[1].Coverage != domain.StrengthNone {
-		t.Errorf("coverage = Go %s, Kubernetes %s; want strong, none", res.Requirements[0].Coverage, res.Requirements[1].Coverage)
-	}
-	for _, p := range trace.Units[0].Pairs {
-		if p.Requirement == "Kubernetes" && (!p.Vetoed || p.Linked || p.RejectReason != "alternative_tool") {
-			t.Errorf("Kubernetes pair = %+v, want vetoed as alternative_tool", p)
-		}
-	}
-	if m.Summary().Counters["checker.strength.vetoed.alternative_tool"] != 1 {
-		t.Errorf("counters = %v", m.Summary().Counters)
-	}
-
-	// Veto off (default): the gate alone decides.
-	c, _ = newTestChecker(t, srv.URL, config.Checker{GateThreshold: 0.5})
-	res, _, _ = c.Check(context.Background(), checkInput(), resume)
-	if res.Requirements[1].Coverage != domain.StrengthStrong {
-		t.Errorf("veto off: Kubernetes = %s, want strong", res.Requirements[1].Coverage)
-	}
-}
-
-func TestStrengthCriteriaV6ChangesOnlyAlternativeTool(t *testing.T) {
-	v5 := (&Checker{cfg: config.Checker{StrengthCriteria: "v5"}}).strengthCriteria()
-	v6 := (&Checker{cfg: config.Checker{StrengthCriteria: "v6"}}).strengthCriteria()
-	if len(v6) != len(v5) {
-		t.Fatalf("v6 has %d options, want %d", len(v6), len(v5))
-	}
-	for o := range v5 {
-		same := reflect.DeepEqual(v5[o], v6[o])
-		if o == "alternative_tool" && same || o != "alternative_tool" && !same {
-			t.Errorf("option %q: changed = %v", o, !same)
-		}
-	}
-}
-
-func TestStrengthCriteriaV5IsStructured(t *testing.T) {
-	crit := (&Checker{cfg: config.Checker{StrengthCriteria: "v5"}}).strengthCriteria()
-	if len(crit) != len(strengthCriteriaV2)+len(strengthNegatives) {
-		t.Errorf("v5 has %d options, want the same %d as v3", len(crit), len(strengthCriteriaV2)+len(strengthNegatives))
-	}
-	for o, d := range crit {
-		obj, ok := d.(map[string]any)
-		if !ok || obj["what"] == nil {
+	for o, d := range strengthCriteria {
+		if obj, ok := d.(map[string]any); !ok || obj["what"] == nil {
 			t.Errorf("option %q is not a {what, ...} object: %v", o, d)
 		}
-		if _, inV3 := strengthNegatives[o]; !inV3 && domain.EvidenceStrength(o).Rank() == 0 && o != "none" {
-			t.Errorf("option %q is not in v3", o)
-		}
 	}
 }
 
-func TestStrengthScoreMode(t *testing.T) {
-	// Score grades, the gate decides: Go level 2 -> strong; Kubernetes
-	// level 1 -> partial; both pass the gate.
-	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
-		if id == "retrieval" {
-			return jevtest.Choice(map[string]float64{"Go": 0.5, "Kubernetes": 0.4, "none": 0.1}, 0.5)
-		}
-		if strings.HasPrefix(id, "gate_") {
-			crit := q.Criteria.(map[string]any)
-			if !strings.Contains(crit["true"].(string), "prerequisite") {
-				t.Errorf("gate v2 wording missing: %v", crit["true"])
-			}
-			return jevtest.Noul(0.7)
-		}
-		if q.Type != "score" {
-			t.Errorf("%s type = %q, want score", id, q.Type)
-		}
-		if q.Instructions.(map[string]any)["requirement"] == "Go" {
-			return jevtest.Score(1.8, 0.7, map[string]float64{"0": 0.05, "1": 0.1, "2": 0.85})
-		}
-		return jevtest.Score(1.0, 0.5, map[string]float64{"0": 0.2, "1": 0.6, "2": 0.2})
-	}))
-	c, _ := newTestChecker(t, srv.URL, config.Checker{StrengthMode: "score", GateThreshold: 0.4, GateWording: "v2"})
-	res, _, err := c.Check(context.Background(), checkInput(), domain.Resume{Text: "- Ran Go services on Kubernetes\n"})
-	if err != nil {
-		t.Fatal(err)
-	}
-	if res.Requirements[0].Coverage != domain.StrengthStrong || res.Requirements[1].Coverage != domain.StrengthPartial {
-		t.Errorf("coverage = %s, %s; want strong, partial", res.Requirements[0].Coverage, res.Requirements[1].Coverage)
-	}
-}
-
-func TestLevelStrength(t *testing.T) {
-	tests := []struct {
-		probs map[string]float64
-		want  domain.EvidenceStrength
-	}{
-		{map[string]float64{"0": 0.7, "1": 0.2, "2": 0.1}, domain.StrengthWeak},
-		{map[string]float64{"0": 0.1, "1": 0.5, "2": 0.4}, domain.StrengthPartial},
-		{map[string]float64{"0": 0.1, "1": 0.1, "2": 0.8}, domain.StrengthStrong},
-	}
-	for _, tt := range tests {
-		if got := levelStrength(tt.probs); got != tt.want {
-			t.Errorf("levelStrength(%v) = %s, want %s", tt.probs, got, tt.want)
-		}
-	}
-}
-
-// gateFake answers retrieval with Go and Kubernetes, gates Go no (0.2) and
-// Kubernetes yes (0.8), and grades every pair strong.
 func gateFake(t *testing.T) *jevtest.Server {
 	return jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
 		if id == "retrieval" {
@@ -690,16 +491,3 @@ func TestStrengthSkipCappedGrading(t *testing.T) {
 	}
 }
 
-func TestRetrieveNarrowStopsEarly(t *testing.T) {
-	reqs := []domain.Requirement{{ID: "A", Value: "A"}, {ID: "B", Value: "B"}, {ID: "C", Value: "C"}}
-	creqs := checkRequirements(domain.Result{Requirements: reqs})
-	srv := jevtest.NewServer(t, softmaxOver(map[string]float64{"A": 0.995, "B": 0.004, "none": 0.001}))
-	c, m := newTestChecker(t, srv.URL, config.Checker{RetrievalMode: "narrow", NarrowSizes: []int{2}, RetrievalK: 5, RetrievalFloor: 0.01, NarrowStopP: 0.99})
-	got, rounds, _, err := c.retrieve(context.Background(), domain.EvidenceUnit{Text: "x"}, creqs)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !slices.Equal(got, []int{0}) || len(rounds) != 1 || m.Summary().Counters["checker.retrieval.stopped_early"] != 1 {
-		t.Errorf("retrieved %v over %d rounds, want [0] after 1 round", got, len(rounds))
-	}
-}
