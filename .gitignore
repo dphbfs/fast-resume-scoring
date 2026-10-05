@@ -44,3 +44,6 @@ eval/reports/e2e/*-traces/
 
 # Cached extraction results for the end-to-end eval (regenerable)
 eval/cache/extract/
+
+# Python bytecode
+__pycache__/
