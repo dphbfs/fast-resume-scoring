@@ -1,0 +1,65 @@
+## Engenious - Backend Engineer
+
+🔗 [Apply](https://engenious.bamboohr.com/careers/124)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend Engineer developing AI-driven products for Engenious, focusing on high-load backend services and AI-powered features. Collaborating with product and AI teams to deliver impactful solutions.
+Backend Engineer developing AI-driven products for Engenious
+- Tech stack: GraphQL, Java, Kafka, Microservices, Python, RabbitMQ, Spring, Spring Boot, SpringBoot
+- Build and ship end-to-end features across the high-load backend services
+- Design scalable APIs and services
+- Build and integrate AI-powered features into product workflows
+- Work with LLM-based systems and AI-driven services
+- Improve performance, reliability, and system architecture
+- Collaborate with product, design, and AI teams (both Engenious and client-side)
+- Contribute to technical decisions and engineering standards
+- Mentor engineers and support team growth
+- 5+ years of experience in backend development
+- Strong experience with Java and Spring Boot is a must
+- Knowledge of system scaling, REST APIs, GraphQL, microservices, and message brokers (Kafka, RabbitMQ)
+- Experience with Python
+- Strong fundamentals in algorithms and system design
+- Experience building or integrating AI-powered features (LLMs, APIs, or similar)
+- Experience building and scaling production systems
+- Experience debugging complex systems
+
+### Full Job Description
+Summary:
+Backend Engineer developing AI-driven products for Engenious, focusing on high-load backend services and AI-powered features. Collaborating with product and AI teams to deliver impactful solutions.
+Backend Engineer developing AI-driven products for Engenious
+Role description:
+• Build and ship end-to-end features across the high-load backend services
+• Design scalable APIs and services
+• Build and integrate AI-powered features into product workflows
+• Work with LLM-based systems and AI-driven services
+• Improve performance, reliability, and system architecture
+• Collaborate with product, design, and AI teams (both Engenious and client-side)
+• Contribute to technical decisions and engineering standards
+• Mentor engineers and support team growth
+Role requirements:
+• 5+ years of experience in backend development
+• Strong experience with Java and Spring Boot is a must
+• Knowledge of system scaling, REST APIs, GraphQL, microservices, and message brokers (Kafka, RabbitMQ)
+• Experience with Python
+• Strong fundamentals in algorithms and system design
+• Experience building or integrating AI-powered features (LLMs, APIs, or similar)
+• Experience building and scaling production systems
+• Experience debugging complex systems
+• Strong product mindset and attention to user experience
+• Hands-on experience designing and operating WebSocket-based real-time systems at scale
+• Experience working within cross-team collaboration responsible for high-load production systems, including services serving 100,000+ users or operating at significant request-per-second scale
+• Must be legally authorized to work in the United States at the time of hire; we are unable to provide visa sponsorship for this role
+• Nice to Have: Experience working with LLMs or AI frameworks (OpenAI, Antropic), LangChain, Langraph, etc.
+• Background in high-scale applications
+• Experience mentoring or leading engineers
+Benefits:
+• Comprehensive health benefits (medical, dental, vision, mental health)
+• Paid time off and holidays
+• Parental leave
+• 401(k) / retirement options (if applicable)
+• Professional development support
+• Additional stipends (wellness, home office, etc.)
+Tech stack:
+GraphQL, Java, Kafka, Microservices, Python, RabbitMQ, Spring, Spring Boot, SpringBoot

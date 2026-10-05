@@ -1,0 +1,64 @@
+## Allstate - Senior Product Engineer – Java, Spring Boot
+
+🔗 [Apply](https://allstate.wd5.myworkdayjobs.com/allstate_careers/job/us---remote/product-engineer-senior-java-springboot_r31924)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Product Engineer at Allstate designing and implementing digital products using Java Spring Boot. Collaborate with product managers and cross-product teams to achieve KPIs.
+Product Engineer designing and implementing digital products for Allstate.
+- Salary: $90,700 - $153,925 per year
+- Tech stack: Cloud, Distributed Systems, Gradle, Java, Jenkins, Kafka, Maven, Microservices, MongoDB, Python, Spring, Spring Boot, SpringBoot
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Participate in inceptions and iteration planning meetings, infusing backlogs with technical input working in close partnership with the product manager.
+- Leads and participates in daily site, cross-site, and product team standups.
+- Leads and participates in retrospectives, demonstrating and encouraging each participant to provide feedback with empathy.
+- Participate in high-level and low-level component and system designs.
+- Participate in performance improvements and tech review meetings.
+- Partners in collaboration and strategy alignment across product portfolios (cross-product) in partnership with product managers, other peers and key stakeholders.
+- Serves as an expert on one or more business domain and a distinguished advocate of multiple technology stacks and shares that knowledge across organizations.
+- Coaches the team and leads daily practices of using paired programming and test-driven development in writing software and building products.
+- 3 or more years of experience (Preferred)
+- Experience and knowledge in developing REST APIs using Java Spring boot, including tooling for documentation (swagger, REST-docs, OpenAPI spec), versioning, service discovery/registration, testing and management
+- Hands on experience and accountability architecting, designing, implementing and delivering large scale distributed systems and/or applications for the cloud, including MicroServices architectures
+- Experience and knowledge in web and API security including authentication, authorization, OAuth, OWASP, OpenID, and SAML
+- Experience in backend development design and implementation, database (MongoDB, caching) and Kafka messaging
+- Knowledge and experience using distributed version control systems (git), artifact management systems, build and packaging systems (maven, gradle, npm, artifactory, etc) and Jenkins or similar Continuous Integration tools
+- Experience of working in an Agile environment or paired programming/engineering model.
+- Experience with Python is a plus.
+
+### Full Job Description
+Summary:
+Product Engineer at Allstate designing and implementing digital products using Java Spring Boot. Collaborate with product managers and cross-product teams to achieve KPIs.
+Product Engineer designing and implementing digital products for Allstate.
+Role description:
+• Participate in inceptions and iteration planning meetings, infusing backlogs with technical input working in close partnership with the product manager.
+• Leads and participates in daily site, cross-site, and product team standups.
+• Leads and participates in retrospectives, demonstrating and encouraging each participant to provide feedback with empathy.
+• Participate in high-level and low-level component and system designs.
+• Participate in performance improvements and tech review meetings.
+• Partners in collaboration and strategy alignment across product portfolios (cross-product) in partnership with product managers, other peers and key stakeholders.
+• Serves as an expert on one or more business domain and a distinguished advocate of multiple technology stacks and shares that knowledge across organizations.
+• Coaches the team and leads daily practices of using paired programming and test-driven development in writing software and building products.
+• Establishes continuous integration, continuous delivery, and continuous deployment pipelines and practices.
+• Provides support for software products in user environments.
+Role requirements:
+• 3 or more years of experience (Preferred)
+• Experience and knowledge in developing REST APIs using Java Spring boot, including tooling for documentation (swagger, REST-docs, OpenAPI spec), versioning, service discovery/registration, testing and management
+• Hands on experience and accountability architecting, designing, implementing and delivering large scale distributed systems and/or applications for the cloud, including MicroServices architectures
+• Experience and knowledge in web and API security including authentication, authorization, OAuth, OWASP, OpenID, and SAML
+• Experience in backend development design and implementation, database (MongoDB, caching) and Kafka messaging
+• Knowledge and experience using distributed version control systems (git), artifact management systems, build and packaging systems (maven, gradle, npm, artifactory, etc) and Jenkins or similar Continuous Integration tools
+• Experience of working in an Agile environment or paired programming/engineering model.
+• Experience with Python is a plus.
+• Experience with the test driven approach and writing unit tests for front to back coverage.
+• Experience with problem-solving and analyzing performance bottlenecks.
+Benefits:
+• Allstate provides a comprehensive technology setup, including a laptop, monitors, headset, keyboard, and mouse.
+• Employees eligible to work from home also receive a monthly connectivity reimbursement to help offset internet costs.
+• Joining our team means being part of something bigger – a winning team making a meaningful impact.
+Tech stack:
+Cloud, Distributed Systems, Gradle, Java, Jenkins, Kafka, Maven, Microservices, MongoDB, Python, Spring, Spring Boot, SpringBoot
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

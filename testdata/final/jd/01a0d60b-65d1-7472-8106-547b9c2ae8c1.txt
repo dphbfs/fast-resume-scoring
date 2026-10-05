@@ -1,0 +1,73 @@
+## Unity - Senior Software Engineer, Android Ecosystem
+
+🔗 [Apply](https://unitytech.wd1.myworkdayjobs.com/unity/job/montreal-canada/dveloppeur-se--logiciel-principal-e---cosystme-android---senior-software-engineer--android-ecosystem_jobreq-2616440)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Unity’s Android platform support across mobile, laptop, and hybrid devices. Optimizing runtime performance and enabling seamless game deployment.
+Senior Software Engineer building Unity’s Android platform support for mobile, laptop, and hybrid devices
+- Salary: CA$103,000 - CA$153,000 per year
+- Tech stack: Android, Java, Kotlin, Unity
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design and develop features and workflows in the Unity Editor supporting specific Android platform configurations
+- Profile, analyze, and identify optimization opportunities across the technology stack
+- Collaborate cross-functionally to develop and implement runtime and platform optimization solutions
+- Establish performance benchmarks and conduct rigorous Unity Engine performance analyses
+- Author comprehensive technical documentation
+- Participate actively in design review processes
+- Investigate and resolve bug reports to ensure platform stability
+- Improve quality and delivery through automated testing and thoughtful code reviews
+- Solid background in Android systems programming
+- Advanced proficiency in C++, C#, and Java/Kotlin
+- Experience building and maintaining platform or runtime systems
+- Solid understanding of large applications spanning multiple languages, including synchronous/asynchronous calls, memory ownership, and marshalling
+- Experience designing and implementing scalable feature sets in a large multithreaded codebase
+- Strong diagnostic, debugging, and performance-profiling skills
+- Familiarity with real-time 3D rendering methodologies and modern graphics APIs, including Vulkan
+- Sufficient English proficiency for professional verbal and written communication
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Unity’s Android platform support across mobile, laptop, and hybrid devices. Optimizing runtime performance and enabling seamless game deployment.
+Senior Software Engineer building Unity’s Android platform support for mobile, laptop, and hybrid devices
+Role description:
+• Design and develop features and workflows in the Unity Editor supporting specific Android platform configurations
+• Profile, analyze, and identify optimization opportunities across the technology stack
+• Collaborate cross-functionally to develop and implement runtime and platform optimization solutions
+• Establish performance benchmarks and conduct rigorous Unity Engine performance analyses
+• Author comprehensive technical documentation
+• Participate actively in design review processes
+• Investigate and resolve bug reports to ensure platform stability
+• Improve quality and delivery through automated testing and thoughtful code reviews
+• Foster innovation, teamwork, and technical excellence
+Role requirements:
+• Solid background in Android systems programming
+• Advanced proficiency in C++, C#, and Java/Kotlin
+• Experience building and maintaining platform or runtime systems
+• Solid understanding of large applications spanning multiple languages, including synchronous/asynchronous calls, memory ownership, and marshalling
+• Experience designing and implementing scalable feature sets in a large multithreaded codebase
+• Strong diagnostic, debugging, and performance-profiling skills
+• Familiarity with real-time 3D rendering methodologies and modern graphics APIs, including Vulkan
+• Sufficient English proficiency for professional verbal and written communication
+• Proven track record of writing high-quality software at scale
+Benefits:
+• Comprehensive health, life, and disability insurance
+• Commuter subsidy
+• Employee stock ownership
+• Competitive retirement and pension plans
+• Generous vacation and personal days
+• Support for new parents through leave and family-care programs
+• Office snacks
+• Mental health and wellbeing programs and support
+• Employee Resource Groups
+• Global Employee Assistance Program
+• Training and development programs
+• Volunteering and donation-matching program
+• Equity awards
+• Annual discretionary bonuses or sales commissions
+Tech stack:
+Android, Java, Kotlin, Unity
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

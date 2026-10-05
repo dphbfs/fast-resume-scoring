@@ -1,0 +1,49 @@
+## Sumsub - Senior Backend Developer – Travel Rule
+
+🔗 [Apply](https://careers.sumsub.com/jobs/8097614-senior-backend-developer-travel-rule)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer developing backend services for the Travel Rule product at Sumsub. Involved in integrations and distributed systems in a remote-first, global environment.
+Senior Backend Engineer creating backend services for the Travel Rule product in a remote-first company.
+- Tech stack: Distributed Systems, Java, MongoDB
+- Design and develop backend services for the Travel Rule product.
+- Build and maintain integrations with third-party providers.
+- Work with asynchronous, event-driven architectures.
+- Ensure high reliability, fault tolerance, and observability of distributed services.
+- Collaborate with product and engineering teams to evolve the platform.
+- Strong backend engineering experience (Java or similar languages).
+- Experience building and maintaining integrations with external systems and third-party APIs.
+- Familiarity with asynchronous processing and distributed systems.
+- Good understanding of databases (MongoDB, ClickHouse, or similar).
+- Motivated to solve complex, product-driven problems.
+- Bonus: familiarity with crypto, blockchain fundamentals, or how crypto networks and wallets operate.
+
+### Full Job Description
+Summary:
+Senior Backend Engineer developing backend services for the Travel Rule product at Sumsub. Involved in integrations and distributed systems in a remote-first, global environment.
+Senior Backend Engineer creating backend services for the Travel Rule product in a remote-first company.
+Role description:
+• Design and develop backend services for the Travel Rule product.
+• Build and maintain integrations with third-party providers.
+• Work with asynchronous, event-driven architectures.
+• Ensure high reliability, fault tolerance, and observability of distributed services.
+• Collaborate with product and engineering teams to evolve the platform.
+Role requirements:
+• Strong backend engineering experience (Java or similar languages).
+• Experience building and maintaining integrations with external systems and third-party APIs.
+• Familiarity with asynchronous processing and distributed systems.
+• Good understanding of databases (MongoDB, ClickHouse, or similar).
+• Motivated to solve complex, product-driven problems.
+• Bonus: familiarity with crypto, blockchain fundamentals, or how crypto networks and wallets operate.
+Benefits:
+• Remote-first, trust-based culture.
+• True flexibility in working hours.
+• Extra time off including birthday holiday and personal days.
+• Dedicated financial bonuses for life's biggest moments like marriage and welcoming a new baby.
+• Professional development opportunities and role-specific events.
+• Team offsites fully covered.
+• Friendly and inclusive workplace culture.
+Tech stack:
+Distributed Systems, Java, MongoDB

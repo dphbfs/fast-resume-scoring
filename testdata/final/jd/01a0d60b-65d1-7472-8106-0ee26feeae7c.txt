@@ -1,0 +1,78 @@
+## Crisis Text Line - Mid-Level Full Stack Software Engineer
+
+🔗 [Apply](https://crisistextlineinc.applytojob.com/apply/utvtfhbpqz/midlevel-full-stack-software-engineer)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend-leaning full-stack engineer building APIs, data systems, and reliable crisis-support technology. Crisis Text Line provides free, 24/7 text-based mental health support.
+Full-stack engineer building scalable crisis-support technology for Crisis Text Line
+- Salary: $99,704 - $116,990 per year
+- Tech stack: AWS, Cloud, Grafana, GraphQL, JavaScript, MySQL, Node.js, PHP, Postgres, React, Redis, Redux, SQL, Symfony, Terraform, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, build, test, deploy, and operate core platform features
+- Own full-stack features end-to-end in production
+- Implement approved technical designs
+- Develop and maintain APIs
+- Work with relational databases and caching technologies
+- Support queues, schedulers, and asynchronous processes
+- Address technical debt and improve production reliability
+- Strengthen tools and practices for safe software delivery
+- Approximately three to five years of professional software engineering experience, including meaningful backend or full-stack responsibilities
+- Professional experience programming in at least one high-level language
+- Experience developing and maintaining production APIs
+- Experience working with SQL and relational databases such as MySQL or PostgreSQL
+- Experience testing, debugging, and supporting production software
+- Familiarity with cloud-based environments such as AWS
+- Experience working with automated CI/CD pipelines and deployment workflows
+- Ability to independently complete well-defined engineering work while asking questions and seeking full alignment when needed
+
+### Full Job Description
+Summary:
+Backend-leaning full-stack engineer building APIs, data systems, and reliable crisis-support technology. Crisis Text Line provides free, 24/7 text-based mental health support.
+Full-stack engineer building scalable crisis-support technology for Crisis Text Line
+Role description:
+• Design, build, test, deploy, and operate core platform features
+• Own full-stack features end-to-end in production
+• Implement approved technical designs
+• Develop and maintain APIs
+• Work with relational databases and caching technologies
+• Support queues, schedulers, and asynchronous processes
+• Address technical debt and improve production reliability
+• Strengthen tools and practices for safe software delivery
+• Break down ambiguous technical challenges and deliver scalable, secure solutions
+• Contribute to authentication, authorization, and platform security
+• Improve service architecture, APIs, and system reliability
+• Partner with product, design, and engineering peers
+• Improve testing, CI/CD, observability, and developer workflows
+• Participate in an on-call rotation for platform reliability
+• Work primarily on backend systems while contributing across the stack as needed
+Role requirements:
+• Approximately three to five years of professional software engineering experience, including meaningful backend or full-stack responsibilities
+• Professional experience programming in at least one high-level language
+• Experience developing and maintaining production APIs
+• Experience working with SQL and relational databases such as MySQL or PostgreSQL
+• Experience testing, debugging, and supporting production software
+• Familiarity with cloud-based environments such as AWS
+• Experience working with automated CI/CD pipelines and deployment workflows
+• Ability to independently complete well-defined engineering work while asking questions and seeking full alignment when needed
+• Ability to explain technical analysis, decisions, risks, and tradeoffs clearly
+• Collaborative approach to working with engineering and cross-functional partners
+• Commitment to building secure, reliable, and accessible technology for people with diverse needs and experiences
+• Stable high-speed internet connection
+• Primary residence and regular home work location must be in an approved U.S. hiring state
+• No visa sponsorship available
+• Preferred: PHP or Symfony; Golang; Node.js, React, or Redux; REST and GraphQL APIs; Redis; queues, schedulers, background processing, or event-driven systems; AWS services; Terraform; Datadog, Grafana, or comparable tools; CI/CD and deployment automation; availability, performance, security, and observability; service-oriented or API-first architectures; technical design reviews; mission-driven, regulated, safety-sensitive, or high-trust environment
+Benefits:
+• Comprehensive medical, dental, and vision options
+• Employer-funded HSA contributions
+• Generous PTO, sick time, and 19 paid holidays with a winter break
+• 12 weeks of fully paid parental leave after 26 consecutive weeks of service
+• Monthly wellness and mental health stipends
+• Home office and professional development stipends
+• 403(b) retirement plan with employer contribution
+• Sabbatical after 3 years of service
+• Remote work arrangement
+Tech stack:
+AWS, Cloud, Grafana, GraphQL, JavaScript, MySQL, Node.js, PHP, Postgres, React, Redis, Redux, SQL, Symfony, Terraform, Go
+Company sponsorship flag: sponsorsH1B=true.
