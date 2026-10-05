@@ -71,6 +71,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 			if err != nil {
 				return fmt.Errorf("sentence %s: %w", s.Ref, err)
 			}
+			e.addUsage("extract.validation", resp.Usage)
 			for i, c := range b.chunks {
 				a := resp.Answers[fmt.Sprintf("chunk_%d", i)]
 				if _, ok := a.Probabilities[a.Choice]; !ok || !isOption(c, a.Choice) {

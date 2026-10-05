@@ -65,6 +65,9 @@ func (c *Checker) Check(ctx context.Context, reqs domain.Result, resume domain.R
 	}); err != nil {
 		return domain.CoverageResult{}, trace, err
 	}
+	if c.cfg.SkipMentioned {
+		reqs = withoutMentioned(reqs)
+	}
 	if len(reqs.Requirements) == 0 {
 		return domain.CoverageResult{}, trace, fmt.Errorf("no requirements to check")
 	}
@@ -89,6 +92,33 @@ func (c *Checker) Check(ctx context.Context, reqs domain.Result, resume domain.R
 		return nil
 	})
 	return res, trace, nil
+}
+
+// withoutMentioned keeps the required and preferred Requirements, and the
+// Alternative Groups with at least two of them left.
+func withoutMentioned(reqs domain.Result) domain.Result {
+	kept := map[string]bool{}
+	out := reqs
+	out.Requirements = nil
+	for _, r := range reqs.Requirements {
+		if r.Tier == domain.TierRequired || r.Tier == domain.TierPreferred {
+			out.Requirements = append(out.Requirements, r)
+			kept[r.ID] = true
+		}
+	}
+	out.AlternativeGroups = nil
+	for _, g := range reqs.AlternativeGroups {
+		var members []string
+		for _, id := range g.Members {
+			if kept[id] {
+				members = append(members, id)
+			}
+		}
+		if len(members) > 1 {
+			out.AlternativeGroups = append(out.AlternativeGroups, domain.AlternativeGroup{ID: g.ID, Members: members})
+		}
+	}
+	return out
 }
 
 // checkRequirements pairs each Requirement with a unique option key and its

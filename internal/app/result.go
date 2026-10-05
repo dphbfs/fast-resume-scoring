@@ -56,6 +56,7 @@ func (e *Extractor) buildResult(_ context.Context, r *run) error {
 		Requirements:      make([]domain.Requirement, 0, len(keys)),
 		AlternativeGroups: []domain.AlternativeGroup{},
 		Context:           map[domain.Ref]domain.ContextSentence{},
+		ImportanceSkipped: e.cfg.SkipImportance,
 	}
 	ids := map[string]string{}
 	for i, k := range keys {

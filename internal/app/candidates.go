@@ -297,7 +297,8 @@ func (e *Extractor) generateCandidates(ctx context.Context, r *run) error {
 	r.trace.Sentences = make([]domain.TraceSentence, len(r.sentences))
 	options := 0
 	for i, s := range r.sentences {
-		dropped := droppedSections[s.Section] || (i < len(r.strongHeading) && r.strongHeading[i])
+		dropped := droppedSections[s.Section] || (i < len(r.strongHeading) && r.strongHeading[i]) ||
+			(e.cfg.SkipResponsibilities && s.Section == domain.SectionResponsibilities)
 		ts := domain.TraceSentence{Ref: s.Ref, Text: s.Text, Section: s.Section, Dropped: dropped}
 		if i < len(r.headings) {
 			ts.Heading = r.headings[i]

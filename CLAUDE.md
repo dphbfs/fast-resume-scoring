@@ -125,6 +125,18 @@ preferred | mentioned`, same values as golden labels), derived in code from
 the strongest Section among its Context Sentences: required > preferred >
 responsibilities (-> `mentioned`). Tier is independent of Importance.
 
+## Match Score and scoring mode (review v1)
+
+The replacement score is the **Match Score** (`docs/adr/0003`,
+`domain.MatchScore`): the Fit Score blended with a Holistic Round
+(`app.HolisticJudge`: `core_work` Score + `blocker` Noul over the full
+posting and Resume, run alongside extraction), mapped to the generative
+reference scale. Scoring mode runs lean: `PIPELINE_SKIP_IMPORTANCE`,
+`PIPELINE_SKIP_RESPONSIBILITIES`, `CHECKER_SKIP_MENTIONED`,
+`CHECKER_NARROW_SIZES=none` (`make eval-e2e` sets them). Evaluated with
+`eval -e2e` against `testdata/reference` (generative reference scores).
+Plan and decisions: `docs/review-v1-plan.md`.
+
 ## Resume Checker (current milestone)
 
 Goal: given extractor Requirements and a plain-text Resume, produce an

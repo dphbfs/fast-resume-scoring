@@ -47,10 +47,15 @@ eval-checker:
 # Extracts and checks the reference pairs (testdata/reference) end to end
 # against live Jev and writes eval/reports/e2e/<timestamp>.{json,md}.
 # EVAL_ARGS="-set all" adds ranking-only pairs; -extract-cache= runs cold.
+# Scoring mode (docs/adr/0003): no Importance, no responsibilities
+# sentences, only required/preferred Requirements checked, one Retrieval
+# round. Override any of PIPELINE_SKIP_IMPORTANCE,
+# PIPELINE_SKIP_RESPONSIBILITIES, CHECKER_SKIP_MENTIONED,
+# CHECKER_NARROW_SIZES to compare.
 eval-e2e:
 	go build -o bin/eval ./cmd/eval
 	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
-	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} ./bin/eval -e2e $(EVAL_ARGS)
+	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} PIPELINE_SKIP_IMPORTANCE=$${PIPELINE_SKIP_IMPORTANCE:-true} PIPELINE_SKIP_RESPONSIBILITIES=$${PIPELINE_SKIP_RESPONSIBILITIES:-true} CHECKER_SKIP_MENTIONED=$${CHECKER_SKIP_MENTIONED:-true} CHECKER_NARROW_SIZES=$${CHECKER_NARROW_SIZES:-none} ./bin/eval -e2e $(EVAL_ARGS)
 
 clean:
 	rm -rf bin

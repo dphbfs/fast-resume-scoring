@@ -27,7 +27,7 @@ not track the reference.
 
 x = (0.5 × Fit/100 + 0.5 × core_work) × (1 − blocker)
 
-Match Score = clamp(round(21.2 + 107.9 × x), 0, 100); null when the Fit
+Match Score = clamp(round(21.5 + 99.9 × x), 0, 100); null when the Fit
 Score is null. The Fit Score stays as defined in ADR 0002 and is still
 reported, with its traceable Coverage.
 
@@ -36,3 +36,15 @@ one run (2026-10-05T02-59-15Z): Kendall τ-b 0.67, leave-one-out MAE 8.8
 (Fit Score with the same kind of map: 12.4). Accept after repeated runs
 confirm it; refit only on development data; the final held-out set is
 never used for fitting.
+
+## Scoring mode
+
+The Match Score does not use Importance or mentioned-tier Requirements, so
+the scoring path runs the pipeline lean: `PIPELINE_SKIP_IMPORTANCE`,
+`PIPELINE_SKIP_RESPONSIBILITIES`, `CHECKER_SKIP_MENTIONED`, and one
+Retrieval round (`CHECKER_NARROW_SIZES=none`). On the development subset
+this cut cold Jev cost from ~$0.015 to ~$0.0092 per pair (Requirements per
+posting 52 -> 31) for ~0.5 points of MAE (leave-one-out 9.3 vs 8.8). The
+map above is fitted in scoring mode (run 2026-10-05T11-40-47Z) and held on
+two repeat runs: MAE 9.0 and 8.9, bias ~0, τ-b 0.64-0.65. The Fit Score
+in scoring mode covers required and preferred Requirements only.
