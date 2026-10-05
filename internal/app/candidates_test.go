@@ -287,3 +287,27 @@ func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {
 		t.Errorf("counters = %v, want chunks.total=2 candidates.total=2", c)
 	}
 }
+
+func TestGenerateCandidatesSkipResponsibilities(t *testing.T) {
+	for _, skip := range []bool{false, true} {
+		e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)),
+			config.Pipeline{MaxWindowWords: 2, SkipResponsibilities: skip})
+		r := &run{}
+		r.sentences, r.headings = splitSentences("- Kubernetes\n- Terraform\n")
+		r.sentences[0].Section = domain.SectionRequired
+		r.sentences[1].Section = domain.SectionResponsibilities
+		if err := e.generateCandidates(context.Background(), r); err != nil {
+			t.Fatal(err)
+		}
+		want := []string{"Kubernetes", "Terraform"}
+		if skip {
+			want = want[:1]
+		}
+		if got := chunkTexts(r.chunks); !slices.Equal(got, want) {
+			t.Errorf("skip %v: chunks = %q, want %q", skip, got, want)
+		}
+		if r.trace.Sentences[1].Dropped != skip {
+			t.Errorf("skip %v: responsibilities sentence dropped = %v", skip, r.trace.Sentences[1].Dropped)
+		}
+	}
+}

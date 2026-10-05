@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"encoding/json"
+	"maps"
 	"slices"
 	"strings"
 	"testing"
@@ -157,6 +158,30 @@ func TestRefinementRound(t *testing.T) {
 	if c["refinement.merged"] != 1 || c["refinement.one_way_duplicate"] != 1 ||
 		c["refinement.dropped.generic_trait"] != 1 || c["refinement.alternative_links"] != 2 {
 		t.Errorf("counters = %v", c)
+	}
+}
+
+func TestRefinementRoundSkipImportance(t *testing.T) {
+	srv := jevtest.NewServer(t, refinementResponder(t))
+	e, _ := newTestExtractor(t, srv.URL, config.Pipeline{SkipImportance: true})
+	r := refinementRun()
+	if err := e.refinementRound(context.Background(), r); err != nil {
+		t.Fatal(err)
+	}
+	for _, req := range srv.Requests() {
+		for id := range req.Questions {
+			if strings.HasPrefix(id, "importance_") {
+				t.Errorf("asked %s with SkipImportance", id)
+			}
+		}
+	}
+	// Same Requirements kept and merged as with Importance; all at 0.
+	if got := acceptedTexts(r.accepted); !slices.Equal(got, []string{"Kubernetes", "Kubernetes", "Go", "Ruby", "Kafka"}) {
+		t.Errorf("accepted = %q", got)
+	}
+	want := map[string]float64{"kubernetes": 0, "go": 0, "ruby": 0, "kafka": 0}
+	if !maps.Equal(r.importance, want) {
+		t.Errorf("importance = %v, want %v", r.importance, want)
 	}
 }
 

@@ -551,3 +551,34 @@ for the Fit Score with the same kind of map. Constants fitted on run
 - Cost: +$0.0005 per pair for the Holistic Round; cached-extraction runs
   are $0.0095 per pair, cold about $0.015 (about 3.3× cheaper than one
   Opus 5 call; the 5× target still needs cost work).
+
+### Scoring mode: cheaper Jev for the Match Score (2026-10-05, review v1 L3/L6)
+
+Goal: cold Jev cost per pair <= ~$0.010 (5× cheaper than one Opus 5 call)
+without losing Match Score accuracy. 30-pair subset, one change at a time
+(extraction cached when the pipeline settings did not change):
+
+| Run | Change | Match MAE / τ-b | Fit MAE / bias | Reqs | Cold $/pair |
+|---|---|---|---|---|---|
+| 03-02/03-04 | baseline (holistic) | 8.4-8.6 / 0.66-0.67 | 20.2-20.5 / -17.5 | 52 | ~0.0152 |
+| 11-32-28Z | L3 skip Importance + L6 no context in retrieval round 2 | 8.5 / 0.68 | 22.7 / -19.7 | 52 | 0.0130 |
+| 11-35-39Z | L6 reverted; check required/preferred only | 9.1 / 0.65 | 16.9 / -11.2 | 52 | 0.0122 |
+| 11-38-24Z | + skip responsibilities sentences | 9.4 / 0.65 | 16.4 / -10.4 | 31 | 0.0107 |
+| 11-40-47Z, 11-42-22Z, 11-43-47Z | + one Retrieval round | 9.2-9.5 / 0.64-0.66 | 16.1-16.3 / -10.2 | 31 | 0.0092 |
+
+- L6 (Requirement values only in the second retrieval round) cut
+  retrieved pairs 16% and links 8% for ~$0.0008 per pair: reverted.
+- L3 (skip Importance) saves ~11% of extraction tokens; Importance is
+  unused by both scores.
+- Offline replay showed the Match Score does not need mentioned-tier
+  items (τ-b 0.65 vs 0.66), which are ~46% of checked items; checking
+  only required/preferred and dropping responsibilities sentences before
+  Validation cut Requirements per posting 52 -> 31.
+- With ~31 Requirements the second narrowing round no longer paid for
+  itself: one round saves ~20% of checker cost with no accuracy change.
+- Per-pair tokens now: extraction ~74k (sections 19k, validation 22k,
+  refinement 33k), retrieval ~66k, strength ~78k, holistic ~2.5k.
+- The Match map refit in scoring mode (`21.5 + 99.9 x`, run 11-40-47Z):
+  repeat runs MAE 9.0 and 8.9, bias ~0; leave-one-out 9.3 (full mode
+  8.8). Scoring mode trades ~0.5 MAE for ~40% lower cost: ~$0.0092 vs
+  ~$0.05 for an Opus 5 call, about 5.4× cheaper.

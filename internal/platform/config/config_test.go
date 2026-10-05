@@ -52,6 +52,13 @@ func TestLoadErrors(t *testing.T) {
 	}
 }
 
+func TestLoadNarrowSizesNone(t *testing.T) {
+	cfg, err := load(mapEnv(map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_NARROW_SIZES": "none"}))
+	if err != nil || cfg.Checker.NarrowSizes == nil || len(cfg.Checker.NarrowSizes) != 0 {
+		t.Errorf("NarrowSizes = %v, err %v; want empty", cfg.Checker.NarrowSizes, err)
+	}
+}
+
 func TestLoadRejectsRemovedSettings(t *testing.T) {
 	for _, name := range removedSettings {
 		env := map[string]string{"TYPESAFE_API_KEY": "k", name: "x"}

@@ -38,7 +38,9 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	for i, v := range values {
 		ms := mentions[i]
 		questions[fmt.Sprintf("filler_%d", i)] = fillerQuestion(v, ms)
-		questions[fmt.Sprintf("importance_%d", i)] = importanceQuestion(v, ms)
+		if !e.cfg.SkipImportance {
+			questions[fmt.Sprintf("importance_%d", i)] = importanceQuestion(v, ms)
+		}
 		if opts := duplicateOptions(values, i, maxAllDuplicateOptions); len(opts) > 0 {
 			questions[fmt.Sprintf("dup_%d", i)] = duplicateQuestion(v, ms, opts)
 		}
@@ -110,17 +112,23 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	}
 
 	// 3. Importance: Score / top level; a merged Requirement keeps the max.
+	// r.importance also records which canonical values were kept, so a
+	// skipped Importance is stored as 0.
 	top := float64(len(importanceLevels) - 1)
 	r.importance = map[string]float64{}
 	for i := range values {
 		if !keep[i] {
 			continue
 		}
+		k := strings.ToLower(values[canonical[i]])
+		if e.cfg.SkipImportance {
+			r.importance[k] = 0
+			continue
+		}
 		a := answers[fmt.Sprintf("importance_%d", i)]
 		if a.Score == nil {
 			return fmt.Errorf("requirement %q: importance answer has no score", values[i])
 		}
-		k := strings.ToLower(values[canonical[i]])
 		r.importance[k] = max(r.importance[k], *a.Score/top)
 		trs[i].Score, trs[i].Importance = *a.Score, *a.Score/top
 	}
@@ -391,6 +399,7 @@ func (e *Extractor) classifyBatched(ctx context.Context, state any, questions ma
 			if err != nil {
 				return err
 			}
+			e.addUsage("extract.refinement", resp.Usage)
 			results[b] = resp.Answers
 			return nil
 		})

@@ -165,10 +165,10 @@ grades).
 - [ ] L1. Instrumentation: queue wait, HTTP latency, in-flight count,
       retries/429.
 - [ ] L2. Job Summary generation concurrent with section labeling.
-- [ ] L3. Skip Importance questions in scoring mode (required for cost).
+- [x] L3. Skip Importance questions in scoring mode (`PIPELINE_SKIP_IMPORTANCE`; part of scoring mode, ADR 0003).
 - [ ] L4. Concurrency sweep 8 / 16 / 32.
 - [ ] L5. Combined vs gate-first requests, narrow `[16]`.
-- [ ] L6. Second-round retrieval without Context Sentences (required for
+- [x] L6 rejected (lost 8% of links for ~$0.0008/pair). Replaced by scoring mode: required/preferred only, no responsibilities sentences, one Retrieval round; cold ~$0.0092/pair (about 5.4× cheaper than Opus 5). Was: second-round retrieval without Context Sentences (required for
       cost unless L3 alone reaches the target).
 - [ ] L7. Batch command: job-level bound, shared Jev limiter, per-job
       pipeline and deadline.

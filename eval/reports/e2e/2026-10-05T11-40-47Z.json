@@ -1,0 +1,637 @@
+{
+  "started": "2026-10-05T11:40:47.691476571Z",
+  "duration": "1m25.823s",
+  "model": "typesafe/jev-1.13-20260917",
+  "revision": "dfa882bd15aa-dirty",
+  "set": "subset",
+  "pipeline": {
+    "MaxWindowWords": 4,
+    "SectionBatchSize": 60,
+    "MinRequirementMass": 0.7,
+    "SkipImportance": true,
+    "SkipResponsibilities": true
+  },
+  "checker": {
+    "RetrievalK": 8,
+    "RetrievalFloor": 0.01,
+    "MinEvidenceMass": 0.5,
+    "NarrowSizes": [],
+    "GateThreshold": 0.5,
+    "SkipCappedGrading": true,
+    "GateFirst": true,
+    "SkipMentioned": true
+  },
+  "totals": {
+    "pairs": 30,
+    "failed": 0,
+    "scored": 30,
+    "mae": 16.3,
+    "bias": -10.233333333333333,
+    "within_5": 0.26666666666666666,
+    "within_10": 0.43333333333333335,
+    "max_error": 52,
+    "pearson": 0.5749552937270479,
+    "tau_b": 0.43503194545842305,
+    "saved_pairs": 30,
+    "saved_tau_b": 0.428576129726816,
+    "match": {
+      "scored": 30,
+      "mae": 9.233333333333333,
+      "bias": 3.1,
+      "within_5": 0.2,
+      "within_10": 0.6,
+      "max_error": 20,
+      "pearson": 0.8722919452387852,
+      "tau_b": 0.6573464205019774
+    },
+    "cold_pairs": 0,
+    "jev_cost_per_pair_usd": 0.006084766666666667,
+    "mean_ms": 11031
+  },
+  "pairs": [
+    {
+      "id": "01a0cb46-922c-7022-8855-68428d9a7944",
+      "title": "Senior Software Engineer",
+      "reference": 78,
+      "saved": 74,
+      "fit": 74,
+      "match": 88,
+      "requirements": 21,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.585,
+        "blocker": 0.07
+      },
+      "extraction_cached": true,
+      "extract_ms": 1,
+      "check_ms": 12412
+    },
+    {
+      "id": "01a0d60b-7c6e-71b6-93b0-490532790dd5",
+      "title": "Senior Software Engineer - EDR Workflows - Security",
+      "reference": 62,
+      "saved": 45,
+      "fit": 33,
+      "match": 55,
+      "requirements": 13,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.335,
+        "blocker": 0.06
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 12626
+    },
+    {
+      "id": "01a0d664-9162-7300-b1a6-448f80afab63",
+      "title": "Software Engineer, Backend",
+      "reference": 88,
+      "saved": 72,
+      "fit": 93,
+      "match": 100,
+      "requirements": 16,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.815,
+        "blocker": 0.1
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 12455
+    },
+    {
+      "id": "01a0d8a1-7ce9-7179-a593-fe0486f9a764",
+      "title": "Senior Distributed Systems Engineer - Cache",
+      "reference": 66,
+      "saved": 40,
+      "fit": 53,
+      "match": 60,
+      "requirements": 52,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.295,
+        "blocker": 0.13
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 12450
+    },
+    {
+      "id": "01a0d8a1-d338-767e-8177-e983a8ce1d28",
+      "title": "Senior Software Engineer, Zero Trust Client",
+      "reference": 25,
+      "saved": 18,
+      "fit": 16,
+      "match": 37,
+      "requirements": 44,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.155,
+        "blocker": 0.09
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 9644
+    },
+    {
+      "id": "01a0d8a2-163a-74b9-9f79-7b3950cd7d3c",
+      "title": "Senior Systems Engineer - Application Security",
+      "reference": 68,
+      "saved": 48,
+      "fit": 86,
+      "match": 84,
+      "requirements": 13,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.47,
+        "blocker": 0.12
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10151
+    },
+    {
+      "id": "01a0d8a3-3a62-71d6-95ae-fb9f34bbd055",
+      "title": "Senior Software Engineer - Commercial Navigation",
+      "reference": 79,
+      "saved": 62,
+      "fit": 65,
+      "match": 70,
+      "requirements": 17,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.3425,
+        "blocker": 0.08
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10849
+    },
+    {
+      "id": "01a0d8a5-e678-7397-8610-5bd0f9ecca84",
+      "title": "Senior Software Engineer - CI/CD Security",
+      "reference": 70,
+      "saved": 58,
+      "fit": 73,
+      "match": 74,
+      "requirements": 35,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.305,
+        "blocker": 0.06
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11123
+    },
+    {
+      "id": "01a0d8aa-53b9-77ef-b993-67a808327918",
+      "title": "Senior Software Engineer",
+      "reference": 48,
+      "saved": 42,
+      "fit": 39,
+      "match": 60,
+      "requirements": 25,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.41,
+        "blocker": 0.11
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10559
+    },
+    {
+      "id": "01a0d8aa-7dc4-71d2-9026-85d0f39f1cbc",
+      "title": "Software Engineer, CRDT",
+      "reference": 35,
+      "saved": 22,
+      "fit": 33,
+      "match": 46,
+      "requirements": 7,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.2475,
+        "blocker": 0.22
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10076
+    },
+    {
+      "id": "01a0d9c6-3f87-730a-9171-b3011c2b9b6d",
+      "title": "Senior Software Engineer",
+      "reference": 66,
+      "saved": 62,
+      "fit": 52,
+      "match": 73,
+      "requirements": 33,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.545,
+        "blocker": 0.1
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10008
+    },
+    {
+      "id": "01a0e4fa-e44b-73aa-9806-0be48a5cf5f1",
+      "title": "Software Engineer",
+      "reference": 76,
+      "saved": 52,
+      "fit": 50,
+      "match": 76,
+      "requirements": 23,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.585,
+        "blocker": 0.07
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 10287
+    },
+    {
+      "id": "01a0e4fb-5410-742e-ab45-0e7bc015d4f4",
+      "title": "Founding Software Engineers",
+      "reference": 82,
+      "saved": 70,
+      "fit": 63,
+      "match": 78,
+      "requirements": 38,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.5725,
+        "blocker": 0.13
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11290
+    },
+    {
+      "id": "01a0eec5-0909-75df-9d3f-5ac9f349af77",
+      "title": "Senior Software Engineer, PKI \u0026 Cryptographic Systems",
+      "reference": 34,
+      "saved": 26,
+      "fit": 15,
+      "match": 35,
+      "requirements": 77,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.1275,
+        "blocker": 0.09
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11688
+    },
+    {
+      "id": "01a0eec7-49e9-70bc-8ea1-f49eb8279142",
+      "title": "Senior Backend Engineer - Databases - Analytics | Canada | Remote",
+      "reference": 68,
+      "saved": 45,
+      "fit": 72,
+      "match": 77,
+      "requirements": 22,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.4075,
+        "blocker": 0.09
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11686
+    },
+    {
+      "id": "01a0eec9-63d3-74cd-9864-23ce8667d828",
+      "title": "Senior Software Engineer",
+      "reference": 39,
+      "saved": 30,
+      "fit": 41,
+      "match": 57,
+      "requirements": 68,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.33,
+        "blocker": 0.11
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11513
+    },
+    {
+      "id": "01a0eeca-1535-77a1-8f84-6e861a8a2d93",
+      "title": "Senior Software Engineer – Delivery Tech",
+      "reference": 88,
+      "saved": 78,
+      "fit": 68,
+      "match": 82,
+      "requirements": 19,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.5225,
+        "blocker": 0.06
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11253
+    },
+    {
+      "id": "01a0eeca-4d5c-7107-bd77-dde42bd7da65",
+      "title": "Senior Full Stack Software Engineer",
+      "reference": 78,
+      "saved": 68,
+      "fit": 73,
+      "match": 88,
+      "requirements": 44,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.6875,
+        "blocker": 0.13
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11534
+    },
+    {
+      "id": "01a0eeca-c404-7044-b85c-387e36700d88",
+      "title": "Senior Software Engineer, Connectivity – API Transformation",
+      "reference": 76,
+      "saved": 55,
+      "fit": 38,
+      "match": 63,
+      "requirements": 55,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.48,
+        "blocker": 0.1
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11557
+    },
+    {
+      "id": "01a0eecb-dc81-7374-8586-45ead4a81fb1",
+      "title": "Software Engineer II",
+      "reference": 52,
+      "saved": 34,
+      "fit": 46,
+      "match": 65,
+      "requirements": 23,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.4225,
+        "blocker": 0.08
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11689
+    },
+    {
+      "id": "01a0f37c-2674-748a-8df8-f0a20a3bf0aa",
+      "title": "High School Fellowship, Software Engineering",
+      "reference": 8,
+      "saved": 3,
+      "fit": 60,
+      "match": 23,
+      "requirements": 41,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.6775,
+        "blocker": 0.97
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11725
+    },
+    {
+      "id": "01a0f37f-7e30-7555-ac2f-727979601177",
+      "title": "Senior Software Engineer – PIM",
+      "reference": 76,
+      "saved": 72,
+      "fit": 44,
+      "match": 68,
+      "requirements": 73,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.515,
+        "blocker": 0.1
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11548
+    },
+    {
+      "id": "01a0f37f-bded-7273-96dd-cba4b5b1dfdf",
+      "title": "Senior Software Engineer, Kubernetes Runtime",
+      "reference": 57,
+      "saved": 52,
+      "fit": 63,
+      "match": 64,
+      "requirements": 31,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.2575,
+        "blocker": 0.11
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11567
+    },
+    {
+      "id": "01a0f3ec-f471-777d-aa6e-e385976ef7af",
+      "title": "Senior Software Engineer",
+      "reference": 89,
+      "saved": 82,
+      "fit": 76,
+      "match": 100,
+      "requirements": 22,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.875,
+        "blocker": 0.07
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11565
+    },
+    {
+      "id": "01a0f93e-5001-74d6-9c4c-55fdb983d78b",
+      "title": "Senior Backend Engineer, Home Surfaces",
+      "reference": 76,
+      "saved": 68,
+      "fit": 67,
+      "match": 72,
+      "requirements": 18,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.4025,
+        "blocker": 0.13
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11366
+    },
+    {
+      "id": "01a0fe3a-2ec1-76c0-8958-d09263d703a6",
+      "title": "Vulnerability Defense Software Engineer, Cloudforce One",
+      "reference": 76,
+      "saved": 58,
+      "fit": 38,
+      "match": 56,
+      "requirements": 29,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.325,
+        "blocker": 0.08
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11522
+    },
+    {
+      "id": "01a0fe3d-6400-748d-8c82-fe490103c2b5",
+      "title": "Senior Software Engineer – Guest \u0026 Host",
+      "reference": 84,
+      "saved": 72,
+      "fit": 68,
+      "match": 86,
+      "requirements": 20,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.635,
+        "blocker": 0.09
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11513
+    },
+    {
+      "id": "01a103df-e475-7758-9136-17b04c43bf93",
+      "title": "Senior Software Engineer",
+      "reference": 89,
+      "saved": 88,
+      "fit": 53,
+      "match": 95,
+      "requirements": 24,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.9475,
+        "blocker": 0.07
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 11500
+    },
+    {
+      "id": "01a103e0-191c-76bc-9a61-a2d4307b8b27",
+      "title": "Senior Software Engineer, Institutional Financing",
+      "reference": 82,
+      "saved": 74,
+      "fit": 55,
+      "match": 67,
+      "requirements": 16,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.345,
+        "blocker": 0.06
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 6944
+    },
+    {
+      "id": "01a103e1-3cbd-7663-912a-31f5e28bde5e",
+      "title": "Software Engineer II",
+      "reference": 78,
+      "saved": 78,
+      "fit": 79,
+      "match": 87,
+      "requirements": 20,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "core_work": 0.545,
+        "blocker": 0.08
+      },
+      "extraction_cached": true,
+      "extract_ms": 0,
+      "check_ms": 6849
+    }
+  ],
+  "metrics": {
+    "counters": {
+      "checker.coverage.none": 452,
+      "checker.coverage.partial": 92,
+      "checker.coverage.strong": 315,
+      "checker.coverage.weak": 80,
+      "checker.gaps": 153,
+      "checker.retrieval.empty_units": 50,
+      "checker.retrieval.input_tokens": 1873338,
+      "checker.retrieval.output_tokens": 351011,
+      "checker.retrieval.pairs": 4400,
+      "checker.retrieval.requests": 1110,
+      "checker.strength.input_tokens": 2396108,
+      "checker.strength.linked.partial": 734,
+      "checker.strength.linked.strong": 877,
+      "checker.strength.linked.weak": 645,
+      "checker.strength.output_tokens": 210408,
+      "checker.strength.rejected.gate": 2144,
+      "checker.strength.requests": 1645,
+      "checker.strength.ungraded": 2774,
+      "checker.units": 1110,
+      "holistic.input_tokens": 76567,
+      "holistic.output_tokens": 1050,
+      "holistic.requests": 30,
+      "jev.calls": 2785,
+      "jev.cost_micro_usd": 182543,
+      "jev.input_tokens": 4346013,
+      "jev.output_tokens": 562469
+    },
+    "durations": {
+      "checker.retrieval": {
+        "count": 1110,
+        "p50": 3166661037,
+        "p95": 4506929576,
+        "max": 5447624165
+      },
+      "checker.strength": {
+        "count": 1060,
+        "p50": 5897516082,
+        "p95": 8687746429,
+        "max": 9359116374
+      },
+      "jev.latency": {
+        "count": 2785,
+        "p50": 231666839,
+        "p95": 346187022,
+        "max": 946904823
+      },
+      "stage.build_coverage": {
+        "count": 30,
+        "p50": 105268,
+        "p95": 308790,
+        "max": 430168
+      },
+      "stage.holistic": {
+        "count": 30,
+        "p50": 2454420620,
+        "p95": 3504671854,
+        "max": 3611974147
+      },
+      "stage.match_evidence": {
+        "count": 30,
+        "p50": 11512688831,
+        "p95": 12455102722,
+        "max": 12625062363
+      },
+      "stage.parse_resume": {
+        "count": 30,
+        "p50": 319861,
+        "p95": 728338,
+        "max": 1263431
+      }
+    }
+  }
+}

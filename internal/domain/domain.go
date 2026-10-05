@@ -84,7 +84,8 @@ type Requirement struct {
 	Value string `json:"value"`
 	Refs  []Ref  `json:"refs"`
 	Tier  Tier   `json:"tier"`
-	// Importance is Jev's Score normalized to 0..1.
+	// Importance is Jev's Score normalized to 0..1; 0 when the Result's
+	// ImportanceSkipped is set.
 	Importance float64 `json:"importance"`
 }
 
@@ -105,4 +106,8 @@ type Result struct {
 	Requirements      []Requirement           `json:"requirements"`
 	AlternativeGroups []AlternativeGroup      `json:"alternative_groups"`
 	Context           map[Ref]ContextSentence `json:"context"`
+	// ImportanceSkipped means Importance was not asked (scoring mode, which
+	// does not use it): every Requirement's Importance is 0, and
+	// Requirements keep their order of first mention.
+	ImportanceSkipped bool `json:"importance_skipped,omitempty"`
 }

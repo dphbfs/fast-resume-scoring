@@ -91,6 +91,12 @@ func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (doma
 }
 
 // stage runs fn with timing, metrics and structured logs.
+// addUsage records one Jev call's tokens under its stage.
+func (e *Extractor) addUsage(stage string, u port.Usage) {
+	e.metrics.Add(stage+".input_tokens", int64(u.InputTokens))
+	e.metrics.Add(stage+".output_tokens", int64(u.OutputTokens))
+}
+
 func (e *Extractor) stage(ctx context.Context, name string, r *run, fn func(context.Context, *run) error) error {
 	start := time.Now()
 	err := fn(ctx, r)

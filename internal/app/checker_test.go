@@ -490,3 +490,27 @@ func TestStrengthSkipCappedGrading(t *testing.T) {
 		}
 	}
 }
+
+func TestWithoutMentioned(t *testing.T) {
+	in := domain.Result{
+		Requirements: []domain.Requirement{
+			{ID: "a", Tier: domain.TierRequired}, {ID: "b", Tier: domain.TierMentioned},
+			{ID: "c", Tier: domain.TierPreferred}, {ID: "d", Tier: domain.TierMentioned},
+		},
+		AlternativeGroups: []domain.AlternativeGroup{{ID: "g1", Members: []string{"a", "c", "d"}}, {ID: "g2", Members: []string{"a", "b"}}},
+	}
+	out := withoutMentioned(in)
+	var ids []string
+	for _, r := range out.Requirements {
+		ids = append(ids, r.ID)
+	}
+	if !slices.Equal(ids, []string{"a", "c"}) {
+		t.Errorf("requirements = %v", ids)
+	}
+	if len(out.AlternativeGroups) != 1 || !slices.Equal(out.AlternativeGroups[0].Members, []string{"a", "c"}) {
+		t.Errorf("groups = %+v", out.AlternativeGroups)
+	}
+	if len(in.Requirements) != 4 || len(in.AlternativeGroups[0].Members) != 3 {
+		t.Error("input was modified")
+	}
+}

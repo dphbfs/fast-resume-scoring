@@ -44,6 +44,7 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 			if err != nil {
 				return err
 			}
+			e.addUsage("extract.sections", resp.Usage)
 
 			mu.Lock()
 			defer mu.Unlock()

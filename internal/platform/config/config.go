@@ -44,6 +44,13 @@ type Pipeline struct {
 	// MinRequirementMass is the share of a Validation Choice's probability
 	// that must fall on Candidates for a chunk to be accepted.
 	MinRequirementMass float64 // PIPELINE_MIN_REQUIREMENT_MASS
+	// SkipImportance leaves out the Refinement Round's Importance questions
+	// (scoring mode: the Fit and Match Scores do not use Importance).
+	SkipImportance bool // PIPELINE_SKIP_IMPORTANCE
+	// SkipResponsibilities drops responsibilities sentences before
+	// Candidate generation (scoring mode: they only yield mentioned-tier
+	// Requirements, which CHECKER_SKIP_MENTIONED does not check).
+	SkipResponsibilities bool // PIPELINE_SKIP_RESPONSIBILITIES
 }
 
 // Checker tunes the Resume Checker.
@@ -56,7 +63,8 @@ type Checker struct {
 	// needs to create an Evidence Link.
 	MinEvidenceMass float64 // CHECKER_MIN_EVIDENCE_MASS
 	// NarrowSizes repeats the Retrieval Choice over the best NarrowSizes[i]
-	// options of the previous round; empty asks one round.
+	// options of the previous round; empty ("none" in the env) asks one
+	// round.
 	NarrowSizes []int // CHECKER_NARROW_SIZES, e.g. "12,4"
 	// GateThreshold > 0 adds one gate Noul per pair ("is this evidence the
 	// candidate has the requirement?") and links on gate >= threshold
@@ -68,6 +76,10 @@ type Checker struct {
 	// GateFirst (needs the gate) asks the gates in one request and grades
 	// only the pairs that passed, in a second.
 	GateFirst bool // CHECKER_GATE_FIRST
+	// SkipMentioned checks only required and preferred Requirements
+	// (scoring mode: the Match Score does not need the mentioned ones, which
+	// are about half of all checked items).
+	SkipMentioned bool // CHECKER_SKIP_MENTIONED
 }
 
 // removedSettings are experiment settings whose losing variants were
@@ -102,9 +114,11 @@ func load(getenv func(string) string) (Config, error) {
 			Timeout:        e.duration("GEN_TIMEOUT", 60*time.Second),
 		},
 		Pipeline: Pipeline{
-			MaxWindowWords:     e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
-			SectionBatchSize:   e.int("PIPELINE_SECTION_BATCH", 60),
-			MinRequirementMass: e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
+			MaxWindowWords:       e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
+			SectionBatchSize:     e.int("PIPELINE_SECTION_BATCH", 60),
+			MinRequirementMass:   e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
+			SkipImportance:       e.bool("PIPELINE_SKIP_IMPORTANCE", false),
+			SkipResponsibilities: e.bool("PIPELINE_SKIP_RESPONSIBILITIES", false),
 		},
 		Checker: Checker{
 			RetrievalK:        e.int("CHECKER_RETRIEVAL_K", 8),
@@ -114,6 +128,7 @@ func load(getenv func(string) string) (Config, error) {
 			GateThreshold:     e.float("CHECKER_GATE_THRESHOLD", 0.5),
 			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", true),
 			GateFirst:         e.bool("CHECKER_GATE_FIRST", true),
+			SkipMentioned:     e.bool("CHECKER_SKIP_MENTIONED", false),
 		},
 	}
 	if e.err != nil {
@@ -175,6 +190,9 @@ func (e *env) ints(key string, def []int) []int {
 	v := e.getenv(key)
 	if v == "" {
 		return def
+	}
+	if v == "none" {
+		return []int{}
 	}
 	var out []int
 	for _, f := range strings.Split(v, ",") {
