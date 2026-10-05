@@ -71,3 +71,31 @@ func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error
 	checkerRunner := eval.NewCheckerRunner(appChecker, evalBaseline, recorder, logger, checker)
 	return checkerRunner, nil
 }
+
+// initE2ERunner builds the end-to-end eval runner: extraction (Job
+// Summaries through the file cache, as in initRunner) and checking.
+func initE2ERunner(cacheDir gencache.Dir) (*eval.E2ERunner, error) {
+	configConfig, err := config.Load()
+	if err != nil {
+		return nil, err
+	}
+	configJev := configConfig.Jev
+	recorder := metrics.NewRecorder()
+	logger := logging.New()
+	client, err := jev.New(configJev, recorder, logger)
+	if err != nil {
+		return nil, err
+	}
+	generative := configConfig.Generative
+	openaiClient, err := openai.New(generative, recorder, logger)
+	if err != nil {
+		return nil, err
+	}
+	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
+	pipeline := configConfig.Pipeline
+	extractor := app.New(client, gencacheClient, recorder, logger, pipeline)
+	checker := configConfig.Checker
+	appChecker := app.NewChecker(client, recorder, logger, checker)
+	e2ERunner := eval.NewE2ERunner(extractor, appChecker, recorder, logger, configJev, pipeline, checker)
+	return e2ERunner, nil
+}

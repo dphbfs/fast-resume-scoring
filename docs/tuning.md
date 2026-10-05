@@ -453,3 +453,31 @@ criteria v1-v4 and v6 (v5 is the only rubric); gate wording v1; the veto
 the committed reports; setting a removed env var is a config error.
 Directly constructed Checkers now get criteria v5 and gate wording v2
 (before: v3 and v1, unlike the env defaults).
+
+### End-to-end baseline vs the generative reference (2026-10-05, review v1 E3)
+
+`make eval-e2e` (report `eval/reports/e2e/2026-10-05T02-35-23Z`): the 30-pair
+subset of `testdata/reference`, extraction + checking cold, Fit Score vs
+today's generative reference score (`current.json`).
+
+| Metric | Value |
+|---|---|
+| MAE / bias | 20.5 / -17.5 |
+| Within ±5 / ±10 | 13% / 30% |
+| Max error | 45 (Stripe high-school fellowship: Fit 53, reference 8) |
+| Pearson / Kendall τ-b | 0.60 / 0.46 |
+| Jev cost per pair (cold) | $0.0168 (checker ~57% of input tokens) |
+| Time per pair | 20.5s (parallel 4) |
+
+- The Fit Score runs ~17 points low; a constant shift alone would give
+  MAE ~11.9 in-sample (not a valid estimate, only the size of the bias).
+  Ranking is the real gap: τ-b 0.46 vs the reference's own noise of
+  ~1 point per call.
+- Requirements per posting average 54 (up to 122) against ~30 on the
+  golden set: these Job Descriptions carry Hermes's condensed stack
+  section plus the full posting, so extraction sees most text twice.
+  Error does not correlate with the count (r = -0.15), but cost does.
+- The largest misses are holistic judgments the coverage formula cannot
+  make: eligibility (a high-school fellowship), and seniority/scope.
+- Cost: $0.0168 per pair cold vs ~$0.05 for one Opus 5 call, about 3×
+  cheaper; the 5× target needs about $0.010.

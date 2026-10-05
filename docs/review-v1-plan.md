@@ -102,7 +102,7 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
 - [~] E2. Noise copies and current reference (`testdata/reference/noise.json`, `current.json`; today's scorer runs +11.9 above the saved scores, so tuning uses `current.json`; cost replay pending): pick 10 stratified applications, create eval
       copies in Reactive Resume, score each 3×, save, archive. Cost-only
       replay of those pairs through the Anthropic proxy for Opus 5 tokens.
-- [ ] E3. End-to-end eval mode: raw JD + resume → extract → check →
+- [x] E3. End-to-end eval mode (`eval -e2e`, `make eval-e2e`; first run: MAE 20.5, bias -17.5, τ-b 0.46, $0.0168/pair, see `docs/tuning.md`; golden alignment deferred, only 2 reference pairs are golden): raw JD + resume → extract → check →
       production Fit Score compared to the reference score. Golden
       alignment for diagnostics only (strict/alias first, loose matches
       surfaced for review, `extraction_missing` + Coverage `none`,

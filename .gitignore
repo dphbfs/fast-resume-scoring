@@ -40,3 +40,7 @@ testdata/jd/
 # Per-fixture extraction traces written next to eval reports
 eval/reports/*-traces/
 eval/reports/checker/*-traces/
+eval/reports/e2e/*-traces/
+
+# Cached extraction results for the end-to-end eval (regenerable)
+eval/cache/extract/
