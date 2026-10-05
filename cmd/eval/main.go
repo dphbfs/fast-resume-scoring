@@ -185,8 +185,12 @@ func runE2E(ctx context.Context, set, out, summaries, extractCache string, prefi
 		return 1
 	}
 	t := report.Totals
-	fmt.Printf("MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f  saved tau-b %.2f  $%.4f/pair  failed %d/%d\nreport: %s\n",
-		t.MAE, t.Bias, 100*t.Within10, t.MaxError, t.TauB, t.SavedTauB, t.JevCostPerPair, t.Failed, t.Pairs, path)
+	fmt.Printf("fit: MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f  saved tau-b %.2f\n",
+		t.MAE, t.Bias, 100*t.Within10, t.MaxError, t.TauB, t.SavedTauB)
+	if m := t.Match; m != nil {
+		fmt.Printf("match: MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f\n", m.MAE, m.Bias, 100*m.Within10, m.MaxError, m.TauB)
+	}
+	fmt.Printf("$%.4f/pair  failed %d/%d\nreport: %s\n", t.JevCostPerPair, t.Failed, t.Pairs, path)
 	if t.Failed > 0 {
 		return 1
 	}

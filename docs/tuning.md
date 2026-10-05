@@ -515,3 +515,39 @@ constrained grid (strong 1, none 0, required weight 3 fixed):
   holistic/eligibility question), not knob tuning.
 - On 30 pairs a τ-b difference of ~0.1 is within noise; treat the
   "strong only" gain as a hint, not a result.
+
+### Holistic Round and the Match Score (2026-10-05, review v1 c; ADR 0003)
+
+One Jev request per pair over the full posting and the whole Resume
+(`app.HolisticJudge`), alongside extraction. First run asked four
+questions; per-signal agreement with the reference (30-pair subset,
+`eval/reports/e2e/2026-10-05T02-59-15Z`):
+
+| Signal | Kendall τ-b | Pearson |
+|---|---|---|
+| Fit Score | 0.42 | 0.61 |
+| core_work (Score, 5 levels) | 0.52 | 0.50 |
+| blocker (Noul, hard eligibility unmet) | -0.32 | -0.59 |
+| domain (Score, 3 levels) | 0.04 | 0.15 |
+| level (Choice) | 0.27 | 0.31 |
+
+`blocker` is 0.97 on the high-school fellowship (reference 8, Fit 53) and
+0.05-0.25 elsewhere. `domain` and `level` were dropped (no signal; `level`
+called a backend role "too late" for the candidate at 0.71).
+
+Blend `x = (0.5 × Fit/100 + 0.5 × core_work) × (1 − blocker)`, mapped
+linearly to the reference scale: leave-one-out MAE 8.8 (max 21) vs 12.4
+for the Fit Score with the same kind of map. Constants fitted on run
+02-59-15Z (w 0.5, `21.2 + 107.9 x`), then two repeat runs:
+
+| Run | Match MAE | Bias | Within ±10 | Max | τ-b | Fit MAE / τ-b |
+|---|---|---|---|---|---|---|
+| 03-02-54Z | 8.6 | -0.0 | 57% | 20 | 0.66 | 20.2 / 0.47 |
+| 03-04-40Z | 8.4 | -0.3 | 57% | 21 | 0.67 | 20.5 / 0.45 |
+
+- The repeats reuse the same pairs the constants were fitted on, so their
+  MAE is optimistic; the honest estimate is the leave-one-out 8.8 until
+  the final held-out set runs.
+- Cost: +$0.0005 per pair for the Holistic Round; cached-extraction runs
+  are $0.0095 per pair, cold about $0.015 (about 3.3× cheaper than one
+  Opus 5 call; the 5× target still needs cost work).

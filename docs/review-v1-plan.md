@@ -154,6 +154,12 @@ grades).
       resume.
 - [ ] A4. Pick one candidate (or keep current); log in `docs/tuning.md`.
 
+## Phase 3b: Holistic Round (added 2026-10-05)
+
+- [x] H-R1. Holistic Round (`core_work` Score + `blocker` Noul) and the
+      Match Score (ADR 0003, proposed): subset MAE 8.4-8.6, τ-b 0.66-0.67
+      over 2 repeats; leave-one-out MAE 8.8. Confirm on the final set.
+
 ## Phase 4: latency and cost (required to reach ~$0.010 per pair cold)
 
 - [ ] L1. Instrumentation: queue wait, HTTP latency, in-flight count,

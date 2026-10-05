@@ -47,3 +47,9 @@ var CheckerSet = wire.NewSet(
 	app.NewChecker,
 	wire.Bind(new(port.ResumeChecker), new(*app.Checker)),
 )
+
+// HolisticSet provides the Holistic Round judge behind its driving port.
+var HolisticSet = wire.NewSet(
+	app.NewHolisticJudge,
+	wire.Bind(new(port.HolisticJudge), new(*app.HolisticJudge)),
+)
