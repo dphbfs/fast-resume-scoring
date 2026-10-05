@@ -47,3 +47,6 @@ eval/cache/extract/
 
 # Python bytecode
 __pycache__/
+
+# Generative explanation replies (scripts/explain_reference.py)
+eval/explain/
