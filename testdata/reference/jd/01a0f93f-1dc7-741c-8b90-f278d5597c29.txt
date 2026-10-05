@@ -1,0 +1,69 @@
+## American Express - Senior Software Engineer II – Global Commercial Services Technology
+
+🔗 [Apply](https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26011440)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior backend engineer building scalable Golang and AWS services for American Express’s expense-management platform. Designing distributed systems, APIs, microservices, and event-driven architectures.
+Senior backend engineer building scalable expense-management systems for American Express
+- Salary: $123,000 - $215,250 per year
+- Tech stack: AWS, Cloud, Distributed Systems, Kafka, Microservices, NoSQL, Postgres, Go
+- Design, develop, and deploy scalable backend services and APIs using Golang in AWS environments
+- Build microservices leveraging domain-driven design and modern architectural patterns such as hexagonal architecture
+- Collaborate with frontend engineers, product managers, and stakeholders to define service contracts and platform capabilities
+- Mentor engineers and foster collaboration across distributed engineering teams
+- Evaluate and integrate SaaS, PaaS, and IaaS solutions
+- Participate in architecture reviews, RFCs, and proof-of-concept initiatives
+- Develop highly scalable, resilient, and observable distributed systems
+- Design and implement event-driven architectures and streaming solutions using Kafka and related messaging technologies
+- 8+ years of experience in software engineering with a strong focus on backend systems
+- Bachelor’s degree in Computer Science, Software Engineering, Information Technology, or related field
+- Strong hands-on experience building backend services using Golang
+- Strong experience designing and deploying systems in AWS cloud environments
+- Experience building and operating distributed systems, APIs, and microservices architectures
+- Experience with domain-driven design and modern architectural patterns
+- Experience with relational and NoSQL databases
+- Experience with distributed Postgres-compatible databases such as CockroachDB
+
+### Full Job Description
+Summary:
+Senior backend engineer building scalable Golang and AWS services for American Express’s expense-management platform. Designing distributed systems, APIs, microservices, and event-driven architectures.
+Senior backend engineer building scalable expense-management systems for American Express
+Role description:
+• Design, develop, and deploy scalable backend services and APIs using Golang in AWS environments
+• Build microservices leveraging domain-driven design and modern architectural patterns such as hexagonal architecture
+• Collaborate with frontend engineers, product managers, and stakeholders to define service contracts and platform capabilities
+• Mentor engineers and foster collaboration across distributed engineering teams
+• Evaluate and integrate SaaS, PaaS, and IaaS solutions
+• Participate in architecture reviews, RFCs, and proof-of-concept initiatives
+• Develop highly scalable, resilient, and observable distributed systems
+• Design and implement event-driven architectures and streaming solutions using Kafka and related messaging technologies
+• Integrate with workflow orchestration and durable execution frameworks such as Camunda and Temporal
+• Design and manage data systems across relational, graph, document, search, and OLAP databases
+• Build and operate cloud-native systems using AWS services such as Lambda, ECS, SQS, API Gateway, RDS, and S3
+• Implement observability through logging, monitoring, and distributed tracing using Datadog
+• Establish backend engineering standards, best practices, and system design conventions
+• Plan, estimate, and deliver engineering work while mitigating risks and resolving blockers
+• Communicate progress and system capabilities to stakeholders and leadership
+Role requirements:
+• 8+ years of experience in software engineering with a strong focus on backend systems
+• Bachelor’s degree in Computer Science, Software Engineering, Information Technology, or related field
+• Strong hands-on experience building backend services using Golang
+• Strong experience designing and deploying systems in AWS cloud environments
+• Experience building and operating distributed systems, APIs, and microservices architectures
+• Experience with domain-driven design and modern architectural patterns
+• Experience with relational and NoSQL databases
+• Experience with distributed Postgres-compatible databases such as CockroachDB
+• Experience integrating workflow orchestration platforms such as Camunda or Temporal
+• Experience implementing observability, monitoring, and performance optimization tools such as Datadog
+• Experience collaborating across cross-functional teams and mentoring engineers
+• Strong communication and problem-solving skills
+• Entrepreneurial mindset and passion for building scalable systems
+• Employment eligibility to work with American Express in the United States is required; the company will not pursue visa sponsorship
+• Experience integrating AI/ML models into backend systems is a plus
+Benefits:
+• Bonus
+• Benefits
+Tech stack:
+AWS, Cloud, Distributed Systems, Kafka, Microservices, NoSQL, Postgres, Go

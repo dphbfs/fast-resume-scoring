@@ -1,0 +1,64 @@
+## Pantheon Platform - Senior Software Engineer, Connectivity – API Transformation
+
+🔗 [Apply](https://boards.greenhouse.io/pantheon/jobs/8226934)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Pantheon’s cloud WebOps connectivity and API platform. Designing federated APIs, distributed services, networking, and workflow orchestration at scale.
+Senior Software Engineer building Pantheon’s cloud WebOps connectivity and API platform
+- Salary: $139,680 - $174,600 per year
+- Tech stack: Cassandra, Cloud, Distributed Systems, DNS, Docker, Drupal, Google Cloud Platform, Grafana, GraphQL, GRPC, Kubernetes, MySQL, Prometheus, Python, Redis, Rust, Terraform, Vault
+- Build and evolve Pantheon's unified API: a federated GraphQL supergraph and Go subgraphs serving the Dashboard and public API
+- Shape service connectivity through VPC and network architecture, service discovery strategy, and internal traffic standards
+- Decompose a large legacy Python monolith into well-bounded services and own the Cassandra data layer, including replication, backup, and disaster recovery
+- Design and operate workflow orchestration at platform scale using GCP Workflows, Pub/Sub-driven job execution, and Go services on Cloud Run
+- Set GraphQL, gRPC, and REST standards for other engineering teams and serve as a technical resource across the organization
+- Own production systems, track health with SLOs, resolve production issues, and balance delivery speed with reliability
+- Participate in on-call engineering and alert response rotations
+- Raise engineering quality through code review, design feedback, and mentorship
+- Significant work experience building and operating production services in Go, with adaptability to work in a polyglot codebase including Rust and Python
+- Experience designing APIs with schema design, versioning, and backward compatibility judgment; GraphQL, gRPC, or REST at scale
+- Work-related experience with large-scale, high-traffic distributed systems and scalable, robust services
+- Experience carving services out of a monolith or evolving a legacy system incrementally while keeping it running
+- Working knowledge of cloud networking fundamentals: VPCs, DNS, load balancing, and service-to-service authentication
+- Understanding and working knowledge of Kubernetes, Terraform, CI/CD pipelines, and release engineering practices
+- Experience with a major cloud provider; GCP especially welcome
+- Experience with observability tooling such as Grafana Cloud, Prometheus, and OpenTelemetry
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Pantheon’s cloud WebOps connectivity and API platform. Designing federated APIs, distributed services, networking, and workflow orchestration at scale.
+Senior Software Engineer building Pantheon’s cloud WebOps connectivity and API platform
+Role description:
+• Build and evolve Pantheon's unified API: a federated GraphQL supergraph and Go subgraphs serving the Dashboard and public API
+• Shape service connectivity through VPC and network architecture, service discovery strategy, and internal traffic standards
+• Decompose a large legacy Python monolith into well-bounded services and own the Cassandra data layer, including replication, backup, and disaster recovery
+• Design and operate workflow orchestration at platform scale using GCP Workflows, Pub/Sub-driven job execution, and Go services on Cloud Run
+• Set GraphQL, gRPC, and REST standards for other engineering teams and serve as a technical resource across the organization
+• Own production systems, track health with SLOs, resolve production issues, and balance delivery speed with reliability
+• Participate in on-call engineering and alert response rotations
+• Raise engineering quality through code review, design feedback, and mentorship
+Role requirements:
+• Significant work experience building and operating production services in Go, with adaptability to work in a polyglot codebase including Rust and Python
+• Experience designing APIs with schema design, versioning, and backward compatibility judgment; GraphQL, gRPC, or REST at scale
+• Work-related experience with large-scale, high-traffic distributed systems and scalable, robust services
+• Experience carving services out of a monolith or evolving a legacy system incrementally while keeping it running
+• Working knowledge of cloud networking fundamentals: VPCs, DNS, load balancing, and service-to-service authentication
+• Understanding and working knowledge of Kubernetes, Terraform, CI/CD pipelines, and release engineering practices
+• Experience with a major cloud provider; GCP especially welcome
+• Experience with observability tooling such as Grafana Cloud, Prometheus, and OpenTelemetry
+• Experience supporting live sites and participating in on-call
+• Clear communication skills and ability to represent contributions and ideas clearly while remaining open to others
+• Visa sponsorship is not available at this time
+• Bonus points: GraphQL Federation, federation gateways or routers, schema registries, Rust, Cassandra, stateful datastores, legacy runtime migrations, private service networking, service meshes, GCP Workflows, Pub/Sub, Cloud Run, Cloud Build, AlloyDB, MySQL, Redis, Docker, CircleCI, GitHub Actions, Vault, WordPress, Drupal
+Benefits:
+• Industry competitive compensation and equity plan
+• Paid Time Off (PTO), Paid Sick Leave (PSL) and 11 Paid Company Holidays
+• Full medical coverage (Extended health care, dental, vision)
+• Top-of-line equipment
+• Monthly allowance for wellness, reading and access to LinkedIn Learning for continued development
+• Events and activities both team-based and company wide that inspire, educate and cultivate
+• Bonus
+Tech stack:
+Cassandra, Cloud, Distributed Systems, DNS, Docker, Drupal, Google Cloud Platform, Grafana, GraphQL, GRPC, Kubernetes, MySQL, Prometheus, Python, Redis, Rust, Terraform, Vault, WordPress, Go

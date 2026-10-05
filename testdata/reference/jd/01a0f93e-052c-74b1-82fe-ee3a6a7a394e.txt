@@ -1,0 +1,65 @@
+## Vontier - Software Engineer II
+
+🔗 [Apply](https://careers.vontier.com/us/en/job/GIL012292)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer II developing automated tank gauge and fueling infrastructure software for Gilbarco Veeder-Root. Applying modern technology stacks, Agile practices, and object-oriented programming.
+Software Engineer II developing fueling infrastructure software for Gilbarco Veeder-Root
+- Salary: $96,800 - $124,600 per year
+- Tech stack: AWS, Azure, Java, C++
+- Design, develop, and execute software solutions for Automated Tank Gauge and related platforms
+- Bring knowledge of newer technology stacks and frameworks and identify where they should be applied
+- Help the team get up to speed on newer technologies
+- Use Agile methodology experience to improve Agile team operations
+- Collaborate with peers, electrical and mechanical development teams, quality assurance, and others
+- Mentor junior engineers on design and coding best practices
+- Transfer technical knowledge about newer technologies
+- Bachelor's of Science in Computer Science, Software Engineering, or Computer Engineering, or equivalent experience
+- 3–5 years of experience developing software in object-oriented programming languages
+- Ideally C++ or Java experience
+- Project leadership experience is preferred
+- Experience with continuous integration and automated test technologies is useful
+- Experience with REST APIs and JSON is useful
+- Experience with AWS or Azure and associated services is useful
+- Experience with Agile methodologies
+
+### Full Job Description
+Summary:
+Software Engineer II developing automated tank gauge and fueling infrastructure software for Gilbarco Veeder-Root. Applying modern technology stacks, Agile practices, and object-oriented programming.
+Software Engineer II developing fueling infrastructure software for Gilbarco Veeder-Root
+Role description:
+• Design, develop, and execute software solutions for Automated Tank Gauge and related platforms
+• Bring knowledge of newer technology stacks and frameworks and identify where they should be applied
+• Help the team get up to speed on newer technologies
+• Use Agile methodology experience to improve Agile team operations
+• Collaborate with peers, electrical and mechanical development teams, quality assurance, and others
+• Mentor junior engineers on design and coding best practices
+• Transfer technical knowledge about newer technologies
+Role requirements:
+• Bachelor's of Science in Computer Science, Software Engineering, or Computer Engineering, or equivalent experience
+• 3–5 years of experience developing software in object-oriented programming languages
+• Ideally C++ or Java experience
+• Project leadership experience is preferred
+• Experience with continuous integration and automated test technologies is useful
+• Experience with REST APIs and JSON is useful
+• Experience with AWS or Azure and associated services is useful
+• Experience with Agile methodologies
+• Ability to collaborate with electrical and mechanical development teams and quality assurance
+Benefits:
+• Medical, dental, vision, disability and life insurance
+• Family planning programs through Maven Clinic
+• Diabetes management support through Livongo
+• Women's health coverage
+• Adult and elder care support
+• Paid parental leave
+• 401(k) plan with matching company contributions
+• Paid time off up to 15 days each year
+• 13 paid holidays, including 3 floating holidays
+• Paid sick leave
+• Dynamic, innovative, and inclusive work environment
+• Personal growth and continuous learning opportunities
+• Work-life balance and collaboration support
+Tech stack:
+AWS, Azure, Java, C++

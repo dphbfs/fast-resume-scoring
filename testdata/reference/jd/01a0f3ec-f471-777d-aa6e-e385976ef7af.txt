@@ -1,0 +1,71 @@
+## Oportun - Senior Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/oportun/jobs/4739336005)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building scalable platform services and shared libraries for Oportun, a mission-driven financial services company. Improving reliability, developer productivity, delivery velocity, and engineering quality.
+Senior Software Engineer building platform services for Oportun's mission-driven financial services business
+- Tech stack: AWS, Azure, Cloud, Distributed Systems, Google Cloud Platform, Java, C++
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, build, test, deploy, and maintain scalable, reliable platform services and shared libraries
+- Contribute to platform and system architecture decisions focused on reliability, scalability, and developer experience
+- Write high-quality, maintainable code and model strong engineering practices
+- Collaborate with Staff Engineers and peers to implement standards and patterns supporting Continuous Delivery
+- Identify and address performance, scalability, and reliability issues across platform services
+- Participate in design reviews, code reviews, and technical discussions
+- Improve monitoring, alerting, and incident response practices
+- Investigate production root causes and implement long-term fixes to reduce on-call burden
+- 7-8 years of related software engineering experience with a bachelor's degree, or a master's degree with an equivalent combination of education and experience
+- Strong experience in software development focused on backend systems and services
+- Proficiency in Java, C#, C++, or similar backend languages
+- Strong knowledge of software design principles, data structures, and algorithms
+- Experience building and operating scalable, reliable, and secure systems
+- 3+ years designing, building, deploying, and maintaining container-based applications
+- 4+ years working with cloud platforms such as AWS, GCP, or Azure
+- Experience with Continuous Delivery practices and automated deployment pipelines
+
+### Full Job Description
+Summary:
+Senior Software Engineer building scalable platform services and shared libraries for Oportun, a mission-driven financial services company. Improving reliability, developer productivity, delivery velocity, and engineering quality.
+Senior Software Engineer building platform services for Oportun's mission-driven financial services business
+Role description:
+• Design, build, test, deploy, and maintain scalable, reliable platform services and shared libraries
+• Contribute to platform and system architecture decisions focused on reliability, scalability, and developer experience
+• Write high-quality, maintainable code and model strong engineering practices
+• Collaborate with Staff Engineers and peers to implement standards and patterns supporting Continuous Delivery
+• Identify and address performance, scalability, and reliability issues across platform services
+• Participate in design reviews, code reviews, and technical discussions
+• Improve monitoring, alerting, and incident response practices
+• Investigate production root causes and implement long-term fixes to reduce on-call burden
+• Mentor junior and mid-level engineers through code reviews, pairing, and technical guidance
+• Partner with cross-functional teams to deliver measurable business and customer value
+• Proactively propose improvements
+• Use AI tools thoughtfully to reduce manual work and make better decisions faster
+Role requirements:
+• 7-8 years of related software engineering experience with a bachelor's degree, or a master's degree with an equivalent combination of education and experience
+• Strong experience in software development focused on backend systems and services
+• Proficiency in Java, C#, C++, or similar backend languages
+• Strong knowledge of software design principles, data structures, and algorithms
+• Experience building and operating scalable, reliable, and secure systems
+• 3+ years designing, building, deploying, and maintaining container-based applications
+• 4+ years working with cloud platforms such as AWS, GCP, or Azure
+• Experience with Continuous Delivery practices and automated deployment pipelines
+• Strong problem-solving and debugging skills
+• Effective communication and collaboration skills
+• Experience mentoring junior engineers and contributing to team-level technical leadership
+• Working knowledge of secure development practices and security considerations in distributed systems
+• Open to experimenting with AI tools and willing to learn
+Benefits:
+• 401(k) Company Match
+• Medical Insurance
+• Dental Insurance
+• Vision Insurance
+• Life Insurance
+• Disability Insurance
+• Flexible PTO
+• Competitive compensation and benefits package supporting physical, financial, and professional well-being
+Tech stack:
+AWS, Azure, Cloud, Distributed Systems, Google Cloud Platform, Java, C++
+Company sponsorship flag: sponsorsH1B=true.

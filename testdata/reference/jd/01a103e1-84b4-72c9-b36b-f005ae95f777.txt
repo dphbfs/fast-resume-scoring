@@ -1,0 +1,53 @@
+## Coinbase - Senior Software Engineer, Institutional, Settlements & Transfers
+
+🔗 [Apply](https://boards.greenhouse.io/coinbase/jobs/8238716)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior backend engineer building Coinbase’s institutional settlements and transfers infrastructure. Designing scalable financial systems across fiat, crypto, and internal ledgers.
+Senior backend engineer building Coinbase institutional settlements and transfers infrastructure
+- Salary: $207,955 - $218,900 per year
+- Tech stack: Distributed Systems, Kafka, Postgres, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Own the design, build, and scaling of backend services that process settlements and transfers across fiat, crypto, and internal ledger systems.
+- Drive code quality and maintainability through rigorous code reviews, refactoring, and active participation across all stages of the development lifecycle.
+- Lead performance and scalability improvements for critical financial infrastructure, including troubleshooting, triaging, and resolving production issues.
+- Partner with product managers, engineering managers, and cross-functional teams to translate product vision into quarterly technical roadmaps and deliverables.
+- Propose and implement architectural improvements that accelerate team velocity, reduce tech debt, and strengthen system reliability.
+- Mentor junior and mid-level engineers on technical best practices and professional growth, raising the bar across the team.
+- 5+ years of backend software engineering experience, including designing, building, and maintaining production services at scale.
+- Production experience with Go (or similar backend language), relational data stores (Postgres or equivalent), and message-based architectures (Kafka or equivalent).
+- Demonstrated ability to own system design decisions, lead technical proposals, and drive alignment across a team of engineers.
+- Track record of identifying and resolving quality, performance, and scalability issues in distributed systems.
+- Experience mentoring engineers and contributing to a culture of high code quality through thorough reviews, testing, and documentation.
+- Utilizes generative AI responsibly, maintaining human oversight to deliver business-ready outputs and drive measurable improvements in workflow efficiency, cost, and quality.
+
+### Full Job Description
+Summary:
+Senior backend engineer building Coinbase’s institutional settlements and transfers infrastructure. Designing scalable financial systems across fiat, crypto, and internal ledgers.
+Senior backend engineer building Coinbase institutional settlements and transfers infrastructure
+Role description:
+• Own the design, build, and scaling of backend services that process settlements and transfers across fiat, crypto, and internal ledger systems.
+• Drive code quality and maintainability through rigorous code reviews, refactoring, and active participation across all stages of the development lifecycle.
+• Lead performance and scalability improvements for critical financial infrastructure, including troubleshooting, triaging, and resolving production issues.
+• Partner with product managers, engineering managers, and cross-functional teams to translate product vision into quarterly technical roadmaps and deliverables.
+• Propose and implement architectural improvements that accelerate team velocity, reduce tech debt, and strengthen system reliability.
+• Mentor junior and mid-level engineers on technical best practices and professional growth, raising the bar across the team.
+Role requirements:
+• 5+ years of backend software engineering experience, including designing, building, and maintaining production services at scale.
+• Production experience with Go (or similar backend language), relational data stores (Postgres or equivalent), and message-based architectures (Kafka or equivalent).
+• Demonstrated ability to own system design decisions, lead technical proposals, and drive alignment across a team of engineers.
+• Track record of identifying and resolving quality, performance, and scalability issues in distributed systems.
+• Experience mentoring engineers and contributing to a culture of high code quality through thorough reviews, testing, and documentation.
+• Utilizes generative AI responsibly, maintaining human oversight to deliver business-ready outputs and drive measurable improvements in workflow efficiency, cost, and quality.
+Benefits:
+• Equity and bonus eligibility
+• Medical insurance
+• Dental insurance
+• Vision insurance
+• 401(k)
+• Quarterly in-person working sessions called “surges”
+Tech stack:
+Distributed Systems, Kafka, Postgres, Go
+Company sponsorship flag: sponsorsH1B=true.

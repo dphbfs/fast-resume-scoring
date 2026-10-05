@@ -1,0 +1,3505 @@
+{
+  "scorer": "Reactive Resume match score (Claude Opus 5)",
+  "rules": {
+    "resume": "01a0caff-793b-776b-a9da-7582831315d7",
+    "min_jd_chars": 1000,
+    "single_score": true
+  },
+  "counts": {
+    "pairs": 95,
+    "subset": 30,
+    "excluded_not_main_resume": 5,
+    "excluded_rescored": 1,
+    "excluded_stub_jd": 17
+  },
+  "pairs": [
+    {
+      "id": "01a0cb46-922c-7022-8855-68428d9a7944",
+      "title": "Senior Software Engineer",
+      "company": "Factorial",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0cb46-922c-7022-8855-68428d9a7944.txt",
+      "score": 74,
+      "strengths": [
+        "10+ years backend software engineering experience",
+        "5+ years senior-level engineering experience",
+        "Strong distributed systems and microservices background",
+        "Built high-availability systems at scale",
+        "Designed REST APIs and service integrations",
+        "Strong relational database experience with MySQL and PostgreSQL",
+        "Kafka event-driven architecture experience",
+        "AWS cloud deployment experience"
+      ],
+      "gaps": [
+        "No fintech, credit, or lending domain experience shown",
+        "Limited evidence of financial transactional systems at scale",
+        "Primary stack is Java/Golang rather than TypeScript/Node.js/Python",
+        "No React/Next.js/Vite product frontend experience emphasized",
+        "No GCP/GKE experience mentioned",
+        "No Temporal, Apache Pulsar, EventStore/KurrentDB, Dapr, Istio, or KrakenD experience shown",
+        "AI experience appears engineering-tool focused, not AI-powered product features with latency, fallback, cost, and observability concerns",
+        "No explicit IaC or ArgoCD experience listed"
+      ],
+      "scored_at": [],
+      "created_at": "2026-09-22T22:39:55.046Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d60b-2973-701e-806c-d1e519e67940",
+      "title": "Software Engineer, L5 - Delivery",
+      "company": "Netflix",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d60b-2973-701e-806c-d1e519e67940.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, Senior level",
+        "Deep Java and Spring Boot expertise",
+        "Built distributed systems components and microservices",
+        "Monolith-to-microservices extraction with zero-downtime cutover",
+        "Feature-flagged progressive rollouts across multiple teams",
+        "Owned shared internal libraries consumed by other engineering teams",
+        "Built internal developer tooling (Golang CLI) adopted across teams",
+        "Reduced service bootstrap time from days to hours (developer productivity)"
+      ],
+      "gaps": [
+        "No Spinnaker or Managed Delivery experience",
+        "No continuous delivery platform development experience",
+        "No dedicated developer platform team role (internal engineers as customers)",
+        "On-call rotation not explicitly stated (only production support)",
+        "No fleet-scale infrastructure rollout experience",
+        "Limited front-end/full-stack depth for nice-to-have",
+        "No Kotlin or other JVM-language breadth",
+        "No large-scale streaming/consumer-internet scale (Netflix-tier) exposure"
+      ],
+      "scored_at": [
+        "2026-09-27T22:28:23Z"
+      ],
+      "created_at": "2026-09-25T00:50:50.946Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d60b-7c6e-71b6-93b0-490532790dd5",
+      "title": "Senior Software Engineer - EDR Workflows - Security",
+      "company": "Elastic",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d60b-7c6e-71b6-93b0-490532790dd5.txt",
+      "score": 45,
+      "strengths": [
+        "10+ years senior backend engineering experience",
+        "End-to-end ownership from design through production deployment and support",
+        "Strong REST API design and evolution experience",
+        "Observability ownership: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Scalable high-availability, high-load distributed systems",
+        "Event-driven architecture with Kafka; monolith-to-microservices extraction",
+        "Demonstrated AI-powered development mindset (Claude Code, MCP, agents, spec-driven development)",
+        "Performance optimization with measurable results (up to 95% faster reports)"
+      ],
+      "gaps": [
+        "No production TypeScript/Node.js backend experience (listed as skill only)",
+        "No React JS development experience (only built backends for React/Vue SPAs)",
+        "No cybersecurity, EDR, or digital forensics background",
+        "No experience with the Elastic stack (Elasticsearch, Kibana, Elastic Defend)",
+        "No OSquery or endpoint management/response tooling experience",
+        "No frontend/UI feature development for user-facing interfaces",
+        "No open-source contributions listed",
+        "No SIEM/XDR or security operations domain exposure"
+      ],
+      "scored_at": [],
+      "created_at": "2026-09-25T00:51:12.192Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d645-f969-716c-bfcb-80e95ce2f2a0",
+      "title": "Senior Software Engineer, Backend",
+      "company": "Robinhood",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d645-f969-716c-bfcb-80e95ce2f2a0.txt",
+      "score": 66,
+      "strengths": [
+        "10+ years professional backend experience, well above the 5+ year bar",
+        "Production distributed systems and microservice architecture at scale",
+        "Strong REST API design across multiple high-traffic platforms",
+        "Kafka-based event-driven and asynchronous workflow experience",
+        "Demonstrated large-project ownership: monolith-to-core-services extraction in 3 months",
+        "Measurable performance impact: report generation cut 30-60s to 3-10s (up to 95%)",
+        "Zero-downtime migration skill using feature flags and gradual rollout across 4 teams",
+        "Built and owned shared platform libraries, improving developer productivity"
+      ],
+      "gaps": [
+        "No fintech/brokerage, trading, ledger, or payments domain experience",
+        "No demonstrated low-latency / real-time system work (latency SLOs, p99 tuning)",
+        "Limited evidence of highly concurrent system design (threading, locking, backpressure)",
+        "Location mismatch: Orlando, FL vs. required 3 days/week onsite in Menlo Park or NYC",
+        "No explicit mentorship, code-review leadership, or junior-engineer development examples",
+        "Scale framed as 'thousands' of chargers, not millions of customers",
+        "Golang depth is limited to CLI tooling and small fixes, not core production services",
+        "No mention of correctness-critical guarantees (idempotency, exactly-once, reconciliation, financial accuracy)"
+      ],
+      "scored_at": [
+        "2026-09-25T01:55:20Z"
+      ],
+      "created_at": "2026-09-25T01:55:05.279Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d664-9162-7300-b1a6-448f80afab63",
+      "title": "Software Engineer, Backend",
+      "company": "Robinhood",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d664-9162-7300-b1a6-448f80afab63.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, far exceeding the 2+ year bar",
+        "Strong Kafka and event-driven architecture experience across two companies",
+        "Proven large-scope delivery: monolith-to-microservices extraction with zero-downtime feature-flagged cutover",
+        "Cross-functional delivery track record (migration coordinated across 4 teams)",
+        "Solid system design and distributed systems background on high-load EV charging platforms",
+        "Measurable performance optimization work (report generation cut up to 95%)",
+        "AWS depth (ECS, Lambda, S3, DynamoDB, Athena) plus Postgres and Redis matching bonus criteria",
+        "Ownership mindset: owned shared libraries, production deployment, and on-call/incident support"
+      ],
+      "gaps": [
+        "No Python experience listed",
+        "Go experience limited to CLI tooling and small fixes, not primary backend language",
+        "No fintech, brokerage, or payments domain experience",
+        "No Kubernetes experience",
+        "No large-scale dataset processing beyond a reporting pipeline (no Spark/Flink/warehouse-scale work)",
+        "Not located in Menlo Park or NYC; resume shows remote-first history vs. 3-day in-office requirement",
+        "No exposure to regulatory/compliance domains (KYC, fraud, identity)",
+        "Employment gap since Nov 2025"
+      ],
+      "scored_at": [
+        "2026-09-25T02:28:40Z"
+      ],
+      "created_at": "2026-09-25T02:28:30.250Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a0-736d-725c-bed9-ee496fb7301f",
+      "title": "Backend Engineer, Intelligent Commerce",
+      "company": "Stripe",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a0-736d-725c-bed9-ee496fb7301f.txt",
+      "score": 74,
+      "strengths": [
+        "10+ years backend engineering at senior level",
+        "Builds, runs, and supports production backend services",
+        "REST API design for high-traffic systems",
+        "Event-driven architecture with Kafka",
+        "Monolith-to-microservices extraction with zero-downtime feature-flag rollout",
+        "Shared reusable libraries adopted across multiple services",
+        "Cross-team delivery coordination (4-team phased migration)",
+        "Production debugging, observability, and incident response"
+      ],
+      "gaps": [
+        "No payments or fintech domain experience",
+        "No payment method / PSP integration work",
+        "No external partner-facing platform or ecosystem experience",
+        "Multi-tenant platform design not demonstrated",
+        "Limited recent frontend work for dashboard-style products",
+        "Mentorship/tech-lead responsibilities not explicitly stated",
+        "No stated experience generalizing one abstraction across many similar integrations",
+        "Ruby/Scala or Stripe-adjacent stack exposure not shown"
+      ],
+      "scored_at": [
+        "2026-09-25T12:53:21Z"
+      ],
+      "created_at": "2026-09-25T12:53:09.174Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a0-a929-77b5-984d-34f858e03a42",
+      "title": "Software Engineer, Backend",
+      "company": "Stripe",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a0-a929-77b5-984d-34f858e03a42.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years backend software development, exceeding the 6-year minimum",
+        "4+ years building software in Java (Spring Boot) across multiple senior roles",
+        "Distributed systems experience with Kafka event-driven architectures",
+        "Designed and implemented scalable high-performance RESTful microservices",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Production debugging across services and stack levels; on-call incident support",
+        "Measurable performance optimization (report generation cut up to 95%)",
+        "Database design and query optimization in MySQL and PostgreSQL"
+      ],
+      "gaps": [
+        "No Master's degree (hard minimum requirement; holds Bachelor's in CS)",
+        "No Ruby experience (Stripe's primary backend language)",
+        "No Python or C++ experience listed",
+        "No payments, fintech, or financial infrastructure domain experience",
+        "No demonstrated data visualization system design (QuickSight/Grafana use is tool-level, not system-building)",
+        "Limited evidence of ingesting/processing signals from heterogeneous sources at Stripe scale",
+        "No explicit experience integrating lightweight backend frameworks or large-scale API overhauls"
+      ],
+      "scored_at": [
+        "2026-09-25T12:53:36Z"
+      ],
+      "created_at": "2026-09-25T12:53:22.936Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a0-e266-7299-b042-e8075305cdef",
+      "title": "Senior Software Engineer, Cluster Scalability",
+      "company": "Mongodb",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a0-e266-7299-b042-e8075305cdef.txt",
+      "score": 28,
+      "strengths": [
+        "10+ years backend engineering, exceeds 5-year bar",
+        "CS bachelor's degree",
+        "Distributed systems and microservice architecture experience",
+        "Event-driven systems at scale with Kafka",
+        "Performance tuning wins (95% faster report generation, DB query optimization)",
+        "System observability work: Prometheus, Grafana, distributed tracing, request correlation",
+        "System resiliency via production support, incident troubleshooting, zero-downtime feature-flagged migrations",
+        "Relational database schema and query optimization (MySQL, PostgreSQL)"
+      ],
+      "gaps": [
+        "No C++ production experience",
+        "No database internals/storage engine work",
+        "No data partitioning or sharding experience",
+        "No high-performance/low-latency networking background",
+        "No systems-level programming (memory, concurrency primitives, computer architecture)",
+        "No experience building core infrastructure for a large-user-base product",
+        "Distributed systems experience is application/microservice-level, not core distributed protocol design",
+        "No consensus/replication protocol or data-movement protocol design"
+      ],
+      "scored_at": [
+        "2026-09-25T12:53:47Z"
+      ],
+      "created_at": "2026-09-25T12:53:37.588Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a1-0d79-75f5-8795-bc37e9136140",
+      "title": "Software Engineer 3, Storage Execution",
+      "company": "Mongodb",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a1-0d79-75f5-8795-bc37e9136140.txt",
+      "score": 22,
+      "strengths": [
+        "10+ years professional software engineering experience, exceeding the 5-year bar",
+        "Backend and distributed services experience with microservice architecture",
+        "Event-driven systems design with Kafka at high-load EV charging scale",
+        "Demonstrated performance optimization (report generation cut from 30–60s to 3–10s)",
+        "Database experience with MySQL and PostgreSQL schema and query optimization",
+        "Zero-downtime migration work using feature flags across multiple teams",
+        "Production support, debugging, and incident troubleshooting experience",
+        "Ownership of shared libraries and cross-team system design contributions"
+      ],
+      "gaps": [
+        "No C++ experience",
+        "No database internals or storage engine work",
+        "No experience with concurrency primitives or lock/transaction management",
+        "No systems-level performance tuning (profiling, memory, cache)",
+        "No query execution, indexing, or replication protocol implementation experience",
+        "No time series storage or transaction management exposure",
+        "Distributed systems experience is application/service-level, not systems-level",
+        "Not based in or near New York City (Orlando, FL; role is NYC office-based)"
+      ],
+      "scored_at": [
+        "2026-09-25T12:53:58Z"
+      ],
+      "created_at": "2026-09-25T12:53:48.616Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a1-7ce9-7179-a593-fe0486f9a764",
+      "title": "Senior Distributed Systems Engineer - Cache",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a1-7ce9-7179-a593-fe0486f9a764.txt",
+      "score": 40,
+      "strengths": [
+        "10+ years professional experience building and operating production systems (far exceeds 4-year minimum)",
+        "Distributed systems and microservice architecture design at scale",
+        "Some production Golang: S3 log-retrieval CLI adopted across teams, roaming gateway fixes",
+        "Event-driven system design with Kafka (nice-to-have infrastructure match)",
+        "REST API and service-integration design for high-traffic platforms",
+        "Observability practice: Prometheus, Grafana, distributed tracing, request correlation",
+        "Measurable performance optimization (report generation cut 30-60s to 3-10s, ~95%)",
+        "Safe rollout experience: feature flags and zero-downtime cutover across 4 teams"
+      ],
+      "gaps": [
+        "No Rust experience (must-have systems language, willingness to work in Rust)",
+        "Go experience is limited to CLI tooling and small fixes, not primary systems development",
+        "No C/C++ or low-level systems programming background",
+        "No demonstrated depth in HTTP semantics or transport protocols (TCP, TLS, QUIC)",
+        "No CDN, HTTP proxy, cache data-plane, or distributed storage experience",
+        "No high-performance asynchronous I/O or connection-handling work",
+        "No evidence of memory, disk I/O, resource contention, or tail-latency profiling",
+        "No formal on-call rotation, incident command, or post-mortem leadership stated"
+      ],
+      "scored_at": [
+        "2026-09-25T12:54:38Z"
+      ],
+      "created_at": "2026-09-25T12:54:17.189Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a1-d338-767e-8177-e983a8ce1d28",
+      "title": "Senior Software Engineer, Zero Trust Client",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a1-d338-767e-8177-e983a8ce1d28.txt",
+      "score": 18,
+      "strengths": [
+        "10+ years senior backend engineering experience",
+        "Owns technical design and migration planning end-to-end",
+        "Event-driven and asynchronous system design with Kafka",
+        "Golang backend services and CLI tooling (systems-adjacent)",
+        "Production debugging and incident resolution across teams",
+        "Observability tooling: Prometheus, Grafana, distributed tracing",
+        "Testable code practices with JUnit, Testcontainers, DI via Spring",
+        "Measurable performance optimization (95% faster reporting)"
+      ],
+      "gaps": [
+        "No Rust, C, or C++ experience",
+        "No Windows internals or system API experience",
+        "No kernel-mode programming",
+        "No Windows driver development (network drivers)",
+        "No desktop client development",
+        "No low-level network protocol work (TCP/IP, UDP, DNS, QUIC, HTTP/3, proxying)",
+        "No VPN technology or privacy/anonymity trade-off experience",
+        "No security protocols or standards experience"
+      ],
+      "scored_at": [
+        "2026-09-25T12:54:55Z"
+      ],
+      "created_at": "2026-09-25T12:54:39.239Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a2-163a-74b9-9f79-7b3950cd7d3c",
+      "title": "Senior Systems Engineer - Application Security",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a2-163a-74b9-9f79-7b3950cd7d3c.txt",
+      "score": 48,
+      "strengths": [
+        "10+ years hands-on software development, well above the 5-year minimum",
+        "Hands-on Go experience: built and shipped a Golang CLI adopted by other teams, plus Go fixes in a roaming gateway",
+        "Strong distributed systems and microservices design background",
+        "Kafka event-driven architecture experience (explicitly listed devops tooling)",
+        "Docker, AWS (ECS, Lambda, S3, DynamoDB), and Linux working knowledge",
+        "Monolith-to-microservices extraction with feature-flagged zero-downtime rollouts",
+        "Demonstrated performance optimization (95% faster report generation)",
+        "Observability depth: Prometheus, Grafana, distributed tracing, request correlation"
+      ],
+      "gaps": [
+        "Location mismatch: based in Orlando, FL; role requires hybrid work in an EU/UK office (2 days/week)",
+        "Go used only for tooling and small fixes, not primary-language proficiency; no Rust",
+        "No Kubernetes experience listed",
+        "No cybersecurity or application-security background (WAF, API security, web threat detection)",
+        "No experience at internet scale (~100M requests/second, 1M+ customers); prior scale is thousands of devices",
+        "No evidence of low-level/high-performance systems engineering beyond commodity frameworks",
+        "No stated on-call rota experience (production support only)",
+        "No Salt/systemd or deep Linux/Unix internals evidence"
+      ],
+      "scored_at": [
+        "2026-09-25T12:55:10Z"
+      ],
+      "created_at": "2026-09-25T12:54:56.392Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a2-534b-7190-9913-480c74006e5a",
+      "title": "Software Engineer - Egress (Go/Rust)",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a2-534b-7190-9913-480c74006e5a.txt",
+      "score": 45,
+      "strengths": [
+        "10+ years backend engineering, well above the 3+ year bar",
+        "Track record owning architecture of distributed, production-critical systems end to end",
+        "Some production Go: log-retrieval CLI adopted across teams and gateway fixes",
+        "Monolith-to-microservices extraction with feature-flagged zero-downtime cutover",
+        "Event-driven design with Kafka for high-traffic systems",
+        "PostgreSQL and database performance optimization",
+        "Observability with Prometheus, Grafana, distributed tracing, request correlation",
+        "Strong debugging and production incident support experience"
+      ],
+      "gaps": [
+        "No Rust experience",
+        "Go is secondary/limited (CLI tool, minor fixes), not primary language",
+        "No systems-level or network software programming",
+        "No demonstrated L3/L4 networking or TCP/IP and Internet routing knowledge",
+        "No HTTP/TLS internals, CDN, or proxy/edge network experience",
+        "No VPN or Zero Trust technology experience",
+        "No network performance monitoring or tuning work",
+        "No Kubernetes experience listed"
+      ],
+      "scored_at": [
+        "2026-09-25T12:55:26Z"
+      ],
+      "created_at": "2026-09-25T12:55:12.027Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a2-8dcd-75db-8a79-0098a0ac74ed",
+      "title": "Systems Engineer, Email Service",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a2-8dcd-75db-8a79-0098a0ac74ed.txt",
+      "score": 45,
+      "strengths": [
+        "10+ years backend and distributed systems engineering",
+        "Strong REST API design experience",
+        "Kafka-based event-driven and asynchronous workflows",
+        "Monolith-to-microservices extraction with zero-downtime feature-flag cutover",
+        "Some hands-on Golang (log-retrieval CLI adopted by other teams, gateway fixes)",
+        "Proven independent ownership from design through production deployment",
+        "High-load, high-availability platform experience (EV charging at scale)",
+        "Observability depth: Prometheus, Grafana, distributed tracing, correlation IDs"
+      ],
+      "gaps": [
+        "No transactional email infrastructure experience",
+        "No email deliverability / anti-spam knowledge (SPF, DKIM, DMARC, VERP)",
+        "No Rust experience",
+        "No Cloudflare Developer Platform / Workers experience",
+        "Go experience limited to CLI tooling and small fixes, not primary language",
+        "TypeScript listed as a skill but no demonstrated project work",
+        "No edge/CDN or global network-scale systems background",
+        "Location mismatch: Orlando, FL vs hybrid role in Lisbon, Portugal"
+      ],
+      "scored_at": [
+        "2026-09-25T12:55:39Z"
+      ],
+      "created_at": "2026-09-25T12:55:27.002Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a2-c2f6-77e4-be88-1d79aed67ac8",
+      "title": "Systems Engineer, MCP Portals",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a2-c2f6-77e4-be88-1d79aed67ac8.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years building and operating production backend and distributed systems",
+        "Microservices extraction from monolith with feature-flagged, zero-downtime cutover (backward-compatible deployments)",
+        "Kafka-based event-driven and asynchronous workflow design",
+        "REST API design and service integrations for high-traffic platforms",
+        "Observability: Prometheus, Grafana, Actuator, distributed tracing, request correlation",
+        "Production support, incident investigation, and cross-team troubleshooting",
+        "Owned shared auth/authorization libraries across microservices",
+        "Measurable performance/latency optimization (report generation 30-60s to 3-10s)"
+      ],
+      "gaps": [
+        "Location mismatch: role is Lisbon, Portugal hybrid; candidate is Orlando, FL",
+        "No OAuth 2.0 / OIDC / JWT / PKCE implementation experience listed",
+        "No Cloudflare Developer Platform or serverless edge-computing (Workers, Durable Objects) experience",
+        "Go is secondary (CLI tooling, small fixes), not primary production service language",
+        "No Rust or C++ systems-level programming",
+        "No experience building gateways, forward proxies, or identity systems",
+        "No Zero Trust, policy-based access control, or DLP product work",
+        "No hands-on MCP protocol implementation (only MCP as an AI tooling user)"
+      ],
+      "scored_at": [
+        "2026-09-25T12:55:56Z"
+      ],
+      "created_at": "2026-09-25T12:55:40.613Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a3-041c-721d-9dd5-9c311a5e4dd3",
+      "title": "Systems Engineer, Network Protocols & Distributed Systems",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a3-041c-721d-9dd5-9c311a5e4dd3.txt",
+      "score": 34,
+      "strengths": [
+        "10+ years senior backend and distributed systems experience",
+        "Golang used for production services, CLI tooling, and gateway fixes",
+        "Demonstrated performance optimization (95% faster report generation)",
+        "Monolith-to-microservice extraction with zero-downtime feature-flag cutovers",
+        "Event-driven architecture at scale with Kafka",
+        "Observability depth: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Production support and incident troubleshooting on customer-facing systems",
+        "High-availability, high-load platform experience (EV charging network)"
+      ],
+      "gaps": [
+        "No Rust experience (core requirement for next-gen proxy migration)",
+        "No C or low-level systems programming background",
+        "No network protocol work (HTTP/2, HTTP/3, QUIC, MASQUE, ECH)",
+        "No TLS/cryptography or TLS-termination experience",
+        "No NGINX or edge/reverse-proxy operations experience",
+        "No open source contributions or IETF/standards involvement",
+        "No Internet-scale traffic or CDN/edge infrastructure exposure",
+        "No protocol performance measurement or benchmarking work"
+      ],
+      "scored_at": [
+        "2026-09-25T12:56:10Z"
+      ],
+      "created_at": "2026-09-25T12:55:57.292Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a3-3a62-71d6-95ae-fb9f34bbd055",
+      "title": "Senior Software Engineer - Commercial Navigation",
+      "company": "Samsara",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a3-3a62-71d6-95ae-fb9f34bbd055.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years experience, well above the 6+ year minimum",
+        "CS bachelor's degree meets the education requirement",
+        "Deep backend depth: Java/Spring Boot microservices, REST API design",
+        "Event-driven and real-time-adjacent systems with Kafka",
+        "EV charging/connected-device domain is adjacent to fleet and IoT operations",
+        "Proven end-to-end ownership: monolith-to-microservice extraction with zero-downtime cutover",
+        "Feature-flagged gradual rollouts across multiple teams",
+        "Strong observability work (Prometheus, Grafana, tracing, correlation IDs)"
+      ],
+      "gaps": [
+        "No mobile development experience (React Native, Swift, Kotlin)",
+        "No geospatial, mapping, or routing/navigation domain experience",
+        "No frontend/web feature ownership (SPA support only, not building UI)",
+        "No logistics, fleet telematics, or industrial IoT product experience",
+        "Limited evidence of driver/field-worker customer-facing product work",
+        "No experience with offline/poor-connectivity or real-time mobile data sync",
+        "Little evidence of direct customer/user research participation or success-metric definition",
+        "Short tenures recently (Camber ~6 months) vs. multi-year feature ownership preference"
+      ],
+      "scored_at": [
+        "2026-09-25T12:56:24Z"
+      ],
+      "created_at": "2026-09-25T12:56:11.184Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a3-70a9-7346-b942-7d959f1dd01e",
+      "title": "Senior Backend Engineer, Analytics Instrumentation (Golang)",
+      "company": "Gitlab",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a3-70a9-7346-b942-7d959f1dd01e.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years senior backend engineering with distributed systems focus",
+        "Hands-on Golang: production CLI adopted by other teams, fixes to a roaming gateway",
+        "Deep Kafka event-driven and asynchronous workflow design",
+        "Strong observability: Prometheus, Grafana, distributed tracing, request correlation",
+        "Proven performance optimization (report generation cut up to 95%)",
+        "Built AWS analytics pipeline (S3, Parquet, Athena, QuickSight) replacing OpenSearch",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutovers",
+        "Owned shared platform libraries (auth, messaging, caching) used across services — platform mindset"
+      ],
+      "gaps": [
+        "Go is secondary/supporting (CLI tool, small fixes) — no primary ownership of production Go services",
+        "No ClickHouse or other columnar/OLAP analytics database experience",
+        "No NATS or comparable modern messaging beyond Kafka",
+        "No Kubernetes experience listed (containers only via Docker/ECS)",
+        "No analytics instrumentation, telemetry, or event-collection platform work",
+        "No usage/billing metering or data-integrity accuracy ownership",
+        "No data quality, schema governance, or privacy-compliant instrumentation experience",
+        "No demonstrated open source development practice or public contributions"
+      ],
+      "scored_at": [
+        "2026-09-25T12:56:41Z"
+      ],
+      "created_at": "2026-09-25T12:56:25.083Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a3-b662-715c-8fbd-4d3378031997",
+      "title": "Senior Platform Engineer, GitLab Orbit",
+      "company": "Gitlab",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a3-b662-715c-8fbd-4d3378031997.txt",
+      "score": 42,
+      "strengths": [
+        "10+ years building production backend services and distributed systems",
+        "Strong microservice extraction and monolith decomposition track record",
+        "Kafka-based event-driven and asynchronous workflow design",
+        "AWS hands-on: S3, ECS, Lambda, DynamoDB, Athena, Parquet data pipelines",
+        "Built cost-aware analytics data pipeline replacing OpenSearch",
+        "Observability work: Prometheus, Grafana, distributed tracing, request correlation",
+        "Docker and containerized service deployment",
+        "Production support, incident troubleshooting, and reliability focus"
+      ],
+      "gaps": [
+        "No Rust experience",
+        "No Kubernetes or Helm experience",
+        "No Terraform or infrastructure-as-code experience",
+        "No ClickHouse or columnar analytics database experience",
+        "No NATS messaging experience",
+        "No GCP experience (AWS only)",
+        "No knowledge graph or graph query engine experience",
+        "Limited Golang depth (CLI tooling and small fixes, not primary language)"
+      ],
+      "scored_at": [
+        "2026-09-25T12:56:53Z"
+      ],
+      "created_at": "2026-09-25T12:56:42.978Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a5-ab36-729e-a6b0-f7c94261756c",
+      "title": "Developer Advocate - Service Management EMEA",
+      "company": "Datadog",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a5-ab36-729e-a6b0-f7c94261756c.txt",
+      "score": 22,
+      "strengths": [
+        "10+ years backend software engineering, well above the ~5 year bar",
+        "Production support and troubleshooting of customer-facing charging services",
+        "Strong observability background: Prometheus, Grafana, Spring Boot Actuator, distributed tracing, request correlation",
+        "Go experience: built and shipped a Golang CLI adopted across teams",
+        "Comfortable with required language class (Go), plus Java, TypeScript, PHP",
+        "Modern infrastructure fluency: AWS (ECS, Lambda, S3, DynamoDB), Docker, containers",
+        "REST API design and third-party API integration across many platforms",
+        "Distributed systems and microservices architecture at high-load scale"
+      ],
+      "gaps": [
+        "No developer advocacy or technical evangelism experience",
+        "No public speaking or conference talks (SREcon, DevOpsDays, SREday)",
+        "No published blog posts, writing samples, or recorded presentations",
+        "No demonstrated content creation or storytelling portfolio (2+ yrs required)",
+        "No SRE, Platform Engineering, or DevOps job title experience",
+        "No hands-on experience with Datadog product suite",
+        "No experience with incident response tooling (PagerDuty, Opsgenie, incident.io, Rootly, Cortex)",
+        "No formal on-call rotation or incident commander experience stated"
+      ],
+      "scored_at": [
+        "2026-09-25T12:59:05Z"
+      ],
+      "created_at": "2026-09-25T12:58:51.140Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a5-e678-7397-8610-5bd0f9ecca84",
+      "title": "Senior Software Engineer - CI/CD Security",
+      "company": "Datadog",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a5-e678-7397-8610-5bd0f9ecca84.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years backend engineering, senior level",
+        "Strong Java/Spring Boot plus working Go, PHP, TypeScript",
+        "Distributed systems and microservices design at scale",
+        "Kafka-based event-driven architecture experience",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Built and owned shared auth/authorization libraries across services",
+        "AWS depth (ECS, Lambda, S3, DynamoDB, Athena)",
+        "Docker and containerized service deployment"
+      ],
+      "gaps": [
+        "No software supply chain security or build provenance experience",
+        "No CI/CD platform or build system engineering (only pipeline usage)",
+        "No Kubernetes experience",
+        "No secrets management / credential delivery systems",
+        "No security engineering or policy enforcement background",
+        "No proxying, request interception, or protocol-aware systems work",
+        "Go used only for CLI tooling and fixes, not primary language",
+        "No demonstrated low-latency, high-throughput critical-path infrastructure"
+      ],
+      "scored_at": [
+        "2026-09-25T12:59:17Z"
+      ],
+      "created_at": "2026-09-25T12:59:06.307Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8a6-9b09-71e3-a69e-233422dcd54e",
+      "title": "Senior Backend Engineer - Databases - Analytics | Germany | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a6-9b09-71e3-a69e-233422dcd54e.txt",
+      "score": 47,
+      "strengths": [
+        "10+ years senior backend engineering with production, user-facing systems",
+        "Distributed systems and microservice architecture at scale",
+        "Some Golang delivery: S3 log-search CLI adopted by other teams, roaming gateway fixes",
+        "Analytics pipeline with S3, Parquet, Athena, QuickSight replacing OpenSearch",
+        "Strong observability practice: Prometheus, Grafana, tracing, Actuator, correlation IDs",
+        "Event-driven and async systems with Kafka",
+        "Demonstrated ownership: extracted core domain services from monolith in 3 months, zero-downtime cutover",
+        "Measurable performance optimization (95% faster report generation)"
+      ],
+      "gaps": [
+        "Not located in Spain, Sweden, UK, Ireland, or Germany (based in Orlando, FL)",
+        "No database internals work: ingestion, query planning, distributed query execution",
+        "No mastery-level Golang (only CLI tooling and small fixes); primary language is Java",
+        "No Rust or C++ experience",
+        "No experience with table formats or catalogs (Iceberg, Delta, Hive Metastore)",
+        "No distributed query engine development",
+        "No data warehouse or data lake construction",
+        "No multi-tenant SaaS platform work (tenant isolation, quotas, usage metering, audit logs)"
+      ],
+      "scored_at": [
+        "2026-09-25T13:00:22Z"
+      ],
+      "created_at": "2026-09-25T12:59:52.584Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a7-12aa-719a-bc3a-d443b6f0e0d4",
+      "title": "Senior Backend Engineer - Databases - Analytics | Spain | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a7-12aa-719a-bc3a-d443b6f0e0d4.txt",
+      "score": 42,
+      "strengths": [
+        "10+ years production backend engineering with user-facing systems at scale",
+        "Distributed systems and microservice architecture ownership",
+        "Hands-on Golang: built and shipped an adopted CLI for S3 log retrieval, plus service fixes",
+        "Built an AWS analytics pipeline with S3 + Parquet + Athena, replacing OpenSearch",
+        "Strong observability background: Prometheus, Grafana, tracing, correlation, Actuator",
+        "Kafka-based event-driven and asynchronous ingestion workflows",
+        "REST API design and service boundary definition",
+        "Database performance work: schema/query optimization in MySQL and PostgreSQL"
+      ],
+      "gaps": [
+        "Not located in Spain/Sweden/UK/Ireland/Germany (Orlando, FL) — hard location requirement",
+        "No database internals work: ingestion, query planning, distributed query execution",
+        "No experience with table formats or catalogs (Iceberg, Delta, Hive Metastore)",
+        "Go is secondary, not mastery-level; primary language is Java",
+        "No Rust or C++ experience",
+        "No experience building distributed query engines",
+        "No data warehouse or data lake platform engineering (consumer of Athena, not builder)",
+        "No multi-tenant SaaS platform work: tenant isolation, quotas, usage metering, audit logs"
+      ],
+      "scored_at": [
+        "2026-09-25T13:00:41Z"
+      ],
+      "created_at": "2026-09-25T13:00:23.213Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a7-5cf2-73b5-9e93-ecd44a3742d3",
+      "title": "Senior Backend Engineer - Databases - Analytics | Sweden | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a7-5cf2-73b5-9e93-ecd44a3742d3.txt",
+      "score": 35,
+      "strengths": [
+        "10+ years senior backend engineering with production-grade, user-facing systems",
+        "Distributed systems and microservice architecture at scale (EV charging platforms)",
+        "Event-driven and streaming pipelines with Kafka",
+        "Hands-on Golang for backend services and internal CLI tooling adopted by other teams",
+        "Built AWS analytics pipeline with S3, Parquet, Athena — adjacent to data lake work",
+        "Strong observability practice: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Demonstrated performance optimization (95% faster report generation, DB/query tuning)",
+        "Ownership from design through production deployment and incident support"
+      ],
+      "gaps": [
+        "Located in Orlando, FL; role restricted to Spain, Sweden, UK, Ireland, or Germany",
+        "No database internals experience (ingestion, query planning, distributed query execution)",
+        "No experience with table/storage formats (Iceberg, Delta, Parquet layouts) or catalogs",
+        "Golang is secondary (CLI tool, small fixes), not mastery-level; no C++ or Rust",
+        "No multi-tenant SaaS platform work (tenant isolation, quotas, usage tracking, audit logs)",
+        "No distributed query engine or data warehouse/data lake construction",
+        "No OLAP/columnar analytics engine experience; separation of compute and storage unproven",
+        "No open-source contribution track record"
+      ],
+      "scored_at": [
+        "2026-09-25T13:00:57Z"
+      ],
+      "created_at": "2026-09-25T13:00:42.224Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a7-9dd0-76c1-85d4-8eb50fe28af0",
+      "title": "Senior Backend Engineer - Databases - Analytics | UK | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a7-9dd0-76c1-85d4-8eb50fe28af0.txt",
+      "score": 52,
+      "strengths": [
+        "10+ years senior backend engineering with production-grade, user-facing systems",
+        "Distributed systems and microservice architecture at scale (EV charging platforms)",
+        "Hands-on Golang for backend services and an adopted internal CLI tool",
+        "Observability depth: Prometheus, Grafana, distributed tracing, Spring Boot Actuator",
+        "Cloud-native AWS experience (ECS, Lambda, S3, DynamoDB, Docker)",
+        "Built an S3/Parquet/Athena analytics pipeline replacing OpenSearch — adjacent to lakehouse work",
+        "Event-driven and asynchronous systems with Kafka",
+        "Database schema design and query optimization (MySQL, PostgreSQL); 95% report latency reduction"
+      ],
+      "gaps": [
+        "Not located in Spain, Sweden, UK, Ireland, or Germany (role is region-restricted)",
+        "No database internals experience (ingestion, query planning, distributed query execution)",
+        "No experience with storage/data formats or table formats (Iceberg, Delta) and catalogs",
+        "Go is secondary (CLI/fixes) rather than mastery; no Rust or C++",
+        "No distributed query engine or OLAP/OLTP engine development",
+        "No data warehouse or data lake platform building experience",
+        "No multi-tenant SaaS architecture work (tenant isolation, quotas, usage metering, audit logs)",
+        "No open-source contributions or community involvement shown"
+      ],
+      "scored_at": [
+        "2026-09-25T13:01:13Z"
+      ],
+      "created_at": "2026-09-25T13:00:58.839Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8a8-2f1d-73b4-853f-cd4f24a92629",
+      "title": "Backend Engineer, Control Plane",
+      "company": "Tailscale",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8a8-2f1d-73b4-853f-cd4f24a92629.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years backend and distributed systems experience",
+        "Hands-on Go: production CLI tool adopted by other teams, gateway fixes",
+        "Strong SQL background (MySQL, PostgreSQL) with query/schema optimization",
+        "Event-driven architecture with Kafka at scale",
+        "Observability ownership: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Production incident response and customer-facing support escalations",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Proven remote and async collaboration across multiple teams"
+      ],
+      "gaps": [
+        "Go is secondary, not primary language (Java/Spring is core)",
+        "No networking depth (IP addressing, routing, NAT, VPN protocols)",
+        "No relay/control-plane or network infrastructure experience",
+        "No demonstrated open source contributions",
+        "No identity/SSO integration work (OIDC, SAML, SCIM)",
+        "Security-first design not evidenced beyond auth/authz libraries",
+        "No early-stage startup experience (all mid/large orgs)",
+        "Limited evidence of systems-level performance/efficiency tuning"
+      ],
+      "scored_at": [
+        "2026-09-25T13:01:50Z"
+      ],
+      "created_at": "2026-09-25T13:01:35.980Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d8aa-53b9-77ef-b993-67a808327918",
+      "title": "Senior Software Engineer",
+      "company": "Rancher Government Solutions",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8aa-53b9-77ef-b993-67a808327918.txt",
+      "score": 42,
+      "strengths": [
+        "10+ years backend engineering, well past the 6+ year bar",
+        "Hands-on Go: shipped an S3 log-search CLI adopted across teams, plus gateway fixes",
+        "Strong microservices and distributed systems design background",
+        "Docker containerization and containerized AWS deployments",
+        "Linux environments listed in core stack",
+        "CI/CD pipeline experience with GitHub Actions and Jenkins",
+        "Production troubleshooting, incident response, and observability (Prometheus, Grafana, tracing)",
+        "AWS breadth: ECS, Lambda, S3, DynamoDB, Athena"
+      ],
+      "gaps": [
+        "No production Kubernetes experience (controllers, operators, CRDs)",
+        "No Helm or Kustomize experience",
+        "No GitOps/infrastructure-as-code experience",
+        "Go is secondary, not primary — falls short of 4+ years professional Go",
+        "No Kubernetes RBAC or manifest authoring",
+        "No federal compliance exposure (FedRAMP, NIST 800-53)",
+        "No AWS GovCloud or Azure Government experience",
+        "No service mesh / ingress controller / load balancing depth (Istio)"
+      ],
+      "scored_at": [
+        "2026-09-25T13:04:06Z"
+      ],
+      "created_at": "2026-09-25T13:03:56.420Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d8aa-7dc4-71d2-9026-85d0f39f1cbc",
+      "title": "Software Engineer, CRDT",
+      "company": "webAI™",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d8aa-7dc4-71d2-9026-85d0f39f1cbc.txt",
+      "score": 22,
+      "strengths": [
+        "10+ years backend engineering, matches 5-10+ years requirement",
+        "Distributed systems and microservice architecture design",
+        "Event-driven and asynchronous systems with Kafka",
+        "Performance optimization track record (95% faster report generation)",
+        "Monolith-to-service extraction with zero-downtime feature-flagged cutover",
+        "Observability practices: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Rigorous testing background (JUnit, Testcontainers)",
+        "Cloud and containerized deployment (AWS, Docker, ECS, Lambda)"
+      ],
+      "gaps": [
+        "No CRDT experience (hard requirement)",
+        "No Rust experience",
+        "No C/C++ systems programming",
+        "Go experience limited to a CLI tool and small fixes, not primary systems language",
+        "No peer-to-peer or decentralized networking frameworks",
+        "No content-addressable storage, Merkle trees, or DAGs",
+        "No DHTs, gossip protocols, overlay networks, or NAT traversal",
+        "No cryptographic primitives, key management, or threat modeling work"
+      ],
+      "scored_at": [
+        "2026-09-25T13:04:21Z"
+      ],
+      "created_at": "2026-09-25T13:04:07.186Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d9c4-7224-7229-8993-44992da08904",
+      "title": "Backend Engineer",
+      "company": "VetsEZ",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c4-7224-7229-8993-44992da08904.txt",
+      "score": 82,
+      "strengths": [
+        "10+ years backend engineering, well above the 5-year minimum",
+        "Deep hands-on Java and Spring Boot across two recent senior roles",
+        "Extensive REST API design and service integration experience",
+        "SQL and relational DB work with MySQL/PostgreSQL schema and query optimization",
+        "Built shared Spring Boot libraries for authentication and authorization",
+        "Service-to-service communication via Kafka event-driven architectures",
+        "Observability work with Prometheus, Grafana, Actuator, distributed tracing",
+        "Measurable performance optimization (report generation 95% faster)"
+      ],
+      "gaps": [
+        "No federal/government contracting experience",
+        "No healthcare domain experience (HL7/FHIR, VA systems)",
+        "No Government/Public Trust clearance or background-check history",
+        "U.S. citizenship not stated on resume",
+        "No explicit secure coding or DevSecOps collaboration experience",
+        "No mention of enterprise integration patterns by name (ESB, SOA, shared services)",
+        "Limited emphasis on Agile ceremonies (sprint/increment/PI planning)",
+        "No QA/code-review process ownership called out"
+      ],
+      "scored_at": [
+        "2026-09-25T18:12:21Z"
+      ],
+      "created_at": "2026-09-25T18:12:05.364Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d9c4-b504-74db-be4e-c48965ca2a83",
+      "title": "Software Engineer",
+      "company": "STV",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c4-b504-74db-be4e-c48965ca2a83.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years shipping production backend systems (3+ required)",
+        "Go experience: production CLI tooling and service fixes",
+        "Demonstrated real-work use of Claude Code, Copilot, Codex, MCP",
+        "Strong REST API design and third-party integration track record",
+        "Cloud proficiency: AWS ECS, Lambda, S3, DynamoDB, Docker",
+        "Backend experience supporting React and Vue SPA frontends",
+        "End-to-end ownership through production deploy and support",
+        "Scoping and migration planning across multiple teams"
+      ],
+      "gaps": [
+        "No hands-on React/TypeScript frontend development shown",
+        "No Azure or GCP experience (AWS only)",
+        "No production LLM, RAG, or vector database integration",
+        "No consulting or client-facing engagement experience",
+        "No evidence of presenting to non-technical client audiences",
+        "No Node.js, Python, or .NET server-side experience",
+        "No infrastructure, transportation, or AEC domain background",
+        "No side projects, open-source, or public writing listed"
+      ],
+      "scored_at": [
+        "2026-09-25T18:12:39Z"
+      ],
+      "created_at": "2026-09-25T18:12:22.481Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d9c4-fd71-74f2-9f66-3325cf5122ff",
+      "title": "Senior Software Engineer",
+      "company": "Platform.sh",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c4-fd71-74f2-9f66-3325cf5122ff.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years senior backend engineering in distributed systems",
+        "Production Go experience: CLI tooling on AWS S3 and gateway fixes",
+        "Strong relational database work: MySQL and PostgreSQL schema design, query optimization",
+        "Proven architecture ownership: monolith-to-microservice extraction with zero-downtime feature-flag cutover",
+        "End-to-end delivery from design through production deployment and operational support",
+        "Kafka-based event-driven and asynchronous workflow design",
+        "REST API design and external/third-party service integrations",
+        "Observability work: Prometheus, Grafana, distributed tracing, request correlation"
+      ],
+      "gaps": [
+        "Go is secondary (CLI tool + minor fixes), not deep professional Go backend service development",
+        "No billing, payments, or invoicing domain experience",
+        "No usage-based metering, usage aggregation, or invoicing work",
+        "No stated security expertise for payment/PCI-sensitive data or common vulnerabilities",
+        "No explicit third-party API integration work citing idempotency, retries, rate limits, or consistency",
+        "No anti-abuse or fraud-prevention experience",
+        "Mentoring, code review, and pairing not stated explicitly",
+        "No MariaDB experience listed"
+      ],
+      "scored_at": [
+        "2026-09-25T18:12:56Z"
+      ],
+      "created_at": "2026-09-25T18:12:41.022Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d9c5-3d02-761e-81b9-7c8f27f519c4",
+      "title": "Software Engineer – Technical Publication Systems",
+      "company": "RTX",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c5-3d02-761e-81b9-7c8f27f519c4.txt",
+      "score": 48,
+      "strengths": [
+        "10+ years software development, far exceeding 5+ year requirement",
+        "Strong Java and Spring Boot backend expertise",
+        "JavaScript and TypeScript in skill set",
+        "MySQL and SQL database design and query optimization",
+        "Jenkins and GitHub Actions CI/CD experience",
+        "API design and REST service development",
+        "Cloud experience with AWS (transferable to Azure)",
+        "Troubleshooting and production incident support background"
+      ],
+      "gaps": [
+        "No Python experience listed",
+        "No XSLT or XML/SGML (S1000D) experience",
+        "No React.js depth (components, hooks, state management)",
+        "No HTML5/CSS3 or front-end UI development",
+        "No full-stack developer experience (3+ yrs required)",
+        "No Apache web server experience",
+        "No Oracle or MongoDB experience",
+        "No UI/UX or user-centered design proficiency"
+      ],
+      "scored_at": [
+        "2026-09-25T18:13:07Z"
+      ],
+      "created_at": "2026-09-25T18:12:57.293Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d9c5-6a9c-7112-b6e6-c6d3cf354a1d",
+      "title": "Senior Software Engineer, Full Stack",
+      "company": "Evolve",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c5-6a9c-7112-b6e6-c6d3cf354a1d.txt",
+      "score": 42,
+      "strengths": [
+        "10+ years senior backend engineering, well above the 5+ year seniority bar",
+        "Strong REST API design and scalable distributed systems experience",
+        "AWS depth (ECS, Lambda, S3, Athena, QuickSight) matching their cloud stack",
+        "Docker and containerized service deployment",
+        "CI/CD pipeline experience with GitHub Actions and Jenkins",
+        "Hands-on Go for backend tooling — satisfies 'familiarity with Go'",
+        "Explicit AI-assisted coding tooling experience (Claude Code, Copilot, Codex, MCP)",
+        "TypeScript listed in stack; prior work supporting React/Vue SPAs"
+      ],
+      "gaps": [
+        "No React experience (5+ years required)",
+        "No professional Node.js/JavaScript application development",
+        "No GraphQL API design experience",
+        "Go listed as secondary/limited (CLI tool, minor fixes), not primary service development",
+        "No frontend work: HTML/CSS, component library ownership",
+        "No Kubernetes experience",
+        "No WordPress or CMS experience",
+        "No GitLab experience (GitHub Actions/Jenkins only)"
+      ],
+      "scored_at": [
+        "2026-09-25T18:13:20Z"
+      ],
+      "created_at": "2026-09-25T18:13:08.967Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0d9c6-3f87-730a-9171-b3011c2b9b6d",
+      "title": "Senior Software Engineer",
+      "company": "Fictiv",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c6-3f87-730a-9171-b3011c2b9b6d.txt",
+      "score": 62,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year bar",
+        "Highly available, scalable AWS services for high-load EV charging platforms",
+        "Strong event-driven and asynchronous systems experience with Kafka",
+        "REST API design and service integration across multiple companies",
+        "Distributed systems and microservice extraction from monoliths",
+        "SQL (MySQL, PostgreSQL) and NoSQL (DynamoDB, Redis) familiarity",
+        "Caching expertise, including a standalone core service with its own cache",
+        "Testing discipline with JUnit and Testcontainers"
+      ],
+      "gaps": [
+        "No production Node.js backend experience (core requirement)",
+        "JavaScript/TypeScript listed as skills but no demonstrated project usage",
+        "No GraphQL API design or maintenance experience",
+        "No evidence of SQS/Lambda/EC2/RDS hands-on beyond ECS/S3/Lambda mention",
+        "No stated security/OWASP Top 10 knowledge",
+        "US citizenship or green card status not stated (hard requirement; H1B sponsorship does not apply)",
+        "No AWS certification",
+        "No pricing/quoting or numerically sensitive business logic experience"
+      ],
+      "scored_at": [
+        "2026-09-25T18:14:17Z"
+      ],
+      "created_at": "2026-09-25T18:14:03.475Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0d9c6-7ac2-77c9-8a64-dccecece6f03",
+      "title": "Senior Software Engineer",
+      "company": "RELX",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0d9c6-7ac2-77c9-8a64-dccecece6f03.txt",
+      "score": 55,
+      "strengths": [
+        "10+ years backend engineering, exceeds 4-6 year requirement",
+        "Deep Java and Spring Boot expertise",
+        "Proven distributed systems and microservices architecture work",
+        "Monolith-to-services extraction with zero-downtime feature-flagged cutover",
+        "Built and owned reusable shared libraries across services",
+        "Strong REST API and Kafka event-driven system design",
+        "Observability experience: Prometheus, Grafana, Actuator, distributed tracing",
+        "CI/CD with GitHub Actions and Jenkins; Docker containerization"
+      ],
+      "gaps": [
+        "No Python experience listed (JD requires deep Python expertise)",
+        "No Kubernetes/EKS experience (uses ECS/Docker instead)",
+        "No LangChain or LangGraph familiarity",
+        "No production generative AI / LLM services built (only AI-assisted coding tools)",
+        "No experience operationalizing LLMs or internal AI platforms",
+        "No knowledge graphs or semantic search exposure",
+        "No explicit mentoring or tech-lead responsibilities stated",
+        "Cloud-native architecture depth not demonstrated beyond AWS managed services"
+      ],
+      "scored_at": [
+        "2026-09-25T18:14:33Z"
+      ],
+      "created_at": "2026-09-25T18:14:18.636Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0e4fa-70d3-7694-8160-6c7d01a8e941",
+      "title": "Senior Software Engineer, Backend",
+      "company": "Aalyria",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fa-70d3-7694-8160-6c7d01a8e941.txt",
+      "score": 50,
+      "strengths": [
+        "10+ years senior backend engineering",
+        "Deep Java / Spring Boot expertise",
+        "Professional Golang work (CLI tooling, gateway fixes)",
+        "Distributed systems design and operation at scale",
+        "Event-driven architecture with Kafka",
+        "Monolith-to-microservices extraction with zero-downtime cutover",
+        "Cloud-native AWS delivery with Docker containers",
+        "Demonstrated distributed-system performance optimization (95% report speedup)"
+      ],
+      "gaps": [
+        "No C++ experience",
+        "No gRPC or Protocol Buffers experience",
+        "No Kubernetes experience (AWS ECS/Docker only)",
+        "No wireless communications or satellite communications background",
+        "No 3GPP 4G/5G or NTN / Direct-to-Cell experience",
+        "No O-RAN experience (SMO, Non-RT/Near-RT RIC, rApps, xApps)",
+        "No telecom or aerospace & defense industry experience",
+        "No software-defined networking exposure"
+      ],
+      "scored_at": [
+        "2026-09-27T22:27:08Z"
+      ],
+      "created_at": "2026-09-27T22:26:53.346Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0e4fa-aea1-7777-9510-99109c8258d2",
+      "title": "Software Engineer III",
+      "company": "Avalon Healthcare Solutions",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fa-aea1-7777-9510-99109c8258d2.txt",
+      "score": 82,
+      "strengths": [
+        "10+ years backend engineering, matches Senior/SWE III level",
+        "Advanced Java and Spring Boot proficiency",
+        "Production Go experience (CLI tooling, gateway fixes)",
+        "TypeScript and JavaScript in stack",
+        "Strong REST API design across multiple companies",
+        "Extensive event-driven architecture with Kafka",
+        "Relational database modeling and query optimization (MySQL, PostgreSQL)",
+        "Non-relational data experience (DynamoDB, Redis, OpenSearch)"
+      ],
+      "gaps": [
+        "No hands-on Kubernetes experience listed",
+        "No healthcare/regulated-industry background",
+        "No HIPAA, PHI, or IIHI knowledge",
+        "No health plan operations domain knowledge",
+        "Limited frontend work with React or Next.js",
+        "No Jest, Mocha, or Playwright testing experience",
+        "No explicit GCP or Azure cloud platform depth (Azure only as legacy integration)",
+        "Mentoring of junior/mid-level engineers not stated"
+      ],
+      "scored_at": [
+        "2026-09-27T22:27:21Z"
+      ],
+      "created_at": "2026-09-27T22:27:09.162Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0e4fa-e44b-73aa-9806-0be48a5cf5f1",
+      "title": "Software Engineer",
+      "company": "Coursedog",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fa-e44b-73aa-9806-0be48a5cf5f1.txt",
+      "score": 52,
+      "strengths": [
+        "10+ years backend engineering with REST API design and software design principles",
+        "Strong Java experience (secondary stack in the JD's nice-to-have)",
+        "Redis and relational database experience (MySQL, PostgreSQL)",
+        "Extensive AWS experience including Lambda, ECS, S3 — matches serverless/cloud nice-to-have",
+        "Queue and event-driven systems experience via Kafka — matches queues nice-to-have",
+        "Deep AI-assisted development practice (Claude Code, Codex, Copilot, MCP, agents) — directly matches the AI tooling requirement",
+        "Proven debugging, refactoring, and legacy modernization (monolith-to-microservice extractions, feature-flagged migrations)",
+        "Demonstrated performance optimization and production incident troubleshooting"
+      ],
+      "gaps": [
+        "No production Node.js backend experience",
+        "No Vue.js (or other modern frontend framework) experience building applications",
+        "TypeScript listed as a skill but no evidence of production TypeScript work",
+        "No MongoDB or other NoSQL document database experience",
+        "No demonstrated frontend development ownership (SPA work was backend-supporting only)",
+        "Salary band ($70-90k) well below typical senior/10+ yr backend market rate — likely level and comp mismatch",
+        "No Python or .NET experience listed"
+      ],
+      "scored_at": [
+        "2026-09-27T22:27:35Z"
+      ],
+      "created_at": "2026-09-27T22:27:22.900Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0e4fb-18db-767e-8374-d0513eaba7a2",
+      "title": "Founding – Software Engineers",
+      "company": "Continuum Resource Network",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fb-18db-767e-8374-d0513eaba7a2.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years shipping production backend systems with clear, quantified impact",
+        "Strong Java/Spring Boot and microservices depth matching the listed stack",
+        "Go experience in production (CLI tooling adopted by other teams, roaming gateway fixes)",
+        "Distributed systems and event-driven architecture with Kafka",
+        "End-to-end ownership from design through production deployment and on-call support",
+        "Cloud/AWS breadth: ECS, Lambda, S3, DynamoDB, Athena, Docker containerization",
+        "Data infrastructure experience building an S3/Parquet/Athena/QuickSight pipeline",
+        "Developer tooling and platform work: shared libraries, service bootstrap reduced from days to hours"
+      ],
+      "gaps": [
+        "No production AI/LLM or agentic-system development experience (AI tooling listed is coding-assistant usage, not shipped AI products)",
+        "No Python experience listed",
+        "No React/TypeScript frontend ownership (frontend exposure only as backend supporting SPAs)",
+        "No Rust experience",
+        "No early-stage or venture-backed startup experience; all roles at established companies",
+        "No demonstrated 0-to-1 product build (work is extraction/migration of existing systems)",
+        "No side projects, open-source, or entrepreneurial/founder signals",
+        "No retrieval/RAG, vector search, or LLM tool-integration work"
+      ],
+      "scored_at": [
+        "2026-09-27T22:27:50Z"
+      ],
+      "created_at": "2026-09-27T22:27:36.361Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0e4fb-5410-742e-ab45-0e7bc015d4f4",
+      "title": "Founding Software Engineers",
+      "company": "Continuum Resource Network",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fb-5410-742e-ab45-0e7bc015d4f4.txt",
+      "score": 70,
+      "strengths": [
+        "10+ years shipping production backend systems",
+        "Strong Java/Spring Boot microservice depth",
+        "Production Go experience (CLI tooling, gateway fixes)",
+        "Distributed systems and Kafka event-driven architecture",
+        "Cloud/AWS: ECS, Lambda, S3, DynamoDB, Docker",
+        "Owned systems from design through production deployment and support",
+        "Data infrastructure: S3/Parquet/Athena/QuickSight pipeline replacing OpenSearch",
+        "Established shared libraries, patterns, and service bootstrap tooling"
+      ],
+      "gaps": [
+        "No Python experience listed",
+        "No Rust experience",
+        "No production LLM/agentic system development (AI tools used for coding only)",
+        "No hands-on frontend/React ownership",
+        "No founding or early-stage startup experience",
+        "Limited evidence of 0-to-1 greenfield product development",
+        "No side projects, open-source, or entrepreneurial work shown",
+        "No explicit mentoring or tech-lead responsibility"
+      ],
+      "scored_at": [
+        "2026-09-27T22:28:07Z"
+      ],
+      "created_at": "2026-09-27T22:27:51.512Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0e4fc-7cb8-750f-9611-decbd1e14f97",
+      "title": "Senior Software Engineer, Core Experiences – Contract",
+      "company": "Wikimedia Foundation",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fc-7cb8-750f-9611-decbd1e14f97.txt",
+      "score": 52,
+      "strengths": [
+        "10+ years professional software engineering, exceeds 5-10 year bar",
+        "Bachelor's degree in Computer Science",
+        "Production PHP experience (ChargePoint home charger services)",
+        "Strong REST API design and server-side API integration",
+        "Experience maintaining schemas, contracts, and service integrations",
+        "Built scalable AWS data pipelines (S3, Parquet, Athena, QuickSight)",
+        "Observability depth: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Testable code practice with JUnit and Testcontainers"
+      ],
+      "gaps": [
+        "No hands-on Vue.js development experience",
+        "Frontend work limited to backend support for SPAs, not component building",
+        "No accessibility (WCAG/a11y) experience",
+        "No responsive or mobile-first web experience",
+        "No JavaScript/TypeScript production work shown in bullets (skills list only)",
+        "No multilingual/i18n or localization experience",
+        "No product analytics instrumentation or event tracking",
+        "No reusable design-system or UI component library work"
+      ],
+      "scored_at": [
+        "2026-09-27T22:29:24Z"
+      ],
+      "created_at": "2026-09-27T22:29:07.455Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0e4fc-c371-7402-8e08-1c6f911fa569",
+      "title": "Full Stack Software Engineer, .NET, Angular, Azure",
+      "company": "CSI",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0e4fc-c371-7402-8e08-1c6f911fa569.txt",
+      "score": 24,
+      "strengths": [
+        "10+ years professional software development, far exceeds 3+ year requirement",
+        "Extensive REST API design and integration experience",
+        "Strong relational database skills (MySQL, PostgreSQL) and query optimization",
+        "Proven platform modernization: monolith-to-microservice extraction with zero-downtime cutover",
+        "Technical debt reduction and shared library ownership",
+        "CI/CD experience (GitHub Actions, Jenkins)",
+        "Containerization with Docker and cloud deployment",
+        "Production support, troubleshooting, and incident resolution"
+      ],
+      "gaps": [
+        "No .NET / .NET Core experience",
+        "No C# experience",
+        "No SQL Server experience",
+        "No Angular experience",
+        "No frontend development (HTML/CSS, React beyond supporting SPAs)",
+        "No Azure experience (AWS-only cloud background)",
+        "No Azure DevOps, App Configuration, or Key Vault",
+        "No banking, fintech, or financial services domain experience"
+      ],
+      "scored_at": [
+        "2026-09-27T22:29:36Z"
+      ],
+      "created_at": "2026-09-27T22:29:25.561Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec5-0909-75df-9d3f-5ac9f349af77",
+      "title": "Senior Software Engineer, PKI & Cryptographic Systems",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec5-0909-75df-9d3f-5ac9f349af77.txt",
+      "score": 26,
+      "strengths": [
+        "10+ years production backend systems experience (exceeds 5+ requirement)",
+        "Distributed systems and microservice architecture design",
+        "Production support and incident troubleshooting track record",
+        "Observability build-out: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Some Golang: CLI tooling and gateway service fixes",
+        "Event-driven systems at scale with Kafka",
+        "Relational schema design and query optimization (Postgres/MySQL)",
+        "AWS infrastructure and containerized deployment (ECS, Lambda, S3, Docker)"
+      ],
+      "gaps": [
+        "No applied cryptography or PKI experience",
+        "No X.509 / ASN.1/DER / RFC 5280 knowledge shown",
+        "No Certificate Transparency or CRL/revocation work",
+        "No ACME issuance/renewal pipeline experience",
+        "No HSM or PKCS#11 integration",
+        "No key ceremony or key-lifecycle tooling",
+        "No FIPS 140-2/3 exposure",
+        "Go is secondary (CLI/fixes), not primary systems language"
+      ],
+      "scored_at": [
+        "2026-09-29T20:05:00Z"
+      ],
+      "created_at": "2026-09-29T20:04:45.456Z",
+      "archived": true,
+      "golden": true,
+      "subset": true
+    },
+    {
+      "id": "01a0eec5-43eb-7412-849e-c287ba76c0a2",
+      "title": "Senior Systems Engineer, MCP Server Portals",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec5-43eb-7412-849e-c287ba76c0a2.txt",
+      "score": 55,
+      "strengths": [
+        "10+ years building and operating production backend and distributed systems (exceeds 6+ requirement)",
+        "Demonstrated end-to-end ownership: monolith-to-core-services extraction with zero-downtime cutover",
+        "Backward-compatible live migrations via feature flags across multiple teams (~3,000 devices)",
+        "Owned shared platform libraries for auth, authorization, messaging, and caching",
+        "REST API and service-boundary design for high-traffic EV charging platforms",
+        "Event-driven and asynchronous systems with Kafka",
+        "Observability depth: Prometheus, Grafana, Actuator, distributed tracing, request correlation",
+        "Production support, incident response, and root-cause troubleshooting"
+      ],
+      "gaps": [
+        "No OAuth 2.0 / OIDC / JWT / PKCE experience shown",
+        "No identity, credential handling, or Zero Trust / policy-based access control work",
+        "Go experience limited to a CLI tool and small fixes, not production services",
+        "TypeScript/JavaScript listed as skills but no production service delivery",
+        "No Rust or C++",
+        "No Cloudflare Developer Platform or serverless edge-computing experience",
+        "No experience building proxies, gateways, or streaming/long-lived connections",
+        "No Model Context Protocol implementation experience (only MCP as an AI tooling user)"
+      ],
+      "scored_at": [
+        "2026-09-29T20:05:17Z"
+      ],
+      "created_at": "2026-09-29T20:05:00.525Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec7-49e9-70bc-8ea1-f49eb8279142",
+      "title": "Senior Backend Engineer - Databases - Analytics | Canada | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec7-49e9-70bc-8ea1-f49eb8279142.txt",
+      "score": 45,
+      "strengths": [
+        "10+ years senior backend engineering with production ownership",
+        "Distributed systems and microservice architecture at scale",
+        "Event-driven/streaming pipelines with Kafka",
+        "Hands-on Golang: shipped an S3 log-search CLI adopted by other teams",
+        "Observability depth: Prometheus, Grafana, tracing, Actuator, correlation IDs",
+        "Built an S3/Parquet/Athena analytics pipeline replacing OpenSearch",
+        "Strong relational DB design and query optimization (MySQL, PostgreSQL)",
+        "Measurable performance work (95% faster report generation)"
+      ],
+      "gaps": [
+        "No database internals experience (ingestion, query planning, storage formats)",
+        "No distributed query engine development",
+        "Golang used for tooling/fixes only, not mastery-level",
+        "No C++ or Rust experience",
+        "No catalog or table format experience (Iceberg, Delta, Hudi)",
+        "No data warehouse or data lake platform engineering (beyond basic S3/Parquet/Athena pipeline)",
+        "No multi-tenant SaaS platform work (tenant isolation, quotas, usage metering)",
+        "No OLAP/OLTP storage engine or columnar format work"
+      ],
+      "scored_at": [
+        "2026-09-29T20:07:27Z"
+      ],
+      "created_at": "2026-09-29T20:07:13.132Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eec7-827e-768a-afcf-36e99c86fcdd",
+      "title": "Senior Backend Engineer - Databases - Analytics | US | Remote",
+      "company": "Grafanalabs",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec7-827e-768a-afcf-36e99c86fcdd.txt",
+      "score": 52,
+      "strengths": [
+        "10+ years building production backend systems used by real users",
+        "Production Golang experience: CLI tooling and fixes to a roaming session gateway",
+        "Distributed systems and microservice architecture ownership at scale",
+        "Event-driven and ingestion-adjacent work with Kafka",
+        "Built an AWS analytics data pipeline with S3, Parquet, Athena, QuickSight",
+        "Strong observability practice: Prometheus, Grafana, distributed tracing, correlation IDs, Actuator",
+        "Demonstrable ownership from design through production deployment and on-call support",
+        "Database performance optimization (95% report latency reduction via indexing redesign)"
+      ],
+      "gaps": [
+        "No database internals experience (ingestion, query planning, distributed query execution)",
+        "No storage/table format work (Parquet internals, Iceberg, Delta, catalogs)",
+        "No distributed query engine or data warehouse/data lake construction",
+        "Golang is secondary, not mastery-level; no C++ or Rust",
+        "No multi-tenant SaaS platform work (tenant isolation, quotas, usage tracking, audit logs)",
+        "No OLAP/OLTP hybrid or columnar database experience",
+        "Limited AI/agent engineering depth beyond AI-assisted coding tools; no MCP server or agent-retrieval API building",
+        "No open-source contribution track record"
+      ],
+      "scored_at": [
+        "2026-09-29T20:07:37Z"
+      ],
+      "created_at": "2026-09-29T20:07:27.616Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec8-f352-7787-9909-6505e37ae0bd",
+      "title": "Senior Software Engineer II – Solution Lifecycle",
+      "company": "Smartsheet",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec8-f352-7787-9909-6505e37ae0bd.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years backend development, exceeding the 8+ year requirement",
+        "Deep Java/Spring Boot expertise on high-scale, high-availability systems",
+        "Proven distributed systems and microservice extraction from monolith",
+        "Kafka-based event-driven and asynchronous architecture design",
+        "REST API design, integration, and production support experience",
+        "3+ years hands-on AWS (ECS, Lambda, S3, DynamoDB, Athena, Parquet)",
+        "Relational database schema and query optimization in MySQL and PostgreSQL",
+        "Measurable performance wins (report generation 95% faster)"
+      ],
+      "gaps": [
+        "No Terraform or Infrastructure-as-Code experience listed",
+        "No evidence of MySQL internals, replication topologies, or DB infrastructure upgrades",
+        "Go is secondary (CLI tooling, small fixes) rather than a primary backend language",
+        "No Temporal workflow orchestration experience",
+        "No GitLab-CI exposure (only GitHub Actions, Jenkins)",
+        "Kotlin and Python not listed",
+        "No explicit Test-Driven Development practice mentioned",
+        "No mob programming or collective code ownership experience cited"
+      ],
+      "scored_at": [
+        "2026-09-29T20:09:17Z"
+      ],
+      "created_at": "2026-09-29T20:09:02.037Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec9-3155-776f-acd7-842831892c1a",
+      "title": "Senior Software Engineer",
+      "company": "Babil Games",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec9-3155-776f-acd7-842831892c1a.txt",
+      "score": 24,
+      "strengths": [
+        "10+ years professional software engineering (exceeds 5+ requirement)",
+        "Go backend service development including CLI tooling and production fixes",
+        "REST API design and database integration (MySQL, PostgreSQL, DynamoDB, Redis)",
+        "Strong system design, distributed systems, and microservice architecture",
+        "Live production support, incident troubleshooting, and reliability work",
+        "Debugging and refactoring established codebases (monolith-to-microservice extraction)",
+        "Performance bottleneck diagnosis (95% report generation speedup)",
+        "Automated testing with JUnit and Testcontainers"
+      ],
+      "gaps": [
+        "No C# experience",
+        "No Unity or game engine experience",
+        "No mobile game development or shipped mobile titles",
+        "No mobile release lifecycle / App Store or Google Play submissions",
+        "No client-side gameplay development",
+        "No casual/mid-core mobile game market knowledge",
+        "No native Unity plugin work (Objective-C/Swift, Java/Kotlin)",
+        "No Kotlin, Swift, or Objective-C"
+      ],
+      "scored_at": [
+        "2026-09-29T20:09:30Z"
+      ],
+      "created_at": "2026-09-29T20:09:17.911Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec9-63d3-74cd-9864-23ce8667d828",
+      "title": "Senior Software Engineer",
+      "company": "Cyware",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec9-63d3-74cd-9864-23ce8667d828.txt",
+      "score": 30,
+      "strengths": [
+        "10+ years backend engineering at senior level",
+        "Strong scalable microservices design and monolith decomposition",
+        "Kafka-based event-driven and asynchronous architecture",
+        "Hands-on AWS: ECS, Lambda, S3, DynamoDB, Athena/Parquet pipelines",
+        "REST API design for high-traffic production systems",
+        "PostgreSQL, MySQL, and Redis experience",
+        "Docker and containerized service deployment",
+        "CI/CD with GitHub Actions and Jenkins"
+      ],
+      "gaps": [
+        "No Python experience (7–10+ yrs required); stack is Java/PHP/Go",
+        "No Django / Django REST Framework experience",
+        "No cybersecurity domain experience (Cyber Fusion, threat intel)",
+        "No FedRAMP/GovRAMP or regulated-environment development",
+        "No AWS GovCloud experience",
+        "U.S. citizenship requirement likely unmet (Ukraine-based history, no citizenship stated)",
+        "No Kubernetes / EKS experience listed",
+        "No GenAI integration work: LLM REST/gRPC services, AI agents, RAG pipelines"
+      ],
+      "scored_at": [
+        "2026-09-29T20:09:47Z"
+      ],
+      "created_at": "2026-09-29T20:09:30.837Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eec9-a62f-729f-a0d9-49bbd98e0123",
+      "title": "Senior Backend Engineer – Growth, MSSP",
+      "company": "Horizon3.ai",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec9-a62f-729f-a0d9-49bbd98e0123.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, exceeds 7+ year requirement",
+        "Senior IC track record owning services end-to-end through production",
+        "Strong Java/Spring Boot plus working Go for services, CLIs, and tooling",
+        "Production AWS experience (ECS, Lambda, S3, DynamoDB, Athena, QuickSight)",
+        "Docker-based containerized service deployment",
+        "Monolith-to-microservice extraction with zero-downtime feature-flagged cutover",
+        "Feature flags and staged/gradual rollout patterns across multiple teams",
+        "Kafka event-driven and asynchronous workflow design"
+      ],
+      "gaps": [
+        "No Kubernetes experience (resume shows Docker/ECS only)",
+        "No multi-tenant SaaS or tenant isolation experience",
+        "No licensing, entitlement, subscription, usage metering, or billing systems",
+        "No MSP/MSSP or partner/sub-client model experience",
+        "No RBAC, authorization policy, or SSO system design depth (auth library ownership only)",
+        "No audit logging or event history system design",
+        "No notifications platform experience",
+        "No parent-child account hierarchy or complex entitlement data modeling"
+      ],
+      "scored_at": [
+        "2026-09-29T20:10:04Z"
+      ],
+      "created_at": "2026-09-29T20:09:47.824Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eec9-e7e4-7077-9528-cd5e2d41247a",
+      "title": "Senior Software Engineer – 3P Partnerships",
+      "company": "Gopuff",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eec9-e7e4-7077-9528-cd5e2d41247a.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years backend engineering, exceeds 8+ year requirement",
+        "Strong Java/Spring Boot depth matching primary stack",
+        "Production Golang experience (CLI tooling, roaming gateway fixes)",
+        "Kafka-based event-driven and async message processing",
+        "REST API design and service integration experience",
+        "PostgreSQL and MySQL schema design and query optimization",
+        "Monolith-to-microservices extraction with feature-flagged zero-downtime cutover",
+        "Cross-team coordination (rollout across 4 teams) and migration planning"
+      ],
+      "gaps": [
+        "No Terraform, Pulumi, or Helm experience listed",
+        "No Azure production experience (AWS-only cloud background)",
+        "No Node.js experience",
+        "No Snowflake/BigQuery SQL data analysis experience",
+        "Golang limited to CLI tooling and small fixes, not primary backend language",
+        "No explicit tech lead role or formal team mentorship examples",
+        "No stated interest in Manager/Principal leadership track",
+        "Frontend SPA (React/Vue) exposure is dated and backend-adjacent only"
+      ],
+      "scored_at": [
+        "2026-09-29T20:10:16Z"
+      ],
+      "created_at": "2026-09-29T20:10:04.646Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eeca-1535-77a1-8f84-6e861a8a2d93",
+      "title": "Senior Software Engineer – Delivery Tech",
+      "company": "Gopuff",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eeca-1535-77a1-8f84-6e861a8a2d93.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year bar",
+        "Deep Java/Spring Boot production experience with OO design",
+        "Extensive microservices work in distributed environments",
+        "Kafka-based event-driven and asynchronous workflow design",
+        "REST API design and service integration at scale",
+        "High-load, high-availability EV charging platforms (thousands of chargers/drivers)",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Measurable performance optimization (report generation up to 95% faster)"
+      ],
+      "gaps": [
+        "No production Azure or GCP experience (AWS-only cloud depth)",
+        "No Flutter or mobile app development",
+        "No Python in a production setting",
+        "Limited Node.js backend experience (JS/TS listed only as skills)",
+        "Go used for CLI tooling and fixes, not primary production services",
+        "No routing, dispatch, ETA, or geospatial optimization domain experience",
+        "No pricing or payments/payout systems experience",
+        "Mentoring of engineers not explicitly demonstrated"
+      ],
+      "scored_at": [
+        "2026-09-29T20:10:30Z"
+      ],
+      "created_at": "2026-09-29T20:10:16.248Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eeca-4d5c-7107-bd77-dde42bd7da65",
+      "title": "Senior Full Stack Software Engineer",
+      "company": "Sharetec Systems",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eeca-4d5c-7107-bd77-dde42bd7da65.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years professional experience, exceeds the 6+ year requirement",
+        "Deep Java/Spring Boot proficiency across multiple senior roles",
+        "Proven legacy modernization: extracted core domain services from a Spring Boot monolith with zero-downtime feature-flagged cutover",
+        "Migrated ~3,000 chargers off legacy monoliths to microservices behind a BFF API across 4 teams",
+        "Defined and owned shared Spring Boot libraries for auth, messaging, and caching reused across services",
+        "Strong relational database design and query optimization in PostgreSQL and MySQL",
+        "Measurable performance optimization (report generation cut 30-60s to 3-10s)",
+        "Distributed systems and event-driven architecture with Kafka at high load"
+      ],
+      "gaps": [
+        "No advanced hands-on frontend work with Angular, React, or Vue (only backend services supporting SPAs)",
+        "No Kubernetes or container orchestration experience listed",
+        "No MongoDB or other NoSQL document database (DynamoDB/Redis only)",
+        "No financial services or fintech domain experience",
+        "No explicit mentoring or coaching of mid-level/junior engineers",
+        "No stated technical lead role over a team or feature squad",
+        "No Node.js, Python, or .NET backend exposure",
+        "No SOC 2 or compliance framework familiarity"
+      ],
+      "scored_at": [
+        "2026-09-29T20:10:45Z"
+      ],
+      "created_at": "2026-09-29T20:10:30.621Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eeca-88bd-7411-bf6d-021b7939e49d",
+      "title": "Senior Software Engineer, Backend – Overseer",
+      "company": "Coinbase",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eeca-88bd-7411-bf6d-021b7939e49d.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend engineering, exceeds 5+ year bar",
+        "Large-scale distributed systems operated in production",
+        "Kafka-based event-driven and asynchronous workflows",
+        "Platform-level shared libraries consumed by multiple microservices",
+        "End-to-end ownership from design through production support",
+        "Monolith-to-microservice extraction with zero-downtime feature-flagged cutovers",
+        "Postgres and MySQL schema and query optimization",
+        "REST API and system design across multiple teams"
+      ],
+      "gaps": [
+        "No core financial/payments or reconciliation systems experience",
+        "Go is secondary (CLI tool, small fixes) rather than primary language",
+        "No Python or Ruby experience listed",
+        "No Spark or Flink stream-processing experience",
+        "No invariant enforcement or correctness-model design work",
+        "No real-time (sub-second) detection engine experience",
+        "No ML/predictive modeling for AI-powered guardrails",
+        "Mentoring junior engineers not demonstrated"
+      ],
+      "scored_at": [
+        "2026-09-29T20:11:00Z"
+      ],
+      "created_at": "2026-09-29T20:10:45.822Z",
+      "archived": true,
+      "golden": true,
+      "subset": false
+    },
+    {
+      "id": "01a0eeca-c404-7044-b85c-387e36700d88",
+      "title": "Senior Software Engineer, Connectivity – API Transformation",
+      "company": "Pantheon Platform",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eeca-c404-7044-b85c-387e36700d88.txt",
+      "score": 55,
+      "strengths": [
+        "10+ years senior backend engineering, matches seniority bar",
+        "Direct monolith decomposition experience: extracted core domain services with feature-flagged zero-downtime cutover",
+        "Incremental legacy migration while keeping systems running (~3,000 chargers across 4 teams behind a BFF)",
+        "Large-scale, high-traffic distributed systems (EV charging platform, thousands of chargers/drivers)",
+        "REST API design and service integration at scale",
+        "Event-driven and async workflow orchestration with Kafka (transfers conceptually to Pub/Sub)",
+        "Observability: Prometheus, Grafana, distributed tracing, request correlation",
+        "Production support and incident troubleshooting for customer-facing services"
+      ],
+      "gaps": [
+        "No significant production Go service ownership (Go limited to a CLI tool and small fixes)",
+        "No GraphQL experience; no federation/supergraph, gateways, or schema registries",
+        "No gRPC experience",
+        "No Cassandra or wide-column/stateful datastore ownership (replication, backup, DR)",
+        "No GCP experience (AWS only); no Cloud Run, Pub/Sub, GCP Workflows, Cloud Build",
+        "No Kubernetes experience",
+        "No Terraform or infrastructure-as-code",
+        "No Python or Rust experience (legacy monolith is Python, polyglot codebase)"
+      ],
+      "scored_at": [
+        "2026-09-29T20:11:17Z"
+      ],
+      "created_at": "2026-09-29T20:11:00.997Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eecb-04d8-777b-903b-665f16c25280",
+      "title": "Senior Software Engineer – MANTL",
+      "company": "Alkami Technology",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eecb-04d8-777b-903b-665f16c25280.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years senior backend engineering experience",
+        "Strong microservice architecture and monolith decomposition",
+        "REST API design across multiple roles",
+        "System design and architectural decision-making ownership",
+        "Domain service extraction aligns with DDD thinking",
+        "Event-driven systems with Kafka",
+        "Some production Golang (CLI tool, gateway fixes)",
+        "Well-tested code practice (JUnit, Testcontainers)"
+      ],
+      "gaps": [
+        "No professional Node.js experience",
+        "No Python experience",
+        "No NestJS exposure",
+        "Go experience limited to CLI tooling and small fixes, not primary backend language",
+        "TypeScript/JavaScript listed as skills but not demonstrated in any role",
+        "Primary 10+ years is Java/Spring Boot, not the JD's backend stack",
+        "No hands-on ReactJS development (only backend support for SPAs)",
+        "Domain-driven design not stated explicitly"
+      ],
+      "scored_at": [
+        "2026-09-29T20:11:30Z"
+      ],
+      "created_at": "2026-09-29T20:11:17.594Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0eecb-dc81-7374-8586-45ead4a81fb1",
+      "title": "Software Engineer II",
+      "company": "Metronet",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eecb-dc81-7374-8586-45ead4a81fb1.txt",
+      "score": 34,
+      "strengths": [
+        "10+ years building backend systems and REST APIs",
+        "Strong RESTful API design and third-party integration experience",
+        "Full-stack exposure: built backend services supporting React and Vue SPAs",
+        "TypeScript and JavaScript listed in technical stack",
+        "Strong troubleshooting and production incident support track record",
+        "Database issue resolution across MySQL and PostgreSQL",
+        "Proven ability to translate business requirements into technical solutions across cross-team migrations",
+        "Experience with Git, CI/CD (GitHub Actions, Jenkins), and automated testing (JUnit, Testcontainers)"
+      ],
+      "gaps": [
+        "No professional React experience",
+        "No professional Node.js backend experience",
+        "Limited TypeScript/JavaScript depth (listed as skill, not demonstrated)",
+        "No front-end UI development ownership; backend-focused career",
+        "No Esri/ArcGIS or ArcGIS Maps SDK experience",
+        "No mapping or geospatial web application experience",
+        "No GIS data or workflow experience",
+        "No Three.js or JS visualization experience"
+      ],
+      "scored_at": [
+        "2026-09-29T20:12:21Z"
+      ],
+      "created_at": "2026-09-29T20:12:12.803Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0eecb-ffa5-717a-9d53-48de4704968b",
+      "title": "Senior Software Engineer",
+      "company": "Granicus",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0eecb-ffa5-717a-9d53-48de4704968b.txt",
+      "score": 34,
+      "strengths": [
+        "10+ years senior backend engineering (meets 8-12 yr band)",
+        "Scalable microservices design and monolith decomposition",
+        "REST API design and service integrations",
+        "Event-driven/async workflows with Kafka",
+        "Production deployment, monitoring, and incident support experience",
+        "Observability background (Prometheus, Grafana, distributed tracing) transfers to LangFuse",
+        "AWS and Docker containerized deployments",
+        "TypeScript/JavaScript exposure and SPA-supporting backends (React, Vue)"
+      ],
+      "gaps": [
+        "Expert-level Python proficiency (no Python on resume)",
+        "FastAPI and asyncio backend experience",
+        "Web scraping frameworks (Firecrawl, Scrapy, Playwright)",
+        "LangChain / LangFlow orchestration",
+        "Building and deploying multi-agent systems in production",
+        "Agent-to-agent (A2A) communication",
+        "Agent observability tooling (LangFuse)",
+        "Agent integrations with Salesforce, SharePoint, Slack, or CRMs"
+      ],
+      "scored_at": [
+        "2026-09-29T20:12:30Z"
+      ],
+      "created_at": "2026-09-29T20:12:21.799Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0ef47-f459-706e-b91e-b2c1a1283bd6",
+      "title": "Senior Software Engineer – Product Security",
+      "company": "vCluster",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0ef47-f459-706e-b91e-b2c1a1283bd6.txt",
+      "score": 24,
+      "strengths": [
+        "10+ years senior backend engineering, production ownership end to end",
+        "Some real Golang delivery (log-retrieval CLI adopted by other teams, gateway fixes)",
+        "Strong distributed systems and microservice architecture background",
+        "Designs REST APIs and event-driven Kafka workflows at scale",
+        "Docker containerization and AWS deployment experience",
+        "Built shared auth/authorization libraries across microservices",
+        "Zero-downtime migrations with feature-flagged rollouts across teams",
+        "Observability depth (Prometheus, Grafana, distributed tracing) useful for incident response"
+      ],
+      "gaps": [
+        "Go not a primary production language (CLI tool and minor fixes only)",
+        "No Kubernetes experience (API server, admission control, RBAC, kubelet)",
+        "No controller/operator development (controller-runtime, Kubebuilder, client-go)",
+        "No product security or application security role experience",
+        "No container breakout or privilege escalation hands-on work",
+        "No threat modeling or secure design review experience",
+        "No vulnerability triage, CVE lifecycle, or coordinated disclosure experience",
+        "No security patch release ownership"
+      ],
+      "scored_at": [
+        "2026-09-29T22:28:00Z"
+      ],
+      "created_at": "2026-09-29T22:27:45.378Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0ef48-cdd4-7440-a295-ce68042f2981",
+      "title": "Software Engineer II – Query Gateway",
+      "company": "New Relic",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0ef48-cdd4-7440-a295-ce68042f2981.txt",
+      "score": 78,
+      "strengths": [
+        "Strong Java + Spring Boot backend depth",
+        "Distributed systems and microservice architecture experience",
+        "10+ years collaborative software development (3+ required)",
+        "Kafka event-driven and asynchronous workflows",
+        "AWS cloud services (ECS, Lambda, S3, DynamoDB, Redis)",
+        "Demonstrated performance optimization (95% report latency cut)",
+        "Ownership mindset: owned services, shared libraries, zero-downtime migrations",
+        "Command-line depth (built Golang CLI for S3 log retrieval)"
+      ],
+      "gaps": [
+        "No C++ experience",
+        "No distributed database internals or query engine work",
+        "No petabyte-scale data infrastructure experience",
+        "No multi-region/multi-cloud (AWS only, no GCP/Azure)",
+        "No multi-tenant query gateway or observability platform ownership",
+        "No high-throughput streaming at millions of messages/sec",
+        "Observability tools used as consumer, not platform builder",
+        "No formal on-call rotation listed (support only)"
+      ],
+      "scored_at": [
+        "2026-09-29T22:28:53Z"
+      ],
+      "created_at": "2026-09-29T22:28:41.045Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f37c-2674-748a-8df8-f0a20a3bf0aa",
+      "title": "High School Fellowship, Software Engineering",
+      "company": "Stripe",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f37c-2674-748a-8df8-f0a20a3bf0aa.txt",
+      "score": 3,
+      "strengths": [
+        "Strong backend fundamentals in Java, Go, and JavaScript/TypeScript (core Stripe languages)",
+        "Production experience writing tested, documented software (JUnit, Testcontainers)",
+        "Distributed systems, REST API, and Kafka event-driven design depth",
+        "Proven ownership of projects end to end through production deployment",
+        "Experience navigating and decomposing large unfamiliar codebases (monolith extraction)",
+        "Measurable performance and cost optimization results",
+        "Cross-team collaboration and feature-flagged rollouts across 4 teams",
+        "Thoughtful use of current AI development tools (Claude Code, Copilot, MCP, agents)"
+      ],
+      "gaps": [
+        "Not currently enrolled in high school or graduating high school",
+        "Holds a bachelor's degree (2013) — exceeds program eligibility",
+        "10+ years professional experience vs. early-stage student target",
+        "No availability for 12-week in-person internship in SF or Seattle (based in Orlando, remote-oriented)",
+        "Overqualified for an hourly $60/hr internship role",
+        "No Ruby or Scala experience listed",
+        "No open source contributions, competitions, or research portfolio cited",
+        "No public repositories, project links, or work samples provided"
+      ],
+      "scored_at": [
+        "2026-09-30T18:03:25Z"
+      ],
+      "created_at": "2026-09-30T18:03:14.943Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0f37c-8011-71eb-93de-d69dbd7c07f1",
+      "title": "Senior Software Engineer II, Route Planning",
+      "company": "Samsara",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f37c-8011-71eb-93de-d69dbd7c07f1.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend engineering, exceeds 6+ year minimum",
+        "CS bachelor's degree meets minimum education requirement",
+        "Senior-level scope: owned services end to end through production",
+        "Fleet management domain adjacency via EV charging platforms",
+        "Strong distributed systems, microservices, and REST API design",
+        "Kafka event-driven and asynchronous workflow experience",
+        "Monolith-to-microservice migrations with feature-flagged zero-downtime rollouts",
+        "Cross-team delivery coordination (4 teams, ~3,000 device migration)"
+      ],
+      "gaps": [
+        "No routing, navigation, or route optimization product experience",
+        "No frontend/full-stack ownership (JD wants end-to-end frontend to backend)",
+        "Limited modern frontend depth — React/Vue only as consumed APIs, no UI building",
+        "No stated mentoring or tech lead experience",
+        "No 0→1 team building or post-startup scaling track record",
+        "No direct customer-facing engagement (interviews, customer success collaboration)",
+        "No optimization/algorithms background (VRP, scheduling, constraint solving)",
+        "No IoT, telematics, or fleet-scale device data experience"
+      ],
+      "scored_at": [
+        "2026-09-30T18:03:47Z"
+      ],
+      "created_at": "2026-09-30T18:03:37.875Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f37f-7e30-7555-ac2f-727979601177",
+      "title": "Senior Software Engineer – PIM",
+      "company": "Everest Technologies, Inc",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f37f-7e30-7555-ac2f-727979601177.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, senior-level throughout",
+        "Deep Java + Spring Boot microservices experience",
+        "Extensive Kafka event-driven and async workflow design",
+        "REST API design plus prior SOAP integration experience",
+        "MySQL/PostgreSQL schema design and query optimization",
+        "Concrete performance win: reports cut 30-60s to 3-10s",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Migration experience directly relevant: SAP to PIM data systems"
+      ],
+      "gaps": [
+        "No Akeneo PIM or enterprise catalog/SKU platform experience",
+        "No Kubernetes/GKE orchestration experience",
+        "No MongoDB or NoSQL document store experience (DynamoDB only)",
+        "No Oracle database experience",
+        "No RabbitMQ or IBM MQ experience",
+        "No Kafka schema registry / partition strategy specifics called out",
+        "No GCP experience (AWS/Azure only)",
+        "No ArgoCD or Bamboo CI/CD tooling"
+      ],
+      "scored_at": [
+        "2026-09-30T18:07:10Z"
+      ],
+      "created_at": "2026-09-30T18:06:54.002Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0f37f-bded-7273-96dd-cba4b5b1dfdf",
+      "title": "Senior Software Engineer, Kubernetes Runtime",
+      "company": "NVIDIA",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f37f-bded-7273-96dd-cba4b5b1dfdf.txt",
+      "score": 52,
+      "strengths": [
+        "10+ years backend and distributed systems experience, exceeding the 6+ year bar",
+        "Hands-on Go: built and shipped a Golang CLI adopted by other teams, plus Go service fixes",
+        "Microservices, REST API design, and API contract definition across teams",
+        "Event-driven architecture with Kafka for high-load, high-availability platforms",
+        "AWS depth: ECS, Lambda, S3, DynamoDB, plus Docker containerized deployments",
+        "CI/CD pipeline experience with GitHub Actions and Jenkins",
+        "Diagnosing complex failures: production support, incident response, distributed tracing, Prometheus/Grafana observability",
+        "Proven cross-team delivery: monolith-to-microservice migration with feature-flagged rollout across 4 teams"
+      ],
+      "gaps": [
+        "No Kubernetes experience (no K8s, controllers, operators, or CRDs)",
+        "No controller-runtime, reconciler, or custom API/CRD development",
+        "No Helm or Argo CD / GitOps delivery experience",
+        "Go is secondary (CLI and fixes only), not primary production language",
+        "No GPU infrastructure, GPU scheduling, or accelerated networking exposure",
+        "No release automation or multi-environment release qualification pipelines",
+        "No experience bringing new cloud providers, regions, or hardware into production",
+        "No resource allocation, quota, leasing, or fair-share scheduling work"
+      ],
+      "scored_at": [
+        "2026-09-30T18:07:21Z"
+      ],
+      "created_at": "2026-09-30T18:07:10.319Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0f37f-e958-7606-b70a-85db98e3f53c",
+      "title": "Senior Software Engineer, Developer Tools – SDKs",
+      "company": "Keeper Security, Inc.",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f37f-e958-7606-b70a-85db98e3f53c.txt",
+      "score": 47,
+      "strengths": [
+        "10+ years engineering experience vs 7+ required",
+        "Go experience, including a production CLI tool adopted by other teams (preferred skill)",
+        "Built and owned shared internal libraries for auth, authorization, messaging, caching",
+        "Strong REST API design across high-traffic distributed systems",
+        "Distributed and integration-heavy systems: Kafka event-driven workflows, monolith-to-microservice extraction",
+        "AWS depth: ECS, Lambda, S3, DynamoDB, Athena, Docker",
+        "CI/CD with GitHub Actions and Jenkins",
+        "Automated testing with JUnit and Testcontainers"
+      ],
+      "gaps": [
+        "No Python experience listed (core requirement)",
+        "No .NET/C# experience listed (core requirement)",
+        "No external/public-facing SDK ownership",
+        "No open-source contribution or maintainer experience",
+        "No Terraform or Ansible experience",
+        "No secrets management, PAM, or identity/security platform work",
+        "No cybersecurity domain background",
+        "Limited Azure/GCP exposure (AWS-centric)"
+      ],
+      "scored_at": [
+        "2026-09-30T18:07:39Z"
+      ],
+      "created_at": "2026-09-30T18:07:21.433Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f3ec-f471-777d-aa6e-e385976ef7af",
+      "title": "Senior Software Engineer",
+      "company": "Oportun",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f3ec-f471-777d-aa6e-e385976ef7af.txt",
+      "score": 82,
+      "strengths": [
+        "10+ years backend engineering, exceeds 7-8 year requirement",
+        "Direct match: built and owned shared Spring Boot libraries across microservices",
+        "Platform/developer-experience focus (service bootstrap cut from days to hours)",
+        "Strong Java + Spring Boot proficiency as required backend language",
+        "Distributed systems and event-driven architecture with Kafka",
+        "4+ years AWS (ECS, Lambda, S3, DynamoDB, Athena) plus Docker containerization",
+        "CI/CD and Continuous Delivery via GitHub Actions and Jenkins",
+        "Monitoring and observability: Prometheus, Grafana, Actuator, distributed tracing"
+      ],
+      "gaps": [
+        "No C++ or C# experience (JD lists C++ in stack)",
+        "No recent GCP or Azure work (AWS-only in last 6 years)",
+        "Mentoring junior engineers not stated on resume",
+        "Secure development practices / security in distributed systems not mentioned",
+        "No financial services or fintech domain experience",
+        "Data structures and algorithms depth not evidenced",
+        "No explicit on-call rotation or incident response ownership",
+        "Kubernetes / container orchestration beyond ECS not shown"
+      ],
+      "scored_at": [
+        "2026-09-30T20:06:47Z"
+      ],
+      "created_at": "2026-09-30T20:06:27.699Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0f3ed-4328-7717-8c27-06e9d0b7ad3b",
+      "title": "Senior Software Engineer",
+      "company": "Harris Computer",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f3ed-4328-7717-8c27-06e9d0b7ad3b.txt",
+      "score": 74,
+      "strengths": [
+        "10+ years backend software engineering, exceeds 8+ requirement",
+        "Deep Java and Spring Boot production experience",
+        "Monolith-to-microservices extraction with zero-downtime feature-flag cutover",
+        "Designed and owned scalable REST APIs and BFF layer",
+        "Built shared Spring Boot libraries for auth, messaging, caching",
+        "Strong PostgreSQL and MySQL schema and query optimization",
+        "Concrete scalability wins (report generation 30-60s to 3-10s)",
+        "AWS cloud and Docker containerized service delivery"
+      ],
+      "gaps": [
+        "No MongoDB or document-database experience",
+        "No Elasticsearch experience (only removed an OpenSearch stack)",
+        "No search/indexing technology depth",
+        "No Next.js or Material UI experience",
+        "React/Vue exposure is peripheral, not hands-on frontend work",
+        "JVM internals, memory tuning, and GC profiling not demonstrated",
+        "Concurrency/multithreading work not evidenced",
+        "Java 11/17+ version proficiency not stated"
+      ],
+      "scored_at": [
+        "2026-09-30T20:07:04Z"
+      ],
+      "created_at": "2026-09-30T20:06:47.849Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f3ed-8329-70a6-9a71-5dcb9bbaa86e",
+      "title": "Software Engineer, Credit Card",
+      "company": "OnePay",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f3ed-8329-70a6-9a71-5dcb9bbaa86e.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend and distributed systems (far exceeds 3+ requirement)",
+        "Deep Java/Spring Boot microservices ownership",
+        "Kafka-based event-driven architecture design",
+        "REST API design for high-traffic production systems",
+        "AWS breadth: ECS, Lambda, S3, DynamoDB, Athena",
+        "Monolith-to-microservices extraction with zero-downtime feature-flag cutover",
+        "Reliability and performance ownership (95% report latency reduction)",
+        "Observability: Prometheus, Grafana, distributed tracing, correlation IDs"
+      ],
+      "gaps": [
+        "No Node.js/NestJS production backend experience",
+        "TypeScript listed as a skill but no backend TS work shown",
+        "No Kubernetes experience (Docker/ECS only)",
+        "No fintech, payments, or banking domain experience",
+        "No PCI DSS or regulated-compliance exposure",
+        "No explicit data security / sensitive-data handling work",
+        "No real-time financial transaction processing",
+        "Golang use limited to CLI tooling and small fixes"
+      ],
+      "scored_at": [
+        "2026-09-30T20:07:18Z"
+      ],
+      "created_at": "2026-09-30T20:07:04.235Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f3ed-b965-729a-8e4f-fa6e2aeb5bf7",
+      "title": "Senior Backend Engineer",
+      "company": "LaunchDarkly",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f3ed-b965-729a-8e4f-fa6e2aeb5bf7.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years building and operating production backend software (exceeds 7+ requirement)",
+        "Strong distributed systems and microservices background",
+        "REST API design across high-traffic EV charging platforms",
+        "Kafka-based event-driven and asynchronous architecture",
+        "Observability depth: Prometheus, Grafana, distributed tracing, request correlation",
+        "Hands-on feature-flag rollouts for zero-downtime migrations — directly relevant to LaunchDarkly's domain",
+        "Production support and incident troubleshooting experience",
+        "Measurable performance optimization (report generation cut up to 95%)"
+      ],
+      "gaps": [
+        "No deep/primary Go experience — Go limited to a CLI tool and small fixes",
+        "No Python or Rust experience listed",
+        "No explicit mentoring or coaching of engineers",
+        "No SLO definition or formal alerting/on-call ownership",
+        "Limited evidence of leading ambiguous, cross-team projects end-to-end",
+        "No security-focused design work (authN/authZ libraries aside)",
+        "No design docs / architecture review influence called out",
+        "Recent role ended Nov 2025 — employment gap"
+      ],
+      "scored_at": [
+        "2026-09-30T20:07:33Z"
+      ],
+      "created_at": "2026-09-30T20:07:18.118Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93d-7202-7652-be0b-6736af48bde4",
+      "title": "Staff Software Engineer, Distributed Data Services - Slack",
+      "company": "Slack",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93d-7202-7652-be0b-6736af48bde4.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years backend engineering, matching the experience bar",
+        "Deep Java / Spring Boot expertise, one of Slack's two backend languages",
+        "Kafka-based event-driven and asynchronous distributed systems",
+        "Extracted core domain services from a monolith with feature-flagged zero-downtime cutover",
+        "Built and owned shared platform libraries (auth, messaging, caching) across microservices",
+        "Caching experience (service-level cache, Redis) relevant to edge caches",
+        "Concrete performance wins (financial reports 30-60s to 3-10s, ~95% faster)",
+        "Observability depth: Prometheus, Grafana, Actuator, distributed tracing, request correlation"
+      ],
+      "gaps": [
+        "No experience at Slack-scale throughput (millions of events/sec)",
+        "Go is secondary (CLI tool, minor fixes) rather than a primary production language",
+        "No edge cache / CDN / globally distributed low-latency service experience",
+        "No encryption or key management work (Enterprise Key Management, KMS, HSM)",
+        "No data residency or data-sovereignty compliance experience",
+        "No exposure to FEDRAMP/NIST or other highly regulated environments",
+        "Limited evidence of owning critical production infrastructure (on-call, SLOs, uptime targets)",
+        "Staff/PMTS-level scope not demonstrated (org-wide technical influence, formal design docs)"
+      ],
+      "scored_at": [
+        "2026-10-01T20:52:46Z",
+        "2026-10-01T20:53:02Z",
+        "2026-10-01T21:05:58Z"
+      ],
+      "created_at": "2026-10-01T20:52:28.804Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93e-052c-74b1-82fe-ee3a6a7a394e",
+      "title": "Software Engineer II",
+      "company": "Vontier",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93e-052c-74b1-82fe-ee3a6a7a394e.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years object-oriented development, well beyond the 3–5 year requirement",
+        "Deep Java and Spring Boot experience across multiple senior roles",
+        "BS in Computer Science matches degree requirement",
+        "Strong AWS experience (ECS, Lambda, S3, Athena, DynamoDB)",
+        "REST API design and JSON-based service integration",
+        "CI/CD with GitHub Actions and Jenkins",
+        "Automated testing with JUnit and Testcontainers",
+        "Hands-on with modern stacks (Kafka, Docker, Golang) and able to introduce them to a team"
+      ],
+      "gaps": [
+        "No C++ experience",
+        "No embedded/firmware or device-level software experience",
+        "No hardware domain exposure (tank gauges, fueling, industrial sensors)",
+        "No stated collaboration with electrical/mechanical engineering teams",
+        "Agile/Scrum methodology experience not explicitly stated",
+        "No explicit mentoring of junior engineers listed",
+        "Azure experience is dated and peripheral (pre-2020)",
+        "Overqualified for 3–5 year Software Engineer II level; salary band likely below current seniority"
+      ],
+      "scored_at": [
+        "2026-10-01T20:53:21Z"
+      ],
+      "created_at": "2026-10-01T20:53:06.477Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93e-5001-74d6-9c4c-55fdb983d78b",
+      "title": "Senior Backend Engineer, Home Surfaces",
+      "company": "Spotify",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93e-5001-74d6-9c4c-55fdb983d78b.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend engineering at senior level",
+        "Deep Java and Spring Boot production experience",
+        "Distributed microservices design and monolith decomposition",
+        "Kafka-based event-driven and async pipelines",
+        "REST API design, including broadly adopted shared libraries",
+        "Owned services end-to-end through deployment and production support",
+        "Observability: Prometheus, Grafana, distributed tracing",
+        "Analytics data pipeline work (S3, Parquet, Athena) transfers to BigQuery"
+      ],
+      "gaps": [
+        "No recommendation/ranking/personalization systems experience",
+        "No GCP experience (AWS-only cloud background)",
+        "No BigQuery or Bigtable",
+        "No gRPC experience",
+        "No large-scale data processing frameworks (Beam, Spark, Flink, Dataflow)",
+        "No consumer-scale traffic (millions of users) demonstrated",
+        "No A/B testing or experimentation platform work",
+        "Limited collaboration with Data Scientists on ML-driven features"
+      ],
+      "scored_at": [
+        "2026-10-01T20:53:35Z"
+      ],
+      "created_at": "2026-10-01T20:53:25.634Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0f93f-1dc7-741c-8b90-f278d5597c29",
+      "title": "Senior Software Engineer II – Global Commercial Services Technology",
+      "company": "American Express",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93f-1dc7-741c-8b90-f278d5597c29.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, exceeds 8+ year requirement",
+        "Bachelor's degree in Computer Science",
+        "Strong distributed systems and microservices design and operation",
+        "Kafka-based event-driven and asynchronous architecture at production scale",
+        "REST API design and service contract definition across teams",
+        "AWS hands-on: ECS, Lambda, S3, DynamoDB, Docker containerized deployments",
+        "Relational (Postgres, MySQL) plus NoSQL (DynamoDB, Redis) experience",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover"
+      ],
+      "gaps": [
+        "Golang is secondary (CLI tool, minor fixes) — not strong hands-on primary backend language",
+        "No distributed Postgres-compatible DB experience (CockroachDB, Spanner, Yugabyte)",
+        "No workflow orchestration / durable execution (Camunda, Temporal)",
+        "No Datadog experience (observability shown via Prometheus/Grafana instead)",
+        "Domain-driven design and hexagonal architecture not explicitly stated",
+        "No explicit mentoring of engineers or formal architecture review/RFC process",
+        "No graph, document, search, or OLAP data system ownership beyond S3/Athena",
+        "No AI/ML model integration into backend systems (listed as a plus)"
+      ],
+      "scored_at": [
+        "2026-10-01T20:54:33Z"
+      ],
+      "created_at": "2026-10-01T20:54:18.313Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93f-68a4-7541-bcc3-782a26ffc9c6",
+      "title": "Senior Software Engineer, Backend – Payments Platform",
+      "company": "Coinbase",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93f-68a4-7541-bcc3-782a26ffc9c6.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year bar",
+        "Deep service-oriented/microservices production experience (monolith extraction, BFF migration)",
+        "Hands-on Go: shipped a CLI adopted across teams plus fixes to a roaming gateway",
+        "Strong distributed systems and event-driven design with Kafka",
+        "REST API design for high-traffic EV charging platforms",
+        "End-to-end ownership from design through deployment and production support",
+        "Observability depth: Prometheus, Grafana, Actuator, distributed tracing, correlation IDs",
+        "Demonstrated bottleneck resolution (report generation 30-60s to 3-10s, up to 95% faster)"
+      ],
+      "gaps": [
+        "No payments, fintech, or financial transaction systems experience",
+        "Go is secondary (CLI tooling, bug fixes) rather than primary production language",
+        "No Ruby on Rails experience",
+        "No ledger/double-entry, reconciliation, or auditability work",
+        "No fiat on/off-ramp, payment rails, or PSP integration experience",
+        "No crypto/blockchain or regulated financial domain exposure",
+        "No explicit low-latency/high-throughput transaction volume metrics",
+        "No stated platform/extension-point or self-serve API product work"
+      ],
+      "scored_at": [
+        "2026-10-01T20:54:48Z"
+      ],
+      "created_at": "2026-10-01T20:54:37.478Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93f-a38c-738f-b8d1-5126165cc0cc",
+      "title": "Software Engineer, Backend – Go",
+      "company": "Mirantis",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93f-a38c-738f-b8d1-5126165cc0cc.txt",
+      "score": 55,
+      "strengths": [
+        "10+ years professional backend engineering, far exceeding the 4-5 year requirement",
+        "Bachelor's degree in Computer Science",
+        "Production Go exposure: shipped an adopted Golang CLI and fixes to a roaming session gateway",
+        "Deep REST API design across high-traffic distributed systems",
+        "Event-driven async architecture with Kafka, including shared messaging libraries",
+        "Microservices decomposition from monoliths with feature-flagged zero-downtime cutovers",
+        "Relational database skill: MySQL/PostgreSQL schema and query optimization (95% report speedup)",
+        "Built shared authentication and authorization libraries across services"
+      ],
+      "gaps": [
+        "No 2-3+ years production backend services in Go (only a CLI tool and small fixes)",
+        "No Kubernetes experience (no k8s, k0s, or Helm packaging)",
+        "No Temporal or durable workflow orchestration experience",
+        "No OpenAPI-driven API design or generated multi-language SDKs",
+        "No SCIM user/group lifecycle provisioning",
+        "No Kubernetes-native RBAC or tenant-scoped RBAC unification",
+        "No explicit OIDC/JWT, service-to-service auth, gateway routing, or rate limiting details",
+        "No multi-tenant SaaS/PaaS platform experience stated"
+      ],
+      "scored_at": [
+        "2026-10-01T20:55:08Z"
+      ],
+      "created_at": "2026-10-01T20:54:52.557Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f93f-f0b5-750a-b776-34dea7247c9f",
+      "title": "Senior Software Engineer – Client Lifecycle",
+      "company": "Virta Health",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f93f-f0b5-750a-b776-34dea7247c9f.txt",
+      "score": 70,
+      "strengths": [
+        "10+ years production backend services in statically typed Java/Spring Boot",
+        "Working Golang experience: CLI tooling plus service-level fixes",
+        "Deep Kafka event-driven and asynchronous workflow design",
+        "Monolith-to-microservices extraction with zero-downtime feature-flag cutovers",
+        "Strong SQL: MySQL/PostgreSQL schema and query optimization",
+        "Analytics-layer fluency via S3/Parquet/Athena/QuickSight pipeline",
+        "Financial reporting performance work (30-60s to 3-10s) and EU leasing reimbursement service ownership",
+        "End-to-end ownership through production deployment and incident support"
+      ],
+      "gaps": [
+        "No GCP experience (AWS-only cloud background)",
+        "Go used for tooling/fixes, not primary production service ownership",
+        "No healthcare domain or HIPAA/PHI experience",
+        "No Salesforce or Zuora integration experience",
+        "No quote-to-cash, invoicing, subscription, or claims-submission systems",
+        "Limited evidence of ledger/payment-grade correctness ownership",
+        "React/TypeScript only peripheral; no hands-on frontend delivery",
+        "No stated track record translating finance/RCM stakeholder problems into designs"
+      ],
+      "scored_at": [
+        "2026-10-01T20:55:26Z"
+      ],
+      "created_at": "2026-10-01T20:55:12.311Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f940-38da-75b0-9eb8-a4db3b145887",
+      "title": "Senior Backend Engineer, Data",
+      "company": "Prenuvo",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f940-38da-75b0-9eb8-a4db3b145887.txt",
+      "score": 41,
+      "strengths": [
+        "10+ years backend engineering, exceeding the 6-8 year requirement",
+        "Ownership of production services and databases end to end",
+        "Strong REST API design across high-traffic systems",
+        "Event-driven pipeline experience with Kafka",
+        "Built an automated AWS data pipeline (S3, Parquet, Athena, QuickSight) for analytics",
+        "Replaced OpenSearch analytics stack, cutting infrastructure cost",
+        "Domain decomposition: extracted core domain services from a monolith with clear boundaries",
+        "Relational data modeling and query optimization in MySQL and PostgreSQL"
+      ],
+      "gaps": [
+        "No production Python experience (no FastAPI, Django, or Flask)",
+        "No healthcare or clinical data experience",
+        "No FHIR resource modeling experience",
+        "No HL7 standards or interoperability experience",
+        "No clinical terminology exposure (SNOMED CT, LOINC, ICD-10, DICOM)",
+        "No dimensional/analytical data modeling experience",
+        "No data lineage, provenance, versioning, or auditability practices",
+        "No data quality validation or reconciliation frameworks"
+      ],
+      "scored_at": [
+        "2026-10-01T20:55:45Z"
+      ],
+      "created_at": "2026-10-01T20:55:30.779Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f940-8145-7413-af2b-f8ebda93f7a6",
+      "title": "Backend Engineer",
+      "company": "Resend",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f940-8145-7413-af2b-f8ebda93f7a6.txt",
+      "score": 64,
+      "strengths": [
+        "10+ years strong backend engineering",
+        "Kafka-based event-driven and async workflow design",
+        "Distributed systems and microservice extraction from monolith",
+        "High-load, high-availability EV charging platforms",
+        "Observability: Prometheus, Grafana, distributed tracing, correlation IDs",
+        "Production incident response and operational support",
+        "Zero-downtime migrations via feature flags (reduced blast radius)",
+        "AWS depth: ECS, Lambda, S3, DynamoDB, Athena, Docker"
+      ],
+      "gaps": [
+        "No SMTP/MTA or email transport experience",
+        "No DNS, SPF/DKIM/DMARC, or deliverability work",
+        "No IP pool, warmup, or sender reputation systems",
+        "No bounce/deferral classification experience",
+        "Golang is secondary (CLI tooling, small fixes), not primary",
+        "TypeScript listed as a skill but not shown in any role",
+        "No explicit rate limiting, backpressure, or idempotency work",
+        "On-call ownership for critical services not stated"
+      ],
+      "scored_at": [
+        "2026-10-01T20:56:01Z"
+      ],
+      "created_at": "2026-10-01T20:55:49.319Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f940-c0d9-7426-bdf2-ab1d4f0fc6ac",
+      "title": "Full-Stack Software Engineer",
+      "company": "Automox",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f940-c0d9-7426-bdf2-ab1d4f0fc6ac.txt",
+      "score": 68,
+      "strengths": [
+        "10+ years backend engineering, far exceeds 3+ year requirement",
+        "Deep Java + Spring Boot expertise across multiple senior roles",
+        "Strong AWS experience (ECS, Lambda, S3, Athena, containerized deploys)",
+        "REST API design and service integration at high traffic scale",
+        "SQL performance tuning: cut report generation 30–60s to 3–10s via indexing",
+        "Relational schema design and query optimization in MySQL and PostgreSQL",
+        "Observability instrumentation with Prometheus, Grafana, Actuator, tracing",
+        "Automated testing with JUnit and Testcontainers on shipped code"
+      ],
+      "gaps": [
+        "No recent hands-on Vue experience (only legacy SPA exposure 2014–2020)",
+        "No Laravel experience (PHP only, framework unspecified)",
+        "TypeScript listed as a skill but no TypeScript delivery evidence in bullets",
+        "No Node.js or TypeScript AWS Lambda service development shown",
+        "No end-to-end/frontend test experience (JUnit/Testcontainers are backend-only)",
+        "No shared UI component library contributions",
+        "Profile is backend/microservices-focused rather than full-stack feature ownership",
+        "API pagination/filtering design for large customer environments not demonstrated"
+      ],
+      "scored_at": [
+        "2026-10-01T20:56:21Z"
+      ],
+      "created_at": "2026-10-01T20:56:05.594Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0f949-dd44-74f6-af20-1833c3e714a1",
+      "title": "Senior Software Engineer, Android Accessibility",
+      "company": "Slack",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0f949-dd44-74f6-af20-1833c3e714a1.txt",
+      "score": 6,
+      "strengths": [
+        "10+ years senior software engineering experience (exceeds 5+ year bar)",
+        "Strong automated testing background (JUnit, Testcontainers)",
+        "Built and owned shared libraries generalized for other teams",
+        "Cross-team collaboration and migration coordination across 4 teams",
+        "Ownership of services end-to-end through production and support",
+        "Experience building developer tooling and CLIs",
+        "Design systems-adjacent thinking via reusable component/library ownership",
+        "Production incident triage and troubleshooting discipline"
+      ],
+      "gaps": [
+        "No Android engineering experience",
+        "No Kotlin",
+        "No Jetpack Compose",
+        "No Android accessibility APIs or TalkBack expertise",
+        "No accessibility testing infrastructure experience",
+        "No WCAG/VPAT compliance experience",
+        "No mobile UI development (labeling, focus order, state announcements)",
+        "No design system / component library accessibility work"
+      ],
+      "scored_at": [
+        "2026-10-01T21:06:12Z"
+      ],
+      "created_at": "2026-10-01T21:06:02.693Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fd5a-5db5-751e-9ebc-572c4c109b18",
+      "title": "Senior Software Engineer - Security Integrations - Prompt Engineering",
+      "company": "Elastic",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fd5a-5db5-751e-9ebc-572c4c109b18.txt",
+      "score": 42,
+      "strengths": [
+        "10+ years senior backend engineering experience",
+        "Hands-on Go: built and shipped an adopted CLI tool, plus production Go fixes",
+        "Strong end-to-end project ownership (monolith extraction, zero-downtime cutover)",
+        "Built internal shared libraries that reduced friction for other engineers",
+        "Reduced microservice bootstrap from days to hours — developer-experience mindset",
+        "Built an automated AWS data pipeline (S3, Parquet, Athena, QuickSight) — transfers to BigQuery telemetry work",
+        "Observability depth: Prometheus, Grafana, distributed tracing, request correlation",
+        "Event-driven and distributed systems design with Kafka at high load"
+      ],
+      "gaps": [
+        "No Python experience listed",
+        "No Terraform or infrastructure-as-code experience",
+        "No BigQuery or data warehouse/analytics engineering",
+        "No experience building or running AI/LLM evals at scale",
+        "Go experience is secondary (CLI, bug fixes) rather than primary production language",
+        "No cybersecurity domain experience",
+        "No Elastic/Elasticsearch or Elastic ingest model experience",
+        "No OpenTelemetry, ECS, or OCSF log/event parsing exposure"
+      ],
+      "scored_at": [
+        "2026-10-02T16:02:48Z"
+      ],
+      "created_at": "2026-10-02T16:02:33.021Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fd5b-d0da-7651-bc2b-8513d8b7775b",
+      "title": "Senior Software Engineer – Appian Platform",
+      "company": "Humana",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fd5b-d0da-7651-bc2b-8513d8b7775b.txt",
+      "score": 28,
+      "strengths": [
+        "Senior-level engineer with 10+ years of hands-on software development",
+        "Strong Java and Spring Boot background matching the core stack",
+        "Hands-on Kafka event-driven and enterprise messaging experience",
+        "Extensive REST API and Web API development",
+        "PostgreSQL, MySQL, and SQL schema design and query optimization",
+        "Cloud experience with AWS (ECS, Lambda, S3, DynamoDB)",
+        "Integrations with external systems via REST and SOAP APIs",
+        "Microservices and distributed systems design at medium-to-large scale"
+      ],
+      "gaps": [
+        "No Appian development experience (4+ years required)",
+        "No Appian SAIL, Records, Data Fabric, or expression rules experience",
+        "No Appian platform administration or deployment experience",
+        "No Appian Certified Developer certification",
+        "No Appian AI modeling/automation experience",
+        "No workflow or case-management application experience",
+        "No healthcare or HIPAA-regulated domain exposure",
+        "No stated compliance/auditability experience in regulated environments"
+      ],
+      "scored_at": [
+        "2026-10-02T16:04:20Z"
+      ],
+      "created_at": "2026-10-02T16:04:08.027Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fd5c-1121-7245-8372-b6afdac09b35",
+      "title": "Senior Backend Engineer",
+      "company": "Buenro",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fd5c-1121-7245-8372-b6afdac09b35.txt",
+      "score": 32,
+      "strengths": [
+        "10+ years backend and API development, well above the 5+ year minimum",
+        "Strong REST API design experience across multiple high-traffic platforms",
+        "Deep event-driven architecture and async workflow experience via Kafka",
+        "Production microservices experience, including monolith-to-microservice extraction",
+        "Strong PostgreSQL and relational schema/query optimization background",
+        "Production AWS experience including ECS, Lambda, S3, DynamoDB",
+        "GitHub Actions and Jenkins CI/CD production experience",
+        "Hands-on observability and production debugging with Prometheus, Grafana, and distributed tracing"
+      ],
+      "gaps": [
+        "No Node.js backend experience",
+        "No NestJS experience (DI, guards, interceptors, decorators)",
+        "TypeScript listed as a keyword only, not expert-level or production backend use",
+        "No MongoDB or NoSQL document modeling (aggregation pipelines, sharding, replica sets)",
+        "No Prisma ORM experience",
+        "No Terraform / infrastructure-as-code experience",
+        "No RabbitMQ (Kafka only) or SQS message queue experience",
+        "No Jest, Supertest, or Playwright testing experience (JUnit/Testcontainers instead)"
+      ],
+      "scored_at": [
+        "2026-10-02T16:04:37Z"
+      ],
+      "created_at": "2026-10-02T16:04:24.483Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fdca-e7d1-715b-b7ad-fa7385715561",
+      "title": "Software Engineer II",
+      "company": "Samsara",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fdca-e7d1-715b-b7ad-fa7385715561.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years shipping and operating customer-facing production systems (3+ yrs required)",
+        "Strong Java and Golang fundamentals; Go CLI built and adopted across teams",
+        "Backend services, REST API design, and Kafka event-driven architecture at scale",
+        "MySQL and PostgreSQL schema design and query optimization",
+        "AWS depth (ECS, Lambda, S3, Athena, DynamoDB) plus Docker containerization",
+        "Observability and rollout practice: Prometheus, Grafana, tracing, feature-flagged gradual rollouts",
+        "Demonstrated AI-assisted engineering workflow (Claude Code, Codex, MCP, agents, spec-driven dev)",
+        "Measurable performance and cost wins (reports 95% faster; OpenSearch replaced with cheaper pipeline)"
+      ],
+      "gaps": [
+        "No production LLM/AI-native product features (RAG, agent tooling, conversational UX)",
+        "No LLM evaluation or observability tooling (Langfuse, Eino, token/cost optimization)",
+        "No GraphQL experience",
+        "No React/React Native or modern frontend ownership; full-stack delivery is backend-only",
+        "No mobile development experience",
+        "Limited hands-on TypeScript beyond skills list",
+        "No IoT/sensor or media-data ingestion at device scale",
+        "Seniority mismatch: 10+ yrs senior profile vs Software Engineer II level and pay band"
+      ],
+      "scored_at": [
+        "2026-10-02T18:05:45Z"
+      ],
+      "created_at": "2026-10-02T18:05:28.402Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fe39-f39a-7634-b1fe-37e0124225a5",
+      "title": "Software Engineer, Mobile SDK",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fe39-f39a-7634-b1fe-37e0124225a5.txt",
+      "score": 9,
+      "strengths": [
+        "10+ years senior-level software engineering experience",
+        "Strong REST API and public interface design background",
+        "Reusable shared library ownership across microservices (transferable to SDK ownership)",
+        "Production debugging across service and network boundaries",
+        "Authentication and authorization implementation experience",
+        "Technical design and cross-team alignment (migrations across 4 teams)",
+        "Golang experience, including a CLI tool adopted by other teams",
+        "Measurable performance optimization work (95% faster report generation)"
+      ],
+      "gaps": [
+        "No iOS/Swift experience",
+        "No Android/Kotlin experience",
+        "No native mobile development at all",
+        "No customer-distributed SDK or developer-facing library ownership",
+        "No mobile platform security (device integrity, secure key storage, app signing)",
+        "No experience with native mobile networking stacks",
+        "No mobile package distribution, binary compatibility, or release practices",
+        "No experience with mobile performance budgets (binary size, battery, startup, main thread)"
+      ],
+      "scored_at": [
+        "2026-10-02T20:06:56Z"
+      ],
+      "created_at": "2026-10-02T20:06:45.917Z",
+      "archived": true,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fe3a-2ec1-76c0-8958-d09263d703a6",
+      "title": "Vulnerability Defense Software Engineer, Cloudforce One",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fe3a-2ec1-76c0-8958-d09263d703a6.txt",
+      "score": 58,
+      "strengths": [
+        "10+ years building backend and distributed systems, well above the 5-year bar",
+        "Proven large-scale distributed service design on high-load EV charging platforms",
+        "Strong REST API design and service integration track record",
+        "Kafka event-driven architecture experience (directly in the stack)",
+        "Redis and PostgreSQL/MySQL experience with schema and query optimization",
+        "Demonstrated debugging and optimization impact (95% faster report generation)",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutovers",
+        "Observability depth: Prometheus, Grafana, distributed tracing, correlation IDs"
+      ],
+      "gaps": [
+        "No cybersecurity background (threat modeling, attack techniques, defensive controls)",
+        "No incident response, containment, or remediation experience",
+        "No vulnerability research or exploit development experience",
+        "Go is secondary/tooling-level, not primary production language",
+        "No TypeScript/Node production work shown (listed as skill only)",
+        "No Rust experience",
+        "No Kubernetes or Terraform experience",
+        "No gRPC experience"
+      ],
+      "scored_at": [
+        "2026-10-02T20:07:15Z"
+      ],
+      "created_at": "2026-10-02T20:07:01.059Z",
+      "archived": true,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a0fe3d-1f91-77e1-9e37-c86548371089",
+      "title": "Senior Software Engineer – Java/Spring Boot, Monolith Systems Development and Modernization",
+      "company": "Global Payments Inc.",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fe3d-1f91-77e1-9e37-c86548371089.txt",
+      "score": 82,
+      "strengths": [
+        "10+ years senior Java/Spring Boot backend engineering (exceeds 7+ requirement)",
+        "Direct monolith-to-microservices modernization experience (extracted core domain services from Spring Boot monolith)",
+        "Zero-downtime production cutovers using feature flags",
+        "Kafka event-driven architecture on high-volume platforms",
+        "REST API design and service integration at scale",
+        "SQL, relational data modeling, and schema optimization in MySQL/PostgreSQL",
+        "Measurable performance tuning (report generation cut up to 95%)",
+        "Monitoring and observability with Prometheus, Grafana, Actuator, distributed tracing"
+      ],
+      "gaps": [
+        "No payments/e-commerce payments domain experience",
+        "No Kubernetes or OpenShift experience listed",
+        "No Splunk, Sysdig, OpsGenie, or ServiceNow experience",
+        "No Ansible experience",
+        "Maven/Gradle build tooling not listed explicitly",
+        "TDD and pair programming not mentioned",
+        "No Cucumber, Karate, JBehave, or JGiven BDD testing",
+        "Work authorization unstated (role requires US Citizen or Green Card, no sponsorship)"
+      ],
+      "scored_at": [
+        "2026-10-02T20:10:27Z"
+      ],
+      "created_at": "2026-10-02T20:10:13.778Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a0fe3d-6400-748d-8c82-fe490103c2b5",
+      "title": "Senior Software Engineer – Guest & Host",
+      "company": "Airbnb",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a0fe3d-6400-748d-8c82-fe490103c2b5.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, well above the 6+ year requirement",
+        "Strong Java and Spring Boot proficiency",
+        "Deep microservices and service-oriented architecture experience",
+        "Proven large-scale legacy migrations: monolith decomposition and ~3,000 charger migration behind a BFF",
+        "Rollout safety track record: feature flags, zero-downtime cutover, gradual rollout across 4 teams",
+        "Shipped infrastructure used by other teams: shared Spring Boot auth/authz/messaging/caching libraries",
+        "Built internal tooling adopted by other teams (Golang log-retrieval CLI)",
+        "REST API design and service integration experience"
+      ],
+      "gaps": [
+        "No Kotlin experience listed",
+        "No identity, authentication-at-scale, or privacy/PII systems domain experience",
+        "No explicit RPC framework experience (gRPC/Thrift) or service IDLs",
+        "No dependency injection frameworks named explicitly (Spring implies it, but not stated)",
+        "Authorization work is incidental (report perf optimization), not designing authorization as a first-class concern",
+        "No experience with data-access policy or context-scoped access control models",
+        "Scale shown is thousands of chargers, not global consumer-platform scale",
+        "No data modeling / schema design emphasis for privacy or compliance (GDPR/CCPA)"
+      ],
+      "scored_at": [
+        "2026-10-02T20:10:44Z"
+      ],
+      "created_at": "2026-10-02T20:10:31.297Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a103df-9a70-744e-b44b-69b72ef5f726",
+      "title": "Senior Software Engineer",
+      "company": "First Help Financial",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103df-9a70-744e-b44b-69b72ef5f726.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, Senior level",
+        "Deep Java and Spring Boot expertise",
+        "Microservices design and monolith-to-microservice extraction",
+        "REST API design for high-traffic systems",
+        "AWS hands-on: Lambda, S3, ECS, Athena, Parquet data pipeline",
+        "NoSQL exposure via DynamoDB and Redis",
+        "Relational DB schema design and query optimization (MySQL, PostgreSQL)",
+        "Measurable performance enhancements (95% faster report generation)"
+      ],
+      "gaps": [
+        "No Python experience listed",
+        "Master's degree required; holds Bachelor's in Computer Science",
+        "No MongoDB or DocumentDB experience",
+        "No Oracle database experience",
+        "No Terraform or CloudFormation / IaC experience",
+        "AWS SQS and EC2 not mentioned (ECS/Lambda/S3 only)",
+        "Agile methodology not explicitly stated",
+        "No financial services / auto lending domain experience"
+      ],
+      "scored_at": [
+        "2026-10-03T22:26:03Z"
+      ],
+      "created_at": "2026-10-03T22:25:48.149Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a103df-e475-7758-9136-17b04c43bf93",
+      "title": "Senior Software Engineer",
+      "company": "Kreative Technologies, LLC",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103df-e475-7758-9136-17b04c43bf93.txt",
+      "score": 88,
+      "strengths": [
+        "10+ years of software engineering, double the 5+ requirement",
+        "Deep Java / Spring Boot production experience",
+        "Microservices architecture and monolith decomposition ownership",
+        "AWS depth: ECS, Lambda, S3, Athena, DynamoDB, Parquet pipelines",
+        "REST API design and service integration",
+        "Relational database design and query optimization (MySQL, PostgreSQL)",
+        "CI/CD with GitHub Actions and Jenkins",
+        "Automated testing with JUnit and Testcontainers"
+      ],
+      "gaps": [
+        "No Python experience listed (named in tech stack)",
+        "No C# experience",
+        "Minimal Azure exposure (one legacy integration mention)",
+        "No cloud certification (AWS Certified Developer / Azure Developer Associate)",
+        "No federal government contract experience",
+        "No explicit mentorship or team-leadership bullets",
+        "No explicit security-hardening work",
+        "Degree is Computer Science but from a non-US institution (may need equivalency)"
+      ],
+      "scored_at": [
+        "2026-10-03T22:26:16Z"
+      ],
+      "created_at": "2026-10-03T22:26:07.094Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a103e0-191c-76bc-9a61-a2d4307b8b27",
+      "title": "Senior Software Engineer, Institutional Financing",
+      "company": "Coinbase",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103e0-191c-76bc-9a61-a2d4307b8b27.txt",
+      "score": 74,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year requirement",
+        "Proven service-oriented architecture design in Java/Spring Boot at scale",
+        "Hands-on Golang for backend services and internal tooling",
+        "Distributed systems with high availability and event-driven Kafka workflows",
+        "Monolith-to-microservice extraction with feature-flagged zero-downtime cutover",
+        "Observability tooling: Prometheus, Grafana, Actuator, distributed tracing, request correlation",
+        "Relational data store design and query optimization (MySQL, PostgreSQL)",
+        "Cloud-native AWS delivery (ECS, Lambda, S3, DynamoDB, Docker, CI/CD)"
+      ],
+      "gaps": [
+        "No gRPC/Protobuf experience listed",
+        "No financial services or fintech domain experience",
+        "No crypto/digital-asset or lending/loan systems background",
+        "Go experience is secondary (CLI tooling, bug fixes) rather than primary service development",
+        "No explicit mentorship, design review leadership, or code-quality ownership across a team",
+        "No risk calculation or real-time position tracking work",
+        "No stated regulated/compliance-driven engineering environment"
+      ],
+      "scored_at": [
+        "2026-10-03T22:26:33Z"
+      ],
+      "created_at": "2026-10-03T22:26:20.573Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a103e0-5d30-7562-b35e-e7bab6e4b3c3",
+      "title": "Senior Backend Engineer, Payments",
+      "company": "Weave",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103e0-5d30-7562-b35e-e7bab6e4b3c3.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year bar",
+        "Deep Java/Spring Boot microservices background (listed stack language)",
+        "Hands-on Golang: shipped a production CLI adopted by other teams, plus Go service fixes",
+        "Proven monolith-to-microservices decomposition with zero-downtime feature-flag cutovers",
+        "Kafka event-driven architecture across two EV charging platforms",
+        "Redis and caching library ownership",
+        "Strong REST API design for high-traffic distributed systems",
+        "Relational database and SQL depth (MySQL, PostgreSQL) with schema and query optimization"
+      ],
+      "gaps": [
+        "No protobufs/gRPC experience listed",
+        "No Kubernetes experience (AWS ECS instead)",
+        "No Google Cloud Platform experience (AWS-only)",
+        "Golang is secondary (CLI tooling, minor fixes) rather than primary language",
+        "No payments or fintech domain experience",
+        "No healthcare domain experience",
+        "No Temporal or durable workflow orchestration",
+        "No Python, Ruby, or C# exposure"
+      ],
+      "scored_at": [
+        "2026-10-03T22:26:51Z"
+      ],
+      "created_at": "2026-10-03T22:26:38.002Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a103e1-3cbd-7663-912a-31f5e28bde5e",
+      "title": "Software Engineer II",
+      "company": "Smartsheet",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103e1-3cbd-7663-912a-31f5e28bde5e.txt",
+      "score": 78,
+      "strengths": [
+        "10+ years engineering experience, far exceeding 5+ requirement",
+        "Deep Java/Spring Boot proficiency matching core stack",
+        "Golang experience including CLI tooling and gateway fixes",
+        "Service-oriented architecture and microservices well beyond 3 years",
+        "AWS cloud infrastructure (ECS, Lambda, S3, DynamoDB) and Docker/CI-CD",
+        "Strong application migration track record (monolith extraction, feature-flagged zero-downtime cutovers, BFF migration of 3,000 chargers)",
+        "REST API design and OOP/distributed systems knowledge",
+        "Kafka event-driven systems and AWS data pipeline (S3/Parquet/Athena/QuickSight)"
+      ],
+      "gaps": [
+        "No hands-on React/Redux front-end development (only backend supporting SPAs)",
+        "No high-performance/virtualized UI rendering experience",
+        "No Python or Ruby experience listed",
+        "No real-time collaboration or high-concurrency collaborative editing systems",
+        "No explicit mentorship or design/code review leadership",
+        "Limited full-stack ownership; profile is backend-heavy",
+        "No demonstrated front-end test automation",
+        "US work authorization not stated on resume"
+      ],
+      "scored_at": [
+        "2026-10-03T22:27:49Z"
+      ],
+      "created_at": "2026-10-03T22:27:35.230Z",
+      "archived": false,
+      "golden": false,
+      "subset": true
+    },
+    {
+      "id": "01a103e1-84b4-72c9-b36b-f005ae95f777",
+      "title": "Senior Software Engineer, Institutional, Settlements & Transfers",
+      "company": "Coinbase",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103e1-84b4-72c9-b36b-f005ae95f777.txt",
+      "score": 72,
+      "strengths": [
+        "10+ years backend engineering, well above the 5+ year bar",
+        "Production Kafka and event-driven architecture experience across multiple roles",
+        "Strong distributed systems and microservices design background",
+        "Hands-on Go: built and shipped a CLI adopted by other teams, plus Golang fixes to a roaming gateway",
+        "Demonstrated performance work: cut report generation 30-60s to 3-10s (up to 95%)",
+        "Owned large-scale migrations (monolith to services, ~3,000 chargers) with feature-flagged zero-downtime cutovers",
+        "Owned shared platform libraries for auth, messaging, and caching across microservices",
+        "Relational database design and query optimization (MySQL, PostgreSQL)"
+      ],
+      "gaps": [
+        "No fintech, payments, settlements, or ledger domain experience",
+        "No crypto/blockchain or digital asset exposure",
+        "Go is secondary (CLI tooling and small fixes), not primary production language",
+        "Primary stack is Java/Spring Boot rather than Go-first backend",
+        "PostgreSQL listed but recent work is MySQL/DynamoDB-centric; no deep Postgres-at-scale evidence",
+        "No explicit mentoring or code-review culture leadership on resume",
+        "No stated experience leading technical proposals or driving cross-team alignment at a formal level",
+        "No double-entry accounting, reconciliation, or money-movement correctness work"
+      ],
+      "scored_at": [
+        "2026-10-03T22:28:06Z"
+      ],
+      "created_at": "2026-10-03T22:27:53.653Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    },
+    {
+      "id": "01a103e2-a05e-72fe-87a4-2668fee52b7c",
+      "title": "Software Engineer",
+      "company": "Kreative Technologies, LLC",
+      "resume": "testdata/resumes/real-backend.md",
+      "jd": "jd/01a103e2-a05e-72fe-87a4-2668fee52b7c.txt",
+      "score": 85,
+      "strengths": [
+        "10+ years backend engineering vs. 3+ required",
+        "Deep Java and Spring Boot expertise",
+        "Strong SQL and relational DB design (MySQL, PostgreSQL) with query optimization",
+        "Extensive REST API and service design experience",
+        "Unit and integration testing with JUnit and Testcontainers",
+        "CI/CD with GitHub Actions and Jenkins",
+        "AWS depth (ECS, Lambda, S3, DynamoDB, Athena) plus some Azure",
+        "Bachelor's degree in Computer Science"
+      ],
+      "gaps": [
+        "No Python or C# experience listed (Java only)",
+        "No hands-on Angular experience",
+        "Limited/dated front-end work (React, Vue only as SPA backend support)",
+        "No federal government contract experience",
+        "Minimal Azure exposure (one-off integrations, AWS-centric)",
+        "Git not explicitly listed on resume",
+        "Seniority and salary expectations likely exceed the $73.6K-$81.8K range",
+        "Agile ceremonies (sprint planning, standups, retros) not explicitly stated"
+      ],
+      "scored_at": [
+        "2026-10-03T22:29:18Z"
+      ],
+      "created_at": "2026-10-03T22:29:06.272Z",
+      "archived": false,
+      "golden": false,
+      "subset": false
+    }
+  ],
+  "excluded": [
+    {
+      "id": "01a0cb36-1aa1-73b8-b3af-743eb4b92dd4",
+      "reason": "not_main_resume",
+      "scores": [
+        72
+      ]
+    },
+    {
+      "id": "01a0d51c-49be-76fb-bf4b-d2b9cb29378c",
+      "reason": "not_main_resume",
+      "scores": [
+        68
+      ]
+    },
+    {
+      "id": "01a0d51c-4aab-760e-a5ae-1353e357010c",
+      "reason": "not_main_resume",
+      "scores": [
+        78
+      ]
+    },
+    {
+      "id": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4",
+      "reason": "not_main_resume",
+      "scores": [
+        78
+      ]
+    },
+    {
+      "id": "01a0d51c-4c99-73bf-b32e-d31818cf5f3b",
+      "reason": "not_main_resume",
+      "scores": [
+        68
+      ]
+    },
+    {
+      "id": "01a0d60b-07c2-70a0-afeb-3bdc63610afc",
+      "reason": "rescored",
+      "scores": [
+        42,
+        48,
+        45,
+        42,
+        42,
+        34
+      ]
+    },
+    {
+      "id": "01a0cb6c-a23b-7319-b493-48e035b3fa48",
+      "reason": "stub_jd",
+      "scores": [
+        52
+      ]
+    },
+    {
+      "id": "01a0cb6d-0d03-7588-af71-bb1fc99b78ba",
+      "reason": "stub_jd",
+      "scores": [
+        72
+      ]
+    },
+    {
+      "id": "01a0cb6d-8a73-75a3-af99-f355153bf0fc",
+      "reason": "stub_jd",
+      "scores": [
+        78
+      ]
+    },
+    {
+      "id": "01a0cb6d-a812-77aa-b79b-9e30af01b598",
+      "reason": "stub_jd",
+      "scores": [
+        58
+      ]
+    },
+    {
+      "id": "01a0cb6d-c82a-71c0-bcc0-f9b4565eaab6",
+      "reason": "stub_jd",
+      "scores": [
+        72
+      ]
+    },
+    {
+      "id": "01a0cb6d-e743-70ef-bafe-c1a1f5e11635",
+      "reason": "stub_jd",
+      "scores": [
+        68
+      ]
+    },
+    {
+      "id": "01a0cb6e-0250-7080-84b8-7a454d269ee0",
+      "reason": "stub_jd",
+      "scores": [
+        82
+      ]
+    },
+    {
+      "id": "01a0cb6e-1f6d-7693-a395-de434bdaecef",
+      "reason": "stub_jd",
+      "scores": [
+        78
+      ]
+    },
+    {
+      "id": "01a0cb6e-4112-77ef-beb7-708a832cb2b1",
+      "reason": "stub_jd",
+      "scores": [
+        72
+      ]
+    },
+    {
+      "id": "01a0cb6e-5dd7-7098-ad4d-cb6f00830e04",
+      "reason": "stub_jd",
+      "scores": [
+        82
+      ]
+    },
+    {
+      "id": "01a0cb6e-96af-73b9-aeb2-530c9516d63c",
+      "reason": "stub_jd",
+      "scores": [
+        86
+      ]
+    },
+    {
+      "id": "01a0cb6e-b3b7-77ff-828a-7ef06603c254",
+      "reason": "stub_jd",
+      "scores": [
+        72
+      ]
+    },
+    {
+      "id": "01a0d588-4b85-757e-9e32-5d107ab4992d",
+      "reason": "stub_jd",
+      "scores": [
+        62
+      ]
+    },
+    {
+      "id": "01a0d5cd-67d4-74f4-9f3e-54362bc41457",
+      "reason": "stub_jd",
+      "scores": [
+        68
+      ]
+    },
+    {
+      "id": "01a0d89f-db3b-77cd-907f-683b9a70cd7e",
+      "reason": "stub_jd",
+      "scores": [
+        24
+      ]
+    },
+    {
+      "id": "01a0d8a8-a839-70a5-88b4-f5927a91be7f",
+      "reason": "stub_jd",
+      "scores": [
+        55
+      ]
+    },
+    {
+      "id": "01a0f93c-2598-7110-999f-224ea903da7c",
+      "reason": "stub_jd",
+      "scores": [
+        18
+      ]
+    }
+  ]
+}

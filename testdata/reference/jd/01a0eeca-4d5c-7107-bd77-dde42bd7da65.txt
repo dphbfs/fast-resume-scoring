@@ -1,0 +1,80 @@
+## Sharetec Systems - Senior Full Stack Software Engineer
+
+🔗 [Apply](https://recruiting.paylocity.com/Recruiting/Jobs/Details/4542466)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Full Stack Software Engineer modernizing full-stack banking and lending software for credit unions. Leading architecture, development, mentoring, and production reliability.
+Senior Full Stack Software Engineer modernizing banking and lending software for credit unions
+- Salary: $110,000 - $140,000 per year
+- Tech stack: Angular, Cloud, Distributed Systems, Docker, Java, JavaScript, Kubernetes, MongoDB, Node.js, Postgres, Python, React, Spring, Spring Boot, SpringBoot, SQL, Vue.js, .NET
+- Architect scalable, secure, and maintainable systems across backend, frontend, and database layers
+- Lead design discussions, code reviews, and engineering best-practice initiatives
+- Evaluate new technologies and guide adoption of tools that improve developer productivity and system performance
+- Define and document architecture patterns, design principles, and shared libraries for reuse across teams
+- Partner with DevOps on CI/CD pipelines, deployment automation, and observability tooling
+- Build high-quality, production-ready features using modern frameworks and cloud platforms
+- Write clean, testable, and efficient code, and help coding standards evolve
+- Optimize system performance, reduce technical debt, and improve reliability
+- 6+ years of professional software development experience, including technical leadership on complex projects
+- Deep proficiency with at least one backend platform: C#/.NET, Java/Spring Boot, Node.js, OpenEdge, or Python/FastAPI
+- Advanced experience with modern frontend technologies: Angular, React, or Vue.js
+- Strong database design and data architecture expertise: Progress, PostgreSQL, SQL Server, or MongoDB
+- Experience integrating APIs and third-party systems securely and efficiently
+- Proven ability to modernize legacy applications into modular designs
+- Familiarity with DevOps tooling, CI/CD pipelines, and cloud services
+- Strong understanding of software architecture, design patterns, and performance optimization
+
+### Full Job Description
+Summary:
+Senior Full Stack Software Engineer modernizing full-stack banking and lending software for credit unions. Leading architecture, development, mentoring, and production reliability.
+Senior Full Stack Software Engineer modernizing banking and lending software for credit unions
+Role description:
+• Architect scalable, secure, and maintainable systems across backend, frontend, and database layers
+• Lead design discussions, code reviews, and engineering best-practice initiatives
+• Evaluate new technologies and guide adoption of tools that improve developer productivity and system performance
+• Define and document architecture patterns, design principles, and shared libraries for reuse across teams
+• Partner with DevOps on CI/CD pipelines, deployment automation, and observability tooling
+• Build high-quality, production-ready features using modern frameworks and cloud platforms
+• Write clean, testable, and efficient code, and help coding standards evolve
+• Optimize system performance, reduce technical debt, and improve reliability
+• Work with QA engineers on automated testing strategies and code coverage
+• Participate in the production support rotation and lead root cause analysis and prevention
+• Mentor and coach mid-level and junior engineers
+• Partner with product managers and stakeholders to translate business needs into technical solutions
+• Give feedback and guidance during design and implementation reviews
+• Act as a technical resource and subject matter expert for the product domain
+Role requirements:
+• 6+ years of professional software development experience, including technical leadership on complex projects
+• Deep proficiency with at least one backend platform: C#/.NET, Java/Spring Boot, Node.js, OpenEdge, or Python/FastAPI
+• Advanced experience with modern frontend technologies: Angular, React, or Vue.js
+• Strong database design and data architecture expertise: Progress, PostgreSQL, SQL Server, or MongoDB
+• Experience integrating APIs and third-party systems securely and efficiently
+• Proven ability to modernize legacy applications into modular designs
+• Familiarity with DevOps tooling, CI/CD pipelines, and cloud services
+• Strong understanding of software architecture, design patterns, and performance optimization
+• Clear communication skills for explaining complex technical ideas to varied audiences
+• Bachelor’s degree in Computer Science, Software Engineering, or a related field (or equivalent experience)
+• Preferred: Experience leading small teams or serving as technical lead on a feature squad
+• Preferred: Experience designing distributed systems or microservice architectures
+• Preferred: Hands-on experience with containers and orchestration (Docker, Kubernetes)
+• Preferred: Security-first mindset and experience implementing secure coding practices
+• Preferred: Prior experience in financial services or fintech
+• Preferred: Familiarity with SOC 2 or other compliance frameworks
+Benefits:
+• Competitive salaries
+• Medical coverage
+• Dental coverage
+• Vision coverage
+• Life coverage
+• Disability coverage
+• Generous Paid Time Off (PTO)
+• Paid holidays, including your birthday off
+• $1,000 employee referral program
+• 401(k) with company matching
+• Virtual events
+• Collaborative team experiences
+• Regular all-hands meetings
+Tech stack:
+Angular, Cloud, Distributed Systems, Docker, Java, JavaScript, Kubernetes, MongoDB, Node.js, Postgres, Python, React, Spring, Spring Boot, SpringBoot, SQL, Vue.js, .NET

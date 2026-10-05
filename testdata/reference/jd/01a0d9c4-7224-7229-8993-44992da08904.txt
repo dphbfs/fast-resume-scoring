@@ -1,0 +1,63 @@
+## VetsEZ - Backend Engineer
+
+🔗 [Apply](https://vetsez.breezy.hr/p/04c563f2b91e01-backend-engineer-remote-opportunity)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend Engineer building secure Java and Spring Boot services for federal healthcare modernization. Developing APIs, integrations, and scalable cloud-ready solutions in Agile teams.
+Backend Engineer building secure Java services for federal healthcare modernization
+- Tech stack: Java, Spring, Spring Boot, SpringBoot, SQL
+- Develop and maintain backend services, RESTful APIs, and enterprise integration components for shared services and mission-critical healthcare applications
+- Implement business logic, service orchestration, data access layers, and secure service-to-service communication
+- Build scalable, maintainable, and secure server-side solutions using approved architectures, development standards, and secure coding practices
+- Collaborate with frontend developers, architects, QA engineers, DevSecOps teams, and product stakeholders in an Agile delivery environment
+- Participate in technical design, estimation, code reviews, troubleshooting, defect resolution, release activities, and production support
+- Optimize backend service performance, reliability, error handling, monitoring, logging, and observability
+- Support sprint, increment, and release priorities across healthcare applications
+- Take on additional tasks and responsibilities as needed to support team objectives and project success
+- Bachelor’s degree in Computer Science, Engineering, Information Technology, or a related technical field, or equivalent relevant experience
+- Minimum of 5 years of backend software engineering or enterprise application development experience
+- Strong hands-on experience developing backend applications using Java, Spring Boot, RESTful services, and API development principles
+- Experience with SQL, relational databases, data access layers, and backend data processing patterns
+- Experience with enterprise integration patterns, authentication methods, secure service-to-service communication, Git-based version control, and CI/CD workflows
+- Strong debugging, troubleshooting, analytical, and code quality skills
+- Understanding of secure coding and enterprise software development best practices
+- Ability to collaborate across engineering, QA, DevSecOps, architecture, and product teams within Agile delivery environments
+
+### Full Job Description
+Summary:
+Backend Engineer building secure Java and Spring Boot services for federal healthcare modernization. Developing APIs, integrations, and scalable cloud-ready solutions in Agile teams.
+Backend Engineer building secure Java services for federal healthcare modernization
+Role description:
+• Develop and maintain backend services, RESTful APIs, and enterprise integration components for shared services and mission-critical healthcare applications
+• Implement business logic, service orchestration, data access layers, and secure service-to-service communication
+• Build scalable, maintainable, and secure server-side solutions using approved architectures, development standards, and secure coding practices
+• Collaborate with frontend developers, architects, QA engineers, DevSecOps teams, and product stakeholders in an Agile delivery environment
+• Participate in technical design, estimation, code reviews, troubleshooting, defect resolution, release activities, and production support
+• Optimize backend service performance, reliability, error handling, monitoring, logging, and observability
+• Support sprint, increment, and release priorities across healthcare applications
+• Take on additional tasks and responsibilities as needed to support team objectives and project success
+Role requirements:
+• Bachelor’s degree in Computer Science, Engineering, Information Technology, or a related technical field, or equivalent relevant experience
+• Minimum of 5 years of backend software engineering or enterprise application development experience
+• Strong hands-on experience developing backend applications using Java, Spring Boot, RESTful services, and API development principles
+• Experience with SQL, relational databases, data access layers, and backend data processing patterns
+• Experience with enterprise integration patterns, authentication methods, secure service-to-service communication, Git-based version control, and CI/CD workflows
+• Strong debugging, troubleshooting, analytical, and code quality skills
+• Understanding of secure coding and enterprise software development best practices
+• Ability to collaborate across engineering, QA, DevSecOps, architecture, and product teams within Agile delivery environments
+• U.S. Citizenship required
+• Must successfully complete a background check
+• Ability to obtain and maintain a Government/Public Trust clearance, including required fingerprinting, when required
+• Must reside within the continental US
+• Sponsorship is not offered
+Benefits:
+• Medical/Dental/Vision
+• 401k with Employer Match
+• PTO + Federal Holidays
+• Corporate Laptop
+• Training Opportunities
+• Remote Opportunity
+Tech stack:
+Java, Spring, Spring Boot, SpringBoot, SQL

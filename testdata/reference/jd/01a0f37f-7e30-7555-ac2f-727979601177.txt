@@ -1,0 +1,60 @@
+## Everest Technologies, Inc - Senior Software Engineer – PIM
+
+🔗 [Apply](https://etech.zohorecruit.com/jobs/careers/661503000015854001/Senior-Sofware-Engineer---PIM?source=CareerSite)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer designing event-driven microservices and integrations for Akeneo PIM. Modernizing product catalog systems powering global retail commerce.
+Senior Software Engineer modernizing Akeneo PIM systems for global retail commerce
+- Tech stack: Apache, AWS, Azure, Cloud, Docker, Google Cloud Platform, Gradle, Grafana, Java, JavaScript, Kafka, Kubernetes, Microservices, MongoDB, MySQL, Node.js, NoSQL, Oracle
+- Support and evolve the Akeneo PIM SaaS/Enterprise platform as the live system of record
+- Maintain modern cloud-native architectures replacing legacy workflows and batch jobs
+- Design, develop, and maintain resilient microservices and stream-processing pipelines using Apache Kafka, schema registries, and modern backend frameworks
+- Implement scalable product hierarchy models, variant structures, reference entities, category mappings, and delta-calculation engines
+- Build high-reliability connectors and APIs integrating PIM with upstream and downstream systems
+- Monitor, troubleshoot, and maintain the live Akeneo PIM platform for 24/7 availability and minimal downtime
+- Optimize API response times, database query performance, and payload processing
+- Collaborate with business stakeholders to design and deploy incremental features, custom attributes, and localized catalog workflows
+- Strong proficiency in building robust, secure microservices and API architectures (RESTful, SOAP) using Java, Spring frameworks (Spring Boot, Spring Cloud), Node.js / TypeScript, Go, or Python
+- Deep hands-on experience with distributed streaming platforms and message-oriented middleware
+- Expert knowledge of the publisher/subscriber model, including Apache Kafka (topic architecture, consumer groups, partition strategies, schema registry, event headers), RabbitMQ, and IBM MQ
+- Solid experience designing and optimizing relational, NoSQL, and memory-cached databases (Oracle, PostgreSQL, MySQL, CloudSQL, MongoDB, Redis)
+- Expert in query optimization tailored for high-volume catalog, SKU, and enterprise datasets
+- Practical experience deploying, managing, and orchestrating workloads in agile, cloud-native environments across GCP, AWS, or Azure
+- Proficient with Kubernetes (GKE), Docker, and enterprise CI/CD automation tools (ArgoCD, GitHub Actions, Bamboo)
+- Strong foundational understanding of modern security concepts, including authentication protocols, Single Sign-On (SSO), and secure data transmission
+
+### Full Job Description
+Summary:
+Senior Software Engineer designing event-driven microservices and integrations for Akeneo PIM. Modernizing product catalog systems powering global retail commerce.
+Senior Software Engineer modernizing Akeneo PIM systems for global retail commerce
+Role description:
+• Support and evolve the Akeneo PIM SaaS/Enterprise platform as the live system of record
+• Maintain modern cloud-native architectures replacing legacy workflows and batch jobs
+• Design, develop, and maintain resilient microservices and stream-processing pipelines using Apache Kafka, schema registries, and modern backend frameworks
+• Implement scalable product hierarchy models, variant structures, reference entities, category mappings, and delta-calculation engines
+• Build high-reliability connectors and APIs integrating PIM with upstream and downstream systems
+• Monitor, troubleshoot, and maintain the live Akeneo PIM platform for 24/7 availability and minimal downtime
+• Optimize API response times, database query performance, and payload processing
+• Collaborate with business stakeholders to design and deploy incremental features, custom attributes, and localized catalog workflows
+• Plan, test, and execute platform upgrades and patches while maintaining data accuracy
+• Translate complex business requirements into robust backend systems and databases
+• Deliver frequent, high-impact releases under Agile principles
+Role requirements:
+• Strong proficiency in building robust, secure microservices and API architectures (RESTful, SOAP) using Java, Spring frameworks (Spring Boot, Spring Cloud), Node.js / TypeScript, Go, or Python
+• Deep hands-on experience with distributed streaming platforms and message-oriented middleware
+• Expert knowledge of the publisher/subscriber model, including Apache Kafka (topic architecture, consumer groups, partition strategies, schema registry, event headers), RabbitMQ, and IBM MQ
+• Solid experience designing and optimizing relational, NoSQL, and memory-cached databases (Oracle, PostgreSQL, MySQL, CloudSQL, MongoDB, Redis)
+• Expert in query optimization tailored for high-volume catalog, SKU, and enterprise datasets
+• Practical experience deploying, managing, and orchestrating workloads in agile, cloud-native environments across GCP, AWS, or Azure
+• Proficient with Kubernetes (GKE), Docker, and enterprise CI/CD automation tools (ArgoCD, GitHub Actions, Bamboo)
+• Strong foundational understanding of modern security concepts, including authentication protocols, Single Sign-On (SSO), and secure data transmission
+• Experience working with enterprise Product Information Management (PIM) and catalog management solutions such as Akeneo
+• Background in data migration strategies (delta loads, reconciliation scripts, and dual-entry cutover planning)
+• Knowledge in API security Gateway Frameworks/concepts
+• Experience in application servers such as WebLogic, Tomcat, etc.
+• Working knowledge of Gradle
+• Working knowledge of Grafana / Splunk
+Tech stack:
+Apache, AWS, Azure, Cloud, Docker, Google Cloud Platform, Gradle, Grafana, Java, JavaScript, Kafka, Kubernetes, Microservices, MongoDB, MySQL, Node.js, NoSQL, Oracle, Postgres, Python, RabbitMQ, Redis, SOAP, Splunk, Spring, Spring Boot, SpringBoot, TypeScript, Go

@@ -1,0 +1,63 @@
+## Stripe - Backend Engineer, Intelligent Commerce
+
+🔗 [Apply](https://stripe.com/jobs/search?gh_jid=7988264)
+
+### Stack & Responsibilities
+- About Stripe
+- About the team
+- What you’ll do
+- Responsibilities
+- Build platforms that improve the feature completeness of 10+ local payment methods at
+- once (recurring, cross-border, adaptive pricing)
+- Ship features on the LPM Partner Dashboard, a greenfield product that gives partners
+- visibility and control over their integration with Stripe
+- Design self-serve workflows that let partners debug, monitor, and operate independently
+- without pulling in Stripe engineers
+- Streamline the LPM integration process so global teams can onboard new payment
+- methods faster
+- Work with OCS, Billing, Risk, and other teams to ensure LPM integrations support critical
+- Stripe products
+- Debug and resolve production issues across the stack
+- Mentor engineers on the team
+- We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.
+- Minimum requirements
+- Strong coding skills in any programming language
+- Strong collaboration skills, can work across workstreams within your team and contribute
+
+### Full Job Description
+About Stripe
+Stripe is a financial infrastructure platform for businesses. Millions of companies — from the world's largest enterprises to the most ambitious startups — use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career.
+About the team
+The LPM Partner Success team is on a mission to capture a massive opportunity for Stripe: Aligning Stripe’s PIV with global payment method trends. We do this by arming integration teams with the tools they need to ship full-featured LPMs faster, and we give LPM partners the ability to independently grow and maintain their businesses on Stripe. We own the 3P Platform, Turnkey, and the LPM Partner Dashboard, powering 26+ payment methods. Our vision: building an LPM on Stripe should be as simple as deploying an app to an app store. We provide the tooling so every integration ships full-featured out of the box, and we build self-serve tools that let partners debug, monitor, and grow without Stripe in the critical path. Global teams focus on strategy and differentiation, not implementation.
+What you’ll do
+While most Stripe platform teams focus on internal users or merchants, this team supports LPM partners. You'll design systems where a single abstraction can improve the integration quality for 26+ payment methods. You’ll deeply understand the needs of our LPM partners and develop tools that will make Stripe the best in class partner for LPMs. To ensure every LPM launches with Stripe's core ecosystem from day one, you will work closely with teams like OCS, Billing, and Risk.
+Responsibilities
+Build platforms that improve the feature completeness of 10+ local payment methods at
+once (recurring, cross-border, adaptive pricing)
+Ship features on the LPM Partner Dashboard, a greenfield product that gives partners
+visibility and control over their integration with Stripe
+Design self-serve workflows that let partners debug, monitor, and operate independently
+without pulling in Stripe engineers
+Streamline the LPM integration process so global teams can onboard new payment
+methods faster
+Work with OCS, Billing, Risk, and other teams to ensure LPM integrations support critical
+Stripe products
+Debug and resolve production issues across the stack
+Mentor engineers on the team
+We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.
+Minimum requirements
+Strong coding skills in any programming language
+Strong collaboration skills, can work across workstreams within your team and contribute
+to your peers' success
+Have the ability to thrive on a high level of autonomy, responsibility, and think of yourself
+as entrepreneurial
+Interest in working as a generalist across varying technologies and stacks to solve
+problems and delight both internal and external users
+Experience building, maintaining, and running production services and backend APIs
+Deep care for users' needs and a track record of building great user experiences
+Preferred qualifications
+Experience designing multi-tenant platforms or systems that need to generalize across
+many similar-but-different use cases
+Familiarity with payments infrastructure or payment method integrations
+Experience building for external partner ecosystems where you don't control the other
+side of the integration

@@ -1,0 +1,55 @@
+## Kreative Technologies, LLC - Senior Software Engineer
+
+🔗 [Apply](https://kreative-technologies-llc.breezy.hr/p/47b87be84870-senior-software-engineer)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer designing scalable software solutions for Kreative Technologies. Developing production code, improving architecture, and mentoring engineering teams remotely.
+Senior Software Engineer building scalable software for Kreative Technologies
+- Salary: $85,850 - $95,389 per year
+- Tech stack: AWS, Azure, Cloud, Java, Microservices, Python
+- Designs software architecture and components for new and existing systems
+- Develops, tests and deploys high-quality production code
+- Leads technical design reviews and code reviews
+- Improves system performance, scalability and security
+- Builds and maintains automated tests and CI/CD pipelines
+- Mentors software engineers and shares best practices
+- Works with product, test and operations teams to deliver releases
+- Performs other duties as assigned
+- Bachelor's degree in Computer Science, Software Engineering or a related field required
+- 5+ years of software engineering experience
+- Strong experience with Java, C#, Python or a similar language
+- Experience with software design patterns, APIs and relational databases
+- Experience with Git, CI/CD and Agile development
+- Strong written and verbal communication skills
+- Ability to work independently in a remote environment
+- Continually required to use common office equipment including but not limited to computers, phones, scanners and printers
+
+### Full Job Description
+Summary:
+Senior Software Engineer designing scalable software solutions for Kreative Technologies. Developing production code, improving architecture, and mentoring engineering teams remotely.
+Senior Software Engineer building scalable software for Kreative Technologies
+Role description:
+• Designs software architecture and components for new and existing systems
+• Develops, tests and deploys high-quality production code
+• Leads technical design reviews and code reviews
+• Improves system performance, scalability and security
+• Builds and maintains automated tests and CI/CD pipelines
+• Mentors software engineers and shares best practices
+• Works with product, test and operations teams to deliver releases
+• Performs other duties as assigned
+Role requirements:
+• Bachelor's degree in Computer Science, Software Engineering or a related field required
+• 5+ years of software engineering experience
+• Strong experience with Java, C#, Python or a similar language
+• Experience with software design patterns, APIs and relational databases
+• Experience with Git, CI/CD and Agile development
+• Strong written and verbal communication skills
+• Ability to work independently in a remote environment
+• Continually required to use common office equipment including but not limited to computers, phones, scanners and printers
+• Preferred: Experience with cloud platforms, containers and microservices
+• Preferred: Cloud certification such as AWS Certified Developer or Azure Developer Associate
+• Preferred: Experience supporting federal government contracts
+Tech stack:
+AWS, Azure, Cloud, Java, Microservices, Python

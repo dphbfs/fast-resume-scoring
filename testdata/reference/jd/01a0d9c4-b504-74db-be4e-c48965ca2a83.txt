@@ -1,0 +1,77 @@
+## STV - Software Engineer
+
+🔗 [Apply](https://stvinc.wd5.myworkdayjobs.com/stv/job/remote-location-usa/software-engineer_jr5641)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer building production web applications and AI capabilities for STV’s client engagements. Translating ambiguous consulting problems into shipped software with a senior engineering team.
+Software Engineer building AI-enabled web applications for STV’s consulting clients
+- Salary: $95,976 - $109,687 per year
+- Tech stack: Azure, Cloud, Google Cloud Platform, Node.js, Python, React, TypeScript, Go, .NET
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design and build modern web applications, including frontend, backend, and integrations, for client engagements
+- Partner with project leads, designers, and client stakeholders to scope features and define technical approaches
+- Use AI-assisted development tools such as Claude Code, Cursor, and Copilot in the daily workflow
+- Integrate LLMs, RAG pipelines, and other AI capabilities into client-facing products
+- Translate ambiguous client requirements into technical plans and ship working software
+- Present work, tradeoffs, and recommendations to non-technical client audiences
+- Contribute to internal tooling, code reviews, and shared engineering practices
+- Iterate directly with clients and take end-to-end ownership of shipped work
+- 3+ years building and shipping production web applications
+- Strong proficiency with React/TypeScript on the frontend and at least one server-side language: Node, Go, Python, or C#/.NET
+- Demonstrated experience using AI-assisted development tools in real work
+- Excellent written and verbal communication
+- Comfortable presenting to clients and writing documentation
+- Experience working in client-facing, consulting, or product-services environments, or a clear interest in moving into one
+- Working knowledge of cloud platforms; Azure or GCP preferred
+- This position is not eligible for sponsorship
+
+### Full Job Description
+Summary:
+Software Engineer building production web applications and AI capabilities for STV’s client engagements. Translating ambiguous consulting problems into shipped software with a senior engineering team.
+Software Engineer building AI-enabled web applications for STV’s consulting clients
+Role description:
+• Design and build modern web applications, including frontend, backend, and integrations, for client engagements
+• Partner with project leads, designers, and client stakeholders to scope features and define technical approaches
+• Use AI-assisted development tools such as Claude Code, Cursor, and Copilot in the daily workflow
+• Integrate LLMs, RAG pipelines, and other AI capabilities into client-facing products
+• Translate ambiguous client requirements into technical plans and ship working software
+• Present work, tradeoffs, and recommendations to non-technical client audiences
+• Contribute to internal tooling, code reviews, and shared engineering practices
+• Iterate directly with clients and take end-to-end ownership of shipped work
+• Push back, propose alternatives, and help shape the product
+Role requirements:
+• 3+ years building and shipping production web applications
+• Strong proficiency with React/TypeScript on the frontend and at least one server-side language: Node, Go, Python, or C#/.NET
+• Demonstrated experience using AI-assisted development tools in real work
+• Excellent written and verbal communication
+• Comfortable presenting to clients and writing documentation
+• Experience working in client-facing, consulting, or product-services environments, or a clear interest in moving into one
+• Working knowledge of cloud platforms; Azure or GCP preferred
+• This position is not eligible for sponsorship
+• Experience integrating LLMs, vector databases, or vision models into production applications is a nice-to-have
+• Background in infrastructure, transportation, AEC, or adjacent industries STV serves is a nice-to-have
+• Comfort working across the stack and picking up unfamiliar technologies quickly is a nice-to-have
+• Side projects, open-source contributions, or writing demonstrating curiosity and craft are a nice-to-have
+Benefits:
+• Health insurance, including an option with a Health Savings Account
+• Dental insurance
+• Vision insurance
+• Flexible Spending Accounts (Healthcare, Dependent Care and Transit and Parking where applicable)
+• Disability insurance
+• Life Insurance and Accidental Death & Dismemberment
+• 401(k) Plan
+• Retirement Counseling
+• Employee Assistance Program
+• Paid Time Off
+• Paid Holidays
+• Back-Up Dependent Care
+• Parental Leave
+• Continuing Education Program
+• Professional Licensure and Society Memberships
+Tech stack:
+Azure, Cloud, Google Cloud Platform, Node.js, Python, React, TypeScript, Go, .NET
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

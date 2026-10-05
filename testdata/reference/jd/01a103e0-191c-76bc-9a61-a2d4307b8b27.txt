@@ -1,0 +1,53 @@
+## Coinbase - Senior Software Engineer, Institutional Financing
+
+🔗 [Apply](https://boards.greenhouse.io/coinbase/jobs/8248766)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building backend financing systems that manage institutional loans for Coinbase’s crypto brokerage. Owning lending products, risk services, and resilient financial infrastructure.
+Senior Software Engineer building financing systems for Coinbase’s institutional crypto brokerage
+- Salary: $207,955 - $218,900 per year
+- Tech stack: Cloud, Distributed Systems, GRPC, Java, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, build, and scale systems that safely manage billions of dollars in loans across Portfolio Margin, Trade Finance, Agency Lending, Bilateral Lending, and more
+- Own the design and delivery of new financing products and features from architecture through production launch
+- Build and maintain backend services, APIs, and frameworks supporting loan lifecycle management, risk calculations, and real-time position tracking
+- Improve developer tooling, testing infrastructure, monitoring, and operational reliability across financing systems
+- Partner with Product, Risk, Operations, and engineering teams to translate business requirements into scalable technical solutions
+- Lead technical initiatives that strengthen system resilience, reduce operational risk, and support safe delivery
+- 5+ years of backend software engineering experience, with production ownership of services handling high-reliability or financial workloads
+- Proven track record designing, building, and scaling service-oriented architectures in Go, Java, or a comparable backend language
+- Experience building and operating distributed systems where correctness, availability, and data integrity are critical
+- Demonstrated ability to mentor engineers, lead technical design reviews, and raise the bar on code quality across a team
+- Familiarity with relational data stores, gRPC/Protobuf, and observability tooling in a cloud-native environment
+- Utilizes generative AI responsibly, maintaining human oversight to deliver business-ready outputs and drive measurable improvements in workflow efficiency, cost, and quality
+
+### Full Job Description
+Summary:
+Senior Software Engineer building backend financing systems that manage institutional loans for Coinbase’s crypto brokerage. Owning lending products, risk services, and resilient financial infrastructure.
+Senior Software Engineer building financing systems for Coinbase’s institutional crypto brokerage
+Role description:
+• Design, build, and scale systems that safely manage billions of dollars in loans across Portfolio Margin, Trade Finance, Agency Lending, Bilateral Lending, and more
+• Own the design and delivery of new financing products and features from architecture through production launch
+• Build and maintain backend services, APIs, and frameworks supporting loan lifecycle management, risk calculations, and real-time position tracking
+• Improve developer tooling, testing infrastructure, monitoring, and operational reliability across financing systems
+• Partner with Product, Risk, Operations, and engineering teams to translate business requirements into scalable technical solutions
+• Lead technical initiatives that strengthen system resilience, reduce operational risk, and support safe delivery
+Role requirements:
+• 5+ years of backend software engineering experience, with production ownership of services handling high-reliability or financial workloads
+• Proven track record designing, building, and scaling service-oriented architectures in Go, Java, or a comparable backend language
+• Experience building and operating distributed systems where correctness, availability, and data integrity are critical
+• Demonstrated ability to mentor engineers, lead technical design reviews, and raise the bar on code quality across a team
+• Familiarity with relational data stores, gRPC/Protobuf, and observability tooling in a cloud-native environment
+• Utilizes generative AI responsibly, maintaining human oversight to deliver business-ready outputs and drive measurable improvements in workflow efficiency, cost, and quality
+Benefits:
+• Equity eligibility
+• Bonus eligibility
+• Medical insurance
+• Dental insurance
+• Vision insurance
+• 401(k)
+Tech stack:
+Cloud, Distributed Systems, GRPC, Java, Go
+Company sponsorship flag: sponsorsH1B=true.

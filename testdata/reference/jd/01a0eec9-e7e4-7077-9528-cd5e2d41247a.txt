@@ -1,0 +1,75 @@
+## Gopuff - Senior Software Engineer – 3P Partnerships
+
+🔗 [Apply](https://jobs.lever.co/gopuff/7e7205aa-1c98-4f4c-97c1-1bee77c540ee)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer integrating third-party systems for Gopuff’s on-demand delivery platform. Leading distributed software development, APIs, monitoring, and engineering team delivery.
+Senior Software Engineer integrating third-party systems for Gopuff’s on-demand delivery platform
+- Salary: $160,000 - $200,000 per year
+- Tech stack: Azure, BigQuery, Cloud, Java, JavaScript, Node.js, Postgres, React, SQL, Terraform, Vue.js, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, develop, test, and deploy high-quality software solutions
+- Implement system and data monitors to ensure the correctness of the business process
+- Contribute to multiple team-wide business and tech objectives
+- Lead cross-functional projects in an agile environment and participate in planning
+- Scope, decompose, and organize projects for multiple teammates
+- Delegate tasks and coordinate teammates to complete projects with minimal oversight
+- Generate reasonably accurate time estimates to help determine project timelines
+- Support standard development practices across the team, including idiomatic syntax, design patterns, and testing/quality practices
+- Bachelor degree in Computer Science (or related field)
+- Proven experience in a senior engineering role with increasing responsibility
+- Proficiency with SQL, Postgres, Java, Go (golang), and/or nodejs
+- Solid grasp of data structures, algorithms and their application in building Data intensive applications that process high velocity data (millions of transactions) or high volume data (transactions impacting millions of records)
+- Strong communication and interpersonal skills.
+- Demonstrated ability to mentor a team, and lead without direction.
+- Experience acting in a tech lead capacity for a small team. Interested in continued career growth in a leadership role (Manager or Principal engineer)
+- Experience using Terraform, Pulumi, Helm, GitHub Actions
+
+### Full Job Description
+Summary:
+Senior Software Engineer integrating third-party systems for Gopuff’s on-demand delivery platform. Leading distributed software development, APIs, monitoring, and engineering team delivery.
+Senior Software Engineer integrating third-party systems for Gopuff’s on-demand delivery platform
+Role description:
+• Design, develop, test, and deploy high-quality software solutions
+• Implement system and data monitors to ensure the correctness of the business process
+• Contribute to multiple team-wide business and tech objectives
+• Lead cross-functional projects in an agile environment and participate in planning
+• Scope, decompose, and organize projects for multiple teammates
+• Delegate tasks and coordinate teammates to complete projects with minimal oversight
+• Generate reasonably accurate time estimates to help determine project timelines
+• Support standard development practices across the team, including idiomatic syntax, design patterns, and testing/quality practices
+• Provide primary operational support and engineering for multiple large distributed software applications
+• Integrate with existing REST APIs, author new APIs, and expose data to the frontend
+• Integrate Gopuff’s software with third-party systems
+• Drive technology choices through leadership and mentorship of an empowered team
+Role requirements:
+• Bachelor degree in Computer Science (or related field)
+• Proven experience in a senior engineering role with increasing responsibility
+• Proficiency with SQL, Postgres, Java, Go (golang), and/or nodejs
+• Solid grasp of data structures, algorithms and their application in building Data intensive applications that process high velocity data (millions of transactions) or high volume data (transactions impacting millions of records)
+• Strong communication and interpersonal skills.
+• Demonstrated ability to mentor a team, and lead without direction.
+• Experience acting in a tech lead capacity for a small team. Interested in continued career growth in a leadership role (Manager or Principal engineer)
+• Experience using Terraform, Pulumi, Helm, GitHub Actions
+• Experience with SQL data analysis (Snowflake/BigQuery), some familiarity of data pipelines
+• Experience with message based, async processing
+• Experience with Javascript & SPA technology in a production setting (ex: Vue, React)
+• Public cloud experience in a production setting (Azure preferred)
+• 8+ years of experience
+Benefits:
+• Medical/Dental/Vision Insurance
+• 401(k) Retirement Savings Plan
+• HSA or FSA eligibility
+• Long and Short-Term Disability Insurance
+• Fitness Reimbursement Program
+• 25% employee discount & FAM Membership
+• Flexible PTO
+• Group Life Insurance
+• EAP through AllOne Health (formerly Carebridge)
+• Discretionary annual cash bonus
+• Participation in Gopuff’s equity incentive plan
+Tech stack:
+Azure, BigQuery, Cloud, Java, JavaScript, Node.js, Postgres, React, SQL, Terraform, Vue.js, Go
+Company sponsorship flag: sponsorsH1B=true.

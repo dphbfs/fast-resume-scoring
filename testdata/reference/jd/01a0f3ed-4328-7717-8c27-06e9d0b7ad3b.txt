@@ -1,0 +1,58 @@
+## Harris Computer - Senior Software Engineer
+
+🔗 [Apply](https://harriscomputer.wd3.myworkdayjobs.com/1/job/remote---utah/software-engineer--sr_r0044596-3)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building scalable Java systems, REST APIs, and microservices. Developing reliable applications with cloud, database, search, and AI-assisted technologies.
+Senior Software Engineer building scalable Java systems for an enterprise software company
+- Salary: $105,000 - $115,000 per year
+- Tech stack: Cloud, ElasticSearch, Java, JavaScript, Material UI, Microservices, MongoDB, MySQL, Next.js, Postgres, React, Spring, Spring Boot, SpringBoot
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Write code and contribute to the development of software applications, modules, or components
+- Participate in requirements analysis, design, architecture, system integration, testing, and project management
+- Test code to identify and fix bugs and ensure software quality and reliability
+- Collaborate with software architects, designers, and product managers to align with project goals and timelines
+- Design and build complex, scalable systems
+- Lead technical discussions, make critical decisions, and drive consensus among team members
+- Proficiency in Java, including Core Java (Java 11/17+), JVM internals, memory management, tuning, and concurrency/multithreading
+- Experience with Spring, particularly Spring Boot
+- Experience designing, building, and securing robust, scalable REST APIs
+- Proficiency with relational and non-relational databases, including PostgreSQL, MySQL, and MongoDB
+- Experience with Elasticsearch and search/indexing technologies
+- Experience with React, Next.js, and Material UI
+- Experience with AI-assisted development tools such as GitHub Copilot, Claude, Cursor, or ChatGPT
+- Familiarity with AI-directed prompt engineering for application development
+
+### Full Job Description
+Summary:
+Senior Software Engineer building scalable Java systems, REST APIs, and microservices. Developing reliable applications with cloud, database, search, and AI-assisted technologies.
+Senior Software Engineer building scalable Java systems for an enterprise software company
+Role description:
+• Write code and contribute to the development of software applications, modules, or components
+• Participate in requirements analysis, design, architecture, system integration, testing, and project management
+• Test code to identify and fix bugs and ensure software quality and reliability
+• Collaborate with software architects, designers, and product managers to align with project goals and timelines
+• Design and build complex, scalable systems
+• Lead technical discussions, make critical decisions, and drive consensus among team members
+Role requirements:
+• Proficiency in Java, including Core Java (Java 11/17+), JVM internals, memory management, tuning, and concurrency/multithreading
+• Experience with Spring, particularly Spring Boot
+• Experience designing, building, and securing robust, scalable REST APIs
+• Proficiency with relational and non-relational databases, including PostgreSQL, MySQL, and MongoDB
+• Experience with Elasticsearch and search/indexing technologies
+• Experience with React, Next.js, and Material UI
+• Experience with AI-assisted development tools such as GitHub Copilot, Claude, Cursor, or ChatGPT
+• Familiarity with AI-directed prompt engineering for application development
+• Bachelor's degree or Diploma in Computer Science, Engineering, related field, or equivalent work experience
+• 8+ years of experience in software development
+• 3+ years as a Software Engineer focused on designing and building complex, scalable systems
+• Deep understanding of software engineering principles, design patterns, algorithms, and system architecture
+• Ability to lead technical discussions, make critical decisions, and drive consensus among team members
+• Experience with cloud technologies and microservices architecture
+• No immigration or employment-visa sponsorship is offered or provided, now or in the future
+• In-person identity verification is required for employment
+Tech stack:
+Cloud, ElasticSearch, Java, JavaScript, Material UI, Microservices, MongoDB, MySQL, Next.js, Postgres, React, Spring, Spring Boot, SpringBoot
+Company sponsorship flag: sponsorsH1B=true.
