@@ -1,0 +1,283 @@
+{
+  "scorer": "the generative scorer match score (Claude Opus 5), current setup",
+  "scored_on": "2026-10-05",
+  "method": "eval-only copies of the pair (same JD text as jd/<id>.txt, Main resume), scored then archived; 1 call per pair, or the median of 3 for the noise pairs",
+  "summary": {
+    "pairs": 38,
+    "subset_pairs": 30,
+    "shift_vs_saved_mean": 11.9,
+    "shift_vs_saved_median": 11.0,
+    "shift_min": 0,
+    "shift_max": 26,
+    "higher": 37,
+    "lower": 0
+  },
+  "pairs": [
+    {
+      "pair": "01a0cb46-922c-7022-8855-68428d9a7944",
+      "score": 78,
+      "calls": 3,
+      "saved_score": 74,
+      "subset": true
+    },
+    {
+      "pair": "01a0d60b-2973-701e-806c-d1e519e67940",
+      "score": 86,
+      "calls": 3,
+      "saved_score": 72,
+      "subset": false
+    },
+    {
+      "pair": "01a0d60b-7c6e-71b6-93b0-490532790dd5",
+      "score": 62,
+      "calls": 1,
+      "saved_score": 45,
+      "subset": true
+    },
+    {
+      "pair": "01a0d664-9162-7300-b1a6-448f80afab63",
+      "score": 88,
+      "calls": 1,
+      "saved_score": 72,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8a1-7ce9-7179-a593-fe0486f9a764",
+      "score": 66,
+      "calls": 1,
+      "saved_score": 40,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8a1-d338-767e-8177-e983a8ce1d28",
+      "score": 25,
+      "calls": 1,
+      "saved_score": 18,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8a2-163a-74b9-9f79-7b3950cd7d3c",
+      "score": 68,
+      "calls": 1,
+      "saved_score": 48,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8a3-3a62-71d6-95ae-fb9f34bbd055",
+      "score": 79,
+      "calls": 1,
+      "saved_score": 62,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8a5-e678-7397-8610-5bd0f9ecca84",
+      "score": 70,
+      "calls": 1,
+      "saved_score": 58,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8aa-53b9-77ef-b993-67a808327918",
+      "score": 48,
+      "calls": 3,
+      "saved_score": 42,
+      "subset": true
+    },
+    {
+      "pair": "01a0d8aa-7dc4-71d2-9026-85d0f39f1cbc",
+      "score": 35,
+      "calls": 1,
+      "saved_score": 22,
+      "subset": true
+    },
+    {
+      "pair": "01a0d9c6-3f87-730a-9171-b3011c2b9b6d",
+      "score": 66,
+      "calls": 1,
+      "saved_score": 62,
+      "subset": true
+    },
+    {
+      "pair": "01a0e4fa-e44b-73aa-9806-0be48a5cf5f1",
+      "score": 76,
+      "calls": 1,
+      "saved_score": 52,
+      "subset": true
+    },
+    {
+      "pair": "01a0e4fb-5410-742e-ab45-0e7bc015d4f4",
+      "score": 82,
+      "calls": 1,
+      "saved_score": 70,
+      "subset": true
+    },
+    {
+      "pair": "01a0e4fc-7cb8-750f-9611-decbd1e14f97",
+      "score": 76,
+      "calls": 3,
+      "saved_score": 52,
+      "subset": false
+    },
+    {
+      "pair": "01a0eec5-0909-75df-9d3f-5ac9f349af77",
+      "score": 34,
+      "calls": 1,
+      "saved_score": 26,
+      "subset": true
+    },
+    {
+      "pair": "01a0eec7-49e9-70bc-8ea1-f49eb8279142",
+      "score": 68,
+      "calls": 1,
+      "saved_score": 45,
+      "subset": true
+    },
+    {
+      "pair": "01a0eec9-63d3-74cd-9864-23ce8667d828",
+      "score": 39,
+      "calls": 1,
+      "saved_score": 30,
+      "subset": true
+    },
+    {
+      "pair": "01a0eeca-1535-77a1-8f84-6e861a8a2d93",
+      "score": 88,
+      "calls": 1,
+      "saved_score": 78,
+      "subset": true
+    },
+    {
+      "pair": "01a0eeca-4d5c-7107-bd77-dde42bd7da65",
+      "score": 78,
+      "calls": 1,
+      "saved_score": 68,
+      "subset": true
+    },
+    {
+      "pair": "01a0eeca-c404-7044-b85c-387e36700d88",
+      "score": 76,
+      "calls": 1,
+      "saved_score": 55,
+      "subset": true
+    },
+    {
+      "pair": "01a0eecb-04d8-777b-903b-665f16c25280",
+      "score": 76,
+      "calls": 3,
+      "saved_score": 58,
+      "subset": false
+    },
+    {
+      "pair": "01a0eecb-dc81-7374-8586-45ead4a81fb1",
+      "score": 52,
+      "calls": 1,
+      "saved_score": 34,
+      "subset": true
+    },
+    {
+      "pair": "01a0eecb-ffa5-717a-9d53-48de4704968b",
+      "score": 42,
+      "calls": 3,
+      "saved_score": 34,
+      "subset": false
+    },
+    {
+      "pair": "01a0ef47-f459-706e-b91e-b2c1a1283bd6",
+      "score": 32,
+      "calls": 3,
+      "saved_score": 24,
+      "subset": false
+    },
+    {
+      "pair": "01a0f37c-2674-748a-8df8-f0a20a3bf0aa",
+      "score": 8,
+      "calls": 1,
+      "saved_score": 3,
+      "subset": true
+    },
+    {
+      "pair": "01a0f37f-7e30-7555-ac2f-727979601177",
+      "score": 76,
+      "calls": 1,
+      "saved_score": 72,
+      "subset": true
+    },
+    {
+      "pair": "01a0f37f-bded-7273-96dd-cba4b5b1dfdf",
+      "score": 57,
+      "calls": 1,
+      "saved_score": 52,
+      "subset": true
+    },
+    {
+      "pair": "01a0f3ec-f471-777d-aa6e-e385976ef7af",
+      "score": 89,
+      "calls": 1,
+      "saved_score": 82,
+      "subset": true
+    },
+    {
+      "pair": "01a0f93e-5001-74d6-9c4c-55fdb983d78b",
+      "score": 76,
+      "calls": 1,
+      "saved_score": 68,
+      "subset": true
+    },
+    {
+      "pair": "01a0f93f-68a4-7541-bcc3-782a26ffc9c6",
+      "score": 82,
+      "calls": 3,
+      "saved_score": 68,
+      "subset": false
+    },
+    {
+      "pair": "01a0f940-8145-7413-af2b-f8ebda93f7a6",
+      "score": 78,
+      "calls": 3,
+      "saved_score": 64,
+      "subset": false
+    },
+    {
+      "pair": "01a0fe3a-2ec1-76c0-8958-d09263d703a6",
+      "score": 76,
+      "calls": 1,
+      "saved_score": 58,
+      "subset": true
+    },
+    {
+      "pair": "01a0fe3d-6400-748d-8c82-fe490103c2b5",
+      "score": 84,
+      "calls": 1,
+      "saved_score": 72,
+      "subset": true
+    },
+    {
+      "pair": "01a103df-e475-7758-9136-17b04c43bf93",
+      "score": 89,
+      "calls": 1,
+      "saved_score": 88,
+      "subset": true
+    },
+    {
+      "pair": "01a103e0-191c-76bc-9a61-a2d4307b8b27",
+      "score": 82,
+      "calls": 1,
+      "saved_score": 74,
+      "subset": true
+    },
+    {
+      "pair": "01a103e1-3cbd-7663-912a-31f5e28bde5e",
+      "score": 78,
+      "calls": 1,
+      "saved_score": 78,
+      "subset": true
+    },
+    {
+      "pair": "01a103e2-a05e-72fe-87a4-2668fee52b7c",
+      "score": 91,
+      "calls": 3,
+      "saved_score": 85,
+      "subset": false
+    }
+  ]
+}

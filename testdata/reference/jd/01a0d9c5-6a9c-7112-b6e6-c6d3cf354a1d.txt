@@ -1,0 +1,83 @@
+## Evolve - Senior Software Engineer, Full Stack
+
+🔗 [Apply](https://boards.greenhouse.io/evolvevacationrental/jobs/8003653003)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Full Stack Engineer building scalable web applications for Evolve, a vacation-rental company. Delivering React and TypeScript solutions across custom development projects.
+Senior Full Stack Engineer building vacation-rental web applications for Evolve
+- Salary: $141,000 - $184,000 per year
+- Tech stack: AWS, Docker, GraphQL, JavaScript, Kubernetes, Node.js, NoSQL, RDBMS, React, SQL, TypeScript, WordPress, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build and maintain TypeScript-driven web applications using in-house and open-source frameworks
+- Collaborate across teams to design, develop, test, implement, and support full-stack technical solutions
+- Use React, NodeJS, JavaScript, TypeScript, HTML/CSS, GraphQL, Go, SQL, RDBMS and NoSQL databases, Docker, Kubernetes, and AWS tools and services
+- Perform code reviews and technical documentation for peers
+- Work directly with a Product Manager/Product Owner to understand problems being solved
+- Design, deliver, and support high-quality code
+- Execute engineering and release priorities
+- Build and maintain a component library
+- 5+ years of experience developing web applications in React with expertise in JavaScript
+- Design and develop robust and scalable APIs using GraphQL and RESTful principles
+- Familiarity with Go language, frameworks and libraries for building services
+- Utilize AI-assisted coding tools to accelerate development and reduce errors
+- Comfortable working with DevOps teams to optimize CI/CD pipelines
+- Experience participating in and/or peer code reviews
+- Comfortable working in fast-paced, high-performance environments
+- Strong debugging skills and ability to find solutions to problems
+
+### Full Job Description
+Summary:
+Senior Full Stack Engineer building scalable web applications for Evolve, a vacation-rental company. Delivering React and TypeScript solutions across custom development projects.
+Senior Full Stack Engineer building vacation-rental web applications for Evolve
+Role description:
+• Build and maintain TypeScript-driven web applications using in-house and open-source frameworks
+• Collaborate across teams to design, develop, test, implement, and support full-stack technical solutions
+• Use React, NodeJS, JavaScript, TypeScript, HTML/CSS, GraphQL, Go, SQL, RDBMS and NoSQL databases, Docker, Kubernetes, and AWS tools and services
+• Perform code reviews and technical documentation for peers
+• Work directly with a Product Manager/Product Owner to understand problems being solved
+• Design, deliver, and support high-quality code
+• Execute engineering and release priorities
+• Build and maintain a component library
+• Drive collaboration on JavaScript coding standards, best practices, integrations, and front-end/back-end development processes
+• Guide and teach less experienced developers
+Role requirements:
+• 5+ years of experience developing web applications in React with expertise in JavaScript
+• Design and develop robust and scalable APIs using GraphQL and RESTful principles
+• Familiarity with Go language, frameworks and libraries for building services
+• Utilize AI-assisted coding tools to accelerate development and reduce errors
+• Comfortable working with DevOps teams to optimize CI/CD pipelines
+• Experience participating in and/or peer code reviews
+• Comfortable working in fast-paced, high-performance environments
+• Strong debugging skills and ability to find solutions to problems
+• Experience building custom tools to automate tasks
+• Experience with Git version control and repository management in GitLab
+• Experience with Content Management Systems such as WordPress
+Benefits:
+• Industry-competitive pay
+• Equity in the company
+• 401(k) with a 4% immediate vesting match
+• 16-18 weeks of paid parental leave for birthing parents
+• 10 weeks of paid parental leave for non-birthing parents
+• Infertility coverage
+• Comprehensive medical, dental, and vision plans
+• 100% employer-paid dental and vision for individual coverage
+• Low-cost medical option
+• 10 free mental health visits
+• Pet insurance
+• Generous PTO
+• RTO for full-time exempt employees
+• Sick leave
+• Holidays
+• Personal holiday
+• Annual Evolve travel credit after one year
+• Discounts on stays at all Evolve properties
+• World-class onboarding programs
+• Learning and development resources
+• Employee Resource Groups
+Tech stack:
+AWS, Docker, GraphQL, JavaScript, Kubernetes, Node.js, NoSQL, RDBMS, React, SQL, TypeScript, WordPress, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

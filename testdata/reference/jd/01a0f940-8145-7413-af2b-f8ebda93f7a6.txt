@@ -1,0 +1,63 @@
+## Resend - Backend Engineer
+
+🔗 [Apply](https://jobs.ashbyhq.com/resend/c4c5eb8c-e6ac-49f5-9dc7-a68ce0948929)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend Engineer building Resend’s SMTP and email transport infrastructure. Designing reliable delivery, throttling, routing, and reputation-aware systems for developers.
+Backend Engineer building Resend’s high-volume email transport infrastructure
+- Salary: $150,000 - $170,000 per year
+- Tech stack: Distributed Systems, DNS, SMTP, TypeScript, Go
+- Build and operate Resend’s email transport infrastructure
+- Work on SMTP delivery, MTA systems, routing, retries, backoff strategies, and delivery controls
+- Design domain-level, provider-level, customer-level, and IP-level throttling systems
+- Build infrastructure for shared IP pools, dedicated IPs, warmup execution, and reputation-aware routing
+- Improve classification of bounces, deferrals, transient failures, hard failures, and delivery outcomes
+- Build debugging tools for delivery issues by customer, domain, mailbox provider, route, IP, message type, and event
+- Design systems that make sending behavior safer, more observable, and easier to operate
+- Translate reputation strategy into backend systems
+- Strong backend engineering experience
+- Experience with email, messaging, notifications, communications, infrastructure, or other high-volume delivery systems
+- Understanding of queues, workers, retries, idempotency, rate limits, backpressure, and distributed systems
+- Experience or strong interest in SMTP, MTAs, DNS, bounces, deferrals, IP pools, and mailbox-provider behavior
+- Care about reliability, observability, operational excellence, and reducing blast radius
+- Low ego, high ownership, and strong taste for simple systems
+- Experience working on applications with a high workload
+- Willingness to learn more about email best practices
+
+### Full Job Description
+Summary:
+Backend Engineer building Resend’s SMTP and email transport infrastructure. Designing reliable delivery, throttling, routing, and reputation-aware systems for developers.
+Backend Engineer building Resend’s high-volume email transport infrastructure
+Role description:
+• Build and operate Resend’s email transport infrastructure
+• Work on SMTP delivery, MTA systems, routing, retries, backoff strategies, and delivery controls
+• Design domain-level, provider-level, customer-level, and IP-level throttling systems
+• Build infrastructure for shared IP pools, dedicated IPs, warmup execution, and reputation-aware routing
+• Improve classification of bounces, deferrals, transient failures, hard failures, and delivery outcomes
+• Build debugging tools for delivery issues by customer, domain, mailbox provider, route, IP, message type, and event
+• Design systems that make sending behavior safer, more observable, and easier to operate
+• Translate reputation strategy into backend systems
+• Partner with Trust & Safety and Core Sending to build anti-abuse controls
+• Participate in incident response for sending, provider, and deliverability-sensitive issues
+• Be on-call for critical services
+Role requirements:
+• Strong backend engineering experience
+• Experience with email, messaging, notifications, communications, infrastructure, or other high-volume delivery systems
+• Understanding of queues, workers, retries, idempotency, rate limits, backpressure, and distributed systems
+• Experience or strong interest in SMTP, MTAs, DNS, bounces, deferrals, IP pools, and mailbox-provider behavior
+• Care about reliability, observability, operational excellence, and reducing blast radius
+• Low ego, high ownership, and strong taste for simple systems
+• Experience working on applications with a high workload
+• Willingness to learn more about email best practices
+• Experience in Typescript and Golang
+Benefits:
+• Autonomy to "just ship it"
+• 100% remote team with flexible working schedules
+• Modern tech stack (Typescript, AWS, Go, Postgres, Datadog)
+• Honest and low-ego team
+• Ownership of problems and solutions
+• Some expected travel for team off-sites, conferences, meetups, and more
+Tech stack:
+Distributed Systems, DNS, SMTP, TypeScript, Go

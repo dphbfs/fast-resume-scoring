@@ -1,0 +1,68 @@
+## Spotify - Senior Backend Engineer, Home Surfaces
+
+🔗 [Apply](https://jobs.lever.co/spotify/cefcda32-523e-418b-a327-383104741153)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building Spotify’s backend systems for personalized podcast recommendations. Designing scalable ranking, retrieval, and data pipelines for millions of listeners.
+Senior Backend Engineer building Spotify podcast recommendation infrastructure
+- Salary: $164,448 - $234,926 per year
+- Tech stack: BigQuery, Google Cloud Platform, GRPC, Java
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Architect, build, and evolve backend systems supporting personalization and recommendations at Spotify scale
+- Design reliable, scalable, and performant services for high-volume recommendation workloads
+- Build and improve infrastructure and pipelines to retrieve, rank, and deliver personalized podcast recommendations
+- Partner with Product Managers, Engineers, Data Scientists, and Designers to develop recommendation experiences and define experimentation strategies
+- Own backend systems through technical design, implementation, deployment, monitoring, and continued improvement
+- Use experimentation and data to assess system changes and inform future development
+- Navigate ambiguous technical problems and contribute to the long-term architecture of personalization systems
+- Share knowledge and engineering practices with teammates
+- Experience building production systems with Java
+- Experience designing distributed, high-volume services
+- Experience deploying, operating, and evolving services in production
+- Experience working directly with stakeholders to understand requirements
+- Experience designing broadly adoptable APIs and systems
+- Strong understanding of system design, data structures, and algorithms
+- Interest in large-scale data processing technologies
+- Comfort working in an environment where teams experiment, learn, and iterate quickly
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building Spotify’s backend systems for personalized podcast recommendations. Designing scalable ranking, retrieval, and data pipelines for millions of listeners.
+Senior Backend Engineer building Spotify podcast recommendation infrastructure
+Role description:
+• Architect, build, and evolve backend systems supporting personalization and recommendations at Spotify scale
+• Design reliable, scalable, and performant services for high-volume recommendation workloads
+• Build and improve infrastructure and pipelines to retrieve, rank, and deliver personalized podcast recommendations
+• Partner with Product Managers, Engineers, Data Scientists, and Designers to develop recommendation experiences and define experimentation strategies
+• Own backend systems through technical design, implementation, deployment, monitoring, and continued improvement
+• Use experimentation and data to assess system changes and inform future development
+• Navigate ambiguous technical problems and contribute to the long-term architecture of personalization systems
+• Share knowledge and engineering practices with teammates
+Role requirements:
+• Experience building production systems with Java
+• Experience designing distributed, high-volume services
+• Experience deploying, operating, and evolving services in production
+• Experience working directly with stakeholders to understand requirements
+• Experience designing broadly adoptable APIs and systems
+• Strong understanding of system design, data structures, and algorithms
+• Interest in large-scale data processing technologies
+• Comfort working in an environment where teams experiment, learn, and iterate quickly
+• Use of data to inform technical and product decisions
+• Experience with technologies such as gRPC, GCP, BigQuery, Bigtable, or similar tools and platforms
+• Ability to work within the Eastern Standard time zone for collaboration
+Benefits:
+• Health insurance
+• Six-month paid parental leave
+• 401(k) retirement plan
+• Monthly meal allowance
+• 23 paid days off
+• Paid flexible holidays
+• Paid sick leave
+• Equity
+Tech stack:
+BigQuery, Google Cloud Platform, GRPC, Java
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

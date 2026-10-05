@@ -1,0 +1,64 @@
+## Fictiv - Senior Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/fictiv/jobs/8843972002)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building scalable AWS and Node.js systems for MISUMI Americas’ AI-powered digital manufacturing platform. Owning APIs, reliability, and AI-assisted development.
+Senior Backend Engineer building AI-powered manufacturing platform systems for MISUMI Americas
+- Salary: $160,000 - $200,000 per year
+- Tech stack: AWS, Distributed Systems, EC2, GraphQL, JavaScript, Node.js, NoSQL, SQL, TypeScript
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design and develop highly available, scalable backend services in AWS
+- Build and maintain event-driven, asynchronous systems using Node.js
+- Create robust REST and GraphQL APIs for customer-facing and internal tools
+- Use AI coding agents from design through implementation and testing while owning correctness
+- Write specifications, tests, and repository context for reliable agent-driven development
+- Partner with product, frontend, and infrastructure teams to ship business-impacting features
+- Contribute to technical design discussions and drive team best practices
+- Share AI patterns, tooling, and lessons learned
+- 5 + years of backend engineering experience
+- Strong skills in Node.js, JavaScript/TypeScript
+- Experience building systems on AWS (SQS, Lambda, EC2, RDS, etc.)
+- Solid understanding of distributed systems and event-driven architectures
+- Experience designing and maintaining REST or GraphQL APIs
+- Familiarity with SQL and NoSQL databases
+- A commitment to writing unit and integration tests
+- Knowledge of system design, caching, and security best practices (OWASP Top 10)
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building scalable AWS and Node.js systems for MISUMI Americas’ AI-powered digital manufacturing platform. Owning APIs, reliability, and AI-assisted development.
+Senior Backend Engineer building AI-powered manufacturing platform systems for MISUMI Americas
+Role description:
+• Design and develop highly available, scalable backend services in AWS
+• Build and maintain event-driven, asynchronous systems using Node.js
+• Create robust REST and GraphQL APIs for customer-facing and internal tools
+• Use AI coding agents from design through implementation and testing while owning correctness
+• Write specifications, tests, and repository context for reliable agent-driven development
+• Partner with product, frontend, and infrastructure teams to ship business-impacting features
+• Contribute to technical design discussions and drive team best practices
+• Share AI patterns, tooling, and lessons learned
+• Debug production issues and improve system reliability
+• Improve code quality through testing, observability, and documentation
+Role requirements:
+• 5 + years of backend engineering experience
+• Strong skills in Node.js, JavaScript/TypeScript
+• Experience building systems on AWS (SQS, Lambda, EC2, RDS, etc.)
+• Solid understanding of distributed systems and event-driven architectures
+• Experience designing and maintaining REST or GraphQL APIs
+• Familiarity with SQL and NoSQL databases
+• A commitment to writing unit and integration tests
+• Knowledge of system design, caching, and security best practices (OWASP Top 10)
+• Hands-on experience shipping production code with AI coding agents (e.g., Claude Code, Cursor, Copilot agent mode), with clear examples of where you had to step in, correct, or override them
+• Strong code review skills, applied just as rigorously to AI-generated changes
+• Must be a U.S. citizen or lawful permanent resident (green card holder)
+• AWS certification, experience with high-scale or business-critical systems, pricing/quoting or numerically sensitive business logic, and agent workflows/custom tools/MCP integrations are nice to have
+Benefits:
+• Competitive compensation and benefits
+• Flexible, West Coast-friendly work environment
+• Minimal travel (0–10%)
+Tech stack:
+AWS, Distributed Systems, EC2, GraphQL, JavaScript, Node.js, NoSQL, SQL, TypeScript
+Company sponsorship flag: sponsorsH1B=true.

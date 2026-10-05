@@ -1,0 +1,43 @@
+## First Help Financial - Senior Software Engineer
+
+🔗 [Apply](https://apply.workable.com/firsthelpfinancial/j/CFD1CF6B12)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer enhancing First Help Financial’s existing products and building new software tools. Developing Java, Python, microservices, databases, and AWS cloud infrastructure.
+Senior Software Engineer developing Java and cloud software for First Help Financial
+- Salary: $162,198 per year
+- Tech stack: AWS, Cloud, EC2, Java, Microservices, MongoDB, Oracle, Python, Spring, Spring Boot, SpringBoot, Terraform
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design and develop major functional or performance enhancements for existing products
+- Produce new software products or tools
+- Master’s degree in Computer Science, Information Technology, or closely related field
+- 3 years of experience in any occupation involving software development
+- Experience using Java, Spring Boot, and Python
+- Experience building REST APIs and microservices
+- Experience with relational and non-relational databases such as Oracle, DocDB, and MongoDB
+- Experience with cloud services, especially AWS (EC2, S3, Lambda, SQS)
+- Experience with Infrastructure as Code using Terraform and CloudFormation
+- Experience working in a software development team using Agile Methodology
+
+### Full Job Description
+Summary:
+Senior Software Engineer enhancing First Help Financial’s existing products and building new software tools. Developing Java, Python, microservices, databases, and AWS cloud infrastructure.
+Senior Software Engineer developing Java and cloud software for First Help Financial
+Role description:
+• Design and develop major functional or performance enhancements for existing products
+• Produce new software products or tools
+Role requirements:
+• Master’s degree in Computer Science, Information Technology, or closely related field
+• 3 years of experience in any occupation involving software development
+• Experience using Java, Spring Boot, and Python
+• Experience building REST APIs and microservices
+• Experience with relational and non-relational databases such as Oracle, DocDB, and MongoDB
+• Experience with cloud services, especially AWS (EC2, S3, Lambda, SQS)
+• Experience with Infrastructure as Code using Terraform and CloudFormation
+• Experience working in a software development team using Agile Methodology
+• May work from any location within the continental U.S.
+Tech stack:
+AWS, Cloud, EC2, Java, Microservices, MongoDB, Oracle, Python, Spring, Spring Boot, SpringBoot, Terraform
+Company sponsorship flag: sponsorsH1B=true.

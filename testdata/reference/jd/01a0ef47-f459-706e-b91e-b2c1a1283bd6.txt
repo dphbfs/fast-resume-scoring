@@ -1,0 +1,61 @@
+## vCluster - Senior Software Engineer – Product Security
+
+🔗 [Apply](https://jobs.ashbyhq.com/vclusterlabs/3dc34e16-8854-4a09-b829-f8c97328e636)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Product Security Engineer building secure Go and Kubernetes features for vCluster Labs’ AI infrastructure platform. Owning vulnerability response, threat modeling, and secure design reviews.
+Senior Product Security Engineer securing vCluster Labs’ Kubernetes AI infrastructure platform
+- Salary: $135,000 - $175,000 per year
+- Tech stack: Kubernetes, Go
+- Design, build, and maintain production features alongside the engineering team
+- Work on roadmap features when security work is not in the queue
+- Triage, prioritize, and fix security issues in code and dependencies through a patched release
+- Review security-sensitive designs and threat-model new features
+- Participate in code reviews, design reviews, and technical discussions
+- Help engineers build secure defaults into the product
+- Serve as the security expert for the product
+- Build secure infrastructure software for AI infrastructure platforms and Kubernetes-based tenant isolation
+- Experience building and shipping production systems with Go as a primary language
+- Working knowledge of Kubernetes API server, admission control, RBAC, controllers, and kubelet
+- Experience building controllers or operators with controller-runtime, Kubebuilder, or client-go
+- Hands-on experience with container breakout, privilege escalation, RBAC, and policy best practices
+- Experience threat modeling and reviewing designs for production systems
+- Ability to explain risk clearly to other engineers
+- Experience investigating and fixing vulnerabilities in code
+- Knowledge of the CVE lifecycle, coordinated disclosure, and patch releases
+
+### Full Job Description
+Summary:
+Senior Product Security Engineer building secure Go and Kubernetes features for vCluster Labs’ AI infrastructure platform. Owning vulnerability response, threat modeling, and secure design reviews.
+Senior Product Security Engineer securing vCluster Labs’ Kubernetes AI infrastructure platform
+Role description:
+• Design, build, and maintain production features alongside the engineering team
+• Work on roadmap features when security work is not in the queue
+• Triage, prioritize, and fix security issues in code and dependencies through a patched release
+• Review security-sensitive designs and threat-model new features
+• Participate in code reviews, design reviews, and technical discussions
+• Help engineers build secure defaults into the product
+• Serve as the security expert for the product
+• Build secure infrastructure software for AI infrastructure platforms and Kubernetes-based tenant isolation
+Role requirements:
+• Experience building and shipping production systems with Go as a primary language
+• Working knowledge of Kubernetes API server, admission control, RBAC, controllers, and kubelet
+• Experience building controllers or operators with controller-runtime, Kubebuilder, or client-go
+• Hands-on experience with container breakout, privilege escalation, RBAC, and policy best practices
+• Experience threat modeling and reviewing designs for production systems
+• Ability to explain risk clearly to other engineers
+• Experience investigating and fixing vulnerabilities in code
+• Knowledge of the CVE lifecycle, coordinated disclosure, and patch releases
+• CKS certification is a bonus
+• Experience at an early-stage organization is a bonus
+Benefits:
+• Competitive compensation package including equity
+• Health, dental, vision, and life insurance for you and eligible dependents (benefits vary depending on country)
+• Flexible working schedule
+• Workplace flexibility
+• Equity
+• Bonus
+Tech stack:
+Kubernetes, Go

@@ -1,0 +1,7 @@
+## Factorial - Senior Software Engineer
+
+Remote full-time Senior Software Engineer role for Factorial's Working Capital team, focused on AI-powered financial products, distributed resilient architectures, robust APIs, relational data models, transactional systems at scale, operational excellence, and end-to-end execution.
+
+Role requirements include 5+ years as a Senior Software Engineer, Tech Lead, or Senior Full-Stack/Backend Engineer building and maintaining transactional systems at scale in SaaS, fintech, or startup environments; autonomy and business judgment; ability to define technical scope and trade-offs; distributed/resilient architecture; APIs and relational data models; data consistency, UX, and performance awareness; strategic AI use including automated testing, latency/fallback/cost/observability; ownership and quality culture.
+
+Nice-to-haves include fintech/credit/lending, high-growth startups, distributed teams in Argentina/Mexico/Colombia/United States, IaC and AWS/GCP deployments. Stack mentioned: TypeScript, Node.js, React, Next.js/Vite, Python, monorepos, modular architectures, PostgreSQL, event sourcing, KurrentDB/EventStore, Apache Pulsar, Temporal, GCP, Kubernetes/GKE, Dapr, KrakenD, Istio, GitHub Actions, ArgoCD, SigNoz, Grafana, Sentry, LiteLLM, OpenAI/Gemini, data extraction. Company profile has H1B sponsorship signal; not guaranteed for this role.

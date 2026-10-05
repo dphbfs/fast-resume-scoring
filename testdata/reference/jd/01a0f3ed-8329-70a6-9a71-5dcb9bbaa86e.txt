@@ -1,0 +1,65 @@
+## OnePay - Software Engineer, Credit Card
+
+🔗 [Apply](https://jobs.ashbyhq.com/oneapp/45395ba3-6845-4707-ab55-4e0a4e4baffb)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend engineer building secure APIs and distributed systems for OnePay’s co-branded credit card. Owning reliability, compliance, and performance across real-time financial transactions.
+Backend engineer building secure credit-card infrastructure for OnePay’s consumer fintech platform
+- Salary: $140,000 - $190,000 per year
+- Tech stack: AWS, Cloud, Distributed Systems, Java, JavaScript, Kubernetes, Microservices, Node.js, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design and build backend services powering OnePay’s co-branded credit card product and partner integrations
+- Architect APIs and event-driven systems handling sensitive financial data securely at scale
+- Partner with risk, compliance, and platform teams to meet regulatory and security requirements
+- Own reliability and performance for systems processing real-time credit transactions
+- Drive technical decisions on system design, balancing scalability, security, and delivery speed
+- Mentor engineers and improve code quality, testing, and operational practices
+- Work with Node.js, TypeScript, NestJS, Kubernetes, AWS, and microservice-oriented architecture
+- 3+ years of professional experience in backend or distributed systems development
+- Experience building and operating production-grade APIs and microservices in a regulated or high-compliance environment (fintech, payments, banking, or similar)
+- Proficiency in Node.js or similar modern backend frameworks (TypeScript, NestJS, Go, or Java)
+- Familiarity with cloud-native architecture (Kubernetes, AWS) and event-driven or microservice-based systems
+- Strong understanding of data security, PCI compliance, or similar standards protecting sensitive financial data
+- Strong communication and collaboration skills across product, risk, and platform teams
+- Drive and proactivity
+- Familiarity with modern software engineering practices
+
+### Full Job Description
+Summary:
+Backend engineer building secure APIs and distributed systems for OnePay’s co-branded credit card. Owning reliability, compliance, and performance across real-time financial transactions.
+Backend engineer building secure credit-card infrastructure for OnePay’s consumer fintech platform
+Role description:
+• Design and build backend services powering OnePay’s co-branded credit card product and partner integrations
+• Architect APIs and event-driven systems handling sensitive financial data securely at scale
+• Partner with risk, compliance, and platform teams to meet regulatory and security requirements
+• Own reliability and performance for systems processing real-time credit transactions
+• Drive technical decisions on system design, balancing scalability, security, and delivery speed
+• Mentor engineers and improve code quality, testing, and operational practices
+• Work with Node.js, TypeScript, NestJS, Kubernetes, AWS, and microservice-oriented architecture
+Role requirements:
+• 3+ years of professional experience in backend or distributed systems development
+• Experience building and operating production-grade APIs and microservices in a regulated or high-compliance environment (fintech, payments, banking, or similar)
+• Proficiency in Node.js or similar modern backend frameworks (TypeScript, NestJS, Go, or Java)
+• Familiarity with cloud-native architecture (Kubernetes, AWS) and event-driven or microservice-based systems
+• Strong understanding of data security, PCI compliance, or similar standards protecting sensitive financial data
+• Strong communication and collaboration skills across product, risk, and platform teams
+• Drive and proactivity
+• Familiarity with modern software engineering practices
+• Authorization to work lawfully in the United States
+• Must disclose whether OnePay sponsorship of an immigration case is required
+Benefits:
+• Stock options
+• Health benefits from Day 1
+• 401(k) plan with company match
+• Remote-friendly (US)
+• Flexible time off (FTO)
+• Opportunities for growth
+• High-growth, mission-driven, inclusive culture
+• AI-assisted initial screen and interview process
+Tech stack:
+AWS, Cloud, Distributed Systems, Java, JavaScript, Kubernetes, Microservices, Node.js, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

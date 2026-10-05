@@ -1,0 +1,86 @@
+## RTX - Software Engineer – Technical Publication Systems
+
+🔗 [Apply](https://careers.rtx.com/global/en/job/01878000)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer building and maintaining publication systems for Pratt & Whitney military aircraft-engine documentation. Developing full-stack software, supporting S1000D compliance, and improving automated publishing.
+Software Engineer building technical publication systems for Pratt & Whitney military aircraft engines
+- Salary: $86,800 - $165,200 per year
+- Tech stack: Apache, Azure, Cloud, Java, JavaScript, Jenkins, MongoDB, MySQL, Oracle, Python, React, SQL
+- Collaborate with Military Engine Programs to support software systems for creating, publishing, distributing, and presenting technical documents
+- Manage customer expectations and keep project scope and direction on schedule
+- Improve and maintain internal platforms for automated and on-demand publication of technical data
+- Support dependent engine programs to ensure on-time release deliveries
+- Troubleshoot and resolve software issues to improve publishing performance
+- Design, build, test, and implement scalable front-end and back-end software
+- Write clean, functional code
+- Prepare and maintain technical software-development documentation
+- Bachelor’s Degree and 5+ years of experience, or Advanced degree with 3+ years of experience in Aftermarket industry supporting business operations
+- Must be a U.S. Citizen
+- Familiarity with Waterfall and Agile project management methodologies
+- Experience with GitHub, JIRA, or other code management and product management software
+- 5+ years of experience in software development
+- 3+ years as a Full Stack Developer
+- Proven experience with Python, Java, HTML5, CSS3, XSLT, JavaScript, and Apache web servers
+- Proficiency in user-centered design (UI/UX) principles
+
+### Full Job Description
+Summary:
+Software Engineer building and maintaining publication systems for Pratt & Whitney military aircraft-engine documentation. Developing full-stack software, supporting S1000D compliance, and improving automated publishing.
+Software Engineer building technical publication systems for Pratt & Whitney military aircraft engines
+Role description:
+• Collaborate with Military Engine Programs to support software systems for creating, publishing, distributing, and presenting technical documents
+• Manage customer expectations and keep project scope and direction on schedule
+• Improve and maintain internal platforms for automated and on-demand publication of technical data
+• Support dependent engine programs to ensure on-time release deliveries
+• Troubleshoot and resolve software issues to improve publishing performance
+• Design, build, test, and implement scalable front-end and back-end software
+• Write clean, functional code
+• Prepare and maintain technical software-development documentation
+• Collaborate with Military Engine Programs to implement S1000D-compliant technical data standards in a subsidiary authoring suite
+• Review and update technical publication Base of Estimates as needed
+• Track status, content, and funding cycles for each engine program
+Role requirements:
+• Bachelor’s Degree and 5+ years of experience, or Advanced degree with 3+ years of experience in Aftermarket industry supporting business operations
+• Must be a U.S. Citizen
+• Familiarity with Waterfall and Agile project management methodologies
+• Experience with GitHub, JIRA, or other code management and product management software
+• 5+ years of experience in software development
+• 3+ years as a Full Stack Developer
+• Proven experience with Python, Java, HTML5, CSS3, XSLT, JavaScript, and Apache web servers
+• Proficiency in user-centered design (UI/UX) principles
+• Knowledge of responsive design and cross-browser compatibility
+• Strong knowledge of React.js, including components, state management, hooks, and lifecycle methods
+• Experience with databases such as Oracle, MySQL, and MongoDB, including SQL data retrieval
+• Excellent oral and written communication skills
+• Ability to work independently
+• Preferred: Master’s degree in computer science or engineering with background in Maintenance Data Engineering
+• Preferred: Experience with Pratt & Whitney IETP or IETM systems
+• Preferred: Experience with S1000D or other XML/SGML specifications
+• Preferred: Experience with CORENA or other technical authoring/publication software
+• Preferred: Experience with Jenkins or other CI/CD software
+• Preferred: Ability to design and develop APIs
+• Preferred: Hands-on cloud computing experience, preferably Microsoft Azure
+• Preferred: Experience designing and implementing AI-driven solutions, including Databricks or Snowflake and Kobai
+• Preferred: Agile project management skills
+Benefits:
+• Medical insurance
+• Dental insurance
+• Vision insurance
+• Life insurance
+• Short-term disability
+• Long-term disability
+• 401(k) match
+• Flexible spending accounts
+• Flexible work schedules
+• Employee assistance program
+• Employee Scholar Program
+• Parental leave
+• Paid time off
+• Holidays
+• Annual short-term and/or long-term incentive compensation programs may be available
+• Employee referral award may be available
+Tech stack:
+Apache, Azure, Cloud, Java, JavaScript, Jenkins, MongoDB, MySQL, Oracle, Python, React, SQL

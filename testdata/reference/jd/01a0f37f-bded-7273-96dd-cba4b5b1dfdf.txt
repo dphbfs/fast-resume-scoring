@@ -1,0 +1,63 @@
+## NVIDIA - Senior Software Engineer, Kubernetes Runtime
+
+🔗 [Apply](https://nvidia.wd5.myworkdayjobs.com/nvidiaexternalcareersite/job/us-ca-remote/senior-software-engineer--kubernetes-runtime-and-release_jr2026573)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Kubernetes runtime, release automation, and provider integrations for NVIDIA's GPU cloud infrastructure. Delivering reliable software across public clouds, GPU platforms, and new hardware.
+Senior Software Engineer building NVIDIA's Kubernetes runtime and release systems for GPU cloud infrastructure
+- Salary: $184,000 - $356,500 per year
+- Tech stack: Cloud, Distributed Systems, Kubernetes, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build Go controllers and APIs to install, upgrade, and validate GPU cluster software
+- Integrate components, define API contracts, and evolve Helm and Argo CD delivery toward controller-driven automation
+- Build validation pipelines that inform release decisions across providers and GPU platforms
+- Develop systems to allocate GPU capacity across validation runs and account for cloud reservations and quotas
+- Improve qualification efficiency through reusable tests and clear failure reports
+- Bring new providers and GPU hardware into production
+- Resolve integration failures with partner teams
+- Turn initial provisioning, upgrade, and operational checks into repeatable automation
+- 6+ years building production infrastructure software or distributed systems
+- Strong programming skills in Go or another language to build production systems, with willingness to work primarily in Go
+- Kubernetes experience and depth in at least one area: controllers and operators, release automation, test and validation systems, or cloud integration
+- Experience delivering engineering projects, diagnosing complex failures, and collaborating across teams
+- BS or MS in Computer Science, Engineering, or equivalent experience
+- Experience with controller-runtime, CRDs, and reconcilers is valuable but not required
+- Experience with release qualification across multiple environments or platforms is valuable but not required
+- Experience with GPU infrastructure, accelerated networking, or GPU scheduling is valuable but not required
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Kubernetes runtime, release automation, and provider integrations for NVIDIA's GPU cloud infrastructure. Delivering reliable software across public clouds, GPU platforms, and new hardware.
+Senior Software Engineer building NVIDIA's Kubernetes runtime and release systems for GPU cloud infrastructure
+Role description:
+• Build Go controllers and APIs to install, upgrade, and validate GPU cluster software
+• Integrate components, define API contracts, and evolve Helm and Argo CD delivery toward controller-driven automation
+• Build validation pipelines that inform release decisions across providers and GPU platforms
+• Develop systems to allocate GPU capacity across validation runs and account for cloud reservations and quotas
+• Improve qualification efficiency through reusable tests and clear failure reports
+• Bring new providers and GPU hardware into production
+• Resolve integration failures with partner teams
+• Turn initial provisioning, upgrade, and operational checks into repeatable automation
+• Collaborate across Runtime, Release Engineering, and Provider Integration teams
+• Influence what reaches production across NVIDIA's GPU cloud infrastructure
+Role requirements:
+• 6+ years building production infrastructure software or distributed systems
+• Strong programming skills in Go or another language to build production systems, with willingness to work primarily in Go
+• Kubernetes experience and depth in at least one area: controllers and operators, release automation, test and validation systems, or cloud integration
+• Experience delivering engineering projects, diagnosing complex failures, and collaborating across teams
+• BS or MS in Computer Science, Engineering, or equivalent experience
+• Experience with controller-runtime, CRDs, and reconcilers is valuable but not required
+• Experience with release qualification across multiple environments or platforms is valuable but not required
+• Experience with GPU infrastructure, accelerated networking, or GPU scheduling is valuable but not required
+• Experience bringing new hardware, regions, or cloud providers into production is valuable but not required
+• Experience with resource allocation, leasing, fair-share scheduling, upstream integration, compatibility, or software supply chain integrity is valuable but not required
+Benefits:
+• Equity
+• Benefits
+Tech stack:
+Cloud, Distributed Systems, Kubernetes, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

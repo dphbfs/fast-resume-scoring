@@ -1,0 +1,76 @@
+## Mirantis - Software Engineer, Backend – Go
+
+🔗 [Apply](https://jobs.smartrecruiters.com/mirantis/744000153011138-software-engineer-backend-go-)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend Go Engineer building k0rdent AI control-plane services for Mirantis, a Kubernetes-native AI infrastructure company. Designing APIs, orchestration, authorization, and production-ready cloud-native services.
+Backend Go Engineer building Mirantis’s Kubernetes-native AI infrastructure services
+- Tech stack: Docker, Kubernetes, Microservices, Python, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build Go microservices for the multi-tenant k0rdent AI platform
+- Model database schemas and write migrations
+- Design public REST APIs with OpenAPI and multi-language SDKs
+- Implement durable Temporal orchestration with idempotency, retries, timeouts, and determinism constraints
+- Build event-driven asynchronous communication using distributed streaming or message-broker platforms
+- Implement authentication and authorization using OIDC/JWT, service-to-service authentication, tenant-scoped RBAC, gateway routing, and rate limiting
+- Contribute to SCIM-based user and group lifecycle provisioning
+- Unify platform API permissions with Kubernetes-native RBAC
+- Bachelor's degree in Computer Science, Software Engineering, or a related field — or equivalent demonstrated ability
+- Solid computer science fundamentals: data structures, algorithms, concurrency, networking, HTTP, and databases
+- 4–5 years of professional software engineering experience
+- 2–3+ years building production backend services in Go; 4+ years of Go preferred
+- Strong Go fundamentals, including concurrency, context propagation, error wrapping, and standard-library HTTP routing (Go 1.22+)
+- Experience building and shipping REST APIs, including versioning and backward compatibility
+- Relational database skills: schema design, migrations, transactions, and query tuning
+- Unit and integration testing discipline, code review, and CI/CD experience (GitHub Actions or equivalent)
+
+### Full Job Description
+Summary:
+Backend Go Engineer building k0rdent AI control-plane services for Mirantis, a Kubernetes-native AI infrastructure company. Designing APIs, orchestration, authorization, and production-ready cloud-native services.
+Backend Go Engineer building Mirantis’s Kubernetes-native AI infrastructure services
+Role description:
+• Build Go microservices for the multi-tenant k0rdent AI platform
+• Model database schemas and write migrations
+• Design public REST APIs with OpenAPI and multi-language SDKs
+• Implement durable Temporal orchestration with idempotency, retries, timeouts, and determinism constraints
+• Build event-driven asynchronous communication using distributed streaming or message-broker platforms
+• Implement authentication and authorization using OIDC/JWT, service-to-service authentication, tenant-scoped RBAC, gateway routing, and rate limiting
+• Contribute to SCIM-based user and group lifecycle provisioning
+• Unify platform API permissions with Kubernetes-native RBAC
+• Write unit, integration, and end-to-end tests for each change
+• Instrument production services with structured logging, metrics, and audit trails
+• Package and ship services with Docker, Helm, and Kubernetes
+• Review peers' code and debug incidents to root cause with regression coverage
+• Collaborate with engineering teams across the US, Europe, and India within an agile framework
+• Own features end to end, including API contracts, services, schemas, orchestration, tests, and packaging
+Role requirements:
+• Bachelor's degree in Computer Science, Software Engineering, or a related field — or equivalent demonstrated ability
+• Solid computer science fundamentals: data structures, algorithms, concurrency, networking, HTTP, and databases
+• 4–5 years of professional software engineering experience
+• 2–3+ years building production backend services in Go; 4+ years of Go preferred
+• Strong Go fundamentals, including concurrency, context propagation, error wrapping, and standard-library HTTP routing (Go 1.22+)
+• Experience building and shipping REST APIs, including versioning and backward compatibility
+• Relational database skills: schema design, migrations, transactions, and query tuning
+• Unit and integration testing discipline, code review, and CI/CD experience (GitHub Actions or equivalent)
+• Clear written English for design documents, review comments, and asynchronous collaboration
+• Authorization to work in the United States
+• Ability to independently research, experiment, and read source code
+• A built project that the candidate can explain in detail
+• Willingness to receive rigorous code review and feedback
+• Ability to explain how code quality and correctness are verified
+• Prior experience with multi-tenant SaaS or PaaS platforms, k0s, GPU infrastructure, AI/ML workload scheduling, SCIM, Kubernetes RBAC, sqlc, OpenAPI code generation, observability tools, Python or TypeScript, security engineering, or CNCF contributions is nice to have, not mandatory
+Benefits:
+• Professional development and training
+• Conference and working group attendance
+• Company outings, happy hours, hackathons, and tech talks
+• Competitive compensation package with a strong benefits plan
+• Opportunity to work with passionate colleagues and Fortune 500 and Global 2000 customers
+• Open-source innovation environment
+• High-energy environment valuing openness, collaboration, risk-taking, and continuous growth
+Tech stack:
+Docker, Kubernetes, Microservices, Python, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

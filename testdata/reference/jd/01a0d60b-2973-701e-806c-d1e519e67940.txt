@@ -1,0 +1,52 @@
+## Netflix - Software Engineer, L5 - Delivery
+
+🔗 [Apply](https://netflix.wd108.myworkdayjobs.com/netflix/job/usa---remote/software-engineer--l5----delivery_jr41284)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer (L5) focusing on developer platforms handling software deployment at Netflix. Collaborating across teams to improve productivity and reliability of software delivery.
+Software Engineer (L5) focusing on developer platforms at Netflix
+- Salary: $388,000 - $619,000 per year
+- Tech stack: Distributed Systems, Java, Spinnaker, Spring, Spring Boot, SpringBoot
+- Our team is primarily responsible for the developer platforms that roll out software and infrastructure changes to the entire Netflix fleet.
+- We do this through our Continuous Delivery (CD) system Spinnaker, and our higher level declarative delivery-based platform, Managed Delivery.
+- Some example goals for projects include: Reduce friction and time to deploy software across our internal fleet; Improve the reliability and safety of changes being rolled out.
+- Experienced with Java or other JVM languages
+- Have built distributed systems components.
+- Able to break down complexity, iterate, and communicate progress to a wide variety of partners and stakeholders.
+- Comfortable participating in an on-call rotation.
+- Nice to Have: Ability to develop full stack and write front-end code when needed
+- Familiarity with the Spring Boot framework
+- Have worked on a developer platform team where other engineers were your customers.
+
+### Full Job Description
+Summary:
+Software Engineer (L5) focusing on developer platforms handling software deployment at Netflix. Collaborating across teams to improve productivity and reliability of software delivery.
+Software Engineer (L5) focusing on developer platforms at Netflix
+Role description:
+• Our team is primarily responsible for the developer platforms that roll out software and infrastructure changes to the entire Netflix fleet.
+• We do this through our Continuous Delivery (CD) system Spinnaker, and our higher level declarative delivery-based platform, Managed Delivery.
+• Some example goals for projects include: Reduce friction and time to deploy software across our internal fleet; Improve the reliability and safety of changes being rolled out.
+Role requirements:
+• Experienced with Java or other JVM languages
+• Have built distributed systems components.
+• Able to break down complexity, iterate, and communicate progress to a wide variety of partners and stakeholders.
+• Comfortable participating in an on-call rotation.
+• Nice to Have: Ability to develop full stack and write front-end code when needed
+• Familiarity with the Spring Boot framework
+• Have worked on a developer platform team where other engineers were your customers.
+Benefits:
+• Health Plans
+• Mental Health support
+• 401(k) Retirement Plan with employer match
+• Stock Option Program
+• Disability Programs
+• Health Savings and Flexible Spending Accounts
+• Family-forming benefits
+• Life and Serious Injury Benefits
+• Paid leave of absence programs
+• Full-time hourly employees accrue 35 days annually for paid time off
+• Full-time salaried employees are immediately entitled to flexible time off
+Tech stack:
+Distributed Systems, Java, Spinnaker, Spring, Spring Boot, SpringBoot

@@ -1,0 +1,165 @@
+{
+  "scorer": "the generative scorer match score (Claude Opus 5)",
+  "scored_on": "2026-10-05",
+  "method": "eval copies of 10 score-stratified pairs (shortest JD per band), same JD text as jd/<id>.txt and the Main resume, scored 3x each, then archived",
+  "summary": {
+    "pairs": 10,
+    "calls": 30,
+    "single_call_mae_vs_median": 1.1,
+    "max_range": 8,
+    "mean_range": 3.3,
+    "median_minus_original_mean": 11.6,
+    "median_minus_original_min": 4,
+    "median_minus_original_max": 24
+  },
+  "pairs": [
+    {
+      "pair": "01a0ef47-f459-706e-b91e-b2c1a1283bd6",
+      "copy": "01a109bb-27fa-73cf-8cb0-ebeca7bc7f25",
+      "original_score": 24,
+      "original_scored_at": [
+        "2026-09-29T22:28:00Z"
+      ],
+      "scores": [
+        32,
+        32,
+        34
+      ],
+      "median": 32,
+      "range": 2
+    },
+    {
+      "pair": "01a0eecb-ffa5-717a-9d53-48de4704968b",
+      "copy": "01a109bb-2846-706d-9202-7501f88a44bc",
+      "original_score": 34,
+      "original_scored_at": [
+        "2026-09-29T20:12:30Z"
+      ],
+      "scores": [
+        36,
+        42,
+        42
+      ],
+      "median": 42,
+      "range": 6
+    },
+    {
+      "pair": "01a0d8aa-53b9-77ef-b993-67a808327918",
+      "copy": "01a109bb-28da-749e-bcdb-d43e8710e4d1",
+      "original_score": 42,
+      "original_scored_at": [
+        "2026-09-25T13:04:06Z"
+      ],
+      "scores": [
+        48,
+        45,
+        53
+      ],
+      "median": 48,
+      "range": 8
+    },
+    {
+      "pair": "01a0e4fc-7cb8-750f-9611-decbd1e14f97",
+      "copy": "01a109bc-0af0-757b-96b1-5c946fb1de86",
+      "original_score": 52,
+      "original_scored_at": [
+        "2026-09-27T22:29:24Z"
+      ],
+      "scores": [
+        76,
+        76,
+        76
+      ],
+      "median": 76,
+      "range": 0
+    },
+    {
+      "pair": "01a0eecb-04d8-777b-903b-665f16c25280",
+      "copy": "01a109bc-0b35-71ed-a8fa-d8d143cd001e",
+      "original_score": 58,
+      "original_scored_at": [
+        "2026-09-29T20:11:30Z"
+      ],
+      "scores": [
+        78,
+        76,
+        75
+      ],
+      "median": 76,
+      "range": 3
+    },
+    {
+      "pair": "01a0f940-8145-7413-af2b-f8ebda93f7a6",
+      "copy": "01a109bc-0b78-745a-a0a6-3ca682560387",
+      "original_score": 64,
+      "original_scored_at": [
+        "2026-10-01T20:56:01Z"
+      ],
+      "scores": [
+        82,
+        78,
+        77
+      ],
+      "median": 78,
+      "range": 5
+    },
+    {
+      "pair": "01a0f93f-68a4-7541-bcc3-782a26ffc9c6",
+      "copy": "01a109bc-e658-7561-bce8-17ac13b57e05",
+      "original_score": 68,
+      "original_scored_at": [
+        "2026-10-01T20:54:48Z"
+      ],
+      "scores": [
+        83,
+        82,
+        82
+      ],
+      "median": 82,
+      "range": 1
+    },
+    {
+      "pair": "01a0d60b-2973-701e-806c-d1e519e67940",
+      "copy": "01a109bc-e69a-70fa-aaa1-e994179a7647",
+      "original_score": 72,
+      "original_scored_at": [
+        "2026-09-27T22:28:23Z"
+      ],
+      "scores": [
+        85,
+        86,
+        86
+      ],
+      "median": 86,
+      "range": 1
+    },
+    {
+      "pair": "01a0cb46-922c-7022-8855-68428d9a7944",
+      "copy": "01a109bc-e6de-74a7-aa43-38d754e79187",
+      "original_score": 74,
+      "original_scored_at": [],
+      "scores": [
+        82,
+        78,
+        76
+      ],
+      "median": 78,
+      "range": 6
+    },
+    {
+      "pair": "01a103e2-a05e-72fe-87a4-2668fee52b7c",
+      "copy": "01a109bc-e722-700d-89de-dc4b655ee810",
+      "original_score": 85,
+      "original_scored_at": [
+        "2026-10-03T22:29:18Z"
+      ],
+      "scores": [
+        91,
+        91,
+        92
+      ],
+      "median": 91,
+      "range": 1
+    }
+  ]
+}

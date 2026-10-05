@@ -1,0 +1,61 @@
+## Airbnb - Senior Software Engineer – Guest & Host
+
+🔗 [Apply](https://boards.greenhouse.io/airbnb/jobs/8249626)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building backend identity, authorization, and privacy systems for Airbnb’s global lodging platform. Scaling migrations, APIs, and infrastructure used across product teams.
+Senior Software Engineer building identity and privacy systems for Airbnb’s global lodging platform
+- Tech stack: Java, Kotlin, Microservices
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build and scale backend systems supporting user identity and privacy
+- Design and build backend services and APIs enforcing identity and privacy rules across product surfaces
+- Contribute to large-scale migrations from legacy identity patterns
+- Build tooling that makes migrations safe to run broadly
+- Define and evolve authorization logic for context-scoped data access
+- Partner with teams building messaging, trips, profile, and related systems
+- Participate in design and code reviews
+- Debug and resolve production issues through structured root-cause analysis
+- 6+ years of professional backend software engineering experience
+- Strong fundamentals in service-oriented architecture, API design, and data modeling
+- Proficiency in Java and/or Kotlin
+- Comfort working within a microservices environment, including RPC frameworks, service IDLs, and dependency injection
+- Experience designing systems with correctness and authorization as first-class concerns
+- Track record of shipping migrations or infrastructure changes used by other teams
+- Attention to backward compatibility and rollout safety
+- Strong written communication
+
+### Full Job Description
+Summary:
+Senior Software Engineer building backend identity, authorization, and privacy systems for Airbnb’s global lodging platform. Scaling migrations, APIs, and infrastructure used across product teams.
+Senior Software Engineer building identity and privacy systems for Airbnb’s global lodging platform
+Role description:
+• Build and scale backend systems supporting user identity and privacy
+• Design and build backend services and APIs enforcing identity and privacy rules across product surfaces
+• Contribute to large-scale migrations from legacy identity patterns
+• Build tooling that makes migrations safe to run broadly
+• Define and evolve authorization logic for context-scoped data access
+• Partner with teams building messaging, trips, profile, and related systems
+• Participate in design and code reviews
+• Debug and resolve production issues through structured root-cause analysis
+Role requirements:
+• 6+ years of professional backend software engineering experience
+• Strong fundamentals in service-oriented architecture, API design, and data modeling
+• Proficiency in Java and/or Kotlin
+• Comfort working within a microservices environment, including RPC frameworks, service IDLs, and dependency injection
+• Experience designing systems with correctness and authorization as first-class concerns
+• Track record of shipping migrations or infrastructure changes used by other teams
+• Attention to backward compatibility and rollout safety
+• Strong written communication
+• Ability to document problems, root causes, and solution trade-offs clearly
+• Comfort turning complex, evolving privacy or identity requirements into concrete technical designs
+• Must live in a state where Airbnb, Inc. has a registered entity
+Benefits:
+• Occasional work at an Airbnb office or attendance at offsites, as agreed to with your manager
+• Reasonable accommodations throughout the recruitment process for applicants with disabilities
+Tech stack:
+Java, Kotlin, Microservices
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

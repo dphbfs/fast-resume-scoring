@@ -1,0 +1,58 @@
+## Alkami Technology - Senior Software Engineer – MANTL
+
+🔗 [Apply](https://alkami.wd12.myworkdayjobs.com/alkami/job/us-remote/sr-software-engineer--mantl-_jr-000776-1)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building backend services for Alkami’s digital banking platform for U.S. banks and credit unions. Designing microservices and guiding architecture and code quality.
+Senior Software Engineer building backend services for Alkami’s digital banking platform
+- Salary: $140,000 - $165,000 per year
+- Tech stack: JavaScript, Node.js, Python, React, TypeScript, Go
+- Write clean, documented, and well-tested backend code
+- Emphasize error-handling, logging, edge cases, long-term viability, and performance
+- Break down complex product requirements into elegant solutions
+- Design systems and evaluate architectural tradeoffs
+- Write, communicate, and advocate for architectural decisions
+- Provide technical guidance, suggestions, and code reviews to teammates
+- Work on Alkami's digital sales and service platform for U.S. banks and credit unions
+- 10+ years professional experience with back end technologies (Node.js, Python, Go, TypeScript etc.)
+- Exposure to ReactJS and NestJS
+- Well versed with REST APIs
+- Experience working in an agile SCRUM environment
+- Well versed with domain driven design
+- Well versed with Microservice architecture
+- Candidates must be eligible to work in the US for full-time employment
+- Must write clean, thoroughly documented, and well-tested code
+
+### Full Job Description
+Summary:
+Senior Software Engineer building backend services for Alkami’s digital banking platform for U.S. banks and credit unions. Designing microservices and guiding architecture and code quality.
+Senior Software Engineer building backend services for Alkami’s digital banking platform
+Role description:
+• Write clean, documented, and well-tested backend code
+• Emphasize error-handling, logging, edge cases, long-term viability, and performance
+• Break down complex product requirements into elegant solutions
+• Design systems and evaluate architectural tradeoffs
+• Write, communicate, and advocate for architectural decisions
+• Provide technical guidance, suggestions, and code reviews to teammates
+• Work on Alkami's digital sales and service platform for U.S. banks and credit unions
+Role requirements:
+• 10+ years professional experience with back end technologies (Node.js, Python, Go, TypeScript etc.)
+• Exposure to ReactJS and NestJS
+• Well versed with REST APIs
+• Experience working in an agile SCRUM environment
+• Well versed with domain driven design
+• Well versed with Microservice architecture
+• Candidates must be eligible to work in the US for full-time employment
+• Must write clean, thoroughly documented, and well-tested code
+• Experience with system design and architectural decision-making
+• Ability to provide technical guidance, suggestions, and code reviews
+Benefits:
+• Remote-first environment
+• Unlimited paid time off
+• 401(k) with employer match
+• Diverse and inclusive environment
+• FUN culture
+Tech stack:
+JavaScript, Node.js, Python, React, TypeScript, Go

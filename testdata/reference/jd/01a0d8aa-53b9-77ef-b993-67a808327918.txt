@@ -1,0 +1,56 @@
+## Rancher Government Solutions - Senior Software Engineer
+
+🔗 [Apply](https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6b57ff97-b4e8-4dd6-86db-e2294344fdba&ccId=19000101_000001&jobId=594959)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building secure Go and Kubernetes systems for Rancher Government Solutions. Developing cloud-native infrastructure for U.S. federal agencies and regulated environments.
+Senior Software Engineer building Go and Kubernetes solutions for U.S. federal agencies at Rancher Government Solutions
+- Tech stack: AWS, Azure, Cloud, JavaScript, Kubernetes, Linux, Microservices, Nuxt, Vue.js, Go
+- Develop robust Golang applications and microservices using Kubernetes design patterns such as controllers, operators, and custom resource definitions
+- Understand CI/CD flows and pipelines to automate application testing, packaging, and deployment to Kubernetes clusters in secure environments
+- Participate in daily standups, sprint planning, and retrospectives as part of an agile, iterative team
+- Build and maintain infrastructure-as-code and GitOps solutions using Helm and Kustomize
+- Collaborate with product managers, security teams, and engineers to deliver software meeting federal compliance standards such as FedRAMP and NIST 800-53
+- Troubleshoot complex issues across application performance, networking, and container orchestration
+- Provide technical guidance and mentorship to junior engineers
+- Perform other duties as assigned
+- 6+ years of professional software engineering experience, with at least 4 years working with Go
+- Highly proficient in Golang, with demonstrated ability to write clean, maintainable, and idiomatic code
+- Deep understanding of Kubernetes deployment and development patterns, including manifests, controllers, Helm charts, and RBAC
+- Deep familiarity with containerization technologies, processes, and patterns
+- Experience working in Linux-based environments
+- Strong grasp of Git-based workflows and version control best practices
+- US Citizenship
+- Preferred: experience implementing secure software development practices in regulated environments
+
+### Full Job Description
+Summary:
+Senior Software Engineer building secure Go and Kubernetes systems for Rancher Government Solutions. Developing cloud-native infrastructure for U.S. federal agencies and regulated environments.
+Senior Software Engineer building Go and Kubernetes solutions for U.S. federal agencies at Rancher Government Solutions
+Role description:
+• Develop robust Golang applications and microservices using Kubernetes design patterns such as controllers, operators, and custom resource definitions
+• Understand CI/CD flows and pipelines to automate application testing, packaging, and deployment to Kubernetes clusters in secure environments
+• Participate in daily standups, sprint planning, and retrospectives as part of an agile, iterative team
+• Build and maintain infrastructure-as-code and GitOps solutions using Helm and Kustomize
+• Collaborate with product managers, security teams, and engineers to deliver software meeting federal compliance standards such as FedRAMP and NIST 800-53
+• Troubleshoot complex issues across application performance, networking, and container orchestration
+• Provide technical guidance and mentorship to junior engineers
+• Perform other duties as assigned
+Role requirements:
+• 6+ years of professional software engineering experience, with at least 4 years working with Go
+• Highly proficient in Golang, with demonstrated ability to write clean, maintainable, and idiomatic code
+• Deep understanding of Kubernetes deployment and development patterns, including manifests, controllers, Helm charts, and RBAC
+• Deep familiarity with containerization technologies, processes, and patterns
+• Experience working in Linux-based environments
+• Strong grasp of Git-based workflows and version control best practices
+• US Citizenship
+• Preferred: experience implementing secure software development practices in regulated environments
+• Preferred: familiarity with cloud platforms such as AWS GovCloud, Azure Government, or other federal clouds
+• Preferred: knowledge of networking concepts, including ingress controllers, service meshes such as Istio, and load balancing
+• Preferred: experience developing user interfaces with Vue.js, NuxtJS, or other Javascript frameworks
+Benefits:
+• No benefits or compensation extras specified
+Tech stack:
+AWS, Azure, Cloud, JavaScript, Kubernetes, Linux, Microservices, Nuxt, Vue.js, Go

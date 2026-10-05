@@ -1,0 +1,64 @@
+## Virta Health - Senior Software Engineer – Client Lifecycle
+
+🔗 [Apply](https://jobs.ashbyhq.com/virtahealth/5bbeb7cb-870a-48c9-825e-934e5a189fc0)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Virta Health’s healthcare quote-to-cash systems. Developing Go services for billing, claims, reconciliation, and client operations.
+Senior Software Engineer building Virta Health’s healthcare quote-to-cash systems
+- Salary: $161,500 - $232,500 per year
+- Tech stack: Cloud, Google Cloud Platform, React, SDLC, SQL, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Lead projects end to end from ambiguous stakeholder problem through design, review, production, and ownership
+- Build and extend Go services supporting quote-to-cash, including contract and pricing configuration, billable event generation, subscription and invoice management, and claims submission
+- Expand assertion and reconciliation frameworks across Salesforce, Zuora, and clinical data
+- Improve reconciliation and billing data used by health plan and employer partners
+- Design self-service tools for finance, RCM, and client operations to configure contracts, correct data, and run bulk changes
+- Apply AI where appropriate
+- Participate in design and code reviews and mentor engineers
+- Deliver a production pull request within the first 30 days
+- 5+ years building and operating backend services in production, in Go or another statically typed language
+- Experience with event-driven architectures, including eventual consistency, ordering, idempotency, and systems that disagree with each other
+- Strong SQL and comfort working across application code and the analytics layer
+- Experience owning a system where correctness had consequences outside the company, such as billing, payments, claims, ledgers, or regulated reporting
+- Track record of working directly with non-engineering stakeholders and translating finance or operations problems into designs
+- Experience with a major cloud platform; Virta uses GCP
+- Experience working with AI to accelerate development workflows and enhance the SDLC
+- Experience in frontend development with React and TypeScript
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Virta Health’s healthcare quote-to-cash systems. Developing Go services for billing, claims, reconciliation, and client operations.
+Senior Software Engineer building Virta Health’s healthcare quote-to-cash systems
+Role description:
+• Lead projects end to end from ambiguous stakeholder problem through design, review, production, and ownership
+• Build and extend Go services supporting quote-to-cash, including contract and pricing configuration, billable event generation, subscription and invoice management, and claims submission
+• Expand assertion and reconciliation frameworks across Salesforce, Zuora, and clinical data
+• Improve reconciliation and billing data used by health plan and employer partners
+• Design self-service tools for finance, RCM, and client operations to configure contracts, correct data, and run bulk changes
+• Apply AI where appropriate
+• Participate in design and code reviews and mentor engineers
+• Deliver a production pull request within the first 30 days
+• Develop a test-driven design that survives architecture review within the first 60 days
+• Own an ambiguous problem through completion with a product mindset within the first 90 days
+Role requirements:
+• 5+ years building and operating backend services in production, in Go or another statically typed language
+• Experience with event-driven architectures, including eventual consistency, ordering, idempotency, and systems that disagree with each other
+• Strong SQL and comfort working across application code and the analytics layer
+• Experience owning a system where correctness had consequences outside the company, such as billing, payments, claims, ledgers, or regulated reporting
+• Track record of working directly with non-engineering stakeholders and translating finance or operations problems into designs
+• Experience with a major cloud platform; Virta uses GCP
+• Experience working with AI to accelerate development workflows and enhance the SDLC
+• Experience in frontend development with React and TypeScript
+• Ability to follow security and privacy procedures for HIPAA-governed patient information
+• Legal authorization to work in the United States
+• Must not require sponsorship for employment visa status in the United States
+Benefits:
+• Remote-first work arrangement
+• Office hubs in Denver and San Francisco
+• Security and privacy training
+• AI-powered recruiting process with final hiring decisions made by Virta Health personnel
+Tech stack:
+Cloud, Google Cloud Platform, React, SDLC, SQL, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
