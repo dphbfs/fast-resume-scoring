@@ -1,0 +1,5 @@
+Candidate 1 is intended to be a solid frontend-leaning full-stack profile: strong TypeScript, React, product UI work, some Node.js and PostgreSQL, and light cloud exposure through S3, CloudFront, and CI/CD. The gaps are deeper backend architecture, infrastructure ownership, and limited experience outside web product work.
+
+Candidate 2 is intended to show a real career-change path from support and QA automation into Python backend development. Strengths are testing habits, reliability work, SQL troubleshooting, FastAPI service work, and operational debugging; gaps include a recent employment break, less senior backend design experience, and mostly modest cloud exposure.
+
+Candidate 3 is intended to be strong for data engineering and applied ML roles, especially Python, SQL, pipelines, forecasting, risk modeling, and ML workflow hygiene. The gaps are deliberate: little general-purpose backend service ownership, no front-end work, thin direct cloud infrastructure responsibility, and one short tenure under nine months.
