@@ -425,11 +425,9 @@ func (r CheckerReport) WriteMarkdown(w io.Writer) error {
 	if r.RescoredFrom != "" {
 		fmt.Fprintf(&b, "Rescored offline from the run of %s against the current labels.\n\n", r.RescoredFrom)
 	}
-	fmt.Fprintf(&b, "Checker: retrieval %s (K %d · floor %.3f · narrow %v · peel shortlist %d · noul threshold %.2f) · strength criteria %s · min evidence mass %.2f · gate %.2f (%s) · veto %.2f · grading %s\n\n",
-		r.Checker.RetrievalMode, r.Checker.RetrievalK, r.Checker.RetrievalFloor, r.Checker.NarrowSizes, r.Checker.PeelShortlist, r.Checker.NoulThreshold,
-		r.Checker.StrengthCriteria, r.Checker.MinEvidenceMass, r.Checker.GateThreshold, r.Checker.GateWording, r.Checker.VetoThreshold, r.Checker.StrengthMode)
-	fmt.Fprintf(&b, "Cost options: narrow stop p %.2f · skip capped grading %v · gate first %v\n\n",
-		r.Checker.NarrowStopP, r.Checker.SkipCappedGrading, r.Checker.GateFirst)
+	fmt.Fprintf(&b, "Checker: retrieval K %d · floor %.3f · narrow %v · min evidence mass %.2f · gate %.2f · skip capped grading %v · gate first %v\n\n",
+		r.Checker.RetrievalK, r.Checker.RetrievalFloor, r.Checker.NarrowSizes, r.Checker.MinEvidenceMass,
+		r.Checker.GateThreshold, r.Checker.SkipCappedGrading, r.Checker.GateFirst)
 
 	b.WriteString("| Metric | Value |\n|---|---|\n")
 	fmt.Fprintf(&b, "| **Coverage accuracy** | **%s** |\n", pct(t.CoverageExact))

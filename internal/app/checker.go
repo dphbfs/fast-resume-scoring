@@ -6,7 +6,6 @@ import (
 	"log/slog"
 	"maps"
 	"slices"
-	"strconv"
 	"strings"
 	"time"
 
@@ -169,58 +168,13 @@ func stateOf(u domain.EvidenceUnit) evidenceState {
 	return evidenceState{ResumeSection: u.ResumeSection, Role: u.Role, Company: u.Company, Statement: u.Text}
 }
 
-// strengthCriteriaV1 define the Evidence Strengths (first version).
-var strengthCriteriaV1 = map[string]any{
-	string(domain.StrengthStrong): "The statement shows hands-on work with the requirement itself or a direct instance of it " +
-		"(requirement Kubernetes, statement: ran services on EKS).",
-	string(domain.StrengthPartial): "The statement shows work with a close neighbor or a part of the requirement, " +
-		"or names it with only light involvement (requirement Kubernetes, statement: containerized services with Docker).",
-	string(domain.StrengthWeak): "The statement only names, lists, or implies the requirement, with no demonstrated work " +
-		"(a skills list or a self-description).",
-	string(domain.StrengthNone): "The statement does not show this requirement.",
-}
-
-// strengthCriteriaV2 sharpens strong vs partial (is the requirement itself
-// the focus of the work?) and covers degree and certificate entries, which
-// v1's weak ("only names") absorbed. Examples avoid the eval fixtures.
-var strengthCriteriaV2 = map[string]any{
-	string(domain.StrengthStrong): "The requirement itself, or a specific instance of it, is what the described work was done with " +
-		"or on (requirement Spark: wrote PySpark jobs on EMR). An education or certification entry is strong evidence " +
-		"for the degree or certificate it names.",
-	string(domain.StrengthPartial): "The work involves a part, a prerequisite, or the broader practice of the requirement, or uses " +
-		"the requirement only lightly, but the requirement itself is not the focus (requirement Spark: built nightly " +
-		"batch data jobs; requirement code review: paired with teammates on fixes).",
-	string(domain.StrengthWeak): "The statement only names, lists, or claims the requirement without describing work with it " +
-		"(a skills list, a self-description, an interest).",
-	string(domain.StrengthNone): "The statement has nothing to do with this requirement.",
-}
-
-// strengthNegatives name why a pair that looks related is not evidence, so
-// probability for these cases does not fall on partial. Examples avoid the
-// eval fixtures.
-var strengthNegatives = map[string]any{
-	"alternative_tool": "The statement uses a different tool, product, or framework of the same kind, one that could " +
-		"replace the requirement rather than include it (requirement Spark: built Flink jobs; requirement Git: Mercurial).",
-	"shared_words_only": "The statement shares a word or a topic with the requirement but describes different work " +
-		"(requirement event sourcing: organized company events; requirement distributed tracing: traced a bug's cause).",
-	"different_skill": "The statement shows real but different skills that do not exercise the requirement " +
-		"(requirement Spark: tuned SQL queries; requirement mentoring: wrote API docs).",
-	"context_only": "Only the role, team, or product around the statement suggests the requirement; the statement itself " +
-		"does not show it (requirement Swift: mentored interns on an iOS team).",
-}
-
-// neededCapability is the v4 negative: work that would need the
-// Requirement, without showing it was used.
-var neededCapability = map[string]any{
-	"needed_capability": "The described work would usually need the requirement, but the statement does not show it was " +
-		"used (requirement Linux: deployed a web app; requirement OAuth: integrated a payment provider).",
-}
-
-// strengthCriteriaV5 is v3 as structured rubric objects: each option says
-// what it covers, what it does not, and gives examples, which the TypeSafe
-// docs recommend for sharpening boundaries between options. Examples avoid
-// the eval fixtures.
-var strengthCriteriaV5 = map[string]any{
+// strengthCriteria are the Strength Round options as structured rubric
+// objects: each says what it covers, what it does not, and gives examples,
+// which the TypeSafe docs recommend for sharpening boundaries between
+// options. The non-evidence options (none and the negatives) keep
+// probability for related-looking pairs off partial. Examples avoid the
+// eval fixtures. Earlier versions (v1-v4, v6) are in docs/tuning.md.
+var strengthCriteria = map[string]any{
 	string(domain.StrengthStrong): map[string]any{
 		"what": "The requirement itself, or a specific instance of it, is what the described work was done with or on. " +
 			"An education or certification entry is strong evidence for the degree or certificate it names.",
@@ -262,45 +216,6 @@ var strengthCriteriaV5 = map[string]any{
 	},
 }
 
-// strengthCriteriaV6 is v5 with an alternative_tool boundary for broad
-// Requirements: live runs graded AWS for "major cloud platform" and
-// Prometheus for "monitoring" as alternative_tool (p 0.75-0.86), the same
-// range as real competing tools (Golang for Node.js), so no veto threshold
-// could separate them.
-var strengthCriteriaV6 = func() map[string]any {
-	out := maps.Clone(strengthCriteriaV5)
-	out["alternative_tool"] = map[string]any{
-		"what": "The statement uses a different tool, product, or framework of the same kind, one that could replace the requirement.",
-		"not_for": "A tool that is part of or built on the requirement (that is partial or strong). A specific product " +
-			"that is an instance of a broader requirement (that is the requirement itself, so strong or weak).",
-		"examples": []string{"requirement Spark: built Flink jobs", "requirement Git: used Mercurial",
-			"not alternative_tool: requirement message broker: ran RabbitMQ queues (an instance, so strong)"},
-	}
-	return out
-}()
-
-// strengthCriteria returns the Strength options for cfg.StrengthCriteria:
-// v1, v2 (sharpened), v3 (v2 plus the negative options, the default), or
-// v4 (v3 plus needed_capability), or v5 (v3 as structured rubric objects).
-func (c *Checker) strengthCriteria() map[string]any {
-	switch c.cfg.StrengthCriteria {
-	case "v1":
-		return strengthCriteriaV1
-	case "v2":
-		return strengthCriteriaV2
-	case "v5":
-		return strengthCriteriaV5
-	case "v6":
-		return strengthCriteriaV6
-	}
-	out := maps.Clone(strengthCriteriaV2)
-	maps.Copy(out, strengthNegatives)
-	if c.cfg.StrengthCriteria == "v4" {
-		maps.Copy(out, neededCapability)
-	}
-	return out
-}
-
 // strengthQuestion asks how strongly the unit demonstrates one Requirement.
 // The Requirement is embedded because question IDs are not sent to Jev.
 func strengthQuestion(r checkRequirement, criteria map[string]any) port.Question {
@@ -314,22 +229,17 @@ func strengthQuestion(r checkRequirement, criteria map[string]any) port.Question
 	return port.Question{Type: port.Choice, Instructions: inst, Criteria: criteria}
 }
 
-// gateTrue is the gate Noul's yes criterion by wording version. v1 covers
-// only the requirement itself, which excluded partial evidence (a part,
-// prerequisite, or the broader practice) and so contradicted the Strength
-// criteria; v2 includes it.
-var gateTrue = map[string]string{
-	"v1": "The statement describes work done with the requirement itself or a specific instance of it, or " +
-		"names it as the candidate's own skill, degree, or certificate.",
-	"v2": "The statement describes work done with the requirement itself, a specific instance of it, a part or " +
-		"prerequisite of it, or its broader practice; or it names the requirement as the candidate's own skill, " +
-		"degree, or certificate.",
-}
+// gateTrue is the gate Noul's yes criterion (wording v2): it includes
+// partial evidence (a part, prerequisite, or the broader practice), so it
+// agrees with the Strength criteria.
+const gateTrue = "The statement describes work done with the requirement itself, a specific instance of it, a part or " +
+	"prerequisite of it, or its broader practice; or it names the requirement as the candidate's own skill, " +
+	"degree, or certificate."
 
 // gateQuestion asks, absolutely, whether the unit is evidence for one
 // Requirement. The TypeSafe skill-suggestion pattern: a Choice grades, an
 // independent Noul decides whether to act at all.
-func gateQuestion(r checkRequirement, wording string) port.Question {
+func gateQuestion(r checkRequirement) port.Question {
 	inst := map[string]any{
 		"task":        "Is the resume `statement` evidence that the candidate has this job requirement?",
 		"requirement": r.Value,
@@ -341,38 +251,11 @@ func gateQuestion(r checkRequirement, wording string) port.Question {
 		Type:         port.Noul,
 		Instructions: inst,
 		Criteria: map[string]any{
-			"true": gateTrue[wording],
+			"true": gateTrue,
 			"false": "The statement uses a competing tool, only shares words with the requirement, shows different " +
 				"skills, or only its surrounding role suggests the requirement.",
 		},
 	}
-}
-
-// strengthLevels are the Score levels for grading mode "score", lowest
-// first; level i maps to strengthByLevel[i]. Whether the pair is evidence
-// at all is the gate's job, so there is no "none" level.
-var strengthLevels = []any{
-	"The statement only names, lists, or claims the requirement, without describing work done with it " +
-		"(Skills: Spark, Kafka).",
-	"The described work involves a part, a prerequisite, or the broader practice of the requirement, or uses the " +
-		"requirement only as a minor detail (requirement Spark: built nightly batch data jobs).",
-	"The requirement itself, or a specific instance of it, is what the described work was done with or on " +
-		"(requirement Spark: wrote PySpark jobs on EMR). An education or certification entry for the degree or " +
-		"certificate the requirement names.",
-}
-
-var strengthByLevel = []domain.EvidenceStrength{domain.StrengthWeak, domain.StrengthPartial, domain.StrengthStrong}
-
-// scoreQuestion grades one Requirement on strengthLevels.
-func scoreQuestion(r checkRequirement) port.Question {
-	inst := map[string]any{
-		"task":        "How central is this job requirement to the work described in the resume `statement`?",
-		"requirement": r.Value,
-	}
-	if r.context != "" {
-		inst["job_posting_context"] = r.context
-	}
-	return port.Question{Type: port.Score, Instructions: inst, Criteria: strengthLevels}
 }
 
 // judgeStrength grades every retrieved Requirement for one unit and records
@@ -384,15 +267,9 @@ func scoreQuestion(r checkRequirement) port.Question {
 // (capped at weak, so the gate alone decides), and GateFirst asks the gates
 // in one request and grades only the pairs that passed in a second.
 func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creqs []checkRequirement, retrieved []int, m *unitMatch) error {
-	criteria := c.strengthCriteria()
 	capped := u.ResumeSection == domain.ResumeSkills || u.ResumeSection == domain.ResumeSummary
 	gated := c.cfg.GateThreshold > 0
-	gradeQuestion := func(ri int) port.Question {
-		if c.cfg.StrengthMode == "score" {
-			return scoreQuestion(creqs[ri])
-		}
-		return strengthQuestion(creqs[ri], criteria)
-	}
+	gradeQuestion := func(ri int) port.Question { return strengthQuestion(creqs[ri], strengthCriteria) }
 	needsGrade := func(k int, answers map[string]port.Answer) bool {
 		if !gated {
 			return true
@@ -424,7 +301,7 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 	questions := make(map[string]port.Question, 2*len(retrieved))
 	for k, ri := range retrieved {
 		if gated {
-			questions[fmt.Sprintf("gate_%d", k)] = gateQuestion(creqs[ri], c.gateWording())
+			questions[fmt.Sprintf("gate_%d", k)] = gateQuestion(creqs[ri])
 		}
 		if !c.cfg.GateFirst && needsGrade(k, nil) {
 			questions[fmt.Sprintf("req_%d", k)] = gradeQuestion(ri)
@@ -451,13 +328,8 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 		switch {
 		case !graded:
 			c.metrics.Add("checker.strength.ungraded", 1)
-		case c.cfg.StrengthMode == "score":
-			if a.Score == nil {
-				return fmt.Errorf("requirement %q: no score answer", creqs[ri].Value)
-			}
-			strength, mass = levelStrength(a.Probabilities), 1
 		default:
-			if _, ok := criteria[a.Choice]; !ok {
+			if _, ok := strengthCriteria[a.Choice]; !ok {
 				return fmt.Errorf("requirement %q: answer %q is not a strength", creqs[ri].Value, a.Choice)
 			}
 			strength, mass = decideStrength(a.Probabilities)
@@ -474,12 +346,6 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 			if !graded {
 				// Only the gate was asked: its P is the link's probability.
 				mass = *g.Noul
-			}
-			// The gate said yes, but the grader is confident it is not
-			// evidence (e.g. alternative_tool for Golang -> Node.js).
-			if o := topRejection(a.Probabilities); graded && pass && c.cfg.VetoThreshold > 0 && c.cfg.StrengthMode != "score" && a.Probabilities[o] >= c.cfg.VetoThreshold {
-				pass, tp.Vetoed = false, true
-				c.metrics.Add("checker.strength.vetoed."+o, 1)
 			}
 		}
 		if !pass {
@@ -505,18 +371,6 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 			"strength", strength, "evidence_mass", mass, "capped", tp.Capped)
 	}
 	return nil
-}
-
-// levelStrength maps a Score answer to the most probable level's strength.
-// Score probabilities are keyed by level index ("0", "1", "2").
-func levelStrength(probs map[string]float64) domain.EvidenceStrength {
-	best, bestP := 0, -1.0
-	for i := range strengthByLevel {
-		if p := probs[strconv.Itoa(i)]; p > bestP {
-			best, bestP = i, p
-		}
-	}
-	return strengthByLevel[best]
 }
 
 // topRejection returns the most probable non-evidence option (none or a
@@ -606,27 +460,6 @@ func (c *Checker) buildCoverage(reqs domain.Result, creqs []checkRequirement, un
 		c.log.Info("fit score", "score", *res.Fit.Score, "by_tier", res.Fit.ByTier, "gaps", len(res.Fit.Gaps))
 	}
 	return res
-}
-
-func (c *Checker) retrievalMode() string {
-	if c.cfg.RetrievalMode != "" {
-		return c.cfg.RetrievalMode
-	}
-	return "single"
-}
-
-func (c *Checker) gateWording() string {
-	if c.cfg.GateWording != "" {
-		return c.cfg.GateWording
-	}
-	return "v1"
-}
-
-func (c *Checker) noulThreshold() float64 {
-	if c.cfg.NoulThreshold > 0 {
-		return c.cfg.NoulThreshold
-	}
-	return 0.5
 }
 
 func (c *Checker) retrievalK() int {

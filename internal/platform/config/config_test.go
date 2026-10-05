@@ -2,6 +2,7 @@ package config
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 )
@@ -25,8 +26,7 @@ func TestLoadDefaults(t *testing.T) {
 		t.Errorf("unexpected Pipeline defaults: %+v", cfg.Pipeline)
 	}
 	if !reflect.DeepEqual(cfg.Checker, Checker{RetrievalK: 8, RetrievalFloor: 0.01, MinEvidenceMass: 0.5,
-		RetrievalMode: "narrow", NarrowSizes: []int{16}, NoulThreshold: 0.5, StrengthCriteria: "v5", GateThreshold: 0.5, GateWording: "v2", StrengthMode: "choice",
-		SkipCappedGrading: true, GateFirst: true}) {
+		NarrowSizes: []int{16}, GateThreshold: 0.5, SkipCappedGrading: true, GateFirst: true}) {
 		t.Errorf("unexpected Checker defaults: %+v", cfg.Checker)
 	}
 }
@@ -41,9 +41,7 @@ func TestLoadErrors(t *testing.T) {
 		{"bad duration", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_TIMEOUT": "soon"}},
 		{"bad float", map[string]string{"TYPESAFE_API_KEY": "k", "PIPELINE_MIN_REQUIREMENT_MASS": "half"}},
 		{"bad ints", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_NARROW_SIZES": "12,x"}},
-		{"bad mode", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_RETRIEVAL_MODE": "fuzzy"}},
-		{"veto without gate", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_VETO_THRESHOLD": "0.6", "CHECKER_GATE_THRESHOLD": "0"}},
-		{"veto with score mode", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_VETO_THRESHOLD": "0.6", "CHECKER_STRENGTH_MODE": "score"}},
+		{"cost options without gate", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_GATE_THRESHOLD": "0"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -54,9 +52,12 @@ func TestLoadErrors(t *testing.T) {
 	}
 }
 
-func TestLoadScoreModeNeedsGate(t *testing.T) {
-	env := map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_STRENGTH_MODE": "score", "CHECKER_GATE_THRESHOLD": "0"}
-	if _, err := load(mapEnv(env)); err == nil {
-		t.Fatal("score mode without the gate: want error")
+func TestLoadRejectsRemovedSettings(t *testing.T) {
+	for _, name := range removedSettings {
+		env := map[string]string{"TYPESAFE_API_KEY": "k", name: "x"}
+		_, err := load(mapEnv(env))
+		if err == nil || !strings.Contains(err.Error(), name) {
+			t.Errorf("%s set: err = %v, want an error naming it", name, err)
+		}
 	}
 }

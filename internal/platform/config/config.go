@@ -55,47 +55,27 @@ type Checker struct {
 	// MinEvidenceMass is the P(strong+partial+weak) a Strength Round answer
 	// needs to create an Evidence Link.
 	MinEvidenceMass float64 // CHECKER_MIN_EVIDENCE_MASS
-	// RetrievalMode is single (one Choice, keep top K above the floor),
-	// narrow (repeat the Choice over the best NarrowSizes[i] options of the
-	// previous round), or peel (take the winner, remove it, ask again until
-	// none wins or K are taken; PeelShortlist > 0 first narrows to that many
-	// options with one Choice).
-	//
-	// noul asks one yes/no question per Requirement instead of a Choice and
-	// keeps the top RetrievalK with P(yes) >= NoulThreshold.
-	RetrievalMode string  // CHECKER_RETRIEVAL_MODE
-	NoulThreshold float64 // CHECKER_NOUL_THRESHOLD
-	NarrowSizes   []int   // CHECKER_NARROW_SIZES, e.g. "12,4"
-	PeelShortlist int     // CHECKER_PEEL_SHORTLIST
-	// StrengthCriteria picks the Strength Round options: v1, v2 (sharpened
-	// strong/partial), v3 (v2 plus negative options), v4 (v3 plus the
-	// needed_capability negative), v5 (v3 as {what, not_for, examples}), or
-	// v6 (v5 with "an instance of a broad requirement is not
-	// alternative_tool").
-	StrengthCriteria string // CHECKER_STRENGTH_CRITERIA
+	// NarrowSizes repeats the Retrieval Choice over the best NarrowSizes[i]
+	// options of the previous round; empty asks one round.
+	NarrowSizes []int // CHECKER_NARROW_SIZES, e.g. "12,4"
 	// GateThreshold > 0 adds one gate Noul per pair ("is this evidence the
 	// candidate has the requirement?") and links on gate >= threshold
 	// instead of MinEvidenceMass. 0 turns the gate off.
 	GateThreshold float64 // CHECKER_GATE_THRESHOLD
-	// VetoThreshold > 0 (needs the gate) rejects a pair the gate passed when
-	// one non-evidence option of the grading Choice has at least this
-	// probability. 0 turns the veto off.
-	VetoThreshold float64 // CHECKER_VETO_THRESHOLD
-	// GateWording is the gate Noul's yes criterion: v1 (the requirement
-	// itself) or v2 (also a part, prerequisite, or broader practice).
-	GateWording string // CHECKER_GATE_WORDING
-	// StrengthMode grades linked pairs with the StrengthCriteria Choice
-	// ("choice") or a 3-level Score ("score", needs the gate).
-	StrengthMode string // CHECKER_STRENGTH_MODE
-	// NarrowStopP > 0 ends narrow retrieval early when a round's top option
-	// has at least this probability. 0 always runs every round.
-	NarrowStopP float64 // CHECKER_NARROW_STOP_P
 	// SkipCappedGrading (needs the gate) asks only the gate on Skills and
 	// Summary units: they are capped at weak, so the grade is never used.
 	SkipCappedGrading bool // CHECKER_SKIP_CAPPED_GRADING
 	// GateFirst (needs the gate) asks the gates in one request and grades
 	// only the pairs that passed, in a second.
 	GateFirst bool // CHECKER_GATE_FIRST
+}
+
+// removedSettings are experiment settings whose losing variants were
+// deleted; setting one is an error rather than silently ignored.
+var removedSettings = []string{
+	"CHECKER_RETRIEVAL_MODE", "CHECKER_NOUL_THRESHOLD", "CHECKER_PEEL_SHORTLIST",
+	"CHECKER_STRENGTH_CRITERIA", "CHECKER_VETO_THRESHOLD", "CHECKER_GATE_WORDING",
+	"CHECKER_STRENGTH_MODE", "CHECKER_NARROW_STOP_P",
 }
 
 // Load reads Config from the environment, applying defaults.
@@ -130,16 +110,8 @@ func load(getenv func(string) string) (Config, error) {
 			RetrievalK:        e.int("CHECKER_RETRIEVAL_K", 8),
 			RetrievalFloor:    e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
 			MinEvidenceMass:   e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
-			RetrievalMode:     e.str("CHECKER_RETRIEVAL_MODE", "narrow"),
 			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", []int{16}),
-			PeelShortlist:     e.int("CHECKER_PEEL_SHORTLIST", 0),
-			NoulThreshold:     e.float("CHECKER_NOUL_THRESHOLD", 0.5),
-			StrengthCriteria:  e.str("CHECKER_STRENGTH_CRITERIA", "v5"),
 			GateThreshold:     e.float("CHECKER_GATE_THRESHOLD", 0.5),
-			VetoThreshold:     e.float("CHECKER_VETO_THRESHOLD", 0),
-			GateWording:       e.str("CHECKER_GATE_WORDING", "v2"),
-			StrengthMode:      e.str("CHECKER_STRENGTH_MODE", "choice"),
-			NarrowStopP:       e.float("CHECKER_NARROW_STOP_P", 0),
 			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", true),
 			GateFirst:         e.bool("CHECKER_GATE_FIRST", true),
 		},
@@ -147,35 +119,13 @@ func load(getenv func(string) string) (Config, error) {
 	if e.err != nil {
 		return Config{}, e.err
 	}
-	switch cfg.Checker.RetrievalMode {
-	case "single", "narrow", "peel", "noul":
-	default:
-		return Config{}, fmt.Errorf("config: CHECKER_RETRIEVAL_MODE %q: want single, narrow, peel or noul", cfg.Checker.RetrievalMode)
-	}
-	switch cfg.Checker.StrengthCriteria {
-	case "v1", "v2", "v3", "v4", "v5", "v6":
-	default:
-		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_CRITERIA %q: want v1..v6", cfg.Checker.StrengthCriteria)
-	}
-	if cfg.Checker.VetoThreshold > 0 && (cfg.Checker.GateThreshold <= 0 || cfg.Checker.StrengthMode != "choice") {
-		return Config{}, fmt.Errorf("config: CHECKER_VETO_THRESHOLD needs CHECKER_GATE_THRESHOLD > 0 and CHECKER_STRENGTH_MODE=choice")
+	for _, name := range removedSettings {
+		if getenv(name) != "" {
+			return Config{}, fmt.Errorf("config: %s was removed (experiments in docs/tuning.md); unset it", name)
+		}
 	}
 	if (cfg.Checker.SkipCappedGrading || cfg.Checker.GateFirst) && cfg.Checker.GateThreshold <= 0 {
 		return Config{}, fmt.Errorf("config: CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0")
-	}
-	switch cfg.Checker.StrengthMode {
-	case "choice":
-	case "score":
-		if cfg.Checker.GateThreshold <= 0 {
-			return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_MODE=score needs CHECKER_GATE_THRESHOLD > 0")
-		}
-	default:
-		return Config{}, fmt.Errorf("config: CHECKER_STRENGTH_MODE %q: want choice or score", cfg.Checker.StrengthMode)
-	}
-	switch cfg.Checker.GateWording {
-	case "v1", "v2":
-	default:
-		return Config{}, fmt.Errorf("config: CHECKER_GATE_WORDING %q: want v1 or v2", cfg.Checker.GateWording)
 	}
 	if cfg.Jev.APIKey == "" {
 		return Config{}, fmt.Errorf("config: TYPESAFE_API_KEY is required")
