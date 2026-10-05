@@ -3,8 +3,9 @@
 Give the prompt below to a separate agent. It must not see this
 repository, its fixtures, labels, evaluation results, or the target job
 postings: the resumes are held-out test data, and anything that hints at
-how the scorer works would bias them. Save the three replies as
-`testdata/resumes/final-syn-1.md` .. `final-syn-3.md` (after review).
+how the scorer works would bias them. The prompt tells it to write only
+the four output files below and to read nothing else in the repository.
+Review the files before committing them.
 
 ---
 
@@ -56,10 +57,28 @@ engineer".
 - No contact details beyond the name and location (no email, phone, or
   links).
 
+## Output files
+
+Write exactly these files and nothing else. Do not read, list, or open
+any other file or directory in this location; create the files directly.
+
+- `testdata/resumes/final-syn-1.md`:
+  candidate 1 (frontend-leaning full-stack engineer)
+- `testdata/resumes/final-syn-2.md`:
+  candidate 2 (career changer into backend)
+- `testdata/resumes/final-syn-3.md`:
+  candidate 3 (senior data / ML engineer)
+- `docs/final-set/synthetic-resume-notes.md`:
+  one short paragraph per candidate with the strengths and gaps you
+  intended (kept separately; not part of any resume)
+
+If a file already exists, stop and report it instead of overwriting it.
+
 ## Format (exactly)
 
-Plain Markdown, one resume per reply section, each in its own fenced
-block. Use this structure, with `|` separators in role headers:
+Each resume file contains only the resume, as plain Markdown (no code
+fences, no commentary), in this structure with `|` separators in role
+headers:
 
 ```
 Firstname Lastname
@@ -86,7 +105,4 @@ Two to four sentences.
 ## Degree, Field | School Name | YYYY – YYYY
 ```
 
-Do not add commentary inside the fenced blocks. After the three blocks,
-add one line per candidate summarizing what you intended as their
-strengths and gaps (this note is kept separately and is not part of the
-resume).
+Finish by replying with the four file paths you wrote.
