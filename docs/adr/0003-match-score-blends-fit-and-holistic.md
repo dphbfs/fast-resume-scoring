@@ -19,30 +19,34 @@ runs alongside extraction). The Match Score uses three of its answers:
   responsibilities the candidate has carried out, in any domain (0–1).
 - `domain_mismatch` (Noul): P(the job's product or industry domain is one
   the candidate has never worked in).
-- `blocker` (Noul): P(a stated hard eligibility condition is clearly
-  unmet by the Resume); an unmentioned condition is not a blocker.
+- `blocker` (Noul): P(a stated hard eligibility condition other than
+  location is clearly unmet by the Resume); an unmentioned condition is
+  not a blocker. (Including location made it misread a US-or-Canada
+  posting.)
 
-It also records `core_work`, `primary_gap`, `soft_eligibility`, and the
-employment gap (from Resume dates, in code); they add nothing on the
-development subset (one resume), and the final set decides whether they
-stay. Product-domain closeness and career-level questions were tried and
-dropped. Why these signals: `docs/gap-analysis-2026-10-05.md`.
+It also records `primary_gap`, `location_mismatch`, and the employment
+gap (from Resume dates, in code); they add nothing on the development
+subset (one resume), and the final set decides whether they stay. Tried
+and dropped: core work, domain closeness, career level, role type,
+transferable scope, soft eligibility (`docs/tuning.md`). Why these
+signals: `docs/gap-analysis-2026-10-05.md`.
 
 ## Definition
 
-Match Score = clamp(round((42.8 + 48.4 × Fit/100 + 38.9 × responsibilities
-− 19.4 × domain_mismatch) × (1 − blocker)), 0, 100); null when the Fit
+Match Score = clamp(round((44.2 + 31.7 × Fit/100 + 46.2 × responsibilities
+− 17.5 × domain_mismatch) × (1 − blocker)), 0, 100); null when the Fit
 Score is null. The Fit Score stays as defined in ADR 0002 and is still
 reported, with its traceable Coverage.
 
 The weights are a least-squares fit on the 30-pair development subset in
-scoring mode (run 2026-10-05T12-05-12Z; leave-one-out MAE 6.6, τ-b 0.77).
-With the weights fixed, two repeat runs gave MAE 6.3 and 5.8, bias ~0,
-83% within ±10, τ-b 0.80 and 0.82; refitting each run gives nearly the
-same weights. Refit only on development data; the final held-out set is
+scoring mode, pooled over three runs (2026-10-05T12-24-46Z, 12-25-55Z,
+12-27-01Z): per run MAE 5.5-5.6, bias ~0, τ-b 0.79-0.81; with pairs held
+out, MAE 6.4, τ-b 0.78. Confirmation run 12-30-35Z: MAE 5.6, 80% within
+±10, τ-b 0.80. Refit only on development data; the final held-out set is
 never used for fitting.
 
-History: the first version blended the Fit Score with `core_work`
+History: v2 used the blocker with location and weights 42.8 / 48.4 /
+38.9 / −19.4 (MAE 5.8-6.3). The first version blended the Fit Score with `core_work`
 (`(0.5 × Fit/100 + 0.5 × core_work) × (1 − blocker)`, mapped linearly):
 leave-one-out MAE 8.8 full mode, 9.3 scoring mode, τ-b 0.64–0.67.
 

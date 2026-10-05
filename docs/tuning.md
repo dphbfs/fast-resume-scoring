@@ -634,3 +634,37 @@ run: 48.4 / 38.9 / -19.4). Match Score is now
 sentences (`PIPELINE_SKIP_RESPONSIBILITIES=false`, run 12-13-20Z): Match
 6.0 / τ-b 0.80 at $0.0107 per pair cold vs ~$0.0092, so scoring mode
 keeps skipping them; the earlier side finding came from the old signals.
+
+### Gap-analysis round 2 experiments (2026-10-05)
+
+Three runs (12-24-46Z, 12-25-55Z, 12-27-01Z) asked, next to the current
+questions: `role_type` (Choice specialist/general), `transferable`
+(Score: engineering scope regardless of language/domain/product),
+`blocker_v2` (hard eligibility other than location), and
+`location_mismatch` (candidate outside every allowed location). Current
+Match Score on these runs: MAE 6.0-6.3, τ-b 0.79.
+
+| Variant (× (1 − blocker)) | Cross-run MAE | Pair-held-out MAE / τ-b |
+|---|---|---|
+| fit + resp + dom, old blocker | 6.04 | 6.87 / 0.75 |
+| **fit + resp + dom, blocker_v2** | **5.54** | **6.43 / 0.78** |
+| + primary_gap × specialist, old blocker | 5.76 | 6.89 / 0.76 |
+| + primary_gap × specialist, blocker_v2 | | 6.23 / 0.76 |
+| fit + resp + transferable + dom + pg×spec, blocker_v2 | 5.24 | 6.67 / 0.74 |
+| fit + transferable + dom (no resp) | 7.41 | |
+
+- `blocker_v2` fixes the Grafana misread (0.39 -> 0.05) and still flags
+  the high-school fellowship (0.96): adopted, no extra parameters.
+- `role_type` called Cloudflare Cache a specialist role (0.89, Rust/
+  Pingora), so it does not separate Cache from Zero Trust; the interaction
+  does not hold up on held-out pairs. Dropped.
+- `transferable` is as strict as `responsibilities` (Cache 0.36) and takes
+  a negative weight next to it. Dropped.
+- `location_mismatch` reads locations correctly (hybrid elsewhere 0.95,
+  Grafana 0.18) but adds nothing (weight -1.6). Kept as a recorded signal.
+- Also dropped from the request: `core_work`, `soft_eligibility`.
+
+Pooled refit over the three runs: `(44.2 + 31.7 fit + 46.2 resp − 17.5
+domain_mm) × (1 − blocker)`, per run MAE 5.5-5.6, bias ~0, τ-b 0.79-0.81.
+Confirmation run with the pruned request (12-30-35Z): MAE 5.6, bias 0.0,
+80% within ±10, max 19, τ-b 0.80.

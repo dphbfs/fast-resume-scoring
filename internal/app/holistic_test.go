@@ -30,8 +30,6 @@ func newTestJudge(t *testing.T, srvURL string) *HolisticJudge {
 func TestHolisticJudge(t *testing.T) {
 	srv := jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
 		switch id {
-		case "core_work":
-			return jevtest.Score(3, 0.6, map[string]float64{"3": 0.6, "4": 0.4})
 		case "responsibilities":
 			return jevtest.Score(2, 0.6, map[string]float64{"2": 1})
 		case "primary_gap":
@@ -47,12 +45,12 @@ func TestHolisticJudge(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if h.CoreWork != 0.75 || h.Blocker != 0.05 || h.Responsibilities != 0.5 || h.PrimaryGap != 0.7 ||
-		h.DomainMismatch != 0.05 || h.SoftEligibility != 0.05 || h.GapMonths == nil || *h.GapMonths != 11 {
+	if h.Blocker != 0.05 || h.Responsibilities != 0.5 || h.PrimaryGap != 0.7 || h.DomainMismatch != 0.05 ||
+		h.LocationMismatch != 0.05 || h.GapMonths == nil || *h.GapMonths != 11 {
 		t.Errorf("holistic = %+v", h)
 	}
 	reqs := srv.Requests()
-	if len(reqs) != 1 || len(reqs[0].Questions) != 6 {
+	if len(reqs) != 1 || len(reqs[0].Questions) != 5 {
 		t.Fatalf("requests = %+v", reqs)
 	}
 	state, _ := json.Marshal(reqs[0].State)
@@ -66,7 +64,7 @@ func TestHolisticJudgeRequiresAnswers(t *testing.T) {
 		switch id {
 		case "blocker":
 			return jev.WireAnswer{Type: "noul"}
-		case "core_work", "responsibilities":
+		case "responsibilities":
 			return jevtest.Score(1, 1, map[string]float64{"1": 1})
 		}
 		return jevtest.Noul(0)

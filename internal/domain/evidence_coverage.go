@@ -66,28 +66,26 @@ type CoverageResult struct {
 }
 
 // Holistic is the Holistic Round's judgment of the whole Resume against the
-// whole posting. It feeds the Match Score, not the Fit Score. The Match Score
-// uses Responsibilities, DomainMismatch, and Blocker; the other signals are
-// recorded for evaluation (docs/adr/0003).
+// whole posting. It feeds the Match Score, not the Fit Score. The Match
+// Score uses Responsibilities, DomainMismatch, and Blocker; the other
+// signals are recorded for evaluation (docs/adr/0003).
 type Holistic struct {
 	Model string `json:"model"`
-	// CoreWork is how much of the job's core work the candidate has done,
-	// as a share of the top Score level (0..1).
-	CoreWork float64 `json:"core_work"`
-	// Blocker is P(a stated hard eligibility condition is clearly unmet).
-	Blocker float64 `json:"blocker"`
 	// Responsibilities is how much of the job's day-to-day responsibilities
 	// the candidate has carried out, in any domain (0..1).
 	Responsibilities float64 `json:"responsibilities"`
-	// PrimaryGap is P(the job's primary technology or core skill is absent
-	// from the Resume).
-	PrimaryGap float64 `json:"primary_gap"`
 	// DomainMismatch is P(the job's product or industry domain is one the
 	// candidate has never worked in).
 	DomainMismatch float64 `json:"domain_mismatch"`
-	// SoftEligibility is P(a location, citizenship, or residency condition
-	// is unlikely to be met given the Resume).
-	SoftEligibility float64 `json:"soft_eligibility"`
+	// Blocker is P(a stated hard eligibility condition other than location
+	// is clearly unmet).
+	Blocker float64 `json:"blocker"`
+	// PrimaryGap is P(the job's primary technology or core skill is absent
+	// from the Resume).
+	PrimaryGap float64 `json:"primary_gap"`
+	// LocationMismatch is P(the candidate's stated location is outside every
+	// location the posting allows).
+	LocationMismatch float64 `json:"location_mismatch"`
 	// GapMonths is the time since the latest role ended, in whole months (0
 	// for a current role); nil when the Resume has no parsable end date.
 	GapMonths *int `json:"gap_months,omitempty"`

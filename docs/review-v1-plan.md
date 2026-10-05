@@ -162,6 +162,9 @@ grades).
       × (1 − blocker): subset MAE 5.8-6.3, τ-b 0.80-0.82 over 2 repeats
       with fixed weights, scoring mode ~$0.0092/pair. Confirm on the
       final set (also decides primary_gap, soft_eligibility, gap months).
+- [x] H-R3. Gap-analysis round 2: blocker reworded without location
+      (Grafana fix); role type, transferable scope dropped. Match Score v3:
+      subset MAE 5.5-5.6, τ-b 0.79-0.81; pair-held-out 6.4 / 0.78.
 
 ## Phase 4: latency and cost (required to reach ~$0.010 per pair cold)
 

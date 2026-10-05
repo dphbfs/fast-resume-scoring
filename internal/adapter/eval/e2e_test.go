@@ -33,7 +33,7 @@ func (e *titleExtractor) Extract(_ context.Context, jd domain.JobDescription) (d
 type fixedJudge struct{}
 
 func (fixedJudge) Judge(context.Context, domain.JobDescription, domain.Resume) (domain.Holistic, error) {
-	return domain.Holistic{CoreWork: 0.5, Blocker: 0.1}, nil
+	return domain.Holistic{Responsibilities: 0.5, Blocker: 0.1}, nil
 }
 
 // fitChecker returns the Fit Score fits[first Requirement value].
@@ -135,7 +135,7 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 	if !strings.Contains(string(raw), "**MAE vs reference** | **8.0**") {
 		t.Errorf("markdown:\n%s", raw)
 	}
-	if rep.Pairs[0].Holistic == nil || rep.Pairs[0].Holistic.CoreWork != 0.5 {
+	if rep.Pairs[0].Holistic == nil || rep.Pairs[0].Holistic.Responsibilities != 0.5 {
 		t.Errorf("holistic = %+v", rep.Pairs[0].Holistic)
 	}
 	if _, err := os.Stat(strings.TrimSuffix(md, ".md") + "-traces/a.json"); err != nil {
