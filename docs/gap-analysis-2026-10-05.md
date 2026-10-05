@@ -93,3 +93,77 @@ In order of expected impact:
 
 Each would need the usual check: offline replay where possible, then 3
 live runs on the development subset, before any change to the Match Score.
+
+## Round 2: the postings that still disagree (Match Score v2)
+
+After adopting the Fit + responsibilities − domain-mismatch Match Score,
+the largest remaining gaps (mean over runs 12-05, 12-10, 12-11) are
+Grafana Databases (−22), Cyware (+17), Pantheon API Transformation (−16),
+Cloudforce One (−13), Cloudflare Zero Trust (+12), Cloudflare Cache (−10).
+The four not analyzed before were rerun through the explained prompt, 3
+runs each, with the location fix in the resume (raw:
+`eval/explain/2026-10-05T12-22-30Z.json`).
+
+| Posting | Reference | Jev Match | Explained | Dominant generative factors |
+|---|---|---|---|---|
+| Grafana, Backend – Databases | 68 | ~46 (−22) | 56, 48, 52 | − database internals (−24 to −32); + observability tooling (+16 to +26: the candidate's Prometheus/Grafana work matches the company's product); + responsibilities |
+| Pantheon, API Transformation | 76 | ~60 (−16) | 54, 52, 55 | − Go not the primary language (−39 to −49), − gRPC/GraphQL; + monolith decomposition (+20 to +30) |
+| Cloudflare Zero Trust Client | 25 | ~37 (+12) | 15, 12, 16 | − no systems language (Rust/C/C++, −37 to −43); − no VPN/Windows-internals work (−14 to −18) |
+| Cloudflare Cache | 66 | ~56 (−10) | 40, 47, 34 | − no Rust (−24 to −30); + distributed-systems design and ownership (+24 to +31); − CDN domain (−8 to −15) |
+
+Consistency held again: every dominant category appears in 3/3 runs with
+similar weights, and scores spread ≤ 13 points. The location fix worked:
+eligibility is now positive for US-remote roles (+3 to +4) and a steady
+−6 only for hybrid roles outside the candidate's city.
+
+### Role positioning changes which factors dominate
+
+Across all eight postings analyzed, two kinds of role behave differently:
+
+- **Platform / distributed-systems roles** (Cache, Pantheon, Grafana,
+  Cloudforce One): the reference forgives a missing primary language or
+  domain because the work transfers. Transferable responsibilities are a
+  large positive (+20 to +38). Jev under-scores all four (−10 to −22):
+  its `responsibilities` reads them strictly (0.28–0.65).
+- **Specialist roles** (Zero Trust kernel/VPN client, Cyware
+  Python/FedRAMP, PKI cryptography): the missing primary technology or
+  specialty dominates (−24 to −49) and transferable work earns little.
+  Jev over-scores two of three (+12, +17).
+
+So the same signal (`primary_gap`) means different things by role type:
+it is ~0.9 for both Zero Trust (reference 25) and Cache (reference 66).
+That is why `primary_gap` added nothing in the linear blend: its effect
+depends on whether the role is specialist or general.
+
+### Jev-side issues found
+
+- **Blocker misread on Grafana:** `blocker` 0.43 and `soft_eligibility`
+  0.75 for a posting open to the US or Canada ("Canada | Remote" is in the
+  title); the reference rates location positive. With the blocker
+  multiplying the score, this alone costs ~40%. All other pairs except the
+  high-school fellowship (0.97) are at or below 0.26. Sharpening the
+  discount (1 − blocker^k) without refitting adds +7 bias because every
+  pair carries ~0.1, so the fix belongs in the question wording (state the
+  candidate's location explicitly and ask about a listed location the
+  candidate is outside of), not the formula.
+- **`responsibilities` is too strict for platform roles** (Cache 0.28,
+  Grafana 0.38) where the reference credits distributed-systems ownership.
+
+### Candidate next experiments (not run)
+
+1. A **role-type** question (Choice: specialist vs general backend/
+   platform), and use `primary_gap` only for specialist roles (an
+   interaction term). Expected to fix Zero Trust and Cyware without hurting
+   Cache and Pantheon.
+2. Reword `responsibilities` to credit transferable engineering work
+   (designing, building, operating distributed services at the job's scale)
+   separately from domain tasks; or add a second Score for
+   "transferable engineering scope".
+3. Reword `blocker`/`soft_eligibility` to compare a listed location with
+   the candidate's stated location, and re-check Grafana.
+4. A **product-tooling overlap** signal (the candidate already uses the
+   company's product, e.g. Grafana/Prometheus at Grafana Labs) is a large
+   positive for the reference; low priority, it is rare.
+
+Each needs offline replay where possible, then 3 live runs on the
+development subset; with interaction terms, watch overfitting on 30 pairs.
