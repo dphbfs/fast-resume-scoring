@@ -167,3 +167,14 @@ depends on whether the role is specialist or general.
 
 Each needs offline replay where possible, then 3 live runs on the
 development subset; with interaction terms, watch overfitting on 30 pairs.
+
+### Outcome (2026-10-05)
+
+Experiments 1-3 ran (`docs/tuning.md`, "Gap-analysis round 2
+experiments"). The reworded blocker (location excluded) was adopted: it
+fixed Grafana and lifted pair-held-out MAE 6.87 -> 6.43. Role type and
+transferable scope did not hold up (role type called Cache a specialist
+role), and location mismatch added nothing. The specialist-vs-platform
+pattern is real but not captured by these questions; the final set, with
+other resumes, should show whether it matters beyond this one resume.
+

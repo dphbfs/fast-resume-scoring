@@ -10,11 +10,11 @@ func TestMatchScore(t *testing.T) {
 		h    Holistic
 		want *int
 	}{
-		// 42.8 + 48.4*0.5 + 38.9*0.5 - 19.4*0 = 86.45
-		{"blend", score(50), Holistic{Responsibilities: 0.5}, ptr(86)},
-		// 42.8 + 0 + 0 - 19.4 = 23.4
-		{"domain mismatch", score(0), Holistic{DomainMismatch: 1}, ptr(23)},
-		{"blocker discounts", score(50), Holistic{Responsibilities: 0.5, Blocker: 0.5}, ptr(43)},
+		// 44.2 + 31.7*0.5 + 46.2*0.5 - 17.5*0 = 83.15
+		{"blend", score(50), Holistic{Responsibilities: 0.5}, ptr(83)},
+		// 44.2 + 0 + 0 - 17.5 = 26.7
+		{"domain mismatch", score(0), Holistic{DomainMismatch: 1}, ptr(27)},
+		{"blocker discounts", score(50), Holistic{Responsibilities: 0.5, Blocker: 0.5}, ptr(42)},
 		{"clamped", score(100), Holistic{Responsibilities: 1}, ptr(100)},
 		{"no fit score", Fit{}, Holistic{Responsibilities: 1}, nil},
 	} {

@@ -14,14 +14,16 @@ import (
 )
 
 // HolisticJudge judges the whole Resume against the whole posting in one
-// Jev request (the Holistic Round): how much of the job's core work and
-// day-to-day responsibilities the candidate has done, whether the job's
-// primary technology is missing, whether its domain is new to the
-// candidate, and whether a stated hard or soft (location, citizenship)
-// eligibility condition is unmet; plus the employment gap, from the
-// Resume's dates in code. (Product-domain and career-level questions were tried and
-// dropped: they did not track the reference; docs/tuning.md.) It needs no extracted Requirements, so
-// it can run alongside extraction and checking.
+// Jev request (the Holistic Round): how much of the job's day-to-day
+// responsibilities the candidate has carried out, whether the job's domain
+// is new to the candidate, whether a stated hard eligibility condition
+// other than location is clearly unmet, whether the job's primary
+// technology is missing, and whether the candidate is outside every
+// allowed location; plus the employment gap, from the Resume's dates in
+// code. It needs no extracted Requirements, so it runs alongside
+// extraction and checking. Questions tried and dropped (core work, domain
+// closeness, career level, role type, transferable scope, soft
+// eligibility, a blocker that included location) are in docs/tuning.md.
 type HolisticJudge struct {
 	classifier port.AIClassifierClient
 	metrics    port.Metrics
@@ -43,16 +45,6 @@ type holisticState struct {
 	Resume     string `json:"resume"`
 }
 
-// coreWorkLevels rate how much of the job's core work the candidate has
-// done, lowest first.
-var coreWorkLevels = []any{
-	"The candidate has done none of the job's core work; their experience is in another field.",
-	"The candidate's work is adjacent: the same broad field, but different core tasks or technologies.",
-	"The candidate has done some of the job's core work, but its main tasks or main technologies are missing.",
-	"The candidate has done most of the job's core work, with a few main tasks or technologies missing.",
-	"The candidate has repeatedly done the job's core work itself, with its main technologies.",
-}
-
 // responsibilityLevels rate how much of the job's day-to-day
 // responsibilities the candidate has carried out, in any domain, lowest
 // first.
@@ -71,11 +63,6 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 	resp, err := h.classifier.Classify(ctx, port.ClassifyRequest{
 		State: holisticState{JobPosting: postingText(jd).Text, Resume: resume.Text},
 		Questions: map[string]port.Question{
-			"core_work": {
-				Type:         port.Score,
-				Instructions: "How much of the core work described in `job_posting` has the candidate in `resume` done themselves?",
-				Criteria:     coreWorkLevels,
-			},
 			"responsibilities": {
 				Type: port.Score,
 				Instructions: "Regardless of product or industry domain, how much of the day-to-day responsibilities " +
@@ -100,23 +87,26 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 					"false": "The candidate has worked in the job's domain or a closely related one, or the job has no specific domain.",
 				},
 			},
-			"soft_eligibility": {
-				Type: port.Noul,
-				Instructions: "Does `job_posting` state a location, citizenship, or residency condition that `resume` " +
-					"makes unlikely to be met (for example an on-site city far from the candidate's location)?",
-				Criteria: map[string]any{
-					"true":  "A stated location, citizenship, or residency condition looks unlikely to be met.",
-					"false": "No such condition is stated, or the resume is consistent with meeting it.",
-				},
-			},
 			"blocker": {
 				Type: port.Noul,
-				Instructions: "Does `job_posting` state a hard eligibility condition that `resume` clearly shows the candidate " +
-					"does not meet (for example: must be a current student, must hold a license the candidate lacks)?",
+				Instructions: "Does `job_posting` state a hard eligibility condition other than location (for example: must " +
+					"be a current student, must hold a security clearance or license) that `resume` clearly shows the " +
+					"candidate does not meet?",
 				Criteria: map[string]any{
-					"true": "A stated hard condition is clearly not met by what the resume shows.",
-					"false": "No hard condition is stated, or the resume does not clearly contradict it " +
-						"(a condition the resume simply does not mention, such as citizenship, is not a blocker).",
+					"true": "A stated non-location condition is clearly not met by what the resume shows.",
+					"false": "No such condition is stated, or the resume does not clearly contradict it (a condition the " +
+						"resume does not mention, such as citizenship, is not clearly unmet).",
+				},
+			},
+			"location_mismatch": {
+				Type: port.Noul,
+				Instructions: "Compare the locations `job_posting` allows (remote countries or regions, office cities) with " +
+					"the candidate's location stated in `resume`. Is the candidate outside every allowed location?",
+				Criteria: map[string]any{
+					"true": "The candidate's stated location is outside every location the posting allows (for example an " +
+						"on-site or hybrid city elsewhere).",
+					"false": "The candidate's location is allowed (for example a remote role open to their country), or " +
+						"the resume states no location.",
 				},
 			},
 		},
@@ -128,16 +118,12 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 	h.metrics.Add("holistic.input_tokens", int64(resp.Usage.InputTokens))
 	h.metrics.Add("holistic.output_tokens", int64(resp.Usage.OutputTokens))
 
-	core, err := scoreShare(resp.Answers["core_work"], len(coreWorkLevels))
-	if err != nil {
-		return domain.Holistic{}, fmt.Errorf("core_work: %w", err)
-	}
 	resp2, err := scoreShare(resp.Answers["responsibilities"], len(responsibilityLevels))
 	if err != nil {
 		return domain.Holistic{}, fmt.Errorf("responsibilities: %w", err)
 	}
 	nouls := map[string]float64{}
-	for _, id := range []string{"blocker", "primary_gap", "domain_mismatch", "soft_eligibility"} {
+	for _, id := range []string{"blocker", "primary_gap", "domain_mismatch", "location_mismatch"} {
 		p := resp.Answers[id].Noul
 		if p == nil {
 			return domain.Holistic{}, fmt.Errorf("%s: no noul answer", id)
@@ -145,8 +131,8 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 		nouls[id] = *p
 	}
 	return domain.Holistic{
-		Model: resp.Model, CoreWork: core, Blocker: nouls["blocker"], Responsibilities: resp2,
-		PrimaryGap: nouls["primary_gap"], DomainMismatch: nouls["domain_mismatch"], SoftEligibility: nouls["soft_eligibility"],
+		Model: resp.Model, Blocker: nouls["blocker"], Responsibilities: resp2,
+		PrimaryGap: nouls["primary_gap"], DomainMismatch: nouls["domain_mismatch"], LocationMismatch: nouls["location_mismatch"],
 		GapMonths: employmentGapMonths(ParseResume(resume.Text), h.now()),
 	}, nil
 }

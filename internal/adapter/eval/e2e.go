@@ -548,7 +548,7 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 		return math.Abs(float64(*score) - *s.Reference)
 	}
 	slices.SortStableFunc(pairs, func(a, b E2EScore) int { return cmp.Compare(errOf(b), errOf(a)) })
-	b.WriteString("| Pair | Match | Fit | Reference | Saved | Core work | Blocker | Requirements | Time |\n|---|---|---|---|---|---|---|---|---|\n")
+	b.WriteString("| Pair | Match | Fit | Reference | Saved | Responsibilities | Blocker | Requirements | Time |\n|---|---|---|---|---|---|---|---|---|\n")
 	for _, s := range pairs {
 		ref := "–"
 		if s.Reference != nil {
@@ -560,7 +560,7 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 		}
 		core, blocker := "–", "–"
 		if h := s.Holistic; h != nil {
-			core, blocker = fmt.Sprintf("%.2f", h.CoreWork), fmt.Sprintf("%.2f", h.Blocker)
+			core, blocker = fmt.Sprintf("%.2f", h.Responsibilities), fmt.Sprintf("%.2f", h.Blocker)
 		}
 		fmt.Fprintf(&b, "| %s | %s | %s | %s | %d | %s | %s | %d | %.1fs |\n", cell(s.Title), fitText(s.Match), fit, ref, s.Saved, core, blocker,
 			s.Requirements, float64(s.ExtractMS+s.CheckMS)/1000)
