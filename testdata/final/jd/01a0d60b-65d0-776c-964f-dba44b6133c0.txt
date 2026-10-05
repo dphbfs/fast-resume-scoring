@@ -1,0 +1,66 @@
+## Stryker - Salesforce Software Engineer
+
+🔗 [Apply](https://stryker.wd1.myworkdayjobs.com/strykercareers/job/portage-michigan/salesforce-software-engineer--remote-_r570625)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Salesforce software engineer modernizing Stryker’s U.S. commercial Salesforce and Oracle CPQ platforms. Building integrations, testing deployments, and improving customer engagement solutions.
+Salesforce software engineer modernizing Stryker’s U.S. commercial Salesforce and Oracle CPQ platforms
+- Salary: $102,600 - $222,300 per year
+- Tech stack: Cloud, Java, JavaScript, Oracle
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Partner with Customer Solutions teams to translate business needs into Salesforce and Oracle CPQ-based solutions that improve account management and customer engagement
+- Write, develop, and maintain production-level code for scalable Salesforce and Oracle CPQ software solutions and integrations
+- Conduct root cause analysis on user-reported issues and implement timely, scalable resolutions
+- Analyze requirements for new features and document technical specifications to support development and governance
+- Design, develop, and maintain custom software, database components, and automated testing code
+- Support platform stability and code coverage goals
+- Manage system changes through source code repositories, ensuring accurate version control and production-ready deployments
+- Coordinate QA and UAT testing activities to verify and validate new functionality before release
+- Bachelor’s degree in Computer Science, Engineering, Information Systems, or a related field
+- Minimum 4 years of Software Engineering experience
+- Minimum 2 years of Salesforce development experience
+- Hands-on experience writing, testing, debugging, and maintaining production-level code using Apex and Salesforce Lightning Web Components (LWC)
+- Strong understanding of object-oriented programming principles
+- Proficiency in Apex and/or another object-oriented programming language such as C, C#, Java, or JavaScript
+- Experience with Salesforce development, integrations, APIs, source control, automated testing, and production deployments
+- Ability to translate business requirements into scalable technical solutions
+
+### Full Job Description
+Summary:
+Salesforce software engineer modernizing Stryker’s U.S. commercial Salesforce and Oracle CPQ platforms. Building integrations, testing deployments, and improving customer engagement solutions.
+Salesforce software engineer modernizing Stryker’s U.S. commercial Salesforce and Oracle CPQ platforms
+Role description:
+• Partner with Customer Solutions teams to translate business needs into Salesforce and Oracle CPQ-based solutions that improve account management and customer engagement
+• Write, develop, and maintain production-level code for scalable Salesforce and Oracle CPQ software solutions and integrations
+• Conduct root cause analysis on user-reported issues and implement timely, scalable resolutions
+• Analyze requirements for new features and document technical specifications to support development and governance
+• Design, develop, and maintain custom software, database components, and automated testing code
+• Support platform stability and code coverage goals
+• Manage system changes through source code repositories, ensuring accurate version control and production-ready deployments
+• Coordinate QA and UAT testing activities to verify and validate new functionality before release
+• Collaborate with Release Management, Technical Governance, and Change Advisory teams to meet organizational, regulatory, and security standards
+• Build relationships with business stakeholders to understand core processes, drive adoption, and enhance solution effectiveness
+Role requirements:
+• Bachelor’s degree in Computer Science, Engineering, Information Systems, or a related field
+• Minimum 4 years of Software Engineering experience
+• Minimum 2 years of Salesforce development experience
+• Hands-on experience writing, testing, debugging, and maintaining production-level code using Apex and Salesforce Lightning Web Components (LWC)
+• Strong understanding of object-oriented programming principles
+• Proficiency in Apex and/or another object-oriented programming language such as C, C#, Java, or JavaScript
+• Experience with Salesforce development, integrations, APIs, source control, automated testing, and production deployments
+• Ability to translate business requirements into scalable technical solutions
+• Preferred: experience with cloud-based or enterprise SaaS software development
+• Preferred: experience with Oracle CPQ languages, such as BML and XSLT
+• Preferred: Salesforce Certified Platform Developer I (PDI) or Salesforce Certified Platform Developer II (PDII) certifications
+• Preferred: Salesforce Administrator Certification
+Benefits:
+• Remote work flexibility
+• Equal opportunity employment
+• 10% travel allowance/arrangement
+Tech stack:
+Cloud, Java, JavaScript, Oracle
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

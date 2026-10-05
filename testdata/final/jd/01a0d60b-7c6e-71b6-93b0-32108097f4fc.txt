@@ -1,0 +1,77 @@
+## Close - Senior Backend Engineer – Backend Platform
+
+🔗 [Apply](https://jobs.ashbyhq.com/close/5bf4629b-d2ee-4129-980f-e31b96185c9c)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building AI development tools and backend platform infrastructure for Close’s CRM. Enabling product teams through APIs, observability, migrations, and coding-agent guardrails.
+Senior Backend Engineer building AI development tools and platform infrastructure for Close’s CRM
+- Salary: $140,000 - $210,000 per year
+- Tech stack: AWS, Cloud, Flask, GraphQL, Kubernetes, Python, Rust, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build backend platform capabilities used by four product teams
+- Expand DevDawg cloud development environments for the full application stack
+- Expand Spice automated code review and root-cause tooling, including safely approving more pull requests
+- Build paved roads for the API layer, including REST blueprints, GraphQL schema, OpenAPI, realtime, authentication, and permissions
+- Modernize backend and asynchronous compute frameworks, including Flask-to-FastAPI migration paths
+- Establish production observability, metrics, alerting, and readiness standards
+- Build shared backend services and primitives for eventing, event logs, database-change safety, migrations, delegated access, auditability, internal administration, and support APIs
+- Set guardrails for coding agents through static analysis, linting, hooks, and test harnesses
+- Role open at Senior and Staff levels
+- Seasoned Python engineer; Python is the primary backend language
+- Go, Rust, or TypeScript experience is welcome
+- Shipped meaningful LLM-backed or agentic work to real users
+- Uses coding agents in day-to-day workflow and has a clear point of view on their strengths and limitations
+- Fluent in observability and production practice, including telemetry, metrics, tracing, alerting, and Sentry ownership
+- Experience designing and shipping internet-facing APIs
+- Production incident debugging and ownership of systems with customer impact
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building AI development tools and backend platform infrastructure for Close’s CRM. Enabling product teams through APIs, observability, migrations, and coding-agent guardrails.
+Senior Backend Engineer building AI development tools and platform infrastructure for Close’s CRM
+Role description:
+• Build backend platform capabilities used by four product teams
+• Expand DevDawg cloud development environments for the full application stack
+• Expand Spice automated code review and root-cause tooling, including safely approving more pull requests
+• Build paved roads for the API layer, including REST blueprints, GraphQL schema, OpenAPI, realtime, authentication, and permissions
+• Modernize backend and asynchronous compute frameworks, including Flask-to-FastAPI migration paths
+• Establish production observability, metrics, alerting, and readiness standards
+• Build shared backend services and primitives for eventing, event logs, database-change safety, migrations, delegated access, auditability, internal administration, and support APIs
+• Set guardrails for coding agents through static analysis, linting, hooks, and test harnesses
+• Partner with Infrastructure, which owns AWS, Kubernetes, and datastores, while owning the application layer
+• Collaborate directly with internal engineering users and potentially move between teams as work shifts
+Role requirements:
+• Role open at Senior and Staff levels
+• Seasoned Python engineer; Python is the primary backend language
+• Go, Rust, or TypeScript experience is welcome
+• Shipped meaningful LLM-backed or agentic work to real users
+• Uses coding agents in day-to-day workflow and has a clear point of view on their strengths and limitations
+• Fluent in observability and production practice, including telemetry, metrics, tracing, alerting, and Sentry ownership
+• Experience designing and shipping internet-facing APIs
+• Production incident debugging and ownership of systems with customer impact
+• Experience carrying a pager for production systems
+• Builder-first approach focused on rapid adoption
+• Ability to work directly with internal engineering customers
+• Must be legally able to work in the US; visa requirements must be explained
+Benefits:
+• Competitive pay plus an organization-wide goal-based bonus
+• ~5 weeks of PTO to start
+• 1-week all-company Winter Holiday Break
+• Paid US holidays
+• 2 extra PTO days for every year with Close
+• 80% Work Option: choose a standard 5-day week or a 4-day week at 80% pay
+• Paid parental leave for primary and secondary caregivers
+• 1-month paid sabbatical every 5 years
+• Two medical plans with Close covering 99% of the premium for US residents
+• Dental and Vision coverage
+• HSA and FSA
+• Company-paid Long-Term Disability
+• 401(k) contribution match up to 6%, vested immediately
+• Funding for best-in-class developer tools
+Tech stack:
+AWS, Cloud, Flask, GraphQL, Kubernetes, Python, Rust, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

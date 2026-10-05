@@ -1,0 +1,44 @@
+## Yendo - Senior Backend Engineer
+
+🔗 [Apply](https://jobs.ashbyhq.com/yendo/25480cd6-cf73-4898-826c-3aae4cfa2288)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer at Yendo focusing on backend and full stack solutions to enhance financial access for users. Collaborating within a small team to raise the bar in engineering practices and customer experience.
+Senior Backend Engineer developing financial solutions at Yendo
+- Salary: $170,000 - $220,000 per year
+- Tech stack: AWS, Java, Postgres, Python, Redis, Ruby, TypeScript, Go
+- Desire to work collaboratively. Engineers participate in the product development cycle from start to finish.
+- Help with raising the bar! We strive to improve our customer experience, our hiring standards, and our engineering practices.
+- Resiliency. We are not a “me too” product. This requires experimentation and grit to find solutions for our customers’ problems.
+- 5+ years of experience with backend or full stack solutions (e.g., Go (*Preferred)*, TypeScript, Java, Python, or Ruby)
+- Prefer experience with Postgres, Redis, and AWS, but not required.
+- Enjoy thinking about systems — their life cycles, edge cases, interactions, and failure modes.
+- Self-starter and able to work independently.
+- Experience in fintech, payments, processing, card networks, banking, or early stage startup is helpful, but not required.
+- Passionate about financial inclusion and mobility.
+
+### Full Job Description
+Summary:
+Senior Backend Engineer at Yendo focusing on backend and full stack solutions to enhance financial access for users. Collaborating within a small team to raise the bar in engineering practices and customer experience.
+Senior Backend Engineer developing financial solutions at Yendo
+Role description:
+• Desire to work collaboratively. Engineers participate in the product development cycle from start to finish.
+• Help with raising the bar! We strive to improve our customer experience, our hiring standards, and our engineering practices.
+• Resiliency. We are not a “me too” product. This requires experimentation and grit to find solutions for our customers’ problems.
+Role requirements:
+• 5+ years of experience with backend or full stack solutions (e.g., Go (*Preferred)*, TypeScript, Java, Python, or Ruby)
+• Prefer experience with Postgres, Redis, and AWS, but not required.
+• Enjoy thinking about systems — their life cycles, edge cases, interactions, and failure modes.
+• Self-starter and able to work independently.
+• Experience in fintech, payments, processing, card networks, banking, or early stage startup is helpful, but not required.
+• Passionate about financial inclusion and mobility.
+Benefits:
+• Competitive Compensation
+• Equity
+• Insurance
+• 401K
+• Unlimited PTO
+Tech stack:
+AWS, Java, Postgres, Python, Redis, Ruby, TypeScript, Go

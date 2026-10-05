@@ -1,0 +1,66 @@
+## Grove Collaborative - Senior Software Engineer – Front End / Full Stack
+
+🔗 [Apply](https://boards.greenhouse.io/grovecollaborative/jobs/5381745008)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior front-end/full-stack engineer building scalable ecommerce experiences for Grove Collaborative, a sustainability-focused household and personal care company. Leading product initiatives across modern web and third-party commerce systems.
+Senior front-end/full-stack engineer building ecommerce experiences for Grove Collaborative
+- Salary: $180,000 - $215,000 per year
+- Tech stack: GraphQL, JavaScript, React, Svelte, TypeScript, Vue.js
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Lead front-end and full-stack initiatives from ambiguous problem statements to shipped, measured outcomes
+- Make architecture decisions, sequence work, and manage project tradeoffs
+- Partner with product managers and designers on customer experiences
+- Own performance, stability, accessibility, and maintainability of shipped code
+- Integrate with mobile apps, subscription services, analytics, search and discovery, and loyalty systems
+- Use AI tooling to accelerate development while maintaining quality and independent judgment
+- Partner with UX Design to define and scale the design system and UI component library
+- Collaborate with analytics partners to establish measurement and tracking
+- 7+ years building and operating production web applications, with the front end as your strongest area
+- Deep expertise in JavaScript and TypeScript
+- Experience with at least one modern component framework (React, Vue, Svelte, or similar)
+- Experience with state management and performance optimization for consumer-facing applications
+- Comfortable working across APIs, data models, integrations, CI, the browser, and infrastructure
+- Ability to become productive quickly in unfamiliar frameworks, languages, or platforms
+- Experience leading projects from vague problem statements through shipment
+- Product and design thinking
+
+### Full Job Description
+Summary:
+Senior front-end/full-stack engineer building scalable ecommerce experiences for Grove Collaborative, a sustainability-focused household and personal care company. Leading product initiatives across modern web and third-party commerce systems.
+Senior front-end/full-stack engineer building ecommerce experiences for Grove Collaborative
+Role description:
+• Lead front-end and full-stack initiatives from ambiguous problem statements to shipped, measured outcomes
+• Make architecture decisions, sequence work, and manage project tradeoffs
+• Partner with product managers and designers on customer experiences
+• Own performance, stability, accessibility, and maintainability of shipped code
+• Integrate with mobile apps, subscription services, analytics, search and discovery, and loyalty systems
+• Use AI tooling to accelerate development while maintaining quality and independent judgment
+• Partner with UX Design to define and scale the design system and UI component library
+• Collaborate with analytics partners to establish measurement and tracking
+• Champion testing, documentation, and reusable team workflows
+• Participate in take-home and working review interview process covering system design, coding, product thinking, and AI usage
+Role requirements:
+• 7+ years building and operating production web applications, with the front end as your strongest area
+• Deep expertise in JavaScript and TypeScript
+• Experience with at least one modern component framework (React, Vue, Svelte, or similar)
+• Experience with state management and performance optimization for consumer-facing applications
+• Comfortable working across APIs, data models, integrations, CI, the browser, and infrastructure
+• Ability to become productive quickly in unfamiliar frameworks, languages, or platforms
+• Experience leading projects from vague problem statements through shipment
+• Product and design thinking
+• Strong written and verbal communication of technical tradeoffs
+• Genuine enthusiasm for Grove’s mission and sustainability values
+• Experience with Shopify, ecommerce at scale, subscription commerce, GraphQL, testing tools, Git workflows, CI, accessibility, A/B testing, and experimentation platforms are advantageous
+• Must be based in California, Maine, Pennsylvania, Nevada, North Carolina, Texas, Colorado, Washington, Illinois, New York, Missouri, or Massachusetts
+Benefits:
+• Competitive benefits - medical, vision, dental
+• Equity - shared success is core to our mission
+• Flexible Paid Time Off
+• Free VIP membership and 50% employee discount
+• Annual incentive target
+Tech stack:
+GraphQL, JavaScript, React, Svelte, TypeScript, Vue.js
+Company sponsorship flag: sponsorsH1B=true.

@@ -1,0 +1,64 @@
+## ComboCurve - Senior Software Engineer, Python
+
+🔗 [Apply](https://ats.rippling.com/combocurve/jobs/052b68e5-9417-4be3-8e5b-fd28d45b1c86)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Python Engineer building calculation logic, APIs, and cloud infrastructure for ComboCurve’s energy-sector economics platform. Owning features from design through deployment and monitoring.
+Senior Python Engineer building cloud economics software for energy-sector asset evaluation
+- Tech stack: Cloud, Docker, Flask, Google Cloud Platform, GRPC, MongoDB, Numpy, Pandas, Python
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Write efficient Python code on structured time series datasets that scales across cloud infrastructure
+- Own features end-to-end, from scoping and design through implementation, deployment, and monitoring
+- Participate in software and infrastructure system design discussions and architectural decisions
+- Build and maintain reliable, well-tested Python backend services and APIs
+- Model, query, and optimize MongoDB data through schema design, indexing, and aggregation pipelines
+- Deploy and operate containerized services on cloud infrastructure
+- Use GCP components including Cloud Run, Cloud Functions, and GCS
+- Incorporate AI-first development practices and AI tooling
+- Production-grade Python 3.13+ with type annotations and async/await
+- Experience designing REST or gRPC APIs with OpenAPI contracts and versioning
+- Hands-on Flask and/or FastAPI experience
+- Experience configuring Gunicorn for WSGI deployment
+- Practical knowledge of SOLID principles and clean architecture
+- Experience with pandas or numpy for statistical and exploratory data analysis
+- Ability to efficiently process medium-to-large datasets and communicate findings through visualizations or reports
+- Experience delivering features to production in cloud-based SaaS products
+
+### Full Job Description
+Summary:
+Senior Python Engineer building calculation logic, APIs, and cloud infrastructure for ComboCurve’s energy-sector economics platform. Owning features from design through deployment and monitoring.
+Senior Python Engineer building cloud economics software for energy-sector asset evaluation
+Role description:
+• Write efficient Python code on structured time series datasets that scales across cloud infrastructure
+• Own features end-to-end, from scoping and design through implementation, deployment, and monitoring
+• Participate in software and infrastructure system design discussions and architectural decisions
+• Build and maintain reliable, well-tested Python backend services and APIs
+• Model, query, and optimize MongoDB data through schema design, indexing, and aggregation pipelines
+• Deploy and operate containerized services on cloud infrastructure
+• Use GCP components including Cloud Run, Cloud Functions, and GCS
+• Incorporate AI-first development practices and AI tooling
+• Collaborate through code reviews, technical documentation, and shared engineering standards
+Role requirements:
+• Production-grade Python 3.13+ with type annotations and async/await
+• Experience designing REST or gRPC APIs with OpenAPI contracts and versioning
+• Hands-on Flask and/or FastAPI experience
+• Experience configuring Gunicorn for WSGI deployment
+• Practical knowledge of SOLID principles and clean architecture
+• Experience with pandas or numpy for statistical and exploratory data analysis
+• Ability to efficiently process medium-to-large datasets and communicate findings through visualizations or reports
+• Experience delivering features to production in cloud-based SaaS products
+• Production MongoDB experience including schema design, indexing, and aggregation pipelines
+• Experience with MongoEngine or PyMongo
+• Hands-on experience with uv or similar dependency management tools
+• Comprehensive pytest testing, including fixtures, parameterization, and mocked external services
+• Docker and Docker Compose experience
+• Experience enforcing code quality with ruff and pyright
+• Ability to take ownership from scoping through shipping and iteration
+• Ability to translate ambiguous product requirements into technical proposals
+• Ability to communicate tradeoffs to technical and non-technical stakeholders
+• Ability to conduct code reviews that improve quality and share context
+Tech stack:
+Cloud, Docker, Flask, Google Cloud Platform, GRPC, MongoDB, Numpy, Pandas, Python
+Company sponsorship flag: sponsorsH1B=true.

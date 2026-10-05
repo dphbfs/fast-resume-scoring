@@ -1,0 +1,164 @@
+{
+  "pairs": [
+    {
+      "id": "01a0d60b-7c6e-71b6-93b2-3af66d45daa3",
+      "title": "Mid-Level Full Stack Software Engineer",
+      "company": "Bicycle Health",
+      "resume": "testdata/resumes/final-syn-1.md",
+      "jd": "jd/01a0d60b-7c6e-71b6-93b2-3af66d45daa3.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-0ee26feeae7c",
+      "title": "Mid-Level Full Stack Software Engineer",
+      "company": "Crisis Text Line",
+      "resume": "testdata/resumes/final-syn-1.md",
+      "jd": "jd/01a0d60b-65d1-7472-8106-0ee26feeae7c.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-7c6d-710f-9d05-a088bef0317e",
+      "title": "Senior Software Engineer – Javascript, Ad Tech",
+      "company": "Freestar",
+      "resume": "testdata/resumes/final-syn-1.md",
+      "jd": "jd/01a0d60b-7c6d-710f-9d05-a088bef0317e.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8108-1f19049dd2f4",
+      "title": "Senior Full Stack Software Engineer – React Native",
+      "company": "Clever Devices",
+      "resume": "testdata/resumes/final-syn-1.md",
+      "jd": "jd/01a0d60b-65d1-7472-8108-1f19049dd2f4.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-939c-759c-8fad-c50c67807255",
+      "title": "Go Backend Developer",
+      "company": "Rare Candy",
+      "resume": "testdata/resumes/final-syn-1.md",
+      "jd": "jd/01a0d60b-939c-759c-8fad-c50c67807255.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823b-9c6055597371",
+      "title": "Backend Developer",
+      "company": "ARETUM",
+      "resume": "testdata/resumes/final-syn-2.md",
+      "jd": "jd/01a0d60b-17ae-76d4-823b-9c6055597371.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-2973-701e-806c-e9fba06dddbb",
+      "title": "Backend Engineer",
+      "company": "Engenious",
+      "resume": "testdata/resumes/final-syn-2.md",
+      "jd": "jd/01a0d60b-2973-701e-806c-e9fba06dddbb.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-6e08e87886a6",
+      "title": "Senior Software Engineer, Python",
+      "company": "Voxel51",
+      "resume": "testdata/resumes/final-syn-2.md",
+      "jd": "jd/01a0d60b-65d1-7472-8106-6e08e87886a6.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-3c3f-720c-9b88-54cd89fce024",
+      "title": "Senior Software Engineer, Python",
+      "company": "ComboCurve",
+      "resume": "testdata/resumes/final-syn-2.md",
+      "jd": "jd/01a0d60b-3c3f-720c-9b88-54cd89fce024.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-547b9c2ae8c1",
+      "title": "Senior Software Engineer, Android Ecosystem",
+      "company": "Unity",
+      "resume": "testdata/resumes/final-syn-2.md",
+      "jd": "jd/01a0d60b-65d1-7472-8106-547b9c2ae8c1.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-a1b5ecb765ad",
+      "title": "Senior Data Engineer - Revenue Data Platform",
+      "company": "Datadog",
+      "resume": "testdata/resumes/final-syn-3.md",
+      "jd": "jd/01a0d60b-65d0-776c-964f-a1b5ecb765ad.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-2972-751c-9453-d068116c0a3d",
+      "title": "Senior Software Engineer – Backend, Machine Learning",
+      "company": "The Home Depot",
+      "resume": "testdata/resumes/final-syn-3.md",
+      "jd": "jd/01a0d60b-2972-751c-9453-d068116c0a3d.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-2972-751c-9453-e90b71f62048",
+      "title": "Senior Software Engineer, Dataplane",
+      "company": "Alteryx",
+      "resume": "testdata/resumes/final-syn-3.md",
+      "jd": "jd/01a0d60b-2972-751c-9453-e90b71f62048.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-3c3f-720c-9b88-d759ce69c15e",
+      "title": "Software Engineer – Market Data",
+      "company": "Alpaca",
+      "resume": "testdata/resumes/final-syn-3.md",
+      "jd": "jd/01a0d60b-3c3f-720c-9b88-d759ce69c15e.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-d15079e180cb",
+      "title": "Senior Software Engineer – Front End / Full Stack",
+      "company": "Grove Collaborative",
+      "resume": "testdata/resumes/final-syn-3.md",
+      "jd": "jd/01a0d60b-65d0-776c-964f-d15079e180cb.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823a-d57a3d55ca57",
+      "title": "Senior Product Engineer – Java, Spring Boot",
+      "company": "Allstate",
+      "resume": "testdata/resumes/final-real-contract.md",
+      "jd": "jd/01a0d60b-17ae-76d4-823a-d57a3d55ca57.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-7c6e-71b6-93b0-32108097f4fc",
+      "title": "Senior Backend Engineer – Backend Platform",
+      "company": "Close",
+      "resume": "testdata/resumes/final-real-contract.md",
+      "jd": "jd/01a0d60b-7c6e-71b6-93b0-32108097f4fc.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823b-1404c5e9c4cf",
+      "title": "Senior Backend Engineer",
+      "company": "Yendo",
+      "resume": "testdata/resumes/final-real-contract.md",
+      "jd": "jd/01a0d60b-17ae-76d4-823b-1404c5e9c4cf.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823a-eeef5562cd9f",
+      "title": "Senior Backend Developer – Travel Rule",
+      "company": "Sumsub",
+      "resume": "testdata/resumes/final-real-contract.md",
+      "jd": "jd/01a0d60b-17ae-76d4-823a-eeef5562cd9f.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-dba44b6133c0",
+      "title": "Salesforce Software Engineer",
+      "company": "Stryker",
+      "resume": "testdata/resumes/final-real-contract.md",
+      "jd": "jd/01a0d60b-65d0-776c-964f-dba44b6133c0.txt",
+      "kind": "off"
+    }
+  ]
+}

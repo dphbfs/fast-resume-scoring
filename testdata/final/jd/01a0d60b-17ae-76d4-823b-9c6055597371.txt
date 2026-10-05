@@ -1,0 +1,57 @@
+## ARETUM - Backend Developer
+
+🔗 [Apply](https://apply.workable.com/aretum/j/809385FCD9)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend Developer providing technical support and enhancements in an Agile environment at Aretum. Utilizing expertise in Python, AWS, and RESTful APIs for client application maintenance.
+Backend Developer providing technical support at Aretum
+- Tech stack: AWS, Cloud, Django, Python, Ruby, Ruby on Rails, TypeScript
+- Provide expert technical support to maintain the client application
+- Provide support for development, enhancements, accessibility, integration, optimization, and maintenance
+- Ensure availability and correct operations
+- Work within a sprint-based development cycle
+- Utilize knowledge of the AWS cloud environment, Python backend and TypeScript front-end
+- 5 years of backend development experience
+- Bachelor’s Degree (3 years of additional experience is acceptable in lieu of a degree)
+- Experience using modern software to prototype and deploy backend web applications
+- Experience using web programming languages (e.g., Ruby, Python) and frameworks (e.g., Django, Rails)
+- Experience developing and consuming web-based, RESTful APIs
+- Experience working in a team environment that uses agile methodologies
+- Experience authoring developer-friendly documentation
+- Experience using version control systems
+
+### Full Job Description
+Summary:
+Backend Developer providing technical support and enhancements in an Agile environment at Aretum. Utilizing expertise in Python, AWS, and RESTful APIs for client application maintenance.
+Backend Developer providing technical support at Aretum
+Role description:
+- Provide expert technical support to maintain the client application
+- Provide support for development, enhancements, accessibility, integration, optimization, and maintenance
+- Ensure availability and correct operations
+- Work within a sprint-based development cycle
+- Utilize knowledge of the AWS cloud environment, Python backend and TypeScript front-end
+Role requirements:
+- 5 years of backend development experience
+- Bachelor’s Degree (3 years of additional experience is acceptable in lieu of a degree)
+- Experience using modern software to prototype and deploy backend web applications
+- Experience using web programming languages (e.g., Ruby, Python) and frameworks (e.g., Django, Rails)
+- Experience developing and consuming web-based, RESTful APIs
+- Experience working in a team environment that uses agile methodologies
+- Experience authoring developer-friendly documentation
+- Experience using version control systems
+- Experience with relational and non-relational database systems
+- Proficiency with scalable search technology
+- Competence in handling and scaling large data sets and their storage
+- Experience communicating technical concepts to a non-technical audience
+Benefits:
+- Health Care Plan (Medical, Dental & Vision) 
+- Retirement Plan (401k) 
+- Life Insurance (Basic, Voluntary & AD&D) 
+- Paid Time Off 
+- Family Leave (Maternity, Paternity) 
+- Short Term & Long-Term Disability 
+- Training & Development
+Tech stack:
+AWS, Cloud, Django, Python, Ruby, Ruby on Rails, TypeScript

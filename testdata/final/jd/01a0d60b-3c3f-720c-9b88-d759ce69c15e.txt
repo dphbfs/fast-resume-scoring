@@ -1,0 +1,66 @@
+## Alpaca - Software Engineer – Market Data
+
+🔗 [Apply](https://boards.greenhouse.io/alpaca/jobs/6144575004)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior software engineer designing scalable market-data services for Alpaca’s brokerage infrastructure.
+Building APIs and production systems for stocks, options, crypto, and foreign exchange data.
+Senior engineer building scalable market-data infrastructure for Alpaca’s brokerage APIs
+- Tech stack: AWS, Azure, Docker, Google Cloud Platform, Kubernetes, Linux, Shell Scripting, SQL
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design highly scalable, mission-critical market data provider services
+- Maintain good software quality and test coverage
+- Participate in code reviews
+- Troubleshoot incidents and reported bugs
+- Help build and scale the systems and services underlying Alpaca's brokerage infrastructure
+- Improve the architecture connected to stocks, options, crypto, and foreign exchange data products
+- Oversee public API structure and documentation for streaming and historical endpoints
+- Plan, ideate, experiment, and productionize new services and libraries to address scaling challenges
+- BSc/MSc or equivalent experience in Computer Science or a related field
+- Minimum 3 years of backend software development experience
+- Hands-on experience with Docker or Kubernetes
+- DevOps mindset
+- Knowledge of Agile/Scrum methodologies
+- Experience building and architecting systems at scale
+- Deep understanding of POSIX-like operating systems, modern infrastructure, and orchestration practices
+- Nice-to-have: experience with large datasets
+
+### Full Job Description
+Summary:
+Senior software engineer designing scalable market-data services for Alpaca’s brokerage infrastructure.
+Building APIs and production systems for stocks, options, crypto, and foreign exchange data.
+Senior engineer building scalable market-data infrastructure for Alpaca’s brokerage APIs
+Role description:
+• Design highly scalable, mission-critical market data provider services
+• Maintain good software quality and test coverage
+• Participate in code reviews
+• Troubleshoot incidents and reported bugs
+• Help build and scale the systems and services underlying Alpaca's brokerage infrastructure
+• Improve the architecture connected to stocks, options, crypto, and foreign exchange data products
+• Oversee public API structure and documentation for streaming and historical endpoints
+• Plan, ideate, experiment, and productionize new services and libraries to address scaling challenges
+Role requirements:
+• BSc/MSc or equivalent experience in Computer Science or a related field
+• Minimum 3 years of backend software development experience
+• Hands-on experience with Docker or Kubernetes
+• DevOps mindset
+• Knowledge of Agile/Scrum methodologies
+• Experience building and architecting systems at scale
+• Deep understanding of POSIX-like operating systems, modern infrastructure, and orchestration practices
+• Nice-to-have: experience with large datasets
+• Nice-to-have: Kubernetes experience; CKA or CKAD certification is a plus
+• Nice-to-have: SQL experience
+• Nice-to-have: IP networking experience
+• Nice-to-have: understanding of financial markets
+• Nice-to-have: experience with AWS, GCP, or Azure
+• Nice-to-have: shell scripting, Linux, Docker, microservice architectures, and clean code principles
+Benefits:
+• Competitive Salary & Stock Options
+• Health Benefits
+• New Hire Home-Office Setup: One-time USD $500
+• Monthly Stipend: USD $150 per month via a Brex Card
+Tech stack:
+AWS, Azure, Docker, Google Cloud Platform, Kubernetes, Linux, Shell Scripting, SQL
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.
