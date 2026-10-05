@@ -2,7 +2,7 @@ BIN := bin/extract
 # Load local API keys when present (gitignored).
 ENV := set -a; [ -f .env ] && . ./.env; set +a;
 
-.PHONY: all build test race vet wire wire-check lint eval eval-checker clean
+.PHONY: all build test race vet wire wire-check lint eval eval-checker eval-e2e clean
 
 all: wire-check vet test build
 
@@ -43,6 +43,14 @@ eval-checker:
 	go build -o bin/eval ./cmd/eval
 	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
 	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} ./bin/eval -checker $(EVAL_ARGS)
+
+# Extracts and checks the reference pairs (testdata/reference) end to end
+# against live Jev and writes eval/reports/e2e/<timestamp>.{json,md}.
+# EVAL_ARGS="-set all" adds ranking-only pairs; -extract-cache= runs cold.
+eval-e2e:
+	go build -o bin/eval ./cmd/eval
+	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
+	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} ./bin/eval -e2e $(EVAL_ARGS)
 
 clean:
 	rm -rf bin

@@ -31,6 +31,9 @@ func run() int {
 	baseline := flag.Bool("baseline", false, "with -checker: also score each pair with one generative prompt (OPENAI_*) and compare")
 	priceIn := flag.Float64("baseline-price-in", 0, "baseline input price, USD per million tokens (used when the provider reports no cost; with -rescore, reprices stored calls)")
 	priceOut := flag.Float64("baseline-price-out", 0, "baseline output price, USD per million tokens (used when the provider reports no cost)")
+	e2e := flag.Bool("e2e", false, "evaluate extraction + checking end to end against the reference scores in testdata/reference")
+	set := flag.String("set", eval.E2ESubset, "with -e2e: pairs to run: subset, current, or all")
+	extractCache := flag.String("extract-cache", "eval/cache/extract", "with -e2e: cache directory for extraction results (empty: always extract, for cold cost)")
 	flag.Parse()
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -39,6 +42,13 @@ func run() int {
 	var prefixes []string
 	if *only != "" {
 		prefixes = strings.Split(*only, ",")
+	}
+	if *e2e {
+		dir := *out
+		if dir == "eval/reports" {
+			dir = "eval/reports/e2e"
+		}
+		return runE2E(ctx, *set, dir, *summaries, *extractCache, prefixes, *parallel)
 	}
 	if *checker {
 		dir := *out
@@ -148,6 +158,35 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 		fmt.Printf("fit error vs labels over %d pairs: generative %.1f (max %d)  jev %.1f (max %d)  baseline failed %d/%d\n",
 			b.Pairs, b.FitError, b.FitErrorMax, b.JevFitError, b.JevFitErrorMax, b.Failed, b.Ran)
 	}
+	if t.Failed > 0 {
+		return 1
+	}
+	return 0
+}
+
+// runE2E extracts and checks the reference pairs and compares each Fit
+// Score with the reference score.
+func runE2E(ctx context.Context, set, out, summaries, extractCache string, prefixes []string, parallel int) int {
+	pairs, err := eval.LoadE2E("testdata/reference", ".", set, prefixes)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "eval:", err)
+		return 2
+	}
+	runner, err := initE2ERunner(gencache.Dir(summaries))
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "eval:", err)
+		return 1
+	}
+	report := runner.Run(ctx, pairs, parallel, extractCache)
+	report.Set = set
+	path, err := report.Write(out)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "eval:", err)
+		return 1
+	}
+	t := report.Totals
+	fmt.Printf("MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f  saved tau-b %.2f  $%.4f/pair  failed %d/%d\nreport: %s\n",
+		t.MAE, t.Bias, 100*t.Within10, t.MaxError, t.TauB, t.SavedTauB, t.JevCostPerPair, t.Failed, t.Pairs, path)
 	if t.Failed > 0 {
 		return 1
 	}

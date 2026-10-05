@@ -490,4 +490,3 @@ func TestStrengthSkipCappedGrading(t *testing.T) {
 		}
 	}
 }
-
