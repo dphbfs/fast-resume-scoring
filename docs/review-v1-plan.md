@@ -149,7 +149,7 @@ grades).
 - [ ] A2. Variants vs current discrete credit: unnormalized Σp·credit,
       conditional Σp·credit/mass, gate·Σp·credit, partial = strong / =
       weak extremes.
-- [ ] A3. Constrained calibration of partial, weak, preferred, mentioned
+- [x] A3 (first pass, `scripts/calibrate_fit.py`: MAE-best knobs hurt ranking, not adopted; see `docs/tuning.md`). Constrained calibration of partial, weak, preferred, mentioned
       against the development reference scores; grouped validation by
       resume.
 - [ ] A4. Pick one candidate (or keep current); log in `docs/tuning.md`.

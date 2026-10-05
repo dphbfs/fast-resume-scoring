@@ -481,3 +481,37 @@ today's generative reference score (`current.json`).
   make: eligibility (a high-school fellowship), and seniority/scope.
 - Cost: $0.0168 per pair cold vs ~$0.05 for one Opus 5 call, about 3×
   cheaper; the 5× target needs about $0.010.
+
+### Full posting only, and Fit Score calibration (2026-10-05, review v1 a/b)
+
+**(a) Read only the full posting.** Job Descriptions saved by the
+job-search agent carry its condensed "Stack & Responsibilities" summary
+before the original posting (`### Full Job Description`). The extractor
+now keeps the title line and the full posting only (`app.postingText`,
+`ExtractorVersion` 2). Rerun `eval/reports/e2e/2026-10-05T02-45-27Z`:
+MAE 20.0, bias -17.0, τ-b 0.47 (was 20.5 / -17.5 / 0.46, within noise);
+extraction input tokens -26%, cost $0.0168 -> $0.0147 per pair.
+Requirements per posting barely moved (54 -> 52): Refinement already
+merged the duplicates, so the saving is reading less text.
+
+**(b) Calibrate the knobs (A3), offline.** `scripts/calibrate_fit.py`
+replays the run's Coverage (it reproduces the reported Fit Scores) over a
+constrained grid (strong 1, none 0, required weight 3 fixed):
+
+| Knobs (partial, weak, preferred, mentioned) | MAE | Bias | τ-b |
+|---|---|---|---|
+| current (0.6, 0.3, 1.5, 1) | 20.0 | -17.0 | 0.47 |
+| MAE-best (1, 1, 1.5, 0.75), leave-one-out MAE 13.8 | 12.9 | -5.0 | 0.34 |
+| strong only (0, 0, 1.5, 1) | 28.5 | | 0.53 |
+| required items only, current credits | 16.5 | | 0.38 |
+
+- The MAE optimum is a corner (any link earns full credit) and still
+  leaves -5 bias: the knobs cannot close the gap, and they trade ranking
+  for level. Not adopted.
+- 48% of scored items have no evidence (35% of required ones), with ~40
+  items per posting: the formula averages over many details the
+  generative score does not weigh. Level can be fixed by a monotone map
+  that keeps the ranking; ranking needs a better signal (e.g. a
+  holistic/eligibility question), not knob tuning.
+- On 30 pairs a τ-b difference of ~0.1 is within noise; treat the
+  "strong only" gain as a hint, not a result.

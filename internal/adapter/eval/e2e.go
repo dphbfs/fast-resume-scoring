@@ -20,6 +20,7 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
+	"github.com/dphbfs/fast-resume-tailoring/internal/app"
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
@@ -276,10 +277,11 @@ func (r *E2ERunner) extract(ctx context.Context, jd domain.JobDescription, cache
 	var path string
 	if cacheDir != "" {
 		key, err := json.Marshal(struct {
+			Version  string
 			Text     string
 			Model    string
 			Pipeline config.Pipeline
-		}{jd.Text, r.jev.Model, r.pipeline})
+		}{app.ExtractorVersion, jd.Text, r.jev.Model, r.pipeline})
 		if err != nil {
 			return domain.Result{}, false, err
 		}

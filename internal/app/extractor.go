@@ -69,7 +69,7 @@ type run struct {
 
 // Extract turns a Job Description into Requirements.
 func (e *Extractor) Extract(ctx context.Context, jd domain.JobDescription) (domain.Result, domain.Trace, error) {
-	r := &run{jd: jd}
+	r := &run{jd: postingText(jd)}
 	stages := []struct {
 		name string
 		fn   func(context.Context, *run) error
