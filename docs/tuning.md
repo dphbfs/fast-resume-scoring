@@ -756,3 +756,37 @@ final set MAE 5.0, bias −0.3, 90% within ±10, τ-b 0.88 (01-03-35Z).
 $0.0001 per pair, mean 0.3 s per pair. Dropped from the request:
 `responsibilities`, `domain_mismatch`, `primary_gap`,
 `location_mismatch`, and the employment-gap computation.
+
+## Second sealed set, frozen run (2026-10-06)
+
+Match Score v4 (commit e5c6e59, unchanged since ADR 0004), one run on
+`testdata/final2`: 20 pairs, 4 held-out resumes (new-grad Go backend,
+staff platform/SRE, application/cloud security, the real analyst resume),
+18 postings never read before. Report `eval/reports/e2e/2026-10-06T01-32-00Z`;
+recruiter judge (gpt-6-luna, 3 runs, median) in `testdata/final2/judge.json`.
+
+| | MAE | bias | within 10 | Pearson | τ-b |
+|---|---|---|---|---|---|
+| Jev Match vs reference | 8.6 | −3.9 | 60% | 0.90 | 0.78 |
+| Judge vs reference | 8.8 | −5.5 | 75% | 0.91 | 0.78 |
+| Jev vs judge | 7.9 | +1.7 | 80% | 0.84 | 0.67 |
+
+For comparison: development (both old sets) MAE 5.0; v3 on the first
+sealed set MAE 11.6, τ-b 0.69. $0.0001 per pair, 0 failures.
+
+- Jev agrees with the reference as closely as an independent frontier
+  judge does (MAE 8.6 vs 8.8, same τ-b). The development MAE (5.0) was
+  optimistic, as expected from model selection on 50 pairs.
+- By resume (MAE): new-grad 4.2, staff SRE 5.4, security 9.8, real
+  analyst 14.8. The analyst resume (a software engineer moving into
+  analysis, with SWE job titles) is under-scored on analyst roles
+  (`role_match` 0.52-0.56; Travel + Leisure 65 vs 79, Verizon BI 75 vs
+  89) and on adjacent engineering roles (Search Platform 45 vs 67,
+  Samsara data engineer 41 vs 57). The judge sits with Jev on several of
+  these (Search Platform 43, Travel + Leisure 64): the reference is
+  generous to career changers.
+- Largest over-scores: Frontline reporting analyst for the SRE resume
+  (38 vs 24; judge 18) and Cockroach corporate security for the security
+  resume (51 vs 40; judge 18): an off-role or location-restricted posting
+  not pushed low enough. The blocker did not fire on "must be based in
+  the NYC area" (0.16), by design: location is excluded.

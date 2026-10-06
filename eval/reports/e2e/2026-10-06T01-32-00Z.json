@@ -1,0 +1,328 @@
+{
+  "started": "2026-10-06T01:32:00.615829433Z",
+  "duration": "2.097s",
+  "model": "typesafe/jev-1.13-20260917",
+  "revision": "e5c6e5963bca-dirty",
+  "set": "current",
+  "dir": "testdata/final2",
+  "pipeline": {
+    "MaxWindowWords": 4,
+    "SectionBatchSize": 60,
+    "MinRequirementMass": 0.7,
+    "SkipImportance": true,
+    "SkipResponsibilities": true
+  },
+  "checker": {
+    "RetrievalK": 8,
+    "RetrievalFloor": 0.01,
+    "MinEvidenceMass": 0.5,
+    "NarrowSizes": [],
+    "GateThreshold": 0.5,
+    "SkipCappedGrading": true,
+    "GateFirst": true,
+    "SkipMentioned": true
+  },
+  "totals": {
+    "pairs": 20,
+    "failed": 0,
+    "scored": 20,
+    "mae": 8.55,
+    "bias": -3.85,
+    "within_5": 0.35,
+    "within_10": 0.6,
+    "max_error": 22,
+    "pearson": 0.9036165416957782,
+    "tau_b": 0.7849575812702865,
+    "saved_pairs": 0,
+    "saved_tau_b": 0,
+    "jev_cost_per_pair_usd": 0.00009175000000000001,
+    "mean_ms": 409
+  },
+  "pairs": [
+    {
+      "id": "01a10e2d-006a-7115-ab02-a269f8803ae6--final2-syn-1",
+      "title": "Software Engineer",
+      "reference": 67,
+      "match": 59,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.5375,
+        "experience_short": 0.51,
+        "blocker": 0.06
+      },
+      "holistic_ms": 1293
+    },
+    {
+      "id": "01a0d60a-cef5-739a-ade5-4f1214b5aa11--final2-syn-1",
+      "title": "Software Engineer II, Backend (Identity Decisioning)",
+      "reference": 67,
+      "match": 70,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.75,
+        "experience_short": 0.37,
+        "blocker": 0.05
+      },
+      "holistic_ms": 1292
+    },
+    {
+      "id": "01a0d60a-cefb-716c-9189-d5af2ca486bf--final2-syn-1",
+      "title": "Senior Backend Engineer (Go)",
+      "reference": 38,
+      "match": 36,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.7675,
+        "experience_short": 0.98,
+        "blocker": 0.12
+      },
+      "holistic_ms": 1292
+    },
+    {
+      "id": "01a10d3c-b063-7080-b144-7b04aa306dc6--final2-syn-1",
+      "title": "Senior Software Engineer, Cloudflare for SaaS",
+      "reference": 37,
+      "match": 39,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.8525,
+        "experience_short": 0.96,
+        "blocker": 0.1
+      },
+      "holistic_ms": 561
+    },
+    {
+      "id": "01a0d51c-4aab-760e-a5ae-1353e357010c--final2-syn-1",
+      "title": "Data Analyst",
+      "reference": 42,
+      "match": 36,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.1175,
+        "experience_short": 0.8,
+        "blocker": 0.06
+      },
+      "holistic_ms": 705
+    },
+    {
+      "id": "01a0d60a-d7d3-75ea-a85d-cfa8ef43993d--final2-syn-2",
+      "title": "Staff Platform Engineer",
+      "reference": 94,
+      "match": 90,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.9675,
+        "experience_short": 0.04,
+        "blocker": 0.07
+      },
+      "holistic_ms": 238
+    },
+    {
+      "id": "01a0d60a-cf04-747f-bb78-06376ae31cca--final2-syn-2",
+      "title": "Senior SRE",
+      "reference": 88,
+      "match": 89,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.96,
+        "experience_short": 0.03,
+        "blocker": 0.08
+      },
+      "holistic_ms": 230
+    },
+    {
+      "id": "01a0d60a-cf06-7211-a673-45ea9f1545ff--final2-syn-2",
+      "title": "Staff Software Engineer, DevProd (Infrastructure Observability)",
+      "reference": 87,
+      "match": 89,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.9425,
+        "experience_short": 0.04,
+        "blocker": 0.07
+      },
+      "holistic_ms": 213
+    },
+    {
+      "id": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-2",
+      "title": "Sr. Corporate Security Engineer",
+      "reference": 24,
+      "match": 30,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.18,
+        "experience_short": 0.88,
+        "blocker": 0.16
+      },
+      "holistic_ms": 222
+    },
+    {
+      "id": "01a0d51c-4c99-73bf-b32e-d31818cf5f3b--final2-syn-2",
+      "title": "Financial Systems \u0026 Reporting Assurance Analyst I",
+      "reference": 24,
+      "match": 38,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.01,
+        "experience_short": 0.74,
+        "blocker": 0.05
+      },
+      "holistic_ms": 197
+    },
+    {
+      "id": "01a0d60a-ec0e-7432-95ef-0a04af365ec3--final2-syn-3",
+      "title": "Senior Software Engineer, Security",
+      "reference": 76,
+      "match": 69,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.78,
+        "experience_short": 0.41,
+        "blocker": 0.05
+      },
+      "holistic_ms": 195
+    },
+    {
+      "id": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-3",
+      "title": "Sr. Corporate Security Engineer",
+      "reference": 40,
+      "match": 51,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.435,
+        "experience_short": 0.51,
+        "blocker": 0.16
+      },
+      "holistic_ms": 197
+    },
+    {
+      "id": "01a0d60a-d7d3-75ea-a85e-f460ad38269a--final2-syn-3",
+      "title": "Senior Infrastructure Software Engineer, Identity \u0026 Auth Engineering",
+      "reference": 57,
+      "match": 39,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.265,
+        "experience_short": 0.77,
+        "blocker": 0.09
+      },
+      "holistic_ms": 203
+    },
+    {
+      "id": "01a0d60a-d7d4-71d8-a457-b814b5ce6cfe--final2-syn-3",
+      "title": "Senior Backend Engineer ((Python / Go)",
+      "reference": 35,
+      "match": 34,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.24,
+        "experience_short": 0.89,
+        "blocker": 0.05
+      },
+      "holistic_ms": 200
+    },
+    {
+      "id": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-syn-3",
+      "title": "Cslt-Business Intelligence",
+      "reference": 55,
+      "match": 43,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.0425,
+        "experience_short": 0.65,
+        "blocker": 0.06
+      },
+      "holistic_ms": 187
+    },
+    {
+      "id": "01a0d51c-49be-76fb-bf4b-d2b9cb29378c--final2-real-analyst",
+      "title": "Analyst, Club Compliance/Operations II (Club Compliance Data Analyst II)",
+      "reference": 79,
+      "match": 65,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.5225,
+        "experience_short": 0.39,
+        "blocker": 0.05
+      },
+      "holistic_ms": 188
+    },
+    {
+      "id": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-real-analyst",
+      "title": "Cslt-Business Intelligence",
+      "reference": 89,
+      "match": 75,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.56,
+        "experience_short": 0.22,
+        "blocker": 0.05
+      },
+      "holistic_ms": 198
+    },
+    {
+      "id": "01a10d3c-d4db-75e5-ab44-aac6b13f2d15--final2-real-analyst",
+      "title": "Data Engineer",
+      "reference": 57,
+      "match": 41,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.3525,
+        "experience_short": 0.79,
+        "blocker": 0.07
+      },
+      "holistic_ms": 205
+    },
+    {
+      "id": "01a0d60a-e181-7121-bf3a-33de78c3fdce--final2-real-analyst",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "reference": 25,
+      "match": 33,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.2975,
+        "experience_short": 0.94,
+        "blocker": 0.04
+      },
+      "holistic_ms": 188
+    },
+    {
+      "id": "01a0d60a-e181-7121-bf39-b1d7fb4ba38b--final2-real-analyst",
+      "title": "Senior Infrastructure Software Engineer, Search Platform",
+      "reference": 67,
+      "match": 45,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.25,
+        "experience_short": 0.63,
+        "blocker": 0.1
+      },
+      "holistic_ms": 181
+    }
+  ],
+  "metrics": {
+    "counters": {
+      "holistic.input_tokens": 43719,
+      "holistic.output_tokens": 1040,
+      "holistic.requests": 20,
+      "jev.calls": 20,
+      "jev.cost_micro_usd": 1835,
+      "jev.input_tokens": 43719,
+      "jev.output_tokens": 1040
+    },
+    "durations": {
+      "jev.latency": {
+        "count": 20,
+        "p50": 203351083,
+        "p95": 1292612621,
+        "max": 1293115024
+      },
+      "stage.holistic": {
+        "count": 20,
+        "p50": 203417268,
+        "p95": 1292776769,
+        "max": 1293259616
+      }
+    }
+  }
+}
