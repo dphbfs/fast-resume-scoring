@@ -26,10 +26,11 @@ have (some bullets specific and measurable, some vague).
    platforms; started as a Linux sysadmin. Little product feature work;
    writes mostly Go and Python tooling. Has led teams without a manager
    title.
-3. **iOS / mobile engineer**, about 6–8 years. Swift and SwiftUI, some
-   Kotlin/Android, a little React Native; consumer apps in media and
-   travel. Light backend work (a few Node.js endpoints). Has one
-   contract stint between two full-time roles.
+3. **Application / cloud security engineer**, about 6–8 years. Started
+   as a Python developer, then moved into security: threat modeling,
+   secure code review, AWS IAM and cloud security posture, SAST/DAST
+   tooling, incident response. Some detection engineering; no
+   front-end work. Has one contract stint between two full-time roles.
 
 Make the three clearly different from each other in stack, domain, and
 seniority. Avoid making any of them a generic "Java/Spring/Kafka backend
@@ -65,7 +66,7 @@ any other file or directory in this location; create the files directly.
 - `testdata/resumes/final2-syn-2.md`:
   candidate 2 (staff platform / SRE engineer)
 - `testdata/resumes/final2-syn-3.md`:
-  candidate 3 (iOS / mobile engineer)
+  candidate 3 (application / cloud security engineer)
 - `docs/final-set-2/synthetic-resume-notes.md`:
   one short paragraph per candidate with the strengths and gaps you
   intended (kept separately; not part of any resume)

@@ -1,0 +1,34 @@
+Travel + Leisure Co. - Club Compliance Data Analyst II (Tampa, FL)
+
+The Club Compliance Data Analyst II will lead internal investigations to conduct a thorough analysis of Club compliance: identifying, investigating, and evaluating violations of the Club rules, and proposing additional regulation/compliance measures. Designs and analyzes portfolio reporting on operational and financial trends (data aggregation, statistical analysis, data mining). Assists with the design, development, testing, and maintenance of key operational databases, macro programs, and data queries. Ensures data integrity of internal systems, fulfills standard and ad-hoc reporting needs, and works with other functional areas to establish performance and operational metrics.
+
+Analysis and Investigation (40%)
+* Analyze booking trends and benefit usage across accounts to identify trends, unapproved collaborations, or rule violations.
+* Collaborate with Legal, Club, Operations, Title Services, and HR to determine thresholds and investigate potential violations.
+* Lead process evaluations and identify opportunities to improve efficiencies.
+* Follow up on outstanding action points and ensure issues are closed in a timely manner.
+
+Evaluation, Monitoring, Controlling (10%)
+* Monitor issues identified during analysis and investigation; develop controls to mitigate future risk.
+* Evaluate controls: Point Utilization, Booking Trends, Contact Center Operations, Sales and Marketing, 3rd Party Activity.
+* Formulate recommendations to improve internal control processes.
+
+Data Reporting, Manipulation, Analysis and Story Telling (40%)
+* Create reports and develop tools and processes to automate reports.
+* Analyze large amounts of data relating to sales, customers, or financial performance.
+* Use SQL and other coding languages to extract data.
+* Align reports to business objectives and KPIs.
+* Collaborate with business areas and leaders to identify reporting needs.
+* Access existing databases and create processes for storage of new data.
+* Planning & Forecasting: identify operational or financial variances and develop forecast models.
+
+Travel Requirements: NONE
+
+What You'll Bring
+* Bachelor's degree in MIS, IS, IT or Business, or equivalent work experience; one to three years of experience in: Contact Center/Customer Operations; designing automation and data connections using any of Power Apps, SharePoint, SQL, SAS, Power BI, Python, Excel, Tableau, Visual Basic; cross-functional communication with leadership; risk management.
+* Ability to work with little supervision; excellent business writing and oral communication; write owner-facing documents and scripts; create training guides and SOPs; prioritize multiple projects; attention to detail.
+* Technical: Microsoft Office Suite (Excel, Access, SharePoint, etc.); Visual Basic, Power Automate, Power Apps, Power BI, Snowflake or similar SQL DB tools; working knowledge of Club systems.
+* Job Experience: 2 years in a customer contact center or equivalent.
+* Experience equivalent to the education requirement may be accepted.
+
+Benefits: medical, dental, vision, FSA, life/disability, PTO, parental leave, 401k match, EAP, wellness program.

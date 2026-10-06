@@ -1,0 +1,34 @@
+CHEP (Brambles) - Data Analyst (Tampa, FL, Hybrid)
+
+Key Responsibilities
+* Analyze complex, high-volume data from various sources using diverse tools and techniques to derive actionable insights.
+* Develop and maintain standardized outputs, including visualizations and dashboards.
+* Respond to ad-hoc analysis requests by developing new reports or dashboards.
+* Support ongoing delivery of regular KPI reports.
+* Synthesize analytical findings into meaningful insights for diverse business audiences.
+* Collaborate with cross-functional teams to understand analytical needs, define requirements, and deliver data-driven insights.
+* Continuously improve reporting processes.
+* Provide technical support and training on analytical tools and methodologies to business stakeholders.
+
+Key Accountabilities
+* Understand complex business challenges; develop analytics aligned with business needs.
+* Use statistical experience and business knowledge to solve complex business challenges.
+* Interrogate, manipulate and analyze complex, high-volume, high-dimensionality data from varying sources.
+* Build engaging and interactive visualizations.
+* Provide deep-dive analysis with clear recommendations.
+* Work within a squad to define and design Data Analytics tasks (data requirements, output, success criteria, timescales).
+* Provide guidance on KPIs and best practice in reporting.
+* Embed data analytics in Product solutions.
+
+Skills
+* Turning data into insight and recommendations for action.
+* Structured, semi-structured, and unstructured data; identifying linkages across disparate data sets.
+* Communicating insight to technical and non-technical stakeholders.
+* 1-3+ years of Data Analytics experience.
+* SQL.
+* BI tools such as QlikView, Tableau, or Power BI.
+* Understanding of Python or transferable coding languages.
+Candidates from recent graduates to more experienced considered.
+
+Remote Type: Hybrid Remote
+Skills: Adaptability, Critical Thinking, Data Analytics, Data Visualization, Microsoft Excel, Power BI, Python, SQL Tools, Tableau, Taking Ownership, Teamwork, Understand Customers.

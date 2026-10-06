@@ -1,0 +1,15 @@
+## Affirm - Software Engineer II, Backend (Identity Decisioning)
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4343874892/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- With the support of your team’s tech lead and manager, you will break down larger projects into individual tasks, deliver them in multiple phases, and collaborate with others to ensure timely delivery of your work.
+- You will support your peers and stakeholders in the product development lifecycle by collaborating with product management, design & analytics by participating in ideation, articulating technical constraints, and partnering on decisions that properly consider risks and trade-offs.
+- You will support the operations and availability of your team’s artifacts by creating and monitoring metrics, escalating when needed, and supporting “keep the lights on” & on-call efforts.
+- You will contribute to a sense of community on your team by engaging in growth and development activities such as participation in the interview process.
+- You have a total of 1.5+ years of experience as a software engineer.
+- You have experience designing, developing and launching backend systems and are proficient in one of Python or Kotlin.
+- You are familiar with the building blocks of distributed systems, and the technologies like AWS, MySQL and Kubernetes.
+- You have mastered taking a simple problem or business scenario into a solution that interacts with multiple software components, and executing on it by writing clear, easily understood, well tested and extensible code.

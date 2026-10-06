@@ -1,0 +1,15 @@
+## Coinbase - Senior Staff Software Engineer, Data Platform
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4425635433/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Define and Drive Technical Strategy: Own the technical strategy and architecture for Data Platform, setting direction across data ingestion, transformation, warehousing, streaming, and serving systems.
+- Develop and execute a multi-quarter roadmap that transitions the team from operational cost-saving toward engineering-led cost reduction — rethinking how cost scales with infrastructure, not just how to trim it.
+- Architect for the AI-Native Future: Redesign data infrastructure from the ground up to natively support AI and ML workloads — ensuring that data pipelines, data lake infrastructure, and compute systems can power fraud and other AI models, and modern multi-agent AI architectures.
+- Drive the evolution to near-real-time data availability: Enable downstream teams to act on fresher data across the company.
+- Spearhead Builder Mindset: push the team to build data infrastructure that creates compounding leverage.
+- Drive Cross-Functional Alignment: build alignment and secure commitment from senior leadership and cross-functional partners — product, infrastructure, data engineering, analytics, ML, privacy, security and compliance — on technical priorities and tradeoffs.
+- Serve as the primary technical voice for Data Platform in org-wide forums including OKR planning, architecture reviews, and long-term infrastructure strategy.
+- Deep experience building and operating large-scale distributed data infrastructure — streaming platforms, data lakes, batch and real-time processing engines, and query/serving layers.
