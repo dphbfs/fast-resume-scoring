@@ -1,0 +1,319 @@
+{
+  "alternative": {
+    "Type": "choice",
+    "Instructions": {
+      "mentions": [
+        {
+          "section": "required",
+          "sentence": "5+ years of Go and Kubernetes."
+        }
+      ],
+      "question": "In `mentions`, which option does the employer accept instead of `requirement`, so that having either one is enough (\"Go, Ruby, or Python\", \"AWS or GCP\")?",
+      "requirement": "Go"
+    },
+    "Criteria": {
+      "Rust": null,
+      "required_together": "The sentence asks for `requirement` together with the others, not either one (\"Go and Kubernetes\").",
+      "unrelated": "No option is offered as an alternative to `requirement`; they are listed for different purposes."
+    }
+  },
+  "duplicate": {
+    "Type": "choice",
+    "Instructions": {
+      "mentions": [
+        {
+          "section": "required",
+          "sentence": "5+ years of Go and Kubernetes."
+        }
+      ],
+      "question": "Which option names the same thing as `requirement`: a synonym, abbreviation, or different spelling (\"K8s\" and \"Kubernetes\", \"Postgres\" and \"PostgreSQL\")?",
+      "requirement": "Kubernetes"
+    },
+    "Criteria": {
+      "Go": null,
+      "K8s": null,
+      "broader_or_narrower": "The closest option is a broader or narrower concept, not the same thing (\"cloud\" and \"AWS\", \"Master's degree\" and \"Master's degree in Computer Science\").",
+      "different_thing": "Every option names something different from `requirement` (\"Kafka\" and \"Kafka Streams\", \"Go\" and \"Rust\").",
+      "part_of_or_contains": "The closest option contains `requirement` or is contained in it, so one is more specific (\"dashboards\" and \"Grafana dashboards\", \"tools\" and \"agentic engineering tools\").",
+      "related_not_same": "The closest option is related or used together with `requirement` but is a different skill (\"Terraform\" and \"Infrastructure as Code\", \"API boundaries\" and \"API contracts\", \"security\" and \"secure development\")."
+    }
+  },
+  "filler": {
+    "Type": "choice",
+    "Instructions": {
+      "mentions": [
+        {
+          "section": "required",
+          "sentence": "5+ years of Go and Kubernetes."
+        }
+      ],
+      "question": "`requirement` was extracted from the job posting sentences in `mentions`. What is it?",
+      "requirement": "Go"
+    },
+    "Criteria": {
+      "company_context": "A name or idea specific to this company, its internal systems, teams, or customers rather than a transferable skill: \"FinHub\", \"Overseer's integrity guarantees\", \"our merchants\".",
+      "condition": "A condition of the job rather than a skill: work authorization, citizenship, clearance, location, time zone, travel, schedule, or on-call rotation.",
+      "generic_trait": "A personal trait, attitude, or work style: \"team player\", \"self-starter\", \"strong judgment\", \"fast-paced environment\", \"ownership\".",
+      "specific_requirement": "A specific skill, technology, domain, qualification, kind of experience, or responsibility that a resume could show: \"Kubernetes\", \"payments\", \"5+ years of Go\", \"API design\", \"mentoring engineers\".",
+      "vague_term": "Too broad to check on a resume by itself: \"backend\", \"scalable\", \"resilience\", \"operations\", \"quality\", \"integration\"."
+    }
+  },
+  "gate": {
+    "Type": "noul",
+    "Instructions": {
+      "job_posting_context": "5+ years of Go.",
+      "requirement": "Go",
+      "task": "Is the resume `statement` evidence that the candidate has this job requirement?"
+    },
+    "Criteria": {
+      "false": "The statement uses a competing tool, only shares words with the requirement, shows different skills, or only its surrounding role suggests the requirement.",
+      "true": "The statement describes work done with the requirement itself, a specific instance of it, a part or prerequisite of it, or its broader practice; or it names the requirement as the candidate's own skill, degree, or certificate."
+    }
+  },
+  "gate_no_context": {
+    "Type": "noul",
+    "Instructions": {
+      "requirement": "Kafka",
+      "task": "Is the resume `statement` evidence that the candidate has this job requirement?"
+    },
+    "Criteria": {
+      "false": "The statement uses a competing tool, only shares words with the requirement, shows different skills, or only its surrounding role suggests the requirement.",
+      "true": "The statement describes work done with the requirement itself, a specific instance of it, a part or prerequisite of it, or its broader practice; or it names the requirement as the candidate's own skill, degree, or certificate."
+    }
+  },
+  "holistic": {
+    "blocker": {
+      "Type": "noul",
+      "Instructions": "Does `job_posting` state a hard eligibility condition that `resume` clearly shows the candidate does not meet? Only status conditions count: must be a current student or recent graduate, must hold a security clearance, a professional license, or citizenship the resume rules out. Skills, years of experience, degrees, and location are qualifications, not eligibility conditions.",
+      "Criteria": {
+        "false": "No status condition is stated, it is met, or the resume does not clearly contradict it. Missing years, a missing degree, or missing skills are never a yes.",
+        "true": "A stated status condition (student, clearance, license, citizenship) is clearly not met."
+      }
+    },
+    "experience_short": {
+      "Type": "noul",
+      "Instructions": "Does `resume` show clearly fewer years of the relevant kind of experience, or a clearly lower career level, than `job_posting` asks for?",
+      "Criteria": {
+        "false": "The candidate meets or exceeds the experience and level, or is within a year or so of it.",
+        "true": "The candidate's relevant experience or level is clearly below what the job asks for."
+      }
+    },
+    "role_match": {
+      "Type": "score",
+      "Instructions": "How closely does the kind of role the candidate in `resume` has been doing match the kind of role in `job_posting`? Judge the role (what the person builds and which specialty), not seniority or domain.",
+      "Criteria": [
+        "A different profession or specialty (for example Android/mobile vs data engineering, Salesforce development vs backend services, front-end vs data/ML).",
+        "A neighboring specialty with little overlap in daily work.",
+        "The same broad field with a different focus (for example front-end-leaning vs backend-leaning).",
+        "The same kind of role with a different main stack.",
+        "The same kind of role and stack."
+      ]
+    }
+  },
+  "importance": {
+    "Type": "score",
+    "Instructions": {
+      "mentions": [
+        {
+          "section": "required",
+          "sentence": "5+ years of Go and Kubernetes."
+        }
+      ],
+      "question": "How important is `requirement` to the employer, judging by every sentence in `mentions` and its section?",
+      "requirement": "Go"
+    },
+    "Criteria": [
+      "Mentioned only in passing: an example in a list, a tech-stack entry, or context.",
+      "Part of the day-to-day work the posting describes, but not stated as a requirement.",
+      "Listed as preferred, a bonus, a plus, or nice to have.",
+      "Stated as a requirement for the role.",
+      "Stated as a hard requirement and emphasized or repeated in several places."
+    ]
+  },
+  "retrieval": {
+    "Type": "choice",
+    "Instructions": "A resume `statement` is checked against a job's requirements. Which requirement does this statement most directly give evidence for? Choose none when it demonstrates none of them.",
+    "Criteria": {
+      "Go": "Job posting: 5+ years of Go.",
+      "Kafka": null,
+      "none": "The statement is not evidence for any of the listed job requirements."
+    }
+  },
+  "section": {
+    "Type": "choice",
+    "Instructions": {
+      "heading": "Requirements",
+      "question": "Which part of the job description is `sentence`? `heading` is the nearest heading above it in the posting. An item under a heading such as \"Bonus points\" or \"Nice to have\" is preferred, and an item under \"Benefits\" is benefits, even if the item itself does not say so.",
+      "sentence": "5+ years of Go and Kubernetes."
+    },
+    "Criteria": {
+      "benefits": "Salary, equity, bonus, insurance, time off, perks, or other compensation and benefits.",
+      "company": "About the company, team, product, mission, or culture rather than about the candidate or the work.",
+      "other": "A heading, job title, legal or equal-opportunity text, application instructions, location or logistics, or anything else.",
+      "preferred": "A qualification that is optional: preferred, bonus, nice-to-have, \"a plus\", or ideal-candidate extras.",
+      "required": "A qualification the candidate must have: required skills, experience, education, or minimum qualifications.",
+      "responsibilities": "What the person will do in the role: duties, projects, ownership, and day-to-day work."
+    }
+  },
+  "section_no_head": {
+    "Type": "choice",
+    "Instructions": {
+      "heading": "(none)",
+      "question": "Which part of the job description is `sentence`? `heading` is the nearest heading above it in the posting. An item under a heading such as \"Bonus points\" or \"Nice to have\" is preferred, and an item under \"Benefits\" is benefits, even if the item itself does not say so.",
+      "sentence": "Remote, US only."
+    },
+    "Criteria": {
+      "benefits": "Salary, equity, bonus, insurance, time off, perks, or other compensation and benefits.",
+      "company": "About the company, team, product, mission, or culture rather than about the candidate or the work.",
+      "other": "A heading, job title, legal or equal-opportunity text, application instructions, location or logistics, or anything else.",
+      "preferred": "A qualification that is optional: preferred, bonus, nice-to-have, \"a plus\", or ideal-candidate extras.",
+      "required": "A qualification the candidate must have: required skills, experience, education, or minimum qualifications.",
+      "responsibilities": "What the person will do in the role: duties, projects, ownership, and day-to-day work."
+    }
+  },
+  "strength": {
+    "Type": "choice",
+    "Instructions": {
+      "job_posting_context": "5+ years of Go.",
+      "requirement": "Go",
+      "task": "How strongly does the resume `statement` demonstrate this job requirement?"
+    },
+    "Criteria": {
+      "alternative_tool": {
+        "examples": [
+          "requirement Spark: built Flink jobs",
+          "requirement Git: used Mercurial"
+        ],
+        "not_for": "A tool that is part of or built on the requirement (that is partial or strong).",
+        "what": "The statement uses a different tool, product, or framework of the same kind, one that could replace the requirement."
+      },
+      "context_only": {
+        "examples": [
+          "requirement Swift: mentored interns on an iOS team"
+        ],
+        "what": "Only the role, team, or product around the statement suggests the requirement; the statement itself does not show it."
+      },
+      "different_skill": {
+        "examples": [
+          "requirement Spark: tuned SQL queries",
+          "requirement mentoring: wrote API docs"
+        ],
+        "what": "The statement shows real but different skills that do not exercise the requirement."
+      },
+      "none": {
+        "what": "The statement has nothing to do with this requirement."
+      },
+      "partial": {
+        "examples": [
+          "requirement Spark: built nightly batch data jobs",
+          "requirement code review: paired with teammates on fixes"
+        ],
+        "not_for": "Work centered on the requirement itself (strong); a competing tool of the same kind; work that only shares words with it.",
+        "what": "The work involves a part, a prerequisite, or the broader practice of the requirement, or uses the requirement only as a minor detail."
+      },
+      "shared_words_only": {
+        "examples": [
+          "requirement event sourcing: organized company events",
+          "requirement distributed tracing: traced a bug's cause"
+        ],
+        "what": "The statement shares a word or a topic with the requirement but describes different work."
+      },
+      "strong": {
+        "examples": [
+          "requirement Spark: wrote PySpark jobs on EMR",
+          "requirement code review: reviewed every pull request for a team of six"
+        ],
+        "not_for": "Work on a part, prerequisite, or the broader practice of the requirement; work where the requirement is a minor detail; work with a competing tool.",
+        "what": "The requirement itself, or a specific instance of it, is what the described work was done with or on. An education or certification entry is strong evidence for the degree or certificate it names."
+      },
+      "weak": {
+        "examples": [
+          "Skills: Spark, Kafka, Airflow",
+          "passionate about clean code reviews"
+        ],
+        "not_for": "Any statement that describes work done with the requirement.",
+        "what": "The statement only names, lists, or claims the requirement without describing work with it."
+      }
+    }
+  },
+  "strength_no_ctx": {
+    "Type": "choice",
+    "Instructions": {
+      "requirement": "Kafka",
+      "task": "How strongly does the resume `statement` demonstrate this job requirement?"
+    },
+    "Criteria": {
+      "alternative_tool": {
+        "examples": [
+          "requirement Spark: built Flink jobs",
+          "requirement Git: used Mercurial"
+        ],
+        "not_for": "A tool that is part of or built on the requirement (that is partial or strong).",
+        "what": "The statement uses a different tool, product, or framework of the same kind, one that could replace the requirement."
+      },
+      "context_only": {
+        "examples": [
+          "requirement Swift: mentored interns on an iOS team"
+        ],
+        "what": "Only the role, team, or product around the statement suggests the requirement; the statement itself does not show it."
+      },
+      "different_skill": {
+        "examples": [
+          "requirement Spark: tuned SQL queries",
+          "requirement mentoring: wrote API docs"
+        ],
+        "what": "The statement shows real but different skills that do not exercise the requirement."
+      },
+      "none": {
+        "what": "The statement has nothing to do with this requirement."
+      },
+      "partial": {
+        "examples": [
+          "requirement Spark: built nightly batch data jobs",
+          "requirement code review: paired with teammates on fixes"
+        ],
+        "not_for": "Work centered on the requirement itself (strong); a competing tool of the same kind; work that only shares words with it.",
+        "what": "The work involves a part, a prerequisite, or the broader practice of the requirement, or uses the requirement only as a minor detail."
+      },
+      "shared_words_only": {
+        "examples": [
+          "requirement event sourcing: organized company events",
+          "requirement distributed tracing: traced a bug's cause"
+        ],
+        "what": "The statement shares a word or a topic with the requirement but describes different work."
+      },
+      "strong": {
+        "examples": [
+          "requirement Spark: wrote PySpark jobs on EMR",
+          "requirement code review: reviewed every pull request for a team of six"
+        ],
+        "not_for": "Work on a part, prerequisite, or the broader practice of the requirement; work where the requirement is a minor detail; work with a competing tool.",
+        "what": "The requirement itself, or a specific instance of it, is what the described work was done with or on. An education or certification entry is strong evidence for the degree or certificate it names."
+      },
+      "weak": {
+        "examples": [
+          "Skills: Spark, Kafka, Airflow",
+          "passionate about clean code reviews"
+        ],
+        "not_for": "Any statement that describes work done with the requirement.",
+        "what": "The statement only names, lists, or claims the requirement without describing work with it."
+      }
+    }
+  },
+  "summary_system": "You summarize job postings. Reply with 2 or 3 plain sentences describing the role: its title and seniority, the product or domain, and the core technologies. No lists, no benefits, no company marketing, no requirements beyond the core stack.",
+  "validation": {
+    "Type": "choice",
+    "Instructions": {
+      "chunk": "5+ years of Go",
+      "question": "`chunk` is part of `sentence` in a job posting. If `chunk` states a specific skill, technology, qualification, kind of experience, or responsibility that a resume could show, which option names it completely and without extra words? Prefer the full name (\"distributed systems\", not \"distributed\"), and leave out words like \"experience\", \"own\", \"use\" or \"strong\" around it. Otherwise, which kind of non-requirement is `chunk`?"
+    },
+    "Criteria": {
+      "5+ years of Go": null,
+      "Go": null,
+      "action_only": "`chunk` is only a verb or a vague activity with no specific skill or technology: \"Work closely\", \"Collaborate\", \"iterate rapidly\", \"ship features\", \"take ownership\".",
+      "condition": "`chunk` is a condition of the job rather than a skill: location, time zone, work authorization, citizenship, clearance, travel, schedule, or on-call.",
+      "generic_trait": "`chunk` is a generic trait, attitude, or work style rather than a specific skill: \"strong judgment\", \"self-starter\", \"fast-moving environment\", \"team player\", \"attention to detail\".",
+      "people_or_context": "`chunk` names people, teams, the company, its product, or its customers rather than something the applicant must know or do: \"product managers\", \"partner teams\", \"our customers\", \"the platform\"."
+    }
+  }
+}
