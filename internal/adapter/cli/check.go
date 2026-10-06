@@ -43,6 +43,7 @@ func (a *CheckApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 	debug := fs.String("debug", "", "write the check trace (retrieval options, strength probabilities, accepted and rejected pairs) to this JSON file")
 	fs.Usage = func() {
 		fmt.Fprintln(stderr, "usage: check -requirements result.json -resume resume.md [-o coverage.json] [-debug trace.json] [-q]")
+		fmt.Fprintln(stderr, "Sends the resume text and the Requirements to the Jev provider at TYPESAFE_BASE_URL.")
 		fs.PrintDefaults()
 	}
 	if err := fs.Parse(args); err != nil {

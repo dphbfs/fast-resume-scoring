@@ -38,6 +38,7 @@ func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 	quiet := fs.Bool("q", false, "don't print the run summary to stderr")
 	fs.Usage = func() {
 		fmt.Fprintln(stderr, "usage: score -jd job.txt -resume resume.md [-o score.json] [-q]")
+		fmt.Fprintln(stderr, "Sends the job description and resume text to the Jev provider at TYPESAFE_BASE_URL.")
 		fs.PrintDefaults()
 	}
 	if err := fs.Parse(args); err != nil {
