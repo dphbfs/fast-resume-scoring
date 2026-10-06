@@ -1,0 +1,328 @@
+{
+  "started": "2026-10-06T01:03:35.412711757Z",
+  "duration": "2.207s",
+  "model": "typesafe/jev-1.13-20260917",
+  "revision": "2cf9c55312a2-dirty",
+  "set": "current",
+  "dir": "testdata/final",
+  "pipeline": {
+    "MaxWindowWords": 4,
+    "SectionBatchSize": 60,
+    "MinRequirementMass": 0.7,
+    "SkipImportance": true,
+    "SkipResponsibilities": true
+  },
+  "checker": {
+    "RetrievalK": 8,
+    "RetrievalFloor": 0.01,
+    "MinEvidenceMass": 0.5,
+    "NarrowSizes": [],
+    "GateThreshold": 0.5,
+    "SkipCappedGrading": true,
+    "GateFirst": true,
+    "SkipMentioned": true
+  },
+  "totals": {
+    "pairs": 20,
+    "failed": 0,
+    "scored": 20,
+    "mae": 5.05,
+    "bias": -0.35,
+    "within_5": 0.6,
+    "within_10": 0.9,
+    "max_error": 13,
+    "pearson": 0.9659781785141965,
+    "tau_b": 0.8783068783068783,
+    "saved_pairs": 0,
+    "saved_tau_b": 0,
+    "jev_cost_per_pair_usd": 0.0000875,
+    "mean_ms": 379
+  },
+  "pairs": [
+    {
+      "id": "01a0d60b-7c6e-71b6-93b2-3af66d45daa3",
+      "title": "Mid-Level Full Stack Software Engineer",
+      "reference": 82,
+      "match": 81,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.6875,
+        "experience_short": 0.11,
+        "blocker": 0.07
+      },
+      "holistic_ms": 290
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-0ee26feeae7c",
+      "title": "Mid-Level Full Stack Software Engineer",
+      "reference": 78,
+      "match": 65,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.5025,
+        "experience_short": 0.31,
+        "blocker": 0.11
+      },
+      "holistic_ms": 1082
+    },
+    {
+      "id": "01a0d60b-7c6d-710f-9d05-a088bef0317e",
+      "title": "Senior Software Engineer – Javascript, Ad Tech",
+      "reference": 24,
+      "match": 31,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.29,
+        "experience_short": 0.93,
+        "blocker": 0.1
+      },
+      "holistic_ms": 989
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8108-1f19049dd2f4",
+      "title": "Senior Full Stack Software Engineer – React Native",
+      "reference": 32,
+      "match": 29,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.1625,
+        "experience_short": 0.95,
+        "blocker": 0.06
+      },
+      "holistic_ms": 313
+    },
+    {
+      "id": "01a0d60b-939c-759c-8fad-c50c67807255",
+      "title": "Go Backend Developer",
+      "reference": 45,
+      "match": 40,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.4925,
+        "experience_short": 0.87,
+        "blocker": 0.05
+      },
+      "holistic_ms": 717
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823b-9c6055597371",
+      "title": "Backend Developer",
+      "reference": 75,
+      "match": 78,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.8275,
+        "experience_short": 0.23,
+        "blocker": 0.06
+      },
+      "holistic_ms": 682
+    },
+    {
+      "id": "01a0d60b-2973-701e-806c-e9fba06dddbb",
+      "title": "Backend Engineer",
+      "reference": 42,
+      "match": 46,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.72,
+        "experience_short": 0.8,
+        "blocker": 0.07
+      },
+      "holistic_ms": 258
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-6e08e87886a6",
+      "title": "Senior Software Engineer, Python",
+      "reference": 48,
+      "match": 44,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.6825,
+        "experience_short": 0.85,
+        "blocker": 0.06
+      },
+      "holistic_ms": 251
+    },
+    {
+      "id": "01a0d60b-3c3f-720c-9b88-54cd89fce024",
+      "title": "Senior Software Engineer, Python",
+      "reference": 48,
+      "match": 48,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.75,
+        "experience_short": 0.79,
+        "blocker": 0.05
+      },
+      "holistic_ms": 240
+    },
+    {
+      "id": "01a0d60b-65d1-7472-8106-547b9c2ae8c1",
+      "title": "Senior Software Engineer, Android Ecosystem",
+      "reference": 18,
+      "match": 26,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.01,
+        "experience_short": 0.97,
+        "blocker": 0.05
+      },
+      "holistic_ms": 226
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-a1b5ecb765ad",
+      "title": "Senior Data Engineer - Revenue Data Platform",
+      "reference": 84,
+      "match": 72,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.675,
+        "experience_short": 0.32,
+        "blocker": 0.05
+      },
+      "holistic_ms": 268
+    },
+    {
+      "id": "01a0d60b-2972-751c-9453-d068116c0a3d",
+      "title": "Senior Software Engineer – Backend, Machine Learning",
+      "reference": 72,
+      "match": 79,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.51,
+        "experience_short": 0.12,
+        "blocker": 0.05
+      },
+      "holistic_ms": 268
+    },
+    {
+      "id": "01a0d60b-2972-751c-9453-e90b71f62048",
+      "title": "Senior Software Engineer, Dataplane",
+      "reference": 40,
+      "match": 35,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.16,
+        "experience_short": 0.84,
+        "blocker": 0.05
+      },
+      "holistic_ms": 268
+    },
+    {
+      "id": "01a0d60b-3c3f-720c-9b88-d759ce69c15e",
+      "title": "Software Engineer – Market Data",
+      "reference": 52,
+      "match": 51,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.235,
+        "experience_short": 0.55,
+        "blocker": 0.06
+      },
+      "holistic_ms": 207
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-d15079e180cb",
+      "title": "Senior Software Engineer – Front End / Full Stack",
+      "reference": 16,
+      "match": 25,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0,
+        "experience_short": 0.97,
+        "blocker": 0.07
+      },
+      "holistic_ms": 226
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823a-d57a3d55ca57",
+      "title": "Senior Product Engineer – Java, Spring Boot",
+      "reference": 87,
+      "match": 93,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.995,
+        "experience_short": 0.03,
+        "blocker": 0.05
+      },
+      "holistic_ms": 209
+    },
+    {
+      "id": "01a0d60b-7c6e-71b6-93b0-32108097f4fc",
+      "title": "Senior Backend Engineer – Backend Platform",
+      "reference": 63,
+      "match": 54,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.7275,
+        "experience_short": 0.66,
+        "blocker": 0.07
+      },
+      "holistic_ms": 214
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823b-1404c5e9c4cf",
+      "title": "Senior Backend Engineer",
+      "reference": 88,
+      "match": 91,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.9125,
+        "experience_short": 0.03,
+        "blocker": 0.05
+      },
+      "holistic_ms": 219
+    },
+    {
+      "id": "01a0d60b-17ae-76d4-823a-eeef5562cd9f",
+      "title": "Senior Backend Developer – Travel Rule",
+      "reference": 91,
+      "match": 91,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.955,
+        "experience_short": 0.07,
+        "blocker": 0.04
+      },
+      "holistic_ms": 180
+    },
+    {
+      "id": "01a0d60b-65d0-776c-964f-dba44b6133c0",
+      "title": "Salesforce Software Engineer",
+      "reference": 34,
+      "match": 33,
+      "holistic": {
+        "model": "typesafe/jev-1.13-20260917",
+        "role_match": 0.0875,
+        "experience_short": 0.86,
+        "blocker": 0.06
+      },
+      "holistic_ms": 476
+    }
+  ],
+  "metrics": {
+    "counters": {
+      "holistic.input_tokens": 41683,
+      "holistic.output_tokens": 1040,
+      "holistic.requests": 20,
+      "jev.calls": 20,
+      "jev.cost_micro_usd": 1750,
+      "jev.input_tokens": 41683,
+      "jev.output_tokens": 1040
+    },
+    "durations": {
+      "jev.latency": {
+        "count": 20,
+        "p50": 257947170,
+        "p95": 989091692,
+        "max": 1082406827
+      },
+      "stage.holistic": {
+        "count": 20,
+        "p50": 258089207,
+        "p95": 989262924,
+        "max": 1082623015
+      }
+    }
+  }
+}

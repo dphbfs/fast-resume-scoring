@@ -1,0 +1,72 @@
+package cli
+
+import (
+	"context"
+	"flag"
+	"fmt"
+	"io"
+	"log/slog"
+
+	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+)
+
+// ScoreApp runs the score command: the Match Score of a Resume for a Job
+// Description, from one Holistic Round request.
+type ScoreApp struct {
+	judge    port.HolisticJudge
+	recorder *metrics.Recorder
+	log      *slog.Logger
+}
+
+// NewScoreApp builds a ScoreApp.
+func NewScoreApp(judge port.HolisticJudge, recorder *metrics.Recorder, log *slog.Logger) *ScoreApp {
+	return &ScoreApp{judge: judge, recorder: recorder, log: log}
+}
+
+// Run executes the command with args (without the program name) and returns
+// the process exit code.
+func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("score", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	jdPath := fs.String("jd", "", "plain-text Job Description (.txt or .md)")
+	resumePath := fs.String("resume", "", "plain-text Resume (.md or .txt)")
+	out := fs.String("o", "", "write the score JSON to this file instead of stdout")
+	quiet := fs.Bool("q", false, "don't print the run summary to stderr")
+	fs.Usage = func() {
+		fmt.Fprintln(stderr, "usage: score -jd job.txt -resume resume.md [-o score.json] [-q]")
+		fs.PrintDefaults()
+	}
+	if err := fs.Parse(args); err != nil {
+		return ExitUsage
+	}
+	if *jdPath == "" || *resumePath == "" || fs.NArg() != 0 {
+		fs.Usage()
+		return ExitUsage
+	}
+	jd, err := ReadJobDescription(*jdPath)
+	if err != nil {
+		fmt.Fprintln(stderr, "score:", err)
+		return ExitUsage
+	}
+	resume, err := ReadResume(*resumePath)
+	if err != nil {
+		fmt.Fprintln(stderr, "score:", err)
+		return ExitUsage
+	}
+
+	h, err := a.judge.Judge(ctx, jd, resume)
+	if !*quiet {
+		defer printSummary(a.recorder, a.log, stderr)
+	}
+	if err != nil {
+		fmt.Fprintln(stderr, "score:", err)
+		return ExitError
+	}
+	if err := writeJSON(domain.NewMatchResult(h), *out, stdout); err != nil {
+		fmt.Fprintln(stderr, "score:", err)
+		return ExitError
+	}
+	return ExitOK
+}

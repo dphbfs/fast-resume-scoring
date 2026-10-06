@@ -9,6 +9,7 @@ all: wire-check vet test build
 build:
 	go build -o $(BIN) ./cmd/extract
 	go build -o bin/check ./cmd/check
+	go build -o bin/score ./cmd/score
 
 test:
 	go test ./...
@@ -21,10 +22,10 @@ vet:
 
 # Regenerate cmd/extract/wire_gen.go after any constructor signature change.
 wire:
-	go tool wire ./cmd/extract ./cmd/check ./cmd/eval
+	go tool wire ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
 
 wire-check:
-	go tool wire check ./cmd/extract ./cmd/check ./cmd/eval
+	go tool wire check ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
 
 lint:
 	golangci-lint run ./...

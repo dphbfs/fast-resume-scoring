@@ -31,9 +31,10 @@ func run() int {
 	baseline := flag.Bool("baseline", false, "with -checker: also score each pair with one generative prompt (OPENAI_*) and compare")
 	priceIn := flag.Float64("baseline-price-in", 0, "baseline input price, USD per million tokens (used when the provider reports no cost; with -rescore, reprices stored calls)")
 	priceOut := flag.Float64("baseline-price-out", 0, "baseline output price, USD per million tokens (used when the provider reports no cost)")
-	e2e := flag.Bool("e2e", false, "evaluate extraction + checking end to end against the reference scores in -e2e-dir")
+	e2e := flag.Bool("e2e", false, "evaluate the Match Score end to end against the reference scores in -e2e-dir")
 	e2eDir := flag.String("e2e-dir", "testdata/reference", "with -e2e: reference set directory (pairs.json, current.json, jd/); testdata/final for the final set")
 	set := flag.String("set", eval.E2ESubset, "with -e2e: pairs to run: subset, current, or all")
+	withFit := flag.Bool("fit", false, "with -e2e: also run extraction and checking and report the Fit Score (the Match Score needs only the Holistic Round)")
 	extractCache := flag.String("extract-cache", "eval/cache/extract", "with -e2e: cache directory for extraction results (empty: always extract, for cold cost)")
 	flag.Parse()
 
@@ -49,7 +50,7 @@ func run() int {
 		if dir == "eval/reports" {
 			dir = "eval/reports/e2e"
 		}
-		return runE2E(ctx, *e2eDir, *set, dir, *summaries, *extractCache, prefixes, *parallel)
+		return runE2E(ctx, *e2eDir, *set, dir, *summaries, *extractCache, prefixes, *parallel, *withFit)
 	}
 	if *checker {
 		dir := *out
@@ -165,9 +166,9 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 	return 0
 }
 
-// runE2E extracts and checks the reference pairs and compares each Fit
-// Score with the reference score.
-func runE2E(ctx context.Context, refDir, set, out, summaries, extractCache string, prefixes []string, parallel int) int {
+// runE2E scores the reference pairs with the Holistic Round (plus the Fit
+// pipeline with withFit) and compares each Match Score with the reference.
+func runE2E(ctx context.Context, refDir, set, out, summaries, extractCache string, prefixes []string, parallel int, withFit bool) int {
 	pairs, err := eval.LoadE2E(refDir, ".", set, prefixes)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "eval:", err)
@@ -178,7 +179,7 @@ func runE2E(ctx context.Context, refDir, set, out, summaries, extractCache strin
 		fmt.Fprintln(os.Stderr, "eval:", err)
 		return 1
 	}
-	report := runner.Run(ctx, pairs, parallel, extractCache)
+	report := runner.Run(ctx, pairs, parallel, extractCache, withFit)
 	report.Set, report.Dir = set, refDir
 	path, err := report.Write(out)
 	if err != nil {
@@ -186,10 +187,9 @@ func runE2E(ctx context.Context, refDir, set, out, summaries, extractCache strin
 		return 1
 	}
 	t := report.Totals
-	fmt.Printf("fit: MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f  saved tau-b %.2f\n",
-		t.MAE, t.Bias, 100*t.Within10, t.MaxError, t.TauB, t.SavedTauB)
-	if m := t.Match; m != nil {
-		fmt.Printf("match: MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f\n", m.MAE, m.Bias, 100*m.Within10, m.MaxError, m.TauB)
+	fmt.Printf("match: MAE %.1f  bias %+.1f  within10 %.0f%%  max %.0f  tau-b %.2f\n", t.MAE, t.Bias, 100*t.Within10, t.MaxError, t.TauB)
+	if f := t.Fit; f != nil {
+		fmt.Printf("fit: MAE %.1f  bias %+.1f  tau-b %.2f\n", f.MAE, f.Bias, f.TauB)
 	}
 	fmt.Printf("$%.4f/pair  failed %d/%d\nreport: %s\n", t.JevCostPerPair, t.Failed, t.Pairs, path)
 	if t.Failed > 0 {

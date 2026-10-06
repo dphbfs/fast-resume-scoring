@@ -125,17 +125,21 @@ preferred | mentioned`, same values as golden labels), derived in code from
 the strongest Section among its Context Sentences: required > preferred >
 responsibilities (-> `mentioned`). Tier is independent of Importance.
 
-## Match Score and scoring mode (review v1)
+## Match Score (review v1)
 
-The replacement score is the **Match Score** (`docs/adr/0003`,
-`domain.MatchScore`): the Fit Score blended with a Holistic Round
-(`app.HolisticJudge`: `core_work` Score + `blocker` Noul over the full
-posting and Resume, run alongside extraction), mapped to the generative
-reference scale. Scoring mode runs lean: `PIPELINE_SKIP_IMPORTANCE`,
-`PIPELINE_SKIP_RESPONSIBILITIES`, `CHECKER_SKIP_MENTIONED`,
-`CHECKER_NARROW_SIZES=none` (`make eval-e2e` sets them). Evaluated with
-`eval -e2e` against `testdata/reference` (generative reference scores).
-Plan and decisions: `docs/review-v1-plan.md`.
+The replacement score is the **Match Score** (`docs/adr/0004`,
+`domain.MatchScore`), from the Holistic Round alone (`app.HolisticJudge`,
+one Jev request over the full posting and Resume): `role_match` (Score),
+`experience_short` (Noul), `blocker` (Noul, status conditions only),
+mapped to the generative reference scale. `cmd/score -jd job.txt -resume
+resume.md` prints it (match schema v1). Question wordings are fitted
+constants: probe (`scripts/probe_holistic.py`) and refit
+(`scripts/fit_match.py`, resume-held-out) before changing them.
+Extraction and the Resume Checker are no longer in the scoring path; they
+explain a score, and `eval -e2e -fit` reports the Fit Score too.
+Evaluated with `eval -e2e` against `testdata/reference` and
+`testdata/final` (both development data now); the second sealed set is
+`docs/final-set-2/`. Plan and decisions: `docs/review-v1-plan.md`.
 
 ## Resume Checker (current milestone)
 
