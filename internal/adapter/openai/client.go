@@ -16,6 +16,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/limiter"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/providererr"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
 
@@ -144,7 +145,11 @@ func (c *Client) post(ctx context.Context, body []byte) (Reply, error) {
 		return Reply{}, fmt.Errorf("openai: read response: %w", err)
 	}
 	if resp.StatusCode != http.StatusOK {
-		return Reply{}, fmt.Errorf("openai: HTTP %d: %s", resp.StatusCode, raw)
+		sum := providererr.Summarize(resp.Header, raw)
+		if sum.RequestID != "" {
+			return Reply{}, fmt.Errorf("openai: HTTP %d (request %s): %s", resp.StatusCode, sum.RequestID, sum.Message)
+		}
+		return Reply{}, fmt.Errorf("openai: HTTP %d: %s", resp.StatusCode, sum.Message)
 	}
 
 	var cr chatResponse

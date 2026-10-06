@@ -20,6 +20,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/limiter"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/providererr"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
 
@@ -58,14 +59,19 @@ func New(cfg config.Jev, m port.Metrics, log *slog.Logger) (*Client, error) {
 	}, nil
 }
 
-// APIError is a non-2xx response from the API.
+// APIError is a non-2xx response from the API. It keeps only the
+// provider's sanitized message and request ID, never the raw body.
 type APIError struct {
-	Status int
-	Body   string
+	Status    int
+	Message   string
+	RequestID string
 }
 
 func (e *APIError) Error() string {
-	return fmt.Sprintf("jev: HTTP %d: %s", e.Status, e.Body)
+	if e.RequestID != "" {
+		return fmt.Sprintf("jev: HTTP %d (request %s): %s", e.Status, e.RequestID, e.Message)
+	}
+	return fmt.Sprintf("jev: HTTP %d: %s", e.Status, e.Message)
 }
 
 // Retryable reports whether the request may succeed if sent again.
@@ -163,8 +169,9 @@ func (c *Client) post(ctx context.Context, body []byte) (resp port.ClassifyRespo
 		return resp, 0, fmt.Errorf("jev: read response: %w", err)
 	}
 	if httpResp.StatusCode != http.StatusOK {
+		sum := providererr.Summarize(httpResp.Header, raw)
 		return resp, parseRetryAfter(httpResp.Header.Get("Retry-After")),
-			&APIError{Status: httpResp.StatusCode, Body: string(raw)}
+			&APIError{Status: httpResp.StatusCode, Message: sum.Message, RequestID: sum.RequestID}
 	}
 
 	var w WireResponse
