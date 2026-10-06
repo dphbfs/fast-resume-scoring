@@ -129,7 +129,8 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       probabilities, valid bounds.
 - [ ] H3. Boundary validation of inputs (IDs, refs, groups, tiers) and
       Jev answers (types, option names, finite probabilities, empty
-      distributions).
+      distributions). Jev answers done 2026-10-06 (`jev.AnswerError`);
+      extract-result inputs still open (checker path only).
 - [ ] H4. Input limits and a root `RUN_DEADLINE` (default 120 s); tests
       for cancel while queued, during HTTP, during retry backoff.
 - [ ] H5. Sanitized provider errors in `jev` and `openai` clients

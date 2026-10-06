@@ -90,11 +90,9 @@ func (c *Client) Classify(ctx context.Context, req port.ClassifyRequest) (port.C
 		return port.ClassifyResponse{}, err
 	}
 
-	for id := range req.Questions {
-		if _, ok := resp.Answers[id]; !ok {
-			c.metrics.Add("jev.errors", 1)
-			return port.ClassifyResponse{}, fmt.Errorf("jev: response has no answer for question %q", id)
-		}
+	if err := validateAnswers(req.Questions, resp.Answers); err != nil {
+		c.metrics.Add("jev.errors", 1)
+		return port.ClassifyResponse{}, err
 	}
 	return resp, nil
 }
