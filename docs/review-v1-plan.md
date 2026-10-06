@@ -135,8 +135,9 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       for cancel while queued, during HTTP, during retry backoff.
       Done 2026-10-06: 48 KiB per input file; deadline in extract, check,
       score (eval runs are unbounded).
-- [ ] H5. Sanitized provider errors in `jev` and `openai` clients
+- [x] H5. Sanitized provider errors in `jev` and `openai` clients
       (allowlisted fields, status, request id, ~512-byte cap).
+      Done 2026-10-06: `platform/providererr`; key-like strings redacted.
 - [ ] H6. Private artifacts 0600/0700, atomic writes; summary cache with
       versioned key, `singleflight`, atomic replace.
 - [ ] H7. Reactive Resume JSON adapter: HTML bullets, free-text `period`

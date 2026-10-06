@@ -127,6 +127,9 @@ func TestClassifyDoesNotRetryValidationError(t *testing.T) {
 	if !errors.As(err, &apiErr) || apiErr.Status != http.StatusUnprocessableEntity {
 		t.Fatalf("err = %v, want APIError 422", err)
 	}
+	if apiErr.Message != "bad criteria" || err.Error() != "jev: HTTP 422: bad criteria" {
+		t.Errorf("error = %q, want the sanitized detail only", err)
+	}
 	if n := len(srv.Requests()); n != 1 {
 		t.Errorf("requests = %d, want 1 (no retry)", n)
 	}

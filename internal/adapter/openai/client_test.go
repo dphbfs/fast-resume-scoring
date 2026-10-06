@@ -88,3 +88,25 @@ func TestCompleteUsageAndNoEmptySystem(t *testing.T) {
 		t.Errorf("counters = %v", s.Counters)
 	}
 }
+
+func TestGenerateErrorIsSanitized(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Request-Id", "req_42")
+		w.WriteHeader(http.StatusUnauthorized)
+		_, _ = w.Write([]byte(`{"error":{"message":"Incorrect API key provided: sk-proj-abcdef0123456789","type":"invalid_request_error"},"prompt":"the whole resume"}`))
+	}))
+	defer srv.Close()
+	c, err := New(config.Generative{BaseURL: srv.URL, APIKey: "k", Model: "m", MaxConcurrency: 1, Timeout: 5 * time.Second},
+		metrics.NewRecorder(), discard)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = c.Generate(context.Background(), "sys", "hi")
+	if err == nil {
+		t.Fatal("want error")
+	}
+	msg := err.Error()
+	if msg != "openai: HTTP 401 (request req_42): Incorrect API key provided: [redacted]" {
+		t.Errorf("error = %q", msg)
+	}
+}
