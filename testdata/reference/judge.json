@@ -1,0 +1,228 @@
+{
+  "pairs": [
+    {
+      "pair": "01a0cb46-922c-7022-8855-68428d9a7944",
+      "score": 74,
+      "scores": [
+        72,
+        74,
+        79
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d664-9162-7300-b1a6-448f80afab63",
+      "score": 82,
+      "scores": [
+        82,
+        75,
+        85
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8a1-7ce9-7179-a593-fe0486f9a764",
+      "score": 56,
+      "scores": [
+        56,
+        56,
+        54
+      ],
+      "quote_rate": 0.96,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8a1-d338-767e-8177-e983a8ce1d28",
+      "score": 24,
+      "scores": [
+        28,
+        22,
+        24
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8a2-163a-74b9-9f79-7b3950cd7d3c",
+      "score": 62,
+      "scores": [
+        62,
+        62,
+        58
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8a3-3a62-71d6-95ae-fb9f34bbd055",
+      "score": 68,
+      "scores": [
+        68,
+        74,
+        68
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8a5-e678-7397-8610-5bd0f9ecca84",
+      "score": 52,
+      "scores": [
+        48,
+        52,
+        56
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d8aa-7dc4-71d2-9026-85d0f39f1cbc",
+      "score": 37,
+      "scores": [
+        38,
+        37,
+        36
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d9c6-3f87-730a-9171-b3011c2b9b6d",
+      "score": 62,
+      "scores": [
+        62,
+        66,
+        55
+      ],
+      "quote_rate": 0.93,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0e4fa-e44b-73aa-9806-0be48a5cf5f1",
+      "score": 66,
+      "scores": [
+        67,
+        62,
+        66
+      ],
+      "quote_rate": 0.96,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0e4fb-5410-742e-ab45-0e7bc015d4f4",
+      "score": 74,
+      "scores": [
+        74,
+        68,
+        78
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0eec7-49e9-70bc-8ea1-f49eb8279142",
+      "score": 55,
+      "scores": [
+        55,
+        58,
+        52
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0eec9-63d3-74cd-9864-23ce8667d828",
+      "score": 46,
+      "scores": [
+        46,
+        40,
+        46
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0eeca-c404-7044-b85c-387e36700d88",
+      "score": 62,
+      "scores": [
+        57,
+        62,
+        62
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0eecb-dc81-7374-8586-45ead4a81fb1",
+      "score": 55,
+      "scores": [
+        58,
+        48,
+        55
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0f37c-2674-748a-8df8-f0a20a3bf0aa",
+      "score": 7,
+      "scores": [
+        5,
+        8,
+        7
+      ],
+      "quote_rate": 0.95,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0f93e-5001-74d6-9c4c-55fdb983d78b",
+      "score": 65,
+      "scores": [
+        56,
+        65,
+        65
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0fe3a-2ec1-76c0-8958-d09263d703a6",
+      "score": 58,
+      "scores": [
+        58,
+        62,
+        56
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a103df-e475-7758-9136-17b04c43bf93",
+      "score": 82,
+      "scores": [
+        82,
+        83,
+        82
+      ],
+      "quote_rate": 0.96,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a103e0-191c-76bc-9a61-a2d4307b8b27",
+      "score": 68,
+      "scores": [
+        62,
+        68,
+        71
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    }
+  ],
+  "judge": "recruiter-judge skill",
+  "model": "gpt-6-luna",
+  "runs": 3,
+  "rubric_sha256": "1b078d9fb311"
+}
