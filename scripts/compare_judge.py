@@ -4,10 +4,10 @@
 Usage: scripts/compare_judge.py [-dir testdata/final] [<e2e-report.json> ...]
 
 Reads <dir>/current.json (reference), <dir>/judge.json (judge medians), and
-any e2e reports (Jev Match per pair, recomputed with the v3 formula and
-averaged over the reports). Prints each pair and, per comparison, MAE,
-bias, share within 10, Pearson, and Kendall tau-b over the pairs both
-sides scored. The judge is a second opinion, not ground truth: if Jev
+any e2e reports (Jev Match per pair, averaged over the reports; reports
+from before Match Score v4 are recomputed with the v3 formula). Prints
+each pair and, per comparison, MAE, bias, share within 10, Pearson, and
+Kendall tau-b over the pairs both sides scored. The judge is a second opinion, not ground truth: if Jev
 disagrees with the reference where the judge agrees with Jev, the gap is
 less likely to be Jev's error.
 """
@@ -69,7 +69,9 @@ def main():
     runs = {}
     for path in a.reports:
         for s in json.loads(Path(path).read_text())["pairs"]:
-            m = match_v3(s)
+            # v4 reports carry the Match Score; older ones are recomputed
+            # with the v3 formula so pre-refit runs rank by it.
+            m = s.get("match") if "role_match" in (s.get("holistic") or {}) else match_v3(s)
             if m is not None:
                 runs.setdefault(s["id"], []).append(m)
     jev = {k: statistics.mean(v) for k, v in runs.items()}

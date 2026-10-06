@@ -1,0 +1,228 @@
+{
+  "pairs": [
+    {
+      "pair": "01a0d51c-49be-76fb-bf4b-d2b9cb29378c--final2-real-analyst",
+      "score": 64,
+      "scores": [
+        66,
+        64,
+        64
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d51c-4aab-760e-a5ae-1353e357010c--final2-syn-1",
+      "score": 38,
+      "scores": [
+        42,
+        38,
+        38
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-real-analyst",
+      "score": 81,
+      "scores": [
+        78,
+        82,
+        81
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-syn-3",
+      "score": 43,
+      "scores": [
+        36,
+        45,
+        43
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d51c-4c99-73bf-b32e-d31818cf5f3b--final2-syn-2",
+      "score": 18,
+      "scores": [
+        18,
+        18,
+        28
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-cef5-739a-ade5-4f1214b5aa11--final2-syn-1",
+      "score": 67,
+      "scores": [
+        68,
+        65,
+        67
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-cefb-716c-9189-d5af2ca486bf--final2-syn-1",
+      "score": 46,
+      "scores": [
+        48,
+        43,
+        46
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-cf04-747f-bb78-06376ae31cca--final2-syn-2",
+      "score": 82,
+      "scores": [
+        86,
+        78,
+        82
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-cf06-7211-a673-45ea9f1545ff--final2-syn-2",
+      "score": 68,
+      "scores": [
+        72,
+        65,
+        68
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-d7d3-75ea-a85d-cfa8ef43993d--final2-syn-2",
+      "score": 87,
+      "scores": [
+        87,
+        87,
+        86
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-d7d3-75ea-a85e-f460ad38269a--final2-syn-3",
+      "score": 52,
+      "scores": [
+        52,
+        48,
+        55
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-d7d4-71d8-a457-b814b5ce6cfe--final2-syn-3",
+      "score": 43,
+      "scores": [
+        43,
+        36,
+        43
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-e181-7121-bf39-b1d7fb4ba38b--final2-real-analyst",
+      "score": 43,
+      "scores": [
+        48,
+        43,
+        43
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-e181-7121-bf3a-33de78c3fdce--final2-real-analyst",
+      "score": 35,
+      "scores": [
+        38,
+        34,
+        35
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a0d60a-ec0e-7432-95ef-0a04af365ec3--final2-syn-3",
+      "score": 70,
+      "scores": [
+        76,
+        70,
+        67
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-2",
+      "score": 24,
+      "scores": [
+        24,
+        18,
+        28
+      ],
+      "quote_rate": 0.93,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-3",
+      "score": 18,
+      "scores": [
+        18,
+        15,
+        42
+      ],
+      "quote_rate": 0.96,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a10d3c-b063-7080-b144-7b04aa306dc6--final2-syn-1",
+      "score": 43,
+      "scores": [
+        42,
+        46,
+        43
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a10d3c-d4db-75e5-ab44-aac6b13f2d15--final2-real-analyst",
+      "score": 48,
+      "scores": [
+        52,
+        46,
+        48
+      ],
+      "quote_rate": 0.96,
+      "judged_on": "2026-10-06"
+    },
+    {
+      "pair": "01a10e2d-006a-7115-ab02-a269f8803ae6--final2-syn-1",
+      "score": 67,
+      "scores": [
+        67,
+        67,
+        64
+      ],
+      "quote_rate": 1.0,
+      "judged_on": "2026-10-06"
+    }
+  ],
+  "judge": "recruiter-judge skill",
+  "model": "gpt-6-luna",
+  "runs": 3,
+  "rubric_sha256": "1b078d9fb311"
+}
