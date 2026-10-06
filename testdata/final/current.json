@@ -1,0 +1,108 @@
+{
+  "scorer": "generative reference match score (Claude Opus 5), current setup",
+  "method": "eval-only copies of each pair (same JD text as jd/<id>.txt, the pair's held-out resume), scored once, then archived",
+  "pairs": [
+    {
+      "pair": "01a0d60b-7c6e-71b6-93b2-3af66d45daa3",
+      "score": 82,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d1-7472-8106-0ee26feeae7c",
+      "score": 78,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-7c6d-710f-9d05-a088bef0317e",
+      "score": 24,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d1-7472-8108-1f19049dd2f4",
+      "score": 32,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-939c-759c-8fad-c50c67807255",
+      "score": 45,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-17ae-76d4-823b-9c6055597371",
+      "score": 75,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-2973-701e-806c-e9fba06dddbb",
+      "score": 42,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d1-7472-8106-6e08e87886a6",
+      "score": 48,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-3c3f-720c-9b88-54cd89fce024",
+      "score": 48,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d1-7472-8106-547b9c2ae8c1",
+      "score": 18,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d0-776c-964f-a1b5ecb765ad",
+      "score": 84,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-2972-751c-9453-d068116c0a3d",
+      "score": 72,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-2972-751c-9453-e90b71f62048",
+      "score": 40,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-3c3f-720c-9b88-d759ce69c15e",
+      "score": 52,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d0-776c-964f-d15079e180cb",
+      "score": 16,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-17ae-76d4-823a-d57a3d55ca57",
+      "score": 87,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-7c6e-71b6-93b0-32108097f4fc",
+      "score": 63,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-17ae-76d4-823b-1404c5e9c4cf",
+      "score": 88,
+      "calls": 1,
+      "note": "first call timed out with no score returned; the retry is the only score"
+    },
+    {
+      "pair": "01a0d60b-17ae-76d4-823a-eeef5562cd9f",
+      "score": 91,
+      "calls": 1
+    },
+    {
+      "pair": "01a0d60b-65d0-776c-964f-dba44b6133c0",
+      "score": 34,
+      "calls": 1
+    }
+  ],
+  "scored_on": "2026-10-06"
+}
