@@ -112,7 +112,7 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       end-to-end Jev cost and wall time vs the Opus 5 cost.
 - [ ] E5. Report provenance: commit, resolved-config fingerprint, prompt
       and criteria versions, model ids, input hashes.
-- [ ] E6. Final set: prompt for the synthetic-resume agent; job picks per
+- [x] E6. Final set: prompt for the synthetic-resume agent; job picks per
       resume; eval applications created, scored, saved, archived; sealed.
 - [x] E7. Recruiter judge skill + runner: `.claude/skills/recruiter-judge`
       (rubric, sent as the system prompt) and `scripts/judge.py` (3 runs,
