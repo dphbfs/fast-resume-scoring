@@ -14,6 +14,7 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -47,11 +48,13 @@ type E2EPair struct {
 	// Reference is today's reference score, nil when the pair was not
 	// rescored (set "all").
 	Reference *float64
-	// Saved is the reference score saved when the pair was first scored.
-	Saved int
+	// Saved is the reference score saved when the pair was first scored,
+	// nil for sets scored only once (the final set).
+	Saved *int
 }
 
-// LoadE2E reads the reference pairs in dir (testdata/reference) for set,
+// LoadE2E reads the reference pairs in dir (testdata/reference, or
+// testdata/final for the sealed final set) for set,
 // optionally limited to ID prefixes. Resume paths in pairs.json are
 // relative to root (the repository root).
 func LoadE2E(dir, root, set string, prefixes []string) ([]E2EPair, error) {
@@ -61,7 +64,7 @@ func LoadE2E(dir, root, set string, prefixes []string) ([]E2EPair, error) {
 			Title  string `json:"title"`
 			Resume string `json:"resume"`
 			JD     string `json:"jd"`
-			Score  int    `json:"score"`
+			Score  *int   `json:"score"`
 			Subset bool   `json:"subset"`
 		} `json:"pairs"`
 	}
@@ -160,7 +163,7 @@ type E2EScore struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
 	Reference *float64 `json:"reference,omitempty"`
-	Saved     int      `json:"saved"`
+	Saved     *int     `json:"saved,omitempty"`
 	// Fit is the production Fit Score (nil when there was nothing to score).
 	Fit *int `json:"fit"`
 	// Match is the Match Score: Fit Score blended with the Holistic Round.
@@ -183,6 +186,7 @@ type E2EReport struct {
 	Model    string          `json:"model"`
 	Revision string          `json:"revision"`
 	Set      string          `json:"set"`
+	Dir      string          `json:"dir,omitempty"`
 	Pipeline config.Pipeline `json:"pipeline"`
 	Checker  config.Checker  `json:"checker"`
 	Totals   E2ETotals       `json:"totals"`
@@ -406,8 +410,10 @@ func e2eTotals(scores []E2EScore, costMicro int64) E2ETotals {
 		if s.Fit == nil {
 			continue
 		}
-		savedFit = append(savedFit, float64(*s.Fit))
-		saved = append(saved, float64(s.Saved))
+		if s.Saved != nil {
+			savedFit = append(savedFit, float64(*s.Fit))
+			saved = append(saved, float64(*s.Saved))
+		}
 		if s.Reference == nil {
 			continue
 		}
@@ -550,9 +556,12 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 	slices.SortStableFunc(pairs, func(a, b E2EScore) int { return cmp.Compare(errOf(b), errOf(a)) })
 	b.WriteString("| Pair | Match | Fit | Reference | Saved | Responsibilities | Blocker | Requirements | Time |\n|---|---|---|---|---|---|---|---|---|\n")
 	for _, s := range pairs {
-		ref := "–"
+		ref, saved := "–", "–"
 		if s.Reference != nil {
 			ref = fmt.Sprintf("%.0f", *s.Reference)
+		}
+		if s.Saved != nil {
+			saved = strconv.Itoa(*s.Saved)
 		}
 		fit := fitText(s.Fit)
 		if s.Error != "" {
@@ -562,7 +571,7 @@ func (r E2EReport) WriteMarkdown(w io.Writer) error {
 		if h := s.Holistic; h != nil {
 			core, blocker = fmt.Sprintf("%.2f", h.Responsibilities), fmt.Sprintf("%.2f", h.Blocker)
 		}
-		fmt.Fprintf(&b, "| %s | %s | %s | %s | %d | %s | %s | %d | %.1fs |\n", cell(s.Title), fitText(s.Match), fit, ref, s.Saved, core, blocker,
+		fmt.Fprintf(&b, "| %s | %s | %s | %s | %s | %s | %s | %d | %.1fs |\n", cell(s.Title), fitText(s.Match), fit, ref, saved, core, blocker,
 			s.Requirements, float64(s.ExtractMS+s.CheckMS)/1000)
 	}
 	_, err := io.WriteString(w, b.String())

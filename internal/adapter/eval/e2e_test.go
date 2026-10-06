@@ -93,11 +93,41 @@ func TestLoadE2ESets(t *testing.T) {
 		}
 	}
 	pairs, _ := LoadE2E(dir, root, E2EAll, []string{"c"})
-	if len(pairs) != 1 || pairs[0].Reference != nil || pairs[0].Saved != 80 || pairs[0].JD.Title != "Gamma" {
+	if len(pairs) != 1 || pairs[0].Reference != nil || pairs[0].Saved == nil || *pairs[0].Saved != 80 || pairs[0].JD.Title != "Gamma" {
 		t.Errorf("pair c = %+v", pairs)
 	}
 	if _, err := LoadE2E(dir, root, "nope", nil); err == nil {
 		t.Error("unknown set: want error")
+	}
+}
+
+func TestLoadE2EWithoutSavedScores(t *testing.T) {
+	root := t.TempDir()
+	for name, body := range map[string]string{
+		"resume.md":          "# Skills\n- Go\n",
+		"final/jd/a.txt":     "A posting",
+		"final/pairs.json":   `{"pairs": [{"id": "a", "title": "Alpha", "resume": "resume.md", "jd": "jd/a.txt"}]}`,
+		"final/current.json": `{"pairs": [{"pair": "a", "score": 61}]}`,
+	} {
+		path := filepath.Join(root, name)
+		if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(body), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	pairs, err := LoadE2E(filepath.Join(root, "final"), root, E2ECurrent, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(pairs) != 1 || pairs[0].Saved != nil || pairs[0].Reference == nil || *pairs[0].Reference != 61 {
+		t.Errorf("pairs = %+v", pairs)
+	}
+	fifty := 50
+	tot := e2eTotals([]E2EScore{{ID: "a", Reference: pairs[0].Reference, Fit: &fifty}}, 0)
+	if tot.SavedPairs != 0 || tot.Scored != 1 {
+		t.Errorf("totals = %+v", tot)
 	}
 }
 

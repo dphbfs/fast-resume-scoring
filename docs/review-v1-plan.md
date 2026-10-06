@@ -114,7 +114,11 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       and criteria versions, model ids, input hashes.
 - [ ] E6. Final set: prompt for the synthetic-resume agent; job picks per
       resume; eval applications created, scored, saved, archived; sealed.
-- [ ] E7. Recruiter judge skill + runner.
+- [x] E7. Recruiter judge skill + runner: `.claude/skills/recruiter-judge`
+      (rubric, sent as the system prompt) and `scripts/judge.py` (3 runs,
+      median, verbatim-quote check; writes `<set>/judge.json`).
+      `scripts/compare_judge.py` reports Jev vs reference vs judge.
+      `eval -e2e -e2e-dir testdata/final -set current` runs the final set.
 
 ## Phase 2: hardening and simplification (no model calls, parallel with Phase 1)
 
