@@ -17,6 +17,7 @@ import sys
 import time
 from pathlib import Path
 
+
 def main():
     args = sys.argv[1:]
     DIR = Path("testdata/final")
