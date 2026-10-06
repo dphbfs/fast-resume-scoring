@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 var updateSnapshot = flag.Bool("update", false, "rewrite testdata/prompts.golden.json")
@@ -19,21 +20,22 @@ func TestPromptSnapshot(t *testing.T) {
 	m := []mention{{Section: domain.SectionRequired, Sentence: "5+ years of Go and Kubernetes."}}
 	withCtx := checkRequirement{Requirement: domain.Requirement{ID: "req_1", Value: "Go"}, option: "Go", context: "5+ years of Go."}
 	noCtx := checkRequirement{Requirement: domain.Requirement{ID: "req_2", Value: "Kafka"}, option: "Kafka"}
+	p := newPrompts(tuning.Default())
 	got := map[string]any{
-		"section":         sectionQuestion("5+ years of Go and Kubernetes.", "Requirements"),
-		"section_no_head": sectionQuestion("Remote, US only.", ""),
-		"validation":      validationQuestion(chunk{Text: "5+ years of Go", Options: []string{"Go", "5+ years of Go"}}),
-		"filler":          fillerQuestion("Go", m),
-		"duplicate":       duplicateQuestion("Kubernetes", m, []string{"K8s", "Go"}),
-		"alternative":     alternativeQuestion("Go", m, []string{"Rust"}),
-		"importance":      importanceQuestion("Go", m),
-		"summary_system":  summarySystemPrompt,
-		"retrieval":       retrievalQuestion([]checkRequirement{withCtx, noCtx}),
-		"gate":            gateQuestion(withCtx),
-		"gate_no_context": gateQuestion(noCtx),
-		"strength":        strengthQuestion(withCtx, strengthCriteria),
-		"strength_no_ctx": strengthQuestion(noCtx, strengthCriteria),
-		"holistic":        holisticQuestions,
+		"section":         p.sectionQuestion("5+ years of Go and Kubernetes.", "Requirements"),
+		"section_no_head": p.sectionQuestion("Remote, US only.", ""),
+		"validation":      p.validationQuestion(chunk{Text: "5+ years of Go", Options: []string{"Go", "5+ years of Go"}}),
+		"filler":          p.fillerQuestion("Go", m),
+		"duplicate":       p.duplicateQuestion("Kubernetes", m, []string{"K8s", "Go"}),
+		"alternative":     p.alternativeQuestion("Go", m, []string{"Rust"}),
+		"importance":      p.importanceQuestion("Go", m),
+		"summary_system":  p.summarySystem,
+		"retrieval":       p.retrievalQuestion([]checkRequirement{withCtx, noCtx}),
+		"gate":            p.gateQuestion(withCtx),
+		"gate_no_context": p.gateQuestion(noCtx),
+		"strength":        p.strengthQuestion(withCtx),
+		"strength_no_ctx": p.strengthQuestion(noCtx),
+		"holistic":        p.holistic,
 	}
 	raw, err := json.MarshalIndent(got, "", "  ")
 	if err != nil {

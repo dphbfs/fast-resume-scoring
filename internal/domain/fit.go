@@ -11,10 +11,13 @@ type Fit struct {
 	Gaps   []string     `json:"gaps"`
 }
 
-var (
-	fitCredit = map[EvidenceStrength]float64{StrengthStrong: 1, StrengthPartial: 0.6, StrengthWeak: 0.3}
-	fitWeight = map[Tier]float64{TierRequired: 3, TierPreferred: 1.5, TierMentioned: 1}
-)
+// FitWeights are the Fit Score's Coverage credits and Tier weights
+// (docs/adr/0002), read from the tuning file (tuning/tuning.yaml). A
+// strength or Tier without an entry counts 0.
+type FitWeights struct {
+	Credit     map[EvidenceStrength]float64
+	TierWeight map[Tier]float64
+}
 
 // tierRank orders Tiers: mentioned (or unknown) 0, preferred 1, required 2.
 func tierRank(t Tier) int {
@@ -33,7 +36,7 @@ func tierRank(t Tier) int {
 // item. Only the groups' Members are read; members missing from reqs are
 // ignored, and a group with none left is dropped. A Requirement without a
 // Tier counts as mentioned.
-func ScoreFit(reqs []RequirementCoverage, groups []GroupCoverage) Fit {
+func ScoreFit(reqs []RequirementCoverage, groups []GroupCoverage, fw FitWeights) Fit {
 	type item struct {
 		id       string
 		tier     Tier
@@ -80,7 +83,7 @@ func ScoreFit(reqs []RequirementCoverage, groups []GroupCoverage) Fit {
 	var earned, total float64
 	tierEarned, tierTotal := map[Tier]float64{}, map[Tier]float64{}
 	for _, it := range items {
-		w, c := fitWeight[it.tier], fitCredit[it.coverage]
+		w, c := fw.TierWeight[it.tier], fw.Credit[it.coverage]
 		earned += w * c
 		total += w
 		tierEarned[it.tier] += c

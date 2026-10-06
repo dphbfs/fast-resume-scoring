@@ -14,6 +14,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 type fakeCompleter struct {
@@ -112,7 +113,7 @@ func TestCheckerRunWithBaseline(t *testing.T) {
 		Usage: openai.Usage{InputTokens: 1000, OutputTokens: 50},
 	}}
 	b := &Baseline{gen: gen, cfg: BaselineConfig{Enabled: true, Model: "gen-m", PriceInPerM: 1}}
-	r := NewCheckerRunner(echoChecker{}, b, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{})
+	r := NewCheckerRunner(echoChecker{}, b, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{}, tuning.Default())
 	rep := r.Run(context.Background(), []CheckerFixture{f}, 1)
 
 	bt := rep.Totals.Baseline
@@ -143,7 +144,7 @@ func TestCheckerRunWithBaseline(t *testing.T) {
 	if c := rep.Fixtures[0].Baseline.CostUSD; c == nil || *c != 0.00625 {
 		t.Errorf("repriced cost = %v, want 0.00625 (1000×5 + 50×25 per M)", c)
 	}
-	re, err := RescoreChecker(rep, []CheckerFixture{f}, nil)
+	re, err := RescoreChecker(rep, []CheckerFixture{f}, nil, tuning.Default())
 	if err != nil {
 		t.Fatal(err)
 	}

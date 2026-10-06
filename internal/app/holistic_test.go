@@ -14,6 +14,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 func newTestJudge(t *testing.T, srvURL string) *HolisticJudge {
@@ -24,7 +25,7 @@ func newTestJudge(t *testing.T, srvURL string) *HolisticJudge {
 	if err != nil {
 		t.Fatal(err)
 	}
-	return NewHolisticJudge(c, m, log)
+	return NewHolisticJudge(c, m, log, tuning.Default())
 }
 
 func TestHolisticJudge(t *testing.T) {

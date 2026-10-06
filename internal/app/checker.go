@@ -14,6 +14,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Checker runs the Resume Checker: it parses a Resume into Evidence Units,
@@ -24,13 +25,16 @@ type Checker struct {
 	metrics    port.Metrics
 	log        *slog.Logger
 	cfg        config.Checker
+	prompts    *prompts
+	fitWeights domain.FitWeights
 }
 
 var _ port.ResumeChecker = (*Checker)(nil)
 
 // NewChecker builds a Checker.
-func NewChecker(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger, cfg config.Checker) *Checker {
-	return &Checker{classifier: classifier, metrics: m, log: log.With("component", "checker"), cfg: cfg}
+func NewChecker(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger, cfg config.Checker, t *tuning.Tuning) *Checker {
+	return &Checker{classifier: classifier, metrics: m, log: log.With("component", "checker"), cfg: cfg,
+		prompts: newPrompts(t), fitWeights: t.FitWeights()}
 }
 
 // noneOption is the Retrieval Round's sink option.
@@ -198,80 +202,35 @@ func stateOf(u domain.EvidenceUnit) evidenceState {
 	return evidenceState{ResumeSection: u.ResumeSection, Role: u.Role, Company: u.Company, Statement: u.Text}
 }
 
-// strengthCriteria are the Strength Round options as structured rubric
-// objects: each says what it covers, what it does not, and gives examples,
-// which the TypeSafe docs recommend for sharpening boundaries between
-// options. The non-evidence options (none and the negatives) keep
+// The Strength Round options are structured rubric objects (tuning file,
+// checker.strength): each says what it covers, what it does not, and gives
+// examples, which the TypeSafe docs recommend for sharpening boundaries
+// between options. The non-evidence options (none and the negatives) keep
 // probability for related-looking pairs off partial. Examples avoid the
 // eval fixtures. Earlier versions (v1-v4, v6) are in docs/tuning.md.
-var strengthCriteria = map[string]any{
-	string(domain.StrengthStrong): map[string]any{
-		"what": "The requirement itself, or a specific instance of it, is what the described work was done with or on. " +
-			"An education or certification entry is strong evidence for the degree or certificate it names.",
-		"not_for": "Work on a part, prerequisite, or the broader practice of the requirement; work where the requirement " +
-			"is a minor detail; work with a competing tool.",
-		"examples": []string{"requirement Spark: wrote PySpark jobs on EMR", "requirement code review: reviewed every pull request for a team of six"},
-	},
-	string(domain.StrengthPartial): map[string]any{
-		"what": "The work involves a part, a prerequisite, or the broader practice of the requirement, or uses the " +
-			"requirement only as a minor detail.",
-		"not_for": "Work centered on the requirement itself (strong); a competing tool of the same kind; work that only " +
-			"shares words with it.",
-		"examples": []string{"requirement Spark: built nightly batch data jobs", "requirement code review: paired with teammates on fixes"},
-	},
-	string(domain.StrengthWeak): map[string]any{
-		"what":     "The statement only names, lists, or claims the requirement without describing work with it.",
-		"not_for":  "Any statement that describes work done with the requirement.",
-		"examples": []string{"Skills: Spark, Kafka, Airflow", "passionate about clean code reviews"},
-	},
-	string(domain.StrengthNone): map[string]any{
-		"what": "The statement has nothing to do with this requirement.",
-	},
-	"alternative_tool": map[string]any{
-		"what":     "The statement uses a different tool, product, or framework of the same kind, one that could replace the requirement.",
-		"not_for":  "A tool that is part of or built on the requirement (that is partial or strong).",
-		"examples": []string{"requirement Spark: built Flink jobs", "requirement Git: used Mercurial"},
-	},
-	"shared_words_only": map[string]any{
-		"what":     "The statement shares a word or a topic with the requirement but describes different work.",
-		"examples": []string{"requirement event sourcing: organized company events", "requirement distributed tracing: traced a bug's cause"},
-	},
-	"different_skill": map[string]any{
-		"what":     "The statement shows real but different skills that do not exercise the requirement.",
-		"examples": []string{"requirement Spark: tuned SQL queries", "requirement mentoring: wrote API docs"},
-	},
-	"context_only": map[string]any{
-		"what":     "Only the role, team, or product around the statement suggests the requirement; the statement itself does not show it.",
-		"examples": []string{"requirement Swift: mentored interns on an iOS team"},
-	},
-}
 
 // strengthQuestion asks how strongly the unit demonstrates one Requirement.
 // The Requirement is embedded because question IDs are not sent to Jev.
-func strengthQuestion(r checkRequirement, criteria map[string]any) port.Question {
+func (p *prompts) strengthQuestion(r checkRequirement) port.Question {
 	inst := map[string]any{
-		"task":        "How strongly does the resume `statement` demonstrate this job requirement?",
+		"task":        p.strengthTask,
 		"requirement": r.Value,
 	}
 	if r.context != "" {
 		inst["job_posting_context"] = r.context
 	}
-	return port.Question{Type: port.Choice, Instructions: inst, Criteria: criteria}
+	return port.Question{Type: port.Choice, Instructions: inst, Criteria: p.strengthCriteria}
 }
-
-// gateTrue is the gate Noul's yes criterion (wording v2): it includes
-// partial evidence (a part, prerequisite, or the broader practice), so it
-// agrees with the Strength criteria.
-const gateTrue = "The statement describes work done with the requirement itself, a specific instance of it, a part or " +
-	"prerequisite of it, or its broader practice; or it names the requirement as the candidate's own skill, " +
-	"degree, or certificate."
 
 // gateQuestion asks, absolutely, whether the unit is evidence for one
 // Requirement. The TypeSafe skill-suggestion pattern: a Choice grades, an
 // independent Noul decides whether to act at all.
-func gateQuestion(r checkRequirement) port.Question {
+// Its yes criterion (wording v2) includes partial evidence (a part,
+// prerequisite, or the broader practice), so it agrees with the Strength
+// criteria.
+func (p *prompts) gateQuestion(r checkRequirement) port.Question {
 	inst := map[string]any{
-		"task":        "Is the resume `statement` evidence that the candidate has this job requirement?",
+		"task":        p.gate.Task,
 		"requirement": r.Value,
 	}
 	if r.context != "" {
@@ -280,11 +239,7 @@ func gateQuestion(r checkRequirement) port.Question {
 	return port.Question{
 		Type:         port.Noul,
 		Instructions: inst,
-		Criteria: map[string]any{
-			"true": gateTrue,
-			"false": "The statement uses a competing tool, only shares words with the requirement, shows different " +
-				"skills, or only its surrounding role suggests the requirement.",
-		},
+		Criteria:     map[string]any{"true": p.gate.IfTrue, "false": p.gate.IfFalse},
 	}
 }
 
@@ -299,7 +254,7 @@ func gateQuestion(r checkRequirement) port.Question {
 func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creqs []checkRequirement, retrieved []int, m *unitMatch) error {
 	capped := u.ResumeSection == domain.ResumeSkills || u.ResumeSection == domain.ResumeSummary
 	gated := c.cfg.GateThreshold > 0
-	gradeQuestion := func(ri int) port.Question { return strengthQuestion(creqs[ri], strengthCriteria) }
+	gradeQuestion := func(ri int) port.Question { return c.prompts.strengthQuestion(creqs[ri]) }
 	needsGrade := func(k int, answers map[string]port.Answer) bool {
 		if !gated {
 			return true
@@ -331,7 +286,7 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 	questions := make(map[string]port.Question, 2*len(retrieved))
 	for k, ri := range retrieved {
 		if gated {
-			questions[fmt.Sprintf("gate_%d", k)] = gateQuestion(creqs[ri])
+			questions[fmt.Sprintf("gate_%d", k)] = c.prompts.gateQuestion(creqs[ri])
 		}
 		if !c.cfg.GateFirst && needsGrade(k, nil) {
 			questions[fmt.Sprintf("req_%d", k)] = gradeQuestion(ri)
@@ -359,7 +314,7 @@ func (c *Checker) judgeStrength(ctx context.Context, u domain.EvidenceUnit, creq
 		case !graded:
 			c.metrics.Add("checker.strength.ungraded", 1)
 		default:
-			if _, ok := strengthCriteria[a.Choice]; !ok {
+			if _, ok := c.prompts.strengthCriteria[a.Choice]; !ok {
 				return fmt.Errorf("requirement %q: answer %q is not a strength", creqs[ri].Value, a.Choice)
 			}
 			strength, mass = decideStrength(a.Probabilities)
@@ -484,7 +439,7 @@ func (c *Checker) buildCoverage(reqs domain.Result, creqs []checkRequirement, un
 		}
 		res.AlternativeGroups = append(res.AlternativeGroups, domain.GroupCoverage{ID: g.ID, Members: g.Members, Coverage: best})
 	}
-	res.Fit = domain.ScoreFit(res.Requirements, res.AlternativeGroups)
+	res.Fit = domain.ScoreFit(res.Requirements, res.AlternativeGroups, c.fitWeights)
 	c.metrics.Add("checker.gaps", int64(len(res.Fit.Gaps)))
 	if res.Fit.Score != nil {
 		c.log.Info("fit score", "score", *res.Fit.Score, "by_tier", res.Fit.ByTier, "gaps", len(res.Fit.Gaps))

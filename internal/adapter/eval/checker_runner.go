@@ -22,6 +22,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // CheckerRunner runs the Resume Checker over the checker fixtures.
@@ -31,12 +32,14 @@ type CheckerRunner struct {
 	recorder *metrics.Recorder
 	log      *slog.Logger
 	cfg      config.Checker
+	tuning   *tuning.Tuning
 }
 
 // NewCheckerRunner builds a CheckerRunner. cfg is recorded in each report.
 // A nil baseline runs the Jev arm only.
-func NewCheckerRunner(checker port.ResumeChecker, baseline *Baseline, recorder *metrics.Recorder, log *slog.Logger, cfg config.Checker) *CheckerRunner {
-	return &CheckerRunner{checker: checker, baseline: baseline, recorder: recorder, log: log.With("component", "eval"), cfg: cfg}
+func NewCheckerRunner(checker port.ResumeChecker, baseline *Baseline, recorder *metrics.Recorder, log *slog.Logger, cfg config.Checker,
+	t *tuning.Tuning) *CheckerRunner {
+	return &CheckerRunner{checker: checker, baseline: baseline, recorder: recorder, log: log.With("component", "eval"), cfg: cfg, tuning: t}
 }
 
 // CheckerReport is one Resume Checker eval run.
@@ -45,6 +48,7 @@ type CheckerReport struct {
 	Duration     string          `json:"duration"`
 	Model        string          `json:"model"`
 	Revision     string          `json:"revision"`
+	Tuning       string          `json:"tuning,omitempty"`
 	Checker      config.Checker  `json:"checker"`
 	Baseline     *BaselineConfig `json:"baseline,omitempty"`
 	Labels       string          `json:"labels"`
@@ -132,7 +136,7 @@ func (r *CheckerRunner) Run(ctx context.Context, fixtures []CheckerFixture, para
 			took := time.Since(t0)
 			var s CheckerScore
 			if err == nil {
-				s, err = ScoreCheck(f, res, tr)
+				s, err = ScoreCheck(f, res, tr, r.tuning.FitWeights())
 				s.Result, s.Trace = &res, &tr
 				mu.Lock()
 				model = res.Model
@@ -166,6 +170,7 @@ func (r *CheckerRunner) Run(ctx context.Context, fixtures []CheckerFixture, para
 		Duration: time.Since(start).Round(time.Millisecond).String(),
 		Model:    model,
 		Revision: revision(),
+		Tuning:   r.tuning.Hash,
 		Checker:  r.cfg,
 		Baseline: bcfg,
 		Labels:   CheckerLabelsHash(fixtures),
@@ -178,7 +183,7 @@ func (r *CheckerRunner) Run(ctx context.Context, fixtures []CheckerFixture, para
 // RescoreChecker scores the results stored in a previous report against
 // the current labels, without calling any API. traces come from the
 // previous run's trace files; without them retrieval recall reads 0.
-func RescoreChecker(prev CheckerReport, fixtures []CheckerFixture, traces map[string]*domain.CheckTrace) (CheckerReport, error) {
+func RescoreChecker(prev CheckerReport, fixtures []CheckerFixture, traces map[string]*domain.CheckTrace, t *tuning.Tuning) (CheckerReport, error) {
 	byID := map[string]CheckerScore{}
 	for _, s := range prev.Fixtures {
 		byID[s.ID] = s
@@ -193,7 +198,7 @@ func RescoreChecker(prev CheckerReport, fixtures []CheckerFixture, traces map[st
 		if t := traces[f.ID]; t != nil {
 			tr = *t
 		}
-		s, err := ScoreCheck(f, *old.Result, tr)
+		s, err := ScoreCheck(f, *old.Result, tr, t.FitWeights())
 		if err != nil {
 			return CheckerReport{}, err
 		}

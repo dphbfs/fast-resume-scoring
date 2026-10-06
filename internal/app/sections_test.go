@@ -13,6 +13,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 func newTestExtractor(t *testing.T, srvURL string, pipeline config.Pipeline) (*Extractor, *metrics.Recorder) {
@@ -26,7 +27,7 @@ func newTestExtractor(t *testing.T, srvURL string, pipeline config.Pipeline) (*E
 	if err != nil {
 		t.Fatal(err)
 	}
-	return New(c, nil, m, log, pipeline), m
+	return New(c, nil, m, log, pipeline, tuning.Default()), m
 }
 
 // sectionFor labels sentences by keyword, standing in for Jev.

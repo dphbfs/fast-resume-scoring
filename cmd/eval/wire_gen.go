@@ -15,6 +15,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Injectors from wire.go:
@@ -40,7 +41,12 @@ func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	}
 	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
 	pipeline := configConfig.Pipeline
-	extractor := app.New(client, gencacheClient, recorder, logger, pipeline)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	extractor := app.New(client, gencacheClient, recorder, logger, pipeline, tuningTuning)
 	runner := eval.NewRunner(extractor, recorder, logger, pipeline)
 	return runner, nil
 }
@@ -61,14 +67,19 @@ func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error
 		return nil, err
 	}
 	checker := configConfig.Checker
-	appChecker := app.NewChecker(client, recorder, logger, checker)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
 	generative := configConfig.Generative
 	openaiClient, err := openai.New(generative, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
 	evalBaseline := eval.NewBaseline(openaiClient, generative, baseline)
-	checkerRunner := eval.NewCheckerRunner(appChecker, evalBaseline, recorder, logger, checker)
+	checkerRunner := eval.NewCheckerRunner(appChecker, evalBaseline, recorder, logger, checker, tuningTuning)
 	return checkerRunner, nil
 }
 
@@ -93,10 +104,15 @@ func initE2ERunner(cacheDir gencache.Dir) (*eval.E2ERunner, error) {
 	}
 	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
 	pipeline := configConfig.Pipeline
-	extractor := app.New(client, gencacheClient, recorder, logger, pipeline)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	extractor := app.New(client, gencacheClient, recorder, logger, pipeline, tuningTuning)
 	checker := configConfig.Checker
-	appChecker := app.NewChecker(client, recorder, logger, checker)
-	holisticJudge := app.NewHolisticJudge(client, recorder, logger)
-	e2ERunner := eval.NewE2ERunner(extractor, appChecker, holisticJudge, recorder, logger, configJev, pipeline, checker)
+	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
+	holisticJudge := app.NewHolisticJudge(client, recorder, logger, tuningTuning)
+	e2ERunner := eval.NewE2ERunner(extractor, appChecker, holisticJudge, recorder, logger, configJev, pipeline, checker, tuningTuning)
 	return e2ERunner, nil
 }

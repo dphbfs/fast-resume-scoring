@@ -132,7 +132,13 @@ The replacement score is the **Match Score** (`docs/adr/0004`,
 one Jev request over the full posting and Resume): `role_match` (Score),
 `experience_short` (Noul), `blocker` (Noul, status conditions only),
 mapped to the generative reference scale. `cmd/score -jd job.txt -resume
-resume.md` prints it (match schema v1). `extract`, `check`, and `score`
+resume.md` prints it (match schema v1).
+Every prompt (Jev questions, the Job Summary system prompt) and every
+score weight (Match and Fit) lives in `tuning/tuning.yaml`, embedded in
+the binaries; `TUNING_FILE` points at an edited copy, and outputs and
+reports record the file's hash. `TestPromptSnapshot`
+(`internal/app/testdata/prompts.golden.json`) pins the exact requests:
+a wording change must be deliberate (`-update`, review the diff). `extract`, `check`, and `score`
 stop at `RUN_DEADLINE` (default 120s) and reject a JD or resume file over
 48 KiB (both go into one Jev request; OpenRouter caps it at 32k tokens). Question wordings are fitted
 constants: probe (`scripts/probe_holistic.py`) and refit
@@ -349,7 +355,9 @@ and the accept/reject decision.
   `jev/jevtest` (fake Jev server for tests), `openai` (OpenAI-compatible chat),
   `cli` (driving adapter).
 - `internal/platform/`: `config` (env vars), `limiter`, `metrics` (CLI run
-  summary), `logging` (slog JSON, `LOG_LEVEL`).
+  summary), `logging` (slog JSON, `LOG_LEVEL`), `fsutil` (private atomic
+  writes), `providererr` (sanitized provider errors).
+- `tuning/`: `tuning.yaml` (prompts and score weights) and its loader.
 - Commands: `make test`, `make race`, `make vet`, `make build`, `make wire`.
 
 ## Go skills

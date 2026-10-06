@@ -15,6 +15,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // titleExtractor returns one Requirement named after the Job Description
@@ -139,7 +140,7 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 	}
 	ex := &titleExtractor{}
 	r := NewE2ERunner(ex, fitChecker{"Alpha": 54, "Beta": 58, "Gamma": 90}, fixedJudge{}, metrics.NewRecorder(),
-		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{Model: "m"}, config.Pipeline{}, config.Checker{})
+		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{Model: "m"}, config.Pipeline{}, config.Checker{}, tuning.Default())
 	cache := filepath.Join(t.TempDir(), "extract")
 
 	rep := r.Run(context.Background(), pairs, 2, cache, true)
@@ -178,7 +179,7 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 func TestE2ERunReportsFailedPair(t *testing.T) {
 	pairs := []E2EPair{{ID: "x", JD: domain.JobDescription{Title: "boom"}}}
 	r := NewE2ERunner(&titleExtractor{}, fitChecker{}, fixedJudge{}, metrics.NewRecorder(),
-		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{})
+		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{}, tuning.Default())
 	rep := r.Run(context.Background(), pairs, 1, "", true)
 	if rep.Totals.Failed != 1 || !strings.Contains(rep.Pairs[0].Error, "extract: boom") {
 		t.Errorf("report = %+v", rep.Pairs)
@@ -193,7 +194,7 @@ func TestE2ERunWithoutFit(t *testing.T) {
 	}
 	ex := &titleExtractor{}
 	r := NewE2ERunner(ex, fitChecker{}, fixedJudge{}, metrics.NewRecorder(),
-		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{})
+		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{}, tuning.Default())
 	rep := r.Run(context.Background(), pairs, 2, "", false)
 	if ex.calls.Load() != 0 || rep.Totals.Fit != nil || rep.Totals.Scored != 2 || rep.Pairs[0].Fit != nil || *rep.Pairs[0].Match != 81 {
 		t.Errorf("report = %+v, %d extractor calls", rep.Totals, ex.calls.Load())

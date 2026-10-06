@@ -38,7 +38,7 @@ func (e *Extractor) labelSections(ctx context.Context, r *run) error {
 		g.Go(func() error {
 			questions := make(map[string]port.Question, hi-lo)
 			for i := lo; i < hi; i++ {
-				questions[sectionQuestionID(i)] = sectionQuestion(r.sentences[i].Text, r.headings[i])
+				questions[sectionQuestionID(i)] = e.prompts.sectionQuestion(r.sentences[i].Text, r.headings[i])
 			}
 			resp, err := e.classifier.Classify(ctx, port.ClassifyRequest{State: state, Questions: questions})
 			if err != nil {

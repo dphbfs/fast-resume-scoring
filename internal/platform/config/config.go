@@ -18,6 +18,13 @@ type Config struct {
 	Pipeline   Pipeline
 	Checker    Checker
 	Run        Run
+	Tuning     Tuning
+}
+
+// Tuning names the tuning file (prompts and score weights, see
+// tuning/tuning.yaml). Empty means the copy built into the binary.
+type Tuning struct {
+	File string // TUNING_FILE
 }
 
 // Run bounds one command-line run (extract, check, score).
@@ -180,7 +187,8 @@ func load(getenv func(string) string) (Config, error) {
 			GateFirst:         e.bool("CHECKER_GATE_FIRST", d.Checker.GateFirst),
 			SkipMentioned:     e.bool("CHECKER_SKIP_MENTIONED", d.Checker.SkipMentioned),
 		},
-		Run: Run{Deadline: e.duration("RUN_DEADLINE", d.Run.Deadline)},
+		Run:    Run{Deadline: e.duration("RUN_DEADLINE", d.Run.Deadline)},
+		Tuning: Tuning{File: getenv("TUNING_FILE")},
 	}
 	if e.err != nil {
 		return Config{}, e.err

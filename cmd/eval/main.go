@@ -14,6 +14,8 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/gencache"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 func main() {
@@ -135,7 +137,12 @@ func runChecker(ctx context.Context, golden, out, rescore string, prefixes []str
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 2
 		}
-		if report, err = eval.RescoreChecker(prev, fixtures, traces); err != nil {
+		t, err := tuning.Load(config.Tuning{File: os.Getenv("TUNING_FILE")})
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "eval:", err)
+			return 2
+		}
+		if report, err = eval.RescoreChecker(prev, fixtures, traces, t); err != nil {
 			fmt.Fprintln(os.Stderr, "eval:", err)
 			return 2
 		}

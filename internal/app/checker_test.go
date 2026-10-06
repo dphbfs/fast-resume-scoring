@@ -18,6 +18,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 func newTestChecker(t *testing.T, srvURL string, cfg config.Checker) (*Checker, *metrics.Recorder) {
@@ -31,7 +32,7 @@ func newTestChecker(t *testing.T, srvURL string, cfg config.Checker) (*Checker, 
 	if err != nil {
 		t.Fatal(err)
 	}
-	return NewChecker(c, m, log, withTestDefaults(cfg)), m
+	return NewChecker(c, m, log, withTestDefaults(cfg), tuning.Default()), m
 }
 
 // fakeEvidence stands in for Jev: retrieval[statement prefix] gives the
@@ -392,10 +393,11 @@ func TestStrengthGateDecidesLinks(t *testing.T) {
 
 func TestStrengthCriteriaAreStructured(t *testing.T) {
 	want := []string{"strong", "partial", "weak", "none", "alternative_tool", "shared_words_only", "different_skill", "context_only"}
-	if got := slices.Sorted(maps.Keys(strengthCriteria)); !slices.Equal(got, slices.Sorted(slices.Values(want))) {
+	criteria := newPrompts(tuning.Default()).strengthCriteria
+	if got := slices.Sorted(maps.Keys(criteria)); !slices.Equal(got, slices.Sorted(slices.Values(want))) {
 		t.Errorf("options = %v, want %v", got, want)
 	}
-	for o, d := range strengthCriteria {
+	for o, d := range criteria {
 		if obj, ok := d.(map[string]any); !ok || obj["what"] == nil {
 			t.Errorf("option %q is not a {what, ...} object: %v", o, d)
 		}

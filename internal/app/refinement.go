@@ -37,15 +37,15 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	questions := map[string]port.Question{}
 	for i, v := range values {
 		ms := mentions[i]
-		questions[fmt.Sprintf("filler_%d", i)] = fillerQuestion(v, ms)
+		questions[fmt.Sprintf("filler_%d", i)] = e.prompts.fillerQuestion(v, ms)
 		if !e.cfg.SkipImportance {
-			questions[fmt.Sprintf("importance_%d", i)] = importanceQuestion(v, ms)
+			questions[fmt.Sprintf("importance_%d", i)] = e.prompts.importanceQuestion(v, ms)
 		}
 		if opts := duplicateOptions(values, i, maxAllDuplicateOptions); len(opts) > 0 {
-			questions[fmt.Sprintf("dup_%d", i)] = duplicateQuestion(v, ms, opts)
+			questions[fmt.Sprintf("dup_%d", i)] = e.prompts.duplicateQuestion(v, ms, opts)
 		}
 		if opts := sameSentenceValues(r, values, i); len(opts) > 0 {
-			questions[fmt.Sprintf("alt_%d", i)] = alternativeQuestion(v, ms, opts)
+			questions[fmt.Sprintf("alt_%d", i)] = e.prompts.alternativeQuestion(v, ms, opts)
 		}
 	}
 
@@ -65,7 +65,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 			trs[i].Kept = true
 			continue
 		}
-		trs[i].FillerKind = topOption(a.Probabilities, fillerReasons)
+		trs[i].FillerKind = topOption(a.Probabilities, e.prompts.fillerReasons)
 		e.metrics.Add("refinement.dropped."+trs[i].FillerKind, 1)
 		e.log.DebugContext(ctx, "filler dropped", "requirement", values[i])
 	}
@@ -81,7 +81,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	for i := range values {
 		dupOf[i] = -1
 		if a, ok := answers[fmt.Sprintf("dup_%d", i)]; ok && keep[i] {
-			if j, ok := linkedValue(a, duplicateReasons, index, minMergeMass); ok && keep[j] {
+			if j, ok := linkedValue(a, e.prompts.duplicateReasons, index, minMergeMass); ok && keep[j] {
 				dupOf[i] = j
 				trs[i].DuplicateOf = values[j]
 			}
@@ -114,7 +114,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 	// 3. Importance: Score / top level; a merged Requirement keeps the max.
 	// r.importance also records which canonical values were kept, so a
 	// skipped Importance is stored as 0.
-	top := float64(len(importanceLevels) - 1)
+	top := float64(len(e.prompts.importanceLevels) - 1)
 	r.importance = map[string]float64{}
 	for i := range values {
 		if !keep[i] {
@@ -140,7 +140,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		if !ok || !keep[i] {
 			continue
 		}
-		if j, ok := linkedValue(a, alternativeReasons, index, minAlternativeMass); ok && keep[j] &&
+		if j, ok := linkedValue(a, e.prompts.alternativeReasons, index, minAlternativeMass); ok && keep[j] &&
 			canonical[i] != canonical[j] {
 			alts.union(canonical[i], canonical[j])
 			trs[i].AlternativeOf = values[j]

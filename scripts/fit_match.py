@@ -163,17 +163,12 @@ MODELS = [
     ("blocker", ["fit", "resp", "dom", "fit*resp"]),
 ]
 
+# Default models for a probe of the production questions (tuning.yaml);
+# probes from the redesign round name the blocker blocker_v3 and need
+# -models.
 PROBE_MODELS = [
-    ("blocker", ["fit", "resp", "dom"]),
-    ("blocker_v3", ["fit", "resp", "dom"]),
-    ("blocker_v3", ["fit", "role_match", "dom"]),
-    ("blocker_v3", ["fit", "resp", "role_match", "dom"]),
-    ("blocker_v3", ["fit", "must_haves", "dom"]),
-    ("blocker_v3", ["fit", "resp", "must_haves", "dom"]),
-    ("blocker_v3", ["fit", "resp", "role_match", "must_haves", "dom"]),
-    ("blocker_v3", ["fit", "resp", "dom", "experience_short"]),
-    ("blocker_v3", ["fit", "resp", "role_match", "dom", "experience_short"]),
-    ("blocker_v3", ["fit", "must_haves", "role_match", "dom", "experience_short"]),
+    ("blocker", ["role_match", "experience_short"]),
+    ("blocker", ["fit", "role_match", "experience_short"]),
 ]
 
 

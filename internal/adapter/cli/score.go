@@ -11,6 +11,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // ScoreApp runs the score command: the Match Score of a Resume for a Job
@@ -20,11 +21,12 @@ type ScoreApp struct {
 	recorder *metrics.Recorder
 	log      *slog.Logger
 	run      config.Run
+	tuning   *tuning.Tuning
 }
 
 // NewScoreApp builds a ScoreApp.
-func NewScoreApp(judge port.HolisticJudge, recorder *metrics.Recorder, log *slog.Logger, run config.Run) *ScoreApp {
-	return &ScoreApp{judge: judge, recorder: recorder, log: log, run: run}
+func NewScoreApp(judge port.HolisticJudge, recorder *metrics.Recorder, log *slog.Logger, run config.Run, t *tuning.Tuning) *ScoreApp {
+	return &ScoreApp{judge: judge, recorder: recorder, log: log, run: run, tuning: t}
 }
 
 // Run executes the command with args (without the program name) and returns
@@ -70,7 +72,7 @@ func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 		fmt.Fprintln(stderr, "score:", err)
 		return ExitError
 	}
-	if err := writeJSON(domain.NewMatchResult(h), *out, stdout); err != nil {
+	if err := writeJSON(domain.NewMatchResult(h, a.tuning.MatchWeights(), a.tuning.Hash), *out, stdout); err != nil {
 		fmt.Fprintln(stderr, "score:", err)
 		return ExitError
 	}
