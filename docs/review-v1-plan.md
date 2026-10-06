@@ -187,8 +187,10 @@ grades).
 
 ## Phase 5: freeze and final evaluation
 
-- [ ] F1. Freeze commit and config; run the sealed final set once: Jev
+- [x] F1. Freeze commit and config; run the sealed final set once: Jev
       end-to-end vs reference, plus the recruiter judge.
+      Done 2026-10-06: Match MAE 11.6, τ-b 0.69 (dev 5.6 / 0.80); judge vs
+      reference 7.0 / 0.88. See `docs/tuning.md`, "Final set, frozen run".
 - [ ] F2. Report metrics with clustered uncertainty, τ-b, largest
       disagreements, failures, cost ratio vs Opus 5, and the four
       scenarios (fresh single, cached repeat, one resume × many jobs,

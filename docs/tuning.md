@@ -668,3 +668,39 @@ Pooled refit over the three runs: `(44.2 + 31.7 fit + 46.2 resp − 17.5
 domain_mm) × (1 − blocker)`, per run MAE 5.5-5.6, bias ~0, τ-b 0.79-0.81.
 Confirmation run with the pruned request (12-30-35Z): MAE 5.6, bias 0.0,
 80% within ±10, max 19, τ-b 0.80.
+
+## Final set, frozen run (F1, 2026-10-06)
+
+One cold run of the frozen config (commit 15d71e6, Match Score v3, scoring
+mode) on the sealed final set: 20 pairs, 4 resumes (3 synthetic held-out,
+1 masked real Contract resume), report `eval/reports/e2e/2026-10-06T00-51-16Z`.
+Recruiter judge (gpt-6-luna, 3 runs, median) for comparison.
+
+| | n | MAE | bias | within 10 | Pearson | τ-b |
+|---|---|---|---|---|---|---|
+| Jev Match vs reference | 20 | 11.6 | +3.6 | 60% | 0.82 | 0.69 |
+| Jev Fit vs reference | 20 | 16.1 | −10.8 | 35% | – | 0.56 |
+| Judge vs reference | 20 | 7.0 | −1.2 | 80% | 0.96 | 0.88 |
+| Jev Match vs judge | 20 | 10.4 | +4.8 | 60% | 0.82 | 0.65 |
+
+Development (subset, Main resume): MAE 5.6, τ-b 0.80. Cost $0.0066/pair
+cold, 0 failures, mean 20.7 s per pair (4 in parallel).
+
+By resume (Match MAE): Contract (same experience as the development
+resume) 6.0; synthetic full-stack 11.8, career changer 15.8, data/ML 12.8.
+The Match Score generalizes to new postings but not to new resumes.
+
+Where it fails:
+
+- **Off-role floor.** The 44.2 intercept keeps clearly wrong-role pairs at
+  ~40 (Unity Android 40 vs 18, Grove front-end for the data/ML resume 42
+  vs 16, Clever Devices mobile 52 vs 32). The development set had almost
+  no off-role pairs, so the fit never had to go low.
+- **Blocker misfire.** Voxel51 (career changer): `blocker` 0.73 multiplies
+  Match to 13 vs reference 48; the reference treats the missing CS degree
+  and 8+ years as gaps, not disqualifiers. Largest single error (35).
+- **Over-credit at the top.** Bicycle Health 96 vs 82, Engenious 58 vs 42.
+
+The judge agrees with the reference on held-out data (τ-b 0.88), so the
+reference is not the noisy side here. Per F3 the result is a redesign
+signal; any change makes this set development data.

@@ -1,0 +1,3 @@
+This is a mid-level Salesforce software engineer role (roughly 4+ years of general engineering experience, 2+ in Salesforce) working on Stryker's U.S. commercial sales platforms in the medical device space. The work covers building and maintaining production code and integrations for account management and customer engagement, plus root cause analysis, automated testing, and managing deployments through source control with QA/UAT coordination.
+
+The core stack is Salesforce — Apex and Lightning Web Components — alongside Oracle CPQ, with BML and XSLT relevant on the CPQ side, and general object-oriented languages such as Java, C#, or JavaScript.
