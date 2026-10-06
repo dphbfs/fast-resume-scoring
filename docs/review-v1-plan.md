@@ -145,10 +145,6 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       Done 2026-10-06 (`platform/fsutil`, Go outputs only; the Python eval
       scripts are unchanged). Cache key not versioned: it would invalidate
       the committed summaries, and extraction is off the scoring path.
-- [ ] H7. the generative scorer JSON adapter: HTML bullets, free-text `period`
-      dates with mixed dashes, hidden items, custom sections, degree text
-      inside descriptions; source item ids; equivalence test with the
-      Markdown adapter.
 - [~] H8. Years-qualifier Requirements reported as qualified information,
       not in Fit Score. Obsolete for scoring: the Fit Score left the scoring
       path (ADR 0004); revisit only if the checker becomes the explanation
