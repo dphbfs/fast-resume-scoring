@@ -195,9 +195,10 @@ grades).
       8.6, τ-b 0.78, the same agreement as the judge (8.8 / 0.78). See
       `docs/tuning.md`, "Second sealed set, frozen run".
       Accepted 2026-10-06: v4 is the replacement score; final2 stays sealed.
-- [ ] F2. Report metrics with clustered uncertainty, τ-b, largest
+- [x] F2. Report metrics with clustered uncertainty, τ-b, largest
       disagreements, failures, cost ratio vs Opus 5, and the four
       scenarios (fresh single, cached repeat, one resume × many jobs,
       many resumes × one job).
+      Done 2026-10-06: `docs/final-report-v1.md`.
 - [ ] F3. Inconclusive → more independent test data. Redesign → the
       final set becomes development data; collect a fresh one.
