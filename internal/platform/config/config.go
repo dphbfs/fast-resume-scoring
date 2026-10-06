@@ -2,7 +2,9 @@
 package config
 
 import (
+	"errors"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -103,61 +105,140 @@ func Load() (Config, error) {
 	return load(os.Getenv)
 }
 
+// DefaultConfig returns every setting's default; Load starts from it and
+// tests can too, so there is one source of defaults.
+func DefaultConfig() Config {
+	return Config{
+		Jev: Jev{
+			BaseURL:        "https://api.typesafe.ai",
+			Model:          "jev-latest",
+			MaxConcurrency: 8,
+			MaxRetries:     4,
+			Timeout:        30 * time.Second,
+		},
+		Generative: Generative{
+			BaseURL:        "https://api.openai.com/v1",
+			MaxConcurrency: 1,
+			Timeout:        60 * time.Second,
+		},
+		Pipeline: Pipeline{
+			MaxWindowWords:     4,
+			SectionBatchSize:   60,
+			MinRequirementMass: 0.7,
+		},
+		Checker: DefaultChecker(),
+		Run:     Run{Deadline: 120 * time.Second},
+	}
+}
+
+// DefaultChecker returns the Resume Checker defaults (docs/tuning.md).
+func DefaultChecker() Checker {
+	return Checker{
+		RetrievalK:        8,
+		RetrievalFloor:    0.01,
+		MinEvidenceMass:   0.5,
+		NarrowSizes:       []int{16},
+		GateThreshold:     0.5,
+		SkipCappedGrading: true,
+		GateFirst:         true,
+	}
+}
+
 func load(getenv func(string) string) (Config, error) {
 	e := env{getenv: getenv}
+	d := DefaultConfig()
 	cfg := Config{
 		Jev: Jev{
 			APIKey:         getenv("TYPESAFE_API_KEY"),
-			BaseURL:        e.str("TYPESAFE_BASE_URL", "https://api.typesafe.ai"),
-			Model:          e.str("JEV_MODEL", "jev-latest"),
-			MaxConcurrency: e.int("JEV_MAX_CONCURRENCY", 8),
-			MaxRetries:     e.int("JEV_MAX_RETRIES", 4),
-			Timeout:        e.duration("JEV_TIMEOUT", 30*time.Second),
+			BaseURL:        e.str("TYPESAFE_BASE_URL", d.Jev.BaseURL),
+			Model:          e.str("JEV_MODEL", d.Jev.Model),
+			MaxConcurrency: e.int("JEV_MAX_CONCURRENCY", d.Jev.MaxConcurrency),
+			MaxRetries:     e.int("JEV_MAX_RETRIES", d.Jev.MaxRetries),
+			Timeout:        e.duration("JEV_TIMEOUT", d.Jev.Timeout),
 		},
 		Generative: Generative{
-			BaseURL:        e.str("OPENAI_BASE_URL", "https://api.openai.com/v1"),
+			BaseURL:        e.str("OPENAI_BASE_URL", d.Generative.BaseURL),
 			APIKey:         getenv("OPENAI_API_KEY"),
 			Model:          getenv("OPENAI_MODEL"),
-			MaxConcurrency: e.int("GEN_MAX_CONCURRENCY", 1),
-			Timeout:        e.duration("GEN_TIMEOUT", 60*time.Second),
+			MaxConcurrency: e.int("GEN_MAX_CONCURRENCY", d.Generative.MaxConcurrency),
+			Timeout:        e.duration("GEN_TIMEOUT", d.Generative.Timeout),
 		},
 		Pipeline: Pipeline{
-			MaxWindowWords:       e.int("PIPELINE_MAX_WINDOW_WORDS", 4),
-			SectionBatchSize:     e.int("PIPELINE_SECTION_BATCH", 60),
-			MinRequirementMass:   e.float("PIPELINE_MIN_REQUIREMENT_MASS", 0.7),
-			SkipImportance:       e.bool("PIPELINE_SKIP_IMPORTANCE", false),
-			SkipResponsibilities: e.bool("PIPELINE_SKIP_RESPONSIBILITIES", false),
+			MaxWindowWords:       e.int("PIPELINE_MAX_WINDOW_WORDS", d.Pipeline.MaxWindowWords),
+			SectionBatchSize:     e.int("PIPELINE_SECTION_BATCH", d.Pipeline.SectionBatchSize),
+			MinRequirementMass:   e.float("PIPELINE_MIN_REQUIREMENT_MASS", d.Pipeline.MinRequirementMass),
+			SkipImportance:       e.bool("PIPELINE_SKIP_IMPORTANCE", d.Pipeline.SkipImportance),
+			SkipResponsibilities: e.bool("PIPELINE_SKIP_RESPONSIBILITIES", d.Pipeline.SkipResponsibilities),
 		},
 		Checker: Checker{
-			RetrievalK:        e.int("CHECKER_RETRIEVAL_K", 8),
-			RetrievalFloor:    e.float("CHECKER_RETRIEVAL_FLOOR", 0.01),
-			MinEvidenceMass:   e.float("CHECKER_MIN_EVIDENCE_MASS", 0.5),
-			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", []int{16}),
-			GateThreshold:     e.float("CHECKER_GATE_THRESHOLD", 0.5),
-			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", true),
-			GateFirst:         e.bool("CHECKER_GATE_FIRST", true),
-			SkipMentioned:     e.bool("CHECKER_SKIP_MENTIONED", false),
+			RetrievalK:        e.int("CHECKER_RETRIEVAL_K", d.Checker.RetrievalK),
+			RetrievalFloor:    e.float("CHECKER_RETRIEVAL_FLOOR", d.Checker.RetrievalFloor),
+			MinEvidenceMass:   e.float("CHECKER_MIN_EVIDENCE_MASS", d.Checker.MinEvidenceMass),
+			NarrowSizes:       e.ints("CHECKER_NARROW_SIZES", d.Checker.NarrowSizes),
+			GateThreshold:     e.float("CHECKER_GATE_THRESHOLD", d.Checker.GateThreshold),
+			SkipCappedGrading: e.bool("CHECKER_SKIP_CAPPED_GRADING", d.Checker.SkipCappedGrading),
+			GateFirst:         e.bool("CHECKER_GATE_FIRST", d.Checker.GateFirst),
+			SkipMentioned:     e.bool("CHECKER_SKIP_MENTIONED", d.Checker.SkipMentioned),
 		},
+		Run: Run{Deadline: e.duration("RUN_DEADLINE", d.Run.Deadline)},
 	}
-	cfg.Run = Run{Deadline: e.duration("RUN_DEADLINE", 120*time.Second)}
 	if e.err != nil {
 		return Config{}, e.err
-	}
-	if cfg.Run.Deadline <= 0 {
-		return Config{}, fmt.Errorf("config: RUN_DEADLINE must be positive, got %s", cfg.Run.Deadline)
 	}
 	for _, name := range removedSettings {
 		if getenv(name) != "" {
 			return Config{}, fmt.Errorf("config: %s was removed (experiments in docs/tuning.md); unset it", name)
 		}
 	}
-	if (cfg.Checker.SkipCappedGrading || cfg.Checker.GateFirst) && cfg.Checker.GateThreshold <= 0 {
-		return Config{}, fmt.Errorf("config: CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0")
-	}
 	if cfg.Jev.APIKey == "" {
 		return Config{}, fmt.Errorf("config: TYPESAFE_API_KEY is required")
 	}
+	if err := cfg.Validate(); err != nil {
+		return Config{}, err
+	}
 	return cfg, nil
+}
+
+// Validate checks every bound: counts at least 1, durations positive,
+// probabilities finite and in [0, 1], and the Checker's switch
+// dependencies. It is the one validation path for loaded settings.
+func (c Config) Validate() error {
+	var errs []error
+	atLeast := func(name string, v, lo int) {
+		if v < lo {
+			errs = append(errs, fmt.Errorf("%s must be at least %d, got %d", name, lo, v))
+		}
+	}
+	positive := func(name string, d time.Duration) {
+		if d <= 0 {
+			errs = append(errs, fmt.Errorf("%s must be positive, got %s", name, d))
+		}
+	}
+	prob := func(name string, p float64) {
+		if math.IsNaN(p) || p < 0 || p > 1 {
+			errs = append(errs, fmt.Errorf("%s must be in [0, 1], got %v", name, p))
+		}
+	}
+	atLeast("JEV_MAX_CONCURRENCY", c.Jev.MaxConcurrency, 1)
+	atLeast("JEV_MAX_RETRIES", c.Jev.MaxRetries, 0)
+	positive("JEV_TIMEOUT", c.Jev.Timeout)
+	atLeast("GEN_MAX_CONCURRENCY", c.Generative.MaxConcurrency, 1)
+	positive("GEN_TIMEOUT", c.Generative.Timeout)
+	atLeast("PIPELINE_MAX_WINDOW_WORDS", c.Pipeline.MaxWindowWords, 1)
+	atLeast("PIPELINE_SECTION_BATCH", c.Pipeline.SectionBatchSize, 1)
+	prob("PIPELINE_MIN_REQUIREMENT_MASS", c.Pipeline.MinRequirementMass)
+	atLeast("CHECKER_RETRIEVAL_K", c.Checker.RetrievalK, 1)
+	prob("CHECKER_RETRIEVAL_FLOOR", c.Checker.RetrievalFloor)
+	prob("CHECKER_MIN_EVIDENCE_MASS", c.Checker.MinEvidenceMass)
+	prob("CHECKER_GATE_THRESHOLD", c.Checker.GateThreshold)
+	if (c.Checker.SkipCappedGrading || c.Checker.GateFirst) && c.Checker.GateThreshold <= 0 {
+		errs = append(errs, fmt.Errorf("CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0"))
+	}
+	positive("RUN_DEADLINE", c.Run.Deadline)
+	if err := errors.Join(errs...); err != nil {
+		return fmt.Errorf("config: %w", err)
+	}
+	return nil
 }
 
 // env reads typed values and keeps the first parse error.

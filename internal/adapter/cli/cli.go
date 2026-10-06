@@ -33,6 +33,9 @@ const (
 // sends both in one Jev request, which OpenRouter limits to 32k tokens.
 const MaxInputBytes = 48 << 10
 
+// maxResultBytes caps an extract result file read by check.
+const maxResultBytes = 4 << 20
+
 // App runs the extract command.
 type App struct {
 	extractor port.RequirementExtractor
@@ -137,17 +140,22 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 
 // readInput reads a text input file of at most MaxInputBytes.
 func readInput(path string) ([]byte, error) {
+	return readLimited(path, MaxInputBytes)
+}
+
+// readLimited reads a file of at most limit bytes.
+func readLimited(path string, limit int) ([]byte, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, err
 	}
 	defer f.Close()
-	raw, err := io.ReadAll(io.LimitReader(f, MaxInputBytes+1))
+	raw, err := io.ReadAll(io.LimitReader(f, int64(limit)+1))
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", path, err)
 	}
-	if len(raw) > MaxInputBytes {
-		return nil, fmt.Errorf("%s: larger than the %d KiB input limit", path, MaxInputBytes>>10)
+	if len(raw) > limit {
+		return nil, fmt.Errorf("%s: larger than the %d KiB input limit", path, limit>>10)
 	}
 	return raw, nil
 }

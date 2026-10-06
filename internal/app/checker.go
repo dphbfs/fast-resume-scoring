@@ -492,26 +492,11 @@ func (c *Checker) buildCoverage(reqs domain.Result, creqs []checkRequirement, un
 	return res
 }
 
-func (c *Checker) retrievalK() int {
-	if c.cfg.RetrievalK > 0 {
-		return c.cfg.RetrievalK
-	}
-	return 5
-}
+func (c *Checker) retrievalK() int { return c.cfg.RetrievalK }
 
-func (c *Checker) retrievalFloor() float64 {
-	if c.cfg.RetrievalFloor > 0 {
-		return c.cfg.RetrievalFloor
-	}
-	return 0.02
-}
+func (c *Checker) retrievalFloor() float64 { return c.cfg.RetrievalFloor }
 
-func (c *Checker) minEvidenceMass() float64 {
-	if c.cfg.MinEvidenceMass > 0 {
-		return c.cfg.MinEvidenceMass
-	}
-	return 0.5
-}
+func (c *Checker) minEvidenceMass() float64 { return c.cfg.MinEvidenceMass }
 
 // stage runs fn with timing, metrics and structured logs.
 // addUsage records a stage's Jev tokens, so cost can be split by stage.

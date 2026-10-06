@@ -125,12 +125,14 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
 - [x] H1. Delete losing variants (plus gate wording v1): retrieval `peel`, `noul`, `single`,
       Score grading, criteria v1–v4/v6, narrow-stop, veto. Reject obsolete
       settings with a clear error. Keep the gate-first switch until L5.
-- [ ] H2. `DefaultCheckerConfig()` + one validation path; finite
-      probabilities, valid bounds.
-- [ ] H3. Boundary validation of inputs (IDs, refs, groups, tiers) and
+- [x] H2. `DefaultCheckerConfig()` + one validation path; finite
+      probabilities, valid bounds. Done 2026-10-06: `config.DefaultConfig`,
+      `config.Config.Validate`; the checker's divergent fallbacks removed.
+- [x] H3. Boundary validation of inputs (IDs, refs, groups, tiers) and
       Jev answers (types, option names, finite probabilities, empty
       distributions). Jev answers done 2026-10-06 (`jev.AnswerError`);
-      extract-result inputs still open (checker path only).
+      extract results read by `check` validated by `domain.Result.Validate`
+      (all 150 cached real results pass).
 - [x] H4. Input limits and a root `RUN_DEADLINE` (default 120 s); tests
       for cancel while queued, during HTTP, during retry backoff.
       Done 2026-10-06: 48 KiB per input file; deadline in extract, check,
@@ -147,8 +149,10 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       dates with mixed dashes, hidden items, custom sections, degree text
       inside descriptions; source item ids; equivalence test with the
       Markdown adapter.
-- [ ] H8. Years-qualifier Requirements reported as qualified information,
-      not in Fit Score.
+- [~] H8. Years-qualifier Requirements reported as qualified information,
+      not in Fit Score. Obsolete for scoring: the Fit Score left the scoring
+      path (ADR 0004); revisit only if the checker becomes the explanation
+      feature.
 - [x] H9. CLI notice that resume content goes to the configured providers.
       Done 2026-10-06: in the extract, check, and score usage text.
 
