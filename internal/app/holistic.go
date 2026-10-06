@@ -4,9 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"regexp"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
@@ -14,28 +11,25 @@ import (
 )
 
 // HolisticJudge judges the whole Resume against the whole posting in one
-// Jev request (the Holistic Round): how much of the job's day-to-day
-// responsibilities the candidate has carried out, whether the job's domain
-// is new to the candidate, whether a stated hard eligibility condition
-// other than location is clearly unmet, whether the job's primary
-// technology is missing, and whether the candidate is outside every
-// allowed location; plus the employment gap, from the Resume's dates in
-// code. It needs no extracted Requirements, so it runs alongside
-// extraction and checking. Questions tried and dropped (core work, domain
-// closeness, career level, role type, transferable scope, soft
-// eligibility, a blocker that included location) are in docs/tuning.md.
+// Jev request (the Holistic Round), which alone determines the Match Score
+// (docs/adr/0004): how closely the candidate's kind of role matches the
+// job's, whether the candidate is clearly under-qualified for it, and
+// whether a stated status condition is clearly unmet. It needs no
+// extracted Requirements. Questions tried and dropped (core work,
+// responsibilities, domain closeness and mismatch, career level, role
+// type, transferable scope, primary gap, soft eligibility, location, must-
+// haves, employment gap) are in docs/tuning.md.
 type HolisticJudge struct {
 	classifier port.AIClassifierClient
 	metrics    port.Metrics
 	log        *slog.Logger
-	now        func() time.Time // the as-of date for the employment gap
 }
 
 var _ port.HolisticJudge = (*HolisticJudge)(nil)
 
 // NewHolisticJudge builds a HolisticJudge.
 func NewHolisticJudge(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger) *HolisticJudge {
-	return &HolisticJudge{classifier: classifier, metrics: m, log: log.With("component", "holistic"), now: time.Now}
+	return &HolisticJudge{classifier: classifier, metrics: m, log: log.With("component", "holistic")}
 }
 
 // holisticState is the Jev state: the posting as the extractor reads it and
@@ -45,15 +39,49 @@ type holisticState struct {
 	Resume     string `json:"resume"`
 }
 
-// responsibilityLevels rate how much of the job's day-to-day
-// responsibilities the candidate has carried out, in any domain, lowest
-// first.
-var responsibilityLevels = []any{
-	"None of the job's day-to-day responsibilities appear in the candidate's work.",
-	"A few of them, in a limited way.",
-	"About half of them.",
-	"Most of them.",
-	"Nearly all of them, at the scope the job describes.",
+// roleMatchLevels rate how closely the candidate's kind of role matches
+// the job's, lowest first.
+var roleMatchLevels = []any{
+	"A different profession or specialty (for example Android/mobile vs data engineering, Salesforce " +
+		"development vs backend services, front-end vs data/ML).",
+	"A neighboring specialty with little overlap in daily work.",
+	"The same broad field with a different focus (for example front-end-leaning vs backend-leaning).",
+	"The same kind of role with a different main stack.",
+	"The same kind of role and stack.",
+}
+
+// holisticQuestions are the Holistic Round's questions, worded as in the
+// probe that fitted the Match Score (scripts/probe_holistic.py); changing
+// a word means refitting.
+var holisticQuestions = map[string]port.Question{
+	"role_match": {
+		Type: port.Score,
+		Instructions: "How closely does the kind of role the candidate in `resume` has been doing match the kind " +
+			"of role in `job_posting`? Judge the role (what the person builds and which specialty), not " +
+			"seniority or domain.",
+		Criteria: roleMatchLevels,
+	},
+	"experience_short": {
+		Type: port.Noul,
+		Instructions: "Does `resume` show clearly fewer years of the relevant kind of experience, or a clearly " +
+			"lower career level, than `job_posting` asks for?",
+		Criteria: map[string]any{
+			"true":  "The candidate's relevant experience or level is clearly below what the job asks for.",
+			"false": "The candidate meets or exceeds the experience and level, or is within a year or so of it.",
+		},
+	},
+	"blocker": {
+		Type: port.Noul,
+		Instructions: "Does `job_posting` state a hard eligibility condition that `resume` clearly shows the candidate " +
+			"does not meet? Only status conditions count: must be a current student or recent graduate, must " +
+			"hold a security clearance, a professional license, or citizenship the resume rules out. Skills, " +
+			"years of experience, degrees, and location are qualifications, not eligibility conditions.",
+		Criteria: map[string]any{
+			"true": "A stated status condition (student, clearance, license, citizenship) is clearly not met.",
+			"false": "No status condition is stated, it is met, or the resume does not clearly contradict it. " +
+				"Missing years, a missing degree, or missing skills are never a yes.",
+		},
+	},
 }
 
 // Judge asks the Holistic Round questions for one posting and Resume.
@@ -61,55 +89,8 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 	start := time.Now()
 	defer func() { h.metrics.ObserveDuration("stage.holistic", time.Since(start)) }()
 	resp, err := h.classifier.Classify(ctx, port.ClassifyRequest{
-		State: holisticState{JobPosting: postingText(jd).Text, Resume: resume.Text},
-		Questions: map[string]port.Question{
-			"responsibilities": {
-				Type: port.Score,
-				Instructions: "Regardless of product or industry domain, how much of the day-to-day responsibilities " +
-					"in `job_posting` (what the person will build, own, and operate) has the candidate in `resume` carried out?",
-				Criteria: responsibilityLevels,
-			},
-			"primary_gap": {
-				Type: port.Noul,
-				Instructions: "Is the primary technology or core skill that `job_posting` centers on (its main " +
-					"programming language, platform, or specialty) absent from `resume`?",
-				Criteria: map[string]any{
-					"true":  "The job's main language, platform, or specialty does not appear in the candidate's work or skills.",
-					"false": "The candidate has worked with the job's main language, platform, or specialty.",
-				},
-			},
-			"domain_mismatch": {
-				Type: port.Noul,
-				Instructions: "Is the product or industry domain of `job_posting` (for example security, payments, " +
-					"identity, healthcare) one the candidate in `resume` has never worked in?",
-				Criteria: map[string]any{
-					"true":  "The candidate's work shows no experience in the job's product or industry domain.",
-					"false": "The candidate has worked in the job's domain or a closely related one, or the job has no specific domain.",
-				},
-			},
-			"blocker": {
-				Type: port.Noul,
-				Instructions: "Does `job_posting` state a hard eligibility condition other than location (for example: must " +
-					"be a current student, must hold a security clearance or license) that `resume` clearly shows the " +
-					"candidate does not meet?",
-				Criteria: map[string]any{
-					"true": "A stated non-location condition is clearly not met by what the resume shows.",
-					"false": "No such condition is stated, or the resume does not clearly contradict it (a condition the " +
-						"resume does not mention, such as citizenship, is not clearly unmet).",
-				},
-			},
-			"location_mismatch": {
-				Type: port.Noul,
-				Instructions: "Compare the locations `job_posting` allows (remote countries or regions, office cities) with " +
-					"the candidate's location stated in `resume`. Is the candidate outside every allowed location?",
-				Criteria: map[string]any{
-					"true": "The candidate's stated location is outside every location the posting allows (for example an " +
-						"on-site or hybrid city elsewhere).",
-					"false": "The candidate's location is allowed (for example a remote role open to their country), or " +
-						"the resume states no location.",
-				},
-			},
-		},
+		State:     holisticState{JobPosting: postingText(jd).Text, Resume: resume.Text},
+		Questions: holisticQuestions,
 	})
 	if err != nil {
 		return domain.Holistic{}, err
@@ -118,66 +99,19 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 	h.metrics.Add("holistic.input_tokens", int64(resp.Usage.InputTokens))
 	h.metrics.Add("holistic.output_tokens", int64(resp.Usage.OutputTokens))
 
-	resp2, err := scoreShare(resp.Answers["responsibilities"], len(responsibilityLevels))
+	role, err := scoreShare(resp.Answers["role_match"], len(roleMatchLevels))
 	if err != nil {
-		return domain.Holistic{}, fmt.Errorf("responsibilities: %w", err)
+		return domain.Holistic{}, fmt.Errorf("role_match: %w", err)
 	}
 	nouls := map[string]float64{}
-	for _, id := range []string{"blocker", "primary_gap", "domain_mismatch", "location_mismatch"} {
+	for _, id := range []string{"experience_short", "blocker"} {
 		p := resp.Answers[id].Noul
 		if p == nil {
 			return domain.Holistic{}, fmt.Errorf("%s: no noul answer", id)
 		}
 		nouls[id] = *p
 	}
-	return domain.Holistic{
-		Model: resp.Model, Blocker: nouls["blocker"], Responsibilities: resp2,
-		PrimaryGap: nouls["primary_gap"], DomainMismatch: nouls["domain_mismatch"], LocationMismatch: nouls["location_mismatch"],
-		GapMonths: employmentGapMonths(ParseResume(resume.Text), h.now()),
-	}, nil
-}
-
-// endDate matches the end of a date range such as "Jun 2025 – Nov 2025",
-// "2009 – 2013", or "Mar 2022 - Present".
-var endDate = regexp.MustCompile(`(?i)[-–—]\s*(?:([a-z]{3,9})\.?\s+)?(\d{4}|present|current|now)\s*$`)
-
-// employmentGapMonths is the whole months between the latest end date of
-// the Resume's roles and asOf: 0 when a role is current, nil when no role
-// has a parsable end date. A year without a month counts as December.
-func employmentGapMonths(units []domain.EvidenceUnit, asOf time.Time) *int {
-	var latest time.Time
-	seen := map[string]bool{}
-	for _, u := range units {
-		if u.Dates == "" || u.ResumeSection != domain.ResumeExperience || seen[u.Dates] {
-			continue
-		}
-		seen[u.Dates] = true
-		m := endDate.FindStringSubmatch(strings.TrimSpace(u.Dates))
-		if m == nil {
-			continue
-		}
-		switch strings.ToLower(m[2]) {
-		case "present", "current", "now":
-			zero := 0
-			return &zero
-		}
-		year, _ := strconv.Atoi(m[2])
-		month := time.December
-		if m[1] != "" {
-			if t, err := time.Parse("Jan", strings.ToUpper(m[1][:1])+strings.ToLower(m[1][1:3])); err == nil {
-				month = t.Month()
-			}
-		}
-		if end := time.Date(year, month, 1, 0, 0, 0, 0, time.UTC); end.After(latest) {
-			latest = end
-		}
-	}
-	if latest.IsZero() {
-		return nil
-	}
-	months := (asOf.Year()-latest.Year())*12 + int(asOf.Month()) - int(latest.Month())
-	months = max(0, months)
-	return &months
+	return domain.Holistic{Model: resp.Model, RoleMatch: role, ExperienceShort: nouls["experience_short"], Blocker: nouls["blocker"]}, nil
 }
 
 // scoreShare is a Score answer as a share of its top level, 0..1.

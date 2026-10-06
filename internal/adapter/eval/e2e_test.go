@@ -33,7 +33,7 @@ func (e *titleExtractor) Extract(_ context.Context, jd domain.JobDescription) (d
 type fixedJudge struct{}
 
 func (fixedJudge) Judge(context.Context, domain.JobDescription, domain.Resume) (domain.Holistic, error) {
-	return domain.Holistic{Responsibilities: 0.5, Blocker: 0.1}, nil
+	return domain.Holistic{Model: "jev", RoleMatch: 0.5, Blocker: 0.1}, nil
 }
 
 // fitChecker returns the Fit Score fits[first Requirement value].
@@ -125,7 +125,7 @@ func TestLoadE2EWithoutSavedScores(t *testing.T) {
 		t.Errorf("pairs = %+v", pairs)
 	}
 	fifty := 50
-	tot := e2eTotals([]E2EScore{{ID: "a", Reference: pairs[0].Reference, Fit: &fifty}}, 0)
+	tot := e2eTotals([]E2EScore{{ID: "a", Reference: pairs[0].Reference, Match: &fifty}}, 0)
 	if tot.SavedPairs != 0 || tot.Scored != 1 {
 		t.Errorf("totals = %+v", tot)
 	}
@@ -142,17 +142,19 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{Model: "m"}, config.Pipeline{}, config.Checker{})
 	cache := filepath.Join(t.TempDir(), "extract")
 
-	rep := r.Run(context.Background(), pairs, 2, cache)
+	rep := r.Run(context.Background(), pairs, 2, cache, true)
 	tot := rep.Totals
-	// Errors vs reference: +4 (a), -12 (b).
-	if tot.Scored != 2 || tot.Failed != 0 || tot.MAE != 8 || tot.Bias != -4 || tot.MaxError != 12 {
+	// Match Score (80.7 + 18.5*0.5) * 0.9 = 81 for every pair: errors +31
+	// (a), +11 (b).
+	if tot.Scored != 2 || tot.Failed != 0 || tot.MAE != 21 || tot.Bias != 21 || tot.MaxError != 31 || tot.SavedPairs != 3 {
 		t.Errorf("totals = %+v", tot)
 	}
-	if tot.Within5 != 0.5 || tot.Within10 != 0.5 || tot.ColdPairs != 3 || tot.SavedPairs != 3 || tot.SavedTauB != 1 {
-		t.Errorf("totals = %+v", tot)
+	// Fit errors vs reference: +4 (a), -12 (b).
+	if f := tot.Fit; f == nil || f.MAE != 8 || f.Bias != -4 || f.Within5 != 0.5 || f.Within10 != 0.5 || tot.ColdPairs != 3 {
+		t.Errorf("fit totals = %+v (%+v)", f, tot)
 	}
 
-	rep = r.Run(context.Background(), pairs, 2, cache)
+	rep = r.Run(context.Background(), pairs, 2, cache, true)
 	if ex.calls.Load() != 3 || rep.Totals.ColdPairs != 0 {
 		t.Errorf("second run: %d extractor calls, %d cold pairs; want 3 and 0", ex.calls.Load(), rep.Totals.ColdPairs)
 	}
@@ -162,10 +164,10 @@ func TestE2ERunScoresAndCachesExtraction(t *testing.T) {
 		t.Fatal(err)
 	}
 	raw, _ := os.ReadFile(md)
-	if !strings.Contains(string(raw), "**MAE vs reference** | **8.0**") {
+	if !strings.Contains(string(raw), "**Match Score MAE vs reference** | **21.0**") {
 		t.Errorf("markdown:\n%s", raw)
 	}
-	if rep.Pairs[0].Holistic == nil || rep.Pairs[0].Holistic.Responsibilities != 0.5 {
+	if rep.Pairs[0].Holistic == nil || rep.Pairs[0].Holistic.RoleMatch != 0.5 || rep.Model != "jev" {
 		t.Errorf("holistic = %+v", rep.Pairs[0].Holistic)
 	}
 	if _, err := os.Stat(strings.TrimSuffix(md, ".md") + "-traces/a.json"); err != nil {
@@ -177,9 +179,24 @@ func TestE2ERunReportsFailedPair(t *testing.T) {
 	pairs := []E2EPair{{ID: "x", JD: domain.JobDescription{Title: "boom"}}}
 	r := NewE2ERunner(&titleExtractor{}, fitChecker{}, fixedJudge{}, metrics.NewRecorder(),
 		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{})
-	rep := r.Run(context.Background(), pairs, 1, "")
+	rep := r.Run(context.Background(), pairs, 1, "", true)
 	if rep.Totals.Failed != 1 || !strings.Contains(rep.Pairs[0].Error, "extract: boom") {
 		t.Errorf("report = %+v", rep.Pairs)
+	}
+}
+
+func TestE2ERunWithoutFit(t *testing.T) {
+	dir := writeReference(t)
+	pairs, err := LoadE2E(dir, filepath.Dir(dir), E2EAll, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ex := &titleExtractor{}
+	r := NewE2ERunner(ex, fitChecker{}, fixedJudge{}, metrics.NewRecorder(),
+		slog.New(slog.NewTextHandler(io.Discard, nil)), config.Jev{}, config.Pipeline{}, config.Checker{})
+	rep := r.Run(context.Background(), pairs, 2, "", false)
+	if ex.calls.Load() != 0 || rep.Totals.Fit != nil || rep.Totals.Scored != 2 || rep.Pairs[0].Fit != nil || *rep.Pairs[0].Match != 81 {
+		t.Errorf("report = %+v, %d extractor calls", rep.Totals, ex.calls.Load())
 	}
 }
 

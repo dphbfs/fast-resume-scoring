@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: superseded by 0004
 ---
 
 # Match Score blends the Fit Score with a Holistic Round

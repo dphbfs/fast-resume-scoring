@@ -747,3 +747,12 @@ New questions:
   `(80.7 + 18.5 role_match − 55.2 experience_short) × (1 − blocker_v3)`.
 - Caveat: ~15 models compared on 50 pairs with 5 resumes; the selection
   is optimistic until a fresh sealed set confirms it.
+
+Adopted as Match Score v4 (ADR 0004): Holistic Round reduced to
+`role_match`, `experience_short`, `blocker` (status-only wording); Fit
+pipeline out of the scoring path. Live runs with the production code:
+subset MAE 5.0, bias +0.1, 87% within ±10, τ-b 0.83 (01-03-32Z); former
+final set MAE 5.0, bias −0.3, 90% within ±10, τ-b 0.88 (01-03-35Z).
+$0.0001 per pair, mean 0.3 s per pair. Dropped from the request:
+`responsibilities`, `domain_mismatch`, `primary_gap`,
+`location_mismatch`, and the employment-gap computation.

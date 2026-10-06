@@ -1,5 +1,5 @@
 // Package wiring holds the google/wire provider sets shared by the
-// command-line entry points (cmd/extract, cmd/check, cmd/eval).
+// command-line entry points (cmd/extract, cmd/check, cmd/score, cmd/eval).
 package wiring
 
 import (
