@@ -51,3 +51,4 @@ __pycache__/
 # Generative explanation replies (scripts/explain_reference.py)
 eval/explain/
 eval/judge/
+eval/probe/

@@ -704,3 +704,46 @@ Where it fails:
 The judge agrees with the reference on held-out data (τ-b 0.88), so the
 reference is not the noisy side here. Per F3 the result is a redesign
 signal; any change makes this set development data.
+
+## Redesign round 1: Holistic probe on 50 pairs, 5 resumes (2026-10-06)
+
+The final set is development data from here on (F3: redesign). Pool:
+the 30-pair subset (Main resume) plus the 20 former final pairs (4
+resumes). `scripts/probe_holistic.py` asks candidate Holistic questions
+directly (one Jev request per pair, 2 runs, $0.012 total);
+`scripts/fit_match.py -probe` fits each model with least squares on
+features × (1 − blocker), and reports pair-held-out and
+resume-held-out MAE (leave one resume out: the question that failed).
+
+Refitting the v3 form on the pool does not help (resume-held-out 8.8-9.5).
+New questions:
+
+- `blocker_v3`: only status conditions (student, clearance, license,
+  citizenship); years, degrees, skills, location are qualifications.
+  Voxel51 0.73 -> 0.07; Stripe high-school fellowship stays 0.94.
+- `role_match` (Score, 5 levels from "different profession or specialty"
+  to "same kind of role and stack").
+- `must_haves` (Score: how many must-haves the candidate has done).
+- `experience_short` (Noul: clearly fewer years of the relevant kind of
+  experience, or a clearly lower level, than the job asks). In practice a
+  general "under-qualified for this role" judgment: 0.96 for the senior
+  data engineer on a front-end role.
+
+| Model (× (1 − blocker_v3)) | in | pair-out | resume-out | τ-b |
+|---|---|---|---|---|
+| v3 fixed (fit, resp, dom; old blocker) | 8.2 | 8.2 | 8.2 | 0.77 |
+| fit + resp + dom, refit | 7.9 | 8.5 | 9.5 | 0.71 |
+| experience_short | 5.5 | 5.7 | 5.8 | 0.81 |
+| **role_match + experience_short** | 5.1 | 5.4 | **5.2** | **0.85** |
+| fit + role_match + experience_short | 5.0 | 5.4 | 5.2 | 0.84 |
+| fit + must_haves + experience_short | 5.3 | 5.7 | 5.8 | 0.83 |
+| fit + role_match + dom + experience_short | 5.0 | 5.6 | 5.3 | 0.84 |
+
+- Holistic answers are near-deterministic: run-to-run mean |diff| ≤ 0.013
+  per question; fitting on probe run A and scoring run B gives the same
+  MAE (5.1 for role_match + experience_short).
+- Once `role_match` is in, the Fit Score adds nothing (weight ~12,
+  same held-out MAE). `role_match + experience_short`:
+  `(80.7 + 18.5 role_match − 55.2 experience_short) × (1 − blocker_v3)`.
+- Caveat: ~15 models compared on 50 pairs with 5 resumes; the selection
+  is optimistic until a fresh sealed set confirms it.
