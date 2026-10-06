@@ -55,6 +55,8 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 	debug := fs.String("debug", "", "write the extraction trace (dropped sentences, chunk choices, Filler, merges, probabilities) to this JSON file")
 	fs.Usage = func() {
 		fmt.Fprintln(stderr, "usage: extract [-o result.json] [-debug trace.json] [-q] <job-description.txt|.md>")
+		fmt.Fprintln(stderr, "Sends the job description text to the Jev provider at TYPESAFE_BASE_URL and, when configured,")
+		fmt.Fprintln(stderr, "to the generative provider at OPENAI_BASE_URL for the Job Summary.")
 		fs.PrintDefaults()
 	}
 	if err := fs.Parse(args); err != nil {

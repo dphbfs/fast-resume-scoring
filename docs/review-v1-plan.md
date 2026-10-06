@@ -146,7 +146,8 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       Markdown adapter.
 - [ ] H8. Years-qualifier Requirements reported as qualified information,
       not in Fit Score.
-- [ ] H9. CLI notice that resume content goes to the configured providers.
+- [x] H9. CLI notice that resume content goes to the configured providers.
+      Done 2026-10-06: in the extract, check, and score usage text.
 
 ## Phase 3: development-only offline ablations
 
