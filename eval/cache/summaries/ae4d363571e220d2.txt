@@ -1,0 +1,3 @@
+This is a mid-level full stack software engineering role at Crisis Text Line, a nonprofit offering free 24/7 text-based mental health support, with roughly three to five years of experience expected and a backend lean. The work centers on core platform features: building and maintaining production APIs, relational databases and caching, queues and asynchronous processing, authentication and authorization, and overall service reliability, with an on-call rotation.
+
+The core stack is PHP/Symfony and Go on the backend with Node.js, React, and Redux on the front end, REST and GraphQL APIs, MySQL or PostgreSQL with Redis, and AWS with Terraform, CI/CD pipelines, and observability tooling such as Datadog or Grafana.
