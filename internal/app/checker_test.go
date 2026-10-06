@@ -31,7 +31,7 @@ func newTestChecker(t *testing.T, srvURL string, cfg config.Checker) (*Checker, 
 	if err != nil {
 		t.Fatal(err)
 	}
-	return NewChecker(c, m, log, cfg), m
+	return NewChecker(c, m, log, withTestDefaults(cfg)), m
 }
 
 // fakeEvidence stands in for Jev: retrieval[statement prefix] gives the
@@ -513,4 +513,20 @@ func TestWithoutMentioned(t *testing.T) {
 	if len(in.Requirements) != 4 || len(in.AlternativeGroups[0].Members) != 3 {
 		t.Error("input was modified")
 	}
+}
+
+// withTestDefaults fills the zero numeric settings with the values these
+// tests were written against (K 5, floor 0.02, mass 0.5); the switches
+// stay as given, so a zero Checker means one retrieval round and no gate.
+func withTestDefaults(cfg config.Checker) config.Checker {
+	if cfg.RetrievalK == 0 {
+		cfg.RetrievalK = 5
+	}
+	if cfg.RetrievalFloor == 0 {
+		cfg.RetrievalFloor = 0.02
+	}
+	if cfg.MinEvidenceMass == 0 {
+		cfg.MinEvidenceMass = 0.5
+	}
+	return cfg
 }

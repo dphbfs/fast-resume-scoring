@@ -29,7 +29,7 @@ func (f *fakeChecker) Check(_ context.Context, reqs domain.Result, resume domain
 func TestCheckRun(t *testing.T) {
 	fc := &fakeChecker{}
 	app := NewCheckApp(fc, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
-	reqs := writeFile(t, "result.json", `{"schema_version":"1","requirements":[{"id":"req_1","value":"Go","refs":["s1"]}],
+	reqs := writeFile(t, "result.json", `{"schema_version":"1","requirements":[{"id":"req_1","value":"Go","refs":["s1"],"tier":"required"}],
 		"alternative_groups":[],"context":{"s1":{"text":"Go.","section":"required"}}}`)
 	resume := writeFile(t, "resume.md", "# Experience\n- Built Go services\n")
 	trace := writeFile(t, "trace.json", "")
@@ -57,12 +57,14 @@ func TestCheckUsageErrors(t *testing.T) {
 	app := NewCheckApp(&fakeChecker{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	resume := writeFile(t, "resume.md", "- Go\n")
 	badSchema := writeFile(t, "result.json", `{"schema_version":"9"}`)
+	dangling := writeFile(t, "dangling.json", `{"schema_version":"1","requirements":[{"id":"req_1","value":"Go","refs":["s9"],"tier":"required"}],"context":{}}`)
 	for name, args := range map[string][]string{
-		"no flags":    {},
-		"no resume":   {"-requirements", badSchema},
-		"bad schema":  {"-requirements", badSchema, "-resume", resume},
-		"resume type": {"-requirements", badSchema, "-resume", badSchema},
-		"extra arg":   {"-requirements", badSchema, "-resume", resume, "x"},
+		"no flags":       {},
+		"no resume":      {"-requirements", badSchema},
+		"bad schema":     {"-requirements", badSchema, "-resume", resume},
+		"resume type":    {"-requirements", badSchema, "-resume", badSchema},
+		"extra arg":      {"-requirements", badSchema, "-resume", resume, "x"},
+		"invalid result": {"-requirements", dangling, "-resume", resume},
 	} {
 		t.Run(name, func(t *testing.T) {
 			if code := app.Run(context.Background(), args, io.Discard, io.Discard); code != ExitUsage {

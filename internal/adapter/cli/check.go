@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
-	"os"
 	"path/filepath"
 	"strings"
 
@@ -91,7 +90,7 @@ func (a *CheckApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 
 // readResult loads an extract result (schema v1).
 func readResult(path string) (domain.Result, error) {
-	raw, err := os.ReadFile(path)
+	raw, err := readLimited(path, maxResultBytes)
 	if err != nil {
 		return domain.Result{}, err
 	}
@@ -101,6 +100,9 @@ func readResult(path string) (domain.Result, error) {
 	}
 	if res.SchemaVersion != domain.SchemaVersion {
 		return domain.Result{}, fmt.Errorf("%s: schema_version %q, want %q", path, res.SchemaVersion, domain.SchemaVersion)
+	}
+	if err := res.Validate(); err != nil {
+		return domain.Result{}, fmt.Errorf("%s: invalid result: %w", path, err)
 	}
 	for ref, s := range res.Context {
 		s.Ref = ref

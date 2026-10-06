@@ -47,6 +47,11 @@ func TestLoadErrors(t *testing.T) {
 		{"cost options without gate", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_GATE_THRESHOLD": "0"}},
 		{"zero run deadline", map[string]string{"TYPESAFE_API_KEY": "k", "RUN_DEADLINE": "0s"}},
 		{"negative run deadline", map[string]string{"TYPESAFE_API_KEY": "k", "RUN_DEADLINE": "-5s"}},
+		{"NaN probability", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_GATE_THRESHOLD": "NaN"}},
+		{"probability above 1", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_RETRIEVAL_FLOOR": "1.5"}},
+		{"zero concurrency", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_MAX_CONCURRENCY": "0"}},
+		{"zero retrieval K", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_RETRIEVAL_K": "0"}},
+		{"zero Jev timeout", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_TIMEOUT": "0s"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -71,5 +76,29 @@ func TestLoadRejectsRemovedSettings(t *testing.T) {
 		if err == nil || !strings.Contains(err.Error(), name) {
 			t.Errorf("%s set: err = %v, want an error naming it", name, err)
 		}
+	}
+}
+
+func TestDefaultConfigIsValidAndMatchesLoad(t *testing.T) {
+	d := DefaultConfig()
+	if err := d.Validate(); err != nil {
+		t.Fatalf("defaults invalid: %v", err)
+	}
+	cfg, err := load(mapEnv(map[string]string{"TYPESAFE_API_KEY": "k"}))
+	if err != nil {
+		t.Fatal(err)
+	}
+	d.Jev.APIKey = "k"
+	if !reflect.DeepEqual(cfg, d) {
+		t.Errorf("load with no settings = %+v, want DefaultConfig %+v", cfg, d)
+	}
+}
+
+func TestValidateReportsEveryProblem(t *testing.T) {
+	c := DefaultConfig()
+	c.Jev.MaxConcurrency, c.Checker.MinEvidenceMass = 0, -0.1
+	err := c.Validate()
+	if err == nil || !strings.Contains(err.Error(), "JEV_MAX_CONCURRENCY") || !strings.Contains(err.Error(), "CHECKER_MIN_EVIDENCE_MASS") {
+		t.Errorf("err = %v, want both problems", err)
 	}
 }
