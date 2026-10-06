@@ -132,7 +132,9 @@ The replacement score is the **Match Score** (`docs/adr/0004`,
 one Jev request over the full posting and Resume): `role_match` (Score),
 `experience_short` (Noul), `blocker` (Noul, status conditions only),
 mapped to the generative reference scale. `cmd/score -jd job.txt -resume
-resume.md` prints it (match schema v1). Question wordings are fitted
+resume.md` prints it (match schema v1). `extract`, `check`, and `score`
+stop at `RUN_DEADLINE` (default 120s) and reject a JD or resume file over
+48 KiB (both go into one Jev request; OpenRouter caps it at 32k tokens). Question wordings are fitted
 constants: probe (`scripts/probe_holistic.py`) and refit
 (`scripts/fit_match.py`, resume-held-out) before changing them.
 Extraction and the Resume Checker are no longer in the scoring path; they

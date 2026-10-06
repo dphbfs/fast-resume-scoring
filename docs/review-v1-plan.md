@@ -131,8 +131,10 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       Jev answers (types, option names, finite probabilities, empty
       distributions). Jev answers done 2026-10-06 (`jev.AnswerError`);
       extract-result inputs still open (checker path only).
-- [ ] H4. Input limits and a root `RUN_DEADLINE` (default 120 s); tests
+- [x] H4. Input limits and a root `RUN_DEADLINE` (default 120 s); tests
       for cancel while queued, during HTTP, during retry backoff.
+      Done 2026-10-06: 48 KiB per input file; deadline in extract, check,
+      score (eval runs are unbounded).
 - [ ] H5. Sanitized provider errors in `jev` and `openai` clients
       (allowlisted fields, status, request id, ~512-byte cap).
 - [ ] H6. Private artifacts 0600/0700, atomic writes; summary cache with

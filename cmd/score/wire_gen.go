@@ -32,6 +32,7 @@ func initApp() (*cli.ScoreApp, error) {
 		return nil, err
 	}
 	holisticJudge := app.NewHolisticJudge(client, recorder, logger)
-	scoreApp := cli.NewScoreApp(holisticJudge, recorder, logger)
+	configRun := configConfig.Run
+	scoreApp := cli.NewScoreApp(holisticJudge, recorder, logger, configRun)
 	return scoreApp, nil
 }

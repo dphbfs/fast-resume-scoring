@@ -29,6 +29,9 @@ func TestLoadDefaults(t *testing.T) {
 		NarrowSizes: []int{16}, GateThreshold: 0.5, SkipCappedGrading: true, GateFirst: true}) {
 		t.Errorf("unexpected Checker defaults: %+v", cfg.Checker)
 	}
+	if cfg.Run.Deadline != 120*time.Second {
+		t.Errorf("unexpected Run defaults: %+v", cfg.Run)
+	}
 }
 
 func TestLoadErrors(t *testing.T) {
@@ -42,6 +45,8 @@ func TestLoadErrors(t *testing.T) {
 		{"bad float", map[string]string{"TYPESAFE_API_KEY": "k", "PIPELINE_MIN_REQUIREMENT_MASS": "half"}},
 		{"bad ints", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_NARROW_SIZES": "12,x"}},
 		{"cost options without gate", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_GATE_THRESHOLD": "0"}},
+		{"zero run deadline", map[string]string{"TYPESAFE_API_KEY": "k", "RUN_DEADLINE": "0s"}},
+		{"negative run deadline", map[string]string{"TYPESAFE_API_KEY": "k", "RUN_DEADLINE": "-5s"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

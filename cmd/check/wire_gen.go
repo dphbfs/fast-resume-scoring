@@ -33,6 +33,7 @@ func initApp() (*cli.CheckApp, error) {
 	}
 	checker := configConfig.Checker
 	appChecker := app.NewChecker(client, recorder, logger, checker)
-	checkApp := cli.NewCheckApp(appChecker, recorder, logger)
+	configRun := configConfig.Run
+	checkApp := cli.NewCheckApp(appChecker, recorder, logger, configRun)
 	return checkApp, nil
 }

@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -22,11 +23,12 @@ type CheckApp struct {
 	checker  port.ResumeChecker
 	recorder *metrics.Recorder
 	log      *slog.Logger
+	run      config.Run
 }
 
 // NewCheckApp builds a CheckApp.
-func NewCheckApp(checker port.ResumeChecker, recorder *metrics.Recorder, log *slog.Logger) *CheckApp {
-	return &CheckApp{checker: checker, recorder: recorder, log: log}
+func NewCheckApp(checker port.ResumeChecker, recorder *metrics.Recorder, log *slog.Logger, run config.Run) *CheckApp {
+	return &CheckApp{checker: checker, recorder: recorder, log: log, run: run}
 }
 
 // Run executes the command with args (without the program name) and returns
@@ -62,7 +64,10 @@ func (a *CheckApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 		return ExitUsage
 	}
 
+	ctx, cancel := context.WithTimeout(ctx, a.run.Deadline)
+	defer cancel()
 	result, trace, err := a.checker.Check(ctx, reqs, resume)
+	err = deadlineError(err, a.run)
 	if !*quiet {
 		defer printSummary(a.recorder, a.log, stderr)
 	}
@@ -110,7 +115,7 @@ func ReadResume(path string) (domain.Resume, error) {
 	default:
 		return domain.Resume{}, fmt.Errorf("%s: expected a .md or .txt file", path)
 	}
-	raw, err := os.ReadFile(path)
+	raw, err := readInput(path)
 	if err != nil {
 		return domain.Resume{}, err
 	}

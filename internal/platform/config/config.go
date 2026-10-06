@@ -15,6 +15,14 @@ type Config struct {
 	Generative Generative
 	Pipeline   Pipeline
 	Checker    Checker
+	Run        Run
+}
+
+// Run bounds one command-line run (extract, check, score).
+type Run struct {
+	// Deadline cancels the whole run, including queued and retrying Jev
+	// calls, when it elapses.
+	Deadline time.Duration // RUN_DEADLINE
 }
 
 // Jev configures the TypeSafe classifier client.
@@ -131,8 +139,12 @@ func load(getenv func(string) string) (Config, error) {
 			SkipMentioned:     e.bool("CHECKER_SKIP_MENTIONED", false),
 		},
 	}
+	cfg.Run = Run{Deadline: e.duration("RUN_DEADLINE", 120*time.Second)}
 	if e.err != nil {
 		return Config{}, e.err
+	}
+	if cfg.Run.Deadline <= 0 {
+		return Config{}, fmt.Errorf("config: RUN_DEADLINE must be positive, got %s", cfg.Run.Deadline)
 	}
 	for _, name := range removedSettings {
 		if getenv(name) != "" {

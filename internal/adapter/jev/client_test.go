@@ -156,3 +156,50 @@ func TestClassifyRejectsMissingAnswer(t *testing.T) {
 		t.Fatal("want error for missing answer, got nil")
 	}
 }
+
+func TestClassifyStopsWhenCanceledDuringHTTP(t *testing.T) {
+	release := make(chan struct{})
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// A hung provider: no answer until the test ends.
+		select {
+		case <-r.Context().Done():
+		case <-release:
+		}
+	}))
+	t.Cleanup(srv.Close)
+	t.Cleanup(func() { close(release) }) // runs first: lets Close finish
+	c := newClient(t, srv.URL, metrics.NewRecorder())
+
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Millisecond)
+	defer cancel()
+	start := time.Now()
+	_, err := c.Classify(ctx, port.ClassifyRequest{State: "x", Questions: urgentQuestion})
+	if !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("err = %v, want context.DeadlineExceeded", err)
+	}
+	if elapsed := time.Since(start); elapsed > 2*time.Second {
+		t.Errorf("Classify took %s after cancel, want prompt return", elapsed)
+	}
+}
+
+func TestClassifyStopsWhenCanceledDuringBackoff(t *testing.T) {
+	srv := jevtest.NewServer(t, func(int, jev.WireRequest) jevtest.Reply {
+		return jevtest.Reply{Status: http.StatusServiceUnavailable, Body: "down"}
+	})
+	c := newClient(t, srv.URL, metrics.NewRecorder())
+	jev.SetBackoff(c, func(int) time.Duration { return time.Hour })
+
+	ctx, cancel := context.WithCancel(context.Background())
+	time.AfterFunc(20*time.Millisecond, cancel)
+	start := time.Now()
+	_, err := c.Classify(ctx, port.ClassifyRequest{State: "x", Questions: urgentQuestion})
+	if !errors.Is(err, context.Canceled) {
+		t.Fatalf("err = %v, want context.Canceled", err)
+	}
+	if elapsed := time.Since(start); elapsed > 2*time.Second {
+		t.Errorf("Classify took %s, want it to stop waiting for the backoff", elapsed)
+	}
+	if n := len(srv.Requests()); n != 1 {
+		t.Errorf("requests = %d, want 1 (no retry after cancel)", n)
+	}
+}
