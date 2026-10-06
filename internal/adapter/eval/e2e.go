@@ -24,6 +24,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/app"
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -328,34 +329,10 @@ func (r *E2ERunner) extract(ctx context.Context, jd domain.JobDescription, cache
 	if err != nil || path == "" {
 		return res, false, err
 	}
-	if err := writeFileAtomic(path, res); err != nil {
+	if err := fsutil.WriteJSONAtomic(path, res); err != nil {
 		return domain.Result{}, false, err
 	}
 	return res, false, nil
-}
-
-// writeFileAtomic writes v as JSON to path via a private temp file.
-func writeFileAtomic(path string, v any) error {
-	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
-		return err
-	}
-	raw, err := json.MarshalIndent(v, "", "  ")
-	if err != nil {
-		return err
-	}
-	f, err := os.CreateTemp(filepath.Dir(path), ".tmp-*")
-	if err != nil {
-		return err
-	}
-	defer os.Remove(f.Name())
-	if _, err := f.Write(append(raw, '\n')); err != nil {
-		f.Close()
-		return err
-	}
-	if err := f.Close(); err != nil {
-		return err
-	}
-	return os.Rename(f.Name(), path)
 }
 
 // Agreement compares one score with the reference scores.
@@ -498,7 +475,7 @@ func kendallTauB(x, y []float64) float64 {
 // returns the Markdown path.
 func (r E2EReport) Write(dir string) (string, error) {
 	base := filepath.Join(dir, r.Started.Format("2006-01-02T15-04-05Z"))
-	if err := writeFileAtomic(base+".json", r); err != nil {
+	if err := fsutil.WriteJSONAtomic(base+".json", r); err != nil {
 		return "", err
 	}
 	for _, s := range r.Pairs {
@@ -511,7 +488,7 @@ func (r E2EReport) Write(dir string) (string, error) {
 			Trace    *domain.CheckTrace     `json:"trace"`
 			Holistic *domain.Holistic       `json:"holistic,omitempty"`
 		}{s.Result, s.Coverage, s.Trace, s.Holistic}
-		if err := writeFileAtomic(filepath.Join(base+"-traces", s.ID+".json"), v); err != nil {
+		if err := fsutil.WriteJSONAtomic(filepath.Join(base+"-traces", s.ID+".json"), v); err != nil {
 			return "", err
 		}
 	}
@@ -519,7 +496,7 @@ func (r E2EReport) Write(dir string) (string, error) {
 	if err := r.WriteMarkdown(&b); err != nil {
 		return "", err
 	}
-	if err := os.WriteFile(base+".md", []byte(b.String()), 0o600); err != nil {
+	if err := fsutil.WriteFileAtomic(base+".md", []byte(b.String())); err != nil {
 		return "", err
 	}
 	return base + ".md", nil

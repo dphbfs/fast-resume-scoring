@@ -17,6 +17,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -161,16 +162,10 @@ func deadlineError(err error, run config.Run) error {
 
 // writeJSON writes v as indented JSON to path, or to stdout when path is empty.
 func writeJSON(v any, path string, stdout io.Writer) error {
-	w := stdout
 	if path != "" {
-		f, err := os.Create(path)
-		if err != nil {
-			return err
-		}
-		defer f.Close()
-		w = f
+		return fsutil.WriteJSONAtomic(path, v)
 	}
-	enc := json.NewEncoder(w)
+	enc := json.NewEncoder(stdout)
 	enc.SetIndent("", "  ")
 	return enc.Encode(v)
 }
