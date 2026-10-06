@@ -49,3 +49,13 @@ Consequences:
   re-probing and refitting on development data.
 - Selection was made among ~15 models on 50 pairs; the second sealed set
   (`docs/final-set-2/`) is the honest test.
+
+## Validation (2026-10-06)
+
+Second sealed set (20 held-out pairs, 4 new resumes, 18 new postings),
+one frozen run: MAE 8.6, τ-b 0.78 against the generative reference, the
+same agreement as the independent recruiter judge (MAE 8.8, τ-b 0.78).
+Accepted by the user as the replacement score; no tuning on this set.
+Known weak spots, left as is: career-changer resumes (under-scored on
+the new field's roles) and off-role or location-restricted postings
+(over-scored; location is excluded from the blocker by design).
