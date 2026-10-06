@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Record the final set's reference scores.
 
-Usage: scripts/add_final_scores.py <pair-id>=<score> [...]
+Usage: scripts/add_final_scores.py [-dir testdata/final2] <pair-id>=<score> [...]
 
 Each final-set pair was scored once by the generative reference scorer on
 an eval-only copy (same Job Description text as testdata/final/jd/<id>.txt,
 the pair's held-out Resume), then archived. Writes
-testdata/final/current.json in the same shape as
+<dir>/current.json (default testdata/final) in the same shape as
 testdata/reference/current.json, so `eval -e2e -e2e-dir testdata/final
 -set current` reads it. Refuses unknown pair IDs and, once every pair has a
 score, reports any pair still missing.
@@ -17,10 +17,11 @@ import sys
 import time
 from pathlib import Path
 
-DIR = Path("testdata/final")
-
-
 def main():
+    args = sys.argv[1:]
+    DIR = Path("testdata/final")
+    if args[:1] == ["-dir"]:
+        DIR, args = Path(args[1]), args[2:]
     pairs = [p["id"] for p in json.loads((DIR / "pairs.json").read_text())["pairs"]]
     path = DIR / "current.json"
     out = json.loads(path.read_text()) if path.exists() else {
@@ -30,7 +31,7 @@ def main():
         "pairs": [],
     }
     scores = {p["pair"]: p for p in out["pairs"]}
-    for arg in sys.argv[1:]:
+    for arg in args:
         pid, score = arg.split("=", 1)
         if pid not in pairs:
             sys.exit(f"unknown pair {pid}")
