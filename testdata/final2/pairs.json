@@ -1,0 +1,164 @@
+{
+  "pairs": [
+    {
+      "id": "01a10e2d-006a-7115-ab02-a269f8803ae6--final2-syn-1",
+      "title": "Software Engineer",
+      "company": "Praetorian",
+      "resume": "testdata/resumes/final2-syn-1.md",
+      "jd": "jd/01a10e2d-006a-7115-ab02-a269f8803ae6.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60a-cef5-739a-ade5-4f1214b5aa11--final2-syn-1",
+      "title": "Software Engineer II, Backend (Identity Decisioning)",
+      "company": "Affirm",
+      "resume": "testdata/resumes/final2-syn-1.md",
+      "jd": "jd/01a0d60a-cef5-739a-ade5-4f1214b5aa11.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60a-cefb-716c-9189-d5af2ca486bf--final2-syn-1",
+      "title": "Senior Backend Engineer (Go)",
+      "company": "Breakthrough Talent",
+      "resume": "testdata/resumes/final2-syn-1.md",
+      "jd": "jd/01a0d60a-cefb-716c-9189-d5af2ca486bf.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a10d3c-b063-7080-b144-7b04aa306dc6--final2-syn-1",
+      "title": "Senior Software Engineer, Cloudflare for SaaS",
+      "company": "Cloudflare",
+      "resume": "testdata/resumes/final2-syn-1.md",
+      "jd": "jd/01a10d3c-b063-7080-b144-7b04aa306dc6.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d51c-4aab-760e-a5ae-1353e357010c--final2-syn-1",
+      "title": "Data Analyst",
+      "company": "CHEP (Brambles)",
+      "resume": "testdata/resumes/final2-syn-1.md",
+      "jd": "jd/01a0d51c-4aab-760e-a5ae-1353e357010c.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d60a-d7d3-75ea-a85d-cfa8ef43993d--final2-syn-2",
+      "title": "Staff Platform Engineer",
+      "company": "Ladders",
+      "resume": "testdata/resumes/final2-syn-2.md",
+      "jd": "jd/01a0d60a-d7d3-75ea-a85d-cfa8ef43993d.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60a-cf04-747f-bb78-06376ae31cca--final2-syn-2",
+      "title": "Senior SRE",
+      "company": "Ladders",
+      "resume": "testdata/resumes/final2-syn-2.md",
+      "jd": "jd/01a0d60a-cf04-747f-bb78-06376ae31cca.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60a-cf06-7211-a673-45ea9f1545ff--final2-syn-2",
+      "title": "Staff Software Engineer, DevProd (Infrastructure Observability)",
+      "company": "Ladders",
+      "resume": "testdata/resumes/final2-syn-2.md",
+      "jd": "jd/01a0d60a-cf06-7211-a673-45ea9f1545ff.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-2",
+      "title": "Sr. Corporate Security Engineer",
+      "company": "Cockroachlabs",
+      "resume": "testdata/resumes/final2-syn-2.md",
+      "jd": "jd/01a10d3c-2b16-752c-9246-e2a7b7b9984b.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d51c-4c99-73bf-b32e-d31818cf5f3b--final2-syn-2",
+      "title": "Financial Systems & Reporting Assurance Analyst I",
+      "company": "Frontline Insurance",
+      "resume": "testdata/resumes/final2-syn-2.md",
+      "jd": "jd/01a0d51c-4c99-73bf-b32e-d31818cf5f3b.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d60a-ec0e-7432-95ef-0a04af365ec3--final2-syn-3",
+      "title": "Senior Software Engineer, Security",
+      "company": "SeatGeek",
+      "resume": "testdata/resumes/final2-syn-3.md",
+      "jd": "jd/01a0d60a-ec0e-7432-95ef-0a04af365ec3.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a10d3c-2b16-752c-9246-e2a7b7b9984b--final2-syn-3",
+      "title": "Sr. Corporate Security Engineer",
+      "company": "Cockroachlabs",
+      "resume": "testdata/resumes/final2-syn-3.md",
+      "jd": "jd/01a10d3c-2b16-752c-9246-e2a7b7b9984b.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d60a-d7d3-75ea-a85e-f460ad38269a--final2-syn-3",
+      "title": "Senior Infrastructure Software Engineer, Identity & Auth Engineering",
+      "company": "Ladders",
+      "resume": "testdata/resumes/final2-syn-3.md",
+      "jd": "jd/01a0d60a-d7d3-75ea-a85e-f460ad38269a.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60a-d7d4-71d8-a457-b814b5ce6cfe--final2-syn-3",
+      "title": "Senior Backend Engineer ((Python / Go)",
+      "company": "RAPIDFORT",
+      "resume": "testdata/resumes/final2-syn-3.md",
+      "jd": "jd/01a0d60a-d7d4-71d8-a457-b814b5ce6cfe.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-syn-3",
+      "title": "Cslt-Business Intelligence",
+      "company": "Verizon",
+      "resume": "testdata/resumes/final2-syn-3.md",
+      "jd": "jd/01a0d51c-4b98-77d3-b66f-a1ad8b1361d4.txt",
+      "kind": "off"
+    },
+    {
+      "id": "01a0d51c-49be-76fb-bf4b-d2b9cb29378c--final2-real-analyst",
+      "title": "Analyst, Club Compliance/Operations II (Club Compliance Data Analyst II)",
+      "company": "Travel + Leisure Co.",
+      "resume": "testdata/resumes/final2-real-analyst.md",
+      "jd": "jd/01a0d51c-49be-76fb-bf4b-d2b9cb29378c.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a0d51c-4b98-77d3-b66f-a1ad8b1361d4--final2-real-analyst",
+      "title": "Cslt-Business Intelligence",
+      "company": "Verizon",
+      "resume": "testdata/resumes/final2-real-analyst.md",
+      "jd": "jd/01a0d51c-4b98-77d3-b66f-a1ad8b1361d4.txt",
+      "kind": "on"
+    },
+    {
+      "id": "01a10d3c-d4db-75e5-ab44-aac6b13f2d15--final2-real-analyst",
+      "title": "Data Engineer",
+      "company": "Samsara",
+      "resume": "testdata/resumes/final2-real-analyst.md",
+      "jd": "jd/01a10d3c-d4db-75e5-ab44-aac6b13f2d15.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60a-e181-7121-bf3a-33de78c3fdce--final2-real-analyst",
+      "title": "Senior Staff Software Engineer, Data Platform",
+      "company": "Coinbase",
+      "resume": "testdata/resumes/final2-real-analyst.md",
+      "jd": "jd/01a0d60a-e181-7121-bf3a-33de78c3fdce.txt",
+      "kind": "adjacent"
+    },
+    {
+      "id": "01a0d60a-e181-7121-bf39-b1d7fb4ba38b--final2-real-analyst",
+      "title": "Senior Infrastructure Software Engineer, Search Platform",
+      "company": "Ladders",
+      "resume": "testdata/resumes/final2-real-analyst.md",
+      "jd": "jd/01a0d60a-e181-7121-bf39-b1d7fb4ba38b.txt",
+      "kind": "off"
+    }
+  ]
+}

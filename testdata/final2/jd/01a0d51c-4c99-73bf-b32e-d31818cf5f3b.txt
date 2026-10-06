@@ -1,0 +1,23 @@
+Frontline Insurance - Financial Systems & Reporting Assurance Analyst I (Lake Mary, FL, hybrid)
+
+What you can expect:
+* Support the validation of system-generated financial reports used in daily, monthly, quarterly, and annual financial reporting.
+* Develop an understanding of reporting logic, accounting impacts, and financial system functionality through testing, issue research, and collaboration with senior team members.
+* Perform User Acceptance Testing (UAT) and regression testing of financial reports in support of system releases, state expansions, new product launches, and remediation of reporting issues.
+* Support testing and analysis related to system enhancements and business process changes affecting financial reporting and controls.
+* Prepare and maintain testing documentation: test plans, test results, issue logs, supporting evidence.
+* Participate in cross-functional meetings to document reporting requirements, support testing, and give feedback on report enhancements.
+* Partner with Accounting, Financial Reporting, FP&A, Business Intelligence, and operational teams to research, document, and escalate reporting discrepancies.
+* Identify opportunities to improve testing procedures, documentation, and reporting processes.
+* Support ad-hoc projects related to financial systems and reporting.
+
+What we are looking for:
+* Bachelor's degree in Accounting, Finance, Information Systems, Business Analytics, or related field.
+* 0-2 years of Accounting, Finance, Financial Systems, Reporting, Audit, or related experience preferred.
+* Experience with Microsoft Excel required.
+* Familiarity with Power BI, reporting tools, or financial systems preferred.
+* Insurance industry experience preferred; exposure to Guidewire a plus.
+* Strong analytical, problem-solving, organizational, written and verbal communication skills.
+* Ability to learn new systems quickly; attention to detail; teamwork; manage multiple deadlines.
+
+Benefits: hybrid schedule; medical, dental, vision, life, disability; 401k with match; four weeks PTO; pet insurance.

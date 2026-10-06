@@ -1,0 +1,12 @@
+## Ladders - Senior Infrastructure Software Engineer, Search Platform
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4421938604/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- For our client, we are seeking a Senior Infrastructure Software Engineer Search Platform to join the team of a leader in the Consumer Technology space
+- This role will lead technical initiatives focused on scalable systems, platform reliability, and meaningful business transformation
+- You will work across engineering, product, operations, and business stakeholders to translate complex requirements into practical technology solutions
+- The position offers the opportunity to influence architecture, execution quality, and the technology capabilities that enable long-term growth within a technology-driven environment
+- Location: Remote - US based candidates only, no visa sponsorship available Compensation: $190,400 – $257,600 annually Responsibilities Build a highly scalable search platform for the company Design a unified search experience integrating multiple functionalities Enable diverse search capabilities, including lexical and vector searches Develop an indexing infrastructure to support trillions of documents Expand search capabilities to enhance global user experience Qualifications BS, MS, or PhD in Computer Science or related technical field, or equivalent experience 9+ years of professional software development experience Experience constructing and managing multi-threaded, geographically dispersed backend systems Proficient in programming languages like Python, Go, C/C++, or Java Familiarity with operating system internals and databases Strong problem-solving abilities in ambiguous situations Experience in ownership and completion of long-term projects Benefits Collaborative work environment with cross-functional teams Opportunity to impact millions of users directly Engagement in innovative projects that drive technological advancements Access to on-call rotations for professional development Exposure to a range of cutting-edge technologies Our client is an equal opportunity employer

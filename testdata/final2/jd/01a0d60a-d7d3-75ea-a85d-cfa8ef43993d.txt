@@ -1,0 +1,12 @@
+## Ladders - Staff Platform Engineer
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4415214060/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- For our client, we are seeking a Staff Platform Engineer to join the team of a leader in the Enterprise Technology space
+- This role will lead work at the intersection of data, AI-enabled capabilities, and scalable technology delivery
+- You will work across engineering, product, operations, and business stakeholders to translate complex requirements into practical technology solutions
+- The position offers the opportunity to influence architecture, execution quality, and the technology capabilities that enable long-term growth within a technology-driven environment
+- Location: Remote - US based candidates only, no visa sponsorship available Compensation: $210,000 – $210,000 annually Responsibilities Define and evolve the architecture of the company’s internal developer platform Design and build foundational infrastructure that supports growing systems Lead development of internal tooling and automation to improve developer productivity Implement infrastructure-as-code and GitOps practices across the platform Create observability systems including monitoring and dashboards Design AI-powered internal tools to automate tasks Partner with teams to drive best practices in system design Qualifications 8+ years of experience in software engineering, platform engineering, SRE, or DevOps roles Strong programming skills in languages like Go, Python, or JavaScript Deep understanding of large-scale distributed systems architecture Proficient in infrastructure-as-code and automated deployment practices Experience in designing internal platforms or developer tooling for multiple teams Track record of enhancing developer experience and engineering productivity through platform improvements Strong collaboration and communication skills Benefits Generous AI token budget for creativity and productivity Employee stock options as part of compensation Annual salary assessments for performance evaluation Health and dental coverage with wellness spending accounts Remote work flexibility with access to office spaces $2,000 annual budget for professional development 20 vacation days with a bonus for using all vacation time Parental leave top-up to 100% for 18 weeks Quarterly team-building offsites to enhance company culture Our client is an equal opportunity employer

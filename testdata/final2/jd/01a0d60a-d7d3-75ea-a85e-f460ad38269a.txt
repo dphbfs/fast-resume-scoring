@@ -1,0 +1,12 @@
+## Ladders - Senior Infrastructure Software Engineer, Identity & Auth Engineering
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4417921920/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- For our client, we are seeking a Senior Infrastructure Software Engineer Identity & Auth Engineering to join the team of a leader in the Consumer Technology space
+- This role will lead technical initiatives focused on scalable systems, platform reliability, and meaningful business transformation
+- You will work across engineering, product, operations, and business stakeholders to translate complex requirements into practical technology solutions
+- The position offers the opportunity to influence architecture, execution quality, and the technology capabilities that enable long-term growth within a technology-driven environment
+- Location: Remote - US based candidates only, no visa sponsorship available Compensation: $190,400 – $257,600 annually Responsibilities Collaborate with product engineering and internal teams to execute diverse use cases Deliver high-quality work with a bias for action Mentor junior engineers and support team building Foster a collaborative and inclusive team culture Ensure software quality and alignment with technical strategies Qualifications 8+ years of software engineering or related industry experience BS in Computer Science or related technical field or equivalent experience Experience with high QPS platform services in production Proven track record in executing system-focused roadmaps for distributed systems Familiarity with Identity & Auth concepts such as OAuth, SSO, and MFA Benefits Participation in on-call rotation as necessary Opportunities for mentorship and career development Focus on impactful projects in a multi-product environment Culture that champions inclusivity and collaboration Our client is an equal opportunity employer
