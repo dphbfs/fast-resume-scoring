@@ -38,7 +38,7 @@ func writeFile(t *testing.T, name, content string) string {
 
 func TestRunWritesResult(t *testing.T) {
 	fx := &fakeExtractor{}
-	app := New(fx, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	app := New(fx, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	path := writeFile(t, "jd.md", "\n# Senior Go Engineer\n\nYou know Go.\n")
 
 	var stdout, stderr bytes.Buffer
@@ -58,7 +58,7 @@ func TestRunWritesResult(t *testing.T) {
 }
 
 func TestRunWritesDebugTrace(t *testing.T) {
-	app := New(&fakeExtractor{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	app := New(&fakeExtractor{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	path := writeFile(t, "jd.txt", "Go engineer\nGo.\n")
 	tracePath := filepath.Join(t.TempDir(), "trace.json")
 
@@ -77,7 +77,7 @@ func TestRunWritesDebugTrace(t *testing.T) {
 }
 
 func TestRunUsageErrors(t *testing.T) {
-	app := New(&fakeExtractor{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	app := New(&fakeExtractor{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	tests := []struct {
 		name string
 		args []string

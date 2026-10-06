@@ -1,5 +1,6 @@
 // Package cli is the command-line driving adapter for the Requirement
-// Extractor (extract) and the Resume Checker (check).
+// Extractor (extract), the Resume Checker (check), and the Match Score
+// (score).
 package cli
 
 import (
@@ -15,6 +16,7 @@ import (
 	"strings"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -26,16 +28,21 @@ const (
 	ExitUsage = 2
 )
 
+// MaxInputBytes caps a Job Description or Resume file. The Holistic Round
+// sends both in one Jev request, which OpenRouter limits to 32k tokens.
+const MaxInputBytes = 48 << 10
+
 // App runs the extract command.
 type App struct {
 	extractor port.RequirementExtractor
 	recorder  *metrics.Recorder
 	log       *slog.Logger
+	run       config.Run
 }
 
 // New builds an App.
-func New(extractor port.RequirementExtractor, recorder *metrics.Recorder, log *slog.Logger) *App {
-	return &App{extractor: extractor, recorder: recorder, log: log}
+func New(extractor port.RequirementExtractor, recorder *metrics.Recorder, log *slog.Logger, run config.Run) *App {
+	return &App{extractor: extractor, recorder: recorder, log: log, run: run}
 }
 
 // Run executes the command with args (without the program name) and returns
@@ -64,7 +71,10 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 		return ExitUsage
 	}
 
+	ctx, cancel := context.WithTimeout(ctx, a.run.Deadline)
+	defer cancel()
 	result, trace, err := a.extractor.Extract(ctx, jd)
+	err = deadlineError(err, a.run)
 	if !*quiet {
 		defer printSummary(a.recorder, a.log, stderr)
 	}
@@ -103,7 +113,7 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 	default:
 		return domain.JobDescription{}, fmt.Errorf("%s: expected a .txt or .md file", path)
 	}
-	raw, err := os.ReadFile(path)
+	raw, err := readInput(path)
 	if err != nil {
 		return domain.JobDescription{}, err
 	}
@@ -120,6 +130,31 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 		}
 	}
 	return domain.JobDescription{Title: title, Text: text}, nil
+}
+
+// readInput reads a text input file of at most MaxInputBytes.
+func readInput(path string) ([]byte, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	raw, err := io.ReadAll(io.LimitReader(f, MaxInputBytes+1))
+	if err != nil {
+		return nil, fmt.Errorf("%s: %w", path, err)
+	}
+	if len(raw) > MaxInputBytes {
+		return nil, fmt.Errorf("%s: larger than the %d KiB input limit", path, MaxInputBytes>>10)
+	}
+	return raw, nil
+}
+
+// deadlineError names the run deadline when err comes from it.
+func deadlineError(err error, run config.Run) error {
+	if errors.Is(err, context.DeadlineExceeded) {
+		return fmt.Errorf("run deadline exceeded (RUN_DEADLINE=%s): %w", run.Deadline, err)
+	}
+	return err
 }
 
 // writeJSON writes v as indented JSON to path, or to stdout when path is empty.

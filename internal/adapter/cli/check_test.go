@@ -28,7 +28,7 @@ func (f *fakeChecker) Check(_ context.Context, reqs domain.Result, resume domain
 
 func TestCheckRun(t *testing.T) {
 	fc := &fakeChecker{}
-	app := NewCheckApp(fc, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	app := NewCheckApp(fc, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	reqs := writeFile(t, "result.json", `{"schema_version":"1","requirements":[{"id":"req_1","value":"Go","refs":["s1"]}],
 		"alternative_groups":[],"context":{"s1":{"text":"Go.","section":"required"}}}`)
 	resume := writeFile(t, "resume.md", "# Experience\n- Built Go services\n")
@@ -54,7 +54,7 @@ func TestCheckRun(t *testing.T) {
 }
 
 func TestCheckUsageErrors(t *testing.T) {
-	app := NewCheckApp(&fakeChecker{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	app := NewCheckApp(&fakeChecker{}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun)
 	resume := writeFile(t, "resume.md", "- Go\n")
 	badSchema := writeFile(t, "result.json", `{"schema_version":"9"}`)
 	for name, args := range map[string][]string{

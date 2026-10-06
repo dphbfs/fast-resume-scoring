@@ -38,6 +38,7 @@ func initApp() (*cli.App, error) {
 	}
 	pipeline := configConfig.Pipeline
 	extractor := app.New(client, openaiClient, recorder, logger, pipeline)
-	cliApp := cli.New(extractor, recorder, logger)
+	configRun := configConfig.Run
+	cliApp := cli.New(extractor, recorder, logger, configRun)
 	return cliApp, nil
 }

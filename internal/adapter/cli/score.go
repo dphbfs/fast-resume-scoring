@@ -8,6 +8,7 @@ import (
 	"log/slog"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -18,11 +19,12 @@ type ScoreApp struct {
 	judge    port.HolisticJudge
 	recorder *metrics.Recorder
 	log      *slog.Logger
+	run      config.Run
 }
 
 // NewScoreApp builds a ScoreApp.
-func NewScoreApp(judge port.HolisticJudge, recorder *metrics.Recorder, log *slog.Logger) *ScoreApp {
-	return &ScoreApp{judge: judge, recorder: recorder, log: log}
+func NewScoreApp(judge port.HolisticJudge, recorder *metrics.Recorder, log *slog.Logger, run config.Run) *ScoreApp {
+	return &ScoreApp{judge: judge, recorder: recorder, log: log, run: run}
 }
 
 // Run executes the command with args (without the program name) and returns
@@ -56,7 +58,10 @@ func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 		return ExitUsage
 	}
 
+	ctx, cancel := context.WithTimeout(ctx, a.run.Deadline)
+	defer cancel()
 	h, err := a.judge.Judge(ctx, jd, resume)
+	err = deadlineError(err, a.run)
 	if !*quiet {
 		defer printSummary(a.recorder, a.log, stderr)
 	}
