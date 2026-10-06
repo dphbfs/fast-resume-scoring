@@ -3,7 +3,12 @@ package gencache
 import (
 	"context"
 	"errors"
+	"os"
+	"path/filepath"
+	"sync"
+	"sync/atomic"
 	"testing"
+	"time"
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
@@ -49,5 +54,37 @@ func TestCacheDoesNotStoreErrors(t *testing.T) {
 	}
 	if inner.calls != 2 {
 		t.Errorf("inner calls = %d, want 2 (errors are not cached)", inner.calls)
+	}
+}
+
+// slowGen counts calls safely and takes a moment, so concurrent callers
+// overlap.
+type slowGen struct{ calls atomic.Int32 }
+
+func (g *slowGen) Generate(context.Context, string, string) (string, error) {
+	g.calls.Add(1)
+	time.Sleep(20 * time.Millisecond)
+	return "summary", nil
+}
+
+func TestCacheConcurrentMissesGenerateOnce(t *testing.T) {
+	inner := &slowGen{}
+	dir := filepath.Join(t.TempDir(), "cache")
+	c := New(inner, Dir(dir), metrics.NewRecorder())
+	var wg sync.WaitGroup
+	for range 8 {
+		wg.Go(func() {
+			if text, err := c.Generate(context.Background(), "sys", "job"); err != nil || text != "summary" {
+				t.Errorf("Generate = %q, %v", text, err)
+			}
+		})
+	}
+	wg.Wait()
+	if n := inner.calls.Load(); n != 1 {
+		t.Errorf("inner calls = %d, want 1", n)
+	}
+	info, err := os.Stat(dir)
+	if err != nil || info.Mode().Perm() != 0o700 {
+		t.Errorf("cache dir mode = %v (%v), want 0700", info.Mode().Perm(), err)
 	}
 }

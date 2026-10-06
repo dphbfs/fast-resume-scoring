@@ -13,6 +13,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 )
 
@@ -115,29 +116,21 @@ func mean(xs []float64) *float64 {
 // Write saves the report as <dir>/<timestamp>.json and .md and returns the
 // Markdown path.
 func (r Report) Write(dir string) (string, error) {
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		return "", err
-	}
 	base := filepath.Join(dir, r.Started.Format("2006-01-02T15-04-05Z"))
 	if r.RescoredFrom != "" {
 		base += "-rescored"
 	}
-	raw, err := json.MarshalIndent(r, "", "  ")
-	if err != nil {
-		return "", err
-	}
-	if err := os.WriteFile(base+".json", append(raw, '\n'), 0o644); err != nil {
+	if err := fsutil.WriteJSONAtomic(base+".json", r); err != nil {
 		return "", err
 	}
 	if err := r.writeTraces(base + "-traces"); err != nil {
 		return "", err
 	}
-	f, err := os.Create(base + ".md")
-	if err != nil {
+	var b strings.Builder
+	if err := r.WriteMarkdown(&b); err != nil {
 		return "", err
 	}
-	defer f.Close()
-	if err := r.WriteMarkdown(f); err != nil {
+	if err := fsutil.WriteFileAtomic(base+".md", []byte(b.String())); err != nil {
 		return "", err
 	}
 	return base + ".md", nil
@@ -149,14 +142,7 @@ func (r Report) writeTraces(dir string) error {
 		if s.Trace == nil {
 			continue
 		}
-		if err := os.MkdirAll(dir, 0o755); err != nil {
-			return err
-		}
-		raw, err := json.MarshalIndent(s.Trace, "", "  ")
-		if err != nil {
-			return err
-		}
-		if err := os.WriteFile(filepath.Join(dir, s.ID+".json"), append(raw, '\n'), 0o644); err != nil {
+		if err := fsutil.WriteJSONAtomic(filepath.Join(dir, s.ID+".json"), s.Trace); err != nil {
 			return err
 		}
 	}

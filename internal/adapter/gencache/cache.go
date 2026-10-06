@@ -1,6 +1,7 @@
 // Package gencache wraps an AIGenerativeClient with a file cache, so
 // generated text (the Job Summary) is identical across eval runs and
-// Validation inputs stay fixed while tuning.
+// Validation inputs stay fixed while tuning. Concurrent misses for the same
+// key make one generation; entries are written atomically and privately.
 package gencache
 
 import (
@@ -12,6 +13,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"golang.org/x/sync/singleflight"
+
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
 
@@ -27,6 +31,7 @@ type Client struct {
 	inner   Inner
 	dir     string
 	metrics port.Metrics
+	group   singleflight.Group
 }
 
 var _ port.AIGenerativeClient = (*Client)(nil)
@@ -50,16 +55,21 @@ func (c *Client) Generate(ctx context.Context, system, prompt string) (string, e
 		return "", fmt.Errorf("gencache: %w", err)
 	}
 
-	c.metrics.Add("gencache.misses", 1)
-	text, err := c.inner.Generate(ctx, system, prompt)
-	if err != nil || text == "" {
-		return text, err
-	}
-	if err := os.MkdirAll(c.dir, 0o755); err != nil {
-		return "", fmt.Errorf("gencache: %w", err)
-	}
-	if err := os.WriteFile(path, []byte(text), 0o644); err != nil {
-		return "", fmt.Errorf("gencache: %w", err)
-	}
-	return text, nil
+	text, err, _ := c.group.Do(path, func() (any, error) {
+		// Another caller may have stored it while this one waited.
+		if raw, err := os.ReadFile(path); err == nil {
+			return string(raw), nil
+		}
+		c.metrics.Add("gencache.misses", 1)
+		text, err := c.inner.Generate(ctx, system, prompt)
+		if err != nil || text == "" {
+			return text, err
+		}
+		if err := fsutil.WriteFileAtomic(path, []byte(text)); err != nil {
+			return "", fmt.Errorf("gencache: %w", err)
+		}
+		return text, nil
+	})
+	s, _ := text.(string) // the function always returns a string
+	return s, err
 }

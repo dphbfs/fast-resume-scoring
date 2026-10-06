@@ -138,8 +138,11 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
 - [x] H5. Sanitized provider errors in `jev` and `openai` clients
       (allowlisted fields, status, request id, ~512-byte cap).
       Done 2026-10-06: `platform/providererr`; key-like strings redacted.
-- [ ] H6. Private artifacts 0600/0700, atomic writes; summary cache with
+- [x] H6. Private artifacts 0600/0700, atomic writes; summary cache with
       versioned key, `singleflight`, atomic replace.
+      Done 2026-10-06 (`platform/fsutil`, Go outputs only; the Python eval
+      scripts are unchanged). Cache key not versioned: it would invalidate
+      the committed summaries, and extraction is off the scoring path.
 - [ ] H7. the generative scorer JSON adapter: HTML bullets, free-text `period`
       dates with mixed dashes, hidden items, custom sections, degree text
       inside descriptions; source item ids; equivalence test with the

@@ -19,6 +19,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
@@ -344,9 +345,6 @@ func abs(n int) int {
 // Write saves the report as <dir>/<timestamp>.json and .md, with traces in
 // <timestamp>-traces/, and returns the Markdown path.
 func (r CheckerReport) Write(dir string) (string, error) {
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		return "", err
-	}
 	base := filepath.Join(dir, r.Started.Format("2006-01-02T15-04-05Z"))
 	if r.RescoredFrom != "" {
 		// Named after the source run, so rescoring several runs at once
@@ -357,34 +355,22 @@ func (r CheckerReport) Write(dir string) (string, error) {
 		}
 		base = filepath.Join(dir, from.UTC().Format("2006-01-02T15-04-05Z")+"-rescored")
 	}
-	raw, err := json.MarshalIndent(r, "", "  ")
-	if err != nil {
-		return "", err
-	}
-	if err := os.WriteFile(base+".json", append(raw, '\n'), 0o644); err != nil {
+	if err := fsutil.WriteJSONAtomic(base+".json", r); err != nil {
 		return "", err
 	}
 	for _, s := range r.Fixtures {
 		if s.Trace == nil {
 			continue
 		}
-		if err := os.MkdirAll(base+"-traces", 0o755); err != nil {
-			return "", err
-		}
-		raw, err := json.MarshalIndent(s.Trace, "", "  ")
-		if err != nil {
-			return "", err
-		}
-		if err := os.WriteFile(filepath.Join(base+"-traces", s.ID+".json"), append(raw, '\n'), 0o644); err != nil {
+		if err := fsutil.WriteJSONAtomic(filepath.Join(base+"-traces", s.ID+".json"), s.Trace); err != nil {
 			return "", err
 		}
 	}
-	f, err := os.Create(base + ".md")
-	if err != nil {
+	var b strings.Builder
+	if err := r.WriteMarkdown(&b); err != nil {
 		return "", err
 	}
-	defer f.Close()
-	if err := r.WriteMarkdown(f); err != nil {
+	if err := fsutil.WriteFileAtomic(base+".md", []byte(b.String())); err != nil {
 		return "", err
 	}
 	return base + ".md", nil
