@@ -12,6 +12,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 type fakeGenerator struct {
@@ -41,7 +42,7 @@ func summaryRun() *run {
 func TestJobSummaryGenerated(t *testing.T) {
 	gen := &fakeGenerator{reply: "  A senior backend role building Go APIs.  "}
 	m := metrics.NewRecorder()
-	e := New(nil, gen, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{})
+	e := New(nil, gen, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{}, tuning.Default())
 
 	r := summaryRun()
 	if err := e.jobSummary(context.Background(), r); err != nil {
@@ -71,7 +72,7 @@ func TestJobSummaryFallback(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			m := metrics.NewRecorder()
-			e := New(nil, tt.gen, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{})
+			e := New(nil, tt.gen, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{}, tuning.Default())
 
 			r := summaryRun()
 			if err := e.jobSummary(context.Background(), r); err != nil {
@@ -93,7 +94,7 @@ func TestJobSummaryFallback(t *testing.T) {
 
 func TestJobSummaryTruncatesLongReply(t *testing.T) {
 	gen := &fakeGenerator{reply: strings.Repeat("word ", 400)}
-	e := New(nil, gen, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{})
+	e := New(nil, gen, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{}, tuning.Default())
 	r := summaryRun()
 	if err := e.jobSummary(context.Background(), r); err != nil {
 		t.Fatal(err)

@@ -27,6 +27,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // E2E sets: which reference pairs to run.
@@ -151,14 +152,15 @@ type E2ERunner struct {
 	jev       config.Jev
 	pipeline  config.Pipeline
 	cfg       config.Checker
+	tuning    *tuning.Tuning
 }
 
 // NewE2ERunner builds an E2ERunner. The configs are recorded in each report
 // and key the extraction cache.
 func NewE2ERunner(extractor port.RequirementExtractor, checker port.ResumeChecker, holistic port.HolisticJudge, recorder *metrics.Recorder,
-	log *slog.Logger, jev config.Jev, pipeline config.Pipeline, cfg config.Checker) *E2ERunner {
+	log *slog.Logger, jev config.Jev, pipeline config.Pipeline, cfg config.Checker, t *tuning.Tuning) *E2ERunner {
 	return &E2ERunner{extractor: extractor, checker: checker, holistic: holistic, recorder: recorder, log: log.With("component", "eval"),
-		jev: jev, pipeline: pipeline, cfg: cfg}
+		jev: jev, pipeline: pipeline, cfg: cfg, tuning: t}
 }
 
 // E2EScore is one pair's outcome.
@@ -190,6 +192,7 @@ type E2EReport struct {
 	Duration string          `json:"duration"`
 	Model    string          `json:"model"`
 	Revision string          `json:"revision"`
+	Tuning   string          `json:"tuning,omitempty"`
 	Set      string          `json:"set"`
 	Dir      string          `json:"dir,omitempty"`
 	WithFit  bool            `json:"with_fit,omitempty"`
@@ -254,6 +257,7 @@ func (r *E2ERunner) Run(ctx context.Context, pairs []E2EPair, parallel int, cach
 		Duration: time.Since(start).Round(time.Millisecond).String(),
 		Model:    model,
 		Revision: revision(),
+		Tuning:   r.tuning.Hash,
 		WithFit:  withFit,
 		Pipeline: r.pipeline,
 		Checker:  r.cfg,
@@ -297,7 +301,7 @@ func (r *E2ERunner) score(ctx context.Context, p E2EPair, cacheDir string, withF
 	if err := g.Wait(); err != nil {
 		return err
 	}
-	m := domain.MatchScore(*s.Holistic)
+	m := domain.MatchScore(*s.Holistic, r.tuning.MatchWeights())
 	s.Match = &m
 	return nil
 }
@@ -312,7 +316,8 @@ func (r *E2ERunner) extract(ctx context.Context, jd domain.JobDescription, cache
 			Text     string
 			Model    string
 			Pipeline config.Pipeline
-		}{app.ExtractorVersion, jd.Text, r.jev.Model, r.pipeline})
+			Tuning   string
+		}{app.ExtractorVersion, jd.Text, r.jev.Model, r.pipeline, r.tuning.Hash})
 		if err != nil {
 			return domain.Result{}, false, err
 		}

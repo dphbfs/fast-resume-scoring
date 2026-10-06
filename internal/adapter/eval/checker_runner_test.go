@@ -13,6 +13,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // echoChecker links every unit that names a Requirement as strong.
@@ -46,7 +47,7 @@ func (echoChecker) Check(_ context.Context, reqs domain.Result, resume domain.Re
 
 func TestCheckerRunWriteAndRescore(t *testing.T) {
 	f := checkerFixture()
-	r := NewCheckerRunner(echoChecker{}, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{RetrievalK: 5})
+	r := NewCheckerRunner(echoChecker{}, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{RetrievalK: 5}, tuning.Default())
 	rep := r.Run(context.Background(), []CheckerFixture{f}, 2)
 
 	tot := rep.Totals
@@ -84,7 +85,7 @@ func TestCheckerRunWriteAndRescore(t *testing.T) {
 	if err != nil || len(traces) != 1 {
 		t.Fatalf("traces = %v, %v", traces, err)
 	}
-	re, err := RescoreChecker(prev, []CheckerFixture{f}, traces)
+	re, err := RescoreChecker(prev, []CheckerFixture{f}, traces, tuning.Default())
 	if err != nil {
 		t.Fatal(err)
 	}

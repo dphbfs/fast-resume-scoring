@@ -7,32 +7,17 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
 )
 
-// This file holds every Jev question and the policy constants applied to the
-// answers, so they can be reviewed and tuned in one place.
+// This file builds every Requirement Extractor question and holds the
+// policy constants applied to the answers. The prompt text comes from the
+// tuning file (tuning/tuning.yaml) through prompts.
 
 // --- Section labeling (stage 2) ---
-
-// sectionCriteria describes each Section option for the labeling Choice.
-var sectionCriteria = map[string]any{
-	string(domain.SectionRequired): "A qualification the candidate must have: required skills, " +
-		"experience, education, or minimum qualifications.",
-	string(domain.SectionPreferred): "A qualification that is optional: preferred, bonus, " +
-		"nice-to-have, \"a plus\", or ideal-candidate extras.",
-	string(domain.SectionResponsibilities): "What the person will do in the role: duties, " +
-		"projects, ownership, and day-to-day work.",
-	string(domain.SectionCompany): "About the company, team, product, mission, or culture " +
-		"rather than about the candidate or the work.",
-	string(domain.SectionBenefits): "Salary, equity, bonus, insurance, time off, perks, or " +
-		"other compensation and benefits.",
-	string(domain.SectionOther): "A heading, job title, legal or equal-opportunity text, " +
-		"application instructions, location or logistics, or anything else.",
-}
 
 // sectionQuestion asks which Section one sentence belongs to. The sentence
 // and its nearest heading are embedded in the question itself: Jev cannot
 // reliably find a sentence by its position in a list (live test, jev-1.13
 // labeled neighbouring sentences).
-func sectionQuestion(sentence, heading string) port.Question {
+func (p *prompts) sectionQuestion(sentence, heading string) port.Question {
 	if heading == "" {
 		heading = "(none)"
 	}
@@ -41,12 +26,9 @@ func sectionQuestion(sentence, heading string) port.Question {
 		Instructions: map[string]any{
 			"sentence": sentence,
 			"heading":  heading,
-			"question": "Which part of the job description is `sentence`? " +
-				"`heading` is the nearest heading above it in the posting. An item under a " +
-				"heading such as \"Bonus points\" or \"Nice to have\" is preferred, and an " +
-				"item under \"Benefits\" is benefits, even if the item itself does not say so.",
+			"question": p.sectionQuestionText,
 		},
-		Criteria: sectionCriteria,
+		Criteria: p.sectionCriteria,
 	}
 }
 
@@ -66,12 +48,6 @@ const lowSectionConfidence = 0.5
 
 // --- Job Summary (stage 4) ---
 
-// summarySystemPrompt instructs the generative model. The summary is
-// background for judging Candidates, so it names the role, not requirements.
-const summarySystemPrompt = "You summarize job postings. Reply with 2 or 3 plain sentences " +
-	"describing the role: its title and seniority, the product or domain, and the core " +
-	"technologies. No lists, no benefits, no company marketing, no requirements beyond the core stack."
-
 // maxSummaryRunes caps the generated summary sent to Jev on every
 // Validation request.
 const maxSummaryRunes = 600
@@ -82,47 +58,26 @@ const maxFallbackRunes = 1500
 
 // --- Validation Round (stage 5) ---
 
-// rejectOptions are the Choice options meaning the chunk names no
-// Requirement, each describing one kind of non-requirement. Several options
-// give "no" as many ways to be described as "yes" has (one per Candidate);
-// with a single option, a padded phrase like "Work closely" often won.
-var rejectOptions = map[string]string{
-	"generic_trait": "`chunk` is a generic trait, attitude, or work style rather than a specific " +
-		"skill: \"strong judgment\", \"self-starter\", \"fast-moving environment\", \"team player\", " +
-		"\"attention to detail\".",
-	"people_or_context": "`chunk` names people, teams, the company, its product, or its customers " +
-		"rather than something the applicant must know or do: \"product managers\", \"partner " +
-		"teams\", \"our customers\", \"the platform\".",
-	"action_only": "`chunk` is only a verb or a vague activity with no specific skill or " +
-		"technology: \"Work closely\", \"Collaborate\", \"iterate rapidly\", \"ship features\", " +
-		"\"take ownership\".",
-	"condition": "`chunk` is a condition of the job rather than a skill: location, time zone, " +
-		"work authorization, citizenship, clearance, travel, schedule, or on-call.",
-}
-
 // validationQuestion asks Jev to select the option that names the
-// Requirement in one chunk, or to say which kind of non-requirement it is.
-// Selecting among a chunk's overlapping spans is a relative judgment; judging
-// each span alone accepted cut-off words ("financial" from "financial
-// systems") in live tests.
-func validationQuestion(c chunk) port.Question {
-	criteria := make(map[string]any, len(c.Options)+len(rejectOptions))
+// Requirement in one chunk, or to say which kind of non-requirement it is
+// (the reject options: several give "no" as many ways to be described as
+// "yes" has; with a single option, a padded phrase like "Work closely"
+// often won). Selecting among a chunk's overlapping spans is a relative
+// judgment; judging each span alone accepted cut-off words ("financial"
+// from "financial systems") in live tests.
+func (p *prompts) validationQuestion(c chunk) port.Question {
+	criteria := make(map[string]any, len(c.Options)+len(p.rejectOptions))
 	for _, o := range c.Options {
 		criteria[o] = nil
 	}
-	for k, v := range rejectOptions {
+	for k, v := range p.rejectOptions {
 		criteria[k] = v
 	}
 	return port.Question{
 		Type: port.Choice,
 		Instructions: map[string]any{
-			"chunk": c.Text,
-			"question": "`chunk` is part of `sentence` in a job posting. If `chunk` states a specific " +
-				"skill, technology, qualification, kind of experience, or responsibility that a resume " +
-				"could show, which option names it completely and without extra words? Prefer the full " +
-				"name (\"distributed systems\", not \"distributed\"), and leave out words like " +
-				"\"experience\", \"own\", \"use\" or \"strong\" around it. Otherwise, which kind " +
-				"of non-requirement is `chunk`?",
+			"chunk":    c.Text,
+			"question": p.validationQuestionText,
 		},
 		Criteria: criteria,
 	}
@@ -151,73 +106,38 @@ func refinementInstructions(requirement string, mentions []mention, question str
 // fillerKeep is the option meaning the Requirement is kept.
 const fillerKeep = "specific_requirement"
 
-// fillerReasons are the Filler kinds a Requirement can be dropped as.
-var fillerReasons = map[string]string{
-	"vague_term": "Too broad to check on a resume by itself: \"backend\", \"scalable\", " +
-		"\"resilience\", \"operations\", \"quality\", \"integration\".",
-	"generic_trait": "A personal trait, attitude, or work style: \"team player\", \"self-starter\", " +
-		"\"strong judgment\", \"fast-paced environment\", \"ownership\".",
-	"company_context": "A name or idea specific to this company, its internal systems, teams, or " +
-		"customers rather than a transferable skill: \"FinHub\", \"Overseer's integrity " +
-		"guarantees\", \"our merchants\".",
-	"condition": "A condition of the job rather than a skill: work authorization, citizenship, " +
-		"clearance, location, time zone, travel, schedule, or on-call rotation.",
-}
-
 // fillerQuestion asks whether a Requirement is specific enough to check
 // against a resume, or which kind of Filler it is.
-func fillerQuestion(requirement string, mentions []mention) port.Question {
-	criteria := map[string]any{
-		fillerKeep: "A specific skill, technology, domain, qualification, kind of experience, or " +
-			"responsibility that a resume could show: \"Kubernetes\", \"payments\", \"5+ years of Go\", " +
-			"\"API design\", \"mentoring engineers\".",
-	}
-	for k, v := range fillerReasons {
+func (p *prompts) fillerQuestion(requirement string, mentions []mention) port.Question {
+	criteria := map[string]any{fillerKeep: p.fillerKeepText}
+	for k, v := range p.fillerReasons {
 		criteria[k] = v
 	}
 	return port.Question{
-		Type: port.Choice,
-		Instructions: refinementInstructions(requirement, mentions,
-			"`requirement` was extracted from the job posting sentences in `mentions`. What is it?"),
-		Criteria: criteria,
+		Type:         port.Choice,
+		Instructions: refinementInstructions(requirement, mentions, p.fillerQuestionText),
+		Criteria:     criteria,
 	}
 }
 
 // minKeepMass is the minimum probability on fillerKeep to keep a Requirement.
 const minKeepMass = 0.5
 
-// duplicateReasons are the options meaning "no other option is the same".
-// Each names a failure mode seen in eval, where Jev merged related
-// Requirements that are not synonyms.
-var duplicateReasons = map[string]string{
-	"different_thing": "Every option names something different from `requirement` " +
-		"(\"Kafka\" and \"Kafka Streams\", \"Go\" and \"Rust\").",
-	"broader_or_narrower": "The closest option is a broader or narrower concept, not the same " +
-		"thing (\"cloud\" and \"AWS\", \"Master's degree\" and \"Master's degree in " +
-		"Computer Science\").",
-	"part_of_or_contains": "The closest option contains `requirement` or is contained in it, " +
-		"so one is more specific (\"dashboards\" and \"Grafana dashboards\", \"tools\" and " +
-		"\"agentic engineering tools\").",
-	"related_not_same": "The closest option is related or used together with `requirement` but " +
-		"is a different skill (\"Terraform\" and \"Infrastructure as Code\", \"API " +
-		"boundaries\" and \"API contracts\", \"security\" and \"secure development\").",
-}
-
-// duplicateQuestion asks which other Requirement names the same thing.
-func duplicateQuestion(requirement string, mentions []mention, options []string) port.Question {
-	criteria := make(map[string]any, len(options)+len(duplicateReasons))
+// duplicateQuestion asks which other Requirement names the same thing. The
+// reason options each name a failure mode seen in eval, where Jev merged
+// related Requirements that are not synonyms.
+func (p *prompts) duplicateQuestion(requirement string, mentions []mention, options []string) port.Question {
+	criteria := make(map[string]any, len(options)+len(p.duplicateReasons))
 	for _, o := range options {
 		criteria[o] = nil
 	}
-	for k, v := range duplicateReasons {
+	for k, v := range p.duplicateReasons {
 		criteria[k] = v
 	}
 	return port.Question{
-		Type: port.Choice,
-		Instructions: refinementInstructions(requirement, mentions,
-			"Which option names the same thing as `requirement`: a synonym, abbreviation, or "+
-				"different spelling (\"K8s\" and \"Kubernetes\", \"Postgres\" and \"PostgreSQL\")?"),
-		Criteria: criteria,
+		Type:         port.Choice,
+		Instructions: refinementInstructions(requirement, mentions, p.duplicateQuestionText),
+		Criteria:     criteria,
 	}
 }
 
@@ -229,30 +149,20 @@ const minMergeMass = 0.7
 // Requirement is offered as a duplicate; beyond it only similar ones are.
 const maxAllDuplicateOptions = 40
 
-// alternativeReasons are the options meaning "not an alternative".
-var alternativeReasons = map[string]string{
-	"required_together": "The sentence asks for `requirement` together with the others, not " +
-		"either one (\"Go and Kubernetes\").",
-	"unrelated": "No option is offered as an alternative to `requirement`; they are listed for " +
-		"different purposes.",
-}
-
 // alternativeQuestion asks which Requirement from the same sentence is
 // offered as an interchangeable alternative.
-func alternativeQuestion(requirement string, mentions []mention, options []string) port.Question {
-	criteria := make(map[string]any, len(options)+len(alternativeReasons))
+func (p *prompts) alternativeQuestion(requirement string, mentions []mention, options []string) port.Question {
+	criteria := make(map[string]any, len(options)+len(p.alternativeReasons))
 	for _, o := range options {
 		criteria[o] = nil
 	}
-	for k, v := range alternativeReasons {
+	for k, v := range p.alternativeReasons {
 		criteria[k] = v
 	}
 	return port.Question{
-		Type: port.Choice,
-		Instructions: refinementInstructions(requirement, mentions,
-			"In `mentions`, which option does the employer accept instead of `requirement`, so "+
-				"that having either one is enough (\"Go, Ruby, or Python\", \"AWS or GCP\")?"),
-		Criteria: criteria,
+		Type:         port.Choice,
+		Instructions: refinementInstructions(requirement, mentions, p.alternativeQuestionText),
+		Criteria:     criteria,
 	}
 }
 
@@ -260,24 +170,13 @@ func alternativeQuestion(requirement string, mentions []mention, options []strin
 // to link an alternative.
 const minAlternativeMass = 0.7
 
-// importanceLevels describe situations, lowest first; Importance is the
-// Score divided by the top level index.
-var importanceLevels = []any{
-	"Mentioned only in passing: an example in a list, a tech-stack entry, or context.",
-	"Part of the day-to-day work the posting describes, but not stated as a requirement.",
-	"Listed as preferred, a bonus, a plus, or nice to have.",
-	"Stated as a requirement for the role.",
-	"Stated as a hard requirement and emphasized or repeated in several places.",
-}
-
-// importanceQuestion asks how much the employer cares about a Requirement.
-func importanceQuestion(requirement string, mentions []mention) port.Question {
+// importanceQuestion asks how much the employer cares about a Requirement;
+// Importance is the Score divided by the top level index.
+func (p *prompts) importanceQuestion(requirement string, mentions []mention) port.Question {
 	return port.Question{
-		Type: port.Score,
-		Instructions: refinementInstructions(requirement, mentions,
-			"How important is `requirement` to the employer, judging by every sentence in "+
-				"`mentions` and its section?"),
-		Criteria: importanceLevels,
+		Type:         port.Score,
+		Instructions: refinementInstructions(requirement, mentions, p.importanceQuestionText),
+		Criteria:     p.importanceLevels,
 	}
 }
 

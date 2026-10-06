@@ -92,7 +92,7 @@ func (c *Checker) askRetrieval(ctx context.Context, u domain.EvidenceUnit, creqs
 	}
 	resp, err := c.classifier.Classify(ctx, port.ClassifyRequest{
 		State:     stateOf(u),
-		Questions: map[string]port.Question{"retrieval": retrievalQuestion(opts)},
+		Questions: map[string]port.Question{"retrieval": c.prompts.retrievalQuestion(opts)},
 	})
 	if err != nil {
 		return nil, "", err
@@ -108,21 +108,19 @@ func (c *Checker) askRetrieval(ctx context.Context, u domain.EvidenceUnit, creqs
 
 // retrievalQuestion offers the given Requirements, each described by its
 // Context Sentence, plus the none sink.
-func retrievalQuestion(creqs []checkRequirement) port.Question {
+func (p *prompts) retrievalQuestion(creqs []checkRequirement) port.Question {
 	criteria := make(map[string]any, len(creqs)+1)
 	for _, r := range creqs {
 		if r.context != "" {
-			criteria[r.option] = "Job posting: " + r.context
+			criteria[r.option] = p.retrieval.ContextPrefix + r.context
 		} else {
 			criteria[r.option] = nil
 		}
 	}
-	criteria[noneOption] = "The statement is not evidence for any of the listed job requirements."
+	criteria[noneOption] = p.retrieval.None
 	return port.Question{
-		Type: port.Choice,
-		Instructions: "A resume `statement` is checked against a job's requirements. " +
-			"Which requirement does this statement most directly give evidence for? " +
-			"Choose none when it demonstrates none of them.",
-		Criteria: criteria,
+		Type:         port.Choice,
+		Instructions: p.retrieval.Question,
+		Criteria:     criteria,
 	}
 }

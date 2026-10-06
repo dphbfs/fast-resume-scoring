@@ -8,6 +8,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // HolisticJudge judges the whole Resume against the whole posting in one
@@ -23,13 +24,16 @@ type HolisticJudge struct {
 	classifier port.AIClassifierClient
 	metrics    port.Metrics
 	log        *slog.Logger
+	prompts    *prompts
 }
 
 var _ port.HolisticJudge = (*HolisticJudge)(nil)
 
 // NewHolisticJudge builds a HolisticJudge.
-func NewHolisticJudge(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger) *HolisticJudge {
-	return &HolisticJudge{classifier: classifier, metrics: m, log: log.With("component", "holistic")}
+// The questions' wording comes from the tuning file (holistic section);
+// the Match Score weights were fitted on it, so a change means refitting.
+func NewHolisticJudge(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger, t *tuning.Tuning) *HolisticJudge {
+	return &HolisticJudge{classifier: classifier, metrics: m, log: log.With("component", "holistic"), prompts: newPrompts(t)}
 }
 
 // holisticState is the Jev state: the posting as the extractor reads it and
@@ -39,58 +43,13 @@ type holisticState struct {
 	Resume     string `json:"resume"`
 }
 
-// roleMatchLevels rate how closely the candidate's kind of role matches
-// the job's, lowest first.
-var roleMatchLevels = []any{
-	"A different profession or specialty (for example Android/mobile vs data engineering, Salesforce " +
-		"development vs backend services, front-end vs data/ML).",
-	"A neighboring specialty with little overlap in daily work.",
-	"The same broad field with a different focus (for example front-end-leaning vs backend-leaning).",
-	"The same kind of role with a different main stack.",
-	"The same kind of role and stack.",
-}
-
-// holisticQuestions are the Holistic Round's questions, worded as in the
-// probe that fitted the Match Score (scripts/probe_holistic.py); changing
-// a word means refitting.
-var holisticQuestions = map[string]port.Question{
-	"role_match": {
-		Type: port.Score,
-		Instructions: "How closely does the kind of role the candidate in `resume` has been doing match the kind " +
-			"of role in `job_posting`? Judge the role (what the person builds and which specialty), not " +
-			"seniority or domain.",
-		Criteria: roleMatchLevels,
-	},
-	"experience_short": {
-		Type: port.Noul,
-		Instructions: "Does `resume` show clearly fewer years of the relevant kind of experience, or a clearly " +
-			"lower career level, than `job_posting` asks for?",
-		Criteria: map[string]any{
-			"true":  "The candidate's relevant experience or level is clearly below what the job asks for.",
-			"false": "The candidate meets or exceeds the experience and level, or is within a year or so of it.",
-		},
-	},
-	"blocker": {
-		Type: port.Noul,
-		Instructions: "Does `job_posting` state a hard eligibility condition that `resume` clearly shows the candidate " +
-			"does not meet? Only status conditions count: must be a current student or recent graduate, must " +
-			"hold a security clearance, a professional license, or citizenship the resume rules out. Skills, " +
-			"years of experience, degrees, and location are qualifications, not eligibility conditions.",
-		Criteria: map[string]any{
-			"true": "A stated status condition (student, clearance, license, citizenship) is clearly not met.",
-			"false": "No status condition is stated, it is met, or the resume does not clearly contradict it. " +
-				"Missing years, a missing degree, or missing skills are never a yes.",
-		},
-	},
-}
-
 // Judge asks the Holistic Round questions for one posting and Resume.
 func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, resume domain.Resume) (domain.Holistic, error) {
 	start := time.Now()
 	defer func() { h.metrics.ObserveDuration("stage.holistic", time.Since(start)) }()
 	resp, err := h.classifier.Classify(ctx, port.ClassifyRequest{
 		State:     holisticState{JobPosting: postingText(jd).Text, Resume: resume.Text},
-		Questions: holisticQuestions,
+		Questions: h.prompts.holistic,
 	})
 	if err != nil {
 		return domain.Holistic{}, err
@@ -99,7 +58,7 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 	h.metrics.Add("holistic.input_tokens", int64(resp.Usage.InputTokens))
 	h.metrics.Add("holistic.output_tokens", int64(resp.Usage.OutputTokens))
 
-	role, err := scoreShare(resp.Answers["role_match"], len(roleMatchLevels))
+	role, err := scoreShare(resp.Answers["role_match"], h.prompts.roleMatchLevels)
 	if err != nil {
 		return domain.Holistic{}, fmt.Errorf("role_match: %w", err)
 	}

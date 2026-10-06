@@ -77,7 +77,7 @@ func TestScoreFit(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := ScoreFit(tt.reqs, tt.groups)
+			got := ScoreFit(tt.reqs, tt.groups, testFitWeights)
 			if got.Score == nil || *got.Score != tt.score {
 				t.Errorf("Score = %v, want %d", got.Score, tt.score)
 			}
@@ -92,8 +92,14 @@ func TestScoreFit(t *testing.T) {
 }
 
 func TestScoreFitEmpty(t *testing.T) {
-	got := ScoreFit(nil, []GroupCoverage{{ID: "alt_1", Members: []string{"x"}}})
+	got := ScoreFit(nil, []GroupCoverage{{ID: "alt_1", Members: []string{"x"}}}, testFitWeights)
 	if got.Score != nil || len(got.ByTier) != 0 || got.Gaps == nil || len(got.Gaps) != 0 {
 		t.Errorf("ScoreFit(empty) = %+v, want null score, empty tiers and gaps", got)
 	}
+}
+
+// testFitWeights are the shipped Fit Score weights (tuning/tuning.yaml).
+var testFitWeights = FitWeights{
+	Credit:     map[EvidenceStrength]float64{StrengthStrong: 1, StrengthPartial: 0.6, StrengthWeak: 0.3},
+	TierWeight: map[Tier]float64{TierRequired: 3, TierPreferred: 1.5, TierMentioned: 1},
 }

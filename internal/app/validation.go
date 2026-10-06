@@ -62,7 +62,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 			s := sentences[b.chunks[0].Ref]
 			questions := make(map[string]port.Question, len(b.chunks))
 			for i, c := range b.chunks {
-				questions[fmt.Sprintf("chunk_%d", i)] = validationQuestion(c)
+				questions[fmt.Sprintf("chunk_%d", i)] = e.prompts.validationQuestion(c)
 			}
 			resp, err := e.classifier.Classify(gctx, port.ClassifyRequest{
 				State:     validationState{JobSummary: r.summary, Section: s.Section, Sentence: s.Text},
@@ -74,7 +74,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 			e.addUsage("extract.validation", resp.Usage)
 			for i, c := range b.chunks {
 				a := resp.Answers[fmt.Sprintf("chunk_%d", i)]
-				if _, ok := a.Probabilities[a.Choice]; !ok || !isOption(c, a.Choice) {
+				if _, ok := a.Probabilities[a.Choice]; !ok || !isOption(c, a.Choice, e.prompts.rejectOptions) {
 					return fmt.Errorf("sentence %s: chunk %q: answer %q is not an option", s.Ref, c.Text, a.Choice)
 				}
 				best, bestP, spanMass := decide(c, a.Probabilities)
@@ -92,7 +92,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 					}
 					tc.Selected, tc.SelectedP = best, bestP
 				} else {
-					reason := topReject(a.Probabilities)
+					reason := topReject(a.Probabilities, e.prompts.rejectOptions)
 					b.rejected[reason]++
 					tc.RejectReason = reason
 				}
@@ -173,7 +173,7 @@ func topOptions(probs map[string]float64, n int) []domain.TraceOption {
 }
 
 // topReject returns the most probable rejection reason.
-func topReject(probs map[string]float64) string {
+func topReject(probs map[string]float64, rejectOptions map[string]string) string {
 	best, bestP := "", -1.0
 	for _, k := range slices.Sorted(maps.Keys(rejectOptions)) {
 		if probs[k] > bestP {
@@ -183,7 +183,7 @@ func topReject(probs map[string]float64) string {
 	return best
 }
 
-func isOption(c chunk, o string) bool {
+func isOption(c chunk, o string, rejectOptions map[string]string) bool {
 	_, reject := rejectOptions[o]
 	return reject || slices.Contains(c.Options, o)
 }

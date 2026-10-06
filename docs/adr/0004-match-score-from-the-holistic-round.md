@@ -59,3 +59,11 @@ Accepted by the user as the replacement score; no tuning on this set.
 Known weak spots, left as is: career-changer resumes (under-scored on
 the new field's roles) and off-role or location-restricted postings
 (over-scored; location is excluded from the blocker by design).
+
+## Where the wording and weights live (2026-10-06)
+
+The three questions and the weights are in `tuning/tuning.yaml`
+(`holistic`, `match_score`), not in code. The binaries embed it;
+`TUNING_FILE` loads an edited copy, and every score output and eval
+report records the file's hash. `TestPromptSnapshot` fails on any change
+to the requests, so a wording change is always reviewed against this ADR.

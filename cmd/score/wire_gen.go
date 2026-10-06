@@ -13,6 +13,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Injectors from wire.go:
@@ -31,8 +32,13 @@ func initApp() (*cli.ScoreApp, error) {
 	if err != nil {
 		return nil, err
 	}
-	holisticJudge := app.NewHolisticJudge(client, recorder, logger)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	holisticJudge := app.NewHolisticJudge(client, recorder, logger, tuningTuning)
 	configRun := configConfig.Run
-	scoreApp := cli.NewScoreApp(holisticJudge, recorder, logger, configRun)
+	scoreApp := cli.NewScoreApp(holisticJudge, recorder, logger, configRun, tuningTuning)
 	return scoreApp, nil
 }

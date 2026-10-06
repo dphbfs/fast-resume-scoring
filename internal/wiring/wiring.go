@@ -12,12 +12,14 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // PlatformSet provides config, logging and the metrics recorder.
 var PlatformSet = wire.NewSet(
 	config.Load,
-	wire.FieldsOf(new(config.Config), "Jev", "Generative", "Pipeline", "Checker", "Run"),
+	wire.FieldsOf(new(config.Config), "Jev", "Generative", "Pipeline", "Checker", "Run", "Tuning"),
+	tuning.Load,
 	logging.New,
 	metrics.NewRecorder,
 	wire.Bind(new(port.Metrics), new(*metrics.Recorder)),

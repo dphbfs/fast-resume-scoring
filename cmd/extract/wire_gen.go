@@ -14,6 +14,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Injectors from wire.go:
@@ -37,7 +38,12 @@ func initApp() (*cli.App, error) {
 		return nil, err
 	}
 	pipeline := configConfig.Pipeline
-	extractor := app.New(client, openaiClient, recorder, logger, pipeline)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	extractor := app.New(client, openaiClient, recorder, logger, pipeline, tuningTuning)
 	configRun := configConfig.Run
 	cliApp := cli.New(extractor, recorder, logger, configRun)
 	return cliApp, nil

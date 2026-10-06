@@ -11,6 +11,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Extractor runs the Requirement Extractor pipeline.
@@ -20,6 +21,7 @@ type Extractor struct {
 	metrics    port.Metrics
 	log        *slog.Logger
 	cfg        config.Pipeline
+	prompts    *prompts
 	// refinementBatchChars caps question JSON per Refinement request;
 	// replaced in tests.
 	refinementBatchChars int
@@ -34,6 +36,7 @@ func New(
 	m port.Metrics,
 	log *slog.Logger,
 	cfg config.Pipeline,
+	t *tuning.Tuning,
 ) *Extractor {
 	return &Extractor{
 		classifier: classifier,
@@ -41,6 +44,7 @@ func New(
 		metrics:    m,
 		log:        log.With("component", "extractor"),
 		cfg:        cfg,
+		prompts:    newPrompts(t),
 
 		refinementBatchChars: refinementBatchChars,
 	}

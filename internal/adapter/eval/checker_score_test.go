@@ -6,6 +6,7 @@ import (
 
 	"github.com/dphbfs/fast-resume-tailoring/internal/app"
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 func checkerFixture() CheckerFixture {
@@ -92,7 +93,7 @@ func TestScoreCheck(t *testing.T) {
 		{ID: "e3", Retrieved: []string{"Go"}},
 	}}
 
-	s, err := ScoreCheck(f, res, trace)
+	s, err := ScoreCheck(f, res, trace, tuning.Default().FitWeights())
 	if err != nil {
 		t.Fatal(err)
 	}

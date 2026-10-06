@@ -15,7 +15,7 @@ import (
 func (e *Extractor) jobSummary(ctx context.Context, r *run) error {
 	reason := "no generative client"
 	if e.generator != nil {
-		text, err := e.generator.Generate(ctx, summarySystemPrompt, r.jd.Text)
+		text, err := e.generator.Generate(ctx, e.prompts.summarySystem, r.jd.Text)
 		text = strings.TrimSpace(text)
 		switch {
 		case err == nil && text != "":

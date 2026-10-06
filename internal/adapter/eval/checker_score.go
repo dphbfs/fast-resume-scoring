@@ -138,7 +138,7 @@ type CheckerScore struct {
 
 // ScoreCheck compares a Resume Checker result with a pair's labels.
 // Requirements in Skip are left out everywhere.
-func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckTrace) (CheckerScore, error) {
+func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckTrace, fw domain.FitWeights) (CheckerScore, error) {
 	s := CheckerScore{ID: f.ID, Title: f.Job.JD.Title, Resume: f.Expected.Resume,
 		Coverage: map[string]CoverageTally{}, Confusion: map[string]map[string]int{}}
 	text := map[string]string{}
@@ -238,8 +238,8 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 		}
 		s.Confusion[wantCov][gotCov]++
 	}
-	s.FitGot = domain.ScoreFit(gotCovs, res.AlternativeGroups).Score
-	wantFit := domain.ScoreFit(wantCovs, res.AlternativeGroups)
+	s.FitGot = domain.ScoreFit(gotCovs, res.AlternativeGroups, fw).Score
+	wantFit := domain.ScoreFit(wantCovs, res.AlternativeGroups, fw)
 	s.FitWant = wantFit.Score
 	s.GapsWant = gapValues(wantFit.Gaps, res)
 	return s, nil

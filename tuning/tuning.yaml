@@ -1,0 +1,289 @@
+# Tuning file: every prompt the app sends and every weight it scores with.
+#
+# The binaries embed this file. To try changes without rebuilding, point
+# TUNING_FILE at an edited copy. Each report and score output records the
+# file's hash.
+#
+# Several wordings are FITTED: the Match Score weights below were fitted
+# on Jev's answers to the holistic questions exactly as written. Changing
+# a holistic question means re-probing (scripts/probe_holistic.py) and
+# refitting (scripts/fit_match.py) on development data, then validating on
+# a fresh sealed set (docs/adr/0004). `go test ./internal/app -run
+# TestPromptSnapshot` shows what changed in the requests.
+#
+# Long text uses folded blocks (>-): lines join with single spaces.
+# Option names marked "fixed" are used by the code and cannot be renamed;
+# other option lists can be edited freely.
+#
+# Runtime settings (API keys, concurrency, thresholds, deadlines) stay in
+# environment variables (internal/platform/config).
+
+version: 1
+
+# Match Score (ADR 0004): (intercept + role_match * RM + experience_short * ES)
+# * (1 - blocker), clamped to 0..100. RM is the role_match Score as a share
+# of its top level; ES and blocker are Noul probabilities.
+match_score:
+  intercept: 80.7
+  role_match: 18.5
+  experience_short: -55.2
+
+# Fit Score (ADR 0002): Tier-weighted average credit per Requirement. Used
+# for explanations (check, eval -fit), not for the Match Score.
+fit_score:
+  credit: # fixed keys
+    strong: 1
+    partial: 0.6
+    weak: 0.3
+  tier_weight: # fixed keys
+    required: 3
+    preferred: 1.5
+    mentioned: 1
+
+# Holistic Round: one Jev request over the full posting (`job_posting`) and
+# the resume (`resume`). Its answers are the Match Score's inputs.
+holistic:
+  role_match: # Score
+    question: >-
+      How closely does the kind of role the candidate in `resume` has been
+      doing match the kind of role in `job_posting`? Judge the role (what the
+      person builds and which specialty), not seniority or domain.
+    levels: # lowest first
+      - >-
+        A different profession or specialty (for example Android/mobile vs
+        data engineering, Salesforce development vs backend services,
+        front-end vs data/ML).
+      - A neighboring specialty with little overlap in daily work.
+      - >-
+        The same broad field with a different focus (for example
+        front-end-leaning vs backend-leaning).
+      - The same kind of role with a different main stack.
+      - The same kind of role and stack.
+  experience_short: # Noul
+    question: >-
+      Does `resume` show clearly fewer years of the relevant kind of
+      experience, or a clearly lower career level, than `job_posting` asks
+      for?
+    if_true: The candidate's relevant experience or level is clearly below what the job asks for.
+    if_false: The candidate meets or exceeds the experience and level, or is within a year or so of it.
+  blocker: # Noul
+    question: >-
+      Does `job_posting` state a hard eligibility condition that `resume`
+      clearly shows the candidate does not meet? Only status conditions
+      count: must be a current student or recent graduate, must hold a
+      security clearance, a professional license, or citizenship the resume
+      rules out. Skills, years of experience, degrees, and location are
+      qualifications, not eligibility conditions.
+    if_true: A stated status condition (student, clearance, license, citizenship) is clearly not met.
+    if_false: >-
+      No status condition is stated, it is met, or the resume does not
+      clearly contradict it. Missing years, a missing degree, or missing
+      skills are never a yes.
+
+# Requirement Extractor (explanations only since ADR 0004).
+extractor:
+  section: # Choice per sentence; `heading` is the nearest heading above it
+    question: >-
+      Which part of the job description is `sentence`? `heading` is the
+      nearest heading above it in the posting. An item under a heading such
+      as "Bonus points" or "Nice to have" is preferred, and an item under
+      "Benefits" is benefits, even if the item itself does not say so.
+    options: # fixed keys (Sections)
+      required: >-
+        A qualification the candidate must have: required skills,
+        experience, education, or minimum qualifications.
+      preferred: >-
+        A qualification that is optional: preferred, bonus, nice-to-have,
+        "a plus", or ideal-candidate extras.
+      responsibilities: >-
+        What the person will do in the role: duties, projects, ownership,
+        and day-to-day work.
+      company: >-
+        About the company, team, product, mission, or culture rather than
+        about the candidate or the work.
+      benefits: >-
+        Salary, equity, bonus, insurance, time off, perks, or other
+        compensation and benefits.
+      other: >-
+        A heading, job title, legal or equal-opportunity text, application
+        instructions, location or logistics, or anything else.
+  job_summary: # generative model (OPENAI_*), background for Validation
+    system_prompt: >-
+      You summarize job postings. Reply with 2 or 3 plain sentences
+      describing the role: its title and seniority, the product or domain,
+      and the core technologies. No lists, no benefits, no company
+      marketing, no requirements beyond the core stack.
+  validation: # Choice per chunk: its Candidates plus the reject options
+    question: >-
+      `chunk` is part of `sentence` in a job posting. If `chunk` states a
+      specific skill, technology, qualification, kind of experience, or
+      responsibility that a resume could show, which option names it
+      completely and without extra words? Prefer the full name ("distributed
+      systems", not "distributed"), and leave out words like "experience",
+      "own", "use" or "strong" around it. Otherwise, which kind of
+      non-requirement is `chunk`?
+    reject_options:
+      generic_trait: >-
+        `chunk` is a generic trait, attitude, or work style rather than a
+        specific skill: "strong judgment", "self-starter", "fast-moving
+        environment", "team player", "attention to detail".
+      people_or_context: >-
+        `chunk` names people, teams, the company, its product, or its
+        customers rather than something the applicant must know or do:
+        "product managers", "partner teams", "our customers", "the platform".
+      action_only: >-
+        `chunk` is only a verb or a vague activity with no specific skill or
+        technology: "Work closely", "Collaborate", "iterate rapidly", "ship
+        features", "take ownership".
+      condition: >-
+        `chunk` is a condition of the job rather than a skill: location,
+        time zone, work authorization, citizenship, clearance, travel,
+        schedule, or on-call.
+  refinement: # each question embeds `requirement` and its `mentions`
+    filler:
+      question: >-
+        `requirement` was extracted from the job posting sentences in
+        `mentions`. What is it?
+      keep: >- # the option specific_requirement (fixed name)
+        A specific skill, technology, domain, qualification, kind of
+        experience, or responsibility that a resume could show:
+        "Kubernetes", "payments", "5+ years of Go", "API design", "mentoring
+        engineers".
+      reasons:
+        vague_term: >-
+          Too broad to check on a resume by itself: "backend", "scalable",
+          "resilience", "operations", "quality", "integration".
+        generic_trait: >-
+          A personal trait, attitude, or work style: "team player",
+          "self-starter", "strong judgment", "fast-paced environment",
+          "ownership".
+        company_context: >-
+          A name or idea specific to this company, its internal systems,
+          teams, or customers rather than a transferable skill: "FinHub",
+          "Overseer's integrity guarantees", "our merchants".
+        condition: >-
+          A condition of the job rather than a skill: work authorization,
+          citizenship, clearance, location, time zone, travel, schedule, or
+          on-call rotation.
+    duplicate:
+      question: >-
+        Which option names the same thing as `requirement`: a synonym,
+        abbreviation, or different spelling ("K8s" and "Kubernetes",
+        "Postgres" and "PostgreSQL")?
+      reasons:
+        different_thing: >-
+          Every option names something different from `requirement`
+          ("Kafka" and "Kafka Streams", "Go" and "Rust").
+        broader_or_narrower: >-
+          The closest option is a broader or narrower concept, not the same
+          thing ("cloud" and "AWS", "Master's degree" and "Master's degree
+          in Computer Science").
+        part_of_or_contains: >-
+          The closest option contains `requirement` or is contained in it,
+          so one is more specific ("dashboards" and "Grafana dashboards",
+          "tools" and "agentic engineering tools").
+        related_not_same: >-
+          The closest option is related or used together with `requirement`
+          but is a different skill ("Terraform" and "Infrastructure as
+          Code", "API boundaries" and "API contracts", "security" and
+          "secure development").
+    alternative:
+      question: >-
+        In `mentions`, which option does the employer accept instead of
+        `requirement`, so that having either one is enough ("Go, Ruby, or
+        Python", "AWS or GCP")?
+      reasons:
+        required_together: >-
+          The sentence asks for `requirement` together with the others, not
+          either one ("Go and Kubernetes").
+        unrelated: >-
+          No option is offered as an alternative to `requirement`; they are
+          listed for different purposes.
+    importance: # Score; Importance = score / top level
+      question: >-
+        How important is `requirement` to the employer, judging by every
+        sentence in `mentions` and its section?
+      levels: # lowest first
+        - "Mentioned only in passing: an example in a list, a tech-stack entry, or context."
+        - "Part of the day-to-day work the posting describes, but not stated as a requirement."
+        - Listed as preferred, a bonus, a plus, or nice to have.
+        - Stated as a requirement for the role.
+        - Stated as a hard requirement and emphasized or repeated in several places.
+
+# Resume Checker (explanations only since ADR 0004).
+checker:
+  retrieval: # Choice per resume statement over the Requirements
+    question: >-
+      A resume `statement` is checked against a job's requirements. Which
+      requirement does this statement most directly give evidence for?
+      Choose none when it demonstrates none of them.
+    context_prefix: "Job posting: " # before each Requirement's sentence
+    none: The statement is not evidence for any of the listed job requirements.
+  gate: # Noul per retrieved pair
+    task: Is the resume `statement` evidence that the candidate has this job requirement?
+    if_true: >-
+      The statement describes work done with the requirement itself, a
+      specific instance of it, a part or prerequisite of it, or its broader
+      practice; or it names the requirement as the candidate's own skill,
+      degree, or certificate.
+    if_false: >-
+      The statement uses a competing tool, only shares words with the
+      requirement, shows different skills, or only its surrounding role
+      suggests the requirement.
+  strength: # Choice per gate-passed pair (criteria v5)
+    task: How strongly does the resume `statement` demonstrate this job requirement?
+    options: # strong, partial, weak, none are fixed; the rest can change
+      strong:
+        what: >-
+          The requirement itself, or a specific instance of it, is what the
+          described work was done with or on. An education or certification
+          entry is strong evidence for the degree or certificate it names.
+        not_for: >-
+          Work on a part, prerequisite, or the broader practice of the
+          requirement; work where the requirement is a minor detail; work
+          with a competing tool.
+        examples:
+          - "requirement Spark: wrote PySpark jobs on EMR"
+          - "requirement code review: reviewed every pull request for a team of six"
+      partial:
+        what: >-
+          The work involves a part, a prerequisite, or the broader practice
+          of the requirement, or uses the requirement only as a minor detail.
+        not_for: >-
+          Work centered on the requirement itself (strong); a competing tool
+          of the same kind; work that only shares words with it.
+        examples:
+          - "requirement Spark: built nightly batch data jobs"
+          - "requirement code review: paired with teammates on fixes"
+      weak:
+        what: The statement only names, lists, or claims the requirement without describing work with it.
+        not_for: Any statement that describes work done with the requirement.
+        examples:
+          - "Skills: Spark, Kafka, Airflow"
+          - passionate about clean code reviews
+      none:
+        what: The statement has nothing to do with this requirement.
+      alternative_tool:
+        what: >-
+          The statement uses a different tool, product, or framework of the
+          same kind, one that could replace the requirement.
+        not_for: A tool that is part of or built on the requirement (that is partial or strong).
+        examples:
+          - "requirement Spark: built Flink jobs"
+          - "requirement Git: used Mercurial"
+      shared_words_only:
+        what: The statement shares a word or a topic with the requirement but describes different work.
+        examples:
+          - "requirement event sourcing: organized company events"
+          - "requirement distributed tracing: traced a bug's cause"
+      different_skill:
+        what: The statement shows real but different skills that do not exercise the requirement.
+        examples:
+          - "requirement Spark: tuned SQL queries"
+          - "requirement mentoring: wrote API docs"
+      context_only:
+        what: >-
+          Only the role, team, or product around the statement suggests the
+          requirement; the statement itself does not show it.
+        examples:
+          - "requirement Swift: mentored interns on an iOS team"

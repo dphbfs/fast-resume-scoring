@@ -13,6 +13,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // Injectors from wire.go:
@@ -32,7 +33,12 @@ func initApp() (*cli.CheckApp, error) {
 		return nil, err
 	}
 	checker := configConfig.Checker
-	appChecker := app.NewChecker(client, recorder, logger, checker)
+	configTuning := configConfig.Tuning
+	tuningTuning, err := tuning.Load(configTuning)
+	if err != nil {
+		return nil, err
+	}
+	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
 	configRun := configConfig.Run
 	checkApp := cli.NewCheckApp(appChecker, recorder, logger, configRun)
 	return checkApp, nil

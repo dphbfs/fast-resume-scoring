@@ -9,6 +9,7 @@ import (
 	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev/jevtest"
 	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
 	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-tailoring/tuning"
 )
 
 // questionChunk returns the chunk embedded in a Validation question.
@@ -29,7 +30,7 @@ func selectFor(t *testing.T, pick map[string]string) jevtest.Responder {
 		answers := map[string]jev.WireAnswer{}
 		for id, q := range req.Questions {
 			crit := q.Criteria.(map[string]any)
-			for opt := range rejectOptions {
+			for opt := range tuning.Default().Extractor.Validation.RejectOptions {
 				if _, ok := crit[opt]; !ok {
 					t.Errorf("chunk %q: rejection option %q missing", questionChunk(t, q), opt)
 				}
