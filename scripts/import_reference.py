@@ -26,11 +26,14 @@ Writes:
 
 import html
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
-MAIN_RESUME_ID = "main-resume"
+# The tracker ID of the Main resume; private, so it comes from the
+# environment rather than the repository.
+MAIN_RESUME_ID = os.environ.get("MAIN_RESUME_ID", "")
 # Masked copy of the Main resume, as the checker reads it.
 MAIN_RESUME_FILE = "testdata/resumes/real-backend.md"
 MIN_JD_CHARS = 1000
@@ -78,6 +81,8 @@ def stratified(pairs: list[dict], n: int) -> set[str]:
 
 
 def main() -> int:
+    if not MAIN_RESUME_ID:
+        sys.exit("set MAIN_RESUME_ID to the Main resume's ID in the job tracker")
     if len(sys.argv) < 2:
         print(__doc__, file=sys.stderr)
         return 2
@@ -107,9 +112,6 @@ def main() -> int:
             "score": app["matchScore"],
             "strengths": ai.get("strengths", []),
             "gaps": ai.get("gaps", []),
-            "scored_at": [ts for ts, _ in notes],
-            "created_at": app.get("createdAt"),
-            "archived": app.get("archived", False),
             "golden": app["id"] in golden,
         })
 
@@ -124,7 +126,7 @@ def main() -> int:
         counts["excluded_" + e["reason"]] = counts.get("excluded_" + e["reason"], 0) + 1
     doc = {
         "scorer": "Generative model match score (Claude Opus 5)",
-        "rules": {"resume": MAIN_RESUME_ID, "min_jd_chars": MIN_JD_CHARS, "single_score": True},
+        "rules": {"resume": "main", "min_jd_chars": MIN_JD_CHARS, "single_score": True},
         "counts": counts,
         "pairs": pairs,
         "excluded": excluded,

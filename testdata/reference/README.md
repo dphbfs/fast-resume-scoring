@@ -4,7 +4,8 @@ Development reference for the end-to-end eval (`docs/review-v1-plan.md`,
 E1): saved match scores of the generative scorer (generative model approach,
 Claude Opus 5) for the Main resume against real Job Descriptions.
 
-Regenerate from a `list_applications` dump (includeArchived=true):
+Regenerate from a `list_applications` dump (includeArchived=true), with
+`MAIN_RESUME_ID` set to the Main resume's ID in the job tracker:
 
 ```sh
 scripts/import_reference.py <dump.json>
@@ -12,9 +13,8 @@ scripts/import_reference.py <dump.json>
 
 - `pairs.json`: one entry per pair: `id`, `title`, `company`, `resume`
   (the masked Main resume, `testdata/resumes/real-backend.md`), `jd`,
-  `score` (0–100), the scorer's `strengths`/`gaps`, `scored_at`,
-  `archived`, `golden` (the Job Description is also a golden extractor
-  fixture), `subset` (fixed 30-pair, score-stratified tuning subset).
+  `score` (0–100), the scorer's `strengths`/`gaps`, `golden` (the Job
+  Description is also a golden extractor fixture), `subset` (fixed 30-pair, score-stratified tuning subset).
   `excluded` lists dropped applications with their reason; `counts`
   summarizes both.
 - `jd/<id>.txt`: the Job Description as the scorer saw it (the whole

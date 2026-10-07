@@ -1,7 +1,7 @@
 {
   "scorer": "Generative model match score (Claude Opus 5)",
   "rules": {
-    "resume": "main-resume",
+    "resume": "main",
     "min_jd_chars": 1000,
     "single_score": true
   },
