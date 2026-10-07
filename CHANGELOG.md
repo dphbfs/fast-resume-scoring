@@ -25,6 +25,8 @@ First public version.
   them with no API key or network.
 - `examples/`: a synthetic posting and resume with the real output of
   every command and the recording behind it; `go test` replays it.
+- Docker image `ghcr.io/dphbfs/fast-resume-scoring` (linux/amd64, arm64)
+  with the examples bundled; published by the release workflow.
 - Every prompt and score weight in `tuning/tuning.yaml`, embedded in the
   binaries and overridable with `TUNING_FILE`.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size
