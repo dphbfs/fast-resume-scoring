@@ -1,0 +1,45 @@
+Senior Backend Engineer
+
+GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 50 million registered users and more than 50% of the Fortune 100* trust GitLab to ship better, more secure software faster.
+The same principles built into our products are reflected in how our team works: we embrace AI as a core productivity multiplier, with all team members expected to incorporate AI into their daily workflows to drive efficiency, innovation, and impact. GitLab is where careers accelerate, innovation flourishes, and every voice is valued. Our high-performance culture is driven by our values and continuous knowledge exchange, enabling our team members to reach their full potential while collaborating with industry leaders to solve complex problems. Co-create the future with us as we build technology that transforms how the world develops software.
+* Fortune 500® is a registered trademark of Fortune Media IP Limited, used under license. Claim based on GitLab data. Fortune 100 refers to the top 20% ranked companies in the 2025 Fortune 500 list, published in June 2025. Fortune and Fortune Media IP Limited are not affiliated with, and do not endorse products or services of GitLab.
+About the role
+As a Senior Backend Engineer, you will design, implement, and evolve product capabilities while solving high-scope backend problems and influencing the technical and product direction of our teams. You will move beyond "assigned work" to actively improve the quality, reliability, and performance of our systems. You will work across product, frontend, infrastructure, data, and security boundaries, making sound architectural trade-offs, communicating complex ideas clearly in an asynchronous environment, and helping define the standards for a high-scale, global product.
+Why you’ll love this role
+High Impact: You aren't just shipping features; you are shaping the architecture of a global platform used by millions.
+Technical Agency: You will influence team objectives, technical direction, and long-range goals, helping us solve problems of high scope and complexity.
+Innovative Culture: You will get to experiment with and integrate agentic AI into production engineering workflows, moving beyond simple prompt engineering to build resilient, AI-assisted systems.
+Autonomy: You will thrive in our remote-first, asynchronous organization, where clear written communication and self-direction are the pillars of success.
+User-Centric Collaboration: You’ll partner closely with PMs and designers to shape requirements, ensuring every technical decision delivers genuine value to our users.
+What you’ll do
+Drive Technical Direction: Design and ship moderate to complex backend features with minimal guidance, making pragmatic choices between modular-monolith code, shared components, or independently operated services.
+Raise the Bar: Advocate for product quality, security, availability, and performance. You will define backend standards for style, maintainability, testing, APIs, and operational readiness.
+Mentor & Lead: Mentor associate and intermediate engineers, remove technical blockers, and improve team delivery practices through code and design reviews.
+Operational Excellence: Diagnose and prevent performance/reliability issues at scale. Participate in incident response and act as a technical owner where appropriate.
+AI Integration: Use AI in production engineering work to improve outcomes, evaluate its effectiveness, and coach others on responsible, high-judgment use.
+What you’ll bring
+Deep Backend Expertise: A strong command of backend architecture, APIs, data systems, and performance tuning in a complex product or service environment.
+Adaptability: Proficiency in modern backend languages and a deep understanding of systems programming. We value the ability to learn and adapt over mastery of a single language.
+Architectural Judgment: Experience designing or evolving modular backend boundaries, bounded contexts, and migration-safe architectures.
+Influence: Ability to lead through influence, technical judgment, and clear written communication, effectively bridging the gap between product needs and technical reality.
+Agentic AI Expertise: Proven experience building or operating agentic systems in production—moving beyond prompt engineering to architecting loops, tool-use, and error-handling strategies that ensure reliability at scale.
+Helpful experience (These are signals, not hard requirements)
+Experience with high-throughput distributed systems, concurrency, or profiling.
+Hands-on experience with containerized production operations (e.g., Kubernetes).
+Deep database performance knowledge (e.g., PostgreSQL, ClickHouse, schema evolution, partitioning).
+Background in large-scale modular monoliths or event-driven systems.
+Public technical communication, open-source maintenance, or experience in developer-focused SaaS.
+The base salary range for this role’s listed level is currently for residents of the United States only. This range is intended to reflect the role's base salary rate in locations throughout the US. Grade level and salary ranges are determined through interviews and a review of education, experience, knowledge, skills, abilities of the applicant, equity with other team members, alignment with market data, and geographic location. The base salary range does not include any bonuses, equity, or benefits. See more information on our benefits and equity . Sales roles are also eligible for incentive pay targeted at up to 100% of the offered base salary.
+United States Salary Range
+$139,200 — $235,200 USD
+How GitLab Supports Full-Time Employees
+Benefits to support your health, finances, and well-being
+Flexible Paid Time Off 
+Team Member Resource Groups
+Equity Compensation & Employee Stock Purchase Plan
+Growth and Development Fund
+Parental Leave  
+Please note that we welcome interest from candidates with varying levels of experience; many successful candidates do not meet every single requirement. Additionally, studies have shown that people from underrepresented groups are less likely to apply to a job unless they meet every single qualification. If you're excited about this role, please apply and allow our recruiters to assess your application.
+Country Hiring Guidelines: GitLab hires new team members in countries around the world. All of our roles are remote, however some roles may carry specific location-based eligibility requirements. Our Talent Acquisition team can help answer any questions about location after starting the recruiting process.  
+Privacy Policy: Please review our Recruitment Privacy Policy. Your privacy is important to us.
+GitLab is proud to be an equal opportunity workplace and is an affirmative action employer. GitLab’s policies and practices relating to recruitment, employment, career development and advancement, promotion, and retirement are based solely on merit, regardless of race, color, religion, ancestry, sex (including pregnancy, lactation, sexual orientation, gender identity, or gender expression), national origin, age, citizenship, marital status, mental or physical disability, genetic information (including family medical history), discharge status from the military, protected veteran status (which includes disabled veterans, recently separated veterans, active duty wartime or campaign badge veterans, and Armed Forces service medal veterans), or any other basis protected by law. GitLab will not tolerate discrimination or harassment based on any of these characteristics. See also  GitLab’s EEO Policy  and  EEO is the Law . If you have a disability or special need that requires  accommodation , please let us know during the  recruiting process .

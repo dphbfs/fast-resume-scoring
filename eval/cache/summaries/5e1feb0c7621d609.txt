@@ -1,0 +1,5 @@
+This is a senior-level backend/platform engineering role (5+ years) on Gopuff's Delivery Technology team, working on the services behind their on-demand convenience delivery platform — driver pay and pricing, dispatch and optimization, ETA and routing, and the Driver App.
+
+The work centers on building highly scalable, high-throughput microservices and APIs in a distributed, event-driven architecture, with production support and mentoring as part of the job.
+
+The core stack is Go, Java, Python, Node.js, and Flutter for the driver-facing app, running on Azure and Google Cloud.

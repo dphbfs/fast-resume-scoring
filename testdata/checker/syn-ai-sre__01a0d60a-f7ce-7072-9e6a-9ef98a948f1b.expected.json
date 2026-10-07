@@ -1,0 +1,158 @@
+{
+ "job": "01a0d60a-f7ce-7072-9e6a-9ef98a948f1b",
+ "resume": "syn-ai-sre",
+ "skip": [
+  "5+ years professional experience"
+ ],
+ "links": {
+  "backend engineering": [
+   {
+    "quote": "Built REST APIs in Go for shipment tracking",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Go service that summarizes",
+    "strength": "strong"
+   },
+   {
+    "quote": "Backend engineer with 7 years",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built a Slack bot",
+    "strength": "partial"
+   },
+   {
+    "quote": "Languages: Go, Python, SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Shipped the summarizer from prototype to GA",
+    "strength": "partial"
+   },
+   {
+    "quote": "Ran services on Docker Swarm",
+    "strength": "partial"
+   },
+   {
+    "quote": "Wrote PostgreSQL migrations",
+    "strength": "partial"
+   }
+  ],
+  "Go": [
+   {
+    "quote": "Built REST APIs in Go for shipment tracking",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Go service that summarizes",
+    "strength": "strong"
+   },
+   {
+    "quote": "Languages: Go, Python, SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Backend engineer with 7 years",
+    "strength": "weak"
+   }
+  ],
+  "LLM-based systems": [
+   {
+    "quote": "Built a Go service that summarizes",
+    "strength": "strong"
+   },
+   {
+    "quote": "Designed a tool-calling agent",
+    "strength": "strong"
+   },
+   {
+    "quote": "Wrote and versioned the prompts",
+    "strength": "partial"
+   },
+   {
+    "quote": "Backend engineer with 7 years",
+    "strength": "weak"
+   },
+   {
+    "quote": "AI: OpenAI API, LangChain",
+    "strength": "weak"
+   },
+   {
+    "quote": "Shipped the summarizer from prototype to GA",
+    "strength": "strong"
+   }
+  ],
+  "prompt engineering": [
+   {
+    "quote": "Wrote and versioned the prompts",
+    "strength": "strong"
+   }
+  ],
+  "LLM evaluation": [
+   {
+    "quote": "Built an offline evaluation suite",
+    "strength": "strong"
+   }
+  ],
+  "productionizing AI features": [
+   {
+    "quote": "Shipped the summarizer from prototype to GA",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built a Go service that summarizes",
+    "strength": "partial"
+   },
+   {
+    "quote": "Backend engineer with 7 years",
+    "strength": "weak"
+   }
+  ],
+  "AI coding tools": [
+   {
+    "quote": "AI: OpenAI API, LangChain, Cursor, GitHub Copilot",
+    "strength": "weak"
+   }
+  ],
+  "Kubernetes": [
+   {
+    "quote": "Infrastructure: Docker, Kubernetes, AWS",
+    "strength": "weak"
+   }
+  ],
+  "production remediation": [
+   {
+    "quote": "Joined the on-call rotation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Ran services on Docker Swarm",
+    "strength": "partial"
+   }
+  ],
+  "conversational workflows": [
+   {
+    "quote": "Built a Slack bot",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed a tool-calling agent",
+    "strength": "partial"
+   }
+  ],
+  "agent design": [
+   {
+    "quote": "Designed a tool-calling agent",
+    "strength": "strong"
+   }
+  ],
+  "prototyping": [
+   {
+    "quote": "Shipped the summarizer from prototype to GA",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Decoy: Docker Swarm is a competing orchestrator, not evidence of Kubernetes. code generation has no evidence."
+}

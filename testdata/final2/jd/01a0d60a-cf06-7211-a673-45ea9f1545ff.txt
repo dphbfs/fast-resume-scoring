@@ -1,0 +1,12 @@
+## Ladders - Staff Software Engineer, DevProd (Infrastructure Observability)
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4414096422/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- For our client, we are seeking a Staff Software Engineer Devprod (infrastructure Observability) to join the team of a leader in the Information Technology space
+- This role will lead technical work focused on cloud-enabled scalability, reliability, and delivery excellence
+- You will work across engineering, product, operations, and business stakeholders to translate complex requirements into practical technology solutions
+- The position offers the opportunity to influence architecture, execution quality, and the technology capabilities that enable long-term growth within a technology-driven environment
+- Location: Remote - US based candidates only, no visa sponsorship available Compensation: $212,000 – $286,200 annually Responsibilities Lead the end-to-end Software Development Lifecycle including design, implementation, and maintenance Document design choices and operational knowledge to support deployments Design and build multi-component distributed systems that operate efficiently at scale Investigate and troubleshoot issues with methodical root cause analysis Participate in the team's on-call rotation to support production systems Qualifications 5-7 years of experience in software engineering, with a focus on distributed systems Expertise in one or more high-level programming languages, preferably Go Demonstrated ability in developing scalable, resilient, high-performance distributed systems Extensive experience in designing and supporting large-scale observability and data processing pipelines Deep understanding of Kubernetes and cloud services (AWS or GCP) Familiarity with computer architecture, operating systems, and networking principles Benefits Unlimited PTO plus 12 Holidays and 2 Floating Holidays 100% coverage for Medical, Dental, and Vision premiums Access to a comprehensive 401K plan and multiple learning & development perks Generous in-home office setup support and reimbursement for work-from-home expenses Access to the Calm app for mental wellness support Our client is an equal opportunity employer

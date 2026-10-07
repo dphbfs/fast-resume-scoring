@@ -30,3 +30,29 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Bulk Job Descriptions (regenerate with scripts/import_jds.py)
+testdata/jd/
+
+# Build output
+/bin/
+
+# Per-fixture extraction traces written next to eval reports
+eval/reports/*-traces/
+eval/reports/checker/*-traces/
+eval/reports/e2e/*-traces/
+
+# Cached extraction results for the end-to-end eval (regenerable)
+eval/cache/extract/
+
+# Python bytecode
+__pycache__/
+
+# Generative explanation replies (scripts/explain_reference.py)
+eval/explain/
+eval/judge/
+eval/probe/
+eval/replay/
+
+# GoReleaser output
+/dist/

@@ -1,0 +1,28 @@
+Senior Backend Engineer
+
+Summary:
+Backend Engineer at Ondo Finance developing scalable infrastructure for financial products. Collaborating with product and smart contract teams to deliver high-performance applications in a remote-first environment.
+Backend Engineer building scalable systems for decentralized finance products at Ondo Finance
+Role description:
+• Design and implement scalable, secure backend systems and APIs for interacting with both onchain protocols and offchain infrastructure.
+• Collaborate with smart contract engineers to define interfaces and workflows between backend services and blockchain networks (EVM and non-EVM).
+• Own integrations with custodians, identity/KYC providers, payments infrastructure, and third-party blockchain tooling.
+• Support internal ops, investor services, and compliance teams with automation, auditability, and observability tools.
+• Establish and enforce backend engineering standards, best practices, and security protocols across the stack.
+• Participate in code reviews and architecture discussions, contributing to a culture of engineering excellence.
+Role requirements:
+• 6+ years of backend software engineering experience, ideally with strong familiarity in modern languages such as Go (Golang), Python, C++, and TypeScript.
+• Strong understanding of distributed systems, system design, and API development.
+• Experience integrating with cloud infrastructure (AWS preferred), third-party services, and security/compliance-sensitive systems.
+• Demonstrated interest in Web3 or DeFi—whether through professional experience or side projects.
+• Familiarity with EVM-based blockchains and smart contract interactions is a plus, but not required.
+• Comfort operating in a fast-moving startup environment with high ambiguity and high ownership.
+• Located in a US time zone (PT–ET)
+Benefits:
+• Competitive compensation including salary, future token rights, and/or equity (according to your preferences) — we're well-funded and believe that great talent deserves great compensation
+• Full benefits (medical, vision, and dental) and flexible vacation policy (PTO)
+• Small remote-first team across many countries — you'll be an early team member helping shape our vision, culture, and design practices
+• A+ colleagues — our team includes alumni from: Goldman Sachs, Blackrock, Two Sigma, Bridgewater, SpaceX, AWS, Meta, Google, Pinterest, McKinsey, Circle, Uniswap, Phantom
+• Best-in-class investors — we are proud to be backed by leading crypto experts and VCs, including Pantera Capital, Founders Fund and Coinbase Ventures
+Tech stack:
+AWS, Cloud, Distributed Systems, Python, TypeScript, Web3, Go

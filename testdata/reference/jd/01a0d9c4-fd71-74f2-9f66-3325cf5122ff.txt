@@ -1,0 +1,73 @@
+## Platform.sh - Senior Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/platformsh/jobs/8845093002)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Go backend billing services for Upsun’s cloud application platform. Owning usage-based billing, integrations, reliability, security, and mentoring across a global remote team.
+Senior Software Engineer building Go billing services for Upsun’s cloud application platform
+- Tech stack: Distributed Systems, MariaDB, MySQL, Postgres, Go
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design, build, and maintain backend services and API integrations in Go connecting the platform to external billing systems
+- Lead the design and delivery of usage-based billing features, including usage aggregation, estimates, usage alerts, and invoicing
+- Own complex components end to end from technical design through production
+- Shape component architecture, weigh trade-offs, and balance short-term delivery with long-term reliability
+- Troubleshoot complex issues across distributed services and external APIs, fixing root causes
+- Identify and deliver improvements in reliability, security, observability, and processes
+- Contribute to anti-abuse measures and apply security best practices to sensitive customer and payment data
+- Support engineers through code reviews, pairing, and mentoring
+- Deep professional backend development in Go, building services in distributed systems
+- Experience designing backend systems and making architecture decisions that held up in production
+- Strong experience with relational databases such as PostgreSQL or MySQL/MariaDB, including data modeling, migrations, and performance
+- Track record integrating third-party APIs with rate limits, uptime constraints, idempotency, retries, and consistency considerations
+- Experience in domains where correctness matters, such as billing or payments
+- Commitment to testing failure paths
+- Solid understanding of common vulnerabilities and security considerations in payment and billing systems
+- Experience mentoring engineers or guiding technical work while staying hands-on
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Go backend billing services for Upsun’s cloud application platform. Owning usage-based billing, integrations, reliability, security, and mentoring across a global remote team.
+Senior Software Engineer building Go billing services for Upsun’s cloud application platform
+Role description:
+• Design, build, and maintain backend services and API integrations in Go connecting the platform to external billing systems
+• Lead the design and delivery of usage-based billing features, including usage aggregation, estimates, usage alerts, and invoicing
+• Own complex components end to end from technical design through production
+• Shape component architecture, weigh trade-offs, and balance short-term delivery with long-term reliability
+• Troubleshoot complex issues across distributed services and external APIs, fixing root causes
+• Identify and deliver improvements in reliability, security, observability, and processes
+• Contribute to anti-abuse measures and apply security best practices to sensitive customer and payment data
+• Support engineers through code reviews, pairing, and mentoring
+• Partner with Finance, Product, Support, and engineering teams across multiple time zones
+• Communicate asynchronously across a distributed, global team
+Role requirements:
+• Deep professional backend development in Go, building services in distributed systems
+• Experience designing backend systems and making architecture decisions that held up in production
+• Strong experience with relational databases such as PostgreSQL or MySQL/MariaDB, including data modeling, migrations, and performance
+• Track record integrating third-party APIs with rate limits, uptime constraints, idempotency, retries, and consistency considerations
+• Experience in domains where correctness matters, such as billing or payments
+• Commitment to testing failure paths
+• Solid understanding of common vulnerabilities and security considerations in payment and billing systems
+• Experience mentoring engineers or guiding technical work while staying hands-on
+• Interest in working on billing and financial systems
+• Clear written communication and ability to build agreement across a distributed team
+• Legally authorized to work in Canada, France, Germany, Spain, the United Kingdom, or the United States
+• Must complete a background check
+Benefits:
+• Flexible PTO
+• Comprehensive healthcare coverage (UK, Canada, France, Spain, USA)
+• Company stock options
+• Professional development budget
+• Office equipment budget
+• Wellness budget
+• Annual team gatherings
+• Internet reimbursement
+• Inclusive parental leave
+• Remote work travel program
+• Flexible, open, and inclusive work environment
+• Remote work flexibility
+• Background check required for all roles
+Tech stack:
+Distributed Systems, MariaDB, MySQL, Postgres, Go
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

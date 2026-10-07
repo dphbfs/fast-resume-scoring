@@ -1,0 +1,75 @@
+## Coursedog - Software Engineer
+
+🔗 [Apply](https://apply.workable.com/coursedog-1/j/57C46957A0)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer building backend services, APIs, and Vue applications for Coursedog’s academic operations platform. Delivering scalable features that help colleges and universities improve student success.
+Software Engineer building Coursedog’s academic operations platform for colleges and universities
+- Salary: $70,000 - $90,000 per year
+- Tech stack: AWS, Java, JavaScript, MongoDB, Node.js, Python, Redis, TypeScript, Vue.js, .NET
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Build and maintain backend services and APIs
+- Develop and maintain frontend applications using TypeScript and Vue or similar frameworks
+- Design, implement, and maintain well-structured, testable code
+- Review pull requests and provide constructive, actionable feedback
+- Debug, refactor, and improve existing systems, including legacy components
+- Use AI tools across coding, debugging, and documentation
+- Collaborate with cross-functional partners to deliver features and resolve issues
+- Establish and document engineering best practices for the team
+- Experience writing TypeScript and modern JavaScript in production applications
+- Experience building frontend applications with Vue.js or a similar framework
+- Experience developing backend services with Node.js
+- Knowledge of REST APIs and software design principles
+- Experience with MongoDB, Redis, and relational databases
+- Strong debugging and problem-solving skills
+- Ability to learn new systems quickly in ambiguous problem spaces
+- Strong communication skills with technical and non-technical partners
+
+### Full Job Description
+Summary:
+Software Engineer building backend services, APIs, and Vue applications for Coursedog’s academic operations platform. Delivering scalable features that help colleges and universities improve student success.
+Software Engineer building Coursedog’s academic operations platform for colleges and universities
+Role description:
+• Build and maintain backend services and APIs
+• Develop and maintain frontend applications using TypeScript and Vue or similar frameworks
+• Design, implement, and maintain well-structured, testable code
+• Review pull requests and provide constructive, actionable feedback
+• Debug, refactor, and improve existing systems, including legacy components
+• Use AI tools across coding, debugging, and documentation
+• Collaborate with cross-functional partners to deliver features and resolve issues
+• Establish and document engineering best practices for the team
+• Own problems from scoping through release, including new development and system improvements
+Role requirements:
+• Experience writing TypeScript and modern JavaScript in production applications
+• Experience building frontend applications with Vue.js or a similar framework
+• Experience developing backend services with Node.js
+• Knowledge of REST APIs and software design principles
+• Experience with MongoDB, Redis, and relational databases
+• Strong debugging and problem-solving skills
+• Ability to learn new systems quickly in ambiguous problem spaces
+• Strong communication skills with technical and non-technical partners
+• Experience using AI tools to speed up development while maintaining code quality
+• Nice to have: experience with AWS, queues, or serverless systems such as Lambda
+• Nice to have: exposure to AI-powered or AI-adjacent systems
+• Nice to have: backend experience beyond Node.js, such as Python, Java, or .NET
+Benefits:
+• Healthcare, dental, and vision coverage through Aetna and Guardian
+• Spring Health mental health support
+• XP Health vision benefits
+• Carrot Fertility family planning support
+• One Medical primary care
+• Health Savings Accounts (HSA)
+• Flexible Spending Accounts (FSA)
+• Safe Harbor 401(k) plan from day one
+• 4% employer match on total compensation, subject to federal limits
+• Unlimited Paid Time Off
+• Remote-first work flexibility
+• Equity grants aligned to role and tenure
+• Equity grants reviewed and adjusted with promotions
+• Up to 6 weeks of Paid Bonding Leave at 100% of base pay for all parents
+• Birthing parents receive an additional 6 weeks of Paid Medical Recovery Leave at 100% of base pay, up to 12 weeks total
+Tech stack:
+AWS, Java, JavaScript, MongoDB, Node.js, Python, Redis, TypeScript, Vue.js, .NET
+Company sponsorship flag: sponsorsH1B=true.

@@ -1,0 +1,73 @@
+## Smartsheet - Software Engineer II
+
+🔗 [Apply](https://boards.greenhouse.io/smartsheet/jobs/8250247)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer II building scalable full-stack views and collaboration systems for Smartsheet’s work-management platform. Designing high-performance front ends, distributed back ends, and reliable production infrastructure.
+Software Engineer II building scalable full-stack collaboration features for Smartsheet’s work-management platform
+- Salary: $145,000 - $210,000 per year
+- Tech stack: Cloud, Distributed Systems, Java, JavaScript, Python, React, Redux, Ruby, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design and build full-stack features across front-end, back-end, data modeling, infrastructure, and test automation
+- Own large, ambiguous projects end-to-end from idea to GA, including planning, design, execution, shipping, and operational excellence
+- Lead high-performance front-end challenges involving virtualized views rendering hundreds of thousands of rows
+- Design complex back-end and distributed systems, APIs, and data pipelines for real-time collaboration, large datasets, and high-concurrency workloads
+- Identify and fix team-wide operational and developer-experience problems by building tooling and infrastructure
+- Use AI coding tools such as Claude across the software development lifecycle
+- Lead design and code reviews and mentor engineers through complex projects
+- Partner with product and design from concept through launch
+- 5+ years of engineering experience in a team environment
+- 3+ years of experience in service-oriented architecture, deployment systems, and cloud infrastructure
+- Proficiency in at least one high-level programming language, such as Ruby, Java, Go, Python, or TypeScript
+- Experience with modern client JS libraries, such as React and Redux
+- Experience in application migration patterns and tradeoff scenarios
+- Knowledge of OOP and REST design principles
+- Clear and objective writing and in-person communication
+- Curiosity to learn new technologies and systems
+
+### Full Job Description
+Summary:
+Software Engineer II building scalable full-stack views and collaboration systems for Smartsheet’s work-management platform. Designing high-performance front ends, distributed back ends, and reliable production infrastructure.
+Software Engineer II building scalable full-stack collaboration features for Smartsheet’s work-management platform
+Role description:
+• Design and build full-stack features across front-end, back-end, data modeling, infrastructure, and test automation
+• Own large, ambiguous projects end-to-end from idea to GA, including planning, design, execution, shipping, and operational excellence
+• Lead high-performance front-end challenges involving virtualized views rendering hundreds of thousands of rows
+• Design complex back-end and distributed systems, APIs, and data pipelines for real-time collaboration, large datasets, and high-concurrency workloads
+• Identify and fix team-wide operational and developer-experience problems by building tooling and infrastructure
+• Use AI coding tools such as Claude across the software development lifecycle
+• Lead design and code reviews and mentor engineers through complex projects
+• Partner with product and design from concept through launch
+• Own reliable, observable code, production monitoring, and iteration based on usage and feedback
+• Navigate competing priorities and dependencies across product, design, data, and customer success
+Role requirements:
+• 5+ years of engineering experience in a team environment
+• 3+ years of experience in service-oriented architecture, deployment systems, and cloud infrastructure
+• Proficiency in at least one high-level programming language, such as Ruby, Java, Go, Python, or TypeScript
+• Experience with modern client JS libraries, such as React and Redux
+• Experience in application migration patterns and tradeoff scenarios
+• Knowledge of OOP and REST design principles
+• Clear and objective writing and in-person communication
+• Curiosity to learn new technologies and systems
+• A degree in Computer Science, Engineering, or a related field, or equivalent practical experience
+• Legally eligible to work in the U.S. on an ongoing basis
+Benefits:
+• Employer subsidized medical/vision and dental coverage for full-time employees
+• 401k Match: 50% of your contribution up to the first 6% of your eligible pay
+• Monthly stipend to support your work and productivity
+• Flexible Time Away Program, plus Sick Time Off
+• Smartsheet-sponsored life insurance, short-term, and long-term disability plans
+• 12 paid holidays per year
+• Up to 24 weeks of Parental Leave
+• Personal paid Volunteer Day
+• Professional growth and development opportunities, including access to Udemy online courses
+• Company Funded Perks, including a counseling membership, local retail discounts, and your own personal Smartsheet account
+• Teleworking options from any registered location in the U.S. (role specific)
+• Market competitive incentive opportunity
+Tech stack:
+Cloud, Distributed Systems, Java, JavaScript, Python, React, Redux, Ruby, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

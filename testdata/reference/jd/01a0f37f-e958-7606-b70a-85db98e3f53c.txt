@@ -1,0 +1,86 @@
+## Keeper Security, Inc. - Senior Software Engineer, Developer Tools – SDKs
+
+🔗 [Apply](https://boards.greenhouse.io/keepersecurity/jobs/4425444009)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior engineer leading Python/.NET SDKs, CLI tooling, and automation for Keeper Security’s cybersecurity platform. Guiding architecture, hands-on development, and a small engineering team.
+Senior engineer leading SDKs and developer tools for Keeper Security’s cybersecurity platform
+- Tech stack: Ansible, AWS, Azure, Cloud, Cyber Security, Google Cloud Platform, Jenkins, Linux, MacOS, Python, Terraform, Vault, Go, .NET
+- Guide the architecture, development and evolution of Keeper Commander, including its SDKs, CLI tooling and developer automation capabilities
+- Own technical direction and execution across Keeper’s Python and .NET SDKs, Commander CLI and related developer automation capabilities
+- Remain hands-on in architecture, coding, debugging and design while guiding a small team of engineers
+- Work with Product, QA, Security and engineering teams to ensure Commander is secure, reliable, extensible and easy to integrate
+- Define and drive technical architecture and long-term direction
+- Design, build and maintain secure, scalable SDKs and developer tools across Python and .NET
+- Lead development of CLI features, APIs and integrations for enterprise administrators, developers and DevOps teams
+- Architect integrations with CI/CD platforms, cloud services, infrastructure automation tools and enterprise systems
+- 7+ years of professional software engineering experience, including significant hands-on development with Python and .NET
+- Strong experience building SDKs, APIs, CLIs, developer tools, automation frameworks or platform integrations
+- Proven ability to design and evolve software architectures used by external developers or enterprise customers
+- Strong understanding of API design, backward compatibility, versioning and developer experience
+- Experience with cloud platforms such as AWS, Azure or GCP and associated APIs and security services
+- Familiarity with DevOps and infrastructure automation tools such as GitHub Actions, Jenkins, Terraform, Ansible or Azure DevOps
+- Strong understanding of authentication, authorization, secrets management, encryption and secure software development
+- Experience designing and troubleshooting distributed or integration-heavy systems
+
+### Full Job Description
+Summary:
+Senior engineer leading Python/.NET SDKs, CLI tooling, and automation for Keeper Security’s cybersecurity platform. Guiding architecture, hands-on development, and a small engineering team.
+Senior engineer leading SDKs and developer tools for Keeper Security’s cybersecurity platform
+Role description:
+• Guide the architecture, development and evolution of Keeper Commander, including its SDKs, CLI tooling and developer automation capabilities
+• Own technical direction and execution across Keeper’s Python and .NET SDKs, Commander CLI and related developer automation capabilities
+• Remain hands-on in architecture, coding, debugging and design while guiding a small team of engineers
+• Work with Product, QA, Security and engineering teams to ensure Commander is secure, reliable, extensible and easy to integrate
+• Define and drive technical architecture and long-term direction
+• Design, build and maintain secure, scalable SDKs and developer tools across Python and .NET
+• Lead development of CLI features, APIs and integrations for enterprise administrators, developers and DevOps teams
+• Architect integrations with CI/CD platforms, cloud services, infrastructure automation tools and enterprise systems
+• Establish technical standards for SDK design, versioning, compatibility, error handling, testing and documentation
+• Write production code and troubleshoot complex features and issues
+• Lead architecture reviews, design discussions and technical decision-making
+• Partner with Product to translate customer needs and platform priorities into scalable solutions
+• Collaborate with Security and QA to strengthen secure coding, testing, reliability and release quality
+• Diagnose and resolve issues involving performance, concurrency, authentication, integrations and distributed workflows
+• Improve developer experience across APIs, documentation, examples, tooling and onboarding
+• Support and grow the open-source ecosystem through pull request reviews, issue triage, community engagement and documentation
+• Mentor engineers and raise engineering standards through code reviews and design feedback
+• Plan and sequence technical initiatives while balancing delivery, maintainability and technical debt
+• Evaluate technologies and patterns that improve SDK performance, security, extensibility and developer productivity
+• Use AI-assisted tools such as Claude, ChatGPT, GitHub Copilot or similar platforms for coding, debugging, research, testing and documentation
+Role requirements:
+• 7+ years of professional software engineering experience, including significant hands-on development with Python and .NET
+• Strong experience building SDKs, APIs, CLIs, developer tools, automation frameworks or platform integrations
+• Proven ability to design and evolve software architectures used by external developers or enterprise customers
+• Strong understanding of API design, backward compatibility, versioning and developer experience
+• Experience with cloud platforms such as AWS, Azure or GCP and associated APIs and security services
+• Familiarity with DevOps and infrastructure automation tools such as GitHub Actions, Jenkins, Terraform, Ansible or Azure DevOps
+• Strong understanding of authentication, authorization, secrets management, encryption and secure software development
+• Experience designing and troubleshooting distributed or integration-heavy systems
+• Strong debugging skills across application, API, network and integration layers
+• Experience with automated testing, CI/CD and release engineering practices
+• Experience contributing to, maintaining or supporting open-source software
+• Demonstrated ability to mentor engineers and influence technical direction without relying solely on formal authority
+• Strong written and verbal communication skills with the ability to explain complex technical concepts clearly
+• Ability and willingness to use AI-assisted tools effectively for software development, debugging, research and documentation
+• Bachelor’s degree in Computer Science, Engineering or a related field, or equivalent practical experience
+• Due to this role’s involvement in GovCloud environments, qualified candidates must be a U.S. Person, defined as a U.S. citizen or lawful permanent resident
+• Preferred: Experience leading a small engineering team or serving as a technical lead
+• Preferred: Experience with secrets management, privileged access management, identity security or cybersecurity platforms
+• Preferred: Experience with Go, PowerShell or other automation-oriented languages
+• Preferred: Experience developing cross-platform software for Linux, Windows and macOS
+• Preferred: Familiarity with AWS KMS, Azure Key Vault, GCP Secret Manager or similar cloud security services
+• Preferred: Experience with package distribution, dependency management and SDK release workflows
+• Preferred: Contributions to widely used SDKs, CLI tools, developer platforms or DevOps automation projects
+• Preferred: Experience designing public APIs or developer-facing integration platforms
+Benefits:
+• Medical, Dental & Vision (inclusive of domestic partnerships)
+• Employer Paid Life Insurance & Employee/Spouse/Child Supplemental life
+• Voluntary Short/Long Term Disability Insurance
+• 401K (Roth/Traditional)
+• A generous PTO plan that celebrates your commitment and seniority (including paid Bereavement/Jury Duty, etc)
+• Above market annual bonuses
+Tech stack:
+Ansible, AWS, Azure, Cloud, Cyber Security, Google Cloud Platform, Jenkins, Linux, MacOS, Python, Terraform, Vault, Go, .NET

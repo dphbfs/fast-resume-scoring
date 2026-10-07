@@ -1,0 +1,9 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto # no drop from the base commit
+        threshold: 1%
+    patch:
+      default:
+        target: 80%

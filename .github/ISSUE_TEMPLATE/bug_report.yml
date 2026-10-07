@@ -1,0 +1,48 @@
+name: Bug report
+description: A command crashes, errors, or produces invalid output.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste API keys, real resumes, or personal data.** Mask names,
+        contacts, and companies first. Security issues: report privately (see SECURITY.md).
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v0.1.0 or a commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: command
+    attributes:
+      label: Command
+      options: [score, extract, check, eval, other]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The exact command, relevant env vars (no keys), and masked inputs if possible.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Output and logs
+      description: stderr with LOG_LEVEL=debug, and the run summary if there is one.
+      render: text
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "OS, Go version, Jev provider (TypeSafe / OpenRouter), JEV_MODEL"

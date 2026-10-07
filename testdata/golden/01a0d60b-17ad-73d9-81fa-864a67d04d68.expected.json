@@ -1,0 +1,28 @@
+{
+  "requirements": [
+    {"value": "object-oriented PHP", "aliases": ["PHP", "OOP PHP"], "tier": "required"},
+    {"value": "Laravel", "aliases": [], "tier": "required"},
+    {"value": "Symfony", "aliases": [], "tier": "required"},
+    {"value": "CodeIgniter", "aliases": [], "tier": "required"},
+    {"value": "CakePHP", "aliases": [], "tier": "required"},
+    {"value": "HTML5", "aliases": ["HTML"], "tier": "required"},
+    {"value": "CSS3", "aliases": ["CSS"], "tier": "required"},
+    {"value": "JavaScript", "aliases": [], "tier": "required"},
+    {"value": "jQuery", "aliases": [], "tier": "required"},
+    {"value": "Git", "aliases": ["Git version control"], "tier": "required"},
+    {"value": "Composer", "aliases": ["dependency managers"], "tier": "required"},
+    {"value": "WordPress", "aliases": [], "tier": "required"},
+    {"value": "WooCommerce", "aliases": [], "tier": "required"},
+    {"value": "Magento", "aliases": [], "tier": "required"},
+    {"value": "MySQL", "aliases": [], "tier": "mentioned"},
+    {"value": "MariaDB", "aliases": [], "tier": "mentioned"},
+    {"value": "PostgreSQL", "aliases": ["Postgres"], "tier": "mentioned"},
+    {"value": "RESTful APIs", "aliases": ["REST APIs"], "tier": "mentioned"},
+    {"value": "performance troubleshooting", "aliases": ["troubleshooting performance bottlenecks"], "tier": "mentioned"},
+    {"value": "Agile", "aliases": [], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Laravel", "Symfony", "CodeIgniter", "CakePHP"], ["WordPress", "WooCommerce", "Magento"], ["MySQL", "MariaDB", "PostgreSQL"]],
+  "acceptable": ["Proficiency in frameworks", "database design", "server-side development", "maintaining server-side web applications", "database management", "fixing application bugs"],
+  "filler": ["clean, reusable, and secure code", "Software Engineer PHP"],
+  "notes": "'Frameworks like X, Y, or Z' and 'WordPress, WooCommerce, or Magento' are Alternative Groups; the framework category stays a separate required Requirement. Relabeled to README rules: \"frameworks like X\" has no checkable category beyond its examples; paraphrased \"database design and optimization\" moved to acceptable; Summary-only phrases acceptable."
+}

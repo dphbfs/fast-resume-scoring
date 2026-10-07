@@ -1,0 +1,45 @@
+name: Score looks wrong
+description: A Match Score, Requirement, or Coverage that a careful reader would disagree with.
+labels: [scoring]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Scoring reports are the most useful issues: each one can become an eval fixture.
+        **Mask the resume before posting** (fake name, contacts, links, companies, schools;
+        keep dates, technologies, and metrics). Only share job postings you are allowed to share.
+  - type: dropdown
+    id: what
+    attributes:
+      label: What looks wrong?
+      options:
+        - Match Score (score)
+        - Requirements extracted (extract)
+        - Coverage or evidence (check)
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: The JSON the command printed.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and why
+      description: e.g. "around 70, the resume has 5 years of Go and the job asks for 3".
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs (masked)
+      description: The job description and the masked resume, or links to them.
+  - type: input
+    id: version
+    attributes:
+      label: Version, model, tuning hash
+      description: The `model` and `tuning` fields from the output.

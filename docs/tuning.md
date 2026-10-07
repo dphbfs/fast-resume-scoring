@@ -1,0 +1,791 @@
+# Extractor tuning backlog
+
+Next round of tuning for the Requirement Extractor, derived from the eval of
+2026-09-30 (live run `2026-09-30T02-37-41Z` against labels `63732feae2fb`,
+with extraction traces). Terms follow `CONTEXT.md`; eval semantics are in
+`testdata/golden/README.md`.
+
+## Where we are
+
+| Metric | Value |
+|---|---|
+| Recall, loose (strict) | 93.4% (79.2%) |
+| Recall: required / preferred / mentioned | 94.2% / 93.0% / 92.1% |
+| Precision | 86.8% |
+| F1 | 90.0% |
+| Expected / predicted | 668 / 1069 |
+| Acceptable (not scored) | 260 |
+| Duplicates (not scored) | 90 |
+| Filler extracted | 8 |
+| Misses | 44 |
+| Importance tier order | 81.9% |
+| Alternative Group F1 | 68.5% |
+| Jev cost (20 postings) | $0.11 |
+
+Misses by stage (from the trace; `eval` reports them per miss):
+
+| Stage | Misses | Backlog items |
+|---|---|---|
+| validation_not_selected | 11 | V1, V2 |
+| scoring (slash-joined pick matched one label, hid the other) | 9 | C2 |
+| refinement_merged | 8 | R1 |
+| refinement_filler | 6 | R3 |
+| validation_rejected | 6 | V5 |
+| section_dropped | 3 | C5 |
+| no_candidate | 1 | - |
+
+## Rules for this round
+
+- Change one thing per experiment, then run `make eval` and compare only
+  reports with the same labels fingerprint.
+- **Noise.** Eval caches Job Summaries (`eval/cache/summaries`), so inputs
+  are fixed across runs, but Jev itself is not fully deterministic: with
+  identical inputs, 1.5% of Section labels, 3.6% of Chunk selections and
+  6.7% of Refinement decisions flipped between two runs (near-ties), moving
+  the headline by ~0.5 points. Differences under ~1 point are noise.
+- Decide small changes by **mechanism plus numbers**: the trace must show
+  the targeted misses/extras going away, and the headline must not get worse
+  beyond noise. For effects near the noise, run each variant twice.
+- Keep a change only if F1 improves (or ties within noise with its mechanism
+  verified) without recall dropping more than about 1 point.
+- Record every experiment (kept or not) in the log at the bottom.
+- Label edits are not tuning: fix labels only when they break the README
+  rules, then `eval -rescore` and note the new fingerprint.
+
+## Step 1: measure before tuning
+
+1. ~~Implement `--debug` output~~ Done: `extract -debug trace.json`; eval
+   writes traces to `eval/reports/<run>-traces/` (gitignored) and attributes
+   every miss to a stage.
+2. ~~Fresh live baseline~~ Done: the table above.
+
+## Step 2: code-only fixes (deterministic, no Jev changes)
+
+| # | Problem (count) | Examples | Proposed fix | Stage |
+|---|---|---|---|---|
+| ~~C1~~ done | Job title fragments extracted as Requirements (7 Filler hits) | "Senior Backend Engineer", "Software Engineer PHP" | Drop a Requirement whose normalized value equals, or is contained in, the job title | Refinement / result |
+| ~~C2~~ done | Slash-joined selection hides a Requirement (~8 misses) | "TypeScript/Node.js", "terraform/terragrunt", "OpenSSL/AWS-LC", "microservices/serverless" | When the selected Candidate is slash-joined and each part is also a Candidate of the Chunk, emit each part | Validation |
+| ~~C3~~ done | Inline "Label:" prefixes read as Requirements (2 extras) | "Backend Expertise", "Architectural Judgment" (from "Deep Backend Expertise: …") | Strip a leading "Title Case words:" prefix of up to 4 words before chunking | Candidate generation |
+| ~~C4~~ done | Years-qualifier fragments (~10 extras) | "years experience", "years of experience working", "5+ years building", "related field", "foreign equivalent" | Add "years", "year", "related", "field", "equivalent", "foreign" to the generic-only words; never offer a Candidate that starts with "years" | Candidate generation |
+| ~~C5~~ done | Short unpunctuated bullet lines skipped as headings (3 misses) | "Experience with TypeScript/Node.js", "Designing new microservices or systems" | Only skip a sentence as a heading when it ends with ":" or is a markdown heading; keep the short-line rule for heading context only | Candidate generation |
+
+### Finding: the Job Summary matters
+
+Runs with the fallback summary (title + required/preferred sentences; used
+when the generative endpoint is unreachable) score ~4 points lower
+precision (~82.5%) than the run with a generated summary (86.8%), at equal
+recall. Keep the generative summary; make sure the endpoint is reachable
+before a real (non-fixed-input) eval, and compare fallback runs only with
+fallback runs.
+
+## Step 3: Jev question tuning (Validation Round)
+
+| # | Problem (count) | Examples | Proposed change |
+|---|---|---|---|
+| V1 | Years qualifier dropped from the selection (5 misses) | "8+ years of software engineering experience" selected as "software engineering experience" | Add to the question: keep a years qualifier ("5+ years of …") with its skill |
+| V2 | Over-long whole-Chunk selections (~9 extras, some misses) | "REST APIs that power the tag-api platform", "Experience building platform-level infrastructure consumed by multiple teams" | Ask for the shortest option that names the requirement completely; try `maxWholeChunkWords` 6 instead of 8 |
+| V3 | Single generic words accepted (~35 extras) | "automation", "infrastructure", "security", "cloud", "performance", "standards" | Add a rejection option for "a single broad word that needs more words to name a skill"; alternatively raise `PIPELINE_MIN_REQUIREMENT_MASS` for single lowercase words only |
+| V4 | Negated asks extracted (2 Filler hits) | "maintaining legacy systems" ("you're not maintaining…"), "cryptographer" ("you do not need to be…") | Add a `negated` rejection option: the sentence says the applicant does not need or will not do it |
+| V5 | Chunks rejected just under the threshold (6 misses, mass 0.49-0.66) | "Troubleshooting" (action_only), "finance", "custodians", "DigiCert", "ISRG" (people_or_context) | Say in `people_or_context` that a named product, vendor, or certificate authority the applicant should know is a requirement; then re-sweep `PIPELINE_MIN_REQUIREMENT_MASS` 0.6-0.7 |
+
+## Step 4: Refinement Round tuning
+
+| # | Problem (count) | Examples | Proposed change |
+|---|---|---|---|
+| R1 | Unmerged duplicates (90) and wrong merges (8 misses) | Unmerged: "Golang"/"Go", "Kubernetes clusters"/"Kubernetes", "hardware security modules"/"HSMs". Wrong: "SDK development" into "SDK", "Vue" into "component-based frameworks", "puppet" into "Configuration management" | Offer padded variants of the same sentence as duplicate options; do not merge a specific item into a category (require similar length/specificity, or ask a broader/narrower question first); pick the more specific value as canonical |
+| R2 | Perks extracted as Requirements (3 Filler hits) | "GPT-Codex 5/3", "Claude Opus 4.6", "Gemini 3 Pro" | Add a `perk_or_benefit` Filler option |
+| R3 | Category Requirements dropped as `vague_term` (6 misses, confirmed by trace) | "backend programming", "backend engineering skills", "scalability", "high throughput", "full-stack", "similar programming languages" | Add "a named category or quality of engineering work (backend programming, scalability, high throughput)" to the keep description, and move those words out of the vague_term examples |
+
+## Step 5: re-check the eval itself
+
+- **Acceptable is large (276).** Skim it per fixture; anything that should
+  be a clear error moves to `filler`, anything required moves to
+  `requirements`.
+- **Pooling bias.** Missing labels were found from the extractor's own
+  extras. Label 3-5 fresh postings from `testdata/jd/` without looking at
+  extractor output, then compare recall on them with the golden set.
+
+## Experiment log
+
+| Date | Change | Labels | Recall (strict) | Precision | F1 | Kept |
+|---|---|---|---|---|---|---|
+| 2026-09-30 | Baseline after label review (rescore) | `63732feae2fb` | 93.6% (79.6%) | 87.5% | 90.4% | n/a |
+| 2026-09-30 | Live baseline with traces (tier order 81.9%, group F1 68.5%) | `63732feae2fb` | 93.4% (79.2%) | 86.8% | 90.0% | n/a |
+| 2026-09-30 | C5: skip only strong headings (":" or markdown); section_dropped 3 -> 0 | `63732feae2fb` | 94.3% (79.6%) | 86.1% | 90.0% | yes (F1 tie, recall +0.9, removes a failure class) |
+| 2026-09-30 | C2 first run (live summaries): scoring misses 7 -> 3, but headline fell; other stages moved too, which exposed run noise | `63732feae2fb` | 93.3% (79.5%) | 83.4% | 88.1% | re-tested below |
+| 2026-09-30 | Fixed inputs (fallback summaries, endpoint down): baseline (no C5, no C2) | `63732feae2fb` | 91.9% (76.6%) | 82.6% | 87.0% | reference |
+| 2026-09-30 | Fixed inputs: C5 | `63732feae2fb` | 92.5% (76.5%) | 81.6% | 86.7% | kept (within noise, mechanism verified) |
+| 2026-09-30 | Fixed inputs: C5 + C2, two runs | `63732feae2fb` | 93.3% / 93.0% | 82.5% / 82.0% | 87.6% / 87.2% | yes (+0.7 F1 vs C5, both runs) |
+| 2026-09-30 | C1: drop job-title fragments before Refinement. Offline on both C5 + C2 runs: removes 4 / 5 predictions, all Filler hits, no matches | `63732feae2fb` | unchanged | +~0.4 | +~0.2 | yes (exact, deterministic filter) |
+| 2026-09-30 | C3 + C4 (label prefixes stripped; years/qualification fragments not offered), two fixed-input runs with C1-C5. Trace: label-prefix extras 1 -> 0, years/qualification extras 7-8 -> 0-1 | `63732feae2fb` | 93.0% / 93.0% | 82.7% / 82.9% | 87.5% / 87.6% | yes (mechanisms verified, +~0.5 precision, Filler 8-9 -> 3-6 incl. C1) |
+| 2026-10-01 | Tier added to Requirements (code rule: strongest Section wins). Offline rescore of the 2026-09-30T02-46-18Z run, Tier derived from stored Context: accuracy required 96.0% (314/327), preferred 73.8% (107/145), mentioned 88.7% (134/151) | `63732feae2fb` | unchanged | unchanged | unchanged | yes (preferred is the weak spot; revisit only if Resume Checker eval needs it) |
+
+## Resume Checker experiment log
+
+Run with `make eval-checker` (11 pairs in `testdata/checker`). Labels are
+Claude's first draft, not yet reviewed by the user; real-resume labels are
+known to be under-inclusive (many "false links" are valid evidence), so
+link precision is understated. Retrieval recall is the most trustworthy
+number until the review.
+
+| Date | Change | Labels | Coverage | Retrieval recall (S+P) | Link P / R | Strength exact | Report |
+|---|---|---|---|---|---|---|---|
+| 2026-10-01 | Baseline: K 5, floor 0.02, mass 0.5 | `25ff7643d0b3` | 81.1% | 83.8% (80.5%) | 57.5% / 83.8% | 85.9% | `2026-10-01T01-26-55Z` |
+| 2026-10-01 | K 8 | `25ff7643d0b3` | 81.1% | 83.8% | 56.0% / 83.8% | 85.9% | `2026-10-01T01-27-26Z` |
+| 2026-10-01 | K 12 | `25ff7643d0b3` | 81.8% | 83.5% | 55.9% / 83.5% | 86.9% | `2026-10-01T01-27-36Z` |
+| 2026-10-01 | K 8, floor 0.005 | `25ff7643d0b3` | 81.8% | 90.7% | 49.9% / 90.3% | 85.9% | `2026-10-01T01-27-53Z` |
+| 2026-10-01 | K 8, floor 0.001 | `25ff7643d0b3` | 81.1% | 89.4% | 50.2% / 89.1% | 86.0% | `2026-10-01T01-28-04Z` |
+
+Findings:
+
+- Link recall equals retrieval recall in every run: the Strength Round
+  links nearly every labeled pair it sees, so retrieval is the recall
+  bottleneck.
+- K is not the limit; the floor is. The retrieval Choice concentrates mass
+  on one Requirement, so a bullet that supports 6+ Requirements (e.g. the
+  real-backend analytics-pipeline bullet) leaves the others below 0.02.
+  Even at floor 0.005 recall is 90.7%, under the ADR 0001 trigger (95%):
+  next experiment is Noul retrieval (one independent yes/no per
+  Requirement).
+- Strength: the model rates labeled-partial pairs strong 20 times
+  (confusion row partial: 20 strong / 19 partial). Either the partial
+  definition needs sharper contrasts or the labels are strict; decide
+  after the label review.
+
+### 2026-10-01: label gaps, negative options, multi-round retrieval
+
+Labels: 163 links added from the baseline's false links (broad
+Requirements now labeled on every supporting bullet), and a policy fix: a
+competing tool of the same kind is not evidence (Docker Swarm for
+Kubernetes removed). New labels fingerprint after the fix; the old rows
+above are not comparable. Pooling bias: the added links came from
+single-mode predictions, so link precision is inflated for single mode and
+understated for modes that find new pairs.
+
+Noise: identical runs vary by up to ~0.5 points on every metric. Each row
+below is the mean [min-max] of 3-4 runs.
+
+| Config | Runs | Coverage | Retrieval R | Link P | Link R | Strength exact | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v1 criteria, single | 4 | 81.3 [80.8-81.5] | 88.0 | 90.4 | 88.0 | 84.4 | 0.022 |
+| v2 (sharpened strong/partial), single | 1 | 81.8 | 87.8 | 87.8 | 87.8 | 84.7 | |
+| **v3 (v2 + negatives), single (new default)** | 4 | **84.7 [84.6-85.0]** | 88.0 | 92.9 | 86.9 | 86.6 | 0.027 |
+| v3, peel K 6 (no shortlist) | 1 | 82.5 | 91.3 | 73.9 | 90.1 | 86.0 | |
+| v3, peel K 6, shortlist 12 | 4 | 83.9 [83.6-84.3] | 90.6 | 79.0 | 89.5 | 85.9 | 0.057 |
+| v3, narrow 12,4, K 6 | 1 | 81.8 | 82.2 | 92.0 | 81.0 | 87.7 | |
+| v3, narrow 16,8, K 8, floor 0.01 | 4 | 84.4 [83.9-85.0] | 91.6 | 85.7 | 90.3 | 86.7 | 0.044 |
+| same, mass 0.65 | 3 | 85.1 [85.0-85.3] | 91.6 | 87.6 | 88.4 | 87.0 | |
+| same, mass 0.8 | 3 | 85.4 [85.0-85.7] | 91.8 | 90.8 | 83.3 | 86.9 | |
+| v3, single, mass 0.65 | 3 | 83.9 [83.2-84.3] | 87.9 | 94.3 | 84.9 | 86.5 | |
+
+Findings:
+
+- Negative options (v3) are the clear win: +3.4 Coverage over v1, ranges
+  do not overlap, link precision up, required-tier Coverage 79.1 -> 85.0.
+  Sharpening strong/partial alone (v2) did nothing measurable.
+- Multi-round retrieval works as designed: peel and narrow raise retrieval
+  recall by 2.6-3.8 points (the softmax-splitting problem). But the extra
+  pairs are mostly borderline, and v3 still links many of them, so Coverage
+  does not rise unless the evidence-mass threshold rises with it (narrow +
+  mass 0.65-0.8: +0.4 to +0.7 over v3 single, at 1.6x cost). Within the
+  label-bias margin: re-test after the user's label review before making
+  narrow the default.
+- Peel without a shortlist is the worst: each extra round over ~40 options
+  lets the model pick a loosely related Requirement instead of none.
+- Retrieval recall still tops out near 92% (ADR 0001 trigger: 95%).
+  Noul retrieval is still untested.
+- Remaining stable false links that v3 lets through, for the next negative
+  option: inferring a Requirement from a capability the work would need
+  (API authentication <- "integrations with AWS, Azure"; OAuth2 <- "auth
+  libraries"; SQL <- "maintained the financial report").
+
+### 2026-10-01: Noul retrieval and the needed_capability negative
+
+Same labels as the previous section. Mean [min-max] of 3 runs each, plus a
+fresh v3 control in the same session.
+
+| Config | Coverage | Retrieval R | Link P | Link R | Strength exact | Required Cov | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v3, single (control) | 84.3 [84.3-84.3] | 88.0 | 92.3 | 86.9 | 86.3 | 85.1 | 0.027 |
+| v4 (v3 + needed_capability), single | 83.9 [83.6-84.3] | 87.7 | 94.1 | 85.0 | 84.2 | 83.4 | 0.028 |
+| v3, noul K 8, threshold 0.5 | 83.1 [82.5-83.6] | **97.0** | 62.2 | 96.0 | 87.0 | 84.6 | 0.061 |
+| v3, noul K 8, threshold 0.3 | 79.8 [79.7-80.1] | 97.9 | 58.4 | 96.3 | 86.4 | 83.2 | 0.066 |
+| v4, noul 0.5 | 81.5 [80.8-82.5] | 97.1 | 65.1 | 94.1 | 83.2 | 83.7 | 0.063 |
+| v3, noul 0.5, mass 0.8 | 83.2 [83.2-83.2] | 96.9 | 71.7 | 88.8 | 86.2 | 83.4 | 0.061 |
+| v4, noul 0.5, mass 0.8 | 81.8 [81.5-82.5] | 96.8 | 77.8 | 80.6 | 82.9 | 80.7 | 0.063 |
+| **v3, noul 0.7, mass 0.8** | **85.1 [85.0-85.3]** | 90.8 | 76.8 | 86.5 | 86.7 | 84.1 | 0.056 |
+
+Findings:
+
+- Noul retrieval fixes retrieval recall (97.0%, past the ADR 0001 95%
+  trigger): independent yes/no answers do not split mass the way one
+  Choice does. But it hands the Strength Round ~3x more borderline pairs,
+  and v3 links too many (link precision 62%), so Coverage falls.
+- A sample of 45 stable noul-only false links: ~1 in 4 are label gaps
+  (compiled language <- "shipped an iOS app in Swift"), ~3 in 4 real false
+  positives (Kotlin <- "Android apps in Java"; customer-facing <- "designed
+  backend services"). The precision drop is mostly real.
+- Best Coverage so far: noul 0.7 + mass 0.8 at 85.1, +0.8 over v3 single
+  with non-overlapping ranges, at 2x cost; required-tier Coverage is not
+  better (84.1 vs 85.1). Not adopted: the gain is small, and the Strength
+  Round, not retrieval, now limits Coverage.
+- needed_capability (v4) raises link precision but costs recall and strength
+  accuracy (it takes probability from partial); no gain in any
+  combination. Kept selectable, not default.
+- Next lever is the Strength Round's precision on borderline pairs (most
+  surviving false positives are partial links), not more retrieval.
+
+### 2026-10-01: TypeSafe guidance review, then A (structured options), B (gate Noul), C (Score grading)
+
+Guidance from docs.typesafe.ai (Jev 1.13 jaggedness, building guide,
+primitives, structure, confidence, composite scoring, skill-suggestion and
+citation-check cookbooks) that applies here:
+
+- One judgment per question; split mixed judgments and combine in code.
+  Our Strength Choice mixed "is it evidence", "why not", and "how strong".
+- Ordinal judgments ("how strong") suit a Score with concrete levels.
+- Choice options can be `{what, not_for, examples}` objects; `not_for`
+  sharpens boundaries.
+- Rank with a Choice, decide "whether" with an absolute Noul per candidate
+  (skill-suggestion cookbook). Our earlier Noul retrieval used Nouls as the
+  ranker over all Requirements, which the docs do not recommend.
+- Literal reading: align instructions and criteria; when explaining a
+  wrong answer, that explanation is the missing instruction.
+- Choice and Noul thresholds are not interchangeable.
+
+Results, mean [min-max] of 3 runs each, same labels as the sections above:
+
+| Config | Coverage | Retrieval R | Link P | Link R | Strength exact | Required Cov | Jev $/run |
+|---|---|---|---|---|---|---|---|
+| v3, single (control) | 83.9 [83.6-84.3] | 88.3 | 92.5 | 87.2 | 86.5 | 83.9 | 0.027 |
+| A: v5 (structured options), single | 84.8 [84.6-85.0] | 87.8 | 93.0 | 86.4 | 86.6 | 85.1 | 0.033 |
+| B: v3 + gate 0.5, single | 83.0 [82.5-83.6] | 88.5 | 98.0 | 77.2 | 85.8 | 81.4 | 0.030 |
+| A+B: v5 + gate 0.5, single | 83.6 [83.6-83.6] | 88.1 | 97.7 | 76.9 | 85.3 | 81.6 | 0.036 |
+| v3 + gate 0.5, narrow 16,8 | 84.6 [84.6-84.6] | 91.8 | 93.8 | 79.9 | 85.8 | 83.4 | 0.048 |
+| v3 + gate 0.5, noul retrieval | 84.6 [84.3-85.0] | 96.8 | 80.2 | 85.6 | 85.5 | 83.9 | 0.066 |
+| v3 + gate 0.4, noul retrieval | 86.0 [85.3-86.4] | 97.0 | 75.3 | 91.6 | 86.4 | 85.5 | 0.066 |
+| v5 + gate 0.4, noul retrieval | 86.4 [86.0-86.7] | 97.0 | 75.2 | 91.3 | 85.2 | 86.4 | 0.076 |
+| v5 + gate 0.4 (v1 wording), narrow 16,8 | 86.6 [86.4-87.1] | 91.9 | 90.9 | 85.7 | 85.7 | 86.4 | 0.055 |
+| **v5 + gate 0.5 (v2 wording), narrow 16,8 (new default)** | **86.9 [86.7-87.4]** | 91.6 | 90.8 | 84.7 | 85.7 | **87.6** | 0.055 |
+| C: Score grading + gate 0.4 v2, narrow | 82.6 [82.5-82.9] | 91.4 | 88.6 | 87.4 | 80.3 | 83.2 | 0.042 |
+| C: Score grading + gate 0.4 v1, narrow | 84.3 [83.9-84.6] | 91.6 | 91.3 | 85.2 | 79.5 | 82.8 | 0.041 |
+
+Gate thresholds were swept offline from traces (gate P is recorded per
+pair; the re-scorer reproduced live numbers exactly at the run's own
+threshold). v1 wording peaked at 0.4 in all four retrieval configs; v2
+wording peaked at 0.5 (offline 87.5, live 86.9: the offline gain shrank,
+a sign threshold picking on 11 pairs is near its limit).
+
+Findings:
+
+- A (structured `{what, not_for, examples}` options) is a small, real
+  gain (+0.9, ranges do not overlap); the same boundaries as prose (v2)
+  did nothing.
+- B (gate Noul deciding links) is what makes high-recall retrieval pay
+  off: with narrow or noul retrieval it removes all false links on
+  Requirements with no evidence (label none -> predicted partial: 5.3 per
+  run -> 0). Coverage +2.7 over the control overall, +3.7 on required.
+- The v1 gate wording ("the requirement itself") contradicted the partial
+  criterion and dropped partial pairs; v2 includes part/prerequisite/
+  broader practice. Equal Coverage, +1.2 on required; adopted because it
+  removes the contradiction.
+- C (3-level Score instead of the grading Choice) is worse: strength
+  accuracy falls ~6 points. The Choice with structured options and
+  negatives grades better than ordered levels here. Not adopted.
+- Remaining errors are almost all in the partial row: ~15 labeled-partial
+  pairs graded strong, ~14 dropped by the gate. Partial is also the most
+  subjective label; review it before tuning further.
+- Overfitting risk: thresholds and options have now been picked on these
+  11 pairs. Before the next round, add fresh pairs (or hold out a few) to
+  confirm the gains.
+
+### Fit Score (2026-10-02)
+
+- Fit Score added (ADR 0002) with Fit Score error in the report: the Fit
+  Score of predicted vs labeled Coverage per pair, over non-Skip
+  Requirements. Offline rescore of `02-16-53Z`
+  (`2026-10-02T01-23-18Z-rescored`): mean 3.9, max 11 points. Mostly low
+  (partial predicted none); worst on real-backend × Experimentation (66 vs
+  77) and syn-android × Android (61 vs 70). Pair ranking mostly holds.
+  Years qualifiers are Skip in eval, so their effect is not measured here.
+
+### Skills line split (2026-10-02)
+
+- Bug: retrieval keeps at most K=8 Requirements per Evidence Unit, so the
+  real 26-item "Technical Stack" line could support only 8. Found on 10
+  live applications: TypeScript, Redis, GitHub Actions were Gaps though
+  listed. Fix: the parser cuts Skills lines with > 6 items into balanced
+  chunks that repeat the label; real-backend labels remapped to the chunk
+  holding each item (data-analyst labels unchanged).
+- Eval, 3 runs (`2026-10-02T01-39-37Z`, `01-40-08Z`, `01-40-44Z`):
+  Coverage 86.4% (85.7-87.1) vs 86.9% baseline, link P ~88.8% (was ~91),
+  Fit Score error 3.8-3.9. Flat: in the fixtures, skills-line
+  Requirements almost always also have stronger bullet evidence.
+- 10 live applications, same extracted Requirements, check only: 17
+  Requirements moved from none to linked (mostly weak skills hits:
+  TypeScript, Redis, GitHub Actions, NoSQL, ECS); Gaps 69 -> 62; Everest
+  36 -> 39, Automox 56 -> 58; other Fit Scores within +-3 (run noise).
+- Seen in passing, separate issue: gate 0.69 linked "Built a Golang CLI"
+  to Node.js as strong while the grading Choice put 0.73 on
+  `alternative_tool` (evidence mass 0.26). Gate and grader disagree;
+  consider rejecting when a non-evidence option wins the grading Choice.
+
+### Gate vs grader: competing-tool links (2026-10-02)
+
+- Offline simulation on the traces of the 3 skills-split runs (unlink a
+  gate-passed pair when the grading Choice puts >= t on a non-evidence
+  option): at t 0.5-0.7 only 0-3 pairs per 3 runs are vetoed, Coverage
+  86.2-86.4 vs 86.4; "veto when a negative is the top option" vetoes
+  8-16 pairs, mostly correct ones (Coverage 85.8). The eval set barely
+  contains this error.
+- On the 10 live applications the same veto would also remove correct
+  links: AWS for "major cloud platform" (alternative_tool 0.77) and
+  Prometheus/Grafana for "observability"/"monitoring" (0.76-0.86) sit in
+  the same range as the real error (Golang CLI for Node.js, 0.73-0.82).
+  The grader reads "an instance of a broad Requirement" as a competing
+  tool, so no threshold separates them.
+- Built, not yet measured: criteria `v6` (v5 plus an alternative_tool
+  `not_for`: an instance of a broader requirement is the requirement
+  itself) and `CHECKER_VETO_THRESHOLD` (default 0 = off). Plan: 3 runs each
+  of v6 and v6 + veto 0.6, plus the 10 applications to check that AWS and
+  Prometheus stop scoring alternative_tool while Golang -> Node.js still
+  does. Blocked: OpenRouter key hit its monthly limit (HTTP 403) on the
+  first v6 run; partial reports deleted.
+- 10 live applications, one run each, same Requirements (v5 / v6 /
+  v6 + veto 0.6): Fit vs generative reference Spearman -0.07 / -0.02 / -0.10. v6 lowers
+  alternative_tool on instances only a little (AWS 0.77 -> 0.66-0.72,
+  Prometheus for monitoring 0.86 -> 0.73). Veto 0.6 removed 5 links: 4
+  correct (observability, monitoring, AWS x2 for "major cloud platform")
+  and 1 wrong (NestJS <- Java/Golang skills chunk). Veto rejected at 0.6.
+- The Golang CLI -> Node.js link disappeared under v6, but not because of
+  v6: the Retrieval Round proposed Node.js for that unit in only 1 of 4
+  runs (v5 runs included). The error is rare and retrieval-dependent.
+- Eval, v6, 3 runs (`2026-10-02T01-56-55Z`, `01-57-21Z`, `01-57-50Z`) vs
+  v5 (skills-split runs above): Coverage 86.6% (86.0-87.1) vs 86.4%
+  (85.7-87.1); required 86.9% vs 86.7%; link P 88.4% vs 88.8%; Fit Score
+  error 3.8 vs 3.8; alternative_tool rejections 14-15 vs 15-17. No
+  difference beyond noise. Default stays v5; v6 kept as an option.
+
+Reports kept in `eval/reports/checker/`: the five first-round runs cited
+above, and the three runs of the current default (`2026-10-01T02-15-52Z`,
+`02-16-24Z`, `02-16-53Z`) as the reference baseline. The other ~90
+experiment reports were pruned; their numbers are in the tables above.
+
+### Generative baseline (2026-10-02, branch `exp/generative-baseline`)
+
+Question: is the Jev Resume Checker a cheaper replacement for the
+traditional one-prompt generative match score, at the same accuracy?
+`eval -checker -baseline` also scores each pair with the generative model
+approach's match-score prompt (verbatim, Resume as markdown) through `OPENAI_*`, uncached, and
+compares both against the Fit Score of the labeled Coverage.
+`-baseline-price-in/-out` (USD per M tokens) price the calls; with
+`-rescore` they reprice stored runs.
+
+3 runs (`2026-10-02T02-28-38Z`, `02-29-42Z`, `02-31-42Z`; priced in the
+`-rescored` reports), `claude-opus-5` at $5 / $25 per M tokens:
+
+| | Jev (Resume Checker) | Generative |
+|---|---|---|
+| Fit error vs labeled, mean (range) | 4.0 (3.6-4.3) | 6.4 (5.5-7.3) |
+| Fit error max | 9-13 | 22-26 |
+| Fit bias | -1.8 to -2.5 | -1.5 to 0.0 |
+| Time per pair, mean | 6.3s | 16.6s (13.4-19.7) |
+| Cost per pair | $0.0054 | $0.029 |
+
+- Jev is ~5.4× cheaper per pair for the Resume Checker alone. Adding
+  the Requirement Extractor (~$0.0056, once per Job Description) gives
+  ~$0.011 when each posting is scored against one Resume: ~2.7×
+  cheaper. Generative output tokens are ~3/4 of its cost (~840 out).
+- Generative input tokens are estimated (prompt chars / 4): the local
+  proxy reports `prompt_tokens: 2` for every prompt.
+- The largest generative misses are domain-heavy postings it rates
+  holistically (Golang security integrations: labeled 36, generative
+  62). Caveat: the target is our own labeled Coverage under the Fit
+  Score formula, so this measures agreement with the Coverage view of
+  fit, which favors Jev by construction. Real outcomes (interview vs
+  rejection) are still the only neutral target.
+- Coverage in these runs: 86.7-87.1%, in line with the reference runs.
+
+### Cheaper Jev: skip unused questions (2026-10-02, branch `exp/cheaper-jev`)
+
+Jev bills input tokens only (~$0.042 per M; every report fits with output
+at $0). Default split: retrieval 53%, strength 47%. On 4 runs' traces,
+half of the grading Choices went unused (29% Skills/Summary pairs, capped
+at weak; 28% gate-rejected), and the third narrow round changed 1 of 1786
+labeled retrieved pairs. Options built (opt-in):
+`CHECKER_SKIP_CAPPED_GRADING`, `CHECKER_GATE_FIRST`,
+`CHECKER_NARROW_STOP_P`; plus `CHECKER_NARROW_SIZES=16`.
+
+3 runs each (default: 4 runs, `02-28-38Z`..`02-49-03Z`):
+
+| Config | Coverage | Required | Link P / R | Fit err | $/pair | ms/pair |
+|---|---|---|---|---|---|---|
+| default | 86.8 (86.4-87.1) | 87.4 | 88.9 / 85.4 | 4.0 | 0.0053 | 7.4s |
+| A skip capped | 86.7 (86.4-87.1) | 87.4 | 88.5 / 86.0 | 3.8 | 0.0048 | 8.4s |
+| B A + gate first | 87.3 (86.7-87.8) | 87.8 | 88.9 / 85.2 | 3.9 | 0.0046 | 9.7s |
+| C B + narrow 16 | 87.4 (87.1-87.8) | 88.0 | 88.2 / 86.8 | 3.2 | 0.0041 | 7.4s |
+| D B + stop 0.99 | 86.7 (86.4-87.1) | 87.8 | 88.8 / 85.4 | 4.1 | 0.0043 | 9.0s |
+| E all four | 87.2 (86.7-87.8) | 88.0 | 88.3 / 86.4 | 3.9 | 0.0039 | 8.2s |
+
+- No accuracy loss in any config: every Coverage range overlaps the
+  default's. Narrow 16 trades ~0.6 link precision for ~1.4 link recall
+  (more pairs reach Strength), and the gate still filters them.
+- E is the cheapest: -26% ($0.0053 -> $0.0039 per pair), about 7.4x
+  cheaper than the generative baseline ($0.029). C is -23% with default
+  latency.
+- Gate first saved less than estimated (-4% vs ~-8%): its second request
+  resends the state, and gates are a larger share of strength than the
+  rubric-size estimate assumed. It adds ~1.3s per pair (two sequential
+  requests per unit); dropping the third narrow round wins that back.
+- Decision: C is the default (`CHECKER_NARROW_SIZES=16`,
+  `CHECKER_SKIP_CAPPED_GRADING=true`, `CHECKER_GATE_FIRST=true`): -23%
+  cost, default latency, the best mean Coverage and Fit error (3.2,
+  range 3.0-3.6 vs the old default's 3.6-4.3).
+
+### Losing variants deleted (2026-10-04, review v1)
+
+Deleted from the code after Product Review v1: retrieval modes `single`
+(now narrow with empty `CHECKER_NARROW_SIZES`), `peel`, `noul`;
+`CHECKER_NARROW_STOP_P`; Score grading (`CHECKER_STRENGTH_MODE=score`);
+criteria v1-v4 and v6 (v5 is the only rubric); gate wording v1; the veto
+(`CHECKER_VETO_THRESHOLD`). Their results stay in the entries above and in
+the committed reports; setting a removed env var is a config error.
+Directly constructed Checkers now get criteria v5 and gate wording v2
+(before: v3 and v1, unlike the env defaults).
+
+### End-to-end baseline vs the generative reference (2026-10-05, review v1 E3)
+
+`make eval-e2e` (report `eval/reports/e2e/2026-10-05T02-35-23Z`): the 30-pair
+subset of `testdata/reference`, extraction + checking cold, Fit Score vs
+today's generative reference score (`current.json`).
+
+| Metric | Value |
+|---|---|
+| MAE / bias | 20.5 / -17.5 |
+| Within ±5 / ±10 | 13% / 30% |
+| Max error | 45 (Stripe high-school fellowship: Fit 53, reference 8) |
+| Pearson / Kendall τ-b | 0.60 / 0.46 |
+| Jev cost per pair (cold) | $0.0168 (checker ~57% of input tokens) |
+| Time per pair | 20.5s (parallel 4) |
+
+- The Fit Score runs ~17 points low; a constant shift alone would give
+  MAE ~11.9 in-sample (not a valid estimate, only the size of the bias).
+  Ranking is the real gap: τ-b 0.46 vs the reference's own noise of
+  ~1 point per call.
+- Requirements per posting average 54 (up to 122) against ~30 on the
+  golden set: these Job Descriptions carry Hermes's condensed stack
+  section plus the full posting, so extraction sees most text twice.
+  Error does not correlate with the count (r = -0.15), but cost does.
+- The largest misses are holistic judgments the coverage formula cannot
+  make: eligibility (a high-school fellowship), and seniority/scope.
+- Cost: $0.0168 per pair cold vs ~$0.05 for one Opus 5 call, about 3×
+  cheaper; the 5× target needs about $0.010.
+
+### Full posting only, and Fit Score calibration (2026-10-05, review v1 a/b)
+
+**(a) Read only the full posting.** Job Descriptions saved by the
+job-search agent carry its condensed "Stack & Responsibilities" summary
+before the original posting (`### Full Job Description`). The extractor
+now keeps the title line and the full posting only (`app.postingText`,
+`ExtractorVersion` 2). Rerun `eval/reports/e2e/2026-10-05T02-45-27Z`:
+MAE 20.0, bias -17.0, τ-b 0.47 (was 20.5 / -17.5 / 0.46, within noise);
+extraction input tokens -26%, cost $0.0168 -> $0.0147 per pair.
+Requirements per posting barely moved (54 -> 52): Refinement already
+merged the duplicates, so the saving is reading less text.
+
+**(b) Calibrate the knobs (A3), offline.** `scripts/calibrate_fit.py`
+replays the run's Coverage (it reproduces the reported Fit Scores) over a
+constrained grid (strong 1, none 0, required weight 3 fixed):
+
+| Knobs (partial, weak, preferred, mentioned) | MAE | Bias | τ-b |
+|---|---|---|---|
+| current (0.6, 0.3, 1.5, 1) | 20.0 | -17.0 | 0.47 |
+| MAE-best (1, 1, 1.5, 0.75), leave-one-out MAE 13.8 | 12.9 | -5.0 | 0.34 |
+| strong only (0, 0, 1.5, 1) | 28.5 | | 0.53 |
+| required items only, current credits | 16.5 | | 0.38 |
+
+- The MAE optimum is a corner (any link earns full credit) and still
+  leaves -5 bias: the knobs cannot close the gap, and they trade ranking
+  for level. Not adopted.
+- 48% of scored items have no evidence (35% of required ones), with ~40
+  items per posting: the formula averages over many details the
+  generative score does not weigh. Level can be fixed by a monotone map
+  that keeps the ranking; ranking needs a better signal (e.g. a
+  holistic/eligibility question), not knob tuning.
+- On 30 pairs a τ-b difference of ~0.1 is within noise; treat the
+  "strong only" gain as a hint, not a result.
+
+### Holistic Round and the Match Score (2026-10-05, review v1 c; ADR 0003)
+
+One Jev request per pair over the full posting and the whole Resume
+(`app.HolisticJudge`), alongside extraction. First run asked four
+questions; per-signal agreement with the reference (30-pair subset,
+`eval/reports/e2e/2026-10-05T02-59-15Z`):
+
+| Signal | Kendall τ-b | Pearson |
+|---|---|---|
+| Fit Score | 0.42 | 0.61 |
+| core_work (Score, 5 levels) | 0.52 | 0.50 |
+| blocker (Noul, hard eligibility unmet) | -0.32 | -0.59 |
+| domain (Score, 3 levels) | 0.04 | 0.15 |
+| level (Choice) | 0.27 | 0.31 |
+
+`blocker` is 0.97 on the high-school fellowship (reference 8, Fit 53) and
+0.05-0.25 elsewhere. `domain` and `level` were dropped (no signal; `level`
+called a backend role "too late" for the candidate at 0.71).
+
+Blend `x = (0.5 × Fit/100 + 0.5 × core_work) × (1 − blocker)`, mapped
+linearly to the reference scale: leave-one-out MAE 8.8 (max 21) vs 12.4
+for the Fit Score with the same kind of map. Constants fitted on run
+02-59-15Z (w 0.5, `21.2 + 107.9 x`), then two repeat runs:
+
+| Run | Match MAE | Bias | Within ±10 | Max | τ-b | Fit MAE / τ-b |
+|---|---|---|---|---|---|---|
+| 03-02-54Z | 8.6 | -0.0 | 57% | 20 | 0.66 | 20.2 / 0.47 |
+| 03-04-40Z | 8.4 | -0.3 | 57% | 21 | 0.67 | 20.5 / 0.45 |
+
+- The repeats reuse the same pairs the constants were fitted on, so their
+  MAE is optimistic; the honest estimate is the leave-one-out 8.8 until
+  the final held-out set runs.
+- Cost: +$0.0005 per pair for the Holistic Round; cached-extraction runs
+  are $0.0095 per pair, cold about $0.015 (about 3.3× cheaper than one
+  Opus 5 call; the 5× target still needs cost work).
+
+### Scoring mode: cheaper Jev for the Match Score (2026-10-05, review v1 L3/L6)
+
+Goal: cold Jev cost per pair <= ~$0.010 (5× cheaper than one Opus 5 call)
+without losing Match Score accuracy. 30-pair subset, one change at a time
+(extraction cached when the pipeline settings did not change):
+
+| Run | Change | Match MAE / τ-b | Fit MAE / bias | Reqs | Cold $/pair |
+|---|---|---|---|---|---|
+| 03-02/03-04 | baseline (holistic) | 8.4-8.6 / 0.66-0.67 | 20.2-20.5 / -17.5 | 52 | ~0.0152 |
+| 11-32-28Z | L3 skip Importance + L6 no context in retrieval round 2 | 8.5 / 0.68 | 22.7 / -19.7 | 52 | 0.0130 |
+| 11-35-39Z | L6 reverted; check required/preferred only | 9.1 / 0.65 | 16.9 / -11.2 | 52 | 0.0122 |
+| 11-38-24Z | + skip responsibilities sentences | 9.4 / 0.65 | 16.4 / -10.4 | 31 | 0.0107 |
+| 11-40-47Z, 11-42-22Z, 11-43-47Z | + one Retrieval round | 9.2-9.5 / 0.64-0.66 | 16.1-16.3 / -10.2 | 31 | 0.0092 |
+
+- L6 (Requirement values only in the second retrieval round) cut
+  retrieved pairs 16% and links 8% for ~$0.0008 per pair: reverted.
+- L3 (skip Importance) saves ~11% of extraction tokens; Importance is
+  unused by both scores.
+- Offline replay showed the Match Score does not need mentioned-tier
+  items (τ-b 0.65 vs 0.66), which are ~46% of checked items; checking
+  only required/preferred and dropping responsibilities sentences before
+  Validation cut Requirements per posting 52 -> 31.
+- With ~31 Requirements the second narrowing round no longer paid for
+  itself: one round saves ~20% of checker cost with no accuracy change.
+- Per-pair tokens now: extraction ~74k (sections 19k, validation 22k,
+  refinement 33k), retrieval ~66k, strength ~78k, holistic ~2.5k.
+- The Match map refit in scoring mode (`21.5 + 99.9 x`, run 11-40-47Z):
+  repeat runs MAE 9.0 and 8.9, bias ~0; leave-one-out 9.3 (full mode
+  8.8). Scoring mode trades ~0.5 MAE for ~40% lower cost: ~$0.0092 vs
+  ~$0.05 for an Opus 5 call, about 5.4× cheaper.
+
+### Holistic signals from the gap analysis (2026-10-05)
+
+Following `docs/gap-analysis-2026-10-05.md`: the masked Main resume now
+keeps its location line (Orlando, FL, as the reference sees it); the
+Holistic Round adds `responsibilities` (Score, day-to-day
+responsibilities in any domain), `primary_gap`, `domain_mismatch`, and
+`soft_eligibility` (Nouls); the employment gap is computed from Resume
+dates. Importance weighting of the Fit Score was replayed offline on the
+full-mode runs and did not help (Match τ-b 0.69-0.70 vs 0.70-0.72
+unweighted), so the primary-technology question replaces it.
+
+One scoring-mode run (`eval/reports/e2e/2026-10-05T12-05-12Z`, current
+Match MAE 8.7, τ-b 0.67). Per signal, τ-b against the reference:
+responsibilities +0.60, core_work +0.53, primary_gap −0.52, fit +0.44,
+soft_eligibility −0.40, blocker −0.35, domain_mismatch −0.21. The
+employment gap is constant (11 months) because every subset pair uses one
+resume; it can only matter on the final set.
+
+Linear blends, multiplied by (1 − blocker), leave-one-out on 30 pairs:
+
+| Inputs | LOO MAE | max | τ-b |
+|---|---|---|---|
+| fit + core (current form) | 9.3 | 21 | 0.67 |
+| fit + resp | 7.1 | 25 | 0.74 |
+| **fit + resp + domain_mm** | **6.6** | 24 | **0.77** |
+| fit + core + resp + domain_mm | 6.4 | 24 | 0.77 (core weight negative: collinear) |
+| fit + resp + primary_gap | 7.6 | 24 | 0.73 |
+| all signals | 7.5 | 20 | 0.77 |
+
+Candidate: `(42.8 + 48.4 fit + 38.9 resp − 19.4 domain_mm) × (1 − blocker)`.
+Picked from 16 combinations on one run, so not adopted until repeat runs
+confirm it. Side finding: the full-mode runs filtered offline to
+required/preferred give Match τ-b 0.70-0.72 vs 0.64-0.66 in scoring mode,
+so dropping responsibilities sentences may cost ranking; re-check with the
+new signals.
+
+**Adopted (ADR 0003).** Two repeat runs with the candidate weights fixed
+from run 12-05-12Z:
+
+| Run | Match MAE | Bias | Within ±10 | Max | τ-b | LOO refit MAE / τ-b |
+|---|---|---|---|---|---|---|
+| 12-10-08Z | 6.3 | +0.2 | 83% | 20 | 0.80 | 7.0 / 0.78 |
+| 12-11-25Z | 5.8 | -0.1 | 83% | 25 | 0.82 | 6.7 / 0.81 |
+
+Refit weights per run: fit 51-52, resp 37-38, domain_mm about -20 (first
+run: 48.4 / 38.9 / -19.4). Match Score is now
+`(42.8 + 48.4 fit + 38.9 resp − 19.4 domain_mm) × (1 − blocker)`
+(was the core_work blend, MAE 8.4-9.5). Keeping responsibilities
+sentences (`PIPELINE_SKIP_RESPONSIBILITIES=false`, run 12-13-20Z): Match
+6.0 / τ-b 0.80 at $0.0107 per pair cold vs ~$0.0092, so scoring mode
+keeps skipping them; the earlier side finding came from the old signals.
+
+### Gap-analysis round 2 experiments (2026-10-05)
+
+Three runs (12-24-46Z, 12-25-55Z, 12-27-01Z) asked, next to the current
+questions: `role_type` (Choice specialist/general), `transferable`
+(Score: engineering scope regardless of language/domain/product),
+`blocker_v2` (hard eligibility other than location), and
+`location_mismatch` (candidate outside every allowed location). Current
+Match Score on these runs: MAE 6.0-6.3, τ-b 0.79.
+
+| Variant (× (1 − blocker)) | Cross-run MAE | Pair-held-out MAE / τ-b |
+|---|---|---|
+| fit + resp + dom, old blocker | 6.04 | 6.87 / 0.75 |
+| **fit + resp + dom, blocker_v2** | **5.54** | **6.43 / 0.78** |
+| + primary_gap × specialist, old blocker | 5.76 | 6.89 / 0.76 |
+| + primary_gap × specialist, blocker_v2 | | 6.23 / 0.76 |
+| fit + resp + transferable + dom + pg×spec, blocker_v2 | 5.24 | 6.67 / 0.74 |
+| fit + transferable + dom (no resp) | 7.41 | |
+
+- `blocker_v2` fixes the Grafana misread (0.39 -> 0.05) and still flags
+  the high-school fellowship (0.96): adopted, no extra parameters.
+- `role_type` called Cloudflare Cache a specialist role (0.89, Rust/
+  Pingora), so it does not separate Cache from Zero Trust; the interaction
+  does not hold up on held-out pairs. Dropped.
+- `transferable` is as strict as `responsibilities` (Cache 0.36) and takes
+  a negative weight next to it. Dropped.
+- `location_mismatch` reads locations correctly (hybrid elsewhere 0.95,
+  Grafana 0.18) but adds nothing (weight -1.6). Kept as a recorded signal.
+- Also dropped from the request: `core_work`, `soft_eligibility`.
+
+Pooled refit over the three runs: `(44.2 + 31.7 fit + 46.2 resp − 17.5
+domain_mm) × (1 − blocker)`, per run MAE 5.5-5.6, bias ~0, τ-b 0.79-0.81.
+Confirmation run with the pruned request (12-30-35Z): MAE 5.6, bias 0.0,
+80% within ±10, max 19, τ-b 0.80.
+
+## Final set, frozen run (F1, 2026-10-06)
+
+One cold run of the frozen config (commit 15d71e6, Match Score v3, scoring
+mode) on the sealed final set: 20 pairs, 4 resumes (3 synthetic held-out,
+1 masked real Contract resume), report `eval/reports/e2e/2026-10-06T00-51-16Z`.
+Recruiter judge (gpt-6-luna, 3 runs, median) for comparison.
+
+| | n | MAE | bias | within 10 | Pearson | τ-b |
+|---|---|---|---|---|---|---|
+| Jev Match vs reference | 20 | 11.6 | +3.6 | 60% | 0.82 | 0.69 |
+| Jev Fit vs reference | 20 | 16.1 | −10.8 | 35% | – | 0.56 |
+| Judge vs reference | 20 | 7.0 | −1.2 | 80% | 0.96 | 0.88 |
+| Jev Match vs judge | 20 | 10.4 | +4.8 | 60% | 0.82 | 0.65 |
+
+Development (subset, Main resume): MAE 5.6, τ-b 0.80. Cost $0.0066/pair
+cold, 0 failures, mean 20.7 s per pair (4 in parallel).
+
+By resume (Match MAE): Contract (same experience as the development
+resume) 6.0; synthetic full-stack 11.8, career changer 15.8, data/ML 12.8.
+The Match Score generalizes to new postings but not to new resumes.
+
+Where it fails:
+
+- **Off-role floor.** The 44.2 intercept keeps clearly wrong-role pairs at
+  ~40 (Unity Android 40 vs 18, Grove front-end for the data/ML resume 42
+  vs 16, Clever Devices mobile 52 vs 32). The development set had almost
+  no off-role pairs, so the fit never had to go low.
+- **Blocker misfire.** Voxel51 (career changer): `blocker` 0.73 multiplies
+  Match to 13 vs reference 48; the reference treats the missing CS degree
+  and 8+ years as gaps, not disqualifiers. Largest single error (35).
+- **Over-credit at the top.** Bicycle Health 96 vs 82, Engenious 58 vs 42.
+
+The judge agrees with the reference on held-out data (τ-b 0.88), so the
+reference is not the noisy side here. Per F3 the result is a redesign
+signal; any change makes this set development data.
+
+## Redesign round 1: Holistic probe on 50 pairs, 5 resumes (2026-10-06)
+
+The final set is development data from here on (F3: redesign). Pool:
+the 30-pair subset (Main resume) plus the 20 former final pairs (4
+resumes). `scripts/probe_holistic.py` asks candidate Holistic questions
+directly (one Jev request per pair, 2 runs, $0.012 total);
+`scripts/fit_match.py -probe` fits each model with least squares on
+features × (1 − blocker), and reports pair-held-out and
+resume-held-out MAE (leave one resume out: the question that failed).
+
+Refitting the v3 form on the pool does not help (resume-held-out 8.8-9.5).
+New questions:
+
+- `blocker_v3`: only status conditions (student, clearance, license,
+  citizenship); years, degrees, skills, location are qualifications.
+  Voxel51 0.73 -> 0.07; Stripe high-school fellowship stays 0.94.
+- `role_match` (Score, 5 levels from "different profession or specialty"
+  to "same kind of role and stack").
+- `must_haves` (Score: how many must-haves the candidate has done).
+- `experience_short` (Noul: clearly fewer years of the relevant kind of
+  experience, or a clearly lower level, than the job asks). In practice a
+  general "under-qualified for this role" judgment: 0.96 for the senior
+  data engineer on a front-end role.
+
+| Model (× (1 − blocker_v3)) | in | pair-out | resume-out | τ-b |
+|---|---|---|---|---|
+| v3 fixed (fit, resp, dom; old blocker) | 8.2 | 8.2 | 8.2 | 0.77 |
+| fit + resp + dom, refit | 7.9 | 8.5 | 9.5 | 0.71 |
+| experience_short | 5.5 | 5.7 | 5.8 | 0.81 |
+| **role_match + experience_short** | 5.1 | 5.4 | **5.2** | **0.85** |
+| fit + role_match + experience_short | 5.0 | 5.4 | 5.2 | 0.84 |
+| fit + must_haves + experience_short | 5.3 | 5.7 | 5.8 | 0.83 |
+| fit + role_match + dom + experience_short | 5.0 | 5.6 | 5.3 | 0.84 |
+
+- Holistic answers are near-deterministic: run-to-run mean |diff| ≤ 0.013
+  per question; fitting on probe run A and scoring run B gives the same
+  MAE (5.1 for role_match + experience_short).
+- Once `role_match` is in, the Fit Score adds nothing (weight ~12,
+  same held-out MAE). `role_match + experience_short`:
+  `(80.7 + 18.5 role_match − 55.2 experience_short) × (1 − blocker_v3)`.
+- Caveat: ~15 models compared on 50 pairs with 5 resumes; the selection
+  is optimistic until a fresh sealed set confirms it.
+
+Adopted as Match Score v4 (ADR 0004): Holistic Round reduced to
+`role_match`, `experience_short`, `blocker` (status-only wording); Fit
+pipeline out of the scoring path. Live runs with the production code:
+subset MAE 5.0, bias +0.1, 87% within ±10, τ-b 0.83 (01-03-32Z); former
+final set MAE 5.0, bias −0.3, 90% within ±10, τ-b 0.88 (01-03-35Z).
+$0.0001 per pair, mean 0.3 s per pair. Dropped from the request:
+`responsibilities`, `domain_mismatch`, `primary_gap`,
+`location_mismatch`, and the employment-gap computation.
+
+## Second sealed set, frozen run (2026-10-06)
+
+Match Score v4 (commit e5c6e59, unchanged since ADR 0004), one run on
+`testdata/final2`: 20 pairs, 4 held-out resumes (new-grad Go backend,
+staff platform/SRE, application/cloud security, the real analyst resume),
+18 postings never read before. Report `eval/reports/e2e/2026-10-06T01-32-00Z`;
+recruiter judge (gpt-6-luna, 3 runs, median) in `testdata/final2/judge.json`.
+
+| | MAE | bias | within 10 | Pearson | τ-b |
+|---|---|---|---|---|---|
+| Jev Match vs reference | 8.6 | −3.9 | 60% | 0.90 | 0.78 |
+| Judge vs reference | 8.8 | −5.5 | 75% | 0.91 | 0.78 |
+| Jev vs judge | 7.9 | +1.7 | 80% | 0.84 | 0.67 |
+
+For comparison: development (both old sets) MAE 5.0; v3 on the first
+sealed set MAE 11.6, τ-b 0.69. $0.0001 per pair, 0 failures.
+
+- Jev agrees with the reference as closely as an independent frontier
+  judge does (MAE 8.6 vs 8.8, same τ-b). The development MAE (5.0) was
+  optimistic, as expected from model selection on 50 pairs.
+- By resume (MAE): new-grad 4.2, staff SRE 5.4, security 9.8, real
+  analyst 14.8. The analyst resume (a software engineer moving into
+  analysis, with SWE job titles) is under-scored on analyst roles
+  (`role_match` 0.52-0.56; Travel + Leisure 65 vs 79, Verizon BI 75 vs
+  89) and on adjacent engineering roles (Search Platform 45 vs 67,
+  Samsara data engineer 41 vs 57). The judge sits with Jev on several of
+  these (Search Platform 43, Travel + Leisure 64): the reference is
+  generous to career changers.
+- Largest over-scores: Frontline reporting analyst for the SRE resume
+  (38 vs 24; judge 18) and Cockroach corporate security for the security
+  resume (51 vs 40; judge 18): an off-role or location-restricted posting
+  not pushed low enough. The blocker did not fire on "must be based in
+  the NYC area" (0.16), by design: location is excluded.

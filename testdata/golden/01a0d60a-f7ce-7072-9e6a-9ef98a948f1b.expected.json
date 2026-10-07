@@ -1,0 +1,22 @@
+{
+  "requirements": [
+    {"value": "5+ years professional experience", "aliases": ["at least 5 years of professional experience"], "tier": "required"},
+    {"value": "backend engineering", "aliases": ["strong backend engineering skills"], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang"], "tier": "required"},
+    {"value": "LLM-based systems", "aliases": ["LLMs", "LLM-powered systems"], "tier": "required"},
+    {"value": "prompt engineering", "aliases": ["prompts", "LLM prompting"], "tier": "required"},
+    {"value": "LLM evaluation", "aliases": ["evaluation loops", "evaluation"], "tier": "required"},
+    {"value": "productionizing AI features", "aliases": ["applied AI"], "tier": "required"},
+    {"value": "AI coding tools", "aliases": ["AI-generated output"], "tier": "required"},
+    {"value": "Kubernetes", "aliases": [], "tier": "preferred"},
+    {"value": "production remediation", "aliases": ["operational automation", "remediations", "operational remediations", "systems related to production remediation"], "tier": "preferred"},
+    {"value": "conversational workflows", "aliases": ["conversational workflows", "chat"], "tier": "mentioned"},
+    {"value": "code generation", "aliases": ["codefixes", "generated code changes"], "tier": "mentioned"},
+    {"value": "agent design", "aliases": ["agents"], "tier": "mentioned"},
+    {"value": "prototyping", "aliases": ["prototype quickly"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Kubernetes", "production remediation"]],
+  "acceptable": ["customer-facing systems across chat", "iteration for LLM-powered systems", "integrating model behavior into reliable user-facing products", "refine AI-generated output", "ship applied AI experiences across chat", "AI-powered product experiences", "building AI-enabled products", "product logic", "collaborate well with cross-functional partners"],
+  "filler": ["product mindset", "fast-moving environment with high ambiguity", "care about product quality and user outcomes", "eligible for any required authorizations from the US government", "Senior Software Engineer - Bits AI SRE"],
+  "notes": "'Go (or similar)': Go required with implied equivalents, not grouped. Kubernetes / remediation is 'Bonus: X or Y'. Prose-style 'Who You Are' section with no bullets. Relabeled to README rules: soft skill moved to acceptable; long duty clauses acceptable."
+}

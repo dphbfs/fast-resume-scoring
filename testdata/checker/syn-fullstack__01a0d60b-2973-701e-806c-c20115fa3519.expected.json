@@ -1,0 +1,212 @@
+{
+ "job": "01a0d60b-2973-701e-806c-c20115fa3519",
+ "resume": "syn-fullstack",
+ "skip": [
+  "10+ years software engineering"
+ ],
+ "links": {
+  "automotive": [
+   {
+    "quote": "Built a React parts-ordering portal for 400 dealerships",
+    "strength": "strong"
+   },
+   {
+    "quote": "Full-stack engineer with 11 years",
+    "strength": "weak"
+   }
+  ],
+  "e-commerce": [
+   {
+    "quote": "Built checkout and catalog features",
+    "strength": "strong"
+   },
+   {
+    "quote": "Full-stack engineer with 11 years",
+    "strength": "weak"
+   }
+  ],
+  "React": [
+   {
+    "quote": "Built a React parts-ordering portal",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built checkout and catalog features",
+    "strength": "strong"
+   },
+   {
+    "quote": "Frontend: React, TypeScript",
+    "strength": "weak"
+   }
+  ],
+  "microservices": [
+   {
+    "quote": "Built a React parts-ordering portal",
+    "strength": "strong"
+   }
+  ],
+  "serverless": [
+   {
+    "quote": "Built AWS Lambda functions",
+    "strength": "strong"
+   }
+  ],
+  "Kubernetes": [
+   {
+    "quote": "Ran services on Amazon EKS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cloud: AWS, Kubernetes, Terraform",
+    "strength": "weak"
+   }
+  ],
+  "PostgreSQL": [
+   {
+    "quote": "Stored product catalogs in MongoDB",
+    "strength": "strong"
+   },
+   {
+    "quote": "Backend: Node.js, Python, PostgreSQL, MongoDB",
+    "strength": "weak"
+   }
+  ],
+  "MongoDB": [
+   {
+    "quote": "Stored product catalogs in MongoDB",
+    "strength": "strong"
+   },
+   {
+    "quote": "Backend: Node.js, Python, PostgreSQL, MongoDB",
+    "strength": "weak"
+   }
+  ],
+  "AWS": [
+   {
+    "quote": "Ran services on Amazon EKS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built AWS Lambda functions",
+    "strength": "strong"
+   },
+   {
+    "quote": "Moved order events onto Amazon SQS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cloud: AWS, Kubernetes, Terraform",
+    "strength": "weak"
+   }
+  ],
+  "supply chain systems": [
+   {
+    "quote": "Integrated supplier EDI",
+    "strength": "partial"
+   },
+   {
+    "quote": "Evaluated three warehouse-management vendors",
+    "strength": "partial"
+   }
+  ],
+  "procurement systems": [
+   {
+    "quote": "Integrated supplier EDI",
+    "strength": "strong"
+   }
+  ],
+  "e-commerce systems": [
+   {
+    "quote": "Built checkout and catalog features",
+    "strength": "strong"
+   },
+   {
+    "quote": "Stored product catalogs in MongoDB",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built a React parts-ordering portal",
+    "strength": "strong"
+   }
+  ],
+  "Infrastructure as Code": [
+   {
+    "quote": "Ran services on Amazon EKS",
+    "strength": "strong"
+   },
+   {
+    "quote": "Cloud: AWS, Kubernetes, Terraform",
+    "strength": "weak"
+   }
+  ],
+  "cloud-native design patterns": [
+   {
+    "quote": "Moved order events onto Amazon SQS",
+    "strength": "partial"
+   },
+   {
+    "quote": "Ran services on Amazon EKS",
+    "strength": "partial"
+   },
+   {
+    "quote": "Cloud: AWS, Kubernetes, Terraform",
+    "strength": "weak"
+   }
+  ],
+  "API design": [
+   {
+    "quote": "Designed public REST APIs",
+    "strength": "strong"
+   }
+  ],
+  "event-driven messaging": [
+   {
+    "quote": "Moved order events onto Amazon SQS",
+    "strength": "strong"
+   }
+  ],
+  "EDI integration": [
+   {
+    "quote": "Integrated supplier EDI",
+    "strength": "strong"
+   }
+  ],
+  "CRM platforms": [
+   {
+    "quote": "Synced customer records with Salesforce",
+    "strength": "strong"
+   }
+  ],
+  "full stack development": [
+   {
+    "quote": "Built checkout and catalog features",
+    "strength": "strong"
+   },
+   {
+    "quote": "Full-stack engineer with 11 years",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built a React parts-ordering portal",
+    "strength": "strong"
+   }
+  ],
+  "integration services": [
+   {
+    "quote": "Integrated supplier EDI",
+    "strength": "strong"
+   },
+   {
+    "quote": "Synced customer records with Salesforce",
+    "strength": "strong"
+   }
+  ],
+  "third-party platform evaluation": [
+   {
+    "quote": "Evaluated three warehouse-management vendors",
+    "strength": "strong"
+   }
+  ]
+ },
+ "notes": "Missing on purpose: manufacturing, ERP platforms, Agile."
+}

@@ -1,0 +1,88 @@
+## Cockroachlabs - Sr. Corporate Security Engineer
+
+🔗 [Apply](https://www.cockroachlabs.com/careers/job/?gh_jid=8156737)
+
+### Stack & Responsibilities
+- Category-defining tech. Career-defining work.
+- For more than a decade, Cockroach Labs has built database technology trusted to power some of the world's most mission-critical applications. Now, as AI transforms how software is created and operated, the infrastructure behind it has to keep pace. Cockroach Continuum is built to meet this moment, bringing individual databases together into one fleet designed for agentic applications, where AI agents help teams provision, scale, and optimize workloads at machine speed.
+- At Cockroach Labs, you'll solve problems that didn't exist five years ago alongside people who believe the simplest solutions often require the most sophisticated thinking. Your work will run in production at some of the most innovative companies in the world. The people who thrive here are the ones who want to own that opportunity.  
+- Cockroach Labs is looking for a Senior Corporate Security Engineer to help protect our endpoints, cloud platforms, internal applications, and enterprise SaaS environment.
+- This is a hands-on, cross-functional role with a particular focus on AI governance, data protection, and corporate security operations. You’ll help shape how Cockroach Labs securely adopts AI tools and agents, strengthen our DLP and SaaS security controls, and lead security initiatives from design through implementation.
+- We’re looking for a well-rounded security engineer who can balance strong security practices with the needs of the business. You should be comfortable working across IT and security systems, partnering with teams throughout the company, and navigating emerging risks in a rapidly changing AI landscape. This role offers the opportunity to take meaningful ownership of our corporate security program while working on a wide range of high-impact projects.
+- To be eligible for this role, you must be based in the NYC area. 
+- Help build and manage our AI governance program, including security controls for AI tools, agents, MCP connections, and data flows.
+- Develop and secure internal applications hosted on GCP, including our internal LLM gateway.
+- Design and maintain DLP, data classification, and governance controls that protect sensitive data while enabling the business.
+- Administer and optimize CASB and SaaS security controls across cloud applications.
+- Assess security risks for internal applications, AI use cases, and third-party tools.
+- Monitor and respond to security alerts and incidents across email, endpoints, SaaS applications, and cloud environments.
+- Identify and reduce risks related to Shadow IT, Shadow AI, and SaaS sprawl.
+- Build automations that improve security visibility, response, and operational efficiency.
+- Partner with IT, Legal, Compliance, and Security teams on access management, endpoint security, regulatory requirements, and third-party risk.
+- Lead corporate security projects from design through implementation.
+- 5+ years of experience in corporate security, security operations, IT security, or a related field.
+- Experience owning a security program, major initiative, or complex cross-functional project.
+- Hands-on experience with DLP, CASB, or SaaS security tools, including creating and tuning policies.
+
+### Full Job Description
+Category-defining tech. Career-defining work.
+For more than a decade, Cockroach Labs has built database technology trusted to power some of the world's most mission-critical applications. Now, as AI transforms how software is created and operated, the infrastructure behind it has to keep pace. Cockroach Continuum is built to meet this moment, bringing individual databases together into one fleet designed for agentic applications, where AI agents help teams provision, scale, and optimize workloads at machine speed.
+At Cockroach Labs, you'll solve problems that didn't exist five years ago alongside people who believe the simplest solutions often require the most sophisticated thinking. Your work will run in production at some of the most innovative companies in the world. The people who thrive here are the ones who want to own that opportunity.  
+Cockroach Labs is looking for a Senior Corporate Security Engineer to help protect our endpoints, cloud platforms, internal applications, and enterprise SaaS environment.
+This is a hands-on, cross-functional role with a particular focus on AI governance, data protection, and corporate security operations. You’ll help shape how Cockroach Labs securely adopts AI tools and agents, strengthen our DLP and SaaS security controls, and lead security initiatives from design through implementation.
+We’re looking for a well-rounded security engineer who can balance strong security practices with the needs of the business. You should be comfortable working across IT and security systems, partnering with teams throughout the company, and navigating emerging risks in a rapidly changing AI landscape. This role offers the opportunity to take meaningful ownership of our corporate security program while working on a wide range of high-impact projects.
+To be eligible for this role, you must be based in the NYC area. 
+Help build and manage our AI governance program, including security controls for AI tools, agents, MCP connections, and data flows.
+Develop and secure internal applications hosted on GCP, including our internal LLM gateway.
+Design and maintain DLP, data classification, and governance controls that protect sensitive data while enabling the business.
+Administer and optimize CASB and SaaS security controls across cloud applications.
+Assess security risks for internal applications, AI use cases, and third-party tools.
+Monitor and respond to security alerts and incidents across email, endpoints, SaaS applications, and cloud environments.
+Identify and reduce risks related to Shadow IT, Shadow AI, and SaaS sprawl.
+Build automations that improve security visibility, response, and operational efficiency.
+Partner with IT, Legal, Compliance, and Security teams on access management, endpoint security, regulatory requirements, and third-party risk.
+Lead corporate security projects from design through implementation.
+5+ years of experience in corporate security, security operations, IT security, or a related field.
+Experience owning a security program, major initiative, or complex cross-functional project.
+Hands-on experience with DLP, CASB, or SaaS security tools, including creating and tuning policies.
+Experience securing cloud-hosted applications and corporate IT environments.
+A strong understanding of identity and access management, endpoints, email, file-sharing systems, networks, and enterprise SaaS applications.
+Familiarity with the security and data risks associated with AI tools, applications, agents, and integrations.
+Experience conducting risk assessments, gap assessments, or threat modeling.
+Strong project management, communication, and cross-functional collaboration skills.
+Bonus Points
+Experience building AI governance controls or securing AI applications and agents.
+Experience with Netskope, Zscaler, GCP, Okta, Google Workspace, CrowdStrike Falcon, or similar technologies.
+Experience with SIEM, SOAR, and security automation tools such as Tines or Python.
+Previous experience in IT support or systems administration.
+Familiarity with frameworks such as NIST, SOC 2, ISO 27001, GDPR, or CIS Critical Controls.
+Experience using AI development tools such as Claude Code or Cursor.
+Relevant security certifications, such as Security+, CISSP, or CCSP.
+What to Expect
+In your first 30 days, you will become an integrated member of our Corporate Engineering Team. You’ll become familiar with our existing systems and processes. We believe that it's essential for you to take this first month to become familiar with our technology, processes and our company.
+In your second month, you will collaborate with the team in order to evaluate the current state of our AI governance program and propose a course for improvements, scoping out projects to bolster our security posture. You will work to improve the AI governance program, tracking goals and milestones along the way.
+In your third month, you will begin to take the reins of various projects within the scope of the Corporate Security team, leading initiatives from design to implementation. You will be a key player within the company, managing the AI governance program, helping to build out our AI Gateway and other infrastructure. You will help other teams manage their AI workloads, build AI applications, and support the secure hosting of internal tools. 
+Elliot Kartus — Manager, Corporate Security (your manager)
+Elliot has worked in IT nearly all his life, starting with opening ports on the family’s router to play Counter Strike. Since then, he has worked in various IT environments from small businesses to large enterprises. Having found an interest in IT Security, Elliot pivoted in that direction and joined Cockroach Labs. Elliot has worked as a Corporate Security Engineer, the team lead, before moving to manager of Corporate Security. 
+Adam Brennick — Director, Security & GRC (your manager’s manager)
+Adam has a diverse background, having supported security and compliance efforts across companies in multiple industries. Prior to his security and compliance-focused work, he held program manager, project manager, and IT manager roles at larger organizations, including MobileIron, IGT, Flex, and Dell. When he is not working on securing Cockroach Labs, Adam enjoys spending time with his two young kids, golfing, and playing retro video games.
+Cockroach Labs is proud to be an Equal Opportunity Employer building a diverse and inclusive workforce. If you need additional accommodations to feel comfortable during your interview process, please email us at [email removed] .
+Cockroach Labs has a hybrid work model, with Roachers that are local to one of our offices coming in on Mondays, Tuesdays, and Thursdays and working flexibly the rest of the week. While we’ve learned valuable lessons working remotely, nothing can replace the connection, creativity, and fun that occurs when Roachers get together and we are committed to fostering a workplace that encourages collaboration and allows us all to do our best work.
+Stock Options
+Medical Insurance
+Vision Insurance
+Dental Insurance
+Life and Disability Insurance
+Professional Development Funds
+Flexible Time Off
+Paid Holidays
+Paid Sick Days
+Paid Parental Leave
+Retirement Benefits
+Mental Wellbeing Benefits
+The annual anticipated base salary range for U.S. candidates for this role is listed in USD below. Salary is one component of the Cockroach Labs’ Total Rewards package, which also includes, for each employee: stock options, medical insurance, vision insurance, dental insurance, life and disability insurance, funds towards professional development resources, flexible paid time off, 11 paid holidays a year, 10 paid sick days a year, paid parental leave, a 401(k) plan, and wellbeing benefits.  
+We set standard ranges for all U.S.-based roles based on function, level, and geographic location, benchmarked against similar stage growth companies. Actual salaries may vary and fall outside of this range depending on factors such as a candidate’s qualifications, geographic location, skills, experience, and competencies. In addition, we are often open to a wide variety of profiles, and recognize that the person we hire may be less experienced (or more senior) than this job description as posted. 
+Salaries for candidates outside the U.S. will vary based on local compensation structures. 
+This position will remain posted until filled. Applicants should apply via our Careers Page.
+Annual Anticipated Base Salary Range (U.S)
+$131,000 — $174,100 USD

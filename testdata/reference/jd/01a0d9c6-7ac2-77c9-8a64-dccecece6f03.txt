@@ -1,0 +1,65 @@
+## RELX - Senior Software Engineer
+
+🔗 [Apply](https://relx.wd3.myworkdayjobs.com/relx/job/philadelphia-pa/senior-software-engineer-i_r118682-2)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building reusable generative AI services for Elsevier’s research, healthcare, and life sciences content platform. Leading architecture, backend development, Kubernetes deployment, and engineering standards.
+Senior Software Engineer building Elsevier’s scalable generative AI platform services
+- Salary: $86,600 - $144,400 per year
+- Tech stack: Cloud, Distributed Systems, Java, Kubernetes, Python
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Lead architectural design and ensure technical consistency
+- Design, develop, and maintain generative AI services and reusable components using mostly Python and some Java
+- Define and promote engineering best practices, including scalability, observability, testing, and CI/CD
+- Contribute to system designs spanning multiple services and modules
+- Collaborate with product, platform, and research teams to translate AI prototypes into production-ready capabilities
+- Deploy scalable, containerized applications in a Kubernetes (EKS) environment
+- Lead resolution of complex technical challenges across distributed systems
+- Mentor less-senior developers on engineering principles, GenAI patterns, and platform development
+- 4–6 years of software engineering experience
+- Proven experience contributing to technical architecture for large-scale platforms or services
+- Solid understanding of software development methodologies and data modeling principles
+- Deep expertise in Python and Java
+- Proficiency in backend development
+- Familiarity with modern AI/LLM tools and frameworks, such as LangChain and LangGraph
+- Experience with Kubernetes (EKS) and cloud-native architectures
+- Proven track record building scalable backend systems and APIs
+
+### Full Job Description
+Summary:
+Senior Software Engineer building reusable generative AI services for Elsevier’s research, healthcare, and life sciences content platform. Leading architecture, backend development, Kubernetes deployment, and engineering standards.
+Senior Software Engineer building Elsevier’s scalable generative AI platform services
+Role description:
+• Lead architectural design and ensure technical consistency
+• Design, develop, and maintain generative AI services and reusable components using mostly Python and some Java
+• Define and promote engineering best practices, including scalability, observability, testing, and CI/CD
+• Contribute to system designs spanning multiple services and modules
+• Collaborate with product, platform, and research teams to translate AI prototypes into production-ready capabilities
+• Deploy scalable, containerized applications in a Kubernetes (EKS) environment
+• Lead resolution of complex technical challenges across distributed systems
+• Mentor less-senior developers on engineering principles, GenAI patterns, and platform development
+• Participate in code reviews, architecture sessions, and cross-team initiatives
+• Stay informed about generative AI developments and advocate for responsible integration into product ecosystems
+Role requirements:
+• 4–6 years of software engineering experience
+• Proven experience contributing to technical architecture for large-scale platforms or services
+• Solid understanding of software development methodologies and data modeling principles
+• Deep expertise in Python and Java
+• Proficiency in backend development
+• Familiarity with modern AI/LLM tools and frameworks, such as LangChain and LangGraph
+• Experience with Kubernetes (EKS) and cloud-native architectures
+• Proven track record building scalable backend systems and APIs
+• Experience mentoring engineers and contributing to architectural decisions
+• Ability to work collaboratively across functions in an Agile or Kanban environment
+• Experience operationalizing LLMs or building internal AI platforms is nice to have
+• Familiarity with observability practices is nice to have
+• Exposure to knowledge graphs or semantic search systems is nice to have
+Benefits:
+• Annual incentive bonus
+• Country-specific benefits
+• Accommodation or adjustment support for applicants with disabilities or other needs
+Tech stack:
+Cloud, Distributed Systems, Java, Kubernetes, Python
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

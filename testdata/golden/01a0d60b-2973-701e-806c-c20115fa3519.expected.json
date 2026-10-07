@@ -1,0 +1,33 @@
+{
+  "requirements": [
+    {"value": "10+ years software engineering", "aliases": ["10+ years in software engineering"], "tier": "required"},
+    {"value": "automotive", "aliases": ["automotive industry"], "tier": "preferred"},
+    {"value": "e-commerce", "aliases": [], "tier": "preferred"},
+    {"value": "manufacturing", "aliases": [], "tier": "preferred"},
+    {"value": "React", "aliases": ["React.js"], "tier": "required"},
+    {"value": "microservices", "aliases": [], "tier": "required"},
+    {"value": "serverless", "aliases": [], "tier": "required"},
+    {"value": "Kubernetes", "aliases": [], "tier": "required"},
+    {"value": "PostgreSQL", "aliases": ["Postgres"], "tier": "required"},
+    {"value": "MongoDB", "aliases": [], "tier": "required"},
+    {"value": "AWS", "aliases": ["AWS services"], "tier": "required"},
+    {"value": "supply chain systems", "aliases": ["supply chain"], "tier": "required"},
+    {"value": "procurement systems", "aliases": ["procurement"], "tier": "required"},
+    {"value": "e-commerce systems", "aliases": [], "tier": "required"},
+    {"value": "Infrastructure as Code", "aliases": ["infrastructure-as-code", "IaC"], "tier": "required"},
+    {"value": "cloud-native design patterns", "aliases": ["cloud-native"], "tier": "required"},
+    {"value": "API design", "aliases": [], "tier": "required"},
+    {"value": "event-driven messaging", "aliases": ["event-driven architecture"], "tier": "required"},
+    {"value": "EDI integration", "aliases": ["EDI", "integration patterns", "EDI integration patterns"], "tier": "required"},
+    {"value": "CRM platforms", "aliases": ["CRM"], "tier": "required"},
+    {"value": "ERP platforms", "aliases": ["ERP"], "tier": "required"},
+    {"value": "full stack development", "aliases": ["full stack applications"], "tier": "mentioned"},
+    {"value": "integration services", "aliases": ["implement integrations"], "tier": "mentioned"},
+    {"value": "third-party platform evaluation", "aliases": ["evaluate third-party platforms, SaaS tools", "SaaS tools"], "tier": "mentioned"},
+    {"value": "Agile", "aliases": ["agile teams"], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["automotive", "e-commerce", "manufacturing"], ["microservices", "serverless"], ["supply chain systems", "procurement systems", "e-commerce systems"]],
+  "acceptable": ["translate technical complexity into business outcomes", "ability to translate", "clean, maintainable, and well-tested code", "design decisions into high-quality code", "translate architectural patterns", "Collaborating across departments to enhance operational workflows"],
+  "filler": ["fast-moving, resource-constrained environments", "Senior Full-stack Software Engineer"],
+  "notes": "Industry background is 'preferably', so preferred. 'microservices/serverless' reads as either-or. Relabeled to README rules."
+}

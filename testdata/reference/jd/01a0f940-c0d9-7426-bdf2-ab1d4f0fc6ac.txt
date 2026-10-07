@@ -1,0 +1,79 @@
+## Automox - Full-Stack Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/automox/jobs/5440188008)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Full-stack engineer building Vue, Java, Laravel, and AWS features for Automox’s cloud-native endpoint-management platform. Owning customer-facing functionality, APIs, data models, testing, and observability.
+Full-stack engineer building endpoint-management features for Automox’s cloud-native IT operations platform
+- Salary: $130,000 - $150,000 per year
+- Tech stack: AWS, Java, JavaScript, Laravel, Node.js, Spring, Spring Boot, SpringBoot, SQL, TypeScript, Vue.js
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Build and ship customer-facing features across the full stack, including Vue components, Laravel, Spring Boot, TypeScript-driven AWS Lambda services, data models, and migrations
+- Use AI coding tools and review their output to the same standard as personally written code
+- Design and document API endpoints, including pagination, filtering, and error handling for large customer environments
+- Instrument releases with logging and metrics, monitor post-release performance, and fix issues identified by data
+- Work with product and design to vet the roadmap and turn requirements into technical plans and shippable increments
+- Write unit and end-to-end tests
+- Review code and participate in code reviews
+- Improve performance, technical debt, and maintainability
+- Three or more years building and shipping enterprise web applications
+- Proficiency in TypeScript with a modern component framework; Vue preferred
+- Server-side development experience in an object-oriented language; Java with Spring Boot and Typescript on Node.js preferred
+- Working knowledge of relational and non-relational databases, including SQL and an eye for queries that won't scale
+- Experience writing automated tests for the code you ship
+- Strong written communication
+- Passion for solving customer problems
+- Experience working with fast-moving cross-functional teams including engineering, design, and product
+
+### Full Job Description
+Summary:
+Full-stack engineer building Vue, Java, Laravel, and AWS features for Automox’s cloud-native endpoint-management platform. Owning customer-facing functionality, APIs, data models, testing, and observability.
+Full-stack engineer building endpoint-management features for Automox’s cloud-native IT operations platform
+Role description:
+• Build and ship customer-facing features across the full stack, including Vue components, Laravel, Spring Boot, TypeScript-driven AWS Lambda services, data models, and migrations
+• Use AI coding tools and review their output to the same standard as personally written code
+• Design and document API endpoints, including pagination, filtering, and error handling for large customer environments
+• Instrument releases with logging and metrics, monitor post-release performance, and fix issues identified by data
+• Work with product and design to vet the roadmap and turn requirements into technical plans and shippable increments
+• Write unit and end-to-end tests
+• Review code and participate in code reviews
+• Improve performance, technical debt, and maintainability
+• Participate in the team's on-call rotation
+• Contribute to the shared component library
+• Collaborate with product managers, UX designers, and Quality Engineers
+• Regularly ship features to customers and own feature development end to end
+Role requirements:
+• Three or more years building and shipping enterprise web applications
+• Proficiency in TypeScript with a modern component framework; Vue preferred
+• Server-side development experience in an object-oriented language; Java with Spring Boot and Typescript on Node.js preferred
+• Working knowledge of relational and non-relational databases, including SQL and an eye for queries that won't scale
+• Experience writing automated tests for the code you ship
+• Strong written communication
+• Passion for solving customer problems
+• Experience working with fast-moving cross-functional teams including engineering, design, and product
+• Experience breaking complex functionality into a simple technical design
+• Comfort moving between a Vue component and a database query in the same day
+• An interest in continuous learning and sharing your knowledge with others
+• An ability to drive changes in technology and processes with humility and tact
+• A sense of ownership and curiosity that keeps you with a problem until you understand it
+• Must be able to pass a federal, state, county background check
+• Complete a local in-person verification
+• Not able to sponsor work visas at this time
+Benefits:
+• Equity for Full-Time Employees
+• 401K Match
+• Flexible PTO, generous sick time policy
+• Comprehensive Health Plans with generous employer contributions
+• 100% Company-paid Short Term/Long Term Disability and Life Insurance
+• Company HSA Contribution: $100-$200 per month based on tier
+• $25 per month Lifestyle Spending Account
+• Internet Reimbursement - $50/month
+• $500 Home office stipend
+• $10k Adoption Benefit
+• Comprehensive Family Planning Covered on Meritian Medical Plan
+• Competitive Salary
+Tech stack:
+AWS, Java, JavaScript, Laravel, Node.js, Spring, Spring Boot, SpringBoot, SQL, TypeScript, Vue.js
+Company sponsorship flag: sponsorsH1B=true.

@@ -1,0 +1,36 @@
+Senior Software Engineer -Golang (Security Services Integrations)
+
+Elastic, the Search AI Company, enables everyone to find the answers they need in real time, using all their data, at scale — unleashing the potential of businesses and people. The Elastic Search AI Platform, used by more than 50% of the Fortune 500, brings together the precision of search and the intelligence of AI to enable everyone to accelerate the results that matter. By taking advantage of all structured and unstructured data — securing and protecting private information more effectively — Elastic’s complete, cloud-based solutions for search, security, and observability help organizations deliver on the promise of AI.
+What is The Role
+You'll build and own the capabilities that get security telemetry into Elastic from lightweight host agents (Beats) collecting endpoint, network, and event data, to Elastic managed integrations extracting from hundreds of third-party SaaS, cloud, and security-vendor APIs. Your work spans two of Elastic's most-used open-source repositories (elastic/beats and elastic/integrations) and directly powers the data foundation of Elastic Security (SIEM). This team owns the full ingestion surface: on-host collectors, the shared input framework, and the vendor integration catalog.
+What You Will Be Doing
+Design, build, and maintain Beats data shippers, Filebeat inputs and modules, plus host/endpoint collectors such as Auditbeat, Winlogbeat, Packetbeat, and Osquerybeat in Go.
+Develop and maintain security integration packages for third-party sources (identity/IdP, EDR/XDR, email security, firewalls, cloud security, threat intel, vulnerability management).
+Build robust Elastic managed/API-based collection against external vendor and cloud-provider APIs (AWS, Azure, GCP), handling auth (OAuth2, tokens), pagination, rate limits, and resilience .
+Improve reliability, performance, and observability of collection at scale; own quality for your areas and drive down failing-test and reliability noise.
+Review community and partner contributions, mentor engineers, and set technical direction across the ingestion surface.
+Collaborate with product, security research, and field teams to prioritize high-impact sources and unblock customer onboarding.
+Apply LLMs and AI automation to ease and accelerate the work e.g. scaffolding new integrations/modules, drafting and normalizing ECS mappings and ingest pipelines, generating parsers and tests from sample data, summarizing vendor API docs, and triaging failing-test and reliability noise.
+Build and improve internal AI-assisted tooling and automation (scripts, agents, CI steps) that reduce toil across a large catalog, and establish good practices for using AI safely and effectively (review, validation, guarding against hallucinated mappings).
+What You Bring
+5+ years of software engineering experience building production backend/data systems. Solid proficiency in Go (or robust systems-language experience with a track record of ramping quickly).
+Experience integrating with third-party/cloud APIs authentication, pagination, rate limiting, retries, and handling unreliable upstreams.
+Solid understanding of data pipelines / ETL / log & event processing and structured data modeling.
+Experience with agent-based or host-level data collection (logs, metrics, network, OS/endpoint telemetry) and/or building data connectors at scale.
+Comfort operating in large open-source codebases: proficient testing discipline, code review, and public collaboration.
+Hands-on experience using LLMs / AI coding assistants and building AI-driven automation to accelerate engineering work, with good judgment about where AI helps and where it needs human validation.
+Additional Information - We Take Care of Our People
+As a distributed company, diversity drives our identity. Whether you’re looking to launch a new career or grow an existing one, Elastic is the type of company where you can balance great work with great life. Your age is only a number. It doesn’t matter if you’re just out of college or your children are; we need you for what you can do.
+We strive to have parity of benefits across regions and while regulations differ from place to place, we believe taking care of our people is the right thing to do.
+Competitive pay based on the work you do here and not your previous salary
+Health coverage for you and your family in many locations
+Ability to craft your calendar with flexible locations and schedules for many roles
+Generous number of vacation days each year
+Increase your impact - We match up to $2000 (or local currency equivalent) for financial donations and service
+Up to 40 hours each year to use toward volunteer projects you love
+Embracing parenthood with minimum of 16 weeks of parental leave
+Different people approach problems differently. We need that. Elastic is an equal opportunity employer and is committed to creating an inclusive culture that celebrates different perspectives, experiences, and backgrounds. Qualified applicants will receive consideration for employment without regard to race, ethnicity, color, religion, sex, pregnancy, sexual orientation, gender perception or identity, national origin, age, marital status, protected veteran status, disability status, or any other basis protected by federal, state or local law, ordinance or regulation.
+We welcome individuals with disabilities and strive to create an accessible and inclusive experience for all individuals. To request an accommodation during the application or the recruiting process, please email [email removed] .  We will reply to your request within 24 business hours of submission.
+Applicants have rights under Federal Employment Laws, view posters linked below: Family and Medical Leave Act (FMLA) Poster;   Pay Transparency Nondiscrimination Provision Poster; Employee Polygraph Protection Act (EPPA) Poster and Know Your Rights (Poster)
+Elasticsearch develops and distributes technology and information that is subject to U.S. and other countries’ export controls and licensing requirements for individuals who are located in or are nationals of the following sanctioned countries and regions: Belarus, Cuba, Iran, North Korea, Syria, or Russia, including the Ukrainian territories annexed by Russia (The Crimea region of Ukraine, The Donetsk People's Republic (DNR), The Luhansk People's Republic (LNR), Kherson or Zaporizhzhia). If you are located in or are a national of one of the listed countries or regions, an export license may be required as a condition of your employment in this role. Please note that national origin and/or nationality do not affect eligibility for employment with Elastic.
+Please see  here  for our Privacy Statement.

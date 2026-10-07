@@ -1,0 +1,78 @@
+## Granicus - Senior Software Engineer
+
+🔗 [Apply](https://careers-granicus.icims.com/jobs/10489/senior-software-engineer/job?in_iframe=1)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Python AI-agent systems, scraping frameworks, and React interfaces. Improving Granicus cloud solutions that connect governments with residents.
+Senior Software Engineer building AI-powered GovTech platforms at Granicus
+- Tech stack: JavaScript, Microservices, Python, React, TypeScript
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design, develop, and maintain scalable backend services using Python, FastAPI, and LangChain
+- Build and maintain scraping frameworks using Firecrawl, Playwright, or similar technologies
+- Develop and orchestrate multi-agent systems, including LangFlow pipelines and agent-to-agent communication
+- Deploy multi-agent systems to production with robust monitoring and failover mechanisms
+- Integrate agents with Salesforce, SharePoint, Slack, and internal business systems
+- Create responsive, user-friendly frontend components using React.js or similar frameworks
+- Implement real-time interfaces using SSE or WebSocket
+- Monitor agent performance and interaction logs using observability platforms such as LangFuse
+- 8–12 years of full-stack development experience
+- Expert-level Python proficiency
+- Strong backend experience with FastAPI, asyncio, and scalable microservices
+- Experience building and deploying web scraping frameworks such as Firecrawl, Scrapy, and Playwright
+- Hands-on experience with agent-based systems
+- Experience with agent-to-agent (A2A) communication
+- Experience with LangFlow orchestration
+- Experience deploying multi-agent systems in production
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Python AI-agent systems, scraping frameworks, and React interfaces. Improving Granicus cloud solutions that connect governments with residents.
+Senior Software Engineer building AI-powered GovTech platforms at Granicus
+Role description:
+• Design, develop, and maintain scalable backend services using Python, FastAPI, and LangChain
+• Build and maintain scraping frameworks using Firecrawl, Playwright, or similar technologies
+• Develop and orchestrate multi-agent systems, including LangFlow pipelines and agent-to-agent communication
+• Deploy multi-agent systems to production with robust monitoring and failover mechanisms
+• Integrate agents with Salesforce, SharePoint, Slack, and internal business systems
+• Create responsive, user-friendly frontend components using React.js or similar frameworks
+• Implement real-time interfaces using SSE or WebSocket
+• Monitor agent performance and interaction logs using observability platforms such as LangFuse
+• Mentor junior developers and conduct code reviews
+• Help drive system architecture decisions
+• Collaborate with AI/ML, DevOps, and Product teams in agile environments
+• Support Granicus information security, confidentiality, integrity, availability, and data privacy requirements
+Role requirements:
+• 8–12 years of full-stack development experience
+• Expert-level Python proficiency
+• Strong backend experience with FastAPI, asyncio, and scalable microservices
+• Experience building and deploying web scraping frameworks such as Firecrawl, Scrapy, and Playwright
+• Hands-on experience with agent-based systems
+• Experience with agent-to-agent (A2A) communication
+• Experience with LangFlow orchestration
+• Experience deploying multi-agent systems in production
+• Experience integrating agents with Salesforce, SharePoint, CRMs, or similar systems
+• Frontend development experience using React.js, TypeScript, or other modern frameworks
+• Familiarity with agent observability tools such as LangFuse
+• Experience using developer AI tools such as GitHub Copilot, Winsurf, or equivalents
+• Ability to meet Granicus information security and data privacy responsibilities
+• No degree requirement stated; Granicus notes it does not have degree requirements for most roles
+Benefits:
+• Flexible Time Off
+• Company-Wide Wellbeing Days (paid days off)
+• Work From Home Reimbursement
+• Private health, vision, dental and life insurance – 100% Employer-Paid
+• On-Demand Mental Health Support, including Headspace and other wellness tools
+• Pension Plan and Retirement options
+• Online Learning Platforms
+• Competitive Salary & Bonuses
+• Employee Resource Groups
+• Coffee with Mark sessions
+• Microsoft Teams communities focused on wellness, art, furbabies, family, parenting, and more
+• Special guest discussions on issues impacting employees
+Tech stack:
+JavaScript, Microservices, Python, React, TypeScript
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

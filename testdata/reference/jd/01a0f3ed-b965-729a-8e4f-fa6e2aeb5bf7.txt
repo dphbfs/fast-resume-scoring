@@ -1,0 +1,69 @@
+## LaunchDarkly - Senior Backend Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/launchdarkly/jobs/8008528003)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building scalable backend services for LaunchDarkly’s software delivery and feature-management platform. Leading distributed systems, APIs, observability, and production reliability across engineering teams.
+Senior Backend Engineer building reliable software delivery systems for LaunchDarkly’s feature-management platform
+- Salary: $163,000 - $263,670 per year
+- Tech stack: Python, Rust, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design, build, test, and operate scalable, secure, observable, and maintainable production services and APIs
+- Lead large or ambiguous backend projects from problem definition through delivery and iteration
+- Make and communicate tradeoffs across scalability, performance, reliability, security, maintainability, cost, and delivery speed
+- Identify architectural risks, performance bottlenecks, operational gaps, and technical friction, then drive improvements
+- Improve system observability and operability through metrics, logs, traces, alerting, service-level objectives, and incident follow-through
+- Collaborate with Product, Design, Support, Customer Success, Staff Engineers, Engineering Managers, and other engineering teams
+- Influence technical direction through design documents, architecture discussions, code reviews, and communication
+- Mentor engineers and contribute to inclusive collaboration and continuous improvement
+- 7+ years of experience building and operating production software
+- Strong software engineering fundamentals, including data structures, algorithms, testing, debugging, API design, and distributed-systems concepts
+- Deep experience with a backend language such as Go, Python, Rust, or an equivalent language
+- Experience designing reliable, observable, secure, and maintainable systems
+- Ability to lead technical projects with ambiguous requirements, multiple stakeholders, or cross-team dependencies
+- Sound judgment in architecture, technology choices, operational risk, and tradeoffs
+- Ability to explain complex technical decisions clearly and align technical and non-technical partners
+- Experience mentoring engineers and strengthening team practices
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building scalable backend services for LaunchDarkly’s software delivery and feature-management platform. Leading distributed systems, APIs, observability, and production reliability across engineering teams.
+Senior Backend Engineer building reliable software delivery systems for LaunchDarkly’s feature-management platform
+Role description:
+• Design, build, test, and operate scalable, secure, observable, and maintainable production services and APIs
+• Lead large or ambiguous backend projects from problem definition through delivery and iteration
+• Make and communicate tradeoffs across scalability, performance, reliability, security, maintainability, cost, and delivery speed
+• Identify architectural risks, performance bottlenecks, operational gaps, and technical friction, then drive improvements
+• Improve system observability and operability through metrics, logs, traces, alerting, service-level objectives, and incident follow-through
+• Collaborate with Product, Design, Support, Customer Success, Staff Engineers, Engineering Managers, and other engineering teams
+• Influence technical direction through design documents, architecture discussions, code reviews, and communication
+• Mentor engineers and contribute to inclusive collaboration and continuous improvement
+• Participate in production support and incident response
+• Develop reusable engineering patterns and developer experiences
+Role requirements:
+• 7+ years of experience building and operating production software
+• Strong software engineering fundamentals, including data structures, algorithms, testing, debugging, API design, and distributed-systems concepts
+• Deep experience with a backend language such as Go, Python, Rust, or an equivalent language
+• Experience designing reliable, observable, secure, and maintainable systems
+• Ability to lead technical projects with ambiguous requirements, multiple stakeholders, or cross-team dependencies
+• Sound judgment in architecture, technology choices, operational risk, and tradeoffs
+• Ability to explain complex technical decisions clearly and align technical and non-technical partners
+• Experience mentoring engineers and strengthening team practices
+• Strong ownership of production outcomes and downstream customer impact
+• Comfort learning unfamiliar systems and navigating changing priorities
+Benefits:
+• Restricted Stock Units (RSUs)
+• Health insurance
+• Vision insurance
+• Dental insurance
+• Mental health benefits
+• Remote work arrangement
+• Equal opportunity and diversity commitment
+• Disability accommodation support
+Tech stack:
+Python, Rust, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

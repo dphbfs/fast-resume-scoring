@@ -1,0 +1,237 @@
+{
+ "job": "01a0d60b-3c3e-7713-95bd-f291de851333",
+ "resume": "syn-android",
+ "skip": [
+  "8+ years software engineering",
+  "4+ years mobile application development"
+ ],
+ "links": {
+  "production applications at scale": [
+   {
+    "quote": "Built Android apps in Java for retail clients",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "partial"
+   }
+  ],
+  "full-stack": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "partial"
+   }
+  ],
+  "Android SDK": [
+   {
+    "quote": "Integrated Bluetooth LE sensors through the Android SDK",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   },
+   {
+    "quote": "Android engineer with 9 years",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built Android apps in Java for retail clients",
+    "strength": "strong"
+   }
+  ],
+  "Kotlin": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "Java": [
+   {
+    "quote": "Built Android apps in Java for retail clients",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "integration design": [
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "strong"
+   },
+   {
+    "quote": "Integrated Bluetooth LE sensors",
+    "strength": "partial"
+   },
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "partial"
+   }
+  ],
+  "data synchronization patterns": [
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "strong"
+   },
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   }
+  ],
+  "technical leadership": [
+   {
+    "quote": "Led a team of 5 Android engineers",
+    "strength": "strong"
+   }
+  ],
+  "mentoring": [
+   {
+    "quote": "Mentored two junior engineers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Led a team of 5 Android engineers",
+    "strength": "partial"
+   }
+  ],
+  "CRDT": [
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "partial"
+   }
+  ],
+  "cross-platform mobile development": [
+   {
+    "quote": "Shipped an iOS companion app",
+    "strength": "partial"
+   }
+  ],
+  "iOS": [
+   {
+    "quote": "Shipped an iOS companion app",
+    "strength": "strong"
+   }
+  ],
+  "embedded databases": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "SQLite": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "Realm": [
+   {
+    "quote": "Mobile: Kotlin, Java, Android SDK",
+    "strength": "weak"
+   }
+  ],
+  "technical lead experience": [
+   {
+    "quote": "Led a team of 5 Android engineers",
+    "strength": "strong"
+   }
+  ],
+  "backend or systems development": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "partial"
+   },
+   {
+    "quote": "Other: Python, Linux, Git",
+    "strength": "weak"
+   }
+  ],
+  "Python": [
+   {
+    "quote": "Wrote backend endpoints in Python",
+    "strength": "strong"
+   },
+   {
+    "quote": "Other: Python, Linux, Git",
+    "strength": "weak"
+   }
+  ],
+  "disconnected, low-bandwidth environments": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "offline-capable field apps",
+    "strength": "weak"
+   }
+  ],
+  "local-first architecture": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "offline-capable field apps",
+    "strength": "weak"
+   },
+   {
+    "quote": "Designed a conflict-resolution sync protocol",
+    "strength": "partial"
+   }
+  ],
+  "offline-first persistence": [
+   {
+    "quote": "Built an offline-first Android app",
+    "strength": "strong"
+   },
+   {
+    "quote": "offline-capable field apps",
+    "strength": "weak"
+   }
+  ],
+  "Linux": [
+   {
+    "quote": "Other: Python, Linux, Git",
+    "strength": "weak"
+   }
+  ],
+  "data contracts": [
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "strong"
+   }
+  ],
+  "API boundaries": [
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "partial"
+   }
+  ],
+  "integration architecture": [
+   {
+    "quote": "Defined the JSON data contracts",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Missing on purpose: ATAK/TAK, CoT, MANET, Go, Rust, DoD. Decoy: vector clocks vs CRDT (partial)."
+}

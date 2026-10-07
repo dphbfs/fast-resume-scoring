@@ -1,0 +1,70 @@
+## CSI - Full Stack Software Engineer, .NET, Angular, Azure
+
+🔗 [Apply](https://csiweb.wd1.myworkdayjobs.com/csi_careers/job/remote-usa/full-stack-software-engineer--net---angular---azure-_r-100693)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Full Stack Software Engineer building .NET, Angular, and Azure applications for CSI, a banking technology provider. Developing APIs, modernizing platforms, and automating financial operations.
+Full Stack Software Engineer building .NET, Angular, and Azure solutions for financial institutions
+- Tech stack: Angular, Azure, Cloud, JavaScript, React, SQL, Vault, .NET
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design, develop, test, and maintain full stack applications using modern Microsoft technologies
+- Build and enhance REST APIs supporting internal and customer-facing products
+- Develop user interfaces using Angular and modern web technologies
+- Create scalable backend solutions using .NET, C#, and SQL Server
+- Support modernization initiatives, technical debt reduction, and application upgrades
+- Develop automation solutions for operational and conversion teams
+- Participate in code reviews, testing, troubleshooting, and production support
+- Collaborate with developers, product managers, and business stakeholders to translate requirements into technical solutions
+- 3+ years of professional software development experience
+- Strong experience with .NET / .NET Core, C#, SQL Server or other relational databases, Angular, React, or similar modern JavaScript framework, HTML, and CSS
+- Experience developing and consuming RESTful APIs
+- Experience with source control and modern software development practices
+- Strong problem-solving and debugging skills
+- Excellent communication and collaboration abilities
+- Ability to work independently while contributing to a team-oriented environment
+- Must be authorized to work in the United States without visa sponsorship now or in the future
+
+### Full Job Description
+Summary:
+Full Stack Software Engineer building .NET, Angular, and Azure applications for CSI, a banking technology provider. Developing APIs, modernizing platforms, and automating financial operations.
+Full Stack Software Engineer building .NET, Angular, and Azure solutions for financial institutions
+Role description:
+• Design, develop, test, and maintain full stack applications using modern Microsoft technologies
+• Build and enhance REST APIs supporting internal and customer-facing products
+• Develop user interfaces using Angular and modern web technologies
+• Create scalable backend solutions using .NET, C#, and SQL Server
+• Support modernization initiatives, technical debt reduction, and application upgrades
+• Develop automation solutions for operational and conversion teams
+• Participate in code reviews, testing, troubleshooting, and production support
+• Collaborate with developers, product managers, and business stakeholders to translate requirements into technical solutions
+• Contribute to CI/CD, DevOps, and cloud-based initiatives
+• Provide mentorship and technical guidance to junior team members as appropriate
+• Work on internal applications, conversion tools, deposit and loan API enhancements, customer-requested improvements, modernization projects, and AI-assisted development initiatives
+Role requirements:
+• 3+ years of professional software development experience
+• Strong experience with .NET / .NET Core, C#, SQL Server or other relational databases, Angular, React, or similar modern JavaScript framework, HTML, and CSS
+• Experience developing and consuming RESTful APIs
+• Experience with source control and modern software development practices
+• Strong problem-solving and debugging skills
+• Excellent communication and collaboration abilities
+• Ability to work independently while contributing to a team-oriented environment
+• Must be authorized to work in the United States without visa sponsorship now or in the future
+• Angular experience preferred
+• Experience with API testing tools such as Postman or ReadyAPI preferred
+• Experience with Azure cloud technologies, Azure DevOps, App Configuration, or Key Vault preferred
+• Experience with containerization technologies preferred
+• Banking, fintech, or financial services experience preferred
+• Exposure to AI-assisted development tools such as GitHub Copilot, Claude, or similar technologies preferred
+Benefits:
+• Competitive salary
+• Eligibility for incentive awards based on individual and business performance
+• Comprehensive range of benefits
+• Equal opportunity employment
+• Recruitment accommodations for accessibility needs
+Tech stack:
+Angular, Azure, Cloud, JavaScript, React, SQL, Vault, .NET
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

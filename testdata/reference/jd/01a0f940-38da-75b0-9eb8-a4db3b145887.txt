@@ -1,0 +1,65 @@
+## Prenuvo - Senior Backend Engineer, Data
+
+🔗 [Apply](https://boards.greenhouse.io/prenuvo/jobs/4738973005)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building Python services, APIs, and pipelines for Prenuvo’s proactive whole-body healthcare scanning platform. Improving clinical data reliability across products, analytics, reporting, and AI workflows.
+Senior Backend Engineer building clinical data infrastructure for Prenuvo’s proactive healthcare scans
+- Salary: $165,000 - $180,000 per year
+- Tech stack: Cloud, Django, Flask, Python
+- Design, build, and operate Python backend services and RESTful APIs for managing clinical data
+- Evolve scalable clinical data models using FHIR and HL7 standards
+- Establish boundaries, ownership, and contracts across clinical data domains
+- Build and maintain batch and event-driven pipelines that ingest, transform, validate, and deliver clinical data
+- Implement automated validation, testing, reconciliation, and monitoring for data quality and reliability
+- Develop transformation layers and curated datasets for clinical reporting, operational analytics, product functionality, and AI use cases
+- Implement data documentation, lineage, provenance, versioning, retention, and auditability practices
+- Collaborate with clinical, product, application engineering, architecture, data analytics, and AI teams
+- 6–8 years of software engineering experience, including ownership of production services and databases
+- Strong experience building production Python applications and APIs using FastAPI, Django, or Flask
+- Experience designing and operating scalable ingestion, transformation, and delivery pipelines using batch, streaming, or event-driven patterns
+- Hands-on experience with clinical or healthcare data
+- Strong understanding of FHIR resources, HL7 standards, terminology, and interoperability challenges
+- Experience designing normalized, dimensional, and domain-oriented data models
+- Ability to independently lead complex initiatives, make sound technical decisions, and balance short-term delivery with long-term maintainability
+- Legally authorized to work in the United States at the time of hire and must not require employer sponsorship for a work visa, current or future
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building Python services, APIs, and pipelines for Prenuvo’s proactive whole-body healthcare scanning platform. Improving clinical data reliability across products, analytics, reporting, and AI workflows.
+Senior Backend Engineer building clinical data infrastructure for Prenuvo’s proactive healthcare scans
+Role description:
+• Design, build, and operate Python backend services and RESTful APIs for managing clinical data
+• Evolve scalable clinical data models using FHIR and HL7 standards
+• Establish boundaries, ownership, and contracts across clinical data domains
+• Build and maintain batch and event-driven pipelines that ingest, transform, validate, and deliver clinical data
+• Implement automated validation, testing, reconciliation, and monitoring for data quality and reliability
+• Develop transformation layers and curated datasets for clinical reporting, operational analytics, product functionality, and AI use cases
+• Implement data documentation, lineage, provenance, versioning, retention, and auditability practices
+• Collaborate with clinical, product, application engineering, architecture, data analytics, and AI teams
+• Lead design discussions, contribute to architectural decisions, review implementations, mentor engineers, and establish engineering standards
+Role requirements:
+• 6–8 years of software engineering experience, including ownership of production services and databases
+• Strong experience building production Python applications and APIs using FastAPI, Django, or Flask
+• Experience designing and operating scalable ingestion, transformation, and delivery pipelines using batch, streaming, or event-driven patterns
+• Hands-on experience with clinical or healthcare data
+• Strong understanding of FHIR resources, HL7 standards, terminology, and interoperability challenges
+• Experience designing normalized, dimensional, and domain-oriented data models
+• Ability to independently lead complex initiatives, make sound technical decisions, and balance short-term delivery with long-term maintainability
+• Legally authorized to work in the United States at the time of hire and must not require employer sponsorship for a work visa, current or future
+• Successful candidates must undergo a background check
+• Nice to have: experience with FHIR servers, clinical data repositories, electronic health record systems, or medical imaging and reporting workflows
+• Nice to have: familiarity with SNOMED CT, LOINC, ICD-10, or DICOM
+• Nice to have: experience with cloud infrastructure, data pipelines, and clinical reporting or AI-enabled healthcare products
+Benefits:
+• Free whole-body scans for each team member
+• Growth opportunities and career development
+• Weekly team gatherings for connection, sharing, and socializing
+• Flexible vacation policy
+• 401(k) retirement savings plan with pre-tax contributions; no current company matching contributions
+• Comprehensive health, dental, vision, and mental health coverage
+• Opportunity to make a positive impact on people's lives and health
+Tech stack:
+Cloud, Django, Flask, Python

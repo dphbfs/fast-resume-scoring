@@ -1,0 +1,33 @@
+Platform Engineer
+
+Summary:
+Platform Engineer managing Kubernetes clusters for Xsolla, a global commerce company aiding game developers. Involves extensive Linux, cloud experience, and infrastructure management.
+Platform Engineer managing Kubernetes clusters in a global commerce company
+Role description:
+• Manage Kubernetes clusters (self-hosted or cloud-based)
+• Implement and maintenance infrastructure in the cloud
+• Managing Linux servers, web servers and application servers
+• Configuration management (puppet, ansible)
+• Manage Infrastructure as a code (terraform/terragrunt)
+• Troubleshooting
+Role requirements:
+• 4 to 7 years of experience as a DevOps/SRE/Platform engineer
+• Extensive experience with Linux
+• Extensive experience with container orchestration using Kubernetes
+• Experience with Self-hosted Kubernetes clusters administration
+• GCP or AWS cloud experience
+• Experience with Infrastructure-as-Code tooling
+• Experience with Python / Bash scripting
+• Experience with observability tools
+• Experience with CI/CD
+• Excellent interpersonal communication skills
+• Strong communication skills
+• Strong analytical and problem-solving skills
+Benefits:
+• Medical, dental, and vision
+• PTO
+• Personalized career roadmap
+• Professional development through training
+• Educational opportunities
+Tech stack:
+Ansible, AWS, Cloud, Google Cloud Platform, Kubernetes, Linux, Puppet, Python, Terraform

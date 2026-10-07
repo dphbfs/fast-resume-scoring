@@ -1,0 +1,66 @@
+## Weave - Senior Backend Engineer, Payments
+
+🔗 [Apply](https://jobs.ashbyhq.com/weave/e32926e3-3717-4cf8-b102-9974f4d8da48)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building scalable Golang microservices for Weave’s healthcare payments platform. Leading architecture, reliability, and cross-functional delivery.
+Senior Backend Engineer building Golang payment services for Weave’s healthcare platform
+- Tech stack: Cloud, Distributed Systems, Docker, Google Cloud Platform, GRPC, Java, Kafka, Kubernetes, Microservices, Python, Redis, Ruby, SQL, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design, build, and maintain scalable backend services and APIs using Golang microservices
+- Drive technical architecture and anticipate scaling and maintenance needs
+- Collaborate with product, design, and frontend teams to deliver high-impact features
+- Participate in system design reviews and contribute to engineering strategy
+- Own code quality, reliability, and observability from development through production
+- Plan and execute projects from inception to delivery
+- Mentor peers and junior engineers
+- Participate in on-call rotation and escalation, supporting critical incidents
+- 5+ years of backend engineering experience with modern programming languages such as Golang, Java, Python, Ruby, or C#
+- Golang preferred or willingness to learn
+- Experience designing and building RESTful APIs and backend services
+- Strong understanding of distributed systems and inter-service communication, including protobufs/gRPC, REST, Kafka, and Redis
+- Experience with relational databases and SQL
+- Willingness to participate in an on-call rotation and take responsibility for production systems
+- Experience deploying and maintaining services in cloud environments, especially Google Cloud Platform (GCP)
+- Comfort with Docker/Kubernetes, observability tooling, metrics, alerts, tracing, and service reliability
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building scalable Golang microservices for Weave’s healthcare payments platform. Leading architecture, reliability, and cross-functional delivery.
+Senior Backend Engineer building Golang payment services for Weave’s healthcare platform
+Role description:
+• Design, build, and maintain scalable backend services and APIs using Golang microservices
+• Drive technical architecture and anticipate scaling and maintenance needs
+• Collaborate with product, design, and frontend teams to deliver high-impact features
+• Participate in system design reviews and contribute to engineering strategy
+• Own code quality, reliability, and observability from development through production
+• Plan and execute projects from inception to delivery
+• Mentor peers and junior engineers
+• Participate in on-call rotation and escalation, supporting critical incidents
+• Establish operational excellence standards, including SLAs/SLOs, monitoring, alerting, and incident response processes
+• Work on Weave’s payments platform, which supports healthcare practices with scheduling, payments, communication, and reviews
+Role requirements:
+• 5+ years of backend engineering experience with modern programming languages such as Golang, Java, Python, Ruby, or C#
+• Golang preferred or willingness to learn
+• Experience designing and building RESTful APIs and backend services
+• Strong understanding of distributed systems and inter-service communication, including protobufs/gRPC, REST, Kafka, and Redis
+• Experience with relational databases and SQL
+• Willingness to participate in an on-call rotation and take responsibility for production systems
+• Experience deploying and maintaining services in cloud environments, especially Google Cloud Platform (GCP)
+• Comfort with Docker/Kubernetes, observability tooling, metrics, alerts, tracing, and service reliability
+• Experience with protobufs/gRPC or Temporal
+• Experience breaking monoliths into microservices
+• Successful completion of a background check
+• Current U.S. work authorization status is requested in the application
+Benefits:
+• Equal opportunity employer committed to an inclusive workplace
+• Reasonable accommodation for disabilities or special needs
+• AI-assisted candidate experience
+• No specific compensation extras or benefits stated
+Tech stack:
+Cloud, Distributed Systems, Docker, Google Cloud Platform, GRPC, Java, Kafka, Kubernetes, Microservices, Python, Redis, Ruby, SQL, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

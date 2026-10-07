@@ -1,0 +1,68 @@
+## The Home Depot - Senior Software Engineer – Backend, Machine Learning
+
+🔗 [Apply](https://homedepot.wd5.myworkdayjobs.com/careerdepot/job/georgia---virtual---ga01/senior-software-engineer---machine-learning--remote-_req186225)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer at Home Depot developing backend systems and machine learning capabilities for product recommendations. Leading initiatives in scalable architecture and mentoring junior engineers.
+Senior Software Engineer focusing on backend and machine learning at Home Depot
+- Salary: $90,000 - $170,000 per year
+- Tech stack: Airflow, Apache, BigQuery, Cloud, Distributed Systems, Google Cloud Platform, GRPC, Java, Microservices, Python, PyTorch, Scala, Scikit-Learn, Spark, SQL, Tensorflow
+- Develops, tests, deploys, and maintains software
+- Takes on new opportunities and tough challenges with a sense of urgency, high energy and enthusiasm
+- Develops test suites (functional, destructive, etc) to enable success, rapid deployment of code to production
+- Collaborates with other team members in agile processes
+- Creates new and better ways for the organization to be successful
+- Works with the Product Team to ensure user stories are valuable, developer ready, easy to understand and testable
+- Delivers multi-mode communications that convey a clear understanding of the unique needs of different audiences
+- Helps grow junior engineers by providing guidance on modern software development frameworks
+- 3-5 years of experience
+- Strong in at least one of: Java, Scala, Python
+- Microservices — REST APIs, gRPC, event-driven architecture (Pub/Sub, Cloud Tasks)
+- System Design — Distributed systems, scalability, fault tolerance, API gateway patterns
+- GCP Core — Compute Engine, GKE, Cloud Run, Cloud Functions, IAM
+- BigQuery — Advanced SQL, partitioning, clustering, cost optimization
+- Pipelines — Dataflow (Apache Beam), Dataproc (Spark), batch and streaming
+- Storage — Bigtable, Cloud Storage, Firestore
+
+### Full Job Description
+Summary:
+Senior Software Engineer at Home Depot developing backend systems and machine learning capabilities for product recommendations. Leading initiatives in scalable architecture and mentoring junior engineers.
+Senior Software Engineer focusing on backend and machine learning at Home Depot
+Role description:
+• Develops, tests, deploys, and maintains software
+• Takes on new opportunities and tough challenges with a sense of urgency, high energy and enthusiasm
+• Develops test suites (functional, destructive, etc) to enable success, rapid deployment of code to production
+• Collaborates with other team members in agile processes
+• Creates new and better ways for the organization to be successful
+• Works with the Product Team to ensure user stories are valuable, developer ready, easy to understand and testable
+• Delivers multi-mode communications that convey a clear understanding of the unique needs of different audiences
+• Helps grow junior engineers by providing guidance on modern software development frameworks
+Role requirements:
+• 3-5 years of experience
+• Strong in at least one of: Java, Scala, Python
+• Microservices — REST APIs, gRPC, event-driven architecture (Pub/Sub, Cloud Tasks)
+• System Design — Distributed systems, scalability, fault tolerance, API gateway patterns
+• GCP Core — Compute Engine, GKE, Cloud Run, Cloud Functions, IAM
+• BigQuery — Advanced SQL, partitioning, clustering, cost optimization
+• Pipelines — Dataflow (Apache Beam), Dataproc (Spark), batch and streaming
+• Storage — Bigtable, Cloud Storage, Firestore
+• Orchestration — Cloud Composer (Airflow), Workflows
+• Vertex AI — Model training, hyperparameter tuning, pipelines, model registry
+• Frameworks — TensorFlow, PyTorch, scikit-learn
+• MLOps — Model serving (Vertex AI Endpoints), monitoring, retraining pipelines
+• Feature Store — Vertex AI Feature Store
+• Search ML — Ranking, relevance tuning, embeddings (nice to have)
+• AI & LLM Gemini — Gemini API, Gemini Pro, multimodal usage
+• Vertex AI Generative AI — Model Garden, grounding, tuning
+• RAG — Retrieval Augmented Generation, Vector Search (Vertex AI Vector Search)
+• Agentic AI — Multi-agent frameworks, tool use, autonomous workflows
+Benefits:
+• Health insurance
+• 401(k) matching
+• Paid time off
+• Flexible work hours
+• Professional development opportunities
+Tech stack:
+Airflow, Apache, BigQuery, Cloud, Distributed Systems, Google Cloud Platform, GRPC, Java, Microservices, Python, PyTorch, Scala, Scikit-Learn, Spark, SQL, Tensorflow

@@ -1,0 +1,76 @@
+## Gopuff - Senior Software Engineer – Delivery Tech
+
+🔗 [Apply](https://jobs.lever.co/gopuff/f3d8f085-de18-45e6-9145-c42c8cf72de9)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building scalable delivery technology for Gopuff’s on-demand convenience platform. Developing pricing, dispatch, routing, ETA, and Driver App services.
+Senior Software Engineer building delivery technology for Gopuff’s on-demand convenience platform
+- Salary: $160,000 - $200,000 per year
+- Tech stack: Azure, Cloud, Distributed Systems, Flutter, Google Cloud Platform, Java, JavaScript, Microservices, Node.js, Python, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Build and maintain services and solutions for Delivery Technology, including Driver Pay and Pricing, Dispatch and Optimization, ETA and Routing, and the Driver App
+- Drive sound technology choices through collaboration with product, engineering, and stakeholders across the company
+- Partner with engineering leadership to strategize the technical evolution of projects for future business growth
+- Deliver services effectively and make appropriate design tradeoffs
+- Mentor other engineers on the team
+- Write code following industry practices
+- Promote and support Gopuff Engineering’s culture of inclusion and diversity
+- Participate in cross-functional projects in an agile environment
+- Bachelor's degree in Computer Science (or relative experience)
+- 5+ Years of experience
+- Proficiency with modern web, frontend, backend, and/or cloud applications
+- Good understanding of Object Oriented concepts
+- Experience building highly scalable, high-throughput systems
+- Experience creating APIs and extensible systems
+- Experience using Go, Java, Python, Flutter, Node.js in a production setting and open to learning other languages
+- Experience building microservices in a distributed environment
+
+### Full Job Description
+Summary:
+Senior Software Engineer building scalable delivery technology for Gopuff’s on-demand convenience platform. Developing pricing, dispatch, routing, ETA, and Driver App services.
+Senior Software Engineer building delivery technology for Gopuff’s on-demand convenience platform
+Role description:
+• Build and maintain services and solutions for Delivery Technology, including Driver Pay and Pricing, Dispatch and Optimization, ETA and Routing, and the Driver App
+• Drive sound technology choices through collaboration with product, engineering, and stakeholders across the company
+• Partner with engineering leadership to strategize the technical evolution of projects for future business growth
+• Deliver services effectively and make appropriate design tradeoffs
+• Mentor other engineers on the team
+• Write code following industry practices
+• Promote and support Gopuff Engineering’s culture of inclusion and diversity
+• Participate in cross-functional projects in an agile environment
+• Build, deploy, and maintain code
+• Support idiomatic syntax, design patterns, and test-driven development
+• Implement and monitor analytics to ensure business-process correctness
+• Support production services to maintain reliability and correctness
+• Participate in team on-call rotations when necessary
+• Participate in code reviews and provide system design feedback
+• Raise engineering standards within the team and more broadly
+Role requirements:
+• Bachelor's degree in Computer Science (or relative experience)
+• 5+ Years of experience
+• Proficiency with modern web, frontend, backend, and/or cloud applications
+• Good understanding of Object Oriented concepts
+• Experience building highly scalable, high-throughput systems
+• Experience creating APIs and extensible systems
+• Experience using Go, Java, Python, Flutter, Node.js in a production setting and open to learning other languages
+• Experience building microservices in a distributed environment
+• Experience with message-based/event-driven architecture with knowledge of asynchronous transactional patterns
+• Public cloud experience in a production setting (Azure/GCP)
+• Experience in operations, monitoring, and deployment methodologies for distributed systems
+Benefits:
+• Medical/Dental/Vision Insurance
+• 401(k) Retirement Savings Plan
+• HSA or FSA eligibility
+• Long and Short-Term Disability Insurance
+• Fitness Reimbursement Program
+• 25% employee discount & FAM Membership
+• Flexible PTO
+• Group Life Insurance
+• EAP through AllOne Health (formerly Carebridge)
+• Discretionary annual cash bonus
+• Participation in Gopuff’s equity incentive plan
+Tech stack:
+Azure, Cloud, Distributed Systems, Flutter, Google Cloud Platform, Java, JavaScript, Microservices, Node.js, Python, Go
+Company sponsorship flag: sponsorsH1B=true.

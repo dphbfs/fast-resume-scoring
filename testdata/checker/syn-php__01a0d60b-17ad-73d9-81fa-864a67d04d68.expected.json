@@ -1,0 +1,140 @@
+{
+ "job": "01a0d60b-17ad-73d9-81fa-864a67d04d68",
+ "resume": "syn-php",
+ "skip": [],
+ "links": {
+  "object-oriented PHP": [
+   {
+    "quote": "Built a Laravel order-management API",
+    "strength": "partial"
+   },
+   {
+    "quote": "Developed custom WooCommerce extensions",
+    "strength": "partial"
+   },
+   {
+    "quote": "Backend: PHP, Laravel",
+    "strength": "weak"
+   },
+   {
+    "quote": "PHP developer with 5 years",
+    "strength": "weak"
+   }
+  ],
+  "Laravel": [
+   {
+    "quote": "Built a Laravel order-management API",
+    "strength": "strong"
+   },
+   {
+    "quote": "Migrated a legacy CodeIgniter storefront to Laravel",
+    "strength": "strong"
+   },
+   {
+    "quote": "Backend: PHP, Laravel",
+    "strength": "weak"
+   }
+  ],
+  "CodeIgniter": [
+   {
+    "quote": "Migrated a legacy CodeIgniter storefront to Laravel",
+    "strength": "partial"
+   }
+  ],
+  "HTML5": [
+   {
+    "quote": "Built responsive landing pages with HTML5",
+    "strength": "strong"
+   }
+  ],
+  "CSS3": [
+   {
+    "quote": "Built responsive landing pages with HTML5",
+    "strength": "strong"
+   }
+  ],
+  "JavaScript": [
+   {
+    "quote": "Built responsive landing pages with HTML5",
+    "strength": "partial"
+   },
+   {
+    "quote": "Frontend: JavaScript, Vue, Sass",
+    "strength": "weak"
+   }
+  ],
+  "jQuery": [
+   {
+    "quote": "Built responsive landing pages with HTML5",
+    "strength": "strong"
+   }
+  ],
+  "Git": [
+   {
+    "quote": "Tools: Git, Docker, Composer",
+    "strength": "weak"
+   }
+  ],
+  "Composer": [
+   {
+    "quote": "managed packages with Composer",
+    "strength": "strong"
+   },
+   {
+    "quote": "Tools: Git, Docker, Composer",
+    "strength": "weak"
+   }
+  ],
+  "WordPress": [
+   {
+    "quote": "Maintained WordPress sites",
+    "strength": "strong"
+   },
+   {
+    "quote": "Developed custom WooCommerce extensions",
+    "strength": "partial"
+   },
+   {
+    "quote": "PHP developer with 5 years",
+    "strength": "weak"
+   }
+  ],
+  "WooCommerce": [
+   {
+    "quote": "Developed custom WooCommerce extensions",
+    "strength": "strong"
+   }
+  ],
+  "MySQL": [
+   {
+    "quote": "Backend: PHP, Laravel",
+    "strength": "weak"
+   }
+  ],
+  "MariaDB": [
+   {
+    "quote": "Backend: PHP, Laravel",
+    "strength": "weak"
+   }
+  ],
+  "RESTful APIs": [
+   {
+    "quote": "Built a Laravel order-management API",
+    "strength": "strong"
+   }
+  ],
+  "performance troubleshooting": [
+   {
+    "quote": "Profiled slow checkout pages with Xdebug",
+    "strength": "strong"
+   }
+  ],
+  "Agile": [
+   {
+    "quote": "Worked in two-week sprints",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Missing on purpose: Symfony, CakePHP, Magento, PostgreSQL. MySQL/MariaDB only in Skills."
+}

@@ -1,0 +1,70 @@
+## New Relic - Software Engineer II – Query Gateway
+
+🔗 [Apply](https://boards.greenhouse.io/newrelic/jobs/5438172008)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer II owning New Relic’s distributed Java query gateway. Building resilient multi-cloud database infrastructure for the company’s observability platform.
+Software Engineer II building New Relic’s distributed Java query gateway for observability systems
+- Salary: $126,000 - $158,000 per year
+- Tech stack: Cloud, Java, C++
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Own the New Relic query gateway stack
+- Participate in cross-functional committees and collaborate with AI, Visualizations, and Data Processing teams
+- Build and maintain scalable distributed Java services and petabyte-scale infrastructure
+- Investigate and resolve critical performance, availability, and resiliency issues in a multi-region, multi-cloud, multi-tenant distributed database
+- Work in an agile DevOps environment
+- Build and maintain the team's software
+- Participate in the on-call rotation
+- Respond to system failures
+- 3+ years of experience in collaborative software development
+- Firm grasp of Computer Science fundamentals, including data structures, algorithms, and modern software design and development methodologies
+- Self-starter with a strong sense of ownership over code and commitments
+- Ability to go deep on the command-line and fix things when broken
+- Experience working in Java, or equivalent experience in an alternate OOP language such as C++, C#, etc.
+- Visa sponsorship is not available
+- Employment eligibility verification required
+- Criminal background check required
+
+### Full Job Description
+Summary:
+Software Engineer II owning New Relic’s distributed Java query gateway. Building resilient multi-cloud database infrastructure for the company’s observability platform.
+Software Engineer II building New Relic’s distributed Java query gateway for observability systems
+Role description:
+• Own the New Relic query gateway stack
+• Participate in cross-functional committees and collaborate with AI, Visualizations, and Data Processing teams
+• Build and maintain scalable distributed Java services and petabyte-scale infrastructure
+• Investigate and resolve critical performance, availability, and resiliency issues in a multi-region, multi-cloud, multi-tenant distributed database
+• Work in an agile DevOps environment
+• Build and maintain the team's software
+• Participate in the on-call rotation
+• Respond to system failures
+• Process systems handling millions of messages per second and petabytes of data
+Role requirements:
+• 3+ years of experience in collaborative software development
+• Firm grasp of Computer Science fundamentals, including data structures, algorithms, and modern software design and development methodologies
+• Self-starter with a strong sense of ownership over code and commitments
+• Ability to go deep on the command-line and fix things when broken
+• Experience working in Java, or equivalent experience in an alternate OOP language such as C++, C#, etc.
+• Visa sponsorship is not available
+• Employment eligibility verification required
+• Criminal background check required
+• May be required to pass an export compliance assessment
+Benefits:
+• Corporate bonus plan
+• Healthcare benefits
+• Dental benefits
+• Vision benefits
+• Parental leave and planning
+• Mental health benefits
+• 401(k) plan and match
+• Flex time-off
+• 11 paid holidays
+• Volunteer time-off
+• Flexible workforce model, including fully office-based, fully remote, or hybrid workplaces
+Tech stack:
+Cloud, Java, C++
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

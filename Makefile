@@ -1,0 +1,66 @@
+BIN := bin/extract
+# Load local API keys when present (gitignored).
+ENV := set -a; [ -f .env ] && . ./.env; set +a;
+
+.PHONY: all build test race vet wire wire-check lint fmt eval eval-checker eval-e2e clean
+
+all: wire-check vet test build
+
+build:
+	go build -o $(BIN) ./cmd/extract
+	go build -o bin/check ./cmd/check
+	go build -o bin/score ./cmd/score
+
+test:
+	go test ./...
+
+race:
+	go test -race ./...
+
+vet:
+	go vet ./...
+
+# Regenerate cmd/extract/wire_gen.go after any constructor signature change.
+wire:
+	go tool wire ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
+
+wire-check:
+	go tool wire check ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
+
+lint:
+	golangci-lint run ./...
+
+# gofumpt + goimports, as configured in .golangci.yml.
+fmt:
+	golangci-lint fmt ./...
+
+# Runs the golden set against live Jev and the generative model, and writes
+# eval/reports/<timestamp>.{json,md}. Not part of `go test`. Pass flags with
+# EVAL_ARGS, e.g. make eval EVAL_ARGS="-only 01a0eeca -parallel 2".
+eval:
+	go build -o bin/eval ./cmd/eval
+	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
+	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} ./bin/eval $(EVAL_ARGS)
+
+# Runs the Resume Checker pairs (testdata/checker) against live Jev and
+# writes eval/reports/checker/<timestamp>.{json,md}.
+eval-checker:
+	go build -o bin/eval ./cmd/eval
+	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
+	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} ./bin/eval -checker $(EVAL_ARGS)
+
+# Extracts and checks the reference pairs (testdata/reference) end to end
+# against live Jev and writes eval/reports/e2e/<timestamp>.{json,md}.
+# EVAL_ARGS="-set all" adds ranking-only pairs; -extract-cache= runs cold.
+# Scoring mode (docs/adr/0003): no Importance, no responsibilities
+# sentences, only required/preferred Requirements checked, one Retrieval
+# round. Override any of PIPELINE_SKIP_IMPORTANCE,
+# PIPELINE_SKIP_RESPONSIBILITIES, CHECKER_SKIP_MENTIONED,
+# CHECKER_NARROW_SIZES to compare.
+eval-e2e:
+	go build -o bin/eval ./cmd/eval
+	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
+	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} PIPELINE_SKIP_IMPORTANCE=$${PIPELINE_SKIP_IMPORTANCE:-true} PIPELINE_SKIP_RESPONSIBILITIES=$${PIPELINE_SKIP_RESPONSIBILITIES:-true} CHECKER_SKIP_MENTIONED=$${CHECKER_SKIP_MENTIONED:-true} CHECKER_NARROW_SIZES=$${CHECKER_NARROW_SIZES:-none} ./bin/eval -e2e $(EVAL_ARGS)
+
+clean:
+	rm -rf bin

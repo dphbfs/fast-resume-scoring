@@ -1,0 +1,55 @@
+## Kreative Technologies, LLC - Software Engineer
+
+🔗 [Apply](https://kreative-technologies-llc.breezy.hr/p/e2c79f11aed3-software-engineer)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer designing, testing, and maintaining client software, APIs, and database services at Kreative Technologies. Collaborating in Agile teams on features, fixes, and production support.
+Software Engineer building tested APIs and services for Kreative Technologies' client systems
+- Salary: $73,588 - $81,765 per year
+- Tech stack: Angular, AWS, Azure, Cloud, Java, Python, React, SQL
+- Designs, develops and tests software features and fixes
+- Builds and maintains APIs, services and database interactions
+- Writes unit and integration tests
+- Participates in code reviews and design discussions
+- Troubleshoots defects and supports production issues
+- Participates in sprint planning, stand-ups and retrospectives
+- Documents code and technical changes
+- Performs other duties as assigned
+- Bachelor's degree in Computer Science, Software Engineering or a related field required
+- 3+ years of software engineering experience
+- Experience with Java, C#, Python or a similar language
+- Experience with SQL and relational databases
+- Experience with Git and Agile development practices
+- Strong written and verbal communication skills
+- Ability to work independently in a remote environment
+- Continually required to use common office equipment including but not limited to computers, phones, scanners and printers
+
+### Full Job Description
+Summary:
+Software Engineer designing, testing, and maintaining client software, APIs, and database services at Kreative Technologies. Collaborating in Agile teams on features, fixes, and production support.
+Software Engineer building tested APIs and services for Kreative Technologies' client systems
+Role description:
+• Designs, develops and tests software features and fixes
+• Builds and maintains APIs, services and database interactions
+• Writes unit and integration tests
+• Participates in code reviews and design discussions
+• Troubleshoots defects and supports production issues
+• Participates in sprint planning, stand-ups and retrospectives
+• Documents code and technical changes
+• Performs other duties as assigned
+Role requirements:
+• Bachelor's degree in Computer Science, Software Engineering or a related field required
+• 3+ years of software engineering experience
+• Experience with Java, C#, Python or a similar language
+• Experience with SQL and relational databases
+• Experience with Git and Agile development practices
+• Strong written and verbal communication skills
+• Ability to work independently in a remote environment
+• Continually required to use common office equipment including but not limited to computers, phones, scanners and printers
+• Preferred: Experience with CI/CD pipelines and cloud platforms such as AWS or Azure
+• Preferred: Experience with front-end frameworks such as Angular or React
+• Preferred: Experience supporting federal government contracts
+Tech stack:
+Angular, AWS, Azure, Cloud, Java, Python, React, SQL
