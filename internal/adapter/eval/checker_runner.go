@@ -38,7 +38,8 @@ type CheckerRunner struct {
 // NewCheckerRunner builds a CheckerRunner. cfg is recorded in each report.
 // A nil baseline runs the Jev arm only.
 func NewCheckerRunner(checker port.ResumeChecker, baseline *Baseline, recorder *metrics.Recorder, log *slog.Logger, cfg config.Checker,
-	t *tuning.Tuning) *CheckerRunner {
+	t *tuning.Tuning,
+) *CheckerRunner {
 	return &CheckerRunner{checker: checker, baseline: baseline, recorder: recorder, log: log.With("component", "eval"), cfg: cfg, tuning: t}
 }
 

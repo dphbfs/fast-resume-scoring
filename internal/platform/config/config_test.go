@@ -25,8 +25,10 @@ func TestLoadDefaults(t *testing.T) {
 	if cfg.Pipeline.MaxWindowWords != 4 || cfg.Pipeline.SectionBatchSize != 60 || cfg.Pipeline.MinRequirementMass != 0.7 {
 		t.Errorf("unexpected Pipeline defaults: %+v", cfg.Pipeline)
 	}
-	if !reflect.DeepEqual(cfg.Checker, Checker{RetrievalK: 8, RetrievalFloor: 0.01, MinEvidenceMass: 0.5,
-		NarrowSizes: []int{16}, GateThreshold: 0.5, SkipCappedGrading: true, GateFirst: true}) {
+	if !reflect.DeepEqual(cfg.Checker, Checker{
+		RetrievalK: 8, RetrievalFloor: 0.01, MinEvidenceMass: 0.5,
+		NarrowSizes: []int{16}, GateThreshold: 0.5, SkipCappedGrading: true, GateFirst: true,
+	}) {
 		t.Errorf("unexpected Checker defaults: %+v", cfg.Checker)
 	}
 	if cfg.Run.Deadline != 120*time.Second {

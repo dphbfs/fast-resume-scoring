@@ -37,8 +37,8 @@ type Server struct {
 
 // NewServer starts a fake server that answers with respond. It is closed
 // when the test ends.
-func NewServer(t testing.TB, respond Responder) *Server {
-	t.Helper()
+func NewServer(tb testing.TB, respond Responder) *Server {
+	tb.Helper()
 	s := &Server{}
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost || r.URL.Path != "/v1/systemone" {
@@ -72,7 +72,7 @@ func NewServer(t testing.TB, respond Responder) *Server {
 			Usage:   jev.WireUsage{InputTokens: 100, OutputTokens: 10 * len(reply.Answers)},
 		})
 	}))
-	t.Cleanup(ts.Close)
+	tb.Cleanup(ts.Close)
 	s.URL = ts.URL
 	return s
 }

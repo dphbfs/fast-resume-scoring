@@ -3,7 +3,6 @@ package eval
 import (
 	"context"
 	"encoding/json"
-	"io"
 	"log/slog"
 	"os"
 	"strings"
@@ -47,7 +46,7 @@ func (echoChecker) Check(_ context.Context, reqs domain.Result, resume domain.Re
 
 func TestCheckerRunWriteAndRescore(t *testing.T) {
 	f := checkerFixture()
-	r := NewCheckerRunner(echoChecker{}, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{RetrievalK: 5}, tuning.Default())
+	r := NewCheckerRunner(echoChecker{}, nil, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Checker{RetrievalK: 5}, tuning.Default())
 	rep := r.Run(context.Background(), []CheckerFixture{f}, 2)
 
 	tot := rep.Totals

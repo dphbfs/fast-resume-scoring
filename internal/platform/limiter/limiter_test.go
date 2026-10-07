@@ -16,8 +16,8 @@ func TestNewRejectsNonPositive(t *testing.T) {
 }
 
 func TestDoBoundsConcurrency(t *testing.T) {
-	const max = 3
-	l, err := New(max)
+	const limit = 3
+	l, err := New(limit)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -42,8 +42,8 @@ func TestDoBoundsConcurrency(t *testing.T) {
 	}
 	wg.Wait()
 
-	if got := peak.Load(); got > max {
-		t.Fatalf("peak concurrency = %d, want <= %d", got, max)
+	if got := peak.Load(); got > limit {
+		t.Fatalf("peak concurrency = %d, want <= %d", got, limit)
 	}
 }
 

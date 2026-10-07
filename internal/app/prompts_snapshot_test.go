@@ -18,8 +18,8 @@ var updateSnapshot = flag.Bool("update", false, "rewrite testdata/prompts.golden
 // change here must be deliberate: rerun with -update and review the diff.
 func TestPromptSnapshot(t *testing.T) {
 	m := []mention{{Section: domain.SectionRequired, Sentence: "5+ years of Go and Kubernetes."}}
-	withCtx := checkRequirement{Requirement: domain.Requirement{ID: "req_1", Value: "Go"}, option: "Go", context: "5+ years of Go."}
-	noCtx := checkRequirement{Requirement: domain.Requirement{ID: "req_2", Value: "Kafka"}, option: "Kafka"}
+	withCtx := checkRequirement{ID: "req_1", Value: "Go", option: "Go", context: "5+ years of Go."}
+	noCtx := checkRequirement{ID: "req_2", Value: "Kafka", option: "Kafka"}
 	p := newPrompts(tuning.Default())
 	got := map[string]any{
 		"section":         p.sectionQuestion("5+ years of Go and Kubernetes.", "Requirements"),

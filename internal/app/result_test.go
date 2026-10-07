@@ -2,7 +2,6 @@ package app
 
 import (
 	"context"
-	"io"
 	"log/slog"
 	"slices"
 	"testing"
@@ -14,7 +13,7 @@ import (
 )
 
 func TestBuildResult(t *testing.T) {
-	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{}, tuning.Default())
+	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Pipeline{}, tuning.Default())
 	r := &run{
 		model: "typesafe/jev-1.13-20260917",
 		sentences: []domain.ContextSentence{
@@ -23,9 +22,9 @@ func TestBuildResult(t *testing.T) {
 			{Ref: "s3", Text: "More go.", Section: domain.SectionPreferred},
 		},
 		accepted: []judged{
-			{Candidate: domain.Candidate{Text: "Go", Ref: "s1"}},
-			{Candidate: domain.Candidate{Text: "Kafka", Ref: "s1"}},
-			{Candidate: domain.Candidate{Text: "go", Ref: "s3"}},
+			{Text: "Go", Ref: "s1"},
+			{Text: "Kafka", Ref: "s1"},
+			{Text: "go", Ref: "s3"},
 		},
 		importance: map[string]float64{"kafka": 0.9, "go": 0.4},
 	}

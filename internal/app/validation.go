@@ -88,7 +88,7 @@ func (e *Extractor) validationRound(ctx context.Context, r *run) error {
 						b.splits++
 					}
 					for _, p := range parts {
-						b.out = append(b.out, judged{Candidate: domain.Candidate{Text: p, Ref: c.Ref}, P: bestP})
+						b.out = append(b.out, judged{Text: p, Ref: c.Ref, P: bestP})
 					}
 					tc.Selected, tc.SelectedP = best, bestP
 				} else {

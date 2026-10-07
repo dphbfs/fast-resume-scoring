@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"io"
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
@@ -16,7 +15,7 @@ import (
 	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
-var discard = slog.New(slog.NewTextHandler(io.Discard, nil))
+var discard = slog.New(slog.DiscardHandler)
 
 func TestGenerateUnconfigured(t *testing.T) {
 	c, err := New(config.Generative{MaxConcurrency: 1}, metrics.NewRecorder(), discard)

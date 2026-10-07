@@ -133,10 +133,7 @@ func (c *Client) send(ctx context.Context, body []byte, questions int) (port.Cla
 			return port.ClassifyResponse{}, err
 		}
 
-		wait := c.backoff(attempt + 1)
-		if retryAfter > wait {
-			wait = retryAfter
-		}
+		wait := max(retryAfter, c.backoff(attempt+1))
 		c.metrics.Add("jev.retries", 1)
 		c.log.WarnContext(ctx, "classify retry",
 			"status", apiErr.Status, "attempt", attempt+1, "wait_ms", wait.Milliseconds())
@@ -184,7 +181,7 @@ func (c *Client) post(ctx context.Context, body []byte) (resp port.ClassifyRespo
 // exponentialBackoff waits 500ms, 1s, 2s, ... (capped at 16s) plus up to 25% jitter.
 func exponentialBackoff(attempt int) time.Duration {
 	base := min(500*time.Millisecond<<(attempt-1), 16*time.Second)
-	return base + rand.N(base/4+1)
+	return base + rand.N(base/4+1) //nolint:gosec // retry jitter, not security-sensitive
 }
 
 // parseRetryAfter reads a delay in seconds; HTTP-date values are ignored.

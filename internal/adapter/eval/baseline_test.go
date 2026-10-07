@@ -3,7 +3,6 @@ package eval
 import (
 	"context"
 	"errors"
-	"io"
 	"log/slog"
 	"os"
 	"slices"
@@ -113,7 +112,7 @@ func TestCheckerRunWithBaseline(t *testing.T) {
 		Usage: openai.Usage{InputTokens: 1000, OutputTokens: 50},
 	}}
 	b := &Baseline{gen: gen, cfg: BaselineConfig{Enabled: true, Model: "gen-m", PriceInPerM: 1}}
-	r := NewCheckerRunner(echoChecker{}, b, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Checker{}, tuning.Default())
+	r := NewCheckerRunner(echoChecker{}, b, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Checker{}, tuning.Default())
 	rep := r.Run(context.Background(), []CheckerFixture{f}, 1)
 
 	bt := rep.Totals.Baseline

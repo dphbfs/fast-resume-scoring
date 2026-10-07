@@ -2,7 +2,6 @@ package app
 
 import (
 	"context"
-	"io"
 	"log/slog"
 	"slices"
 	"testing"
@@ -231,7 +230,7 @@ func TestGenericOnlyCandidatesAreDropped(t *testing.T) {
 }
 
 func TestGenerateCandidatesSkipsHeadings(t *testing.T) {
-	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 2}, tuning.Default())
+	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Pipeline{MaxWindowWords: 2}, tuning.Default())
 	r := &run{}
 	r.sentences, r.headings = splitSentences("Bonus Points\n- Kubernetes\n")
 	for i := range r.sentences {
@@ -251,7 +250,7 @@ func TestGenerateCandidatesSkipsHeadings(t *testing.T) {
 }
 
 func TestGenerateCandidatesSkipsOnlyStrongHeadings(t *testing.T) {
-	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 4}, tuning.Default())
+	e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Pipeline{MaxWindowWords: 4}, tuning.Default())
 	r := &run{}
 	r.sentences, r.headings, r.strongHeading = splitLines(
 		"What You Bring:\nExperience with TypeScript/Node.js\n## Tools\n- Kubernetes\n")
@@ -270,7 +269,7 @@ func TestGenerateCandidatesSkipsOnlyStrongHeadings(t *testing.T) {
 
 func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {
 	m := metrics.NewRecorder()
-	e := New(nil, nil, m, slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MaxWindowWords: 2}, tuning.Default())
+	e := New(nil, nil, m, slog.New(slog.DiscardHandler), config.Pipeline{MaxWindowWords: 2}, tuning.Default())
 	r := &run{sentences: []domain.ContextSentence{
 		{Ref: "s1", Text: "Kubernetes", Section: domain.SectionRequired},
 		{Ref: "s2", Text: "Dental insurance", Section: domain.SectionBenefits},
@@ -291,7 +290,7 @@ func TestGenerateCandidatesSkipsDroppedSections(t *testing.T) {
 
 func TestGenerateCandidatesSkipResponsibilities(t *testing.T) {
 	for _, skip := range []bool{false, true} {
-		e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)),
+		e := New(nil, nil, metrics.NewRecorder(), slog.New(slog.DiscardHandler),
 			config.Pipeline{MaxWindowWords: 2, SkipResponsibilities: skip}, tuning.Default())
 		r := &run{}
 		r.sentences, r.headings = splitSentences("- Kubernetes\n- Terraform\n")

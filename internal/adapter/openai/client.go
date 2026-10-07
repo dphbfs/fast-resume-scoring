@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log/slog"
@@ -157,7 +158,7 @@ func (c *Client) post(ctx context.Context, body []byte) (Reply, error) {
 		return Reply{}, fmt.Errorf("openai: decode response: %w", err)
 	}
 	if len(cr.Choices) == 0 {
-		return Reply{}, fmt.Errorf("openai: response has no choices")
+		return Reply{}, errors.New("openai: response has no choices")
 	}
 	return Reply{Text: strings.TrimSpace(cr.Choices[0].Message.Content), Usage: cr.Usage}, nil
 }

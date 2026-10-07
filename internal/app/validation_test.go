@@ -26,6 +26,7 @@ func questionChunk(t *testing.T, q jev.WireQuestion) string {
 // selectFor answers each chunk question with the option pick[chunk] (0.8),
 // or the generic_trait rejection when the chunk is not listed.
 func selectFor(t *testing.T, pick map[string]string) jevtest.Responder {
+	t.Helper()
 	return func(_ int, req jev.WireRequest) jevtest.Reply {
 		answers := map[string]jev.WireAnswer{}
 		for id, q := range req.Questions {

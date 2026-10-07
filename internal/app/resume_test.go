@@ -36,20 +36,32 @@ Languages: Go, Python, SQL
 	want := []domain.EvidenceUnit{
 		{ID: "e1", Text: "Backend engineer with 8 years in payments.", ResumeSection: domain.ResumeSummary},
 		{ID: "e2", Text: "Loves Go.", ResumeSection: domain.ResumeSummary},
-		{ID: "e3", Text: "Migrated a monolith to Go microservices behind feature flags.", ResumeSection: domain.ResumeExperience,
-			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06"},
-		{ID: "e4", Text: "Ran services on EKS.", ResumeSection: domain.ResumeExperience,
-			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06"},
-		{ID: "e5", Text: "Mentored 3 engineers.", ResumeSection: domain.ResumeExperience,
-			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06"},
-		{ID: "e6", Text: "Built billing APIs in Python.", ResumeSection: domain.ResumeExperience,
-			Role: "Software Engineer", Company: "Globex"},
+		{
+			ID: "e3", Text: "Migrated a monolith to Go microservices behind feature flags.", ResumeSection: domain.ResumeExperience,
+			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06",
+		},
+		{
+			ID: "e4", Text: "Ran services on EKS.", ResumeSection: domain.ResumeExperience,
+			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06",
+		},
+		{
+			ID: "e5", Text: "Mentored 3 engineers.", ResumeSection: domain.ResumeExperience,
+			Role: "Senior Backend Engineer", Company: "Acme Pay", Dates: "2021-03 – 2024-06",
+		},
+		{
+			ID: "e6", Text: "Built billing APIs in Python.", ResumeSection: domain.ResumeExperience,
+			Role: "Software Engineer", Company: "Globex",
+		},
 		{ID: "e7", Text: "Languages: Go, Python, SQL", ResumeSection: domain.ResumeSkills},
 		{ID: "e8", Text: "Cloud: AWS, Kubernetes", ResumeSection: domain.ResumeSkills},
-		{ID: "e9", Text: "BSc Computer Science, Fake University", ResumeSection: domain.ResumeEducation,
-			Role: "BSc Computer Science", Company: "Fake University", Dates: "2012 – 2016"},
-		{ID: "e10", Text: "AWS Certified Solutions Architect", ResumeSection: domain.ResumeEducation,
-			Role: "BSc Computer Science", Company: "Fake University", Dates: "2012 – 2016"},
+		{
+			ID: "e9", Text: "BSc Computer Science, Fake University", ResumeSection: domain.ResumeEducation,
+			Role: "BSc Computer Science", Company: "Fake University", Dates: "2012 – 2016",
+		},
+		{
+			ID: "e10", Text: "AWS Certified Solutions Architect", ResumeSection: domain.ResumeEducation,
+			Role: "BSc Computer Science", Company: "Fake University", Dates: "2012 – 2016",
+		},
 	}
 	assertUnits(t, ParseResume(text), want)
 }

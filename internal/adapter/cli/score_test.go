@@ -40,7 +40,7 @@ func (f *fakeJudge) Judge(ctx context.Context, jd domain.JobDescription, _ domai
 
 func TestScoreRun(t *testing.T) {
 	fj := &fakeJudge{h: domain.Holistic{Model: "jev-1.13", RoleMatch: 1}}
-	app := NewScoreApp(fj, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun, tuning.Default())
+	app := NewScoreApp(fj, metrics.NewRecorder(), slog.New(slog.DiscardHandler), testRun, tuning.Default())
 	jd := writeFile(t, "job.txt", "# Backend Engineer\nBuild Go services.\n")
 	resume := writeFile(t, "resume.md", "# Experience\n- Built Go services\n")
 
@@ -69,7 +69,7 @@ func TestScoreErrors(t *testing.T) {
 		"bad jd ext":     {[]string{"-jd", resume + ".pdf", "-resume", resume}, nil, ExitUsage},
 		"judge fails":    {[]string{"-q", "-jd", jd, "-resume", resume}, errors.New("jev down"), ExitError},
 	} {
-		app := NewScoreApp(&fakeJudge{err: tt.err}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), testRun, tuning.Default())
+		app := NewScoreApp(&fakeJudge{err: tt.err}, metrics.NewRecorder(), slog.New(slog.DiscardHandler), testRun, tuning.Default())
 		if got := app.Run(context.Background(), tt.args, io.Discard, io.Discard); got != tt.want {
 			t.Errorf("%s: exit = %d, want %d", name, got, tt.want)
 		}
@@ -77,7 +77,7 @@ func TestScoreErrors(t *testing.T) {
 }
 
 func TestScoreRunDeadline(t *testing.T) {
-	app := NewScoreApp(&fakeJudge{block: true}, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)),
+	app := NewScoreApp(&fakeJudge{block: true}, metrics.NewRecorder(), slog.New(slog.DiscardHandler),
 		config.Run{Deadline: 20 * time.Millisecond}, tuning.Default())
 	jd := writeFile(t, "job.txt", "Engineer\n")
 	resume := writeFile(t, "resume.md", "- Go\n")

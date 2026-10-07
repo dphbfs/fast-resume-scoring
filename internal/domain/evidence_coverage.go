@@ -21,8 +21,9 @@ func (s EvidenceStrength) Rank() int {
 		return 2
 	case StrengthWeak:
 		return 1
+	default:
+		return 0
 	}
-	return 0
 }
 
 // EvidenceLink pairs a Requirement with an Evidence Unit that demonstrates

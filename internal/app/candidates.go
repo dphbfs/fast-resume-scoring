@@ -63,7 +63,7 @@ func tokenize(sentence string, splitSlash bool) []token {
 			toks[len(toks)-1].breakAfter = true
 		}
 	}
-	for _, raw := range strings.Fields(dashes.Replace(sentence)) {
+	for raw := range strings.FieldsSeq(dashes.Replace(sentence)) {
 		lead := raw[:len(raw)-len(strings.TrimLeft(raw, openers))]
 		text := strings.TrimLeft(raw, openers)
 		trimmed := strings.TrimRight(text, closers)

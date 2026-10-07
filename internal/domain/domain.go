@@ -73,6 +73,7 @@ func TierFor(sections []Section) Tier {
 			return TierRequired
 		case SectionPreferred:
 			tier = TierPreferred
+		default: // responsibilities and the rest keep the current tier
 		}
 	}
 	return tier

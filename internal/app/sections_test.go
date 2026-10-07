@@ -2,7 +2,6 @@ package app
 
 import (
 	"context"
-	"io"
 	"log/slog"
 	"strings"
 	"testing"
@@ -19,7 +18,7 @@ import (
 func newTestExtractor(t *testing.T, srvURL string, pipeline config.Pipeline) (*Extractor, *metrics.Recorder) {
 	t.Helper()
 	m := metrics.NewRecorder()
-	log := slog.New(slog.NewTextHandler(io.Discard, nil))
+	log := slog.New(slog.DiscardHandler)
 	c, err := jev.New(config.Jev{
 		APIKey: "k", BaseURL: srvURL, Model: "jev-latest",
 		MaxConcurrency: 4, MaxRetries: 0, Timeout: 5 * time.Second,

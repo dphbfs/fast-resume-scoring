@@ -91,7 +91,7 @@ var stopwords = map[string]bool{
 // and each token is stemmed.
 func content(s string) []string {
 	var out []string
-	for _, f := range strings.Fields(normalize(s)) {
+	for f := range strings.FieldsSeq(normalize(s)) {
 		for _, t := range strings.FieldsFunc(f, func(r rune) bool { return r == '/' || r == '-' }) {
 			t = strings.Trim(t, ".'")
 			if t != "" && !stopwords[t] {

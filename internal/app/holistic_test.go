@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"encoding/json"
-	"io"
 	"log/slog"
 	"strings"
 	"testing"
@@ -20,7 +19,7 @@ import (
 func newTestJudge(t *testing.T, srvURL string) *HolisticJudge {
 	t.Helper()
 	m := metrics.NewRecorder()
-	log := slog.New(slog.NewTextHandler(io.Discard, nil))
+	log := slog.New(slog.DiscardHandler)
 	c, err := jev.New(config.Jev{APIKey: "k", BaseURL: srvURL, Model: "jev-latest", MaxConcurrency: 1, Timeout: 5 * time.Second}, m, log)
 	if err != nil {
 		t.Fatal(err)
