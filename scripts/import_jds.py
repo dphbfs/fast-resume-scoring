@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import Job Descriptions from a the generative scorer `list_applications` dump.
+"""Import Job Descriptions from a job-tracker `list_applications` dump.
 
 Usage: scripts/import_jds.py <dump.json> [out_dir]
 

@@ -1,5 +1,5 @@
 {
-  "scorer": "the generative scorer match score (Claude Opus 5)",
+  "scorer": "Generative model match score (Claude Opus 5)",
   "rules": {
     "resume": "main-resume",
     "min_jd_chars": 1000,

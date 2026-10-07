@@ -1,5 +1,5 @@
 {
-  "scorer": "the generative scorer match score (Claude Opus 5)",
+  "scorer": "Generative model match score (Claude Opus 5)",
   "scored_on": "2026-10-05",
   "method": "eval copies of 10 score-stratified pairs (shortest JD per band), same JD text as jd/<id>.txt and the Main resume, scored 3x each, then archived",
   "summary": {

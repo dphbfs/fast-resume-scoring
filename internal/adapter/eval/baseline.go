@@ -27,9 +27,9 @@ type Completer interface {
 }
 
 // Baseline scores a Resume against a Job Description the traditional way:
-// one generative prompt, the one the generative scorer's application match score
-// uses. It is the arm the Jev pipeline is compared against on accuracy,
-// cost and latency.
+// one generative prompt (the generative model approach's match score).
+// It is the arm the Jev pipeline is compared against on accuracy, cost
+// and latency.
 type Baseline struct {
 	gen Completer
 	cfg BaselineConfig
@@ -65,9 +65,8 @@ type BaselineScore struct {
 	Error         string `json:"error,omitempty"`
 }
 
-// baselinePrompt is the generative scorer's match-score prompt
-// (packages/api/src/features/applications/ai.ts), with the Resume passed
-// as text instead of the generative scorer's JSON.
+// baselinePrompt is the generative model approach's match-score prompt,
+// with the Resume passed as text instead of JSON.
 const baselinePrompt = "Compare this resume against the job description. Return ONLY JSON with keys score (integer 0-100 fit), gaps (array of short missing-qualification strings), strengths (array of short matching-strength strings).\n\nRESUME:\n%s\n\nJOB DESCRIPTION:\n%s"
 
 const (
@@ -135,9 +134,10 @@ func RepriceBaseline(rep *CheckerReport, cfg BaselineConfig) {
 	}
 }
 
-// parseBaselineReply reads the reply as tolerantly as the generative scorer
-// does: code fences and surrounding prose are ignored, the score is
-// rounded and clamped to 0-100, and each list is capped at 8 items.
+// parseBaselineReply reads the reply as tolerantly as the generative
+// model approach does: code fences and surrounding prose are ignored, the
+// score is rounded and clamped to 0-100, and each list is capped at 8
+// items.
 func parseBaselineReply(text string) (int, []string, []string, error) {
 	start, end := strings.Index(text, "{"), strings.LastIndex(text, "}")
 	if start < 0 || end < start {

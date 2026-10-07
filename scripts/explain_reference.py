@@ -4,12 +4,12 @@
 Usage: scripts/explain_reference.py <runs> <pair-id> [<pair-id> ...]
        scripts/explain_reference.py eval/explain/<run>.json   (summarize again)
 
-Sends the generative scorer's match-score prompt (verbatim, as in
+Sends the generative model approach's match-score prompt (verbatim, as in
 internal/adapter/eval/baseline.go) plus a request for the factors behind
 the score, <runs> times per pair, through the OpenAI-compatible endpoint in
 .env (OPENAI_BASE_URL, OPENAI_API_KEY, OPENAI_MODEL). Pairs come from
-testdata/reference; the Resume is the masked Markdown copy (the generative
-scorer sends its JSON). Writes the raw replies to
+testdata/reference; the Resume is the masked Markdown copy (the
+generative scorer receives JSON). Writes the raw replies to
 eval/explain/<timestamp>.json and prints a per-pair factor summary.
 """
 
@@ -23,7 +23,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-# the generative scorer's prompt (packages/api/src/features/applications/ai.ts).
+# The generative model approach's prompt.
 BASE_PROMPT = (
     "Compare this resume against the job description. Return ONLY JSON with keys score (integer 0-100 fit), "
     "gaps (array of short missing-qualification strings), strengths (array of short matching-strength "

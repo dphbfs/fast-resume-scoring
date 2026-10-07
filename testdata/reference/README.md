@@ -1,8 +1,8 @@
 # Reference scores
 
 Development reference for the end-to-end eval (`docs/review-v1-plan.md`,
-E1): saved match scores of the generative scorer (the generative scorer, Claude
-Opus 5) for the Main resume against real Job Descriptions.
+E1): saved match scores of the generative scorer (generative model approach,
+Claude Opus 5) for the Main resume against real Job Descriptions.
 
 Regenerate from a `list_applications` dump (includeArchived=true):
 

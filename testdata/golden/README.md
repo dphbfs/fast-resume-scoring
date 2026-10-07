@@ -10,7 +10,7 @@ Per fixture:
 - `<id>.expected.json`: the expected Requirements, drafted by Claude and
   corrected by hand.
 
-Imported from the generative scorer with `scripts/import_jds.py`. Two source formats:
+Imported from the job tracker with `scripts/import_jds.py`. Two source formats:
 
 - **Remote Rocketship** (and unknown source): the aggregator's own rewrite,
   with `Summary:` / `Role description:` / `Role requirements:` / `Benefits:` /

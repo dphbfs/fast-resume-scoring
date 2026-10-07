@@ -7,11 +7,11 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
 
 ### Reference and data
 
-- **Reference score:** the the generative scorer match scores already saved on
-  applications (scored by Claude Opus 5). We pull applications, linked
+- **Reference score:** the generative model approach's match scores already
+  saved on applications (scored by Claude Opus 5). We pull applications, linked
   resumes, and scores into files. No copied scoring prompt.
-- **New data:** eval-only resumes/applications may be created in the generative
-  scorer, scored there, saved to files, then archived in the generative scorer
+- **New data:** eval-only resumes/applications may be created in the job
+  tracker, scored there, saved to files, then archived in the job tracker
   to keep it clean. Real applications are never rescored (rescoring
   overwrites the saved score).
 - **Selection:** only applications with a single score. A score that
@@ -24,14 +24,13 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
   copies). Base resumes: Main, Local (data/migration analyst), Contract
   SWE (no applications). No model/prompt metadata is stored with scores.
 - **Storage:** pulled data committed under `testdata/` with neutral IDs.
-  The user masks everything before the project is published; no
-  scrubbing of the the generative scorer name is needed now.
+  The user masks everything before the project is published.
 
 ### Noise, metrics, thresholds
 
 - **Reference noise:** 10 eval copies of real applications, stratified
   across the score range (low, mid, high, near median), each scored 3×
-  in the generative scorer (30 calls), saved, then archived.
+  with the generative model approach (30 calls), saved, then archived.
 - **Metrics:** MAE vs reference, share within ±5 / ±10, largest
   disagreements, Kendall τ-b across the Main resume's jobs. No
   apply/skip decision metric; the job agent is ignored in this phase.
@@ -48,12 +47,12 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
   JD + ~1k output tokens at $5 / $25 per M) → Jev must reach about
   **$0.010 per pair** (today ~$0.011). The Anthropic proxy does not log
   token counts, so measure Opus 5 cost with a cost-only replay: the
-  the generative scorer JSON resume + JD through the proxy with the generative
-  scorer's open-source prompt, recording tokens only (never used for
+  JSON resume + JD through the proxy with the generative model
+  approach's prompt, recording tokens only (never used for
   scores).
 - **Budget:** Jev ≤ $10, aim for $5. Start with the available
   OpenRouter balance (~$3.94; $10/month key cap) and top up only when
-  it runs low. the generative scorer
+  it runs low. Generative
   scoring is subscription-based; use it sparingly.
 - **Jev limits:** TypeSafe allows 80 requests/s and 100K tokens/s for Jev
   1.13; OpenRouter adds no rate cap for paid models. No 429s recorded so
@@ -69,7 +68,7 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
   with JD ≥ 1,000 characters, not in the development or golden sets,
   picked by title before any scoring: 2 on-target, 2 adjacent, 1
   off-target per resume. Each pair becomes an eval application in
-  the generative scorer, scored once, saved, archived.
+  the job tracker, scored once, saved, archived.
 - **Synthetic resumes:** written by another agent from a prompt we
   provide (lowers our bias), no access to fixtures or labels:
   (1) mid-level frontend/full-stack, (2) career changer (QA or
@@ -100,7 +99,7 @@ Scoring-only scope; resume tailoring is out. Terms follow `CONTEXT.md`.
       saved scores, job-agent notes → apply the selection rules → files
       under `testdata/` with neutral IDs; record exclusions and reasons.
 - [~] E2. Noise copies and current reference (`testdata/reference/noise.json`, `current.json`; today's scorer runs +11.9 above the saved scores, so tuning uses `current.json`; cost replay pending): pick 10 stratified applications, create eval
-      copies in the generative scorer, score each 3×, save, archive. Cost-only
+      copies in the job tracker, score each 3×, save, archive. Cost-only
       replay of those pairs through the Anthropic proxy for Opus 5 tokens.
 - [x] E3. End-to-end eval mode (`eval -e2e`, `make eval-e2e`; first run: MAE 20.5, bias -17.5, τ-b 0.46, $0.0168/pair, see `docs/tuning.md`; golden alignment deferred, only 2 reference pairs are golden): raw JD + resume → extract → check →
       production Fit Score compared to the reference score. Golden

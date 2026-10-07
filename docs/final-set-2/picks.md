@@ -10,7 +10,7 @@ masked). The analyst resume's experience appears in two Resume Checker
 fixtures (`real-data-analyst.md`), which v4 does not use; it was never
 part of a Match Score fit.
 
-Jobs were picked by title only, from the generative scorer applications the
+Jobs were picked by title only, from job-tracker applications the
 project had never read: the four created on 2026-10-05 (Praetorian,
 Cloudflare for SaaS, Cockroach Labs, Samsara) plus older archived ones,
 each with a cleaned posting ≥ 1,000 characters (three stubs were swapped

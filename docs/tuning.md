@@ -352,7 +352,7 @@ Findings:
   does. Blocked: OpenRouter key hit its monthly limit (HTTP 403) on the
   first v6 run; partial reports deleted.
 - 10 live applications, one run each, same Requirements (v5 / v6 /
-  v6 + veto 0.6): Fit vs RR Spearman -0.07 / -0.02 / -0.10. v6 lowers
+  v6 + veto 0.6): Fit vs generative reference Spearman -0.07 / -0.02 / -0.10. v6 lowers
   alternative_tool on instances only a little (AWS 0.77 -> 0.66-0.72,
   Prometheus for monitoring 0.86 -> 0.73). Veto 0.6 removed 5 links: 4
   correct (observability, monitoring, AWS x2 for "major cloud platform")
@@ -375,9 +375,8 @@ experiment reports were pruned; their numbers are in the tables above.
 
 Question: is the Jev Resume Checker a cheaper replacement for the
 traditional one-prompt generative match score, at the same accuracy?
-`eval -checker -baseline` also scores each pair with the generative scorer's
-match-score prompt (`packages/api/src/features/applications/ai.ts`,
-verbatim, Resume as markdown) through `OPENAI_*`, uncached, and
+`eval -checker -baseline` also scores each pair with the generative model
+approach's match-score prompt (verbatim, Resume as markdown) through `OPENAI_*`, uncached, and
 compares both against the Fit Score of the labeled Coverage.
 `-baseline-price-in/-out` (USD per M tokens) price the calls; with
 `-rescore` they reprice stored runs.
