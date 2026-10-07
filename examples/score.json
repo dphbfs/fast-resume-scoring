@@ -1,0 +1,11 @@
+{
+  "schema_version": "1",
+  "model": "typesafe/jev-1.13-20260917",
+  "tuning": "103d7236789f",
+  "match_score": 86,
+  "signals": {
+    "role_match": 0.9875,
+    "experience_short": 0.15,
+    "blocker": 0.05
+  }
+}

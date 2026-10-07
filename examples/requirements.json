@@ -1,0 +1,378 @@
+{
+  "schema_version": "1",
+  "model": "typesafe/jev-1.13-20260917",
+  "requirements": [
+    {
+      "id": "req_1",
+      "value": "Go in production",
+      "refs": [
+        "s14"
+      ],
+      "tier": "required",
+      "importance": 0.7675
+    },
+    {
+      "id": "req_2",
+      "value": "backend software engineering experience",
+      "refs": [
+        "s13"
+      ],
+      "tier": "required",
+      "importance": 0.7525
+    },
+    {
+      "id": "req_3",
+      "value": "PostgreSQL skills",
+      "refs": [
+        "s16"
+      ],
+      "tier": "required",
+      "importance": 0.75
+    },
+    {
+      "id": "req_4",
+      "value": "running services on Kubernetes",
+      "refs": [
+        "s17"
+      ],
+      "tier": "required",
+      "importance": 0.7475
+    },
+    {
+      "id": "req_5",
+      "value": "designing REST",
+      "refs": [
+        "s15"
+      ],
+      "tier": "required",
+      "importance": 0.745
+    },
+    {
+      "id": "req_6",
+      "value": "schema design",
+      "refs": [
+        "s16"
+      ],
+      "tier": "required",
+      "importance": 0.74
+    },
+    {
+      "id": "req_7",
+      "value": "observability tooling",
+      "refs": [
+        "s19"
+      ],
+      "tier": "required",
+      "importance": 0.735
+    },
+    {
+      "id": "req_8",
+      "value": "query tuning",
+      "refs": [
+        "s16"
+      ],
+      "tier": "required",
+      "importance": 0.7325
+    },
+    {
+      "id": "req_9",
+      "value": "gRPC APIs",
+      "refs": [
+        "s15"
+      ],
+      "tier": "required",
+      "importance": 0.685
+    },
+    {
+      "id": "req_10",
+      "value": "event streaming",
+      "refs": [
+        "s18"
+      ],
+      "tier": "required",
+      "importance": 0.685
+    },
+    {
+      "id": "req_11",
+      "value": "marketplaces",
+      "refs": [
+        "s21"
+      ],
+      "tier": "preferred",
+      "importance": 0.4925
+    },
+    {
+      "id": "req_12",
+      "value": "pricing systems",
+      "refs": [
+        "s21"
+      ],
+      "tier": "preferred",
+      "importance": 0.4925
+    },
+    {
+      "id": "req_13",
+      "value": "Terraform",
+      "refs": [
+        "s22"
+      ],
+      "tier": "preferred",
+      "importance": 0.4925
+    },
+    {
+      "id": "req_14",
+      "value": "logistics",
+      "refs": [
+        "s21"
+      ],
+      "tier": "preferred",
+      "importance": 0.49
+    },
+    {
+      "id": "req_15",
+      "value": "Python for data tooling",
+      "refs": [
+        "s23"
+      ],
+      "tier": "preferred",
+      "importance": 0.4825
+    },
+    {
+      "id": "req_16",
+      "value": "services in production",
+      "refs": [
+        "s8"
+      ],
+      "tier": "mentioned",
+      "importance": 0.4025
+    },
+    {
+      "id": "req_17",
+      "value": "Grafana",
+      "refs": [
+        "s19"
+      ],
+      "tier": "required",
+      "importance": 0.3375
+    },
+    {
+      "id": "req_18",
+      "value": "Prometheus",
+      "refs": [
+        "s19"
+      ],
+      "tier": "required",
+      "importance": 0.3325
+    },
+    {
+      "id": "req_19",
+      "value": "incident reviews",
+      "refs": [
+        "s8"
+      ],
+      "tier": "mentioned",
+      "importance": 0.32
+    },
+    {
+      "id": "req_20",
+      "value": "Model event flows on Kafka",
+      "refs": [
+        "s9"
+      ],
+      "tier": "mentioned",
+      "importance": 0.32
+    },
+    {
+      "id": "req_21",
+      "value": "AWS",
+      "refs": [
+        "s17"
+      ],
+      "tier": "required",
+      "importance": 0.3175
+    },
+    {
+      "id": "req_22",
+      "value": "GCP",
+      "refs": [
+        "s17"
+      ],
+      "tier": "required",
+      "importance": 0.31
+    },
+    {
+      "id": "req_23",
+      "value": "build Go services for quoting",
+      "refs": [
+        "s7"
+      ],
+      "tier": "mentioned",
+      "importance": 0.2775
+    },
+    {
+      "id": "req_24",
+      "value": "SLOs",
+      "refs": [
+        "s8"
+      ],
+      "tier": "mentioned",
+      "importance": 0.27
+    },
+    {
+      "id": "req_25",
+      "value": "OpenTelemetry",
+      "refs": [
+        "s19"
+      ],
+      "tier": "required",
+      "importance": 0.27
+    },
+    {
+      "id": "req_26",
+      "value": "Mentor engineers through code review",
+      "refs": [
+        "s11"
+      ],
+      "tier": "mentioned",
+      "importance": 0.2625
+    },
+    {
+      "id": "req_27",
+      "value": "ship pricing experiments safely",
+      "refs": [
+        "s10"
+      ],
+      "tier": "mentioned",
+      "importance": 0.245
+    },
+    {
+      "id": "req_28",
+      "value": "carrier dispatch",
+      "refs": [
+        "s7"
+      ],
+      "tier": "mentioned",
+      "importance": 0.2375
+    },
+    {
+      "id": "req_29",
+      "value": "booking",
+      "refs": [
+        "s7"
+      ],
+      "tier": "mentioned",
+      "importance": 0.235
+    },
+    {
+      "id": "req_30",
+      "value": "design discussions",
+      "refs": [
+        "s11"
+      ],
+      "tier": "mentioned",
+      "importance": 0.2325
+    }
+  ],
+  "alternative_groups": [
+    {
+      "id": "alt_1",
+      "members": [
+        "req_5",
+        "req_9"
+      ]
+    },
+    {
+      "id": "alt_2",
+      "members": [
+        "req_6",
+        "req_8"
+      ]
+    },
+    {
+      "id": "alt_3",
+      "members": [
+        "req_21",
+        "req_22"
+      ]
+    },
+    {
+      "id": "alt_4",
+      "members": [
+        "req_7",
+        "req_18",
+        "req_17",
+        "req_25"
+      ]
+    },
+    {
+      "id": "alt_5",
+      "members": [
+        "req_14",
+        "req_11",
+        "req_12"
+      ]
+    }
+  ],
+  "context": {
+    "s10": {
+      "text": "Work with product and data teams to ship pricing experiments safely.",
+      "section": "responsibilities"
+    },
+    "s11": {
+      "text": "Mentor engineers through code review and design discussions.",
+      "section": "responsibilities"
+    },
+    "s13": {
+      "text": "5+ years of backend software engineering experience.",
+      "section": "required"
+    },
+    "s14": {
+      "text": "Strong experience with Go in production.",
+      "section": "required"
+    },
+    "s15": {
+      "text": "Experience designing REST or gRPC APIs.",
+      "section": "required"
+    },
+    "s16": {
+      "text": "Solid PostgreSQL skills, including schema design and query tuning.",
+      "section": "required"
+    },
+    "s17": {
+      "text": "Experience running services on Kubernetes in a cloud environment (AWS or GCP).",
+      "section": "required"
+    },
+    "s18": {
+      "text": "Familiarity with event streaming (Kafka or similar).",
+      "section": "required"
+    },
+    "s19": {
+      "text": "Experience with observability tooling such as Prometheus, Grafana, or OpenTelemetry.",
+      "section": "required"
+    },
+    "s21": {
+      "text": "Experience with logistics, marketplaces, or pricing systems.",
+      "section": "preferred"
+    },
+    "s22": {
+      "text": "Terraform or other infrastructure as code.",
+      "section": "preferred"
+    },
+    "s23": {
+      "text": "Python for data tooling.",
+      "section": "preferred"
+    },
+    "s7": {
+      "text": "Design and build Go services for quoting, booking, and carrier dispatch.",
+      "section": "responsibilities"
+    },
+    "s8": {
+      "text": "Own services in production: on-call rotation, incident reviews, and SLOs.",
+      "section": "responsibilities"
+    },
+    "s9": {
+      "text": "Model event flows on Kafka and keep them reliable under peak load.",
+      "section": "responsibilities"
+    }
+  }
+}

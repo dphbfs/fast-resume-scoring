@@ -61,6 +61,21 @@ One Jev request, 0.43 s, $0.00007.*
   input limits, structured logs, a per-run metrics summary (tokens, cost,
   latency p50/p95), sanitized provider errors, private output files.
 
+## Try it without a key
+
+[`examples/`](examples/) holds a synthetic posting and resume, the real
+output of every command, and the Jev recording behind it. Replay it
+offline:
+
+```sh
+git clone https://github.com/dphbfs/fast-resume-scoring && cd fast-resume-scoring
+make build
+JEV_REPLAY=examples/jev-recording.json OPENAI_MODEL= \
+  bin/score -jd examples/job.md -resume examples/resume.md
+```
+
+Your own files need a key: a replay only answers the requests it recorded.
+
 ## Quickstart
 
 You need Go 1.27.1+ and a Jev API key, either from
