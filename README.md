@@ -180,6 +180,8 @@ bootstraps.
 | **Held out (sealed)** | 20 | **8.6** [6.0, 11.1] | **0.78** [0.63, 0.92] | 60% |
 | *Independent judge vs reference, same held-out set* | 20 | *8.8* | *0.78* | |
 
+![Held-out agreement: Jev Match Score and an independent judge vs the generative reference](docs/img/agreement.svg)
+
 | | Jev `score` | Opus 5 prompt |
 |---|---|---|
 | Cost per score | $0.0001 | ≥ $0.033 |
@@ -188,7 +190,8 @@ bootstraps.
 
 The generative reference is itself not fixed: the same pairs scored days
 apart moved by +11.6 points on average, and the same resume as Markdown
-instead of JSON scored 14.9 points lower. Full method and numbers:
+instead of JSON scored 14.9 points lower. How the evals work:
+[docs/eval.md](docs/eval.md); full numbers:
 [docs/final-report-v1.md](docs/final-report-v1.md).
 
 ## Limitations
@@ -220,6 +223,8 @@ for the full list with defaults. The ones you are likely to touch:
 ## Documentation
 
 - [Architecture](docs/architecture.md): pipeline and code layout
+- [Evaluation method](docs/eval.md): data sets, metrics, experiment rules
+- [Examples](examples/): real outputs and a no-key replay
 - [CONTEXT.md](CONTEXT.md): glossary of domain terms
 - [Decision records](docs/adr/)
 - [Tuning log](docs/tuning.md): every experiment, including the ones that

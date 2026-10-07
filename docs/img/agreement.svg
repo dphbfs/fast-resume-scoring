@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" width="640" height="470" role="img" aria-labelledby="t d">
+<title id="t">Match Score vs the generative reference, held-out set</title>
+<desc id="d">Scatter of 20 held-out resume-job pairs. Jev Match Score MAE 8.6 points against one Claude Opus 5 call per pair; an independent recruiter judge scores MAE 8.8 against the same reference.</desc>
+<style>
+  .bg { fill: #fcfcfb }
+  .title { fill: #0b0b0b; font: 600 16px system-ui, -apple-system, "Segoe UI", sans-serif }
+  .sub, .tick, .axis-label, .legend, .note { fill: #52514e; font: 12px system-ui, -apple-system, "Segoe UI", sans-serif }
+  .tick { fill: #898781 }
+  .grid { stroke: #e1e0d9; stroke-width: 1 }
+  .base { stroke: #c3c2b7; stroke-width: 1 }
+  .band { fill: #cde2fb; opacity: 0.45 }
+  .diag { stroke: #898781; stroke-width: 1.5; stroke-dasharray: 4 4 }
+  .jev { fill: #2a78d6; stroke: #fcfcfb; stroke-width: 2 }
+  .judge { fill: none; stroke: #898781; stroke-width: 1.5 }
+  @media (prefers-color-scheme: dark) {
+    .bg { fill: #1a1a19 }
+    .title { fill: #ffffff }
+    .sub, .axis-label, .legend, .note { fill: #c3c2b7 }
+    .grid { stroke: #2c2c2a }
+    .base { stroke: #383835 }
+    .band { fill: #184f95; opacity: 0.35 }
+    .jev { fill: #3987e5; stroke: #1a1a19 }
+  }
+</style>
+<rect class="bg" width="640" height="470" rx="8"/>
+<text class="title" x="64" y="30">Held-out agreement with the generative reference</text>
+<text class="sub" x="64" y="50">20 unseen resume–job pairs, 4 resumes. On the dashed line = same score as the reference.</text>
+<circle class="jev" cx="70" cy="70" r="5"/>
+<text class="legend" x="80" y="74">Jev Match Score (MAE 8.6)</text>
+<circle class="judge" cx="306" cy="70" r="4.5"/>
+<text class="legend" x="316" y="74">Recruiter judge, other model family (MAE 8.8)</text>
+<polygon class="band" points="64.0,374.6 560.8,92.0 616.0,92.0 616.0,123.4 119.2,406.0 64.0,406.0"/>
+<text class="note" x="135.8" y="380.9" transform="rotate(-26 135.8 380.9)" font-size="11">within ±10</text>
+<line class="grid" x1="64.0" x2="616.0" y1="406.0" y2="406.0"/>
+<line class="grid" x1="64.0" x2="64.0" y1="406.0" y2="92.0"/>
+<text class="tick" x="64.0" y="424.0" text-anchor="middle">0</text>
+<text class="tick" x="56.0" y="410.0" text-anchor="end">0</text>
+<line class="grid" x1="64.0" x2="616.0" y1="343.2" y2="343.2"/>
+<line class="grid" x1="174.4" x2="174.4" y1="406.0" y2="92.0"/>
+<text class="tick" x="174.4" y="424.0" text-anchor="middle">20</text>
+<text class="tick" x="56.0" y="347.2" text-anchor="end">20</text>
+<line class="grid" x1="64.0" x2="616.0" y1="280.4" y2="280.4"/>
+<line class="grid" x1="284.8" x2="284.8" y1="406.0" y2="92.0"/>
+<text class="tick" x="284.8" y="424.0" text-anchor="middle">40</text>
+<text class="tick" x="56.0" y="284.4" text-anchor="end">40</text>
+<line class="grid" x1="64.0" x2="616.0" y1="217.6" y2="217.6"/>
+<line class="grid" x1="395.2" x2="395.2" y1="406.0" y2="92.0"/>
+<text class="tick" x="395.2" y="424.0" text-anchor="middle">60</text>
+<text class="tick" x="56.0" y="221.6" text-anchor="end">60</text>
+<line class="grid" x1="64.0" x2="616.0" y1="154.8" y2="154.8"/>
+<line class="grid" x1="505.6" x2="505.6" y1="406.0" y2="92.0"/>
+<text class="tick" x="505.6" y="424.0" text-anchor="middle">80</text>
+<text class="tick" x="56.0" y="158.8" text-anchor="end">80</text>
+<line class="grid" x1="64.0" x2="616.0" y1="92.0" y2="92.0"/>
+<line class="grid" x1="616.0" x2="616.0" y1="406.0" y2="92.0"/>
+<text class="tick" x="616.0" y="424.0" text-anchor="middle">100</text>
+<text class="tick" x="56.0" y="96.0" text-anchor="end">100</text>
+<line class="base" x1="64.0" x2="616.0" y1="406.0" y2="406.0"/>
+<line class="base" x1="64.0" x2="64.0" y1="406.0" y2="92.0"/>
+<line class="diag" x1="64.0" y1="406.0" x2="616.0" y2="92.0"/>
+<text class="axis-label" x="340.0" y="452" text-anchor="middle">Reference score (Claude Opus 5, one prompt per pair)</text>
+<text class="axis-label" transform="translate(18 249.0) rotate(-90)" text-anchor="middle">Predicted score</text>
+<circle class="judge" cx="433.8" cy="195.6" r="4.5"/>
+<circle class="judge" cx="433.8" cy="195.6" r="4.5"/>
+<circle class="judge" cx="273.8" cy="261.6" r="4.5"/>
+<circle class="judge" cx="268.2" cy="271.0" r="4.5"/>
+<circle class="judge" cx="295.8" cy="286.7" r="4.5"/>
+<circle class="judge" cx="582.9" cy="132.8" r="4.5"/>
+<circle class="judge" cx="549.8" cy="148.5" r="4.5"/>
+<circle class="judge" cx="544.2" cy="192.5" r="4.5"/>
+<circle class="judge" cx="196.5" cy="330.6" r="4.5"/>
+<circle class="judge" cx="196.5" cy="349.5" r="4.5"/>
+<circle class="judge" cx="483.5" cy="186.2" r="4.5"/>
+<circle class="judge" cx="284.8" cy="349.5" r="4.5"/>
+<circle class="judge" cx="378.6" cy="242.7" r="4.5"/>
+<circle class="judge" cx="257.2" cy="271.0" r="4.5"/>
+<circle class="judge" cx="367.6" cy="271.0" r="4.5"/>
+<circle class="judge" cx="500.1" cy="205.0" r="4.5"/>
+<circle class="judge" cx="555.3" cy="151.7" r="4.5"/>
+<circle class="judge" cx="378.6" cy="255.3" r="4.5"/>
+<circle class="judge" cx="202.0" cy="296.1" r="4.5"/>
+<circle class="judge" cx="433.8" cy="271.0" r="4.5"/>
+<circle class="jev" cx="433.8" cy="220.7" r="5"/>
+<circle class="jev" cx="433.8" cy="186.2" r="5"/>
+<circle class="jev" cx="273.8" cy="293.0" r="5"/>
+<circle class="jev" cx="268.2" cy="283.5" r="5"/>
+<circle class="jev" cx="295.8" cy="293.0" r="5"/>
+<circle class="jev" cx="582.9" cy="123.4" r="5"/>
+<circle class="jev" cx="549.8" cy="126.5" r="5"/>
+<circle class="jev" cx="544.2" cy="126.5" r="5"/>
+<circle class="jev" cx="196.5" cy="311.8" r="5"/>
+<circle class="jev" cx="196.5" cy="286.7" r="5"/>
+<circle class="jev" cx="483.5" cy="189.3" r="5"/>
+<circle class="jev" cx="284.8" cy="245.9" r="5"/>
+<circle class="jev" cx="378.6" cy="283.5" r="5"/>
+<circle class="jev" cx="257.2" cy="299.2" r="5"/>
+<circle class="jev" cx="367.6" cy="271.0" r="5"/>
+<circle class="jev" cx="500.1" cy="201.9" r="5"/>
+<circle class="jev" cx="555.3" cy="170.5" r="5"/>
+<circle class="jev" cx="378.6" cy="277.3" r="5"/>
+<circle class="jev" cx="202.0" cy="302.4" r="5"/>
+<circle class="jev" cx="433.8" cy="264.7" r="5"/>
+</svg>
