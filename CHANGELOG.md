@@ -26,3 +26,7 @@ First public version.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size
   limits, sanitized provider errors, private atomic output files, structured
   logs, and a per-run metrics summary.
+
+### Fixed
+
+- `score -h`, `extract -h`, and `check -h` print usage without an API key.
