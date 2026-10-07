@@ -7,7 +7,7 @@ tool github.com/google/wire/cmd/wire
 require (
 	github.com/google/wire v0.7.0
 	go.yaml.in/yaml/v3 v3.0.5
-	golang.org/x/sync v0.8.0
+	golang.org/x/sync v0.23.0
 )
 
 require (
