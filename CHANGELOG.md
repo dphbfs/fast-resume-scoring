@@ -23,6 +23,8 @@ First public version.
   against generative reference scores (`-e2e`), with offline `-rescore`.
 - `JEV_RECORD` / `JEV_REPLAY`: record Jev exchanges to a file and replay
   them with no API key or network.
+- `examples/`: a synthetic posting and resume with the real output of
+  every command and the recording behind it; `go test` replays it.
 - Every prompt and score weight in `tuning/tuning.yaml`, embedded in the
   binaries and overridable with `TUNING_FILE`.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size

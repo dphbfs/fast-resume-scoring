@@ -2,7 +2,7 @@ BIN := bin/extract
 # Load local API keys when present (gitignored).
 ENV := set -a; [ -f .env ] && . ./.env; set +a;
 
-.PHONY: all build test race vet wire wire-check lint fmt eval eval-checker eval-e2e clean
+.PHONY: all build test race vet wire wire-check lint fmt examples eval eval-checker eval-e2e clean
 
 all: wire-check vet test build
 
@@ -61,6 +61,18 @@ eval-e2e:
 	go build -o bin/eval ./cmd/eval
 	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "eval: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
 	@$(ENV) LOG_LEVEL=$${LOG_LEVEL:-warn} PIPELINE_SKIP_IMPORTANCE=$${PIPELINE_SKIP_IMPORTANCE:-true} PIPELINE_SKIP_RESPONSIBILITIES=$${PIPELINE_SKIP_RESPONSIBILITIES:-true} CHECKER_SKIP_MENTIONED=$${CHECKER_SKIP_MENTIONED:-true} CHECKER_NARROW_SIZES=$${CHECKER_NARROW_SIZES:-none} ./bin/eval -e2e $(EVAL_ARGS)
+
+# Re-records examples/ against live Jev (about $0.006): run after any change
+# to prompts, tuning, or the pipeline. The generative model stays off so the
+# Job Summary is the deterministic fallback and replays match.
+EXAMPLE_RUN = $(ENV) OPENAI_MODEL= LOG_LEVEL=warn JEV_RECORD=examples/jev-recording.json
+examples: build
+	@$(ENV) test -n "$$TYPESAFE_API_KEY" || (echo "examples: TYPESAFE_API_KEY is not set (.env)" >&2; exit 1)
+	rm -f examples/jev-recording.json
+	@$(EXAMPLE_RUN) ./bin/score -q -jd examples/job.md -resume examples/resume.md -o examples/score.json
+	@$(EXAMPLE_RUN) ./bin/extract -q -o examples/requirements.json examples/job.md
+	@$(EXAMPLE_RUN) ./bin/check -q -requirements examples/requirements.json -resume examples/resume.md -o examples/coverage.json
+	go test -count=1 ./cmd/...
 
 clean:
 	rm -rf bin
