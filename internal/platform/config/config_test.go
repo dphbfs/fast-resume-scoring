@@ -54,6 +54,7 @@ func TestLoadErrors(t *testing.T) {
 		{"zero concurrency", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_MAX_CONCURRENCY": "0"}},
 		{"zero retrieval K", map[string]string{"TYPESAFE_API_KEY": "k", "CHECKER_RETRIEVAL_K": "0"}},
 		{"zero Jev timeout", map[string]string{"TYPESAFE_API_KEY": "k", "JEV_TIMEOUT": "0s"}},
+		{"replay and record together", map[string]string{"JEV_REPLAY": "a.json", "JEV_RECORD": "b.json"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -61,6 +62,16 @@ func TestLoadErrors(t *testing.T) {
 				t.Fatal("want error, got nil")
 			}
 		})
+	}
+}
+
+func TestLoadReplayNeedsNoAPIKey(t *testing.T) {
+	cfg, err := load(mapEnv(map[string]string{"JEV_REPLAY": "examples/jev-recording.json"}))
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	if cfg.Jev.ReplayFile != "examples/jev-recording.json" || cfg.Jev.APIKey != "" {
+		t.Errorf("Jev = %+v, want ReplayFile set and no key", cfg.Jev)
 	}
 }
 

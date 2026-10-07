@@ -8,11 +8,11 @@ package main
 
 import (
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
-	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-scoring/internal/app"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/wiring"
 	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
@@ -25,10 +25,10 @@ func initApp() (*cli.ScoreApp, error) {
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ func initApp() (*cli.ScoreApp, error) {
 	if err != nil {
 		return nil, err
 	}
-	holisticJudge := app.NewHolisticJudge(client, recorder, logger, tuningTuning)
+	holisticJudge := app.NewHolisticJudge(aiClassifierClient, recorder, logger, tuningTuning)
 	configRun := configConfig.Run
 	scoreApp := cli.NewScoreApp(holisticJudge, recorder, logger, configRun, tuningTuning)
 	return scoreApp, nil

@@ -188,6 +188,7 @@ for the full list with defaults. The ones you are likely to touch:
 | `OPENAI_BASE_URL` / `OPENAI_API_KEY` / `OPENAI_MODEL` | unset | Optional generative model for `extract`'s Job Summary |
 | `RUN_DEADLINE` | `120s` | Whole-run limit |
 | `TUNING_FILE` | built-in | Your edited copy of `tuning/tuning.yaml` |
+| `JEV_RECORD` / `JEV_REPLAY` | unset | Save every Jev exchange to a file / answer from it with no key or network |
 
 ## Documentation
 
