@@ -44,7 +44,7 @@ func TestParseBaselineReply(t *testing.T) {
 		{"plain", `{"score": 72, "gaps": ["Kafka"], "strengths": ["Go", "AWS"]}`, 72, 1, 2, false},
 		{"fenced with prose", "Here you go:\n```json\n{\"score\": 64.6, \"gaps\": [], \"strengths\": []}\n```", 65, 0, 0, false},
 		{"clamped", `{"score": 140}`, 100, 0, 0, false},
-		{"string score, coerced like Reactive Resume", `{"score": "55"}`, 55, 0, 0, false},
+		{"string score, coerced like the generative model approach", `{"score": "55"}`, 55, 0, 0, false},
 		{"missing score", `{"gaps": []}`, 0, 0, 0, true},
 		{"capped lists", `{"score": 10, "gaps": ` + nine + `, "strengths": ` + nine + `}`, 10, 8, 8, false},
 		{"no json", "I cannot score this.", 0, 0, 0, true},

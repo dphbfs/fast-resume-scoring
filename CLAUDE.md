@@ -247,9 +247,9 @@ and the accept/reject decision.
   error (predicted vs labeled Coverage's Fit Score per pair, mean and max).
 - Identical runs vary by up to ~0.5 points; compare configs on 3+ runs
   each (mean and range), never on one.
-- `eval -checker -baseline` adds a generative baseline arm (Reactive
-  Resume's one-prompt match score via `OPENAI_*`, uncached) and reports
-  both arms' Fit error vs labeled, time, and cost per pair;
+- `eval -checker -baseline` adds a generative baseline arm (the
+  generative model approach's one-prompt match score via `OPENAI_*`,
+  uncached) and reports both arms' Fit error vs labeled, time, and cost per pair;
   `-baseline-price-in/-out` price it (and reprice on `-rescore`).
 - `make eval-checker` runs it live into `eval/reports/checker/`;
   `eval -checker -rescore <report.json>` rescores offline after label edits.
@@ -328,9 +328,9 @@ and the accept/reject decision.
 
 ## Test data
 
-- Job Descriptions come from the Reactive Resume MCP server (`reactive-resume`,
-  local-scope config); strip recruiter names and emails.
-- The user's own Resumes may be pulled from Reactive Resume only to build
+- Job Descriptions come from the job-tracker MCP server (local-scope
+  config); strip recruiter names and emails.
+- The user's own Resumes may be pulled from the job tracker only to build
   Resume Checker fixtures, and must be masked before committing: fake name,
   contacts, links, companies, and schools; keep dates, technologies, and
   metrics. The user reviews masked Resumes before commit.

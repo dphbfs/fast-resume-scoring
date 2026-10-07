@@ -1,5 +1,5 @@
 {
-  "scorer": "Reactive Resume match score (Claude Opus 5)",
+  "scorer": "Generative model match score (Claude Opus 5)",
   "rules": {
     "resume": "01a0caff-793b-776b-a9da-7582831315d7",
     "min_jd_chars": 1000,

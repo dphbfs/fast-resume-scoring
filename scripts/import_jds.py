@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Import Job Descriptions from a Reactive Resume `list_applications` dump.
+"""Import Job Descriptions from a job-tracker `list_applications` dump.
 
 Usage: scripts/import_jds.py <dump.json> [out_dir]
 
-The dump is the JSON array returned by the reactive-resume MCP tool
+The dump is the JSON array returned by the job-tracker MCP tool
 `list_applications` (includeArchived=true). Only applications whose
 jobDescription contains the original posting under "### Full Job Description"
 are imported; Hermes-condensed descriptions are skipped because they are

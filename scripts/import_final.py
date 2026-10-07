@@ -3,7 +3,7 @@
 
 Usage: scripts/import_final.py <dump.json> [final2]
 
-The dump is a Reactive Resume `list_applications` result (includeArchived).
+The dump is a job-tracker `list_applications` result (includeArchived).
 PICKS lists, per held-out resume, the applications chosen by title before
 any scoring (docs/final-set/picks.md). Writes testdata/final/jd/<id>.txt
 (cleaned as in scripts/import_reference.py) and testdata/final/pairs.json

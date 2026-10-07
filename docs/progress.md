@@ -55,8 +55,8 @@ details are in `docs/tuning.md`; open tasks are in
 - Fit error: the mean gap, in points, between the Fit Score from the
   predicted Coverage and the one from the labeled Coverage (lower is
   better).
-- `eval -checker -baseline` also scores every pair with Reactive Resume's
-  one-prompt match score through the generative client, and compares the
+- `eval -checker -baseline` also scores every pair with the generative model
+  approach (a one-prompt match score) through the generative client, and compares the
   two on Fit error, time and cost per pair. Jev cost is now split by
   stage (retrieval vs strength) in every report.
 
@@ -91,7 +91,7 @@ Every config ran 3+ times; identical runs differ by about 0.5 points.
   retrieval round changed nothing. Skipping both cut cost 23% ($0.0053 →
   $0.0041 per pair) at the same speed (7.4s per pair) and the same or
   better accuracy (15 runs over 5 configs).
-- Against Reactive Resume's one-prompt match score (`claude-opus-5`, 3
+- Against the generative model approach's one-prompt match score (`claude-opus-5`, 3
   runs):
 
 | | Jev | Generative |
@@ -172,9 +172,9 @@ are merged and can be deleted.
 3. Overfitting: thresholds and options were picked on the same 11 pairs,
    and offline gains have started shrinking live. 4–6 fresh pairs are
    needed to confirm the numbers.
-4. Outcome check: score real applications (Reactive Resume holds their
+4. Outcome check: score real applications (the job tracker holds their
    status) and test whether the Fit Score ranks interviews above
-   rejections, against Reactive Resume's own match score.
+   rejections, against the generative model approach's match score.
 5. More cost cuts, not yet tested: a shorter grading rubric (flat v3 is
    27% smaller than v5) and shorter retrieval option descriptions.
 6. Possible new signals beyond requirements, cheapest first: recency and

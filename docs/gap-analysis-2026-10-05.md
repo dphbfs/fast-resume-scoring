@@ -1,8 +1,8 @@
 # Where the Match Score and the generative reference disagree (2026-10-05)
 
 Question: why does the Match Score still miss the generative reference by
-15–20 points on some postings? Method: the reference prompt (Reactive
-Resume's match-score prompt, verbatim) plus a request to list every factor
+15–20 points on some postings? Method: the reference prompt (the
+generative model approach's match-score prompt, verbatim) plus a request to list every factor
 that moved the score, each with a category, direction, weight 1–10, and
 evidence (`scripts/explain_reference.py`). Model: Claude Opus 5 (the
 reference model) through the local proxy, 3 runs per posting, Main resume
@@ -32,8 +32,8 @@ reference model) through the local proxy, 3 runs per posting, Main resume
 
 ## Input fidelity problem (fix first)
 
-The masked Markdown resume has no location; the resume Reactive Resume
-sends has "Orlando, FL". Without it, the model inferred an EU/Ukraine base
+The masked Markdown resume has no location; the resume the generative
+scorer receives has "Orlando, FL". Without it, the model inferred an EU/Ukraine base
 ("Ukrainian fluency", "EU leasing") and applied eligibility/location
 penalties (−2 to −15) in all four postings, including a US citizenship
 requirement it treats as likely unmet. The real reference saw a US

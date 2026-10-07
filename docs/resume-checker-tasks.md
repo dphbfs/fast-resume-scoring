@@ -8,7 +8,7 @@ Design: `CLAUDE.md` ("Resume Checker"), `docs/adr/0001`. Terms: `CONTEXT.md`.
       accuracy in the extractor eval report
 - [x] 2. Resume parser: markdown convention -> Evidence Units with Resume
       Section, role, company, dates
-- [~] 3. Fixtures: pull + mask the user's Resumes from Reactive Resume, write
+- [~] 3. Fixtures: pull + mask the user's Resumes from the job tracker, write
       synthetic Resumes, draft `testdata/checker/<pair>.expected.json`
       (drafted; user reviews masking and corrects labels)
 - [x] 4. Retrieval Round (top K=5, p >= 0.02, `none` sink)

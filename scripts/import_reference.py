@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Import reference match scores from a Reactive Resume `list_applications` dump.
+"""Import reference match scores from a job-tracker `list_applications` dump.
 
 Usage: scripts/import_reference.py <dump.json> [out_dir]
 
-The dump is the JSON array returned by the reactive-resume MCP tool
+The dump is the JSON array returned by the job-tracker MCP tool
 `list_applications` (includeArchived=true). Each application with a saved
 match score becomes a reference pair: its Job Description, the linked
 Resume, and the score. Selection rules (docs/review-v1-plan.md):
@@ -12,7 +12,7 @@ Resume, and the score. Selection rules (docs/review-v1-plan.md):
   - Job Description of at least MIN_JD_CHARS characters (shorter ones are
     stubs: title, link, location)
   - a single score: applications whose Hermes notes log more than one
-    distinct Reactive Resume score are excluded; no note counts as one
+    distinct generative score are excluded; no note counts as one
 
 The Job Description is kept as the scorer saw it (the whole field), only
 with HTML entities decoded and contacts removed. Excluded applications are
@@ -37,7 +37,7 @@ MIN_JD_CHARS = 1000
 SUBSET_SIZE = 30
 GOLDEN_DIR = Path("testdata/golden")
 
-SCORED_NOTE = re.compile(r"Scored (\S+): \d+ \(Reactive Resume (\d+)")
+SCORED_NOTE = re.compile(r"Scored (\S+): \d+ \([^\d)]*(\d+)")
 CONTACTS_SECTION = re.compile(r"^#{2,3} Contacts?:?.*?(?=^#{2,3} |\Z)", re.MULTILINE | re.DOTALL)
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+(\.[\w-]+)+")
 # Phone numbers with separators; bare digit runs are job IDs in URLs.
@@ -123,7 +123,7 @@ def main() -> int:
     for e in excluded:
         counts["excluded_" + e["reason"]] = counts.get("excluded_" + e["reason"], 0) + 1
     doc = {
-        "scorer": "Reactive Resume match score (Claude Opus 5)",
+        "scorer": "Generative model match score (Claude Opus 5)",
         "rules": {"resume": MAIN_RESUME_ID, "min_jd_chars": MIN_JD_CHARS, "single_score": True},
         "counts": counts,
         "pairs": pairs,

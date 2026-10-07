@@ -1,8 +1,8 @@
 # Product Review v1
 
-**The project is a promising local replacement for Reactive Resume’s scoring, but it has not yet demonstrated equivalent scoring behavior.** The implementation already provides useful concurrency, explainable evidence, and encouraging API-cost savings. The next milestone should be proving agreement with Reactive Resume on unseen resume–job pairs.
+**The project is a promising local replacement for the generative model approach’s scoring, but it has not yet demonstrated equivalent scoring behavior.** The implementation already provides useful concurrency, explainable evidence, and encouraging API-cost savings. The next milestone should be proving agreement with the generative model approach on unseen resume–job pairs.
 
-This report incorporates both clarifications: Reactive Resume is the product benchmark, and deployment is a local CLI on personal computers or homelabs. Resume tailoring is excluded.
+This report incorporates both clarifications: the generative model approach is the product benchmark, and deployment is a local CLI on personal computers or homelabs. Resume tailoring is excluded.
 
 I reviewed the plan, implementation, tests, and recorded evaluations. `go test -race ./...` passed during the review. No code was changed and no paid model evaluations were run.
 
@@ -12,11 +12,11 @@ I reviewed the plan, implementation, tests, and recorded evaluations. `go test -
 
 The target should be:
 
-> Given the same resume and job description, produce a score sufficiently close to Reactive Resume’s score, with lower end-to-end latency and API cost.
+> Given the same resume and job description, produce a score sufficiently close to the generative model approach’s score, with lower end-to-end latency and API cost.
 
-Reactive Resume is a reasonable reference because you find its scores useful. Agreement with it establishes replacement quality; it does not independently establish hiring-outcome accuracy. Hiring outcomes are unnecessary for the immediate milestone.
+The generative model approach is a reasonable reference because you find its scores useful. Agreement with it establishes replacement quality; it does not independently establish hiring-outcome accuracy. Hiring outcomes are unnecessary for the immediate milestone.
 
-The current evaluation answers a different question: how closely each system approximates your coverage-based formula. Jev is designed around that formula, while the generative baseline receives a general scoring prompt. Consequently, the reported lower Fit Score error does **not** establish closer reproduction of Reactive Resume.
+The current evaluation answers a different question: how closely each system approximates your coverage-based formula. Jev is designed around that formula, while the generative baseline receives a general scoring prompt. Consequently, the reported lower Fit Score error does **not** establish closer reproduction of the generative model approach.
 
 See [baseline.go](internal/adapter/eval/baseline.go#L78) and [checker_score.go](internal/adapter/eval/checker_score.go#L159).
 
@@ -24,27 +24,27 @@ Recommended evaluation:
 
 | Measure | Purpose |
 |---|---|
-| Mean absolute difference from Reactive Resume | Typical score disagreement |
+| Mean absolute difference from the generative model approach | Typical score disagreement |
 | Percentage within ±5 and ±10 points | Understandable agreement bands |
 | Largest disagreements | Detect consequential failures |
 | Ranking agreement across jobs for one resume | Preserve the user’s prioritization |
 | Agreement around any user decision threshold | Preserve practical decisions |
 | End-to-end latency and API cost | Verify the replacement benefit |
 
-The ±5/±10 bands are reporting suggestions, not established acceptance thresholds. Choose acceptance criteria after measuring Reactive Resume’s own variability.
+The ±5/±10 bands are reporting suggestions, not established acceptance thresholds. Choose acceptance criteria after measuring the generative model approach’s own variability.
 
-Use the exact production prompt, resume representation, model, and settings. The current baseline substitutes plain text for Reactive Resume’s JSON, which may affect scores. Repeat reference calls on a subset to establish how much the reference disagrees with itself.
+Use the exact production prompt, resume representation, model, and settings. The current baseline substitutes plain text for the JSON resume, which may affect scores. Repeat reference calls on a subset to establish how much the reference disagrees with itself.
 
-> **Alternative proposal:** Agree that the current Fit error is circular (labels are scored with our own formula). But I would not make agreement with Reactive Resume the *primary* target. Our baseline runs (`docs/tuning.md`, "Generative baseline") show the Reactive Resume prompt missing the labeled fit by 6.4 points mean and 22–26 max. Matching it closely would mean copying its noise. The stated goal is frontier-level *accuracy*, so:
+> **Alternative proposal:** Agree that the current Fit error is circular (labels are scored with our own formula). But I would not make agreement with the generative model approach the *primary* target. Our baseline runs (`docs/tuning.md`, "Generative baseline") show the generative prompt missing the labeled fit by 6.4 points mean and 22–26 max. Matching it closely would mean copying its noise. The stated goal is frontier-level *accuracy*, so:
 >
 > 1. **Primary reference:** a blind holistic judgment per held-out pair, written by the user before seeing either system's output (a 0–100 score plus apply/skip).
 > 2. **Score both arms against it the same way:** MAE, share within ±10, Kendall τ across jobs for one resume, and apply/skip agreement. Ranking and the decision are what the user actually consumes.
-> 3. **Secondary column:** agreement with Reactive Resume, plus Reactive Resume's self-variance (3 calls per pair). This tells us how close a "replacement" can get at all.
-> 4. **Add a strong frontier arm** as the accuracy ceiling: a rubric prompt that receives the requirements list, temperature 0, median of 3. Beating Reactive Resume's minimal prompt is a weak claim on its own. The comparison should be against the best a frontier model can do at a reasonable price.
+> 3. **Secondary column:** agreement with the generative model approach, plus its self-variance (3 calls per pair). This tells us how close a "replacement" can get at all.
+> 4. **Add a strong frontier arm** as the accuracy ceiling: a rubric prompt that receives the requirements list, temperature 0, median of 3. Beating the generative model approach's minimal prompt is a weak claim on its own. The comparison should be against the best a frontier model can do at a reasonable price.
 >
-> Agree on passing Reactive Resume's JSON resume to the Reactive Resume arm.
+> Agree on passing the JSON resume to the generative arm.
 
-**Response — retain Reactive Resume as the primary replacement benchmark; adopt blind human review as a secondary check.** The user's clarification explicitly selects Reactive Resume as the useful product reference. The 6.4-point difference from our coverage formula is not evidence that Reactive Resume is noisy or wrong: that formula is precisely the disputed reference. Only repeated reference calls measure its self-variance. Matching its stable behavior and copying random fluctuation are different objectives.
+**Response — retain the generative model approach as the primary replacement benchmark; adopt blind human review as a secondary check.** The user's clarification explicitly selects the generative model approach as the useful product reference. The 6.4-point difference from our coverage formula is not evidence that the generative model approach is noisy or wrong: that formula is precisely the disputed reference. Only repeated reference calls measure its self-variance. Matching its stable behavior and copying random fluctuation are different objectives.
 
 Use the median of three reference calls as a more stable evaluation target, retain the individual scores to report variability, and report the operational latency/cost of one production reference call separately from the cost of collecting three benchmark samples. Record the actual model/version and request settings; a proxy alias alone is insufficient provenance.
 
@@ -52,7 +52,7 @@ Collect blind human judgments where practical, but anchor the scoring rubric and
 
 A stronger frontier prompt is a useful optional challenger, not an accuracy ceiling and not a prerequisite for this replacement milestone. Its end-to-end arm must receive the raw documents and produce or pay for its own requirements. Giving it golden requirements would create a different, diagnostic comparison. Freeze its prompt before testing; use deterministic settings where supported without assuming temperature zero eliminates variance. Report Kendall τ-b within each resume's job set, with enough jobs per resume to make ranking meaningful.
 
-**Settlement:** primary = agreement with the actual Reactive Resume scorer; secondary = blinded fit judgments, decision/ranking agreement, and reference variability. Add the stronger frontier arm after the minimum benchmark works, or alongside it if collecting it is inexpensive. Do not change the primary target on the basis of the existing circular comparison.
+**Settlement:** primary = agreement with the actual generative scorer; secondary = blinded fit judgments, decision/ranking agreement, and reference variability. Add the stronger frontier arm after the minimum benchmark works, or alongside it if collecting it is inexpensive. Do not change the primary target on the basis of the existing circular comparison.
 
 ## 2. The implementation has a sound foundation
 
@@ -79,7 +79,7 @@ Recommended changes:
 
 - Keep the existing fixtures as a development suite.
 - Create a held-out set with different resumes and jobs; avoid splitting pairs so that the same resume appears on both sides.
-- Evaluate the complete extraction-and-checking path against Reactive Resume.
+- Evaluate the complete extraction-and-checking path against the generative model approach.
 - Include realistic mismatches: career changes, adjacent technologies, seniority differences, incomplete resumes, and jobs with many alternatives.
 - Keep requirement-level labels for diagnosing disagreements, rather than using their derived score as the primary replacement benchmark.
 
@@ -97,9 +97,9 @@ Twenty or more pairs is a reasonable initial smoke benchmark, not a justified sa
 
 **Settlement:** adopt strict-first matching with reviewed loose matches and a frozen milestone test. Record code/config/prompt/model versions and input hashes. Use development data for all fitting and selection. Once test examples or their error patterns guide changes, retire them into development and collect a fresh final test set; repeated milestone inspection otherwise becomes indirect tuning.
 
-## 4. Coverage alone may not reproduce Reactive Resume’s judgment
+## 4. Coverage alone may not reproduce the generative model approach’s judgment
 
-The Fit Score uses fixed coverage credits and tier weights. Those values are design assumptions, not calibrated mappings to Reactive Resume.
+The Fit Score uses fixed coverage credits and tier weights. Those values are design assumptions, not calibrated mappings to the generative model approach.
 
 Potentially missing signals include:
 
@@ -115,7 +115,7 @@ The code-side score formula remains useful: it is cheap, inspectable, and calibr
 
 > **Alternative proposal:** Before adding any signal, calibrate the knobs we already have. There are five: the strong/partial/weak credits and the preferred/mentioned tier weights relative to required. Fit them by least squares against the blind holistic scores from §1. It is a few lines of code and the result can be rescored offline. Add a new signal only if the residual stays large *and* clusters by cause. Duration/recency is the most likely candidate, and §6 covers it without calling Jev.
 
-**Response — adopt constrained calibration before adding signals, with a smaller search and the agreed target.** Fit against development-set Reactive Resume reference scores; use blind human scores as a separately reported check, not a silently substituted objective. Never fit against the held-out labels proposed in §1.
+**Response — adopt constrained calibration before adding signals, with a smaller search and the agreed target.** Fit against development-set generative reference scores; use blind human scores as a separately reported check, not a silently substituted objective. Never fit against the held-out labels proposed in §1.
 
 Keep none = 0 and strong = 1 initially, so complete direct coverage still means full coverage. Fix required weight as the scale anchor. Tune partial/weak credits and preferred/mentioned relative weights subject to `0 <= weak <= partial <= 1` and `0 < mentioned <= preferred <= required`. That leaves four adjustable values, not five. If a persistent ceiling mismatch later justifies changing strong credit, treat that as an explicit score-semantics decision.
 
@@ -186,7 +186,7 @@ One concrete response-handling failure: peel retrieval accesses `ranked[0]` with
 >
 > This matches the review's "don't assign every skill the whole job" caveat only partly: it credits a role in which the skill was evidenced. That is a defensible approximation and it is explainable.
 >
-> **Alternative proposal (parser):** The product's resumes live in Reactive Resume as structured JSON, with sections and items that carry position, company, and dates. Make a Reactive Resume JSON → Evidence Unit adapter the primary input and keep the Markdown parser as a fallback. This removes the formatting-convention risk, provides dates for the years logic, and gives the Reactive Resume baseline arm the same representation.
+> **Alternative proposal (parser):** The product's resumes live in a resume builder as structured JSON, with sections and items that carry position, company, and dates. Make a structured JSON → Evidence Unit adapter the primary input and keep the Markdown parser as a fallback. This removes the formatting-convention risk, provides dates for the years logic, and gives the generative baseline arm the same representation.
 >
 > **Alternative proposal (peel):** Delete `peel` (see §11) instead of fixing it.
 
@@ -200,7 +200,7 @@ There is a useful simplification: multiplying the proposed conditional expected 
 
 Represent the duration's subject explicitly and prefer direct/strong evidence. Parse minimums, ranges, months, missing dates, and ongoing roles deliberately; unsupported wording returns unknown. Merge intervals only after linking the correct subject, and pin an as-of date for reproducible evaluation. Report whole-role spans as `roles containing evidence span X years; skill duration unverified`, not “X years of skill confirmed.” Missing dates must not become zero years. Exact temporal credit requires explicit duration evidence or a separately validated policy; do not silently insert this heuristic into Fit Score. Do not double-count a skill and its duration unless that weighting is intentional.
 
-**Response — parser: adopt a local Reactive Resume JSON adapter as the preferred structured input.** Keep the scoring core independent of that vendor: both JSON and Markdown adapters should produce the same internal evidence units, with source item IDs and dates. Read an exported file; no account access or live integration is needed for this milestone. Verify the actual export schema/version and handle rich-text bullets, visibility, custom sections, and incomplete dates explicitly. Preserve source references and test equivalent JSON/Markdown inputs. The reference arm receives the actual production resume representation; both arms must see equivalent substantive content. Structured JSON fixes metadata ambiguity, not whether a Summary achievement deserves a weak cap.
+**Response — parser: adopt a local structured JSON adapter as the preferred structured input.** Keep the scoring core independent of that vendor: both JSON and Markdown adapters should produce the same internal evidence units, with source item IDs and dates. Read an exported file; no account access or live integration is needed for this milestone. Verify the actual export schema/version and handle rich-text bullets, visibility, custom sections, and incomplete dates explicitly. Preserve source references and test equivalent JSON/Markdown inputs. The reference arm receives the actual production resume representation; both arms must see equivalent substantive content. Structured JSON fixes metadata ambiguity, not whether a Summary achievement deserves a weak cap.
 
 **Response — peel: adopt deletion if done in the same cleanup milestone.** Remove its flags, branches, and mode-specific tests together and return a clear error for removed configuration values. If deletion is deferred, add the empty-ranking guard now. Retained modes still need general response validation.
 
@@ -359,12 +359,12 @@ Adopt `DefaultCheckerConfig()` plus one validation path. Direct callers should s
 
 **Settlement:** delete losing runtime implementations, centralize defaults, and preserve reproducible history. Do not accumulate a permanent experiment framework merely to retain old branches.
 
-**Recommended next milestone:** build a held-out, end-to-end comparison against the actual Reactive Resume production scorer; fix boundary validation and unsupported temporal scoring; then optimize the largest measured latency and cost contributors. That sequence gives you evidence that each optimization preserves the behavior the end user already trusts.
+**Recommended next milestone:** build a held-out, end-to-end comparison against the actual generative production scorer; fix boundary validation and unsupported temporal scoring; then optimize the largest measured latency and cost contributors. That sequence gives you evidence that each optimization preserves the behavior the end user already trusts.
 
 > **Alternative proposal (sequence):**
 >
 > 1. Run the offline rescore experiments first, since they cost $0: expected credit (§5), soft gate×grader (§6), and calibrated knobs (§4).
-> 2. Build the held-out set with blind holistic labels, scoring Reactive Resume, a strong frontier arm, and Jev end-to-end (§1, §3).
+> 2. Build the held-out set with blind holistic labels, scoring the generative model approach, a strong frontier arm, and Jev end-to-end (§1, §3).
 > 3. Fix boundary validation, error-body truncation, and file permissions, and delete the experimental modes (§6, §10, §11).
 > 4. Address latency: measure queue wait, raise Jev concurrency, overlap the summary, and revisit gate-first (§7, §8).
 >
@@ -374,10 +374,10 @@ Adopt `DefaultCheckerConfig()` plus one validation path. Direct callers should s
 
 Recommended settled sequence:
 
-1. **Lock the evaluation contract:** actual Reactive Resume inputs/settings, primary agreement metrics, secondary human fit rubric, and acceptance tolerances chosen on development data before final testing. Inventory usable reports/traces and collect missing development reference scores. Reserve a separate final test set with several jobs per resume.
+1. **Lock the evaluation contract:** actual generative scorer inputs/settings, primary agreement metrics, secondary human fit rubric, and acceptance tolerances chosen on development data before final testing. Inventory usable reports/traces and collect missing development reference scores. Reserve a separate final test set with several jobs per resume.
 2. **Do independent low-risk work while preparing data:** validate boundaries, bound/redact error messages, protect private artifacts, centralize defaults, remove abandoned modes, and add the structured JSON adapter. These can be separate implementation tasks; this review does not itself authorize paid runs or modify runtime code.
 3. **Run development-only offline ablations:** current discrete credit, conditional/unconditional expected credit, soft gate combination, and constrained parameter calibration. Report missing-trace/grade limitations and retain a simple baseline. Select one candidate before touching final held-out scores.
 4. **Measure latency on development inputs:** queue time first, then a bounded concurrency sweep, summary overlap, per-job pipelining, combined versus gate-first, and second-round context reduction. Change one factor at a time and preserve the agreed accuracy checks. Skip Importance in scoring mode once its output/ordering dependencies are handled.
-5. **Freeze and evaluate end-to-end:** compare the selected implementation with the actual Reactive Resume scorer on the reserved set, including cold-run extraction/summary cost and wall time. Report uncertainty, ranking by resume, large disagreements, failures, and separate cached/batch measurements. Use the stronger frontier arm as an optional challenger, not a presumed truth source.
+5. **Freeze and evaluate end-to-end:** compare the selected implementation with the actual generative scorer on the reserved set, including cold-run extraction/summary cost and wall time. Report uncertainty, ranking by resume, large disagreements, failures, and separate cached/batch measurements. Use the stronger frontier arm as an optional challenger, not a presumed truth source.
 
 **Decision rule:** correctness/privacy fixes and the structured-input/defaults simplifications can proceed without waiting for model experiments. Numerical scoring and performance defaults change only on development evidence, then receive one frozen final evaluation. If that evaluation is inconclusive, expand independent test data; if it drives redesign, treat the inspected examples as development data and obtain a fresh final set. This settles what to build and how to decide, without claiming unmeasured improvements.

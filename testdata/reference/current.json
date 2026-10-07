@@ -1,5 +1,5 @@
 {
-  "scorer": "Reactive Resume match score (Claude Opus 5), current setup",
+  "scorer": "Generative model match score (Claude Opus 5), current setup",
   "scored_on": "2026-10-05",
   "method": "eval-only copies of the pair (same JD text as jd/<id>.txt, Main resume), scored then archived; 1 call per pair, or the median of 3 for the noise pairs",
   "summary": {

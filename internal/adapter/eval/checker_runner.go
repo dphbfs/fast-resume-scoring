@@ -493,7 +493,7 @@ func writeBaseline(b *strings.Builder, r CheckerReport) {
 		model = r.Baseline.Model
 	}
 	fmt.Fprintf(b, "## Generative baseline (`%s`)\n\n", model)
-	b.WriteString("Reactive Resume's one-prompt match score against the Resume Checker's Fit Score, both measured against the Fit Score of the labeled Coverage. ")
+	b.WriteString("The generative model approach's one-prompt match score against the Resume Checker's Fit Score, both measured against the Fit Score of the labeled Coverage. ")
 	b.WriteString("Jev cost covers the Resume Checker only: the input Requirements are golden labels, so the Requirement Extractor (once per Job Description) is not included.\n\n")
 	fmt.Fprintf(b, "| | Jev | Generative |\n|---|---|---|\n")
 	fmt.Fprintf(b, "| Fit error vs labeled, mean / max (%d pairs) | %.1f / %d | %.1f / %d |\n", bt.Pairs, bt.JevFitError, bt.JevFitErrorMax, bt.FitError, bt.FitErrorMax)
