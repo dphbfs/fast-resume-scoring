@@ -27,6 +27,7 @@ First public version.
   every command and the recording behind it; `go test` replays it.
 - Docker image `ghcr.io/dphbfs/fast-resume-scoring` (linux/amd64, arm64)
   with the examples bundled; published by the release workflow.
+- `docs/eval.md` and an agreement chart for the held-out set.
 - Every prompt and score weight in `tuning/tuning.yaml`, embedded in the
   binaries and overridable with `TUNING_FILE`.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size
