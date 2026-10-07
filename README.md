@@ -4,10 +4,13 @@
 with a typed classifier instead of a frontier-model prompt. Then see which
 requirements the resume covers and which it misses.**
 
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Go version](https://img.shields.io/github/go-mod/go-version/dphbfs/fast-resume-scoring)](go.mod)
-[![Go Reference](https://pkg.go.dev/badge/github.com/dphbfs/fast-resume-scoring.svg)](https://pkg.go.dev/github.com/dphbfs/fast-resume-scoring)
+[![CI](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml/badge.svg)](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/dphbfs/fast-resume-scoring/graph/badge.svg)](https://codecov.io/gh/dphbfs/fast-resume-scoring)
 [![Go Report Card](https://goreportcard.com/badge/github.com/dphbfs/fast-resume-scoring)](https://goreportcard.com/report/github.com/dphbfs/fast-resume-scoring)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dphbfs/fast-resume-scoring/badge)](https://scorecard.dev/viewer/?uri=github.com/dphbfs/fast-resume-scoring)
+[![Release](https://img.shields.io/github/v/release/dphbfs/fast-resume-scoring?sort=semver)](https://github.com/dphbfs/fast-resume-scoring/releases/latest)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Held-out MAE vs Opus 5](https://img.shields.io/badge/held--out_MAE_vs_Opus_5-8.6_pts-informational)](docs/final-report-v1.md)
 
 The usual way to score a resume against a job is one long prompt to a
 frontier model: a few cents and 15 seconds per pair, and an answer you have
