@@ -93,6 +93,18 @@ export TYPESAFE_API_KEY=...                      # TypeSafe key, or:
 score -jd job.txt -resume resume.md
 ```
 
+Or with Docker (linux/amd64 and arm64; the binaries are `score`,
+`extract`, and `check`):
+
+```sh
+docker run --rm -e TYPESAFE_API_KEY -v "$PWD:/work" \
+  ghcr.io/dphbfs/fast-resume-scoring score -jd job.txt -resume resume.md
+
+# no key: the bundled examples and their recording
+docker run --rm -e JEV_REPLAY=/examples/jev-recording.json \
+  ghcr.io/dphbfs/fast-resume-scoring score -jd /examples/job.md -resume /examples/resume.md
+```
+
 Or from a clone: `cp .env.example .env`, fill it in, `make build`, and run
 `bin/score`, `bin/extract`, `bin/check`.
 
