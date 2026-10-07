@@ -104,6 +104,21 @@ func (a *App) Run(ctx context.Context, args []string, stdout, stderr io.Writer) 
 	return ExitOK
 }
 
+// WantsHelp reports whether args ask for usage (-h, -help, --help), so a
+// command can print it before loading config: help must work without an
+// API key.
+func WantsHelp(args []string) bool {
+	for _, a := range args {
+		switch a {
+		case "-h", "-help", "--help":
+			return true
+		case "--":
+			return false
+		}
+	}
+	return false
+}
+
 func printSummary(recorder *metrics.Recorder, log *slog.Logger, w io.Writer) {
 	fmt.Fprintln(w, "--- run summary ---")
 	if err := recorder.Summary().WriteText(w); err != nil {
