@@ -1,0 +1,11 @@
+version: "2"
+
+linters:
+  settings:
+    errcheck:
+      # Writes to the CLI's stdout/stderr and to hashes: nothing useful to
+      # do on failure (hash.Hash.Write never returns an error).
+      exclude-functions:
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln

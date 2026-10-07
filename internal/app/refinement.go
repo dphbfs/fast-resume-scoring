@@ -188,7 +188,7 @@ var roleWords = map[string]bool{
 // titleWords lowercases s and keeps its words, dropping punctuation.
 func titleWords(s string) []string {
 	return strings.FieldsFunc(strings.ToLower(s), func(r rune) bool {
-		return !(unicode.IsLetter(r) || unicode.IsDigit(r) || r == '+' || r == '#' || r == '.')
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r) && r != '+' && r != '#' && r != '.'
 	})
 }
 
