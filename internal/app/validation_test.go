@@ -5,11 +5,11 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev/jevtest"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev/jevtest"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // questionChunk returns the chunk embedded in a Validation question.

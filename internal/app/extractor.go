@@ -8,10 +8,10 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // Extractor runs the Requirement Extractor pipeline.

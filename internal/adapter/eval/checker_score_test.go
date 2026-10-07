@@ -4,9 +4,9 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/app"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/app"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 func checkerFixture() CheckerFixture {

@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // Recorder collects metrics for one run. It is safe for concurrent use.

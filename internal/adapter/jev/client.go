@@ -18,10 +18,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/limiter"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/providererr"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/limiter"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/providererr"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 const endpoint = "/v1/systemone"

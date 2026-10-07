@@ -17,8 +17,8 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 )
 
 //go:embed tuning.yaml

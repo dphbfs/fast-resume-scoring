@@ -3,7 +3,7 @@ package eval
 import (
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // TestCheckerLabelsAreConsistent lints the Resume Checker labels: keys name

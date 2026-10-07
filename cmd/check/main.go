@@ -10,7 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/cli"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
 )
 
 func main() {

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // traceTopRetrieval is how many options a TraceRound keeps.

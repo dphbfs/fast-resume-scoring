@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // probEpsilon tolerates rounding in probabilities and distribution sums.

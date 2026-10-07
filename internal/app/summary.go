@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // jobSummary sets r.summary from the generative client, or falls back to the

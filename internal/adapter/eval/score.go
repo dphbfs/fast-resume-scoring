@@ -5,7 +5,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // Tier ranks, highest first; Importance should order Requirements this way.

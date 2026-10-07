@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 func TestValidateAnswers(t *testing.T) {

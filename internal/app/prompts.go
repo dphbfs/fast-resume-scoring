@@ -1,8 +1,8 @@
 package app
 
 import (
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // prompts holds the tuning file's prompt text (tuning/tuning.yaml) in the

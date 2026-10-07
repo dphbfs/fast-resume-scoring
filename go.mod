@@ -1,4 +1,4 @@
-module github.com/dphbfs/fast-resume-tailoring
+module github.com/dphbfs/fast-resume-scoring
 
 go 1.27.1
 

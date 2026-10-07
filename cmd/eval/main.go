@@ -12,10 +12,10 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/gencache"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/eval"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/gencache"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 func main() {

@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 type countingGen struct {
