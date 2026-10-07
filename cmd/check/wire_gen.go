@@ -8,11 +8,11 @@ package main
 
 import (
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
-	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-scoring/internal/app"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/wiring"
 	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
@@ -25,10 +25,10 @@ func initApp() (*cli.CheckApp, error) {
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
@@ -38,7 +38,7 @@ func initApp() (*cli.CheckApp, error) {
 	if err != nil {
 		return nil, err
 	}
-	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
+	appChecker := app.NewChecker(aiClassifierClient, recorder, logger, checker, tuningTuning)
 	configRun := configConfig.Run
 	checkApp := cli.NewCheckApp(appChecker, recorder, logger, configRun)
 	return checkApp, nil

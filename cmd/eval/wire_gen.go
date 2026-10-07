@@ -9,12 +9,12 @@ package main
 import (
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/eval"
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/gencache"
-	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-scoring/internal/app"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/wiring"
 	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
@@ -27,26 +27,26 @@ func initRunner(cacheDir gencache.Dir) (*eval.Runner, error) {
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
 	generative := configConfig.Generative
-	openaiClient, err := openai.New(generative, recorder, logger)
+	client, err := openai.New(generative, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
-	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
+	gencacheClient := gencache.New(client, cacheDir, recorder)
 	pipeline := configConfig.Pipeline
 	configTuning := configConfig.Tuning
 	tuningTuning, err := tuning.Load(configTuning)
 	if err != nil {
 		return nil, err
 	}
-	extractor := app.New(client, gencacheClient, recorder, logger, pipeline, tuningTuning)
+	extractor := app.New(aiClassifierClient, gencacheClient, recorder, logger, pipeline, tuningTuning)
 	runner := eval.NewRunner(extractor, recorder, logger, pipeline)
 	return runner, nil
 }
@@ -59,10 +59,10 @@ func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
@@ -72,13 +72,13 @@ func initCheckerRunner(baseline eval.BaselineConfig) (*eval.CheckerRunner, error
 	if err != nil {
 		return nil, err
 	}
-	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
+	appChecker := app.NewChecker(aiClassifierClient, recorder, logger, checker, tuningTuning)
 	generative := configConfig.Generative
-	openaiClient, err := openai.New(generative, recorder, logger)
+	client, err := openai.New(generative, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
-	evalBaseline := eval.NewBaseline(openaiClient, generative, baseline)
+	evalBaseline := eval.NewBaseline(client, generative, baseline)
 	checkerRunner := eval.NewCheckerRunner(appChecker, evalBaseline, recorder, logger, checker, tuningTuning)
 	return checkerRunner, nil
 }
@@ -90,29 +90,29 @@ func initE2ERunner(cacheDir gencache.Dir) (*eval.E2ERunner, error) {
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
 	generative := configConfig.Generative
-	openaiClient, err := openai.New(generative, recorder, logger)
+	client, err := openai.New(generative, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
-	gencacheClient := gencache.New(openaiClient, cacheDir, recorder)
+	gencacheClient := gencache.New(client, cacheDir, recorder)
 	pipeline := configConfig.Pipeline
 	configTuning := configConfig.Tuning
 	tuningTuning, err := tuning.Load(configTuning)
 	if err != nil {
 		return nil, err
 	}
-	extractor := app.New(client, gencacheClient, recorder, logger, pipeline, tuningTuning)
+	extractor := app.New(aiClassifierClient, gencacheClient, recorder, logger, pipeline, tuningTuning)
 	checker := configConfig.Checker
-	appChecker := app.NewChecker(client, recorder, logger, checker, tuningTuning)
-	holisticJudge := app.NewHolisticJudge(client, recorder, logger, tuningTuning)
-	e2ERunner := eval.NewE2ERunner(extractor, appChecker, holisticJudge, recorder, logger, configJev, pipeline, checker, tuningTuning)
+	appChecker := app.NewChecker(aiClassifierClient, recorder, logger, checker, tuningTuning)
+	holisticJudge := app.NewHolisticJudge(aiClassifierClient, recorder, logger, tuningTuning)
+	e2ERunner := eval.NewE2ERunner(extractor, appChecker, holisticJudge, recorder, logger, jev, pipeline, checker, tuningTuning)
 	return e2ERunner, nil
 }

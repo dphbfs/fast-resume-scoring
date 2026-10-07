@@ -8,12 +8,12 @@ package main
 
 import (
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
-	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-scoring/internal/app"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/wiring"
 	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
@@ -25,15 +25,15 @@ func initApp() (*cli.App, error) {
 	if err != nil {
 		return nil, err
 	}
-	configJev := configConfig.Jev
+	jev := configConfig.Jev
 	recorder := metrics.NewRecorder()
 	logger := logging.New()
-	client, err := jev.New(configJev, recorder, logger)
+	aiClassifierClient, err := wiring.NewClassifier(jev, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
 	generative := configConfig.Generative
-	openaiClient, err := openai.New(generative, recorder, logger)
+	client, err := openai.New(generative, recorder, logger)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func initApp() (*cli.App, error) {
 	if err != nil {
 		return nil, err
 	}
-	extractor := app.New(client, openaiClient, recorder, logger, pipeline, tuningTuning)
+	extractor := app.New(aiClassifierClient, client, recorder, logger, pipeline, tuningTuning)
 	configRun := configConfig.Run
 	cliApp := cli.New(extractor, recorder, logger, configRun)
 	return cliApp, nil

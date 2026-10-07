@@ -21,6 +21,8 @@ First public version.
   Score. Coverage schema v1, optional `-debug` trace.
 - `eval`: live evaluation against golden labels (extractor, checker) and
   against generative reference scores (`-e2e`), with offline `-rescore`.
+- `JEV_RECORD` / `JEV_REPLAY`: record Jev exchanges to a file and replay
+  them with no API key or network.
 - Every prompt and score weight in `tuning/tuning.yaml`, embedded in the
   binaries and overridable with `TUNING_FILE`.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size

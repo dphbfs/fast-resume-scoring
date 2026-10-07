@@ -22,7 +22,9 @@ Treat Resumes and Job Descriptions as personal data. A run sends them to:
   set: `extract` sends the Job Description to write the Job Summary, and
   `eval -checker -baseline` sends the Resume and Job Description.
 
-The Go commands send nothing else and have no telemetry. The research
+With `JEV_REPLAY` set, nothing goes to Jev (`extract` still calls the
+generative model if `OPENAI_MODEL` is set). The Go commands send nothing
+else and have no telemetry. The research
 scripts in `scripts/` call the endpoints their docstrings name
 (`OPENAI_*`, `JUDGE_*`).
 
