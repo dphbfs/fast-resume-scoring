@@ -6,7 +6,8 @@ as welcome as code.
 ## Setup
 
 - Go 1.27.1 or newer (see `go.mod`).
-- `golangci-lint` for `make lint`.
+- [golangci-lint](https://golangci-lint.run/) v2 for `make lint` and
+  `make fmt` (CI pins the version in `.github/workflows/ci.yml`).
 - Python 3.11+ only for the research scripts in `scripts/`.
 - A Jev key (TypeSafe or OpenRouter) only for live runs and `make eval*`.
   Unit tests need no key and no network.
@@ -20,10 +21,13 @@ make all          # wire-check, vet, test, build
 ## Before you open a pull request
 
 ```sh
+make fmt
 make all
 make race
 make lint
 ```
+
+CI runs the same checks, plus `go mod tidy`, govulncheck, and CodeQL.
 
 - **`go test` never calls a live API.** Tests use the fake Jev server in
   `internal/adapter/jev/jevtest` with recorded responses. Keep it that way.
