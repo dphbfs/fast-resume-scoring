@@ -162,7 +162,7 @@ func (c *Client) post(ctx context.Context, body []byte) (resp port.ClassifyRespo
 	if err != nil {
 		return resp, 0, fmt.Errorf("jev: %w", err)
 	}
-	defer httpResp.Body.Close()
+	defer func() { _ = httpResp.Body.Close() }()
 
 	raw, err := io.ReadAll(io.LimitReader(httpResp.Body, 10<<20))
 	if err != nil {

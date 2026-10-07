@@ -21,9 +21,9 @@ func WriteFileAtomic(path string, data []byte) error {
 	if err != nil {
 		return fmt.Errorf("write %s: %w", path, err)
 	}
-	defer os.Remove(f.Name()) // no-op after a successful rename
+	defer func() { _ = os.Remove(f.Name()) }() // no-op after a successful rename
 	if _, err := f.Write(data); err != nil {
-		f.Close()
+		_ = f.Close() // the write error is the one to report
 		return fmt.Errorf("write %s: %w", path, err)
 	}
 	if err := f.Close(); err != nil {

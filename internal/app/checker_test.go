@@ -275,14 +275,6 @@ func softmaxOver(scores map[string]float64) jevtest.Responder {
 	})
 }
 
-func abcdRequirements() []checkRequirement {
-	var reqs []domain.Requirement
-	for _, v := range []string{"A", "B", "C", "D"} {
-		reqs = append(reqs, domain.Requirement{ID: v, Value: v})
-	}
-	return checkRequirements(domain.Result{Requirements: reqs})
-}
-
 func TestRetrieveNarrow(t *testing.T) {
 	// Ten filler Requirements hold 0.2 of the mass in the first round, which
 	// keeps C (0.035) under the 0.04 floor. Narrowing to the best 3 drops

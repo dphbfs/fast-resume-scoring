@@ -201,11 +201,11 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 				continue
 			}
 			s.CorrectLinks++
-			switch d := strengthRank[w] - strengthRank[g]; {
-			case d == 0:
+			switch strengthRank[w] - strengthRank[g] {
+			case 0:
 				s.StrengthExact++
 				s.StrengthNear++
-			case d == 1 || d == -1:
+			case 1, -1:
 				s.StrengthNear++
 				s.StrengthDiffs = append(s.StrengthDiffs, PairNote{r.Value, unit, text[unit], w, g})
 			default:

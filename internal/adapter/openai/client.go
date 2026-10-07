@@ -138,7 +138,7 @@ func (c *Client) post(ctx context.Context, body []byte) (Reply, error) {
 	if err != nil {
 		return Reply{}, fmt.Errorf("openai: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	raw, err := io.ReadAll(io.LimitReader(resp.Body, 10<<20))
 	if err != nil {
