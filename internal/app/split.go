@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -150,7 +151,7 @@ func hasAlnum(s string) bool {
 func (e *Extractor) splitSentencesStage(_ context.Context, r *run) error {
 	r.sentences, r.headings, r.strongHeading = splitLines(r.jd.Text)
 	if len(r.sentences) == 0 {
-		return fmt.Errorf("job description has no sentences")
+		return errors.New("job description has no sentences")
 	}
 	e.metrics.Add("sentences.total", int64(len(r.sentences)))
 	return nil

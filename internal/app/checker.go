@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"maps"
@@ -33,8 +34,10 @@ var _ port.ResumeChecker = (*Checker)(nil)
 
 // NewChecker builds a Checker.
 func NewChecker(classifier port.AIClassifierClient, m port.Metrics, log *slog.Logger, cfg config.Checker, t *tuning.Tuning) *Checker {
-	return &Checker{classifier: classifier, metrics: m, log: log.With("component", "checker"), cfg: cfg,
-		prompts: newPrompts(t), fitWeights: t.FitWeights()}
+	return &Checker{
+		classifier: classifier, metrics: m, log: log.With("component", "checker"), cfg: cfg,
+		prompts: newPrompts(t), fitWeights: t.FitWeights(),
+	}
 }
 
 // noneOption is the Retrieval Round's sink option.
@@ -62,7 +65,7 @@ func (c *Checker) Check(ctx context.Context, reqs domain.Result, resume domain.R
 	if err := c.stage(ctx, "parse_resume", func(context.Context) error {
 		units = ParseResume(resume.Text)
 		if len(units) == 0 {
-			return fmt.Errorf("resume has no evidence units")
+			return errors.New("resume has no evidence units")
 		}
 		c.metrics.Add("checker.units", int64(len(units)))
 		return nil
@@ -73,7 +76,7 @@ func (c *Checker) Check(ctx context.Context, reqs domain.Result, resume domain.R
 		reqs = withoutMentioned(reqs)
 	}
 	if len(reqs.Requirements) == 0 {
-		return domain.CoverageResult{}, trace, fmt.Errorf("no requirements to check")
+		return domain.CoverageResult{}, trace, errors.New("no requirements to check")
 	}
 	creqs := checkRequirements(reqs)
 

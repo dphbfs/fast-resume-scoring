@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"fmt"
-	"io"
 	"log/slog"
 	"maps"
 	"math"
@@ -24,7 +23,7 @@ import (
 func newTestChecker(t *testing.T, srvURL string, cfg config.Checker) (*Checker, *metrics.Recorder) {
 	t.Helper()
 	m := metrics.NewRecorder()
-	log := slog.New(slog.NewTextHandler(io.Discard, nil))
+	log := slog.New(slog.DiscardHandler)
 	c, err := jev.New(config.Jev{
 		APIKey: "k", BaseURL: srvURL, Model: "jev-latest",
 		MaxConcurrency: 4, MaxRetries: 0, Timeout: 5 * time.Second,
@@ -112,7 +111,8 @@ const checkResume = `Jane Doe
 `
 
 func TestCheck(t *testing.T) {
-	f := fakeEvidence{t: t,
+	f := fakeEvidence{
+		t: t,
 		retrieval: map[string]map[string]float64{
 			"Built Go":   {"Go": 0.5, "Kubernetes": 0.4, "Ruby": 0.01, "none": 0.09},
 			"Wrote a":    {"none": 0.97, "Go": 0.01, "Kubernetes": 0.01, "Ruby": 0.01},
@@ -397,6 +397,7 @@ func TestStrengthCriteriaAreStructured(t *testing.T) {
 }
 
 func gateFake(t *testing.T) *jevtest.Server {
+	t.Helper()
 	return jevtest.NewServer(t, jevtest.AnswerAll(func(id string, q jev.WireQuestion) jev.WireAnswer {
 		if id == "retrieval" {
 			return jevtest.Choice(map[string]float64{"Go": 0.5, "Kubernetes": 0.4, "none": 0.1}, 0.5)
@@ -488,8 +489,10 @@ func TestStrengthSkipCappedGrading(t *testing.T) {
 func TestWithoutMentioned(t *testing.T) {
 	in := domain.Result{
 		Requirements: []domain.Requirement{
-			{ID: "a", Tier: domain.TierRequired}, {ID: "b", Tier: domain.TierMentioned},
-			{ID: "c", Tier: domain.TierPreferred}, {ID: "d", Tier: domain.TierMentioned},
+			{ID: "a", Tier: domain.TierRequired},
+			{ID: "b", Tier: domain.TierMentioned},
+			{ID: "c", Tier: domain.TierPreferred},
+			{ID: "d", Tier: domain.TierMentioned},
 		},
 		AlternativeGroups: []domain.AlternativeGroup{{ID: "g1", Members: []string{"a", "c", "d"}}, {ID: "g2", Members: []string{"a", "b"}}},
 	}

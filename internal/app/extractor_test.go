@@ -14,6 +14,7 @@ import (
 
 // pipelineResponder answers every question type of the pipeline.
 func pipelineResponder(t *testing.T) jevtest.Responder {
+	t.Helper()
 	return func(_ int, req jev.WireRequest) jevtest.Reply {
 		answers := map[string]jev.WireAnswer{}
 		for id, q := range req.Questions {

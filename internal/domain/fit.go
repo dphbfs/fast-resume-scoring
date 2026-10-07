@@ -26,8 +26,9 @@ func tierRank(t Tier) int {
 		return 2
 	case TierPreferred:
 		return 1
+	default:
+		return 0
 	}
-	return 0
 }
 
 // ScoreFit computes the Fit Score: the Tier-weighted average credit of each

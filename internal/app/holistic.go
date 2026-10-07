@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"time"
@@ -76,7 +77,7 @@ func (h *HolisticJudge) Judge(ctx context.Context, jd domain.JobDescription, res
 // scoreShare is a Score answer as a share of its top level, 0..1.
 func scoreShare(a port.Answer, levels int) (float64, error) {
 	if a.Score == nil {
-		return 0, fmt.Errorf("no score answer")
+		return 0, errors.New("no score answer")
 	}
 	return *a.Score / float64(levels-1), nil
 }

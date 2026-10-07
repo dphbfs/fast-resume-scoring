@@ -158,9 +158,12 @@ type E2ERunner struct {
 // NewE2ERunner builds an E2ERunner. The configs are recorded in each report
 // and key the extraction cache.
 func NewE2ERunner(extractor port.RequirementExtractor, checker port.ResumeChecker, holistic port.HolisticJudge, recorder *metrics.Recorder,
-	log *slog.Logger, jev config.Jev, pipeline config.Pipeline, cfg config.Checker, t *tuning.Tuning) *E2ERunner {
-	return &E2ERunner{extractor: extractor, checker: checker, holistic: holistic, recorder: recorder, log: log.With("component", "eval"),
-		jev: jev, pipeline: pipeline, cfg: cfg, tuning: t}
+	log *slog.Logger, jev config.Jev, pipeline config.Pipeline, cfg config.Checker, t *tuning.Tuning,
+) *E2ERunner {
+	return &E2ERunner{
+		extractor: extractor, checker: checker, holistic: holistic, recorder: recorder, log: log.With("component", "eval"),
+		jev: jev, pipeline: pipeline, cfg: cfg, tuning: t,
+	}
 }
 
 // E2EScore is one pair's outcome.

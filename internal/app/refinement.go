@@ -160,7 +160,7 @@ func (e *Extractor) refinementRound(ctx context.Context, r *run) error {
 		r.groups = append(r.groups, g)
 	}
 	slices.SortFunc(r.groups, func(a, b []string) int { return cmp.Compare(index[a[0]], index[b[0]]) })
-	r.trace.Refinement = append(trs, titleDrops...)
+	r.trace.Refinement = slices.Concat(trs, titleDrops)
 	r.trace.Groups = r.groups
 
 	// Apply Filler drops and duplicate rewrites to the accepted Candidates.

@@ -2,7 +2,7 @@ BIN := bin/extract
 # Load local API keys when present (gitignored).
 ENV := set -a; [ -f .env ] && . ./.env; set +a;
 
-.PHONY: all build test race vet wire wire-check lint eval eval-checker eval-e2e clean
+.PHONY: all build test race vet wire wire-check lint fmt eval eval-checker eval-e2e clean
 
 all: wire-check vet test build
 
@@ -29,6 +29,10 @@ wire-check:
 
 lint:
 	golangci-lint run ./...
+
+# gofumpt + goimports, as configured in .golangci.yml.
+fmt:
+	golangci-lint fmt ./...
 
 # Runs the golden set against live Jev and the generative model, and writes
 # eval/reports/<timestamp>.{json,md}. Not part of `go test`. Pass flags with

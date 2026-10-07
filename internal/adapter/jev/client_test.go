@@ -3,7 +3,6 @@ package jev_test
 import (
 	"context"
 	"errors"
-	"io"
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
@@ -26,7 +25,7 @@ func newClient(t *testing.T, url string, m port.Metrics) *jev.Client {
 		MaxConcurrency: 2,
 		MaxRetries:     2,
 		Timeout:        5 * time.Second,
-	}, m, slog.New(slog.NewTextHandler(io.Discard, nil)))
+	}, m, slog.New(slog.DiscardHandler))
 	if err != nil {
 		t.Fatal(err)
 	}

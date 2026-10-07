@@ -199,7 +199,7 @@ func load(getenv func(string) string) (Config, error) {
 		}
 	}
 	if cfg.Jev.APIKey == "" {
-		return Config{}, fmt.Errorf("config: TYPESAFE_API_KEY is required")
+		return Config{}, errors.New("config: TYPESAFE_API_KEY is required")
 	}
 	if err := cfg.Validate(); err != nil {
 		return Config{}, err
@@ -240,7 +240,7 @@ func (c Config) Validate() error {
 	prob("CHECKER_MIN_EVIDENCE_MASS", c.Checker.MinEvidenceMass)
 	prob("CHECKER_GATE_THRESHOLD", c.Checker.GateThreshold)
 	if (c.Checker.SkipCappedGrading || c.Checker.GateFirst) && c.Checker.GateThreshold <= 0 {
-		errs = append(errs, fmt.Errorf("CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0"))
+		errs = append(errs, errors.New("CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0"))
 	}
 	positive("RUN_DEADLINE", c.Run.Deadline)
 	if err := errors.Join(errs...); err != nil {
@@ -296,7 +296,7 @@ func (e *env) ints(key string, def []int) []int {
 		return []int{}
 	}
 	var out []int
-	for _, f := range strings.Split(v, ",") {
+	for f := range strings.SplitSeq(v, ",") {
 		n, err := strconv.Atoi(strings.TrimSpace(f))
 		if (err != nil || n < 1) && e.err == nil {
 			e.err = fmt.Errorf("config: %s: %q is not a positive integer", key, f)

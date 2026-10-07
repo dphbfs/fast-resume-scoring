@@ -37,18 +37,19 @@ func refinementRun() *run {
 			{Ref: "s5", Text: "Bonus: Kafka.", Section: domain.SectionPreferred},
 		},
 		accepted: []judged{
-			{Candidate: domain.Candidate{Text: "Kubernetes", Ref: "s1"}},
-			{Candidate: domain.Candidate{Text: "K8s", Ref: "s2"}},
-			{Candidate: domain.Candidate{Text: "Go", Ref: "s3"}},
-			{Candidate: domain.Candidate{Text: "Ruby", Ref: "s3"}},
-			{Candidate: domain.Candidate{Text: "team player", Ref: "s4"}},
-			{Candidate: domain.Candidate{Text: "Kafka", Ref: "s5"}},
+			{Text: "Kubernetes", Ref: "s1"},
+			{Text: "K8s", Ref: "s2"},
+			{Text: "Go", Ref: "s3"},
+			{Text: "Ruby", Ref: "s3"},
+			{Text: "team player", Ref: "s4"},
+			{Text: "Kafka", Ref: "s5"},
 		},
 	}
 }
 
 // refinementResponder stands in for Jev on the Refinement Round.
 func refinementResponder(t *testing.T) jevtest.Responder {
+	t.Helper()
 	scores := map[string]float64{"Kubernetes": 3, "K8s": 1, "Go": 3, "Ruby": 3, "team player": 3, "Kafka": 2}
 	return func(_ int, req jev.WireRequest) jevtest.Reply {
 		answers := map[string]jev.WireAnswer{}
@@ -246,7 +247,7 @@ func TestRefinementRoundDropsJobTitle(t *testing.T) {
 	e, m := newTestExtractor(t, srv.URL, config.Pipeline{})
 	r := refinementRun()
 	r.jd.Title = "Senior Backend Engineer"
-	r.accepted = append(r.accepted, judged{Candidate: domain.Candidate{Text: "Backend Engineer", Ref: "s1"}})
+	r.accepted = append(r.accepted, judged{Text: "Backend Engineer", Ref: "s1"})
 	if err := e.refinementRound(context.Background(), r); err != nil {
 		t.Fatal(err)
 	}

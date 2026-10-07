@@ -139,8 +139,10 @@ type CheckerScore struct {
 // ScoreCheck compares a Resume Checker result with a pair's labels.
 // Requirements in Skip are left out everywhere.
 func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckTrace, fw domain.FitWeights) (CheckerScore, error) {
-	s := CheckerScore{ID: f.ID, Title: f.Job.JD.Title, Resume: f.Expected.Resume,
-		Coverage: map[string]CoverageTally{}, Confusion: map[string]map[string]int{}}
+	s := CheckerScore{
+		ID: f.ID, Title: f.Job.JD.Title, Resume: f.Expected.Resume,
+		Coverage: map[string]CoverageTally{}, Confusion: map[string]map[string]int{},
+	}
 	text := map[string]string{}
 	for _, u := range f.Units {
 		text[u.ID] = u.Text
@@ -176,8 +178,10 @@ func ScoreCheck(f CheckerFixture, res domain.CoverageResult, trace domain.CheckT
 			continue
 		}
 		gotCovs = append(gotCovs, r)
-		wantCovs = append(wantCovs, domain.RequirementCoverage{ID: r.ID, Tier: r.Tier,
-			Coverage: domain.EvidenceStrength(bestStrength(want[r.Value]))})
+		wantCovs = append(wantCovs, domain.RequirementCoverage{
+			ID: r.ID, Tier: r.Tier,
+			Coverage: domain.EvidenceStrength(bestStrength(want[r.Value])),
+		})
 		got := map[string]string{}
 		for _, l := range r.Evidence {
 			got[l.Unit] = string(l.Strength)

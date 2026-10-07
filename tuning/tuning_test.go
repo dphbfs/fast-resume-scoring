@@ -47,8 +47,10 @@ func TestLoadRejects(t *testing.T) {
 		name, old, new, want string
 	}{
 		{"misspelled key", "  intercept: 80.7", "  intercpt: 80.7", "field intercpt not found"},
-		{"empty text", "    if_true: The candidate's relevant experience or level is clearly below what the job asks for.",
-			"    if_true: \"\"", "holistic.experience_short.if_true is empty"},
+		{
+			"empty text", "    if_true: The candidate's relevant experience or level is clearly below what the job asks for.",
+			"    if_true: \"\"", "holistic.experience_short.if_true is empty",
+		},
 		{"missing fixed section", "      benefits: >-", "      perks: >-", `missing fixed option "benefits"`},
 		{"zero tier weight", "    required: 3", "    required: 0", "fit_score.tier_weight.required: must be positive"},
 		{"unknown credit", "    weak: 0.3", "    weak: 0.3\n    meh: 0.1", `fit_score.credit: unknown key "meh"`},

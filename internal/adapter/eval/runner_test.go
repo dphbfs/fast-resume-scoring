@@ -3,7 +3,6 @@ package eval
 import (
 	"context"
 	"errors"
-	"io"
 	"log/slog"
 	"os"
 	"strings"
@@ -37,7 +36,7 @@ func TestRunAndWriteReport(t *testing.T) {
 	ex := fakeExtractor{"A": {Model: "jev-test", Requirements: []domain.Requirement{
 		{ID: "r1", Value: "Go"}, {ID: "r2", Value: "Terraform"},
 	}}}
-	rep := NewRunner(ex, metrics.NewRecorder(), slog.New(slog.NewTextHandler(io.Discard, nil)), config.Pipeline{MinRequirementMass: 0.5}).
+	rep := NewRunner(ex, metrics.NewRecorder(), slog.New(slog.DiscardHandler), config.Pipeline{MinRequirementMass: 0.5}).
 		Run(context.Background(), fixtures, 2)
 
 	tot := rep.Totals
@@ -56,8 +55,10 @@ func TestRunAndWriteReport(t *testing.T) {
 	if mc := rep.Fixtures[0].MissCauses; len(mc) != 1 || mc[0].Stage != StageNoCandidate {
 		t.Errorf("miss causes = %+v, want Kafka as no_candidate", mc)
 	}
-	for _, want := range []string{"min requirement mass 0.50", "Recall (loose) | 50.0%", "error: boom",
-		"| no_candidate | 1 |", "`Kafka` (no_candidate)", "**Extra (1):** `Terraform`"} {
+	for _, want := range []string{
+		"min requirement mass 0.50", "Recall (loose) | 50.0%", "error: boom",
+		"| no_candidate | 1 |", "`Kafka` (no_candidate)", "**Extra (1):** `Terraform`",
+	} {
 		if !strings.Contains(string(md), want) {
 			t.Errorf("markdown missing %q:\n%s", want, md)
 		}
