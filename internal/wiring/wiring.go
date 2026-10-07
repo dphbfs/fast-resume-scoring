@@ -3,9 +3,12 @@
 package wiring
 
 import (
+	"log/slog"
+
 	"github.com/google/wire"
 
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev/replay"
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
 	"github.com/dphbfs/fast-resume-scoring/internal/app"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
@@ -26,10 +29,26 @@ var PlatformSet = wire.NewSet(
 )
 
 // ClassifierSet provides the Jev client behind its port.
-var ClassifierSet = wire.NewSet(
-	jev.New,
-	wire.Bind(new(port.AIClassifierClient), new(*jev.Client)),
-)
+var ClassifierSet = wire.NewSet(NewClassifier)
+
+// NewClassifier picks the classifier the config asks for: the Jev API, the
+// API with every exchange recorded (JEV_RECORD), or a recording replayed
+// with no network or key (JEV_REPLAY).
+func NewClassifier(cfg config.Jev, m port.Metrics, log *slog.Logger) (port.AIClassifierClient, error) {
+	if cfg.ReplayFile != "" {
+		log.Info("answering Jev from a recording; no API calls", "file", cfg.ReplayFile)
+		return replay.NewPlayer(cfg.ReplayFile, m)
+	}
+	client, err := jev.New(cfg, m, log)
+	if err != nil {
+		return nil, err
+	}
+	if cfg.RecordFile != "" {
+		log.Info("recording Jev exchanges", "file", cfg.RecordFile)
+		return replay.NewRecorder(client, cfg.RecordFile)
+	}
+	return client, nil
+}
 
 // AIClientSet provides the Jev and generative clients behind their ports.
 var AIClientSet = wire.NewSet(

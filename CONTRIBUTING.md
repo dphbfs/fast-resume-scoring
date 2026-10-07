@@ -43,6 +43,10 @@ CI runs the same checks, plus `go mod tidy`, govulncheck, and CodeQL.
   go test ./internal/app -run TestPromptSnapshot -update
   ```
 
+  Any change to what is sent to Jev also breaks the example replay
+  (`go test ./cmd/...`): re-record with `make examples` (needs a key,
+  about $0.006) and commit the new outputs.
+
   Question wordings are fitted constants. A wording change needs a probe
   (`scripts/probe_holistic.py`) and a refit (`scripts/fit_match.py`) on
   development data, with the results in the pull request.

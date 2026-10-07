@@ -1,0 +1,505 @@
+{
+  "schema_version": "1",
+  "model": "typesafe/jev-1.13-20260917",
+  "requirements": [
+    {
+      "id": "req_1",
+      "value": "Go in production",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e2",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e1",
+          "strength": "weak",
+          "p": 0.86
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "value": "backend software engineering experience",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e2",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e7",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e1",
+          "strength": "weak",
+          "p": 0.98
+        }
+      ]
+    },
+    {
+      "id": "req_3",
+      "value": "PostgreSQL skills",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e4",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e12",
+          "strength": "weak",
+          "p": 0.78
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "value": "running services on Kubernetes",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e3",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e11",
+          "strength": "weak",
+          "p": 0.86
+        }
+      ]
+    },
+    {
+      "id": "req_5",
+      "value": "designing REST",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e2",
+          "strength": "strong",
+          "p": 1
+        }
+      ]
+    },
+    {
+      "id": "req_6",
+      "value": "schema design",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e4",
+          "strength": "strong",
+          "p": 1
+        }
+      ]
+    },
+    {
+      "id": "req_7",
+      "value": "observability tooling",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e5",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e13",
+          "strength": "weak",
+          "p": 0.98
+        }
+      ]
+    },
+    {
+      "id": "req_8",
+      "value": "query tuning",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e4",
+          "strength": "strong",
+          "p": 1
+        }
+      ]
+    },
+    {
+      "id": "req_9",
+      "value": "gRPC APIs",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e2",
+          "strength": "strong",
+          "p": 1
+        }
+      ]
+    },
+    {
+      "id": "req_10",
+      "value": "event streaming",
+      "tier": "required",
+      "coverage": "partial",
+      "evidence": [
+        {
+          "unit": "e7",
+          "strength": "partial",
+          "p": 0.21
+        }
+      ]
+    },
+    {
+      "id": "req_11",
+      "value": "marketplaces",
+      "tier": "preferred",
+      "coverage": "partial",
+      "evidence": [
+        {
+          "unit": "e8",
+          "strength": "partial",
+          "p": 0.86
+        }
+      ]
+    },
+    {
+      "id": "req_12",
+      "value": "pricing systems",
+      "tier": "preferred",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e8",
+          "strength": "strong",
+          "p": 0.99
+        }
+      ]
+    },
+    {
+      "id": "req_13",
+      "value": "Terraform",
+      "tier": "preferred",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_14",
+      "value": "logistics",
+      "tier": "preferred",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_15",
+      "value": "Python for data tooling",
+      "tier": "preferred",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e8",
+          "strength": "strong",
+          "p": 0.98
+        },
+        {
+          "unit": "e10",
+          "strength": "weak",
+          "p": 0.83
+        }
+      ]
+    },
+    {
+      "id": "req_16",
+      "value": "services in production",
+      "tier": "mentioned",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e5",
+          "strength": "strong",
+          "p": 0.98
+        }
+      ]
+    },
+    {
+      "id": "req_17",
+      "value": "Grafana",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e5",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e13",
+          "strength": "weak",
+          "p": 0.98
+        }
+      ]
+    },
+    {
+      "id": "req_18",
+      "value": "Prometheus",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e5",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e13",
+          "strength": "weak",
+          "p": 0.97
+        }
+      ]
+    },
+    {
+      "id": "req_19",
+      "value": "incident reviews",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_20",
+      "value": "Model event flows on Kafka",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_21",
+      "value": "AWS",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e3",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e11",
+          "strength": "weak",
+          "p": 0.89
+        }
+      ]
+    },
+    {
+      "id": "req_22",
+      "value": "GCP",
+      "tier": "required",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_23",
+      "value": "build Go services for quoting",
+      "tier": "mentioned",
+      "coverage": "weak",
+      "evidence": [
+        {
+          "unit": "e10",
+          "strength": "weak",
+          "p": 0.83
+        }
+      ]
+    },
+    {
+      "id": "req_24",
+      "value": "SLOs",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_25",
+      "value": "OpenTelemetry",
+      "tier": "required",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_26",
+      "value": "Mentor engineers through code review",
+      "tier": "mentioned",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e6",
+          "strength": "strong",
+          "p": 1
+        }
+      ]
+    },
+    {
+      "id": "req_27",
+      "value": "ship pricing experiments safely",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_28",
+      "value": "carrier dispatch",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_29",
+      "value": "booking",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_30",
+      "value": "design discussions",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    }
+  ],
+  "alternative_groups": [
+    {
+      "id": "alt_1",
+      "members": [
+        "req_5",
+        "req_9"
+      ],
+      "coverage": "strong"
+    },
+    {
+      "id": "alt_2",
+      "members": [
+        "req_6",
+        "req_8"
+      ],
+      "coverage": "strong"
+    },
+    {
+      "id": "alt_3",
+      "members": [
+        "req_21",
+        "req_22"
+      ],
+      "coverage": "strong"
+    },
+    {
+      "id": "alt_4",
+      "members": [
+        "req_7",
+        "req_18",
+        "req_17",
+        "req_25"
+      ],
+      "coverage": "strong"
+    },
+    {
+      "id": "alt_5",
+      "members": [
+        "req_14",
+        "req_11",
+        "req_12"
+      ],
+      "coverage": "strong"
+    }
+  ],
+  "fit": {
+    "score": 75,
+    "by_tier": {
+      "mentioned": 23,
+      "preferred": 67,
+      "required": 96
+    },
+    "gaps": []
+  },
+  "evidence_units": {
+    "e1": {
+      "text": "Backend engineer with 6 years building APIs and data pipelines, the last 3 in Go.",
+      "resume_section": "summary"
+    },
+    "e10": {
+      "text": "Languages: Go, Python, SQL, Bash",
+      "resume_section": "skills"
+    },
+    "e11": {
+      "text": "Infrastructure: Kubernetes, Docker, AWS, Helm, GitHub Actions",
+      "resume_section": "skills"
+    },
+    "e12": {
+      "text": "Data: PostgreSQL, MySQL, RabbitMQ, Redis",
+      "resume_section": "skills"
+    },
+    "e13": {
+      "text": "Observability: Prometheus, Grafana",
+      "resume_section": "skills"
+    },
+    "e2": {
+      "text": "Built the shipment-tracking API in Go (gRPC and REST), serving 2,000 requests per second at p99 under 80 ms.",
+      "resume_section": "experience",
+      "role": "Backend Engineer",
+      "company": "Parcelwise",
+      "dates": "2022-04 – present"
+    },
+    "e3": {
+      "text": "Moved 12 services from VMs to Kubernetes on AWS (EKS) with Helm charts.",
+      "resume_section": "experience",
+      "role": "Backend Engineer",
+      "company": "Parcelwise",
+      "dates": "2022-04 – present"
+    },
+    "e4": {
+      "text": "Designed PostgreSQL schemas for tracking events and cut the slowest report query from 9 s to 400 ms with partial indexes.",
+      "resume_section": "experience",
+      "role": "Backend Engineer",
+      "company": "Parcelwise",
+      "dates": "2022-04 – present"
+    },
+    "e5": {
+      "text": "Added Prometheus metrics and Grafana dashboards for every service, and joined the on-call rotation.",
+      "resume_section": "experience",
+      "role": "Backend Engineer",
+      "company": "Parcelwise",
+      "dates": "2022-04 – present"
+    },
+    "e6": {
+      "text": "Reviewed code for two junior engineers.",
+      "resume_section": "experience",
+      "role": "Backend Engineer",
+      "company": "Parcelwise",
+      "dates": "2022-04 – present"
+    },
+    "e7": {
+      "text": "Wrote order-processing services in Python (Django) and a RabbitMQ worker pool for payment events.",
+      "resume_section": "experience",
+      "role": "Software Engineer",
+      "company": "Brightcart",
+      "dates": "2019-06 – 2022-03"
+    },
+    "e8": {
+      "text": "Built a nightly pricing export with pandas used by the merchandising team.",
+      "resume_section": "experience",
+      "role": "Software Engineer",
+      "company": "Brightcart",
+      "dates": "2019-06 – 2022-03"
+    }
+  }
+}

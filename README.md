@@ -61,6 +61,21 @@ One Jev request, 0.43 s, $0.00007.*
   input limits, structured logs, a per-run metrics summary (tokens, cost,
   latency p50/p95), sanitized provider errors, private output files.
 
+## Try it without a key
+
+[`examples/`](examples/) holds a synthetic posting and resume, the real
+output of every command, and the Jev recording behind it. Replay it
+offline:
+
+```sh
+git clone https://github.com/dphbfs/fast-resume-scoring && cd fast-resume-scoring
+make build
+JEV_REPLAY=examples/jev-recording.json OPENAI_MODEL= \
+  bin/score -jd examples/job.md -resume examples/resume.md
+```
+
+Your own files need a key: a replay only answers the requests it recorded.
+
 ## Quickstart
 
 You need Go 1.27.1+ and a Jev API key, either from
@@ -76,6 +91,18 @@ export TYPESAFE_API_KEY=...                      # TypeSafe key, or:
 # export TYPESAFE_BASE_URL=https://openrouter.ai/api TYPESAFE_API_KEY=<OpenRouter key>
 
 score -jd job.txt -resume resume.md
+```
+
+Or with Docker (linux/amd64 and arm64; the binaries are `score`,
+`extract`, and `check`):
+
+```sh
+docker run --rm -e TYPESAFE_API_KEY -v "$PWD:/work" \
+  ghcr.io/dphbfs/fast-resume-scoring score -jd job.txt -resume resume.md
+
+# no key: the bundled examples and their recording
+docker run --rm -e JEV_REPLAY=/examples/jev-recording.json \
+  ghcr.io/dphbfs/fast-resume-scoring score -jd /examples/job.md -resume /examples/resume.md
 ```
 
 Or from a clone: `cp .env.example .env`, fill it in, `make build`, and run
@@ -153,6 +180,8 @@ bootstraps.
 | **Held out (sealed)** | 20 | **8.6** [6.0, 11.1] | **0.78** [0.63, 0.92] | 60% |
 | *Independent judge vs reference, same held-out set* | 20 | *8.8* | *0.78* | |
 
+![Held-out agreement: Jev Match Score and an independent judge vs the generative reference](docs/img/agreement.svg)
+
 | | Jev `score` | Opus 5 prompt |
 |---|---|---|
 | Cost per score | $0.0001 | ≥ $0.033 |
@@ -161,7 +190,8 @@ bootstraps.
 
 The generative reference is itself not fixed: the same pairs scored days
 apart moved by +11.6 points on average, and the same resume as Markdown
-instead of JSON scored 14.9 points lower. Full method and numbers:
+instead of JSON scored 14.9 points lower. How the evals work:
+[docs/eval.md](docs/eval.md); full numbers:
 [docs/final-report-v1.md](docs/final-report-v1.md).
 
 ## Limitations
@@ -188,10 +218,13 @@ for the full list with defaults. The ones you are likely to touch:
 | `OPENAI_BASE_URL` / `OPENAI_API_KEY` / `OPENAI_MODEL` | unset | Optional generative model for `extract`'s Job Summary |
 | `RUN_DEADLINE` | `120s` | Whole-run limit |
 | `TUNING_FILE` | built-in | Your edited copy of `tuning/tuning.yaml` |
+| `JEV_RECORD` / `JEV_REPLAY` | unset | Save every Jev exchange to a file / answer from it with no key or network |
 
 ## Documentation
 
 - [Architecture](docs/architecture.md): pipeline and code layout
+- [Evaluation method](docs/eval.md): data sets, metrics, experiment rules
+- [Examples](examples/): real outputs and a no-key replay
 - [CONTEXT.md](CONTEXT.md): glossary of domain terms
 - [Decision records](docs/adr/)
 - [Tuning log](docs/tuning.md): every experiment, including the ones that

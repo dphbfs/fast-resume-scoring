@@ -21,8 +21,19 @@ First public version.
   Score. Coverage schema v1, optional `-debug` trace.
 - `eval`: live evaluation against golden labels (extractor, checker) and
   against generative reference scores (`-e2e`), with offline `-rescore`.
+- `JEV_RECORD` / `JEV_REPLAY`: record Jev exchanges to a file and replay
+  them with no API key or network.
+- `examples/`: a synthetic posting and resume with the real output of
+  every command and the recording behind it; `go test` replays it.
+- Docker image `ghcr.io/dphbfs/fast-resume-scoring` (linux/amd64, arm64)
+  with the examples bundled; published by the release workflow.
+- `docs/eval.md` and an agreement chart for the held-out set.
 - Every prompt and score weight in `tuning/tuning.yaml`, embedded in the
   binaries and overridable with `TUNING_FILE`.
 - Bounded concurrency in front of Jev, retries, a run deadline, input size
   limits, sanitized provider errors, private atomic output files, structured
   logs, and a per-run metrics summary.
+
+### Fixed
+
+- `score -h`, `extract -h`, and `check -h` print usage without an API key.

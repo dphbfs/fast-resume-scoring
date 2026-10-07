@@ -36,6 +36,27 @@ archives:
       - CHANGELOG.md
       - .env.example
 
+dockers_v2:
+  - dockerfile: Dockerfile
+    images:
+      - ghcr.io/dphbfs/fast-resume-scoring
+    tags:
+      - "{{ .Version }}"
+      - "{{ if not .Prerelease }}latest{{ end }}"
+    platforms:
+      - linux/amd64
+      - linux/arm64
+    extra_files:
+      - examples
+    labels:
+      org.opencontainers.image.title: fast-resume-scoring
+      org.opencontainers.image.description: Score how well a resume fits a job with a typed classifier (Jev).
+      org.opencontainers.image.source: https://github.com/dphbfs/fast-resume-scoring
+      org.opencontainers.image.version: "{{ .Version }}"
+      org.opencontainers.image.revision: "{{ .FullCommit }}"
+      org.opencontainers.image.licenses: Apache-2.0
+    sbom: true
+
 checksum:
   name_template: checksums.txt
 

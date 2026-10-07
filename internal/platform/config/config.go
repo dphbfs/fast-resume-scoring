@@ -42,6 +42,10 @@ type Jev struct {
 	MaxConcurrency int           // JEV_MAX_CONCURRENCY
 	MaxRetries     int           // JEV_MAX_RETRIES
 	Timeout        time.Duration // JEV_TIMEOUT
+	// ReplayFile answers every Jev request from a recording instead of the
+	// API; no key is needed. RecordFile saves every real exchange there.
+	ReplayFile string // JEV_REPLAY
+	RecordFile string // JEV_RECORD
 }
 
 // Generative configures the optional OpenAI-compatible client. An empty
@@ -162,6 +166,8 @@ func load(getenv func(string) string) (Config, error) {
 			MaxConcurrency: e.int("JEV_MAX_CONCURRENCY", d.Jev.MaxConcurrency),
 			MaxRetries:     e.int("JEV_MAX_RETRIES", d.Jev.MaxRetries),
 			Timeout:        e.duration("JEV_TIMEOUT", d.Jev.Timeout),
+			ReplayFile:     getenv("JEV_REPLAY"),
+			RecordFile:     getenv("JEV_RECORD"),
 		},
 		Generative: Generative{
 			BaseURL:        e.str("OPENAI_BASE_URL", d.Generative.BaseURL),
@@ -198,8 +204,8 @@ func load(getenv func(string) string) (Config, error) {
 			return Config{}, fmt.Errorf("config: %s was removed (experiments in docs/tuning.md); unset it", name)
 		}
 	}
-	if cfg.Jev.APIKey == "" {
-		return Config{}, errors.New("config: TYPESAFE_API_KEY is required")
+	if cfg.Jev.APIKey == "" && cfg.Jev.ReplayFile == "" {
+		return Config{}, errors.New("config: TYPESAFE_API_KEY is required (or JEV_REPLAY to answer from a recording)")
 	}
 	if err := cfg.Validate(); err != nil {
 		return Config{}, err
@@ -243,6 +249,9 @@ func (c Config) Validate() error {
 		errs = append(errs, errors.New("CHECKER_SKIP_CAPPED_GRADING and CHECKER_GATE_FIRST need CHECKER_GATE_THRESHOLD > 0"))
 	}
 	positive("RUN_DEADLINE", c.Run.Deadline)
+	if c.Jev.ReplayFile != "" && c.Jev.RecordFile != "" {
+		errs = append(errs, errors.New("JEV_REPLAY and JEV_RECORD cannot both be set"))
+	}
 	if err := errors.Join(errs...); err != nil {
 		return fmt.Errorf("config: %w", err)
 	}

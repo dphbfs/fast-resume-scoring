@@ -94,3 +94,22 @@ func TestRunUsageErrors(t *testing.T) {
 		})
 	}
 }
+
+func TestWantsHelp(t *testing.T) {
+	t.Parallel()
+	for _, tt := range []struct {
+		args []string
+		want bool
+	}{
+		{[]string{"-h"}, true},
+		{[]string{"-jd", "job.txt", "--help"}, true},
+		{[]string{"-help"}, true},
+		{[]string{"job.txt"}, false},
+		{[]string{"--", "-h"}, false},
+		{nil, false},
+	} {
+		if got := WantsHelp(tt.args); got != tt.want {
+			t.Errorf("WantsHelp(%q) = %v, want %v", tt.args, got, tt.want)
+		}
+	}
+}
