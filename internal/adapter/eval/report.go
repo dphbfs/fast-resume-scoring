@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/fsutil"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
 )
 
 // Report is one eval run.

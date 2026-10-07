@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 var updateSnapshot = flag.Bool("update", false, "rewrite testdata/prompts.golden.json")

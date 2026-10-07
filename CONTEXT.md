@@ -1,4 +1,4 @@
-# fast-resume-tailoring
+# fast-resume-scoring
 
 Turns a job description into a prioritized list of what the employer asks for, then maps a
 resume's evidence onto that list. Later part of a larger resume-tailoring backend.

@@ -7,8 +7,8 @@ import (
 	"math"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 )
 
 // BaselineConfig turns on the generative baseline arm of the checker eval

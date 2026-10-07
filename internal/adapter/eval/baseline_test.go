@@ -11,10 +11,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 type fakeCompleter struct {

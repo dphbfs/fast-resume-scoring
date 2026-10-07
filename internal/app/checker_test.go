@@ -13,12 +13,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev/jevtest"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev/jevtest"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 func newTestChecker(t *testing.T, srvURL string, cfg config.Checker) (*Checker, *metrics.Recorder) {

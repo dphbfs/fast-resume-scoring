@@ -1,4 +1,4 @@
-# fast-resume-tailoring
+# fast-resume-scoring
 
 ## Goal
 

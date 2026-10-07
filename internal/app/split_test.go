@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 func texts(ss []domain.ContextSentence) []string {

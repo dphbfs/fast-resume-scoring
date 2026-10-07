@@ -12,8 +12,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/cli"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // ExpectedRequirement is one labeled Requirement (testdata/golden/README.md).

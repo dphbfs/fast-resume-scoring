@@ -3,7 +3,7 @@ package app
 import (
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // ExtractorVersion changes whenever the same Job Description text can

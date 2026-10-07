@@ -1,6 +1,6 @@
 package jev
 
-import "github.com/dphbfs/fast-resume-tailoring/internal/port"
+import "github.com/dphbfs/fast-resume-scoring/internal/port"
 
 // Wire types mirror the HTTP API (https://docs.typesafe.ai/api).
 // They are exported so jevtest can decode requests and encode responses.

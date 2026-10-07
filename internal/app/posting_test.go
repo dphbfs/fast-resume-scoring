@@ -3,7 +3,7 @@ package app
 import (
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 func TestPostingTextKeepsTitleAndFullPosting(t *testing.T) {

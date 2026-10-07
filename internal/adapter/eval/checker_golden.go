@@ -8,8 +8,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/app"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/app"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // Evidence Strength labels.

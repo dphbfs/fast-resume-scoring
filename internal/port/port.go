@@ -7,7 +7,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // RequirementExtractor is the driving port: the CLI (and later the

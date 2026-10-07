@@ -5,14 +5,14 @@ package wiring
 import (
 	"github.com/google/wire"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
-	"github.com/dphbfs/fast-resume-tailoring/internal/app"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
+	"github.com/dphbfs/fast-resume-scoring/internal/app"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // PlatformSet provides config, logging and the metrics recorder.

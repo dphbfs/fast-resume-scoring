@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // HolisticJudge judges the whole Resume against the whole posting in one

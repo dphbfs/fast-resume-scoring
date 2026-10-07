@@ -7,13 +7,13 @@
 package main
 
 import (
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/cli"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
-	"github.com/dphbfs/fast-resume-tailoring/internal/app"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/logging"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/tuning"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/app"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/logging"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/tuning"
 )
 
 // Injectors from wire.go:

@@ -8,8 +8,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/app"
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/app"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // GoldenRequirements turns a golden fixture's labels into the Resume

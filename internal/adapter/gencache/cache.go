@@ -15,8 +15,8 @@ import (
 
 	"golang.org/x/sync/singleflight"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/fsutil"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/fsutil"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // Dir is the directory holding cached generations.

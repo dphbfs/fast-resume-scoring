@@ -9,7 +9,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
 )
 
 // Model is the versioned model ID the fake server reports.

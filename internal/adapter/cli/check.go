@@ -10,10 +10,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 // CheckApp runs the check command: the Resume Checker on an extract result

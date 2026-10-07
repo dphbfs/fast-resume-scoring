@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/domain"
+	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 )
 
 // stopwords may appear inside a Candidate but never start or end one.

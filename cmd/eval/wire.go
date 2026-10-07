@@ -7,11 +7,11 @@ package main
 import (
 	"github.com/google/wire"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/eval"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/gencache"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/openai"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
-	"github.com/dphbfs/fast-resume-tailoring/internal/wiring"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/eval"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/gencache"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/openai"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/wiring"
 )
 
 // initRunner builds the eval Runner. Job Summaries go through a file cache

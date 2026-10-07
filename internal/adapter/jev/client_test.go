@@ -10,11 +10,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev"
-	"github.com/dphbfs/fast-resume-tailoring/internal/adapter/jev/jevtest"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/config"
-	"github.com/dphbfs/fast-resume-tailoring/internal/platform/metrics"
-	"github.com/dphbfs/fast-resume-tailoring/internal/port"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/jev/jevtest"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
+	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
+	"github.com/dphbfs/fast-resume-scoring/internal/port"
 )
 
 func newClient(t *testing.T, url string, m port.Metrics) *jev.Client {
