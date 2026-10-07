@@ -1,0 +1,76 @@
+## Metronet - Software Engineer II
+
+🔗 [Apply](https://recruiting2.ultipro.com/QSE1000QSER/JobBoard/6cf8d9f1-7140-4a4f-8dba-c15b5a2fafb0/OpportunityDetail?opportunityId=3de119a2-d43b-4368-80c7-e34c3614780f)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer II building React and Node.js applications for Metronet’s fiber-optic technology and operations teams. Developing APIs, geospatial tools, and mapping functionality.
+Software Engineer II building full-stack web applications for Metronet’s fiber-optic operations
+- Salary: $75,000 - $85,000 per year
+- Tech stack: JavaScript, Node.js, React, TypeScript
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, develop, test, deploy, and maintain full-stack web applications using React, Node.js, TypeScript, and JavaScript
+- Enhance and extend existing applications with new functionality as business needs evolve
+- Develop front-end experiences and back-end services for internal business and operational applications
+- Develop and maintain RESTful APIs and integrations
+- Build responsive, intuitive, and maintainable React user interfaces
+- Develop custom mapping and geospatial functionality within web applications
+- Work with business stakeholders, product owners, engineers, and operations teams to understand requirements and translate business needs into technical solutions
+- Troubleshoot and resolve application, API, integration, and database issues across development and production environments
+- Professional experience developing software using React, Node.js, and TypeScript
+- Strong working knowledge of JavaScript
+- Professional experience building and supporting web applications
+- Professional experience developing across the full application stack, including front-end and back-end development
+- Experience developing and consuming APIs/integrations
+- Ability to translate business requirements into practical technical solutions
+- Strong troubleshooting and problem-solving skills
+- Effective written and verbal communication skills
+
+### Full Job Description
+Summary:
+Software Engineer II building React and Node.js applications for Metronet’s fiber-optic technology and operations teams. Developing APIs, geospatial tools, and mapping functionality.
+Software Engineer II building full-stack web applications for Metronet’s fiber-optic operations
+Role description:
+• Design, develop, test, deploy, and maintain full-stack web applications using React, Node.js, TypeScript, and JavaScript
+• Enhance and extend existing applications with new functionality as business needs evolve
+• Develop front-end experiences and back-end services for internal business and operational applications
+• Develop and maintain RESTful APIs and integrations
+• Build responsive, intuitive, and maintainable React user interfaces
+• Develop custom mapping and geospatial functionality within web applications
+• Work with business stakeholders, product owners, engineers, and operations teams to understand requirements and translate business needs into technical solutions
+• Troubleshoot and resolve application, API, integration, and database issues across development and production environments
+• Participate in technical design, code reviews, testing, documentation, and continuous improvement
+• Identify opportunities to improve application performance, usability, automation, and operational efficiency
+• Contribute to software projects from requirements through delivery and ongoing support
+• Perform other job-related duties as requested
+Role requirements:
+• Professional experience developing software using React, Node.js, and TypeScript
+• Strong working knowledge of JavaScript
+• Professional experience building and supporting web applications
+• Professional experience developing across the full application stack, including front-end and back-end development
+• Experience developing and consuming APIs/integrations
+• Ability to translate business requirements into practical technical solutions
+• Strong troubleshooting and problem-solving skills
+• Effective written and verbal communication skills
+• Ability to work independently and collaboratively as part of a development team
+• Must be legally authorized to work in the United States without sponsorship
+• Experience with Esri/ArcGIS technologies preferred
+• Experience developing mapping or geospatial web applications preferred
+• Experience with the ArcGIS Maps SDK for JavaScript or ArcGIS APIs preferred
+• Experience using Three.js or similar JavaScript visualization technologies preferred
+• Experience working with geospatial data or GIS workflows preferred
+• Experience integrating mapping applications with REST APIs and enterprise data sources preferred
+• Experience with Git, CI/CD, and automated testing preferred
+Benefits:
+• 80% of medical premiums paid by the company
+• Company-paid disability and life insurance
+• 401(k)-company match
+• Discounted services within coverage areas
+• Competitive total compensation package
+• Locally owned, friendly, and fun atmosphere
+• Growth and success opportunities
+• Recognized as one of the Best Places to Work
+Tech stack:
+JavaScript, Node.js, React, TypeScript
+Company sponsorship flag: sponsorsH1B=true.

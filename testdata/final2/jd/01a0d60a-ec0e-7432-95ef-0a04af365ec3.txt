@@ -1,0 +1,15 @@
+## SeatGeek - Senior Software Engineer, Security
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4427873045/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Build and contribute to secure-by-default protections across the stack (cloud, CI/CD, applications, and endpoints) by creating paved roads and guardrails that make the secure path the easy path within your problem space
+- Provide practical security guidance on new products and technologies, recommending secure-by-default patterns that fit into existing workflows
+- Help secure SeatGeek's use of AI — from LLM-assisted development to AI-powered product features — by building guardrails and reviewing for risks like prompt injection, sensitive-data exposure, and insecure model and tool integrations
+- Contribute to design reviews and threat modeling for high-impact features and services; surface risks early and help ensure mitigations are designed in
+- Build security tooling that prevents issues at build/deploy time and helps automate detection and response in production
+- Improve our detection and incident response capabilities — raise signal quality, tune detections, and implement automated responders that reduce manual toil and time to contain
+- Partner with engineering and business teams on cross-functional security work: endpoint and device trust, identity and email protections, security awareness and training, vendor reviews and risk assessments, and supporting compliance efforts (e.g., PCI/SOX)
+- Protect SeatGeek from abuse and bots at the edge and app layers through layered defenses and tuning

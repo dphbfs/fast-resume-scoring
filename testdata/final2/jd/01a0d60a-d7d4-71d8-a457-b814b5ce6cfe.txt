@@ -1,0 +1,12 @@
+## RAPIDFORT - Senior Backend Engineer ((Python / Go)
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4424253078/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer (Python / Go) Overview We are seeking a skilled and passionate Senior Backend Engineer to join our team, focusing on the design, development, and maintenance of high-performance, scalable microservices
+- The ideal candidate will have strong expertise in Go (Golang), and a deep understanding of distributed systems architecture
+- Essential Qualifications Technical Skills Skill Category Requirement Proficiency Level Programming Languages Python (Deep expertise with frameworks like FastAPI, Flask, or Django) Advanced Programming Languages Go (Golang) (Experience building robust, high-concurrency microservices) Expert Microservices / Architecture Designing, developing, and deploying RESTful APIs Expert Security Keycloak, API authentication, JWT Advanced Databases Realtime analytics (Clickhouse) Advanced Databases Relational databases (MySQL) including complex query optimization Advanced Databases NoSQL databases (Redis) Advanced Containerization / Orchestration Kubernetes for deployment and scaling Advanced Containerization / Orchestration Docker container build Advanced Testing Writing comprehensive unit, integration, and end-to-end tests Advanced Core Experience 7+ years of professional experience in backend software development, with a significant focus on building and operating microservices in a production environment
+- Proven ability to work with and contribute to large-scale, distributed systems
+- Experience with cloud platforms (AWS, Azure, or GCP) for deployment, monitoring, and scaling

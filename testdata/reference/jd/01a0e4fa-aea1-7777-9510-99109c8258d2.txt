@@ -1,0 +1,66 @@
+## Avalon Healthcare Solutions - Software Engineer III
+
+🔗 [Apply](https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=47dbbe30-59f3-4be8-90d6-9934bef76b9f&ccId=19000101_000001&jobId=524392)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer III leading scalable software development for Avalon Healthcare Solutions, a diagnostic intelligence company. Owning complex projects, architecture, mentoring, and production reliability.
+Software Engineer III building scalable healthcare diagnostics software for Avalon Healthcare Solutions
+- Tech stack: AWS, Azure, Cloud, Docker, Google Cloud Platform, Java, JavaScript, Jenkins, Jest, JUnit, Kubernetes, Linux, Mocha, Next.js, React, SDLC, TypeScript, Go
+- Lead the design and development of scalable, high-quality software solutions aligned with business goals and technical strategy
+- Own complex features and projects from planning through implementation, testing, and deployment
+- Collaborate with product managers, designers, and stakeholders to define technical requirements and deliver projects
+- Contribute to architectural discussions with principal engineers and architects
+- Mentor junior and mid-level engineers
+- Conduct and lead code reviews
+- Troubleshoot complex application and integration issues and contribute to root cause analysis
+- Participate in Agile SDLC activities, including sprint planning, backlog refinement, and retrospectives
+- Advanced proficiency in one or more programming languages such as Java, Go, or TypeScript
+- Deep understanding of relational and non-relational databases, including query optimization and data modeling
+- Expert-level experience with Git and source control workflows
+- Proficiency configuring and optimizing development environments and tooling
+- Strong experience designing and integrating RESTful and event-driven web services and APIs
+- Comfortable working in Linux-based environments
+- Deep understanding of Agile methodologies and the full SDLC
+- Hands-on experience with CI/CD pipelines and tools such as Jenkins, GitHub Actions, or GitLab CI
+
+### Full Job Description
+Summary:
+Software Engineer III leading scalable software development for Avalon Healthcare Solutions, a diagnostic intelligence company. Owning complex projects, architecture, mentoring, and production reliability.
+Software Engineer III building scalable healthcare diagnostics software for Avalon Healthcare Solutions
+Role description:
+• Lead the design and development of scalable, high-quality software solutions aligned with business goals and technical strategy
+• Own complex features and projects from planning through implementation, testing, and deployment
+• Collaborate with product managers, designers, and stakeholders to define technical requirements and deliver projects
+• Contribute to architectural discussions with principal engineers and architects
+• Mentor junior and mid-level engineers
+• Conduct and lead code reviews
+• Troubleshoot complex application and integration issues and contribute to root cause analysis
+• Participate in Agile SDLC activities, including sprint planning, backlog refinement, and retrospectives
+• Occasionally coordinate technical efforts as a project lead
+• Apply health plan operations domain knowledge to technical decisions
+• Participate in the on-call rotation and support production stability
+Role requirements:
+• Advanced proficiency in one or more programming languages such as Java, Go, or TypeScript
+• Deep understanding of relational and non-relational databases, including query optimization and data modeling
+• Expert-level experience with Git and source control workflows
+• Proficiency configuring and optimizing development environments and tooling
+• Strong experience designing and integrating RESTful and event-driven web services and APIs
+• Comfortable working in Linux-based environments
+• Deep understanding of Agile methodologies and the full SDLC
+• Hands-on experience with CI/CD pipelines and tools such as Jenkins, GitHub Actions, or GitLab CI
+• Practical experience with Docker and Kubernetes
+• Strong grasp of secure coding, performance optimization, and system reliability principles
+• Experience mentoring junior and mid-level engineers
+• Experience contributing to or influencing architectural decisions
+• Excellent written and verbal communication skills
+• Strong collaboration, analytical, problem-solving, initiative, autonomy, ownership, and accountability skills
+• Preferred: cloud platforms such as AWS, Azure, or GCP; React or Next.js; testing frameworks such as JUnit, Jest, Mocha, or Playwright; regulated-industry experience; HIPAA, PHI, and IIHI knowledge
+Benefits:
+• Eligible for remote work
+• Quarterly travel to Avalon's corporate office
+• Mentoring and professional growth opportunities
+• Equal Opportunity Employer - Vet/Disability
+Tech stack:
+AWS, Azure, Cloud, Docker, Google Cloud Platform, Java, JavaScript, Jenkins, Jest, JUnit, Kubernetes, Linux, Mocha, Next.js, React, SDLC, TypeScript, Go

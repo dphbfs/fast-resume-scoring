@@ -1,0 +1,64 @@
+## Coinbase - Senior Software Engineer, Backend – Payments Platform
+
+🔗 [Apply](https://boards.greenhouse.io/coinbase/jobs/8247401)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior backend engineer building Coinbase’s scalable fiat payment infrastructure and APIs. Expanding payment methods and rails while improving reliability, observability, and transaction success rates.
+Senior backend engineer building Coinbase’s scalable fiat payments infrastructure and APIs
+- Salary: $186,065 - $218,900 per year
+- Tech stack: Distributed Systems, Microservices, Ruby on Rails, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design and build scalable, fault-tolerant backend payment-processing services using Go
+- Own end-to-end delivery of payment features from technical design through deployment, monitoring, and iteration
+- Build platform primitives, extension points, and self-serve APIs for adding payment methods and rails
+- Partner with engineers, product managers, and senior leadership to translate product and business requirements into quarterly technical plans
+- Improve reliability, observability, and performance across payment services
+- Identify and resolve system bottlenecks
+- Contribute through code reviews, design discussions, and service-oriented architecture best practices
+- Build infrastructure, workflows, and APIs powering fiat on- and off-ramps for global customers
+- 5+ years of experience in backend software engineering
+- Hands-on experience building and maintaining production services in a service-oriented or microservices architecture
+- Proficiency in Go or similar backend languages
+- Experience designing scalable, low-latency APIs and distributed systems
+- Track record of owning features end-to-end, from design through deployment and production support
+- Experience with financial systems, payments infrastructure, or high-volume transactional systems requiring precision and auditability
+- Responsible use of generative AI with human oversight
+- Eligible to work in the USA, as indicated by the US-only remote location and US applicant notices
+
+### Full Job Description
+Summary:
+Senior backend engineer building Coinbase’s scalable fiat payment infrastructure and APIs. Expanding payment methods and rails while improving reliability, observability, and transaction success rates.
+Senior backend engineer building Coinbase’s scalable fiat payments infrastructure and APIs
+Role description:
+• Design and build scalable, fault-tolerant backend payment-processing services using Go
+• Own end-to-end delivery of payment features from technical design through deployment, monitoring, and iteration
+• Build platform primitives, extension points, and self-serve APIs for adding payment methods and rails
+• Partner with engineers, product managers, and senior leadership to translate product and business requirements into quarterly technical plans
+• Improve reliability, observability, and performance across payment services
+• Identify and resolve system bottlenecks
+• Contribute through code reviews, design discussions, and service-oriented architecture best practices
+• Build infrastructure, workflows, and APIs powering fiat on- and off-ramps for global customers
+Role requirements:
+• 5+ years of experience in backend software engineering
+• Hands-on experience building and maintaining production services in a service-oriented or microservices architecture
+• Proficiency in Go or similar backend languages
+• Experience designing scalable, low-latency APIs and distributed systems
+• Track record of owning features end-to-end, from design through deployment and production support
+• Experience with financial systems, payments infrastructure, or high-volume transactional systems requiring precision and auditability
+• Responsible use of generative AI with human oversight
+• Eligible to work in the USA, as indicated by the US-only remote location and US applicant notices
+Benefits:
+• Equity eligibility
+• Bonus eligibility
+• Medical insurance
+• Dental insurance
+• Vision insurance
+• 401(k)
+• Quarterly in-person working sessions (“surges”)
+• Reasonable accommodations for individuals with disabilities
+• Free compatible screen reader available
+Tech stack:
+Distributed Systems, Microservices, Ruby on Rails, Go
+Company sponsorship flag: sponsorsH1B=true.

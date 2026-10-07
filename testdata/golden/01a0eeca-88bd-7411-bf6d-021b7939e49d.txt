@@ -1,0 +1,36 @@
+Senior Software Engineer, Backend – Overseer
+
+Summary:
+Senior backend engineer building Coinbase’s real-time integrity layer for financial fund flows. Designing invariant enforcement, AI-powered guardrails, and distributed systems that protect transaction accuracy.
+Senior backend engineer building Coinbase’s real-time financial integrity infrastructure
+Role description:
+• Build and scale real-time invariant enforcement systems across Coinbase's fund flows
+• Contribute to the core detection engine, invariant framework, and onboarding tooling
+• Own workstreams end-to-end, from designing correctness models with partner teams through production operation
+• Ensure new fund flows are covered by Overseer's integrity guarantees
+• Develop AI-powered guardrails, including predictive consistency models and proactive invariant discovery
+• Partner with FinHub, Payments, and Trading teams to design and implement correctness contracts
+• Translate financial rules into enforceable system invariants
+• Mentor junior engineers on distributed systems design, correctness thinking, and production operational practices
+Role requirements:
+• 5+ years building and operating large-scale distributed systems in production
+• Experience in financial systems, payments, reconciliation, or high-reliability transactional infrastructure
+• Proficiency in backend programming, such as Go, Ruby, or Python
+• Experience building platform-level infrastructure consumed by multiple teams, including APIs, frameworks, or detection systems
+• Ability to own workstreams end-to-end in ambiguous environments
+• Experience designing correctness models and operating them through production
+• Experience with streaming data infrastructure such as Kafka, Flink, Spark, or similar
+• Experience with distributed data stores such as Postgres, DynamoDB, or equivalent
+• Experience in real-time or near-real-time processing contexts
+• Responsible use of generative AI with human oversight
+• Eligible to work in the United States
+Benefits:
+• Equity eligibility
+• Bonus eligibility
+• Medical insurance
+• Dental insurance
+• Vision insurance
+• 401(k)
+• Quarterly in-person working sessions called “surges”
+Tech stack:
+Distributed Systems, DynamoDB, Kafka, Postgres, Python, Ruby, Spark, Go

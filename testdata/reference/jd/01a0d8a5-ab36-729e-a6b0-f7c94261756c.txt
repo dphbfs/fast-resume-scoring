@@ -1,0 +1,68 @@
+## Datadog - Developer Advocate - Service Management EMEA
+
+🔗 [Apply](https://careers.datadoghq.com/detail/8161455/?gh_jid=8161455)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensure our Datadogs can create a work-life harmony that best fits them.
+- What You'll Do:
+- Act as a subject matter expert for service management (incident response, on-call, IDP, Work Management, Workflow Automation, Agent Builder, and operational automation) for Datadog's advocacy and engineering teams
+- Create content in one or more mediums to build Datadog's reputation as a leader in DevOps, Monitoring, Observability and Security e.g. building demos, public speaking, blogging, documentation, webinars, open source, research reports and more
+- Partner with product engineering teams to build compelling demos, and coach internal engineering teams on effective communication and presentation
+- Interface with open source communities to drive key messaging in the market and develop new integrations for Datadog
+- Contribute to the product through feedback (bugs or product enhancements suggestions), documentation, or code
+- Who You Are:
+- Approximately 5+ years of experience as a Platform Engineer, Site Reliability Engineer, DevOps Engineer or Software Developer with hands-on experience as an on-call/incident responder and running production systems in complex IT environments 
+- You have a strong understanding of core service-management practices (incident response, on-call, post incident reviews, and SLOs), using tools like Datadog, PagerDuty, Opsgenie, http://incident.io , Rootly, Jira Cloud Platform, Cortex, or similar and know how to navigate operational challenges of different sized organizations
+- You’re passionate about helping teams fix organizational challenges, not just technical ones and where they intersect, and have shared your knowledge broadly.
+- Approximately 2+ years of experience in storytelling and creating compelling content e.g. written content, speaking at conferences like SREcon, DevOpsDays or SREday, leading workshops, live streaming or recording videos, contributing to open source and participating in community events.
+- You have publicly available writing samples, blog posts, demos, or recordings of presentations on technical topics
+- You are comfortable with at least one scripting and programming languages (eg Node.js, Python, Go, bash) and are familiar with working with APIs and modern infrastructure such as IaaS cloud services and containers
+- You enjoy self driven exploration and education on new technologies and languages
+- Datadog values people from all walks of life. We understand not everyone will meet all the above qualifications on day one. That's okay. If you’re passionate about technology and want to grow your skills, we encourage you to apply.
+- Bonus points:
+- You have hands-on ITSM platform experience (ServiceNow, Jira Service Management)
+- You are already an active member of SRE, DevOps, or incident-response communities
+- Benefits and Growth:
+
+### Full Job Description
+We are a team of engineers that translate our real-world experience to help our user communities solve problems. With a focus on service management, helping teams respond to incidents, run on-call, and automate their operations, you will work with practitioners and leaders across the industry and broaden your impact to the SRE, Engineer, DevOps, and Operations community at large. This is a unique opportunity to use both your engineering and creative storytelling skills to shape the landscape in cloud observability, incident response and service management.
+At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensure our Datadogs can create a work-life harmony that best fits them.
+What You'll Do:
+Act as a subject matter expert for service management (incident response, on-call, IDP, Work Management, Workflow Automation, Agent Builder, and operational automation) for Datadog's advocacy and engineering teams
+Create content in one or more mediums to build Datadog's reputation as a leader in DevOps, Monitoring, Observability and Security e.g. building demos, public speaking, blogging, documentation, webinars, open source, research reports and more
+Partner with product engineering teams to build compelling demos, and coach internal engineering teams on effective communication and presentation
+Interface with open source communities to drive key messaging in the market and develop new integrations for Datadog
+Contribute to the product through feedback (bugs or product enhancements suggestions), documentation, or code
+Who You Are:
+Approximately 5+ years of experience as a Platform Engineer, Site Reliability Engineer, DevOps Engineer or Software Developer with hands-on experience as an on-call/incident responder and running production systems in complex IT environments 
+You have a strong understanding of core service-management practices (incident response, on-call, post incident reviews, and SLOs), using tools like Datadog, PagerDuty, Opsgenie, http://incident.io , Rootly, Jira Cloud Platform, Cortex, or similar and know how to navigate operational challenges of different sized organizations
+You’re passionate about helping teams fix organizational challenges, not just technical ones and where they intersect, and have shared your knowledge broadly.
+Approximately 2+ years of experience in storytelling and creating compelling content e.g. written content, speaking at conferences like SREcon, DevOpsDays or SREday, leading workshops, live streaming or recording videos, contributing to open source and participating in community events.
+You have publicly available writing samples, blog posts, demos, or recordings of presentations on technical topics
+You are comfortable with at least one scripting and programming languages (eg Node.js, Python, Go, bash) and are familiar with working with APIs and modern infrastructure such as IaaS cloud services and containers
+You enjoy self driven exploration and education on new technologies and languages
+Datadog values people from all walks of life. We understand not everyone will meet all the above qualifications on day one. That's okay. If you’re passionate about technology and want to grow your skills, we encourage you to apply.
+Bonus points:
+You have hands-on ITSM platform experience (ServiceNow, Jira Service Management)
+You are already an active member of SRE, DevOps, or incident-response communities
+Benefits and Growth:
+High income earning opportunities based on individual performance
+New hire stock equity (RSUs) and employee stock purchase plan (ESPP)
+Continuous professional development, product training, and career pathing
+Sales training in MEDDIC and Command of the Message
+Intradepartmental mentor and buddy program for in-house networking
+An inclusive company culture, ability to join our Community Guilds (Datadog employee resource groups)
+Access to Inclusion Talks, our Internal panel discussions
+Free, global Spring Health benefits for employees and dependents age 6+
+Competitive global benefits
+Giving programs
+Benefits and Growth listed above may vary based on the country of your employment and the nature of your employment with Datadog.
+About Datadog: 
+Datadog is the leading observability and security platform for the AI era, providing businesses with unified visibility across the technology stack to manage complexity at scale. It brings applications, infrastructure, data, models, and security into one place, using AI to detect and resolve issues before they impact customers. Trusted globally by Fortune 500 companies and high-growth AI leaders, Datadog enables businesses to move faster with clarity and confidence. Learn more about #DatadogLife on Instagram , LinkedIn, and Datadog Learning Center.
+Equal Opportunity at Datadog:
+Datadog is proud to offer equal employment opportunity to everyone regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity, veteran status, and other characteristics protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. Here are our Candidate Legal Notices for your reference. 
+Datadog endeavors to make our Careers Page accessible to all users. If you would like to contact us regarding the accessibility of our website or need assistance completing the application process, please complete this form . This form is for accommodation requests only and cannot be used to inquire about the status of applications. 
+Privacy and AI Guidelines:
+Any information you submit to Datadog as part of your application will be processed in accordance with Datadog’s  Applicant and Candidate Privacy Notice . For information on our AI policy, please visit Interviewing at Datadog AI Guidelines .

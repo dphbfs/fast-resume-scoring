@@ -1,0 +1,66 @@
+## Babil Games - Senior Software Engineer
+
+🔗 [Apply](https://storm8.teamtailor.com/jobs/8459919-senior-software-engineer)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Unity/C# mobile game features and Go backend services at Storm8. Maintaining live products, pipelines, releases, and production stability.
+Senior Software Engineer building Unity mobile games and backend services at Storm8
+- Salary: $100,000 - $200,000 per year
+- Tech stack: Java, Kotlin, Objective-C, Swift, Unity, Go
+- Develop features for Storm8's mobile games
+- Design and implement features across client-side gameplay and backend services
+- Partner with Art, Design, and Product teams to translate creative requirements into technical implementations
+- Diagnose and resolve live-product issues, including crashes, client-server integration failures, and performance bottlenecks
+- Refactor existing code to improve maintainability and address recurring defects
+- Participate in code reviews and contribute to technical design decisions
+- Estimate development work and identify dependencies or technical risks
+- Maintain content and build pipelines for stable client and server deployments
+- 5+ years of professional software engineering experience, or equivalent practical experience
+- Strong proficiency in C#
+- Professional experience developing and shipping mobile games in Unity
+- Strong understanding of software architecture patterns, data structures, and system design
+- Experience shipping consumer-facing applications and supporting them in a live production environment
+- Strong debugging skills and experience diagnosing problems in established codebases
+- Experience improving code quality and stability through automated testing, code reviews, and version control
+- Ability to take a feature from implementation to production with limited supervision
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Unity/C# mobile game features and Go backend services at Storm8. Maintaining live products, pipelines, releases, and production stability.
+Senior Software Engineer building Unity mobile games and backend services at Storm8
+Role description:
+• Develop features for Storm8's mobile games
+• Design and implement features across client-side gameplay and backend services
+• Partner with Art, Design, and Product teams to translate creative requirements into technical implementations
+• Diagnose and resolve live-product issues, including crashes, client-server integration failures, and performance bottlenecks
+• Refactor existing code to improve maintainability and address recurring defects
+• Participate in code reviews and contribute to technical design decisions
+• Estimate development work and identify dependencies or technical risks
+• Maintain content and build pipelines for stable client and server deployments
+• Validate changes through automated tests, in-game testing, and release checks
+• Support production releases and investigate regressions
+• Own features from implementation through testing and release
+Role requirements:
+• 5+ years of professional software engineering experience, or equivalent practical experience
+• Strong proficiency in C#
+• Professional experience developing and shipping mobile games in Unity
+• Strong understanding of software architecture patterns, data structures, and system design
+• Experience shipping consumer-facing applications and supporting them in a live production environment
+• Strong debugging skills and experience diagnosing problems in established codebases
+• Experience improving code quality and stability through automated testing, code reviews, and version control
+• Ability to take a feature from implementation to production with limited supervision
+• Strong cross-functional communication skills
+• Experience with Go (Golang) for backend service development, including API design and database integration (nice to have)
+• Understanding of the casual or mid-core mobile game market and mechanics (nice to have)
+• Experience with mobile release lifecycle, CI/CD pipelines, and App Store/Google Play submissions (nice to have)
+• Experience writing native Unity plugins using Objective-C/Swift or Java/Kotlin (nice to have)
+• Familiarity with live analytics platforms or BI tools (nice to have)
+• Availability from 9:00 a.m. to 5:00 p.m. Pacific Time for team collaboration
+• Must be based in California, Washington, Oregon, Nevada, Connecticut, Hawaii, Arizona, or Massachusetts
+Benefits:
+• Fully remote work
+• Permanent full-time employment
+Tech stack:
+Java, Kotlin, Objective-C, Swift, Unity, Go

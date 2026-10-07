@@ -1,0 +1,62 @@
+## Clever Devices - Senior Full Stack Software Engineer – React Native
+
+🔗 [Apply](https://apply.workable.com/clever-benefits/j/A98E9DC3FC)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior React Native Engineer scaling custom-branded telemedicine apps for Clever Benefits. Owning releases, shared architecture, and production mobile experiences across healthcare client portfolios.
+Senior React Native Engineer scaling custom-branded telemedicine apps and healthcare CRMs at Clever Benefits
+- Tech stack: Android, AWS, iOS, JavaScript, MongoDB, Node.js, Postgres, React, React Native, TypeScript
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Own mobile features end-to-end, from scoping and stakeholder identification through delivery
+- Own the full release cycle, including versioning, build pipelines, App Store and Google Play submissions, review responses, and rollbacks
+- Build and maintain shared mobile architecture for multiple custom-branded client apps
+- Debug across the React Native and native boundary
+- Keep apps ahead of iOS and Android platform requirements
+- Contribute to system design and uphold standards for code quality, testing, and reliability
+- Participate in code reviews and collaborate with teammates on technical challenges
+- Communicate with team members, leadership, and clients to deliver business outcomes
+- 4+ years building and shipping production mobile applications, with significant depth in React Native and TypeScript
+- Personally shipped apps to both the App Store and Google Play and owned the release and review process
+- Comfortable working in native code, including Xcode and Android Studio output, native dependency and SDK issues, and platform-specific bugs
+- Experience with offline behavior, deep linking, push notifications, secure local storage, and performance profiling
+- Solid foundation in Node.js, tRPC, MongoDB and/or PostgreSQL, and AWS (Lambda, API Gateway, S3, RDS, CDK)
+- Comfortable scoping work, identifying edge cases, and challenging requirements without heavy product management support
+- Passionate about system design, code quality, type-safety, and long-term maintainability
+- Clear communicator who values collaboration and contributes to a positive, inclusive team culture
+
+### Full Job Description
+Summary:
+Senior React Native Engineer scaling custom-branded telemedicine apps for Clever Benefits. Owning releases, shared architecture, and production mobile experiences across healthcare client portfolios.
+Senior React Native Engineer scaling custom-branded telemedicine apps and healthcare CRMs at Clever Benefits
+Role description:
+• Own mobile features end-to-end, from scoping and stakeholder identification through delivery
+• Own the full release cycle, including versioning, build pipelines, App Store and Google Play submissions, review responses, and rollbacks
+• Build and maintain shared mobile architecture for multiple custom-branded client apps
+• Debug across the React Native and native boundary
+• Keep apps ahead of iOS and Android platform requirements
+• Contribute to system design and uphold standards for code quality, testing, and reliability
+• Participate in code reviews and collaborate with teammates on technical challenges
+• Communicate with team members, leadership, and clients to deliver business outcomes
+Role requirements:
+• 4+ years building and shipping production mobile applications, with significant depth in React Native and TypeScript
+• Personally shipped apps to both the App Store and Google Play and owned the release and review process
+• Comfortable working in native code, including Xcode and Android Studio output, native dependency and SDK issues, and platform-specific bugs
+• Experience with offline behavior, deep linking, push notifications, secure local storage, and performance profiling
+• Solid foundation in Node.js, tRPC, MongoDB and/or PostgreSQL, and AWS (Lambda, API Gateway, S3, RDS, CDK)
+• Comfortable scoping work, identifying edge cases, and challenging requirements without heavy product management support
+• Passionate about system design, code quality, type-safety, and long-term maintainability
+• Clear communicator who values collaboration and contributes to a positive, inclusive team culture
+• Proactive, solution-oriented, and able to balance speed with quality
+• Strong web-based React front-end skills (bonus)
+• Experience with white-label or multi-tenant mobile apps (bonus)
+• Experience in regulated domains such as healthcare (bonus)
+• Based in or open to relocating to the Phoenix area (bonus)
+Benefits:
+• Health insurance through Redirect Health 100% Employer-sponsored
+• New Apple laptop provided
+• 3 weeks PTO plus 9 Federal holidays
+Tech stack:
+Android, AWS, iOS, JavaScript, MongoDB, Node.js, Postgres, React, React Native, TypeScript
+Company sponsorship flag: sponsorsH1B=true.

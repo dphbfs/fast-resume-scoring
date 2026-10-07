@@ -1,0 +1,12 @@
+## Ladders - Senior SRE
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4413606193/)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- For our client, we are seeking a Senior SRE to join the team of a leader in the Business Services space
+- This role will lead technical work focused on cloud-enabled scalability, reliability, and delivery excellence
+- You will work across engineering, product, operations, and business stakeholders to translate complex requirements into practical technology solutions
+- The position offers the opportunity to influence architecture, execution quality, and the technology capabilities that enable long-term growth within a Business Services environment
+- Location: Remote - US based candidates only, no visa sponsorship available Compensation: $167,000 – $196,500 annually Responsibilities Support and own the deployment of global products and environments Provide 24/7 first-line Engineering support for global deployment issues Drive effective resolutions for core product issues with Engineering teams Set up and maintain Infrastructure & Product Reliability monitoring Enhance CI/CD Tooling and Terraform scripts in collaboration with DevOps Maintain operational documentation for supported products Optimize system performance and cost, especially for Kubernetes containers Qualifications 5+ years of experience in SRE, DevOps or production engineering Proficient with Infrastructure as Code (IaC) using Terraform Experienced in continuous integration using Jenkins or CircleCI Knowledgeable in Kubernetes, Containers, and public cloud platforms (GCP or AWS) Hands-on experience with FinOps and autoscaling Kubernetes clusters Programming skills in Python or Go are essential Familiarity with SRE best practices and observability principles Benefits Collaborative work environment with talented and friendly colleagues Catered meals and a variety of snacks available throughout the day Engaging social events including game nights and outdoor activities Flexible paid time off and remote work options for work-life harmony Comprehensive health, dental, and vision insurance alongside a 401k matching plan Employee Stock Purchase Plan with a 15% discount on the company stock Our client is an equal opportunity employer

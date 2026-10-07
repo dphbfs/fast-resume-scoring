@@ -1,0 +1,72 @@
+## Rare Candy - Go Backend Developer
+
+🔗 [Apply](https://jobs.ashbyhq.com/rarecandy/f87a35a5-172b-429d-a06f-a005d395e420)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Go backend developer building services and GraphQL APIs for Rare Candy’s AI-powered trading-card collector platform. Improving databases, integrations, testing, and marketplace features.
+Go backend developer building APIs for Rare Candy’s trading-card marketplace and collector app
+- Salary: $160,000 - $180,000 per year
+- Tech stack: GraphQL, SQL, Go
+- Build and improve backend services in Go for Rare Candy’s collector-facing product
+- Develop and maintain GraphQL APIs with mobile and frontend engineers
+- Design and evolve relational data models
+- Write efficient SQL and safely implement database changes
+- Implement business logic, background jobs, and third-party integrations for collections, marketplace activity, and Instapacks
+- Write automated tests
+- Investigate production bugs
+- Improve reliability and performance using logs and metrics
+- Around 5–7 years of backend development experience
+- Production system or serious side-project experience shipping real features
+- Comfortable building in Go, including error handling, interfaces, concurrency basics, and testing
+- Experience building or maintaining APIs
+- GraphQL experience is a plus, or willingness to learn GraphQL from a REST background
+- Experience with relational databases and SQL, including schema design, joins, indexes, and transactions
+- Focus on correctness, reliability, and maintainable code
+- Comfortable using logs and debugging tools to trace problems through APIs, services, or databases
+
+### Full Job Description
+Summary:
+Go backend developer building services and GraphQL APIs for Rare Candy’s AI-powered trading-card collector platform. Improving databases, integrations, testing, and marketplace features.
+Go backend developer building APIs for Rare Candy’s trading-card marketplace and collector app
+Role description:
+• Build and improve backend services in Go for Rare Candy’s collector-facing product
+• Develop and maintain GraphQL APIs with mobile and frontend engineers
+• Design and evolve relational data models
+• Write efficient SQL and safely implement database changes
+• Implement business logic, background jobs, and third-party integrations for collections, marketplace activity, and Instapacks
+• Write automated tests
+• Investigate production bugs
+• Improve reliability and performance using logs and metrics
+• Collaborate with product, design, and engineering to turn ideas into shipped experiences
+• Get the backend running locally and understand core services and data models
+• Ship backend fixes and features, including well-scoped features implemented, tested, deployed, and verified in production
+• Contribute reliably across important parts of the product and take ownership of increasingly important features
+Role requirements:
+• Around 5–7 years of backend development experience
+• Production system or serious side-project experience shipping real features
+• Comfortable building in Go, including error handling, interfaces, concurrency basics, and testing
+• Experience building or maintaining APIs
+• GraphQL experience is a plus, or willingness to learn GraphQL from a REST background
+• Experience with relational databases and SQL, including schema design, joins, indexes, and transactions
+• Focus on correctness, reliability, and maintainable code
+• Comfortable using logs and debugging tools to trace problems through APIs, services, or databases
+• Comfortable working in a fast-moving startup with shifting priorities
+• Knowledge of the trading-card or collector world, or fluency in a similar collectible space
+• Curious, detail-oriented, and comfortable learning by doing
+• Required to submit a resume
+• Required to answer application questions about a Go service, debugging experience, and trading-card or collector communities
+• Location field is required in the application
+Benefits:
+• Meaningful equity upside
+• Health coverage
+• Dental coverage
+• Vision coverage
+• 401(k)
+• Wellness stipend
+• Monthly dogfooding budget to spend on cards
+• Mentorship and support from experienced engineering leadership
+• Equal opportunity and inclusive team environment
+Tech stack:
+GraphQL, SQL, Go

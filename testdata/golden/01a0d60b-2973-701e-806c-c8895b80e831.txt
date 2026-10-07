@@ -1,0 +1,38 @@
+Senior Full-Stack Software Engineer – Front-End Focused
+
+Summary:
+Senior Full-Stack Software Engineer designing and implementing consumer-facing web applications for Stand Together's philanthropic community. Involves Next.js/React development, performance engineering, and operational reliability.
+Senior Full-Stack Software Engineer designing consumer-facing web applications for philanthropic community
+Role description:
+• Own the design implementation for the consumer-facing web applications that serve as the front door to Stand Together's philanthropic community
+• Build and maintain a Next.js/React TypeScript monorepo
+• Implement production-grade UX and performance
+• Integrate with our OpenAPI backend and headless CMS
+• Ship via CI/CD to AWS Amplify
+• Combine deep front-end engineering, design-system ownership, and operational responsibility for client-side reliability and performance
+Role requirements:
+• Bachelor's or master's degree in computer science, engineering, or a related field
+• 7+ years of full-stack software engineering experience with a clear front-end focus and a portfolio of production-grade work
+• Experience mentoring software engineers
+• Excellent collaboration, communication, and cross-functional partnership skills
+• Proficiency in JavaScript/TypeScript, Python, and PHP
+• Strong Node.js backend experience, preferably with NestJS
+• Experience designing and consuming APIs in distributed or microservices architectures
+• Hands-on experience with JWT/OIDC authentication, including Auth0 or equivalent, and passport-jwt/JWKS patterns
+• Proven experience with relational (SQL) and NoSQL databases — schema design, query optimization, multi-environment deployments, and operational MongoDB (replication, sharding, performance tuning)
+• Experience with Docker and container orchestration on AWS ECS (task definitions, logging, ECR)
+• Working knowledge of core AWS services: Amplify, API Gateway, ALB/NLB, S3, EFS, CloudWatch, X-Ray, IAM, and VPC
+• Experience building and maintaining automation within cloud-native environments using IaC frameworks (Terraform + Terragrunt)
+• CI/CD experience with GitHub Actions and GitHub OIDC for secure AWS deployments
+• Observability and production operations experience: logs, metrics, alarms, distributed tracing, and production troubleshooting
+• Experience with security best practices, including IAM least-privilege, private S3 patterns, and secrets management
+• Testing and quality discipline across unit, integration, and e2e layers (Jest), with strong linting and formatting standards
+• Experience integrating headless CMS platforms with modern front-end frameworks
+• Enthusiasm to contribute to Stand Together's vision and principled approach to solving problems, and a commitment to stewarding our culture, which champions values including transformation and innovation, entrepreneurialism, humility, and respect.
+Benefits:
+• Enjoy a 6% 401(k) match with immediate vesting
+• Flexible time off
+• Comprehensive health and dental plans
+• Wellness and mental health support through Peloton and Talkspace
+Tech stack:
+AWS, Cloud, Docker, JavaScript, Jest, Microservices, MongoDB, Next.js, Node.js, NoSQL, PHP, Python, Ray, React, SQL, Terraform, TypeScript

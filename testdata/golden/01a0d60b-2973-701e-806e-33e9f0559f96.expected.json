@@ -1,0 +1,28 @@
+{
+  "requirements": [
+    {"value": "10+ years backend programming", "aliases": ["10+ years of experience across backend programming", "backend programming"], "tier": "required"},
+    {"value": "full-stack experience", "aliases": ["full-stack"], "tier": "preferred"},
+    {"value": "customer-facing web application products", "aliases": ["web application products"], "tier": "required"},
+    {"value": "Java", "aliases": [], "tier": "required"},
+    {"value": "Scala", "aliases": [], "tier": "required"},
+    {"value": "Rust", "aliases": ["Rust services"], "tier": "preferred"},
+    {"value": "distributed systems on cloud services", "aliases": ["distributed systems", "cloud services"], "tier": "required"},
+    {"value": "high availability", "aliases": [], "tier": "required"},
+    {"value": "technical design documents", "aliases": [], "tier": "required"},
+    {"value": "root-cause analysis", "aliases": [], "tier": "required"},
+    {"value": "agentic engineering tools", "aliases": ["agentic engineering", "AI coding agents"], "tier": "required"},
+    {"value": "code quality", "aliases": ["reading and understanding complex code"], "tier": "required"},
+    {"value": "BS in Computer Science", "aliases": ["BS or MS in Computer Science", "MS in Computer Science", "Computer Science degree", "BS"], "tier": "required"},
+    {"value": "healthcare claims and payments domain", "aliases": ["healthcare claims", "healthcare payments", "payments domain"], "tier": "mentioned"},
+    {"value": "machine learning techniques", "aliases": ["ML techniques"], "tier": "mentioned"},
+    {"value": "in-browser application development", "aliases": [], "tier": "mentioned"},
+    {"value": "mentoring", "aliases": ["mentor others"], "tier": "mentioned"},
+    {"value": "technical direction", "aliases": ["set technical direction"], "tier": "mentioned"},
+    {"value": "high throughput", "aliases": [], "tier": "required"},
+    {"value": "technical debt cleanup", "aliases": [], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Java", "Scala"]],
+  "acceptable": ["cross-functional collaboration", "critical thinking and problem-solving skills", "Design systems", "reliable web application systems", "Drive adoption of new languages", "Partner cross-functionally to influence product direction", "support cross-functional execution", "cross-team planning", "customer-facing features"],
+  "filler": ["product- and user-driven mindset", "pragmatic approach", "comfort with complexity", "high-growth, high-stakes environment"],
+  "notes": "'Java or Scala; Rust highly desired': Java/Scala grouped and required, Rust preferred. Degree accepts equivalent experience but is still listed. Relabeled to README rules: high throughput and high availability are separate asks."
+}

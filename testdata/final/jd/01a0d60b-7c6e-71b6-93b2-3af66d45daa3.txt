@@ -1,0 +1,63 @@
+## Bicycle Health - Mid-Level Full Stack Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/bicyclehealth/jobs/6144451004)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Full Stack Engineer building web and mobile telehealth applications for Bicycle Health’s opioid-use-disorder treatment platform. Developing secure patient-care features across React, Node.js, TypeScript, GraphQL, and cloud services.
+Full Stack Engineer building telehealth applications for Bicycle Health’s opioid-use-disorder care platform
+- Salary: $120,000 - $160,000 per year
+- Tech stack: Cloud, Google Cloud Platform, GraphQL, JavaScript, Node.js, React, TypeScript
+- Implement, test, and maintain critical product features using TypeScript, React, GraphQL, and Node.js
+- Partner with product managers, physicians, and staff members to build solutions that improve the patient experience
+- Build and maintain features across mobile applications, TypeScript backend services, and cloud-based data layers
+- Ensure end-to-end functionality and performance
+- Deliver reliable and transparent value to users while maintaining high standards for code quality and performance
+- Embrace Lean Startup behaviors to simplify technology and processes
+- Build relationships with teammates and stakeholders
+- Participate in code reviews and shared learning sessions
+- 3-5 years of professional experience building and maintaining web or mobile-responsive applications and backend services
+- Proficiency with React and Node.js
+- Strong experience with TypeScript is highly preferred
+- Experience working with GraphQL or Express and designing/consuming RESTful APIs
+- Familiarity with Google Cloud Platform (GCP) or similar cloud environments
+- Understanding of iterative agile delivery, CI/CD pipelines, and writing testable, maintainable code
+- Consistent access to a private work environment with high speed internet and professionally appropriate surroundings for frequent video conferencing and a workstation setup conducive to remote work needs
+- Must be currently authorized to work in the United States on a full-time basis
+
+### Full Job Description
+Summary:
+Full Stack Engineer building web and mobile telehealth applications for Bicycle Health’s opioid-use-disorder treatment platform. Developing secure patient-care features across React, Node.js, TypeScript, GraphQL, and cloud services.
+Full Stack Engineer building telehealth applications for Bicycle Health’s opioid-use-disorder care platform
+Role description:
+• Implement, test, and maintain critical product features using TypeScript, React, GraphQL, and Node.js
+• Partner with product managers, physicians, and staff members to build solutions that improve the patient experience
+• Build and maintain features across mobile applications, TypeScript backend services, and cloud-based data layers
+• Ensure end-to-end functionality and performance
+• Deliver reliable and transparent value to users while maintaining high standards for code quality and performance
+• Embrace Lean Startup behaviors to simplify technology and processes
+• Build relationships with teammates and stakeholders
+• Participate in code reviews and shared learning sessions
+• Maintain regular and predictable attendance
+Role requirements:
+• 3-5 years of professional experience building and maintaining web or mobile-responsive applications and backend services
+• Proficiency with React and Node.js
+• Strong experience with TypeScript is highly preferred
+• Experience working with GraphQL or Express and designing/consuming RESTful APIs
+• Familiarity with Google Cloud Platform (GCP) or similar cloud environments
+• Understanding of iterative agile delivery, CI/CD pipelines, and writing testable, maintainable code
+• Consistent access to a private work environment with high speed internet and professionally appropriate surroundings for frequent video conferencing and a workstation setup conducive to remote work needs
+• Must be currently authorized to work in the United States on a full-time basis
+• Must physically reside within the United States
+• No visa sponsorship available now or in the future
+Benefits:
+• Discretionary PTO + 8.5 days of additional sick time + 10 paid holidays
+• Paid parental leave
+• 100% Employer Paid Employee Medical, Dental, and Vision Insurance
+• Employer Paid STD & LTD
+• 401k
+• $50 monthly Remote Work Stipend
+• Equity
+Tech stack:
+Cloud, Google Cloud Platform, GraphQL, JavaScript, Node.js, React, TypeScript

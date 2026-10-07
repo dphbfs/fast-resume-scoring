@@ -1,0 +1,83 @@
+## Horizon3.ai - Senior Backend Engineer – Growth, MSSP
+
+🔗 [Apply](https://jobs.ashbyhq.com/horizon3ai/e3a763c3-2e2c-4428-a68e-26c98e7410d4)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building licensing, provisioning, access, and MSSP infrastructure for Horizon3’s NodeZero autonomous cybersecurity platform. Operating reliable multi-tenant backend services in production.
+Senior Backend Engineer building NodeZero’s multi-tenant cybersecurity platform at Horizon3
+- Salary: $170,000 - $235,000 per year
+- Tech stack: AWS, Azure, Docker, Google Cloud Platform, Java, Kubernetes, Postgres, Python, Scala, SQL, TypeScript, C++, Go
+- Design and implement backend services enforcing licensing, entitlements, feature access, usage limits, and packaging rules
+- Build and evolve provisioning and onboarding workflows for account setup, entitlement propagation, and auto-provisioning
+- Develop infrastructure for user access controls, account settings, parent-child account relationships, RBAC, and authorization
+- Build MSP/MSSP capabilities including asset allocation, sub-client management, usage visibility, and reporting workflows
+- Implement audit logging and event history systems for administrative, entitlement, usage, and account-level actions
+- Develop the notifications platform for usage warnings, consumption alerts, overage notices, product announcements, and other communications
+- Operate services in production, contributing to monitoring, runbooks, incident response, and support workflows
+- Contribute production code meeting standards for design quality, test coverage, observability, and operational rigor
+- Bachelor's Degree in Computer Science, Computer Engineering, or a related field
+- 7+ years of professional software engineering experience using modern object-oriented or functional languages such as Python, Go, TypeScript, Java, Scala, or C++
+- Experience building production applications on AWS, Azure, or GCP
+- Experience using Docker and Kubernetes
+- Ability to own and manage concurrent initiatives
+- Strong prioritization and time management
+- Self-directed and able to implement solutions independently and as part of a team
+- Strong desire to continuously learn new technologies in a fast-paced Agile environment
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building licensing, provisioning, access, and MSSP infrastructure for Horizon3’s NodeZero autonomous cybersecurity platform. Operating reliable multi-tenant backend services in production.
+Senior Backend Engineer building NodeZero’s multi-tenant cybersecurity platform at Horizon3
+Role description:
+• Design and implement backend services enforcing licensing, entitlements, feature access, usage limits, and packaging rules
+• Build and evolve provisioning and onboarding workflows for account setup, entitlement propagation, and auto-provisioning
+• Develop infrastructure for user access controls, account settings, parent-child account relationships, RBAC, and authorization
+• Build MSP/MSSP capabilities including asset allocation, sub-client management, usage visibility, and reporting workflows
+• Implement audit logging and event history systems for administrative, entitlement, usage, and account-level actions
+• Develop the notifications platform for usage warnings, consumption alerts, overage notices, product announcements, and other communications
+• Operate services in production, contributing to monitoring, runbooks, incident response, and support workflows
+• Contribute production code meeting standards for design quality, test coverage, observability, and operational rigor
+• Collaborate with Pentest Data Platform and Platform Integration Team to apply entitlement, access, and account-hierarchy rules consistently
+• Lead through technical judgment, system design, and reliable execution as a senior individual contributor
+• Own significant pieces of platform infrastructure while balancing feature delivery, long-term platform investment, and production health
+Role requirements:
+• Bachelor's Degree in Computer Science, Computer Engineering, or a related field
+• 7+ years of professional software engineering experience using modern object-oriented or functional languages such as Python, Go, TypeScript, Java, Scala, or C++
+• Experience building production applications on AWS, Azure, or GCP
+• Experience using Docker and Kubernetes
+• Ability to own and manage concurrent initiatives
+• Strong prioritization and time management
+• Self-directed and able to implement solutions independently and as part of a team
+• Strong desire to continuously learn new technologies in a fast-paced Agile environment
+• Excellent analytical and problem-solving skills
+• High attention to detail and quality
+• Strong technical documentation ability, including design docs, runbooks, and support documentation
+• Effective communication and collaboration across engineering, product, and design
+• Interest in mentoring junior and mid-level engineers
+• Experience with multi-tenant SaaS platforms and tenant isolation
+• Experience with RBAC, authorization, authentication, or SSO systems
+• Experience with licensing, subscription, entitlement, usage metering, or billing-adjacent systems
+• Experience designing audit log or event history systems
+• Familiarity with provisioning, feature flags, and staged rollout patterns
+• Experience building admin consoles or customer self-service workflows
+• Experience with MSP, MSSP, or multi-tenant partner models
+• Experience with notifications infrastructure
+• Production reliability experience, including observability tooling, on-call ownership, runbook authorship, and incident response
+• Expert proficiency in SQL
+• Experience with relational database architectures, particularly PostgreSQL
+• Comfort with complex data models involving account hierarchies, usage records, and entitlement state
+Benefits:
+• Equity package in the form of stock options for all full-time roles
+• Health insurance for you and your family
+• Vision insurance for you and your family
+• Dental insurance for you and your family
+• Flexible vacation policy
+• Generous parental leave
+• Career development opportunities
+• Inclusive culture
+• Collaborative and innovative work environment
+• Remote and hybrid work models depending on role and location
+Tech stack:
+AWS, Azure, Docker, Google Cloud Platform, Java, Kubernetes, Postgres, Python, Scala, SQL, TypeScript, C++, Go

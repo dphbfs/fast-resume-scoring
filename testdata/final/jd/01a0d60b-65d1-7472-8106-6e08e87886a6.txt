@@ -1,0 +1,54 @@
+## Voxel51 - Senior Software Engineer, Python
+
+🔗 [Apply](https://boards.greenhouse.io/voxel51/jobs/4726882005)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building Python APIs, SDKs, and enterprise systems for Voxel51’s AI data platform. Scaling unstructured vision datasets and contributing to open source.
+Senior Software Engineer building Python APIs and open-source AI data tools at Voxel51
+- Salary: $200,000 - $225,000 per year
+- Tech stack: Cloud, ElasticSearch, MongoDB, NoSQL, Open Source, Python, TypeScript
+- Develop the open source SDK, enterprise APIs, UIs, and backend systems
+- Scale the enterprise solution, deployed into customers' own cloud and on premises, to support very large vision AI datasets and process petabytes of data
+- Write maintainable, flexible, performant, well-tested production code
+- Contribute tooling, automation, and best practices to the department
+- Collaborate on features supporting dataset curation, model analysis, and integrations across the machine learning lifecycle
+- Build scalable APIs and solve challenges involving unstructured image and video data
+- Contribute to the open source community and enterprise-grade engineering for commercial products
+- 8+ years of professional full-stack software engineering experience developing maintainable and scalable systems and software architectures
+- BS or MS in computer science or a related field
+- Expertise with Python
+- Expertise with NoSQL databases (MongoDB, DocumentDB, Elasticsearch)
+- Experience maintaining or contributing to open source projects (or the passion to start!)
+- Ability to work in a remote-first, collaborative environment
+- Experience with Typescript is an asset
+
+### Full Job Description
+Summary:
+Senior Software Engineer building Python APIs, SDKs, and enterprise systems for Voxel51’s AI data platform. Scaling unstructured vision datasets and contributing to open source.
+Senior Software Engineer building Python APIs and open-source AI data tools at Voxel51
+Role description:
+• Develop the open source SDK, enterprise APIs, UIs, and backend systems
+• Scale the enterprise solution, deployed into customers' own cloud and on premises, to support very large vision AI datasets and process petabytes of data
+• Write maintainable, flexible, performant, well-tested production code
+• Contribute tooling, automation, and best practices to the department
+• Collaborate on features supporting dataset curation, model analysis, and integrations across the machine learning lifecycle
+• Build scalable APIs and solve challenges involving unstructured image and video data
+• Contribute to the open source community and enterprise-grade engineering for commercial products
+Role requirements:
+• 8+ years of professional full-stack software engineering experience developing maintainable and scalable systems and software architectures
+• BS or MS in computer science or a related field
+• Expertise with Python
+• Expertise with NoSQL databases (MongoDB, DocumentDB, Elasticsearch)
+• Experience maintaining or contributing to open source projects (or the passion to start!)
+• Ability to work in a remote-first, collaborative environment
+• Experience with Typescript is an asset
+Benefits:
+• Equity in the form of options
+• A variety of benefits
+• Flexible work arrangements inherent in a human-first, fully remote organization
+• Opportunity to grow in an exciting and collaborative environment
+• At least 2 in-person retreats per year
+Tech stack:
+Cloud, ElasticSearch, MongoDB, NoSQL, Open Source, Python, TypeScript

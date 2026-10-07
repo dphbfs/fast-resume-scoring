@@ -1,0 +1,53 @@
+## webAI™ - Software Engineer, CRDT
+
+🔗 [Apply](https://jobs.ashbyhq.com/webai/ac849bd2-1fd6-4fef-bbbb-a903d3813214)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- CRDT Software Engineer building secure synchronization and networking systems for webAI’s private, distributed edge AI platform. Working in Rust across peer-to-peer and decentralized environments.
+CRDT Software Engineer building private, distributed edge AI infrastructure for webAI
+- Tech stack: Cloud, Rust, C++, Go
+- Design and implement advanced synchronization and networking systems for reliable AI operations across heterogeneous environments, from edge devices to cloud-isolated systems
+- Architect data synchronization frameworks using content-addressable storage, Merkle trees, and CRDTs
+- Lead performance tuning, debugging, and optimization of distributed software under resource-constrained and intermittent-connectivity conditions
+- Apply security-first design through threat modeling, secure key management, and cryptographic primitives and protocols
+- Collaborate with MLOps, Infrastructure, and Security teams to deploy and integrate AI components in restricted or air-gapped systems
+- Contribute to cross-functional architectural design discussions and documentation for internal and external stakeholders
+- Maintain rigorous testing, observability, and validation practices for system reliability and compliance readiness
+- Work with distributed hash tables, content identifiers, gossip protocols, DAGs, overlay networks, and NAT traversal as applicable
+- 5-10+ years of experience, depending on leveling, with backend systems languages such as C++, C, Go, or Rust
+- Experience with peer-to-peer or decentralized networking frameworks
+- CRDT experience is required
+- Development will be done in Rust; candidates without Rust experience can get up to speed while working with these systems
+
+### Full Job Description
+Summary:
+CRDT Software Engineer building secure synchronization and networking systems for webAI’s private, distributed edge AI platform. Working in Rust across peer-to-peer and decentralized environments.
+CRDT Software Engineer building private, distributed edge AI infrastructure for webAI
+Role description:
+• Design and implement advanced synchronization and networking systems for reliable AI operations across heterogeneous environments, from edge devices to cloud-isolated systems
+• Architect data synchronization frameworks using content-addressable storage, Merkle trees, and CRDTs
+• Lead performance tuning, debugging, and optimization of distributed software under resource-constrained and intermittent-connectivity conditions
+• Apply security-first design through threat modeling, secure key management, and cryptographic primitives and protocols
+• Collaborate with MLOps, Infrastructure, and Security teams to deploy and integrate AI components in restricted or air-gapped systems
+• Contribute to cross-functional architectural design discussions and documentation for internal and external stakeholders
+• Maintain rigorous testing, observability, and validation practices for system reliability and compliance readiness
+• Work with distributed hash tables, content identifiers, gossip protocols, DAGs, overlay networks, and NAT traversal as applicable
+Role requirements:
+• 5-10+ years of experience, depending on leveling, with backend systems languages such as C++, C, Go, or Rust
+• Experience with peer-to-peer or decentralized networking frameworks
+• CRDT experience is required
+• Development will be done in Rust; candidates without Rust experience can get up to speed while working with these systems
+Benefits:
+• Comprehensive health, dental, and vision benefits package
+• 401(k) match (U.S.-based employees only)
+• $200/month Health & Wellness stipend
+• Continuing Education support
+• $500/year Function Health subscription (U.S.-based employees only)
+• Free parking for in-office employees
+• Flexible Time Off (FTO)
+• Parental leave for eligible employees
+• Supplemental life insurance
+Tech stack:
+Cloud, Rust, C++, Go

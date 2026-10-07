@@ -1,0 +1,61 @@
+version: 2
+
+project_name: fast-resume-scoring
+
+builds:
+  - &cli
+    id: score
+    main: ./cmd/score
+    binary: score
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - <<: *cli
+    id: extract
+    main: ./cmd/extract
+    binary: extract
+  - <<: *cli
+    id: check
+    main: ./cmd/check
+    binary: check
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
+      - .env.example
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: github
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore\\(deps\\):"
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\(.+\))??!?:.+$'
+      order: 0
+    - title: Fixes
+      regexp: '^.*?fix(\(.+\))??!?:.+$'
+      order: 1
+    - title: Other
+      order: 999
+
+release:
+  draft: true

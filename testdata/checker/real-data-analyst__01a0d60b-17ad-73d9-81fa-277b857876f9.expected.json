@@ -1,0 +1,148 @@
+{
+ "job": "01a0d60b-17ad-73d9-81fa-277b857876f9",
+ "resume": "real-data-analyst",
+ "skip": [
+  "6+ years backend software engineering"
+ ],
+ "links": {
+  "Go": [
+   {
+    "quote": "Technical Background: Java, Go",
+    "strength": "weak"
+   }
+  ],
+  "distributed systems": [
+   {
+    "quote": "Separated core business records",
+    "strength": "partial"
+   }
+  ],
+  "system design": [
+   {
+    "quote": "Separated core business records",
+    "strength": "partial"
+   },
+   {
+    "quote": "Created the first documentation and diagrams",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated ~3,000 EU home chargers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Built event reservation",
+    "strength": "partial"
+   }
+  ],
+  "API development": [
+   {
+    "quote": "Built integrations with cloud providers",
+    "strength": "partial"
+   }
+  ],
+  "cloud infrastructure": [
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "partial"
+   },
+   {
+    "quote": "Data & Reporting: SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Technical Background: Java, Go",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built integrations with cloud providers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "partial"
+   },
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "partial"
+   }
+  ],
+  "AWS": [
+   {
+    "quote": "Cut reporting infrastructure cost",
+    "strength": "strong"
+   },
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "strong"
+   },
+   {
+    "quote": "Technical Background: Java, Go",
+    "strength": "weak"
+   },
+   {
+    "quote": "Data & Reporting: SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Built integrations with cloud providers",
+    "strength": "partial"
+   },
+   {
+    "quote": "Rebuilt the support team's reports",
+    "strength": "strong"
+   }
+  ],
+  "third-party service integration": [
+   {
+    "quote": "Built integrations with cloud providers",
+    "strength": "strong"
+   },
+   {
+    "quote": "Automated the race results data feed",
+    "strength": "partial"
+   },
+   {
+    "quote": "Migrated complex product inventory data",
+    "strength": "partial"
+   }
+  ],
+  "payments infrastructure": [
+   {
+    "quote": "Ran a monthly SQL reconciliation",
+    "strength": "partial"
+   },
+   {
+    "quote": "Found a billing error",
+    "strength": "partial"
+   },
+   {
+    "quote": "Calculated each refund in SQL",
+    "strength": "partial"
+   },
+   {
+    "quote": "wrote the SQL behind driver refunds",
+    "strength": "weak"
+   }
+  ],
+  "observability tools": [
+   {
+    "quote": "Built a Grafana dashboard tracking activation KPIs",
+    "strength": "strong"
+   },
+   {
+    "quote": "Technical Background: Java, Go",
+    "strength": "weak"
+   },
+   {
+    "quote": "Data & Reporting: SQL",
+    "strength": "weak"
+   },
+   {
+    "quote": "Wrote Athena SQL",
+    "strength": "partial"
+   }
+  ]
+ },
+ "notes": "Mismatch pair: data-analyst resume against a Web3 backend posting."
+}

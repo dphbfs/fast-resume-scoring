@@ -1,0 +1,67 @@
+## Cyware - Senior Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/cyware/jobs/4215617003)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building scalable, AI-enabled Cyber Fusion cybersecurity software at Cyware.
+Delivering secure features across commercial and AWS GovCloud environments under FedRAMP and GovRAMP controls.
+Senior Software Engineer building compliant AI-enabled cybersecurity platforms at Cyware
+- Tech stack: AWS, Cyber Security, Django, Docker, ElasticSearch, GRPC, Kafka, Kubernetes, Microservices, MongoDB, NoSQL, Postgres, Python, RabbitMQ, RDBMS, Redis
+- Build and harden Cyware’s Cyber Fusion cybersecurity platform for commercial enterprise and public-sector environments
+- Develop scalable features from proposal through polished implementation, accounting for enterprise scale and high-security compliance constraints
+- Build code meeting FedRAMP/GovRAMP controls, including secure coding, audit logging, RBAC, and encryption in transit and at rest
+- Manage and review team code for enterprise and regulatory security standards and maintainability
+- Partner with DevOps and GRC to deploy features through CI/CD pipelines across commercial and AWS GovCloud environments
+- Improve software to address developer pain points
+- Collaborate with multidisciplinary teams to maintain and support production and operations of Cyware products
+- Report to the Senior VP of Engineering
+- U.S. Citizenship required (per 8 U.S.C. 1324b(a)(2)(C))
+- Ability to comply with U.S. government/enterprise security standards and eligibility for security clearances
+- Bachelor’s degree or higher in Computer Science, Engineering, IT or a related discipline, or equivalent experience
+- 7–10+ years of Python experience
+- Proficiency building efficient REST APIs with Django/Django REST Framework
+- Strong software design and architecture skills, including scalable microservices, MVC, OOPS, and design patterns such as strategy and adapter
+- Experience with Generative AI integrations, REST/gRPC LLM services, AI agents, and RAG pipelines
+- Hands-on AWS and AWS GovCloud experience, including ECS/EKS, Lambda, API Gateway, S3, RDS, and multi-tenant architectures
+
+### Full Job Description
+Summary:
+Senior Software Engineer building scalable, AI-enabled Cyber Fusion cybersecurity software at Cyware.
+Delivering secure features across commercial and AWS GovCloud environments under FedRAMP and GovRAMP controls.
+Senior Software Engineer building compliant AI-enabled cybersecurity platforms at Cyware
+Role description:
+• Build and harden Cyware’s Cyber Fusion cybersecurity platform for commercial enterprise and public-sector environments
+• Develop scalable features from proposal through polished implementation, accounting for enterprise scale and high-security compliance constraints
+• Build code meeting FedRAMP/GovRAMP controls, including secure coding, audit logging, RBAC, and encryption in transit and at rest
+• Manage and review team code for enterprise and regulatory security standards and maintainability
+• Partner with DevOps and GRC to deploy features through CI/CD pipelines across commercial and AWS GovCloud environments
+• Improve software to address developer pain points
+• Collaborate with multidisciplinary teams to maintain and support production and operations of Cyware products
+• Report to the Senior VP of Engineering
+Role requirements:
+• U.S. Citizenship required (per 8 U.S.C. 1324b(a)(2)(C))
+• Ability to comply with U.S. government/enterprise security standards and eligibility for security clearances
+• Bachelor’s degree or higher in Computer Science, Engineering, IT or a related discipline, or equivalent experience
+• 7–10+ years of Python experience
+• Proficiency building efficient REST APIs with Django/Django REST Framework
+• Strong software design and architecture skills, including scalable microservices, MVC, OOPS, and design patterns such as strategy and adapter
+• Experience with Generative AI integrations, REST/gRPC LLM services, AI agents, and RAG pipelines
+• Hands-on AWS and AWS GovCloud experience, including ECS/EKS, Lambda, API Gateway, S3, RDS, and multi-tenant architectures
+• Proficiency with SAML, OAuth, PIV/CAC, FICAM, RBAC, OWASP, and secrets management aligned with FedRAMP/GovRAMP controls
+• Knowledge of PostgreSQL, Elasticsearch, ClickHouse, MongoDB, RDBMS, NoSQL, Redis, Memcached, RabbitMQ, and Kafka
+• Experience with unit testing, debugging, test automation, CI/CD, source version control, Git/GitHub, Docker, and Kubernetes
+• Knowledge of Django scheduling frameworks or event-driven programming, Python threading limitations, and multi-process architecture
+• Experience with scaled applications, scalable microservices, and building products from scratch
+• Strong proficiency in data structures and algorithms and understanding of server-side templating languages
+• Knowledge of authentication and authorization across multiple systems, servers, and environments
+• Experience developing products from scratch in regulated/FedRAMP environments
+Benefits:
+• Comprehensive benefits package including time off, paid holidays, retirement plans, insurance coverage and much more
+• Professional development opportunities
+• Competitive compensation packages
+• Exciting and challenging start-up culture
+• Inclusive culture and commitment to diversity
+Tech stack:
+AWS, Cyber Security, Django, Docker, ElasticSearch, GRPC, Kafka, Kubernetes, Microservices, MongoDB, NoSQL, Postgres, Python, RabbitMQ, RDBMS, Redis

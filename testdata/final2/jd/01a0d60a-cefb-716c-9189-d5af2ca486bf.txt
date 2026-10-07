@@ -1,0 +1,12 @@
+## Breakthrough Talent - Senior Backend Engineer (Go)
+
+🔗 [Apply](https://www.linkedin.com/jobs/view/4414132693/)
+
+📍 Type: Hybrid
+
+### Stack & Responsibilities
+- Senior Backend Engineer (Go) Payment Infrastructure / Orchestration Platform San Francisco / Hybrid $180,000 to $240,000 + Equity We are partnered with a VC backed payment infrastructure startup building modern payment orchestration technology for global merchants
+- Their platform helps enterprise businesses optimise payment routing, improve transaction approval rates and manage multiple PSP integrations through a single infrastructure layer
+- Following significant growth and customer expansion, they are now scaling their platform engineering team in San Francisco
+- You will help build highly scalable payment infrastructure powering transaction routing, payment orchestration and merchant payment optimisation globally
+- This role is focused on: distributed systems APIs payment infrastructure platform scalability reliability engineering Responsibilities Design and build scalable backend payment infrastructure Develop APIs and backend payment services Improve payment routing and orchestration logic Build highly reliable distributed systems Improve platform performance and observability Support multi PSP integrations Work closely with DevOps and platform teams Contribute to infrastructure scalability and resilience Requirements Strong commercial Go experience Experience building scalable distributed systems Strong API development experience Cloud infrastructure experience (AWS or GCP) Experience with Kubernetes and containerised environments Strong understanding of platform reliability and scalability Experience working within high growth engineering environments Nice To Have Payments or fintech experience Payment orchestration exposure Transaction processing experience Kafka or event driven architecture experience PCI or payment compliance exposure Experience with high availability systems … more Requirements added by the job poster • No need for visa sponsorship • Working in a hybrid setting

@@ -1,0 +1,80 @@
+## Humana - Senior Software Engineer – Appian Platform
+
+🔗 [Apply](https://humana.wd5.myworkdayjobs.com/humana_external_career_site/job/louisville-ky/senior-software-engineer---appian-platform_r-431029)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer developing Appian workflow and case-management solutions for Humana's HIPAA-regulated healthcare operations. Building integrations, administering the platform, and supporting reliable software delivery.
+Senior Software Engineer building Appian healthcare workflow solutions for Humana
+- Salary: $106,900 - $147,000 per year
+- Tech stack: Cloud, Java, Kafka, Postgres, Python, SQL
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Design, code, and maintain software applications meeting business and platform requirements
+- Deliver technical solutions and hands-on development expertise within a team environment
+- Contribute to Appian platform administration
+- Apply strong technical knowledge within the Appian domain
+- Develop code that accelerates impactful initiatives in a HIPAA-regulated environment
+- Design and develop software solutions using Appian process models, SAIL interfaces, record types, expression rules, AI enablement, and reusable components
+- Configure and optimize the Appian platform and address technical issues
+- Develop and maintain integrations between Appian and other systems using RESTful services, APIs, and enterprise data sources
+- Bachelor's degree in computer science or related field
+- 4+ years of substantial, hands-on experience developing with Appian
+- 4+ years of experience designing, developing, and testing software applications and/or infrastructure
+- Experience building workflow-driven and case-based applications in medium-to-large-scale environments
+- Good understanding of platform security, integrations, and data access patterns
+- Exposure to regulated environments, including security, compliance, auditability, and reliability
+- Hands-on experience with Web API development, messaging queues such as Kafka, and other Appian integration capabilities
+- Familiarity with Appian SAIL, Records, Data Fabric, and platform deployment processes
+
+### Full Job Description
+Summary:
+Senior Software Engineer developing Appian workflow and case-management solutions for Humana's HIPAA-regulated healthcare operations. Building integrations, administering the platform, and supporting reliable software delivery.
+Senior Software Engineer building Appian healthcare workflow solutions for Humana
+Role description:
+• Design, code, and maintain software applications meeting business and platform requirements
+• Deliver technical solutions and hands-on development expertise within a team environment
+• Contribute to Appian platform administration
+• Apply strong technical knowledge within the Appian domain
+• Develop code that accelerates impactful initiatives in a HIPAA-regulated environment
+• Design and develop software solutions using Appian process models, SAIL interfaces, record types, expression rules, AI enablement, and reusable components
+• Configure and optimize the Appian platform and address technical issues
+• Develop and maintain integrations between Appian and other systems using RESTful services, APIs, and enterprise data sources
+• Support workflow and case management solutions based on Appian
+• Evaluate and implement Appian platform features and upgrades
+• Promote Appian best practices and alignment with engineering standards
+Role requirements:
+• Bachelor's degree in computer science or related field
+• 4+ years of substantial, hands-on experience developing with Appian
+• 4+ years of experience designing, developing, and testing software applications and/or infrastructure
+• Experience building workflow-driven and case-based applications in medium-to-large-scale environments
+• Good understanding of platform security, integrations, and data access patterns
+• Exposure to regulated environments, including security, compliance, auditability, and reliability
+• Hands-on experience with Web API development, messaging queues such as Kafka, and other Appian integration capabilities
+• Familiarity with Appian SAIL, Records, Data Fabric, and platform deployment processes
+• Master's degree in Computer Science, Information Technology, or a related field preferred
+• Appian Certified Developer or equivalent Appian platform certification preferred
+• Experience with Appian AI capabilities, including AI modeling and automation features preferred
+• Experience with object-oriented programming languages such as Java, C#, or Python preferred
+• Development or administration experience with SQL, relational databases, cloud databases, and data platforms preferred
+• Databricks, SQL Server, and PostgreSQL preferred
+• Object-oriented design and development techniques preferred
+• Kafka or other enterprise messaging/event-streaming platforms preferred
+• Minimum home internet speed of 25 Mbps download and 10 Mbps upload for Home or Hybrid Home/Office employees
+• Dedicated workspace without ongoing interruptions to protect member PHI/HIPAA information
+Benefits:
+• Bonus incentive plan based upon company and/or individual performance
+• Medical, dental and vision benefits
+• 401(k) retirement savings plan
+• Paid time off
+• Company and personal holidays
+• Paid parental and caregiver leave
+• Short-term and long-term disability
+• Life insurance
+• Personal wellness and smart healthcare decision support
+• Remote work arrangement
+• Occasional travel to Humana offices for training or meetings
+• Dedicated workspace and internet service requirements for home/hybrid employees
+Tech stack:
+Cloud, Java, Kafka, Postgres, Python, SQL
+Company sponsorship flag: sponsorsH1B=true.

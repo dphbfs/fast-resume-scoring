@@ -1,0 +1,69 @@
+## Buenro - Senior Backend Engineer
+
+🔗 [Apply](https://buenro.factorialhr.com/job_posting/senior-backend-engineer-326026)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Backend Engineer building Buenro’s event ticketing and accommodation marketplace backend. Developing scalable Node.js/NestJS services for a global destination-events marketplace.
+Senior Backend Engineer building Buenro’s event ticketing and accommodation marketplace platform
+- Tech stack: Angular, AWS, JavaScript, Jest, Microservices, MongoDB, Node.js, NoSQL, Postgres, RabbitMQ, React, Terraform, TypeScript, Vue.js
+- Build and maintain the Buenro platform
+- Work closely with Frontend/Mobile and Systems & Platform teams
+- Develop and maintain backend infrastructure
+- Build new features and functionality for the Buenro platform
+- Implement robust, maintainable backend services using Node.js and NestJS
+- Debug production issues across the stack using logs, metrics, and traces
+- Improve backend APIs and middleware
+- Optimize authentication and RBAC/ABAC practices
+- Minimum 5+ years of experience in backend applications and API development
+- Expert-level proficiency in Node.js and NestJS, including dependency injection, guards, interceptors, modules, and decorators
+- Expert-level proficiency in TypeScript, including advanced types, generics, utility types, and strict mode
+- Strong MongoDB skills, including indexes, aggregation pipelines, sharding, replica sets, and schema design
+- Strong PostgreSQL skills, including complex joins, transactions, and JSONB
+- Prisma ORM expertise, including schema modeling, migrations, query optimization, and middleware
+- Production experience with GitHub Actions, including workflows, secrets, matrix builds, and reusable actions
+- Production experience with Terraform, including modules, state management, providers, and drift detection
+
+### Full Job Description
+Summary:
+Senior Backend Engineer building Buenro’s event ticketing and accommodation marketplace backend. Developing scalable Node.js/NestJS services for a global destination-events marketplace.
+Senior Backend Engineer building Buenro’s event ticketing and accommodation marketplace platform
+Role description:
+• Build and maintain the Buenro platform
+• Work closely with Frontend/Mobile and Systems & Platform teams
+• Develop and maintain backend infrastructure
+• Build new features and functionality for the Buenro platform
+• Implement robust, maintainable backend services using Node.js and NestJS
+• Debug production issues across the stack using logs, metrics, and traces
+• Improve backend APIs and middleware
+• Optimize authentication and RBAC/ABAC practices
+• Work with message queues and in-memory databases to improve performance and efficiency
+• Deliver low-latency, secure, and fault-tolerant backend solutions
+• Ensure world-class availability, performance, and scalability
+Role requirements:
+• Minimum 5+ years of experience in backend applications and API development
+• Expert-level proficiency in Node.js and NestJS, including dependency injection, guards, interceptors, modules, and decorators
+• Expert-level proficiency in TypeScript, including advanced types, generics, utility types, and strict mode
+• Strong MongoDB skills, including indexes, aggregation pipelines, sharding, replica sets, and schema design
+• Strong PostgreSQL skills, including complex joins, transactions, and JSONB
+• Prisma ORM expertise, including schema modeling, migrations, query optimization, and middleware
+• Production experience with GitHub Actions, including workflows, secrets, matrix builds, and reusable actions
+• Production experience with Terraform, including modules, state management, providers, and drift detection
+• Production experience with AWS ECS, including task definitions, service networking, load balancing, IAM roles, and CloudWatch
+• Strong understanding of RESTful API design, OpenAPI/Swagger, JWT authentication, and rate limiting
+• Expertise with NoSQL databases, document modeling, data denormalization, consistency models, and performance tuning in distributed environments
+• Deep understanding of asynchronous programming, event-driven architecture, and message queues such as SQS and RabbitMQ
+• Familiarity with unit testing using Jest, integration testing, and end-to-end testing with Supertest and Playwright
+• Experience with microservices, domain-driven design, and CQRS patterns is a plus
+• Front-end experience with React, Angular, or Vue.js is a strong plus
+• Previous experience leading teams and coaching or mentoring engineers is a strong plus
+• Ability to work remotely within a timezone difference of approximately +/- 3–4 hours from CET
+Benefits:
+• Fully remote work-from-home arrangement
+• Equity through the company option plan
+• Generous time off
+• One week each year when the whole company switches off together
+• Access to at-cost accommodations at Buenro's global bases around the world
+Tech stack:
+Angular, AWS, JavaScript, Jest, Microservices, MongoDB, Node.js, NoSQL, Postgres, RabbitMQ, React, Terraform, TypeScript, Vue.js

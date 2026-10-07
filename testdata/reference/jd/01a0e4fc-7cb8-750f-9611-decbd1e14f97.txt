@@ -1,0 +1,61 @@
+## Wikimedia Foundation - Senior Software Engineer, Core Experiences – Contract
+
+🔗 [Apply](https://boards.greenhouse.io/wikimedia/jobs/8223864)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior full-stack engineer building Wikipedia web experiences, REST APIs, and reusable app integrations. Supporting Wikimedia’s global free-knowledge mission through accessible, scalable product features.
+Full-stack engineer building Wikipedia web experiences, APIs, and app integrations for Wikimedia
+- Salary: $56 - $87 per hour
+- Tech stack: JavaScript, PHP, TypeScript, Vue.js
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Deliver medium-complexity initiatives from technical discovery through delivery
+- Break down initiatives into features, drive estimation, manage scope, identify risks, and support pragmatic tradeoffs
+- Create mobile Wikipedia product experiences for global, multilingual audiences across web and app surfaces
+- Design and build accessible, adaptable, scalable, and reusable frontend components
+- Create and maintain RESTful APIs, schemas, contracts, monitoring, and scalable data pipelines
+- Build software that is testable, observable, and debuggable
+- Instrument features for deeper analysis by Product Analysts
+- Collaborate with product managers, designers, analysts, and native app engineers
+- Bachelor's degree and 5-10+ years of related professional experience, with significant experience building production web applications and services
+- Strong professional experience with JavaScript/TypeScript, JavaScript frameworks such as Vue.js, and backend languages such as PHP
+- Experience building responsive or mobile-first web experiences, with attention to performance, accessibility, and usability
+- Experience designing and integrating with server-side APIs
+- Experience delivering in a self-driven, lean environment
+- Commitment to the Foundation's Mission and Values
+- Applicants outside the US must have current work authorization in their location
+
+### Full Job Description
+Summary:
+Senior full-stack engineer building Wikipedia web experiences, REST APIs, and reusable app integrations. Supporting Wikimedia’s global free-knowledge mission through accessible, scalable product features.
+Full-stack engineer building Wikipedia web experiences, APIs, and app integrations for Wikimedia
+Role description:
+• Deliver medium-complexity initiatives from technical discovery through delivery
+• Break down initiatives into features, drive estimation, manage scope, identify risks, and support pragmatic tradeoffs
+• Create mobile Wikipedia product experiences for global, multilingual audiences across web and app surfaces
+• Design and build accessible, adaptable, scalable, and reusable frontend components
+• Create and maintain RESTful APIs, schemas, contracts, monitoring, and scalable data pipelines
+• Build software that is testable, observable, and debuggable
+• Instrument features for deeper analysis by Product Analysts
+• Collaborate with product managers, designers, analysts, and native app engineers
+• Identify technical opportunities and risks, clarify priorities and sequencing, and align teams on outcomes and capacity
+• Follow standards for code review, technical design, testing, documentation, accessibility, observability, and decision-making
+• Plan work with awareness of downstream and upstream effects
+Role requirements:
+• Bachelor's degree and 5-10+ years of related professional experience, with significant experience building production web applications and services
+• Strong professional experience with JavaScript/TypeScript, JavaScript frameworks such as Vue.js, and backend languages such as PHP
+• Experience building responsive or mobile-first web experiences, with attention to performance, accessibility, and usability
+• Experience designing and integrating with server-side APIs
+• Experience delivering in a self-driven, lean environment
+• Commitment to the Foundation's Mission and Values
+• Applicants outside the US must have current work authorization in their location
+Benefits:
+• Fully remote work
+• Flexible location-based pay adjusted to country of hire
+• Equal opportunity and inclusive workplace
+• Accommodation assistance during the application process
+• Employment through a local third-party Employer of Record for non-US employees
+Tech stack:
+JavaScript, PHP, TypeScript, Vue.js
+Company sponsorship flag: sponsorsH1B=true.

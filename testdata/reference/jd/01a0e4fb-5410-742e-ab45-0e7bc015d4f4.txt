@@ -1,0 +1,60 @@
+## Continuum Resource Network - Founding Software Engineers
+
+🔗 [Apply](https://apply.workable.com/continuum-resource-network/j/A821165434)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Founding and early-stage software engineers building AI-native products, platforms, and production systems. Working end-to-end with founders across venture-backed startups.
+Software engineers building production AI and technology products for venture-backed startups
+- Salary: $175,000 - $275,000 per year
+- Tech stack: Cloud, Distributed Systems, Java, JavaScript, Python, React, Rust, TypeScript, Go
+- Own products, features, or core systems from initial concept and architecture through production deployment
+- Build across the stack, including backend services, APIs, data infrastructure, frontend/product surfaces, and cloud systems
+- Develop AI-native products and workflows using LLMs, agents, tool integrations, retrieval systems, and modern AI development tools where relevant
+- Make pragmatic architecture and product decisions in environments with limited process and incomplete requirements
+- Work directly with founders, customers, and other stakeholders to identify problems and translate them into shipped software
+- Build integrations with external APIs, business systems, data sources, and third-party platforms
+- Establish engineering patterns, tooling, testing, observability, and best practices as teams scale
+- Help shape engineering culture and, in some roles, mentor or lead engineers who join after you
+- Strong professional software engineering experience with evidence of shipping production systems
+- Ability to move from an ambiguous problem to a working production solution without requiring a detailed specification
+- Strong backend, full-stack, product engineering, or systems engineering fundamentals
+- Experience with one or more modern production languages such as Python, TypeScript/JavaScript, Go, Java, or Rust
+- Comfort working across multiple layers of a product
+- High agency, strong problem-solving ability, and comfort operating in fast-moving environments
+- Track record of meaningful technical impact, rapid growth, entrepreneurial work, strong startup experience, or other clear signals of engineering excellence
+- Clear communication and ability to explain technical decisions and tradeoffs
+
+### Full Job Description
+Summary:
+Founding and early-stage software engineers building AI-native products, platforms, and production systems. Working end-to-end with founders across venture-backed startups.
+Software engineers building production AI and technology products for venture-backed startups
+Role description:
+• Own products, features, or core systems from initial concept and architecture through production deployment
+• Build across the stack, including backend services, APIs, data infrastructure, frontend/product surfaces, and cloud systems
+• Develop AI-native products and workflows using LLMs, agents, tool integrations, retrieval systems, and modern AI development tools where relevant
+• Make pragmatic architecture and product decisions in environments with limited process and incomplete requirements
+• Work directly with founders, customers, and other stakeholders to identify problems and translate them into shipped software
+• Build integrations with external APIs, business systems, data sources, and third-party platforms
+• Establish engineering patterns, tooling, testing, observability, and best practices as teams scale
+• Help shape engineering culture and, in some roles, mentor or lead engineers who join after you
+Role requirements:
+• Strong professional software engineering experience with evidence of shipping production systems
+• Ability to move from an ambiguous problem to a working production solution without requiring a detailed specification
+• Strong backend, full-stack, product engineering, or systems engineering fundamentals
+• Experience with one or more modern production languages such as Python, TypeScript/JavaScript, Go, Java, or Rust
+• Comfort working across multiple layers of a product
+• High agency, strong problem-solving ability, and comfort operating in fast-moving environments
+• Track record of meaningful technical impact, rapid growth, entrepreneurial work, strong startup experience, or other clear signals of engineering excellence
+• Clear communication and ability to explain technical decisions and tradeoffs
+• Experience as a Founding Engineer, Early Engineer, Product Engineer, Full-Stack Engineer, Backend Engineer, or Staff/Senior Software Engineer
+• Experience at an early-stage or high-growth startup, or ability to operate effectively in a startup-style environment
+• 0-to-1 product or platform development experience
+• Production AI/LLM or agentic-system experience
+• Python and/or TypeScript/React experience
+• API integrations, distributed systems, data infrastructure, or developer tooling experience
+• Daily use of modern AI coding tools such as Claude Code, Cursor, Copilot, Codex, or similar tools
+• Entrepreneurial experience, meaningful side projects, open-source work, or previous founder experience
+Tech stack:
+Cloud, Distributed Systems, Java, JavaScript, Python, React, Rust, TypeScript, Go

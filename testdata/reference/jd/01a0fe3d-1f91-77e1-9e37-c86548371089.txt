@@ -1,0 +1,68 @@
+## Global Payments Inc. - Senior Software Engineer – Java/Spring Boot, Monolith Systems Development and Modernization
+
+🔗 [Apply](https://tsys.wd1.myworkdayjobs.com/tsys/job/boston-massachusetts/senior-software-engineer---java-spring-boot-engineer--monolith-systems-development-and-modernization-_r0075528)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Java/Spring Boot engineer modernizing Global Payments’ payment-processing monolith and microservices. Designing scalable, reliable software for high-volume merchant transactions.
+Senior Java/Spring Boot engineer modernizing payment-processing monoliths and microservices at Global Payments
+- Salary: $87,500 - $139,250 per year
+- Tech stack: Ansible, AWS, Gradle, Java, Jenkins, JUnit, Kafka, Kubernetes, Maven, Microservices, OpenShift, Prometheus, ServiceNow, Splunk, SQL
+- Plan and manage application development and client delivery activities
+- Design, develop, and test software for scalability, reliability, and data recovery on a high-volume, high-availability platform
+- Contribute to a complex monolithic application powering payment processing and value-added services for merchants
+- Design, develop, and maintain scalable microservices while modernizing platforms
+- Collaborate with Product, Platform, Merchant Services, and Support teams to convert business requirements into technical solutions
+- Use Agile techniques including pair programming and test-driven development
+- Deploy new features into production with zero platform downtime and no impact to customers processing transactions
+- Build domain expertise in e-commerce payments and develop new product features
+- This position is not eligible for visa sponsorship, now or in the future
+- Must be a US Citizen or Green Card Holder
+- Bachelor's degree in computer engineering, computer science, another related discipline, or equivalent combination of education, training, or work experience
+- 7+ years of relevant job experience in Java Software Engineering, excluding internships
+- Exceptional design, SQL, and Java programming skills
+- Ability to grasp high-level business goals, derive requirements, and translate them into technical solutions
+- Ability to change context and priorities based on changing business needs
+- Proficiency with SQL, relational data modelling, and database schema design
+
+### Full Job Description
+Summary:
+Senior Java/Spring Boot engineer modernizing Global Payments’ payment-processing monolith and microservices. Designing scalable, reliable software for high-volume merchant transactions.
+Senior Java/Spring Boot engineer modernizing payment-processing monoliths and microservices at Global Payments
+Role description:
+• Plan and manage application development and client delivery activities
+• Design, develop, and test software for scalability, reliability, and data recovery on a high-volume, high-availability platform
+• Contribute to a complex monolithic application powering payment processing and value-added services for merchants
+• Design, develop, and maintain scalable microservices while modernizing platforms
+• Collaborate with Product, Platform, Merchant Services, and Support teams to convert business requirements into technical solutions
+• Use Agile techniques including pair programming and test-driven development
+• Deploy new features into production with zero platform downtime and no impact to customers processing transactions
+• Build domain expertise in e-commerce payments and develop new product features
+Role requirements:
+• This position is not eligible for visa sponsorship, now or in the future
+• Must be a US Citizen or Green Card Holder
+• Bachelor's degree in computer engineering, computer science, another related discipline, or equivalent combination of education, training, or work experience
+• 7+ years of relevant job experience in Java Software Engineering, excluding internships
+• Exceptional design, SQL, and Java programming skills
+• Ability to grasp high-level business goals, derive requirements, and translate them into technical solutions
+• Ability to change context and priorities based on changing business needs
+• Proficiency with SQL, relational data modelling, and database schema design
+• Pair programming willingness is a requirement
+• Experience with Microservices architecture, globally distributed services, and 24/7 support is a bonus
+• Experience with RESTful API design, Kubernetes, and Kafka is a bonus
+• Experience with monitoring and responsive, self-healing resilient immutable platforms is a bonus
+• Knowledge of scalability levers in high-volume, low-latency transactional systems is a bonus
+• Experience with AWS and OpenShift Platform is a bonus
+• Experience with Ansible, Maven, Gradle, Jenkins, Harness, Snyk, SonarQ, Cucumber, and Karate is a bonus
+• Experience with Splunk, Sysdig, OpsGenie, Open Telemetry, Instaclustr, Prometheus, JBehave, JGiven, Xmatters, and ServiceNow is a bonus
+• Development experience with a unit testing framework, such as JUnit, is a bonus; TDD experience preferred
+• Pair programming experience is a bonus
+Benefits:
+• Competitive compensation
+• Remote work in the Greater Boston area or hybrid work in Alpharetta, GA
+• Equal opportunity employment
+• Reasonable accommodations during hiring and employment
+• Drug testing for conditional offers in the United States
+Tech stack:
+Ansible, AWS, Gradle, Java, Jenkins, JUnit, Kafka, Kubernetes, Maven, Microservices, OpenShift, Prometheus, ServiceNow, Splunk, SQL

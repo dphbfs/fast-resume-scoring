@@ -1,0 +1,79 @@
+version: "2"
+
+run:
+  timeout: 5m
+  tests: true
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+linters:
+  # standard set (errcheck, govet, ineffassign, staticcheck, unused) plus
+  # correctness, security, and modernization linters. Pure layout linters
+  # (wsl, funlen, gocyclo, paralleltest, goconst) are off: the code base
+  # predates them and they add noise, not bugs.
+  enable:
+    # correctness
+    - errorlint
+    - nilerr
+    - forcetypeassert
+    - copyloopvar
+    - durationcheck
+    - reassign
+    - exhaustive
+    # security & resources
+    - gosec
+    - bidichk
+    - asciicheck
+    - bodyclose
+    - noctx
+    - containedctx
+    - fatcontext
+    # style that catches mistakes
+    - gocritic
+    - misspell
+    - dupword
+    - predeclared
+    - errname
+    - unconvert
+    - usestdlibvars
+    - nolintlint
+    # logging
+    - sloglint
+    # testing
+    - thelper
+    - usetesting
+    # modernization
+    - modernize
+    - intrange
+    - perfsprint
+
+  settings:
+    errcheck:
+      # Writes to the CLI's stdout/stderr and to hashes: nothing useful to
+      # do on failure (hash.Hash.Write never returns an error).
+      exclude-functions:
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
+    exhaustive:
+      default-signifies-exhaustive: true
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+
+  exclusions:
+    rules:
+      # The CLIs and eval read files the user names; that is the job.
+      - linters: [gosec]
+        text: "G304"
+      # Tests write golden files and read fixtures by path.
+      # Fakes assert on request shapes; a panic is a test failure anyway.
+      - path: _test\.go
+        linters: [gosec, forcetypeassert]
+
+formatters:
+  enable:
+    - gofumpt
+    - goimports

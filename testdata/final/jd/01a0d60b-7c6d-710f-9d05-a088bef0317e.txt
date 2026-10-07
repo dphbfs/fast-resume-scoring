@@ -1,0 +1,58 @@
+## Freestar - Senior Software Engineer – Javascript, Ad Tech
+
+🔗 [Apply](https://boards.greenhouse.io/freestar/jobs/8771013002)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer owning Prebid.js, Prebid Server, and header bidding systems. Improving ad monetization and web performance for Freestar’s publisher websites at scale.
+Senior Software Engineer optimizing Prebid header bidding for Freestar’s publisher monetization platform
+- Tech stack: BigQuery, Cloud, Google Cloud Platform, JavaScript, TypeScript
+- Write and ship production code daily as a senior hands-on developer
+- Review peers' pull requests and partner with engineers to ensure codebase quality
+- Serve as subject-matter expert for Prebid.js and Prebid Server
+- Advise on wrapper architecture, bid adapters, identity, consent, floors, and analytics modules
+- Track Prebid releases, OpenRTB specification changes, and emerging header-bidding standards
+- Translate ecosystem developments into platform recommendations and upgrades
+- Own the header bidding wrapper end to end, including architecture, release cycle, feature integration, and design decisions
+- Work daily with Google Ad Manager, GPT, and the IMA SDK
+- Deep, hands-on expertise with Prebid.js — wrapper configuration, bid adapters, modules (identity, consent, floors, analytics)
+- In depth knowledge of the auction lifecycle
+- Experience with Prebid Server — stored requests, server-side adapter configuration, s2s routing, and more
+- Strong working knowledge of Google Ad Manager, including GPT, line item architecture, key-value targeting, unified pricing rules, dynamic allocation, and more
+- 4+ years of experience in JavaScript development, with substantial TypeScript experience
+- Experience with Google Cloud Platform (e.g., GKE, Cloud Run, Pub/Sub, BigQuery) for deploying and operating high-throughput services
+- Broad ad tech fluency: OpenRTB, SSP/DSP integrations, identity solutions and EIDs, consent frameworks (TCF/GPP), Amazon TAM/APS, video (IMA SDK/VAST)
+- Strong experience with asynchronous programming and understanding of client-server architecture
+
+### Full Job Description
+Summary:
+Senior Software Engineer owning Prebid.js, Prebid Server, and header bidding systems. Improving ad monetization and web performance for Freestar’s publisher websites at scale.
+Senior Software Engineer optimizing Prebid header bidding for Freestar’s publisher monetization platform
+Role description:
+• Write and ship production code daily as a senior hands-on developer
+• Review peers' pull requests and partner with engineers to ensure codebase quality
+• Serve as subject-matter expert for Prebid.js and Prebid Server
+• Advise on wrapper architecture, bid adapters, identity, consent, floors, and analytics modules
+• Track Prebid releases, OpenRTB specification changes, and emerging header-bidding standards
+• Translate ecosystem developments into platform recommendations and upgrades
+• Own the header bidding wrapper end to end, including architecture, release cycle, feature integration, and design decisions
+• Work daily with Google Ad Manager, GPT, and the IMA SDK
+• Maintain high-quality JavaScript and TypeScript client-side scripts running across thousands of publisher sites
+• Measure and protect Core Web Vitals, including INP, LCP, and CLS, plus memory usage, execution time, and network overhead
+• Own deployed solutions, maintain reliability, and address critical issues to preserve system stability and performance
+Role requirements:
+• Deep, hands-on expertise with Prebid.js — wrapper configuration, bid adapters, modules (identity, consent, floors, analytics)
+• In depth knowledge of the auction lifecycle
+• Experience with Prebid Server — stored requests, server-side adapter configuration, s2s routing, and more
+• Strong working knowledge of Google Ad Manager, including GPT, line item architecture, key-value targeting, unified pricing rules, dynamic allocation, and more
+• 4+ years of experience in JavaScript development, with substantial TypeScript experience
+• Experience with Google Cloud Platform (e.g., GKE, Cloud Run, Pub/Sub, BigQuery) for deploying and operating high-throughput services
+• Broad ad tech fluency: OpenRTB, SSP/DSP integrations, identity solutions and EIDs, consent frameworks (TCF/GPP), Amazon TAM/APS, video (IMA SDK/VAST)
+• Strong experience with asynchronous programming and understanding of client-server architecture
+• Strong problem-solving skills and ability to work in a distributed team environment
+• Excellent technical documentation and communication skills
+• Ability to be creative and contribute based on your merit
+• This role is not eligible for visa sponsorship
+Tech stack:
+BigQuery, Cloud, Google Cloud Platform, JavaScript, TypeScript

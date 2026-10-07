@@ -1,0 +1,70 @@
+## Praetorian - Software Engineer
+
+🔗 [Apply](https://boards.greenhouse.io/praetorian/jobs/5386005003)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Software Engineer building Praetorian’s offensive-security platform. Shipping scalable Go, React, and AWS features that help prevent breaches.
+Software Engineer building Praetorian’s offensive-security platform with Go, React, and AWS
+- Tech stack: AWS, Cyber Security, Distributed Systems, React, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Build and ship full-stack features for the Praetorian Guard platform
+- Own work from design through production operations
+- Overcome challenges in developing and operating the platform
+- Write clear, tested, durable code
+- Improve engineering standards through code reviews, technical proposals, and leading by example
+- Translate real-world vulnerability findings into platform capabilities with offensive security engineers
+- Design systems for attack surface management at scale
+- Build queue-based security scanning pipelines, graph database systems, and real-time interfaces
+- Bachelor's degree in Computer Science, Engineering, Mathematics, or Physics
+- 0–5 years of experience in cybersecurity, startups, or tech companies
+- Idiomatic, testable, production-ready Go
+- Understanding of serverless architectures, API design, and databases under real load
+- Distributed systems, concurrency, failure modes, and data flow knowledge
+- Ability to build responsive, performant, maintainable frontend UI with AI agents
+- Side projects, open-source contributions, or technical writing
+- Experience shipping something real outside a classroom
+
+### Full Job Description
+Summary:
+Software Engineer building Praetorian’s offensive-security platform. Shipping scalable Go, React, and AWS features that help prevent breaches.
+Software Engineer building Praetorian’s offensive-security platform with Go, React, and AWS
+Role description:
+• Build and ship full-stack features for the Praetorian Guard platform
+• Own work from design through production operations
+• Overcome challenges in developing and operating the platform
+• Write clear, tested, durable code
+• Improve engineering standards through code reviews, technical proposals, and leading by example
+• Translate real-world vulnerability findings into platform capabilities with offensive security engineers
+• Design systems for attack surface management at scale
+• Build queue-based security scanning pipelines, graph database systems, and real-time interfaces
+• Ship major Guard platform features relied on daily by security teams
+• Optimize graph queries and build AWS serverless infrastructure
+• Integrate AI tooling into development workflows
+• Turn high-level requests into practical customer-facing features
+• Translate vulnerability patterns into automated detections
+• Contribute through technical blog posts, internal knowledge sharing, or open-source work
+• Mentor junior engineers and support continuous learning
+Role requirements:
+• Bachelor's degree in Computer Science, Engineering, Mathematics, or Physics
+• 0–5 years of experience in cybersecurity, startups, or tech companies
+• Idiomatic, testable, production-ready Go
+• Understanding of serverless architectures, API design, and databases under real load
+• Distributed systems, concurrency, failure modes, and data flow knowledge
+• Ability to build responsive, performant, maintainable frontend UI with AI agents
+• Side projects, open-source contributions, or technical writing
+• Experience shipping something real outside a classroom
+• Willingness and ability to use AI tools in development
+• Experience or ability with AWS serverless architecture, CloudFormation, Lambda, React, and Playwright
+• Ability to collaborate with offensive security engineers
+• Ability to mentor junior engineers and contribute to technical knowledge sharing
+Benefits:
+• High-performance culture with deep ownership
+• Work alongside top 1% industry talent
+• Direct impact protecting the world's most critical organizations
+Tech stack:
+AWS, Cyber Security, Distributed Systems, React, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

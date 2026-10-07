@@ -1,0 +1,78 @@
+## Aalyria - Senior Software Engineer, Backend
+
+🔗 [Apply](https://ats.rippling.com/aalyria-careers/jobs/fba79811-bcca-4048-b117-1b49f246084c)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Backend engineer building Aalyria’s Spacetime platform for 5G NTN, Direct-to-Cell, and satellite-network orchestration. Developing distributed cloud-native systems with C++, Golang, Java, gRPC, and Kubernetes.
+Backend engineer building 5G satellite-network orchestration software at Aalyria
+- Salary: $165,000 - $215,000 per year
+- Tech stack: Cloud, Distributed Systems, GRPC, Java, Kubernetes, C++, Go
+- Develop and maintain the Spacetime platform using C++, Golang, Java, gRPC, and Protocol Buffers
+- Build scalable, distributed systems on Kubernetes
+- Develop Spacetime features for 5G NTN and Direct-to-Cell orchestration
+- Implement RIC/SMO capabilities for the NTN, network model extensions, and federation APIs for TN-NTN coordination
+- Translate 3GPP and O-RAN concepts and interface specifications into clean, well-tested software with solution architects
+- Integrate with other Aalyria platform components for end-to-end functionality
+- Develop and maintain software design and implementation documentation
+- Stay up-to-date with 5G NTN, O-RAN, and satellite communications technologies
+- Bachelor's degree in Computer Science / Engineering or equivalent work experience
+- Professional experience working in C++, Golang, and/or Java
+- Knowledge of gRPC and Protocol Buffers
+- Experience building and operating distributed systems
+- Familiarity with wireless communications, modeling of wireless performance, or satellite communications
+- Strong technical communication skills and ability to communicate across multiple functions
+- Applicants must meet U.S. government export-control eligibility requirements: qualify as a U.S. person, be eligible to access export-controlled information without export authorization, or be eligible and reasonably likely to obtain the necessary export authorization
+- Preferred: Professional software development experience on systems related to 3GPP 4G/5G networks
+
+### Full Job Description
+Summary:
+Backend engineer building Aalyria’s Spacetime platform for 5G NTN, Direct-to-Cell, and satellite-network orchestration. Developing distributed cloud-native systems with C++, Golang, Java, gRPC, and Kubernetes.
+Backend engineer building 5G satellite-network orchestration software at Aalyria
+Role description:
+• Develop and maintain the Spacetime platform using C++, Golang, Java, gRPC, and Protocol Buffers
+• Build scalable, distributed systems on Kubernetes
+• Develop Spacetime features for 5G NTN and Direct-to-Cell orchestration
+• Implement RIC/SMO capabilities for the NTN, network model extensions, and federation APIs for TN-NTN coordination
+• Translate 3GPP and O-RAN concepts and interface specifications into clean, well-tested software with solution architects
+• Integrate with other Aalyria platform components for end-to-end functionality
+• Develop and maintain software design and implementation documentation
+• Stay up-to-date with 5G NTN, O-RAN, and satellite communications technologies
+• Write clean, maintainable, efficient code
+• Troubleshoot and debug software issues
+• Design and build distributed systems in a modern, cloud-native codebase
+• Work with 3GPP/NTN solution architects on standards and systems expertise
+Role requirements:
+• Bachelor's degree in Computer Science / Engineering or equivalent work experience
+• Professional experience working in C++, Golang, and/or Java
+• Knowledge of gRPC and Protocol Buffers
+• Experience building and operating distributed systems
+• Familiarity with wireless communications, modeling of wireless performance, or satellite communications
+• Strong technical communication skills and ability to communicate across multiple functions
+• Applicants must meet U.S. government export-control eligibility requirements: qualify as a U.S. person, be eligible to access export-controlled information without export authorization, or be eligible and reasonably likely to obtain the necessary export authorization
+• Preferred: Professional software development experience on systems related to 3GPP 4G/5G networks
+• Preferred: Hands-on experience with O-RAN architecture, including SMO, Non-RT/Near-RT RIC, rApps, xApps, or O-RAN interfaces
+• Preferred: Familiarity with 3GPP NTN and Direct-to-Cell / Supplemental Coverage from Space concepts
+• Preferred: Experience implementing or integrating 3GPP or O-RAN APIs and data models
+• Preferred: Experience with wireless standards work or applying 3GPP/ETSI/O-RAN specifications in production software
+• Preferred: Hands-on experience with Kubernetes and cloud-native telecom deployments
+• Preferred: Professional experience optimizing distributed-system performance
+• Preferred: Experience in aerospace & defense or telecommunications
+• Preferred: Familiarity with software-defined networking platforms
+Benefits:
+• Innovative environment at a cutting-edge aerospace communications technology company
+• Direct contribution to critical national security programs and initiatives
+• Professional development and advancement opportunities
+• Collaborative, supportive, and inclusive workplace
+• Flexible working arrangements including hybrid remote/in-office schedules
+• Comprehensive benefits
+• 401(k)
+• Dental insurance
+• Vision insurance
+• Health insurance
+• Life insurance
+• Paid time off
+• Equity options
+Tech stack:
+Cloud, Distributed Systems, GRPC, Java, Kubernetes, C++, Go

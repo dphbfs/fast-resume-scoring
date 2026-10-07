@@ -1,0 +1,77 @@
+## Smartsheet - Senior Software Engineer II – Solution Lifecycle
+
+🔗 [Apply](https://boards.greenhouse.io/smartsheet/jobs/8239800)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer building scalable backend services and reliable core infrastructure for Smartsheet’s work-management platform. Tackling distributed systems, databases, automation, and AI-enabled engineering.
+Senior Software Engineer building Smartsheet’s scalable backend and core infrastructure platform
+- Salary: $175,000 - $245,000 per year
+- Tech stack: AWS, Azure, Cloud, Distributed Systems, Java, Kotlin, MySQL, Python, Terraform, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Design and build scalable back-end services for Smartsheet's next-generation applications
+- Solve complex distributed systems challenges with product management and key stakeholders
+- Build, maintain, and scale Smartsheet's core infrastructure for reliability, stability, and performance
+- Manage and upgrade large-scale database infrastructure and complex replication topologies
+- Automate core operations using AWS, Golang, MySQL, Terraform, Temporal, and GitLab-CI
+- Collaborate through mob programming, collective code ownership, code reviews, and architectural discussions
+- Use Test-Driven Development to build resilient foundational systems
+- Participate in team book clubs and psychologically safe retrospectives
+- 8+ years of experience and proficiency in at least one modern programming language
+- Go experience is a plus but not required; Java, Kotlin or Python backgrounds translate well
+- 3+ years of experience with cloud technologies such as AWS or Azure
+- Experience with Infrastructure as Code, especially Terraform
+- Understanding of database internals and reliability, especially MySQL
+- 8+ years of software development experience building highly scalable, highly available applications
+- Experience developing, documenting, and supporting REST APIs
+- Comfortable or willing to become comfortable working in a mob programming environment
+
+### Full Job Description
+Summary:
+Senior Software Engineer building scalable backend services and reliable core infrastructure for Smartsheet’s work-management platform. Tackling distributed systems, databases, automation, and AI-enabled engineering.
+Senior Software Engineer building Smartsheet’s scalable backend and core infrastructure platform
+Role description:
+• Design and build scalable back-end services for Smartsheet's next-generation applications
+• Solve complex distributed systems challenges with product management and key stakeholders
+• Build, maintain, and scale Smartsheet's core infrastructure for reliability, stability, and performance
+• Manage and upgrade large-scale database infrastructure and complex replication topologies
+• Automate core operations using AWS, Golang, MySQL, Terraform, Temporal, and GitLab-CI
+• Collaborate through mob programming, collective code ownership, code reviews, and architectural discussions
+• Use Test-Driven Development to build resilient foundational systems
+• Participate in team book clubs and psychologically safe retrospectives
+• Use AI tools across coding, testing, design, and troubleshooting; explore integrations and coach others
+• Participate in a gradually ramped operational on-call rotation
+Role requirements:
+• 8+ years of experience and proficiency in at least one modern programming language
+• Go experience is a plus but not required; Java, Kotlin or Python backgrounds translate well
+• 3+ years of experience with cloud technologies such as AWS or Azure
+• Experience with Infrastructure as Code, especially Terraform
+• Understanding of database internals and reliability, especially MySQL
+• 8+ years of software development experience building highly scalable, highly available applications
+• Experience developing, documenting, and supporting REST APIs
+• Comfortable or willing to become comfortable working in a mob programming environment
+• Experience writing test-driven code and sharing system ownership
+• Critical thinking and troubleshooting of complex technical problems
+• Excellent verbal and written communication skills
+• 1+ year of professional experience leveraging AI to improve personal productivity in building complex SaaS feature sets
+• BS or MS in Computer Science, Engineering, or a related field, or equivalent practical industry experience
+• Legally eligible to work in the U.S. on an ongoing basis
+Benefits:
+• Employer subsidized medical/vision and dental coverage for full-time employees
+• 401k Match to help you save for your future (50% of your contribution up to the first 6% of your eligible pay)
+• Monthly stipend to support your work and productivity
+• Flexible Time Away Program, plus Sick Time Off
+• US employees are automatically covered under Smartsheet-sponsored life insurance, short-term, and long-term disability plans
+• US employees receive 12 paid holidays per year
+• Up to 24 weeks of Parental Leave
+• Personal paid Volunteer Day to support our community
+• Opportunities for professional growth and development including access to Udemy online courses
+• Company Funded Perks, including a counseling membership, local retail discounts, and your own personal Smartsheet account
+• Teleworking options from any registered location in the U.S. (role specific)
+• Market competitive incentive opportunity
+Tech stack:
+AWS, Azure, Cloud, Distributed Systems, Java, Kotlin, MySQL, Python, Terraform, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

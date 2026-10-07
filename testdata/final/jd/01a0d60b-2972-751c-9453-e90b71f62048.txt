@@ -1,0 +1,55 @@
+## Alteryx - Senior Software Engineer, Dataplane
+
+🔗 [Apply](https://alteryx.wd108.myworkdayjobs.com/alteryxcareers/job/us---remote/sr-software-engineer--dataplane_r12325)
+
+📍 Type: Remote
+
+### Stack & Responsibilities
+- Senior Software Engineer developing backend services and distributed systems for Alteryx. Building a cloud platform using Go, React, and TypeScript in a high-performing team.
+Senior Software Engineer developing cloud applications for Alteryx
+- Salary: $118,000 - $154,000 per year
+- Tech stack: AWS, Cloud, Distributed Systems, Google Cloud Platform, JavaScript, Microservices, React, TypeScript, Go
+- Visa sponsorship signal: company profile says it sponsors H1B visas. Treat as a small scoring bonus, not a guarantee for this role.
+- Visa sponsorship signal: company profile says it sponsors UK Skilled Worker visas.
+- Join our high-performing Data Plane Platform team, building the foundation of Alteryx's next-generation cloud platform.
+- Work with challenges at the heart of modern business.
+- Build scalable services, APIs, and distributed systems using Go.
+- Contribute across the stack using React and TypeScript for customer-facing platform management experiences.
+- Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.
+- 5+ years of professional software development experience.
+- Strong experience building backend services using Go, REST APIs, and distributed systems.
+- Experience developing and operating production cloud applications on AWS or GCP.
+- Experience with JavaScript/TypeScript and React or a similar frontend framework.
+- Familiarity with microservices, event-driven architectures, and cloud-native application design.
+- Experience with testing, CI/CD pipelines, Git, and modern software development practices.
+- Ability to troubleshoot issues across application code, cloud infrastructure, and production environments.
+
+### Full Job Description
+Summary:
+Senior Software Engineer developing backend services and distributed systems for Alteryx. Building a cloud platform using Go, React, and TypeScript in a high-performing team.
+Senior Software Engineer developing cloud applications for Alteryx
+Role description:
+• Join our high-performing Data Plane Platform team, building the foundation of Alteryx's next-generation cloud platform.
+• Work with challenges at the heart of modern business.
+• Build scalable services, APIs, and distributed systems using Go.
+• Contribute across the stack using React and TypeScript for customer-facing platform management experiences.
+Role requirements:
+• Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.
+• 5+ years of professional software development experience.
+• Strong experience building backend services using Go, REST APIs, and distributed systems.
+• Experience developing and operating production cloud applications on AWS or GCP.
+• Experience with JavaScript/TypeScript and React or a similar frontend framework.
+• Familiarity with microservices, event-driven architectures, and cloud-native application design.
+• Experience with testing, CI/CD pipelines, Git, and modern software development practices.
+• Ability to troubleshoot issues across application code, cloud infrastructure, and production environments.
+• Strong communication, collaboration, and problem-solving skills with an ownership mindset.
+Benefits:
+• Medical
+• Retirement
+• Financial wellness
+• Time off
+• Employee discounts
+Tech stack:
+AWS, Cloud, Distributed Systems, Google Cloud Platform, JavaScript, Microservices, React, TypeScript, Go
+Company sponsorship flag: sponsorsH1B=true.
+Company sponsorship flag: sponsorsUKSkilledWorkerVisa=true.

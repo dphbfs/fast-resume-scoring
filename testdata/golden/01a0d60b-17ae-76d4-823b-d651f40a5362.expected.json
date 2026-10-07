@@ -1,0 +1,31 @@
+{
+  "requirements": [
+    {"value": "full-stack development", "aliases": ["full stack", "backend and frontend experience"], "tier": "required"},
+    {"value": "Go", "aliases": ["Golang", "Go service"], "tier": "required"},
+    {"value": "TypeScript", "aliases": [], "tier": "required"},
+    {"value": "React", "aliases": ["React panel"], "tier": "mentioned"},
+    {"value": "AI-assisted development", "aliases": ["coding agents", "LLM tooling"], "tier": "required"},
+    {"value": "observability ecosystem", "aliases": ["observability"], "tier": "required"},
+    {"value": "Prometheus", "aliases": [], "tier": "required"},
+    {"value": "Grafana dashboards", "aliases": ["Grafana", "dashboards"], "tier": "required"},
+    {"value": "alerting", "aliases": [], "tier": "required"},
+    {"value": "open source contributions", "aliases": ["open source", "maintaining Open Source projects"], "tier": "preferred"},
+    {"value": "developer tooling", "aliases": [], "tier": "preferred"},
+    {"value": "Grafana plugins", "aliases": ["Grafana apps"], "tier": "preferred"},
+    {"value": "Grafana Alloy", "aliases": ["Alloy"], "tier": "preferred"},
+    {"value": "OpenTelemetry Collector", "aliases": ["OpenTelemetry Collector"], "tier": "preferred"},
+    {"value": "telemetry pipeline tooling", "aliases": [], "tier": "preferred"},
+    {"value": "Jsonnet", "aliases": ["configuration-as-code"], "tier": "preferred"},
+    {"value": "on-call experience", "aliases": ["on-call for the systems you instrument"], "tier": "preferred"},
+    {"value": "monitoring mixins", "aliases": ["Jsonnet mixin", "mixins"], "tier": "mentioned"},
+    {"value": "design proposals", "aliases": [], "tier": "mentioned"},
+    {"value": "frontend", "aliases": ["front-end"], "tier": "mentioned"},
+    {"value": "backend", "aliases": [], "tier": "mentioned"},
+    {"value": "code review", "aliases": [], "tier": "mentioned"},
+    {"value": "OpenTelemetry", "aliases": [], "tier": "mentioned"}
+  ],
+  "alternative_groups": [["Grafana Alloy", "OpenTelemetry Collector", "telemetry pipeline tooling"]],
+  "acceptable": ["written communication", "Own projects from problem statement to production", "successful pull requests", "scale our infrastructure observability features in Grafana Cloud", "talking to users", "run the demos", "roadmap in cross-team discussions", "observability apps", "Contribute upstream to Prometheus", "documentation", "incident follow-ups", "test generation"],
+  "filler": ["product-focused mindset", "comfort being visible", "work independently", "US and Canada only (EST time zone)"],
+  "notes": "'We use Go and TypeScript; comparable languages translate well' keeps Go/TypeScript required but not strictly. On-call experience under Bonus is a skill (past on-call), unlike 'join the on-call rotation', which is a condition. Relabeled to README rules: written communication is a soft skill; OpenTelemetry (context) and OpenTelemetry Collector (bonus) are separate entries."
+}
