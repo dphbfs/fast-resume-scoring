@@ -5,7 +5,6 @@ with a typed classifier instead of a frontier-model prompt. Then see which
 requirements the resume covers and which it misses.**
 
 [![CI](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml/badge.svg)](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/dphbfs/fast-resume-scoring)](https://goreportcard.com/report/github.com/dphbfs/fast-resume-scoring)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dphbfs/fast-resume-scoring/badge)](https://scorecard.dev/viewer/?uri=github.com/dphbfs/fast-resume-scoring)
 [![Release](https://img.shields.io/github/v/release/dphbfs/fast-resume-scoring?sort=semver)](https://github.com/dphbfs/fast-resume-scoring/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)

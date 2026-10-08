@@ -6,6 +6,8 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.1] - 2026-10-08
+
 First public version.
 
 ### Added
@@ -37,3 +39,6 @@ First public version.
 ### Fixed
 
 - `score -h`, `extract -h`, and `check -h` print usage without an API key.
+
+[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/dphbfs/fast-resume-scoring/releases/tag/v0.0.1
