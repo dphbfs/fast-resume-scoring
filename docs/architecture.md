@@ -105,6 +105,7 @@ flowchart LR
 | `internal/adapter/gencache` | File cache for generated text, so eval inputs stay fixed. |
 | `internal/adapter/eval` | Golden-set scoring, reports, miss attribution, the generative baseline arm. |
 | `internal/adapter/cli` | Flag parsing, input limits, output writing. |
+| `internal/adapter/pdftext` | PDF Resume to text (`ledongthuc/pdf`), in a child process of the same binary so a malformed file can't hang or crash the command. |
 | `internal/platform` | `config` (env), `limiter`, `metrics`, `logging` (slog JSON), `fsutil` (private atomic writes), `providererr` (sanitized provider errors). |
 | `internal/wiring` | Shared google/wire provider sets. |
 | `tuning/` | `tuning.yaml` (every prompt and weight), embedded in the binaries. |

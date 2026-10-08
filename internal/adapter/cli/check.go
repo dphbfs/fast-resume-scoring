@@ -3,6 +3,7 @@ package cli
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -10,6 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/pdftext"
 	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
@@ -36,12 +38,12 @@ func (a *CheckApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 	fs := flag.NewFlagSet("check", flag.ContinueOnError)
 	fs.SetOutput(stderr)
 	reqPath := fs.String("requirements", "", "extract result JSON (schema v1) with the Requirements to check")
-	resumePath := fs.String("resume", "", "plain-text Resume (.md or .txt) in the markdown convention")
+	resumePath := fs.String("resume", "", "Resume: .md or .txt in the markdown convention, or .pdf")
 	out := fs.String("o", "", "write the coverage JSON to this file instead of stdout")
 	quiet := fs.Bool("q", false, "don't print the run summary to stderr")
 	debug := fs.String("debug", "", "write the check trace (retrieval options, strength probabilities, accepted and rejected pairs) to this JSON file")
 	fs.Usage = func() {
-		fmt.Fprintln(stderr, "usage: check -requirements result.json -resume resume.md [-o coverage.json] [-debug trace.json] [-q]")
+		fmt.Fprintln(stderr, "usage: check -requirements result.json -resume resume.md|resume.pdf [-o coverage.json] [-debug trace.json] [-q]")
 		fmt.Fprintln(stderr, "Sends the resume text and the Requirements to the Jev provider at TYPESAFE_BASE_URL.")
 		fs.PrintDefaults()
 	}
@@ -58,7 +60,7 @@ func (a *CheckApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 		fmt.Fprintln(stderr, "check:", err)
 		return ExitUsage
 	}
-	resume, err := ReadResume(*resumePath)
+	resume, err := ReadResume(ctx, *resumePath)
 	if err != nil {
 		fmt.Fprintln(stderr, "check:", err)
 		return ExitUsage
@@ -111,19 +113,34 @@ func readResult(path string) (domain.Result, error) {
 	return res, nil
 }
 
-// ReadResume loads a .md or .txt Resume.
-func ReadResume(path string) (domain.Resume, error) {
+// ReadResume loads a .md, .txt, or .pdf Resume. A PDF's text is extracted
+// in a child process (see pdftext) and goes through the same pipeline.
+func ReadResume(ctx context.Context, path string) (domain.Resume, error) {
+	var text string
 	switch strings.ToLower(filepath.Ext(path)) {
 	case ".txt", ".md":
+		raw, err := readInput(path)
+		if err != nil {
+			return domain.Resume{}, err
+		}
+		text = string(raw)
+	case ".pdf":
+		raw, err := readLimited(path, pdftext.MaxBytes)
+		if err != nil {
+			return domain.Resume{}, err
+		}
+		text, err = pdftext.Extract(ctx, raw, MaxInputBytes)
+		if errors.Is(err, pdftext.ErrTooLarge) {
+			return domain.Resume{}, fmt.Errorf("%s: text larger than the %d KiB input limit", path, MaxInputBytes>>10)
+		}
+		if err != nil {
+			return domain.Resume{}, fmt.Errorf("%s: %w", path, err)
+		}
 	default:
-		return domain.Resume{}, fmt.Errorf("%s: expected a .md or .txt file", path)
+		return domain.Resume{}, fmt.Errorf("%s: expected a .md, .txt, or .pdf file", path)
 	}
-	raw, err := readInput(path)
-	if err != nil {
-		return domain.Resume{}, err
-	}
-	if strings.TrimSpace(string(raw)) == "" {
+	if strings.TrimSpace(text) == "" {
 		return domain.Resume{}, fmt.Errorf("%s: file is empty", path)
 	}
-	return domain.Resume{Text: string(raw)}, nil
+	return domain.Resume{Text: text}, nil
 }

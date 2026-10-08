@@ -22,6 +22,11 @@ Treat Resumes and Job Descriptions as personal data. A run sends them to:
   set: `extract` sends the Job Description to write the Job Summary, and
   `eval -checker -baseline` sends the Resume and Job Description.
 
+A PDF Resume is read locally: only its extracted text is sent, like a
+text Resume. The PDF parser runs in a child process of the same binary,
+with a timeout and with none of your environment variables (so no API
+keys), and a malformed file fails that process, not the command.
+
 With `JEV_REPLAY` set, nothing goes to Jev (`extract` still calls the
 generative model if `OPENAI_MODEL` is set). The Go commands send nothing
 else and have no telemetry. The research

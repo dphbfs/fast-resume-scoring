@@ -107,7 +107,7 @@ func TestReadInputLimit(t *testing.T) {
 	if err := os.WriteFile(exact, []byte(strings.Repeat("a", MaxInputBytes)), 0o600); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := ReadResume(exact); err != nil {
+	if _, err := ReadResume(context.Background(), exact); err != nil {
 		t.Errorf("resume at the limit: %v", err)
 	}
 }

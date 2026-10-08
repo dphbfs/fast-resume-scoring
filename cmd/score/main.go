@@ -10,10 +10,12 @@ import (
 	"syscall"
 
 	"github.com/dphbfs/fast-resume-scoring/internal/adapter/cli"
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/pdftext"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/config"
 )
 
 func main() {
+	pdftext.MaybeRunChild() // a PDF Resume is read in a child process
 	os.Exit(run(os.Args[1:]))
 }
 

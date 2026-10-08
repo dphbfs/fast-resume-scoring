@@ -143,7 +143,16 @@ best in this convention (anything else still works, with blank metadata):
 Languages: Go, Python, SQL
 ```
 
-Each file may be up to 48 KiB.
+Resumes can also be PDFs (`-resume resume.pdf` for `score` and `check`).
+The text is extracted locally, in a child process, and known headings
+("Experience", "Skills", ...) and bullet glyphs are turned into the
+convention above. Scanned PDFs (no text layer) are rejected: there is no
+OCR. Two-column layouts read column by column, so `check` may attach a
+date or role line to the wrong unit; `score` reads the whole text and is
+unaffected.
+
+Each text file, and the text extracted from a PDF, may be up to 48 KiB; a
+PDF file may be up to 10 MiB.
 
 ## How it works
 

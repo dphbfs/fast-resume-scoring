@@ -35,11 +35,11 @@ func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 	fs := flag.NewFlagSet("score", flag.ContinueOnError)
 	fs.SetOutput(stderr)
 	jdPath := fs.String("jd", "", "plain-text Job Description (.txt or .md)")
-	resumePath := fs.String("resume", "", "plain-text Resume (.md or .txt)")
+	resumePath := fs.String("resume", "", "Resume (.md, .txt, or .pdf)")
 	out := fs.String("o", "", "write the score JSON to this file instead of stdout")
 	quiet := fs.Bool("q", false, "don't print the run summary to stderr")
 	fs.Usage = func() {
-		fmt.Fprintln(stderr, "usage: score -jd job.txt -resume resume.md [-o score.json] [-q]")
+		fmt.Fprintln(stderr, "usage: score -jd job.txt -resume resume.md|resume.pdf [-o score.json] [-q]")
 		fmt.Fprintln(stderr, "Sends the job description and resume text to the Jev provider at TYPESAFE_BASE_URL.")
 		fs.PrintDefaults()
 	}
@@ -55,7 +55,7 @@ func (a *ScoreApp) Run(ctx context.Context, args []string, stdout, stderr io.Wri
 		fmt.Fprintln(stderr, "score:", err)
 		return ExitUsage
 	}
-	resume, err := ReadResume(*resumePath)
+	resume, err := ReadResume(ctx, *resumePath)
 	if err != nil {
 		fmt.Fprintln(stderr, "score:", err)
 		return ExitUsage
