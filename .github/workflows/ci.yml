@@ -45,15 +45,7 @@ jobs:
 
       # Tests use the fake Jev server; no API keys, no network.
       - name: Test
-        run: go test -race -shuffle=on -coverprofile=coverage.out ./...
-
-      - name: Upload coverage
-        if: matrix.go == 'stable'
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
-        with:
-          files: ./coverage.out
-          fail_ci_if_error: false
-          token: ${{ secrets.CODECOV_TOKEN }}
+        run: go test -race -shuffle=on -cover ./...
 
   lint:
     name: Lint
