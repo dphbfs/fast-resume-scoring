@@ -1,6 +1,6 @@
 module github.com/dphbfs/fast-resume-scoring
 
-go 1.27.1
+go 1.27.2
 
 tool github.com/google/wire/cmd/wire
 
