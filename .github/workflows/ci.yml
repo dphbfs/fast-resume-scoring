@@ -19,12 +19,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: ["1.27", "stable"]
+        # "1.27" installs the exact version in go.mod; setup-go fetches it
+        # from go.dev when its own manifest lags behind a release.
+        include:
+          - go: "1.27"
+            version-file: go.mod
+          - go: stable
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: ${{ matrix.go }}
+          go-version: ${{ matrix.version-file == '' && matrix.go || '' }}
+          go-version-file: ${{ matrix.version-file }}
+
+      # setup-go resolves "stable" from its manifest, which can lag behind a
+      # Go release that go.mod already requires; let Go fetch that toolchain.
+      - name: Allow a newer toolchain than stable
+        if: matrix.go == 'stable'
+        run: echo "GOTOOLCHAIN=auto" >> "$GITHUB_ENV"
 
       - name: Verify dependencies
         run: go mod verify
