@@ -5,7 +5,7 @@ as welcome as code.
 
 ## Setup
 
-- Go 1.27.1 or newer (see `go.mod`).
+- Go 1.27.2 or newer (see `go.mod`).
 - [golangci-lint](https://golangci-lint.run/) v2 for `make lint` and
   `make fmt` (CI pins the version in `.github/workflows/ci.yml`).
 - Python 3.11+ only for the research scripts in `scripts/`.
