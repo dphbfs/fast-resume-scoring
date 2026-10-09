@@ -6,6 +6,8 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-10-09
+
 ### Added
 
 - `score` and `check` accept a PDF Resume (`-resume resume.pdf`). Text is
@@ -14,6 +16,13 @@ uses [Semantic Versioning](https://semver.org/).
   malformed PDF fails with an error instead of hanging or crashing the
   command. Known headings and bullet glyphs become the Markdown
   convention. Scanned PDFs are rejected (no OCR).
+
+### Security
+
+- Built with Go 1.27.2, which fixes nine standard-library vulnerabilities
+  that govulncheck reported as reachable (net/http HTTP/1 and HTTP/2,
+  crypto/tls, net/textproto). Building from source now needs Go 1.27.2 or
+  newer.
 
 ## [0.0.1] - 2026-10-08
 
@@ -49,5 +58,6 @@ First public version.
 
 - `score -h`, `extract -h`, and `check -h` print usage without an API key.
 
-[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/dphbfs/fast-resume-scoring/releases/tag/v0.0.1
