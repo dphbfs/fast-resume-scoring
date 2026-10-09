@@ -6,6 +6,15 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `score` and `check` accept a PDF Resume (`-resume resume.pdf`). Text is
+  extracted locally with `github.com/ledongthuc/pdf` in a child process
+  (same binary, 10 s timeout, no API keys in its environment), so a
+  malformed PDF fails with an error instead of hanging or crashing the
+  command. Known headings and bullet glyphs become the Markdown
+  convention. Scanned PDFs are rejected (no OCR).
+
 ## [0.0.1] - 2026-10-08
 
 First public version.

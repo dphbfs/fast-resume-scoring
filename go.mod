@@ -6,6 +6,7 @@ tool github.com/google/wire/cmd/wire
 
 require (
 	github.com/google/wire v0.7.0
+	github.com/ledongthuc/pdf v0.0.0-20260907135840-6c8c28e0e8a0
 	go.yaml.in/yaml/v3 v3.0.5
 	golang.org/x/sync v0.23.0
 )

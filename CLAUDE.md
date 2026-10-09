@@ -140,7 +140,9 @@ reports record the file's hash. `TestPromptSnapshot`
 (`internal/app/testdata/prompts.golden.json`) pins the exact requests:
 a wording change must be deliberate (`-update`, review the diff). `extract`, `check`, and `score`
 stop at `RUN_DEADLINE` (default 120s) and reject a JD or resume file over
-48 KiB (both go into one Jev request; OpenRouter caps it at 32k tokens). Question wordings are fitted
+48 KiB (both go into one Jev request; OpenRouter caps it at 32k tokens);
+`score` and `check` also take a `.pdf` Resume (<= 10 MiB, extracted text
+<= 48 KiB). Question wordings are fitted
 constants: probe (`scripts/probe_holistic.py`) and refit
 (`scripts/fit_match.py`, resume-held-out) before changing them.
 Extraction and the Resume Checker are no longer in the scoring path; they
@@ -353,6 +355,9 @@ and the accept/reject decision.
 - `internal/app/`: the pipeline (`Extractor`); one method per stage.
 - `internal/adapter/`: `jev` (TypeSafe HTTP client, retries, own limiter),
   `jev/jevtest` (fake Jev server for tests), `openai` (OpenAI-compatible chat),
+  `pdftext` (PDF Resume to text in a child process of the same binary:
+  every `main` that reads resumes calls `pdftext.MaybeRunChild()` first,
+  and so does `TestMain` in packages whose tests read PDFs),
   `cli` (driving adapter).
 - `internal/platform/`: `config` (env vars), `limiter`, `metrics` (CLI run
   summary), `logging` (slog JSON, `LOG_LEVEL`), `fsutil` (private atomic

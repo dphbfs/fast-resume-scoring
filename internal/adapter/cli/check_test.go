@@ -7,8 +7,10 @@ import (
 	"io"
 	"log/slog"
 	"os"
+	"strings"
 	"testing"
 
+	"github.com/dphbfs/fast-resume-scoring/internal/adapter/pdftext"
 	"github.com/dphbfs/fast-resume-scoring/internal/domain"
 	"github.com/dphbfs/fast-resume-scoring/internal/platform/metrics"
 )
@@ -69,6 +71,33 @@ func TestCheckUsageErrors(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			if code := app.Run(context.Background(), args, io.Discard, io.Discard); code != ExitUsage {
 				t.Errorf("exit = %d, want %d", code, ExitUsage)
+			}
+		})
+	}
+}
+
+// TestMain serves the PDF child process: ReadResume runs the test binary.
+func TestMain(m *testing.M) {
+	pdftext.MaybeRunChild()
+	os.Exit(m.Run())
+}
+
+func TestReadResumePDF(t *testing.T) {
+	resume, err := ReadResume(context.Background(), "../pdftext/testdata/bullets.pdf")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(resume.Text, "# Experience\n") {
+		t.Errorf("text = %q, want a # Experience heading", resume.Text)
+	}
+	for name, tc := range map[string]struct{ path, want string }{
+		"no text layer": {"../pdftext/testdata/image-only.pdf", "no extractable text"},
+		"not a pdf":     {writeFile(t, "resume.pdf", "hello"), "cannot read the PDF"},
+		"docx":          {writeFile(t, "resume.docx", "x"), "expected a .md, .txt, or .pdf file"},
+	} {
+		t.Run(name, func(t *testing.T) {
+			if _, err := ReadResume(context.Background(), tc.path); err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Errorf("err = %v, want %q", err, tc.want)
 			}
 		})
 	}
