@@ -76,23 +76,30 @@ Your own files need a key: a replay only answers the requests it recorded.
 
 ## Quickstart
 
-You need Go 1.27.1+ and a Jev API key, either from
+You need a Jev API key, either from
 [TypeSafe](https://docs.typesafe.ai/introduction) or from
 [OpenRouter](https://openrouter.ai).
 
+**1. Install `score`**, the only command you need for a score. Either
+download it from [Releases](https://github.com/dphbfs/fast-resume-scoring/releases/latest)
+(Linux, macOS, Windows; no Go needed; each archive holds `score`,
+`extract`, and `check`), or build it with Go 1.27.2+:
+
 ```sh
 go install github.com/dphbfs/fast-resume-scoring/cmd/score@latest
-go install github.com/dphbfs/fast-resume-scoring/cmd/extract@latest
-go install github.com/dphbfs/fast-resume-scoring/cmd/check@latest
+```
 
+**2. Set the key and score a resume:**
+
+```sh
 export TYPESAFE_API_KEY=...                      # TypeSafe key, or:
 # export TYPESAFE_BASE_URL=https://openrouter.ai/api TYPESAFE_API_KEY=<OpenRouter key>
 
 score -jd job.txt -resume resume.md
 ```
 
-Or with Docker (linux/amd64 and arm64; the binaries are `score`,
-`extract`, and `check`):
+Or with Docker (linux/amd64 and arm64; the image has `score`, `extract`,
+and `check`):
 
 ```sh
 docker run --rm -e TYPESAFE_API_KEY -v "$PWD:/work" \
@@ -107,6 +114,16 @@ Or from a clone: `cp .env.example .env`, fill it in, `make build`, and run
 `bin/score`, `bin/extract`, `bin/check`.
 
 ### Explain a score
+
+Two more commands show which requirements the resume covers. They come
+in the release archives and the Docker image; with Go:
+
+```sh
+go install github.com/dphbfs/fast-resume-scoring/cmd/extract@latest
+go install github.com/dphbfs/fast-resume-scoring/cmd/check@latest
+```
+
+Then:
 
 ```sh
 extract -o requirements.json job.txt
