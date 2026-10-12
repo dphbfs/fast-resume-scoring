@@ -12,6 +12,19 @@ Include what you found, how to reproduce it, and the version or commit.
 
 Only the latest release and `main` get fixes.
 
+## Verifying a release
+
+From v0.0.4, `checksums.txt` in every release is signed keylessly with
+Sigstore by the release workflow. Check the signature, then the archive:
+
+```sh
+cosign verify-blob --bundle checksums.txt.sigstore.json \
+  --certificate-identity-regexp '^https://github.com/dphbfs/fast-resume-scoring/' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  checksums.txt
+sha256sum --ignore-missing -c checksums.txt
+```
+
 ## What this tool sends where
 
 Treat Resumes and Job Descriptions as personal data. A run sends them to:

@@ -42,6 +42,13 @@ CI runs the same checks, plus `go mod tidy`, govulncheck, and CodeQL.
   ```sh
   go test ./internal/app -run TestPromptSnapshot -update
   ```
+- **Parsers are fuzzed.** If you change the Resume parser, the sentence
+  splitter, or PDF text normalization, run its fuzz target for a minute
+  (`FuzzParseResume`, `FuzzSplitSentences`, `FuzzNormalize`):
+
+  ```sh
+  go test ./internal/app -run '^$' -fuzz FuzzParseResume -fuzztime 1m
+  ```
 
   Any change to what is sent to Jev also breaks the example replay
   (`go test ./cmd/...`): re-record with `make examples` (needs a key,

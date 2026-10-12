@@ -6,6 +6,19 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Security
+
+- Release checksums are signed with Sigstore (`checksums.txt.sigstore.json`);
+  see SECURITY.md to verify.
+- The release workflow's write permissions are scoped to its job.
+- `golang.org/x/mod` 0.20.0 → 0.42.0 (GO-2026-6179, GO-2026-6180; only
+  used by the `wire` code generator, not in the binaries).
+
+### Added
+
+- Fuzz tests for the Resume parser, the sentence splitter, and PDF text
+  normalization.
+
 ## [0.0.3] - 2026-10-12
 
 ### Changed
