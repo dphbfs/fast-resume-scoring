@@ -96,15 +96,30 @@ func readResult(path string) (domain.Result, error) {
 	if err != nil {
 		return domain.Result{}, err
 	}
-	var res domain.Result
-	if err := json.Unmarshal(raw, &res); err != nil {
+	res, err := ParseResult(raw)
+	if err != nil {
 		return domain.Result{}, fmt.Errorf("%s: %w", path, err)
 	}
+	return res, nil
+}
+
+// ParseResult decodes and validates an extract result (schema v1).
+func ParseResult(raw []byte) (domain.Result, error) {
+	var res domain.Result
+	if err := json.Unmarshal(raw, &res); err != nil {
+		return domain.Result{}, err
+	}
+	return PrepareResult(res)
+}
+
+// PrepareResult validates an extract result (schema v1) and fills each
+// Context Sentence's Ref from its map key.
+func PrepareResult(res domain.Result) (domain.Result, error) {
 	if res.SchemaVersion != domain.SchemaVersion {
-		return domain.Result{}, fmt.Errorf("%s: schema_version %q, want %q", path, res.SchemaVersion, domain.SchemaVersion)
+		return domain.Result{}, fmt.Errorf("schema_version %q, want %q", res.SchemaVersion, domain.SchemaVersion)
 	}
 	if err := res.Validate(); err != nil {
-		return domain.Result{}, fmt.Errorf("%s: invalid result: %w", path, err)
+		return domain.Result{}, fmt.Errorf("invalid result: %w", err)
 	}
 	for ref, s := range res.Context {
 		s.Ref = ref

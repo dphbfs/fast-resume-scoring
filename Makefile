@@ -10,6 +10,7 @@ build:
 	go build -o $(BIN) ./cmd/extract
 	go build -o bin/check ./cmd/check
 	go build -o bin/score ./cmd/score
+	go build -o bin/resume-scoring-mcp ./cmd/resume-scoring-mcp
 
 test:
 	go test ./...
@@ -22,10 +23,10 @@ vet:
 
 # Regenerate cmd/extract/wire_gen.go after any constructor signature change.
 wire:
-	go tool wire ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
+	go tool wire ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score ./cmd/resume-scoring-mcp
 
 wire-check:
-	go tool wire check ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score
+	go tool wire check ./cmd/extract ./cmd/check ./cmd/eval ./cmd/score ./cmd/resume-scoring-mcp
 
 lint:
 	golangci-lint run ./...

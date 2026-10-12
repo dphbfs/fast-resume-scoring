@@ -6,6 +6,27 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-10-12
+
+### Added
+
+- `resume-scoring-mcp`: an MCP server with `score`, `extract`, and `check`
+  tools over stdio or streamable HTTP (`-transport http`, bearer token from
+  `MCP_HTTP_TOKEN`, required on non-loopback addresses). Ships in the
+  release archives and the Docker image.
+- `install.sh`: installs the binaries from a release (checksum-verified,
+  cosign-verified when available) to `~/.local/bin` or
+  `--installation-dir`, and the tuning file to
+  `~/.config/fast-resume-scoring/`.
+- Release archives include `tuning.yaml`; the Docker image has it at
+  `/etc/fast-resume-scoring/tuning.yaml`.
+
+### Changed
+
+- README reorganized: install, usage (CLI and MCP), features, results,
+  configuration, and tuning, with a demo of Claude Code calling the MCP
+  server.
+
 ## [0.0.4] - 2026-10-12
 
 ### Security
@@ -93,7 +114,8 @@ First public version.
 
 - `score -h`, `extract -h`, and `check -h` print usage without an API key.
 
-[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.1...v0.0.2
