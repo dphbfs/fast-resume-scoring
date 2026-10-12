@@ -6,12 +6,19 @@ Usage:
   scripts/judge.py [-runs 3] -dir testdata/reference <pair-id> [<pair-id> ...]
   scripts/judge.py [-runs 3] -dir testdata/reference -top 20 <e2e-report.json> [...]
 
-The rubric is .claude/skills/recruiter-judge/SKILL.md (front matter
-stripped), sent as the system prompt; the user message holds the masked
-Resume and the Job Description text. Model and endpoint come from .env
-(JUDGE_BASE_URL, JUDGE_API_KEY, JUDGE_MODEL), a different model family from
-the reference scorer. Each pair is asked -runs times; its judge score is
-the median.
+The rubric is scripts/recruiter-judge.md (front matter stripped), sent as
+the system prompt; the user message holds the masked Resume and the Job
+Description text. Each pair is asked -runs times; its judge score is the
+median.
+
+Environment (read from the process environment, then .env if present):
+  JUDGE_BASE_URL  required; any OpenAI-compatible chat API (the script
+                  appends /chat/completions), e.g. https://api.openai.com/v1.
+                  Not TypeSafe: Jev answers typed questions and does not
+                  generate text.
+  JUDGE_API_KEY   required; key for that endpoint
+  JUDGE_MODEL     required; pick a different model family from the
+                  reference scorer, so the judge is an independent opinion
 
 -top N picks the N pairs with the largest mean |Match - reference| over the
 given e2e reports (development disagreements), Match recomputed with the
@@ -26,22 +33,34 @@ reported per pair as a hallucination check.
 import argparse
 import hashlib
 import json
+import os
 import re
 import statistics
+import sys
 import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-SKILL = Path(".claude/skills/recruiter-judge/SKILL.md")
+SKILL = Path("scripts/recruiter-judge.md")
+REQUIRED = ["JUDGE_BASE_URL", "JUDGE_API_KEY", "JUDGE_MODEL"]
 
 
 def env():
+    """.env (if present), then the process environment; exits when a
+    REQUIRED variable is missing."""
     out = {}
-    for line in Path(".env").read_text().splitlines():
-        if "=" in line and not line.lstrip().startswith("#"):
-            k, v = line.split("=", 1)
-            out[k.strip()] = v.strip().strip('"')
+    dotenv = Path(".env")
+    if dotenv.exists():
+        for line in dotenv.read_text().splitlines():
+            if "=" in line and not line.lstrip().startswith("#"):
+                k, v = line.split("=", 1)
+                if v.strip():
+                    out[k.strip()] = v.strip().strip('"')
+    out.update({k: v for k, v in os.environ.items() if v})
+    missing = [k for k in REQUIRED if not out.get(k)]
+    if missing:
+        sys.exit(f"{Path(__file__).name}: set {', '.join(missing)} (environment or .env)")
     return out
 
 

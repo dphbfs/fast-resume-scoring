@@ -4,7 +4,7 @@
 Usage: scripts/calibrate_fit.py eval/reports/e2e/<run>.json
 
 Reads each pair's Coverage from <run>-traces/<id>.json and searches a
-coarse, constrained grid (docs/review-v1-plan.md, A3):
+coarse, constrained grid:
 
   credits: none 0, strong 1 (fixed); 0 <= weak <= partial <= 1
   weights: required 3 (fixed); 0 < mentioned <= preferred <= 3
@@ -13,6 +13,10 @@ The Fit Score is the Tier-weighted average credit per item, with an
 Alternative Group counting once (domain.ScoreFit). Reports the in-sample
 best grid point and the leave-one-out MAE (each pair predicted by the grid
 point fitted on the other pairs), which is the honest estimate.
+
+Needs the report's trace folder (<run>-traces/), which eval writes next to
+the report but git ignores: run `make eval-e2e` (or `eval -e2e`) yourself
+first. The reports committed in eval/reports/ have no traces.
 """
 
 import json

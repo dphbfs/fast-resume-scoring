@@ -1,7 +1,6 @@
 # Final report: replacing the generative match score with Jev (review v1)
 
-Date: 2026-10-06. Plan: `docs/review-v1-plan.md` (step F2). Decisions:
-ADR 0004 (Match Score v4). Experiment log: `docs/tuning.md`.
+Date: 2026-10-06. Decisions: ADR 0004 (Match Score v4). Experiment log: `docs/tuning.md`.
 
 ## Verdict
 
@@ -88,8 +87,8 @@ frontier model agrees with itself across days and input formats; an
 
 ## Cost and speed
 
-Measured on the 20 sealed-set pairs (`scripts/opus_replay.py`,
-`eval/replay/2026-10-06T11-43-15Z`). The proxy does not report input
+Measured on the 20 sealed-set pairs (one replay of the reference prompt,
+2026-10-06). The proxy does not report input
 tokens, so Opus input is estimated from characters (≈2,300 tokens with a
 Markdown resume; the tool's JSON resume is larger, so this is a lower
 bound). Output: 843 tokens mean, measured. Prices: Opus 5 $5 / $25 per M
@@ -131,7 +130,7 @@ bounded Jev limiter (`JEV_MAX_CONCURRENCY`).
   τ-b 0.69) and became development data; the second validated v4.
 - Selection for v4 used resume-held-out cross-validation (leave one
   resume out), since generalizing to new resumes was what failed.
-- Secondary judge: `.claude/skills/recruiter-judge` via
+- Secondary judge: `scripts/recruiter-judge.md` via
   `scripts/judge.py`; `scripts/compare_judge.py` reports the three-way
   agreement.
 - Jev spend for the whole review: about $5 of the $7.5 cap (summed from

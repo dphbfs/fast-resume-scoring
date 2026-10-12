@@ -8,8 +8,7 @@ new candidate). Five jobs each, picked by title from unscored archived
 applications with a full posting ≥ 1,500 characters, none in the
 development or golden sets: 2 on-target, 2 adjacent, 1 off-target. Where
 options were close, the shorter posting was taken. Jev was not run on any
-of them. List and kinds: `testdata/final/pairs.json`
-(`scripts/import_final.py`).
+of them. List and kinds: `testdata/final/pairs.json`.
 
 | Resume | On-target | Adjacent | Off-target |
 |---|---|---|---|

@@ -39,7 +39,7 @@ with one Gap.
 ## Considered options
 
 - **Importance as weight.** Rejected for now: Importance has not yet been
-  checked in a real-world test (CLAUDE.md), so weighting by it would add
+  checked in a real-world test, so weighting by it would add
   unverified noise. Revisit once that check is done, e.g. weight × (0.5 +
   0.5 × Importance).
 - **Required Gaps as a knockout** (cap the score when any required item has

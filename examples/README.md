@@ -8,10 +8,10 @@ recording that produced it. Nothing here needs an API key.
 |---|---|
 | [`job.md`](job.md) | Job description: Senior Backend Engineer (Go) at a freight platform |
 | [`resume.md`](resume.md) | Resume: backend engineer, 6 years, 3 in Go, no Kafka or Terraform |
-| [`score.json`](score.json) | `score` output: Match Score 86 |
+| [`score.json`](score.json) | `score` output: Match Score 87 |
 | [`requirements.json`](requirements.json) | `extract` output: 30 Requirements with Tier, Importance, Alternative Groups |
 | [`coverage.json`](coverage.json) | `check` output: Coverage per Requirement with quoted evidence, Fit Score 75 |
-| [`jev-recording.json`](jev-recording.json) | Every Jev request and answer from that run (67 calls, $0.0055) |
+| [`jev-recording.json`](jev-recording.json) | Every Jev request and answer from that run (68 calls, $0.0055) |
 
 ## Run them without a key
 
@@ -35,8 +35,8 @@ Summary.
 
 ## What the output shows
 
-- **Score 86**: right kind of role (`role_match` 0.99), not short on
-  experience (`experience_short` 0.15), no blocker (0.05).
+- **Score 87**: right kind of role (`role_match` 0.99), not short on
+  experience (`experience_short` 0.13), no blocker (0.05).
 - **Strong evidence** for Go, gRPC/REST, PostgreSQL schema design and
   query tuning, Kubernetes on AWS, Prometheus and Grafana, each quoting the
   resume line it came from.

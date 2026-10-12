@@ -13,11 +13,22 @@ merges them with the Fit Scores stored in e2e reports.
 
 Jev bills input tokens only and the state dominates, so asking several
 questions per request costs about one Holistic Round (~$0.0003 per pair).
+
+Environment (read from the process environment, then .env if present;
+same names and defaults as the Go commands):
+  TYPESAFE_API_KEY   required; TypeSafe key, or an OpenRouter key
+  TYPESAFE_BASE_URL  default https://api.typesafe.ai
+                     (OpenRouter: https://openrouter.ai/api)
+  JEV_MODEL          default jev-latest; pin a version (e.g. jev-1.13) to
+                     compare runs
+  TUNING_FILE        edited copy of tuning/tuning.yaml (default: the
+                     committed one)
 """
 
 import argparse
 import json
 import os
+import sys
 import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -48,13 +59,25 @@ def production_questions():
 
 QUESTIONS = {**production_questions(), **CANDIDATES}
 
+DEFAULTS = {"TYPESAFE_BASE_URL": "https://api.typesafe.ai", "JEV_MODEL": "jev-latest"}
+REQUIRED = ["TYPESAFE_API_KEY"]
+
 
 def env():
-    out = {}
-    for line in Path(".env").read_text().splitlines():
-        if "=" in line and not line.lstrip().startswith("#"):
-            k, v = line.split("=", 1)
-            out[k.strip()] = v.strip().strip('"')
+    """DEFAULTS, then .env (if present), then the process environment; exits
+    when a REQUIRED variable is missing."""
+    out = dict(DEFAULTS)
+    dotenv = Path(".env")
+    if dotenv.exists():
+        for line in dotenv.read_text().splitlines():
+            if "=" in line and not line.lstrip().startswith("#"):
+                k, v = line.split("=", 1)
+                if v.strip():
+                    out[k.strip()] = v.strip().strip('"')
+    out.update({k: v for k, v in os.environ.items() if v})
+    missing = [k for k in REQUIRED if not out.get(k)]
+    if missing:
+        sys.exit(f"{Path(__file__).name}: set {', '.join(missing)} (environment or .env)")
     return out
 
 

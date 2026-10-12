@@ -8,12 +8,12 @@ import (
 )
 
 // TestSplitSentencesBulk runs the splitter over every Job Description in the
-// gitignored bulk set (testdata/jd, see scripts/import_jds.py). It is skipped
+// gitignored bulk set (testdata/jd/*.txt, any plain-text postings). It is skipped
 // when the set is absent.
 func TestSplitSentencesBulk(t *testing.T) {
 	files, _ := filepath.Glob("../../testdata/jd/*.txt")
 	if len(files) == 0 {
-		t.Skip("bulk set not present; run scripts/import_jds.py")
+		t.Skip("bulk set not present in testdata/jd")
 	}
 
 	// Legal boilerplate reaches ~700 runes as one genuine sentence.
