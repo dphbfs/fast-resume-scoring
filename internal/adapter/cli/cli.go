@@ -142,7 +142,12 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 	if strings.TrimSpace(text) == "" {
 		return domain.JobDescription{}, errors.New(path + ": file is empty")
 	}
+	return ParseJobDescription(text), nil
+}
 
+// ParseJobDescription builds a Job Description from its text; the first
+// non-empty line is the job title.
+func ParseJobDescription(text string) domain.JobDescription {
 	var title string
 	for line := range strings.Lines(text) {
 		if t := strings.TrimSpace(strings.TrimLeft(line, "# ")); t != "" {
@@ -150,7 +155,7 @@ func ReadJobDescription(path string) (domain.JobDescription, error) {
 			break
 		}
 	}
-	return domain.JobDescription{Title: title, Text: text}, nil
+	return domain.JobDescription{Title: title, Text: text}
 }
 
 // readInput reads a text input file of at most MaxInputBytes.

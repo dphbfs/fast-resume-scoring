@@ -64,3 +64,6 @@ AGENTS.md
 .claude/
 .agents/
 .gitmodules
+
+# /brag launch video output
+brag-output*/
