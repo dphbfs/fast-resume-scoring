@@ -1,5 +1,5 @@
 // Package app implements the Requirement Extractor and Resume Checker use
-// cases described in CLAUDE.md, built on the ports in internal/port.
+// cases described in docs/architecture.md, built on the ports in internal/port.
 package app
 
 import (

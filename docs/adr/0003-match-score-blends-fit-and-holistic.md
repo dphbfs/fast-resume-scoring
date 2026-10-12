@@ -28,8 +28,7 @@ It also records `primary_gap`, `location_mismatch`, and the employment
 gap (from Resume dates, in code); they add nothing on the development
 subset (one resume), and the final set decides whether they stay. Tried
 and dropped: core work, domain closeness, career level, role type,
-transferable scope, soft eligibility (`docs/tuning.md`). Why these
-signals: `docs/gap-analysis-2026-10-05.md`.
+transferable scope, soft eligibility (`docs/tuning.md`).
 
 ## Definition
 

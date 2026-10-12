@@ -56,7 +56,7 @@ type GroupCoverage struct {
 const CoverageSchemaVersion = "1"
 
 // CoverageResult is the Resume Checker's output (coverage schema v1, see
-// CLAUDE.md).
+// README.md).
 type CoverageResult struct {
 	SchemaVersion     string                  `json:"schema_version"`
 	Model             string                  `json:"model"`
