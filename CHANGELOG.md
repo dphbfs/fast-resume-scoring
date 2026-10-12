@@ -6,6 +6,8 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-10-12
+
 ### Security
 
 - Release checksums are signed with Sigstore (`checksums.txt.sigstore.json`);
@@ -18,6 +20,19 @@ uses [Semantic Versioning](https://semver.org/).
 
 - Fuzz tests for the Resume parser, the sentence splitter, and PDF text
   normalization.
+
+### Changed
+
+- The example candidate in `examples/` is renamed (re-recorded; Match
+  Score 86 → 87, Coverage and Fit unchanged).
+- `scripts/judge.py` and `scripts/probe_holistic.py` read the process
+  environment (overriding an optional `.env`) and exit with a clear message
+  when a required variable is missing; `.env.example` lists the `JUDGE_*`
+  variables.
+
+### Removed
+
+- Internal planning notes and one-off import scripts. Their data stays.
 
 ## [0.0.3] - 2026-10-12
 
@@ -78,7 +93,8 @@ First public version.
 
 - `score -h`, `extract -h`, and `check -h` print usage without an API key.
 
-[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dphbfs/fast-resume-scoring/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/dphbfs/fast-resume-scoring/releases/tag/v0.0.1
