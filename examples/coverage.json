@@ -16,7 +16,7 @@
         {
           "unit": "e1",
           "strength": "weak",
-          "p": 0.86
+          "p": 0.85
         }
       ]
     },
@@ -37,9 +37,14 @@
           "p": 1
         },
         {
+          "unit": "e9",
+          "strength": "partial",
+          "p": 0.52
+        },
+        {
           "unit": "e1",
           "strength": "weak",
-          "p": 0.98
+          "p": 0.97
         }
       ]
     },
@@ -57,7 +62,7 @@
         {
           "unit": "e12",
           "strength": "weak",
-          "p": 0.78
+          "p": 0.81
         }
       ]
     },
@@ -138,6 +143,19 @@
     },
     {
       "id": "req_9",
+      "value": "event streaming",
+      "tier": "required",
+      "coverage": "partial",
+      "evidence": [
+        {
+          "unit": "e7",
+          "strength": "partial",
+          "p": 0.19
+        }
+      ]
+    },
+    {
+      "id": "req_10",
       "value": "gRPC APIs",
       "tier": "required",
       "coverage": "strong",
@@ -150,20 +168,21 @@
       ]
     },
     {
-      "id": "req_10",
-      "value": "event streaming",
-      "tier": "required",
-      "coverage": "partial",
-      "evidence": [
-        {
-          "unit": "e7",
-          "strength": "partial",
-          "p": 0.21
-        }
-      ]
+      "id": "req_11",
+      "value": "logistics",
+      "tier": "preferred",
+      "coverage": "none",
+      "evidence": []
     },
     {
-      "id": "req_11",
+      "id": "req_12",
+      "value": "Terraform",
+      "tier": "preferred",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_13",
       "value": "marketplaces",
       "tier": "preferred",
       "coverage": "partial",
@@ -171,12 +190,12 @@
         {
           "unit": "e8",
           "strength": "partial",
-          "p": 0.86
+          "p": 0.8600000000000001
         }
       ]
     },
     {
-      "id": "req_12",
+      "id": "req_14",
       "value": "pricing systems",
       "tier": "preferred",
       "coverage": "strong",
@@ -189,20 +208,6 @@
       ]
     },
     {
-      "id": "req_13",
-      "value": "Terraform",
-      "tier": "preferred",
-      "coverage": "none",
-      "evidence": []
-    },
-    {
-      "id": "req_14",
-      "value": "logistics",
-      "tier": "preferred",
-      "coverage": "none",
-      "evidence": []
-    },
-    {
       "id": "req_15",
       "value": "Python for data tooling",
       "tier": "preferred",
@@ -211,12 +216,12 @@
         {
           "unit": "e8",
           "strength": "strong",
-          "p": 0.98
+          "p": 0.99
         },
         {
           "unit": "e10",
           "strength": "weak",
-          "p": 0.83
+          "p": 0.86
         }
       ]
     },
@@ -235,24 +240,6 @@
     },
     {
       "id": "req_17",
-      "value": "Grafana",
-      "tier": "required",
-      "coverage": "strong",
-      "evidence": [
-        {
-          "unit": "e5",
-          "strength": "strong",
-          "p": 1
-        },
-        {
-          "unit": "e13",
-          "strength": "weak",
-          "p": 0.98
-        }
-      ]
-    },
-    {
-      "id": "req_18",
       "value": "Prometheus",
       "tier": "required",
       "coverage": "strong",
@@ -270,46 +257,46 @@
       ]
     },
     {
-      "id": "req_19",
-      "value": "incident reviews",
-      "tier": "mentioned",
-      "coverage": "none",
-      "evidence": []
-    },
-    {
-      "id": "req_20",
+      "id": "req_18",
       "value": "Model event flows on Kafka",
       "tier": "mentioned",
       "coverage": "none",
       "evidence": []
     },
     {
-      "id": "req_21",
-      "value": "AWS",
+      "id": "req_19",
+      "value": "Grafana",
       "tier": "required",
       "coverage": "strong",
       "evidence": [
         {
-          "unit": "e3",
+          "unit": "e5",
           "strength": "strong",
           "p": 1
         },
         {
-          "unit": "e11",
+          "unit": "e13",
           "strength": "weak",
-          "p": 0.89
+          "p": 0.98
         }
       ]
     },
     {
-      "id": "req_22",
+      "id": "req_20",
       "value": "GCP",
       "tier": "required",
       "coverage": "none",
       "evidence": []
     },
     {
-      "id": "req_23",
+      "id": "req_21",
+      "value": "incident reviews",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_22",
       "value": "build Go services for quoting",
       "tier": "mentioned",
       "coverage": "weak",
@@ -322,21 +309,7 @@
       ]
     },
     {
-      "id": "req_24",
-      "value": "SLOs",
-      "tier": "mentioned",
-      "coverage": "none",
-      "evidence": []
-    },
-    {
-      "id": "req_25",
-      "value": "OpenTelemetry",
-      "tier": "required",
-      "coverage": "none",
-      "evidence": []
-    },
-    {
-      "id": "req_26",
+      "id": "req_23",
       "value": "Mentor engineers through code review",
       "tier": "mentioned",
       "coverage": "strong",
@@ -349,6 +322,38 @@
       ]
     },
     {
+      "id": "req_24",
+      "value": "OpenTelemetry",
+      "tier": "required",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
+      "id": "req_25",
+      "value": "AWS",
+      "tier": "required",
+      "coverage": "strong",
+      "evidence": [
+        {
+          "unit": "e3",
+          "strength": "strong",
+          "p": 1
+        },
+        {
+          "unit": "e11",
+          "strength": "weak",
+          "p": 0.88
+        }
+      ]
+    },
+    {
+      "id": "req_26",
+      "value": "SLOs",
+      "tier": "mentioned",
+      "coverage": "none",
+      "evidence": []
+    },
+    {
       "id": "req_27",
       "value": "ship pricing experiments safely",
       "tier": "mentioned",
@@ -357,21 +362,21 @@
     },
     {
       "id": "req_28",
-      "value": "carrier dispatch",
+      "value": "design discussions",
       "tier": "mentioned",
       "coverage": "none",
       "evidence": []
     },
     {
       "id": "req_29",
-      "value": "booking",
+      "value": "carrier dispatch",
       "tier": "mentioned",
       "coverage": "none",
       "evidence": []
     },
     {
       "id": "req_30",
-      "value": "design discussions",
+      "value": "booking",
       "tier": "mentioned",
       "coverage": "none",
       "evidence": []
@@ -382,7 +387,7 @@
       "id": "alt_1",
       "members": [
         "req_5",
-        "req_9"
+        "req_10"
       ],
       "coverage": "strong"
     },
@@ -397,8 +402,8 @@
     {
       "id": "alt_3",
       "members": [
-        "req_21",
-        "req_22"
+        "req_25",
+        "req_20"
       ],
       "coverage": "strong"
     },
@@ -406,18 +411,18 @@
       "id": "alt_4",
       "members": [
         "req_7",
-        "req_18",
         "req_17",
-        "req_25"
+        "req_19",
+        "req_24"
       ],
       "coverage": "strong"
     },
     {
       "id": "alt_5",
       "members": [
-        "req_14",
         "req_11",
-        "req_12"
+        "req_13",
+        "req_14"
       ],
       "coverage": "strong"
     }
@@ -496,6 +501,13 @@
     },
     "e8": {
       "text": "Built a nightly pricing export with pandas used by the merchandising team.",
+      "resume_section": "experience",
+      "role": "Software Engineer",
+      "company": "Brightcart",
+      "dates": "2019-06 – 2022-03"
+    },
+    "e9": {
+      "text": "Maintained MySQL databases and their backup jobs.",
       "resume_section": "experience",
       "role": "Software Engineer",
       "company": "Brightcart",

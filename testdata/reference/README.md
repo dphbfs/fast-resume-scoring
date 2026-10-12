@@ -1,15 +1,11 @@
 # Reference scores
 
-Development reference for the end-to-end eval (`docs/review-v1-plan.md`,
-E1): saved match scores of the generative scorer (generative model approach,
-Claude Opus 5) for the Main resume against real Job Descriptions.
+Development reference for the end-to-end eval: saved match scores of the
+generative scorer (generative model approach, Claude Opus 5) for the Main resume against
+real Job Descriptions.
 
-Regenerate from a `list_applications` dump (includeArchived=true), with
-`MAIN_RESUME_ID` set to the Main resume's ID in the job tracker:
-
-```sh
-scripts/import_reference.py <dump.json>
-```
+Imported once from the job tracker (a `list_applications` dump) with a
+one-off script.
 
 - `pairs.json`: one entry per pair: `id`, `title`, `company`, `resume`
   (the masked Main resume, `testdata/resumes/real-backend.md`), `jd`,
@@ -31,7 +27,7 @@ with the same Job Description text and the Main resume, scored 3× each,
 and archived. It records each copy's scores, their median and range, and
 the original saved score. Within-session noise was small (single call vs
 median: 1.1 points mean, max range 8), but every copy scored above its
-saved original (+11.6 mean, +4 to +24); see `docs/review-v1-plan.md`.
+saved original (+11.6 mean, +4 to +24).
 
 `current.json` (2026-10-05): the reference for tuning. Today's scorer on
 38 pairs: the 30-pair tuning subset plus the 8 other noise pairs, each

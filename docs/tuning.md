@@ -102,8 +102,8 @@ fallback runs.
   be a clear error moves to `filler`, anything required moves to
   `requirements`.
 - **Pooling bias.** Missing labels were found from the extractor's own
-  extras. Label 3-5 fresh postings from `testdata/jd/` without looking at
-  extractor output, then compare recall on them with the golden set.
+  extras. Label 3-5 fresh postings (not in the golden set) without looking
+  at extractor output, then compare recall on them with the golden set.
 
 ## Experiment log
 
@@ -123,7 +123,7 @@ fallback runs.
 ## Resume Checker experiment log
 
 Run with `make eval-checker` (11 pairs in `testdata/checker`). Labels are
-Claude's first draft, not yet reviewed by the user; real-resume labels are
+a first draft, not yet reviewed by hand; real-resume labels are
 known to be under-inclusive (many "false links" are valid evidence), so
 link precision is understated. Retrieval recall is the most trustworthy
 number until the review.
@@ -188,7 +188,7 @@ Findings:
   pairs are mostly borderline, and v3 still links many of them, so Coverage
   does not rise unless the evidence-mass threshold rises with it (narrow +
   mass 0.65-0.8: +0.4 to +0.7 over v3 single, at 1.6x cost). Within the
-  label-bias margin: re-test after the user's label review before making
+  label-bias margin: re-test after a manual label review before making
   narrow the default.
 - Peel without a shortlist is the worst: each extra round over ~40 options
   lets the model pick a loosely related Requirement instead of none.
@@ -584,7 +584,7 @@ without losing Match Score accuracy. 30-pair subset, one change at a time
 
 ### Holistic signals from the gap analysis (2026-10-05)
 
-Following `docs/gap-analysis-2026-10-05.md`: the masked Main resume now
+Following a gap analysis of the misses: the masked Main resume now
 keeps its location line (Tampa, FL, as the reference sees it); the
 Holistic Round adds `responsibilities` (Score, day-to-day
 responsibilities in any domain), `primary_gap`, `domain_mismatch`, and

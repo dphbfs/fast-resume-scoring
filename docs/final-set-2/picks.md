@@ -5,7 +5,7 @@ redesign (plan F3, ADR 0004). This set tests Match Score v4.
 
 Held-out resumes: three synthetic (`testdata/resumes/final2-syn-{1,2,3}.md`,
 written by a separate agent from `synthetic-resume-prompt.md`) and the
-user's real Data & Reporting Analyst resume (`final2-real-analyst.md`,
+maintainer's real Data & Reporting Analyst resume (`final2-real-analyst.md`,
 masked). The analyst resume's experience appears in two Resume Checker
 fixtures (`real-data-analyst.md`), which v4 does not use; it was never
 part of a Match Score fit.
@@ -18,7 +18,7 @@ for the next title of the same kind). The pool has no mobile postings, so
 the synthetic prompt's third candidate is a security engineer. Two
 postings serve two resumes each (many resumes × one job), so pair IDs are
 `<application id>--<resume stem>`. Jev was not run on any of them. List:
-`testdata/final2/pairs.json` (`scripts/import_final.py <dump> final2`).
+`testdata/final2/pairs.json`.
 
 | Resume | On-target | Adjacent | Off-target |
 |---|---|---|---|

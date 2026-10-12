@@ -46,9 +46,9 @@
           "Choice": "Python for data tooling",
           "Score": null,
           "Probabilities": {
-            "Python": 0.16,
+            "Python": 0.11,
             "Python for data": 0.05,
-            "Python for data tooling": 0.78,
+            "Python for data tooling": 0.83,
             "action_only": 0,
             "condition": 0,
             "data": 0,
@@ -57,7 +57,7 @@
             "people_or_context": 0,
             "tooling": 0
           },
-          "Confidence": 0.76
+          "Confidence": 0.81
         }
       },
       "Usage": {
@@ -77,19 +77,19 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.41000000000000003,
+            "Go in production": 0.42,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0.03,
             "Prometheus": 0,
-            "Python for data tooling": 0.1,
+            "Python for data tooling": 0.12,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.07,
+            "backend software engineering experience": 0.06,
             "booking": 0.01,
-            "build Go services for quoting": 0.03,
+            "build Go services for quoting": 0.04,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
@@ -98,16 +98,16 @@
             "incident reviews": 0,
             "logistics": 0,
             "marketplaces": 0,
-            "none": 0.32,
+            "none": 0.29,
             "observability tooling": 0,
             "pricing systems": 0,
-            "query tuning": 0.02,
+            "query tuning": 0.03,
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.39
+          "Confidence": 0.4
         }
       },
       "Usage": {
@@ -128,12 +128,12 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.07,
+            "Grafana": 0.08,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.41,
+            "Prometheus": 0.39,
             "Python for data tooling": 0,
             "SLOs": 0.02,
             "Terraform": 0,
@@ -149,7 +149,7 @@
             "logistics": 0,
             "marketplaces": 0,
             "none": 0,
-            "observability tooling": 0.48,
+            "observability tooling": 0.49,
             "pricing systems": 0,
             "query tuning": 0,
             "running services on Kubernetes": 0,
@@ -157,7 +157,7 @@
             "services in production": 0.01,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.46
+          "Confidence": 0.47
         }
       },
       "Usage": {
@@ -171,7 +171,7 @@
       "Answers": {
         "gate_0": {
           "Type": "noul",
-          "Noul": 0.98,
+          "Noul": 0.97,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -179,7 +179,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.86,
+          "Noul": 0.85,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -192,6 +192,72 @@
         "CostUSD": 0.000024612
       }
     },
+    "1c89c1f0e244335d8266328334870894203398de28793f645b075a0747f29a1e": {
+      "Model": "typesafe/jev-1.13-20260917",
+      "Answers": {
+        "gate_0": {
+          "Type": "noul",
+          "Noul": 0.89,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_1": {
+          "Type": "noul",
+          "Noul": 0.32,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        }
+      },
+      "Usage": {
+        "InputTokens": 598,
+        "OutputTokens": 40,
+        "CostUSD": 0.000025116
+      }
+    },
+    "1cf0e1b014e09e1a91e224f7bf306896dd6b1c2ab5b84ed65582c16a947b0ed7": {
+      "Model": "typesafe/jev-1.13-20260917",
+      "Answers": {
+        "blocker": {
+          "Type": "noul",
+          "Noul": 0.05,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "experience_short": {
+          "Type": "noul",
+          "Noul": 0.13,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "role_match": {
+          "Type": "score",
+          "Noul": null,
+          "Choice": "",
+          "Score": 3.95,
+          "Probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.05,
+            "4": 0.95
+          },
+          "Confidence": 0.96
+        }
+      },
+      "Usage": {
+        "InputTokens": 1298,
+        "OutputTokens": 52,
+        "CostUSD": 0.000054516
+      }
+    },
     "1e6645f7091186aa6dd70956b9effe50cfe6f2f3bf7a7c746c1a5e784fa6c833": {
       "Model": "typesafe/jev-1.13-20260917",
       "Answers": {
@@ -201,17 +267,17 @@
           "Choice": "designing REST",
           "Score": null,
           "Probabilities": {
-            "Experience designing": 0.01,
-            "Experience designing REST": 0.21,
-            "REST": 0.33,
+            "Experience designing": 0.02,
+            "Experience designing REST": 0.22,
+            "REST": 0.35,
             "action_only": 0,
             "condition": 0,
             "designing": 0,
-            "designing REST": 0.45,
+            "designing REST": 0.41,
             "generic_trait": 0,
             "people_or_context": 0
           },
-          "Confidence": 0.38
+          "Confidence": 0.34
         },
         "chunk_1": {
           "Type": "choice",
@@ -251,7 +317,7 @@
             "Grafana": 0,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
-            "Model event flows on Kafka": 0,
+            "Model event flows on Kafka": 0.01,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
             "Prometheus": 0,
@@ -261,11 +327,11 @@
             "backend software engineering experience": 0,
             "booking": 0,
             "broader_or_narrower": 0.01,
-            "build Go services for quoting": 0.01,
+            "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.4,
+            "different_thing": 0.42,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -273,16 +339,16 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.02,
-            "pricing systems": 0.5,
+            "part_of_or_contains": 0.01,
+            "pricing systems": 0.48,
             "query tuning": 0,
             "related_not_same": 0.05,
-            "reliable under peak load": 0,
+            "reliable under peak load": 0.01,
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0
           },
-          "Confidence": 0.49
+          "Confidence": 0.47
         },
         "dup_9": {
           "Type": "choice",
@@ -309,7 +375,7 @@
             "carrier dispatch": 0,
             "design discussions": 0.35000000000000003,
             "designing REST": 0,
-            "different_thing": 0.55,
+            "different_thing": 0.5700000000000001,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -317,17 +383,17 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.02,
+            "part_of_or_contains": 0.03,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.060000000000000005,
+            "related_not_same": 0.03,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.54
+          "Confidence": 0.56
         },
         "filler_0": {
           "Type": "choice",
@@ -352,10 +418,10 @@
             "company_context": 0.02,
             "condition": 0,
             "generic_trait": 0,
-            "specific_requirement": 0.96,
-            "vague_term": 0.02
+            "specific_requirement": 0.95,
+            "vague_term": 0.03
           },
-          "Confidence": 0.95
+          "Confidence": 0.94
         },
         "filler_10": {
           "Type": "choice",
@@ -365,9 +431,9 @@
           "Probabilities": {
             "company_context": 0,
             "condition": 0,
-            "generic_trait": 0.04,
+            "generic_trait": 0.06,
             "specific_requirement": 0.8,
-            "vague_term": 0.16
+            "vague_term": 0.14
           },
           "Confidence": 0.75
         },
@@ -380,10 +446,10 @@
             "company_context": 0,
             "condition": 0,
             "generic_trait": 0,
-            "specific_requirement": 0.88,
-            "vague_term": 0.12
+            "specific_requirement": 0.87,
+            "vague_term": 0.13
           },
-          "Confidence": 0.85
+          "Confidence": 0.84
         },
         "filler_12": {
           "Type": "choice",
@@ -503,13 +569,13 @@
           "Choice": "specific_requirement",
           "Score": null,
           "Probabilities": {
-            "company_context": 0.02,
+            "company_context": 0.03,
             "condition": 0,
             "generic_trait": 0,
-            "specific_requirement": 0.97,
+            "specific_requirement": 0.96,
             "vague_term": 0.01
           },
-          "Confidence": 0.96
+          "Confidence": 0.95
         },
         "filler_20": {
           "Type": "choice",
@@ -658,12 +724,12 @@
           "Score": null,
           "Probabilities": {
             "company_context": 0,
-            "condition": 0.18,
+            "condition": 0.16,
             "generic_trait": 0,
-            "specific_requirement": 0.54,
-            "vague_term": 0.28
+            "specific_requirement": 0.6,
+            "vague_term": 0.24
           },
-          "Confidence": 0.42
+          "Confidence": 0.5
         },
         "filler_30": {
           "Type": "choice",
@@ -688,10 +754,10 @@
             "company_context": 0,
             "condition": 0,
             "generic_trait": 0,
-            "specific_requirement": 0.91,
-            "vague_term": 0.09
+            "specific_requirement": 0.93,
+            "vague_term": 0.07
           },
-          "Confidence": 0.89
+          "Confidence": 0.91
         },
         "filler_32": {
           "Type": "choice",
@@ -714,12 +780,12 @@
           "Score": null,
           "Probabilities": {
             "company_context": 0,
-            "condition": 0.08,
+            "condition": 0.09,
             "generic_trait": 0,
-            "specific_requirement": 0.92,
+            "specific_requirement": 0.91,
             "vague_term": 0
           },
-          "Confidence": 0.9
+          "Confidence": 0.89
         },
         "filler_5": {
           "Type": "choice",
@@ -728,12 +794,12 @@
           "Score": null,
           "Probabilities": {
             "company_context": 0,
-            "condition": 0.14,
+            "condition": 0.13,
             "generic_trait": 0,
-            "specific_requirement": 0.82,
+            "specific_requirement": 0.83,
             "vague_term": 0.04
           },
-          "Confidence": 0.77
+          "Confidence": 0.79
         },
         "filler_6": {
           "Type": "choice",
@@ -756,12 +822,12 @@
           "Score": null,
           "Probabilities": {
             "company_context": 0,
-            "condition": 0.01,
-            "generic_trait": 0,
-            "specific_requirement": 0.31,
-            "vague_term": 0.68
+            "condition": 0.02,
+            "generic_trait": 0.01,
+            "specific_requirement": 0.36,
+            "vague_term": 0.61
           },
-          "Confidence": 0.6
+          "Confidence": 0.51
         },
         "filler_8": {
           "Type": "choice",
@@ -769,13 +835,13 @@
           "Choice": "specific_requirement",
           "Score": null,
           "Probabilities": {
-            "company_context": 0.01,
+            "company_context": 0,
             "condition": 0,
             "generic_trait": 0,
-            "specific_requirement": 0.96,
+            "specific_requirement": 0.97,
             "vague_term": 0.03
           },
-          "Confidence": 0.95
+          "Confidence": 0.96
         },
         "filler_9": {
           "Type": "choice",
@@ -795,40 +861,40 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.11,
+          "Score": 1.14,
           "Probabilities": {
-            "0": 0.06,
-            "1": 0.85,
+            "0": 0.07,
+            "1": 0.82,
             "2": 0.01,
-            "3": 0.08,
+            "3": 0.1,
             "4": 0
           },
-          "Confidence": 0.81
+          "Confidence": 0.77
         },
         "importance_1": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 0.94,
+          "Score": 0.93,
           "Probabilities": {
             "0": 0.1,
-            "1": 0.88,
+            "1": 0.89,
             "2": 0,
-            "3": 0.02,
+            "3": 0.01,
             "4": 0
           },
-          "Confidence": 0.88
+          "Confidence": 0.9
         },
         "importance_10": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 0.93,
+          "Score": 1.01,
           "Probabilities": {
-            "0": 0.18,
-            "1": 0.77,
+            "0": 0.13,
+            "1": 0.8,
             "2": 0,
-            "3": 0.05,
+            "3": 0.07,
             "4": 0
           },
           "Confidence": 0.77
@@ -851,15 +917,15 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 3.07,
+          "Score": 3.06,
           "Probabilities": {
             "0": 0,
             "1": 0,
             "2": 0,
-            "3": 0.92,
-            "4": 0.08
+            "3": 0.94,
+            "4": 0.06
           },
-          "Confidence": 0.93
+          "Confidence": 0.95
         },
         "importance_13": {
           "Type": "score",
@@ -879,7 +945,7 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 2.74,
+          "Score": 2.73,
           "Probabilities": {
             "0": 0.09,
             "1": 0,
@@ -907,21 +973,7 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 2.96,
-          "Probabilities": {
-            "0": 0.01,
-            "1": 0,
-            "2": 0,
-            "3": 0.99,
-            "4": 0
-          },
-          "Confidence": 0.97
-        },
-        "importance_17": {
-          "Type": "score",
-          "Noul": null,
-          "Choice": "",
-          "Score": 2.93,
+          "Score": 2.94,
           "Probabilities": {
             "0": 0.02,
             "1": 0,
@@ -930,6 +982,20 @@
             "4": 0
           },
           "Confidence": 0.95
+        },
+        "importance_17": {
+          "Type": "score",
+          "Noul": null,
+          "Choice": "",
+          "Score": 2.92,
+          "Probabilities": {
+            "0": 0.03,
+            "1": 0,
+            "2": 0,
+            "3": 0.97,
+            "4": 0
+          },
+          "Confidence": 0.93
         },
         "importance_18": {
           "Type": "score",
@@ -949,40 +1015,40 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.27,
+          "Score": 1.09,
           "Probabilities": {
-            "0": 0.58,
+            "0": 0.64,
             "1": 0,
             "2": 0,
-            "3": 0.42,
+            "3": 0.36,
             "4": 0
           },
-          "Confidence": 0
+          "Confidence": 0.1
         },
         "importance_2": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 0.95,
+          "Score": 0.98,
           "Probabilities": {
-            "0": 0.1,
-            "1": 0.87,
+            "0": 0.07,
+            "1": 0.9,
             "2": 0.01,
             "3": 0.02,
             "4": 0
           },
-          "Confidence": 0.88
+          "Confidence": 0.9
         },
         "importance_20": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.24,
+          "Score": 1.34,
           "Probabilities": {
-            "0": 0.59,
+            "0": 0.56,
             "1": 0,
             "2": 0,
-            "3": 0.41,
+            "3": 0.44,
             "4": 0
           },
           "Confidence": 0
@@ -991,21 +1057,21 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 2.74,
+          "Score": 2.77,
           "Probabilities": {
-            "0": 0.08,
+            "0": 0.07,
             "1": 0,
-            "2": 0,
+            "2": 0.01,
             "3": 0.92,
             "4": 0
           },
-          "Confidence": 0.8
+          "Confidence": 0.82
         },
         "importance_22": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 2.42,
+          "Score": 2.43,
           "Probabilities": {
             "0": 0.19,
             "1": 0,
@@ -1033,12 +1099,12 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.33,
+          "Score": 1.43,
           "Probabilities": {
-            "0": 0.56,
+            "0": 0.52,
             "1": 0,
             "2": 0,
-            "3": 0.44,
+            "3": 0.48,
             "4": 0
           },
           "Confidence": 0
@@ -1047,7 +1113,7 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.35,
+          "Score": 1.36,
           "Probabilities": {
             "0": 0.55,
             "1": 0,
@@ -1061,7 +1127,7 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.08,
+          "Score": 1.1,
           "Probabilities": {
             "0": 0.64,
             "1": 0,
@@ -1075,59 +1141,31 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.96,
+          "Score": 1.98,
           "Probabilities": {
-            "0": 0.02,
+            "0": 0.01,
             "1": 0,
-            "2": 0.98,
+            "2": 0.99,
             "3": 0,
             "4": 0
           },
-          "Confidence": 0.97
+          "Confidence": 0.98
         },
         "importance_28": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.97,
+          "Score": 1.96,
           "Probabilities": {
-            "0": 0.01,
+            "0": 0.02,
             "1": 0,
-            "2": 0.99,
+            "2": 0.98,
             "3": 0,
             "4": 0
           },
-          "Confidence": 0.98
+          "Confidence": 0.97
         },
         "importance_29": {
-          "Type": "score",
-          "Noul": null,
-          "Choice": "",
-          "Score": 1.97,
-          "Probabilities": {
-            "0": 0.01,
-            "1": 0,
-            "2": 0.99,
-            "3": 0,
-            "4": 0
-          },
-          "Confidence": 0.98
-        },
-        "importance_3": {
-          "Type": "score",
-          "Noul": null,
-          "Choice": "",
-          "Score": 1.61,
-          "Probabilities": {
-            "0": 0.04,
-            "1": 0.66,
-            "2": 0,
-            "3": 0.27,
-            "4": 0.03
-          },
-          "Confidence": 0.44
-        },
-        "importance_30": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
@@ -1141,11 +1179,39 @@
           },
           "Confidence": 0.97
         },
+        "importance_3": {
+          "Type": "score",
+          "Noul": null,
+          "Choice": "",
+          "Score": 1.76,
+          "Probabilities": {
+            "0": 0.03,
+            "1": 0.6,
+            "2": 0,
+            "3": 0.34,
+            "4": 0.03
+          },
+          "Confidence": 0.33
+        },
+        "importance_30": {
+          "Type": "score",
+          "Noul": null,
+          "Choice": "",
+          "Score": 1.95,
+          "Probabilities": {
+            "0": 0.03,
+            "1": 0,
+            "2": 0.97,
+            "3": 0,
+            "4": 0
+          },
+          "Confidence": 0.95
+        },
         "importance_31": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.97,
+          "Score": 1.98,
           "Probabilities": {
             "0": 0.01,
             "1": 0,
@@ -1159,99 +1225,99 @@
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.93,
+          "Score": 1.92,
           "Probabilities": {
-            "0": 0.03,
+            "0": 0.04,
             "1": 0,
-            "2": 0.97,
+            "2": 0.96,
             "3": 0,
             "4": 0
           },
-          "Confidence": 0.95
+          "Confidence": 0.93
         },
         "importance_4": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.28,
+          "Score": 1.29,
           "Probabilities": {
-            "0": 0.15,
-            "1": 0.63,
+            "0": 0.13,
+            "1": 0.66,
             "2": 0,
-            "3": 0.22,
+            "3": 0.21,
             "4": 0
           },
-          "Confidence": 0.51
+          "Confidence": 0.54
         },
         "importance_5": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.08,
+          "Score": 1.04,
           "Probabilities": {
             "0": 0.1,
-            "1": 0.81,
+            "1": 0.83,
             "2": 0,
-            "3": 0.09,
+            "3": 0.07,
             "4": 0
           },
-          "Confidence": 0.77
+          "Confidence": 0.8
         },
         "importance_6": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.28,
+          "Score": 1.37,
           "Probabilities": {
-            "0": 0.08,
-            "1": 0.74,
+            "0": 0.07,
+            "1": 0.7,
             "2": 0.01,
-            "3": 0.17,
-            "4": 0
+            "3": 0.21,
+            "4": 0.01
           },
-          "Confidence": 0.64
+          "Confidence": 0.56
         },
         "importance_7": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.35,
+          "Score": 1.43,
           "Probabilities": {
             "0": 0.07,
-            "1": 0.73,
+            "1": 0.6900000000000001,
             "2": 0,
-            "3": 0.2,
+            "3": 0.24,
             "4": 0
           },
-          "Confidence": 0.61
+          "Confidence": 0.54
         },
         "importance_8": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 0.98,
+          "Score": 1.01,
           "Probabilities": {
             "0": 0.11,
-            "1": 0.83,
-            "2": 0.04,
-            "3": 0.02,
+            "1": 0.8,
+            "2": 0.05,
+            "3": 0.04,
             "4": 0
           },
-          "Confidence": 0.84
+          "Confidence": 0.8
         },
         "importance_9": {
           "Type": "score",
           "Noul": null,
           "Choice": "",
-          "Score": 1.05,
+          "Score": 1.11,
           "Probabilities": {
-            "0": 0.13,
-            "1": 0.78,
+            "0": 0.12,
+            "1": 0.77,
             "2": 0,
-            "3": 0.09,
+            "3": 0.11,
             "4": 0
           },
-          "Confidence": 0.74
+          "Confidence": 0.72
         }
       },
       "Usage": {
@@ -1269,10 +1335,10 @@
           "Choice": "services in production",
           "Score": null,
           "Probabilities": {
-            "Own": 0.02,
-            "Own services": 0.06,
+            "Own": 0.03,
+            "Own services": 0.07,
             "Own services in production": 0.27,
-            "action_only": 0.25,
+            "action_only": 0.23,
             "condition": 0,
             "generic_trait": 0,
             "people_or_context": 0,
@@ -1285,18 +1351,18 @@
         "chunk_1": {
           "Type": "choice",
           "Noul": null,
-          "Choice": "on-call rotation",
+          "Choice": "condition",
           "Score": null,
           "Probabilities": {
             "action_only": 0,
-            "condition": 0.48,
+            "condition": 0.5,
             "generic_trait": 0,
             "on-call": 0.01,
-            "on-call rotation": 0.51,
+            "on-call rotation": 0.49,
             "people_or_context": 0,
             "rotation": 0
           },
-          "Confidence": 0.43
+          "Confidence": 0.42
         },
         "chunk_2": {
           "Type": "choice",
@@ -1320,18 +1386,18 @@
           "Choice": "SLOs",
           "Score": null,
           "Probabilities": {
-            "SLOs": 1,
+            "SLOs": 0.99,
             "action_only": 0,
-            "condition": 0,
+            "condition": 0.01,
             "generic_trait": 0,
             "people_or_context": 0
           },
-          "Confidence": 1
+          "Confidence": 0.99
         }
       },
       "Usage": {
         "InputTokens": 1884,
-        "OutputTokens": 305,
+        "OutputTokens": 303,
         "CostUSD": 0.000079128
       }
     },
@@ -1346,23 +1412,23 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.62,
+            "Go in production": 0.56,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
-            "PostgreSQL skills": 0.01,
+            "PostgreSQL skills": 0.02,
             "Prometheus": 0,
-            "Python for data tooling": 0.12,
+            "Python for data tooling": 0.16,
             "SLOs": 0,
             "Terraform": 0,
             "backend software engineering experience": 0.04,
             "booking": 0.01,
             "build Go services for quoting": 0.02,
-            "none": 0.17,
+            "none": 0.18,
             "query tuning": 0.01
           },
-          "Confidence": 0.6
+          "Confidence": 0.53
         }
       },
       "Usage": {
@@ -1406,16 +1472,16 @@
           "Choice": "strong",
           "Score": null,
           "Probabilities": {
-            "alternative_tool": 0.02,
+            "alternative_tool": 0.01,
             "context_only": 0,
             "different_skill": 0,
             "none": 0,
-            "partial": 0.25,
+            "partial": 0.18,
             "shared_words_only": 0,
-            "strong": 0.73,
+            "strong": 0.81,
             "weak": 0
           },
-          "Confidence": 0.69
+          "Confidence": 0.78
         },
         "req_1": {
           "Type": "choice",
@@ -1427,12 +1493,12 @@
             "context_only": 0,
             "different_skill": 0,
             "none": 0,
-            "partial": 0.22,
+            "partial": 0.25,
             "shared_words_only": 0.01,
-            "strong": 0.77,
+            "strong": 0.74,
             "weak": 0
           },
-          "Confidence": 0.74
+          "Confidence": 0.7
         },
         "req_2": {
           "Type": "choice",
@@ -1444,12 +1510,12 @@
             "context_only": 0.03,
             "different_skill": 0.03,
             "none": 0,
-            "partial": 0.77,
+            "partial": 0.78,
             "shared_words_only": 0.08,
-            "strong": 0.08,
+            "strong": 0.07,
             "weak": 0.01
           },
-          "Confidence": 0.74
+          "Confidence": 0.75
         }
       },
       "Usage": {
@@ -1467,16 +1533,16 @@
           "Choice": "PostgreSQL skills",
           "Score": null,
           "Probabilities": {
-            "PostgreSQL": 0.21,
-            "PostgreSQL skills": 0.69,
+            "PostgreSQL": 0.15,
+            "PostgreSQL skills": 0.77,
             "Solid PostgreSQL": 0.01,
-            "Solid PostgreSQL skills": 0.09,
+            "Solid PostgreSQL skills": 0.07,
             "action_only": 0,
             "condition": 0,
             "generic_trait": 0,
             "people_or_context": 0
           },
-          "Confidence": 0.65
+          "Confidence": 0.74
         },
         "chunk_1": {
           "Type": "choice",
@@ -1526,23 +1592,23 @@
           "Choice": "backend software engineering experience",
           "Score": null,
           "Probabilities": {
-            "5+ years of backend": 0.02,
-            "5+ years of backend software engineering experience": 0.17,
+            "5+ years of backend": 0.03,
+            "5+ years of backend software engineering experience": 0.22999999999999998,
             "action_only": 0,
             "backend": 0.01,
             "backend software": 0,
-            "backend software engineering": 0.17,
-            "backend software engineering experience": 0.5,
+            "backend software engineering": 0.12,
+            "backend software engineering experience": 0.45999999999999996,
             "condition": 0.02,
             "engineering": 0,
-            "engineering experience": 0,
-            "generic_trait": 0,
+            "engineering experience": 0.01,
+            "generic_trait": 0.01,
             "people_or_context": 0,
             "software": 0,
             "software engineering": 0.02,
             "software engineering experience": 0.09
           },
-          "Confidence": 0.46
+          "Confidence": 0.42
         }
       },
       "Usage": {
@@ -1556,7 +1622,7 @@
       "Answers": {
         "gate_0": {
           "Type": "noul",
-          "Noul": 0.78,
+          "Noul": 0.81,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -1564,7 +1630,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.32,
+          "Noul": 0.36,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -1572,7 +1638,7 @@
         },
         "gate_2": {
           "Type": "noul",
-          "Noul": 0.27,
+          "Noul": 0.26,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -1595,8 +1661,8 @@
           "Score": null,
           "Probabilities": {
             "Experience running": 0.01,
-            "Experience running services": 0.02,
-            "Kubernetes": 0.07,
+            "Experience running services": 0.03,
+            "Kubernetes": 0.08,
             "Kubernetes in a cloud": 0.16,
             "action_only": 0,
             "cloud": 0,
@@ -1607,11 +1673,11 @@
             "people_or_context": 0,
             "running": 0,
             "running services": 0,
-            "running services on Kubernetes": 0.72,
+            "running services on Kubernetes": 0.69,
             "services": 0,
-            "services on Kubernetes": 0.02
+            "services on Kubernetes": 0.03
           },
-          "Confidence": 0.7
+          "Confidence": 0.67
         },
         "chunk_1": {
           "Type": "choice",
@@ -1677,7 +1743,7 @@
         },
         "gate_3": {
           "Type": "noul",
-          "Noul": 0.79,
+          "Noul": 0.81,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -1735,13 +1801,13 @@
           "Choice": "action_only",
           "Score": null,
           "Probabilities": {
-            "Design": 0.18,
-            "action_only": 0.82,
+            "Design": 0.2,
+            "action_only": 0.8,
             "condition": 0,
             "generic_trait": 0,
             "people_or_context": 0
           },
-          "Confidence": 0.77
+          "Confidence": 0.75
         },
         "chunk_1": {
           "Type": "choice",
@@ -1756,15 +1822,15 @@
             "build": 0.01,
             "build Go": 0,
             "build Go services": 0.09,
-            "build Go services for quoting": 0.71,
+            "build Go services for quoting": 0.72,
             "condition": 0,
             "generic_trait": 0,
             "people_or_context": 0,
-            "quoting": 0.01,
+            "quoting": 0,
             "services": 0,
             "services for quoting": 0
           },
-          "Confidence": 0.69
+          "Confidence": 0.7
         },
         "chunk_2": {
           "Type": "choice",
@@ -1828,13 +1894,13 @@
           "Score": null,
           "Probabilities": {
             "benefits": 0,
-            "company": 0.94,
-            "other": 0.03,
+            "company": 0.97,
+            "other": 0.02,
             "preferred": 0,
             "required": 0,
-            "responsibilities": 0.03
+            "responsibilities": 0.01
           },
-          "Confidence": 0.93
+          "Confidence": 0.96
         },
         "section_10": {
           "Type": "choice",
@@ -1859,12 +1925,12 @@
           "Probabilities": {
             "benefits": 0,
             "company": 0,
-            "other": 0.42,
+            "other": 0.45,
             "preferred": 0,
-            "required": 0.58,
+            "required": 0.55,
             "responsibilities": 0
           },
-          "Confidence": 0.5
+          "Confidence": 0.46
         },
         "section_12": {
           "Type": "choice",
@@ -1979,12 +2045,12 @@
           "Probabilities": {
             "benefits": 0,
             "company": 0,
-            "other": 0.41,
-            "preferred": 0.59,
+            "other": 0.35,
+            "preferred": 0.65,
             "required": 0,
             "responsibilities": 0
           },
-          "Confidence": 0.51
+          "Confidence": 0.58
         },
         "section_2": {
           "Type": "choice",
@@ -1993,13 +2059,13 @@
           "Score": null,
           "Probabilities": {
             "benefits": 0,
-            "company": 0.88,
-            "other": 0.07,
-            "preferred": 0,
+            "company": 0.87,
+            "other": 0.05,
+            "preferred": 0.01,
             "required": 0,
-            "responsibilities": 0.05
+            "responsibilities": 0.07
           },
-          "Confidence": 0.86
+          "Confidence": 0.84
         },
         "section_20": {
           "Type": "choice",
@@ -2052,14 +2118,14 @@
           "Choice": "benefits",
           "Score": null,
           "Probabilities": {
-            "benefits": 0.7,
+            "benefits": 0.71,
             "company": 0,
-            "other": 0.3,
+            "other": 0.29,
             "preferred": 0,
             "required": 0,
             "responsibilities": 0
           },
-          "Confidence": 0.64
+          "Confidence": 0.65
         },
         "section_24": {
           "Type": "choice",
@@ -2067,14 +2133,14 @@
           "Choice": "benefits",
           "Score": null,
           "Probabilities": {
-            "benefits": 0.96,
+            "benefits": 0.98,
             "company": 0,
-            "other": 0.04,
+            "other": 0.02,
             "preferred": 0,
             "required": 0,
             "responsibilities": 0
           },
-          "Confidence": 0.95
+          "Confidence": 0.98
         },
         "section_25": {
           "Type": "choice",
@@ -2113,13 +2179,13 @@
           "Score": null,
           "Probabilities": {
             "benefits": 0,
-            "company": 0.92,
-            "other": 0.05,
+            "company": 0.93,
+            "other": 0.04,
             "preferred": 0,
             "required": 0,
             "responsibilities": 0.03
           },
-          "Confidence": 0.9
+          "Confidence": 0.92
         },
         "section_4": {
           "Type": "choice",
@@ -2128,13 +2194,13 @@
           "Score": null,
           "Probabilities": {
             "benefits": 0,
-            "company": 0.9400000000000001,
-            "other": 0.03,
+            "company": 0.91,
+            "other": 0.07,
             "preferred": 0,
             "required": 0,
-            "responsibilities": 0.03
+            "responsibilities": 0.02
           },
-          "Confidence": 0.93
+          "Confidence": 0.89
         },
         "section_5": {
           "Type": "choice",
@@ -2144,12 +2210,12 @@
           "Probabilities": {
             "benefits": 0,
             "company": 0,
-            "other": 0.39,
+            "other": 0.38,
             "preferred": 0,
             "required": 0,
-            "responsibilities": 0.61
+            "responsibilities": 0.62
           },
-          "Confidence": 0.53
+          "Confidence": 0.54
         },
         "section_6": {
           "Type": "choice",
@@ -2223,7 +2289,7 @@
       "Answers": {
         "gate_0": {
           "Type": "noul",
-          "Noul": 0.89,
+          "Noul": 0.88,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2231,7 +2297,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.87,
+          "Noul": 0.88,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2239,7 +2305,7 @@
         },
         "gate_2": {
           "Type": "noul",
-          "Noul": 0.58,
+          "Noul": 0.57,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2318,7 +2384,7 @@
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
-            "PostgreSQL skills": 0.68,
+            "PostgreSQL skills": 0.67,
             "Prometheus": 0,
             "Python for data tooling": 0,
             "SLOs": 0,
@@ -2339,11 +2405,11 @@
             "pricing systems": 0,
             "query tuning": 0.19,
             "running services on Kubernetes": 0,
-            "schema design": 0.13,
+            "schema design": 0.14,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.67
+          "Confidence": 0.66
         }
       },
       "Usage": {
@@ -2361,15 +2427,15 @@
           "Choice": "Go in production",
           "Score": null,
           "Probabilities": {
-            "Go": 0.32,
-            "Go in production": 0.67,
+            "Go": 0.34,
+            "Go in production": 0.65,
             "action_only": 0,
             "condition": 0,
             "generic_trait": 0,
             "people_or_context": 0,
             "production": 0.01
           },
-          "Confidence": 0.61
+          "Confidence": 0.59
         }
       },
       "Usage": {
@@ -2388,13 +2454,13 @@
           "Score": null,
           "Probabilities": {
             "Mentor": 0.02,
-            "Mentor engineers": 0.02,
+            "Mentor engineers": 0.03,
             "Mentor engineers through": 0,
             "Mentor engineers through code": 0,
-            "Mentor engineers through code review": 0.67,
+            "Mentor engineers through code review": 0.71,
             "action_only": 0.02,
             "code": 0,
-            "code review": 0.26,
+            "code review": 0.21,
             "condition": 0,
             "engineers": 0,
             "engineers through": 0,
@@ -2405,9 +2471,9 @@
             "review": 0,
             "through": 0,
             "through code": 0,
-            "through code review": 0
+            "through code review": 0.01
           },
-          "Confidence": 0.65
+          "Confidence": 0.69
         },
         "chunk_1": {
           "Type": "choice",
@@ -2415,15 +2481,15 @@
           "Choice": "design discussions",
           "Score": null,
           "Probabilities": {
-            "action_only": 0.17,
+            "action_only": 0.2,
             "condition": 0,
-            "design": 0.16,
-            "design discussions": 0.65,
+            "design": 0.14,
+            "design discussions": 0.64,
             "discussions": 0.01,
             "generic_trait": 0.01,
             "people_or_context": 0
           },
-          "Confidence": 0.59
+          "Confidence": 0.58
         }
       },
       "Usage": {
@@ -2441,7 +2507,7 @@
           "Choice": "running services on Kubernetes",
           "Score": null,
           "Probabilities": {
-            "AWS": 0.14,
+            "AWS": 0.18,
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
@@ -2468,12 +2534,12 @@
             "observability tooling": 0,
             "pricing systems": 0,
             "query tuning": 0,
-            "running services on Kubernetes": 0.86,
+            "running services on Kubernetes": 0.82,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.86
+          "Confidence": 0.81
         }
       },
       "Usage": {
@@ -2548,10 +2614,10 @@
             "none": 0,
             "partial": 0.42,
             "shared_words_only": 0.02,
-            "strong": 0.53,
-            "weak": 0.03
+            "strong": 0.54,
+            "weak": 0.02
           },
-          "Confidence": 0.46
+          "Confidence": 0.47
         }
       },
       "Usage": {
@@ -2617,7 +2683,7 @@
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
-            "Mentor engineers through code review": 0.98,
+            "Mentor engineers through code review": 0.99,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
@@ -2625,13 +2691,13 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.01,
+            "backend software engineering experience": 0,
             "booking": 0,
             "build Go services for quoting": 0,
             "design discussions": 0.01,
             "none": 0
           },
-          "Confidence": 0.98
+          "Confidence": 0.99
         }
       },
       "Usage": {
@@ -2695,7 +2761,7 @@
       "Answers": {
         "gate_0": {
           "Type": "noul",
-          "Noul": 0.59,
+          "Noul": 0.62,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2703,7 +2769,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.82,
+          "Noul": 0.84,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2711,7 +2777,7 @@
         },
         "gate_2": {
           "Type": "noul",
-          "Noul": 0.36,
+          "Noul": 0.4,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -2733,7 +2799,7 @@
           "Choice": "running services on Kubernetes",
           "Score": null,
           "Probabilities": {
-            "AWS": 0.38,
+            "AWS": 0.39,
             "GCP": 0.01,
             "Go in production": 0,
             "Grafana": 0,
@@ -2749,9 +2815,9 @@
             "booking": 0,
             "build Go services for quoting": 0,
             "none": 0,
-            "running services on Kubernetes": 0.61
+            "running services on Kubernetes": 0.6
           },
-          "Confidence": 0.59
+          "Confidence": 0.57
         }
       },
       "Usage": {
@@ -2769,22 +2835,22 @@
           "Choice": "Model event flows on Kafka",
           "Score": null,
           "Probabilities": {
-            "Kafka": 0.13,
+            "Kafka": 0.11,
             "Model": 0,
             "Model event": 0,
             "Model event flows": 0.01,
-            "Model event flows on Kafka": 0.61,
+            "Model event flows on Kafka": 0.6900000000000001,
             "action_only": 0,
             "condition": 0,
             "event": 0,
-            "event flows": 0,
-            "event flows on Kafka": 0.25,
+            "event flows": 0.01,
+            "event flows on Kafka": 0.18,
             "flows": 0,
             "flows on Kafka": 0,
             "generic_trait": 0,
             "people_or_context": 0
           },
-          "Confidence": 0.58
+          "Confidence": 0.67
         },
         "chunk_1": {
           "Type": "choice",
@@ -2798,19 +2864,19 @@
             "keep": 0,
             "keep them": 0,
             "keep them reliable": 0.01,
-            "keep them reliable under peak load": 0.17,
-            "load": 0.02,
+            "keep them reliable under peak load": 0.16,
+            "load": 0.01,
             "peak": 0,
-            "peak load": 0.17,
+            "peak load": 0.15,
             "people_or_context": 0,
-            "reliable": 0,
+            "reliable": 0.01,
             "reliable under peak": 0.02,
-            "reliable under peak load": 0.5,
+            "reliable under peak load": 0.53,
             "them": 0,
             "them reliable": 0,
             "them reliable under peak": 0
           },
-          "Confidence": 0.47
+          "Confidence": 0.5
         }
       },
       "Usage": {
@@ -2835,7 +2901,7 @@
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
-            "PostgreSQL skills": 0.66,
+            "PostgreSQL skills": 0.67,
             "Prometheus": 0,
             "Python for data tooling": 0,
             "SLOs": 0,
@@ -2843,10 +2909,10 @@
             "backend software engineering experience": 0,
             "booking": 0,
             "none": 0,
-            "query tuning": 0.19,
-            "schema design": 0.15
+            "query tuning": 0.17,
+            "schema design": 0.16
           },
-          "Confidence": 0.64
+          "Confidence": 0.65
         }
       },
       "Usage": {
@@ -2945,12 +3011,12 @@
             "action_only": 0,
             "condition": 0,
             "generic_trait": 0,
-            "observability": 0,
-            "observability tooling": 1,
+            "observability": 0.01,
+            "observability tooling": 0.99,
             "people_or_context": 0,
             "tooling": 0
           },
-          "Confidence": 1
+          "Confidence": 0.99
         },
         "chunk_1": {
           "Type": "choice",
@@ -3006,7 +3072,7 @@
       "Answers": {
         "gate_0": {
           "Type": "noul",
-          "Noul": 0.49,
+          "Noul": 0.51,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -3014,7 +3080,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.25,
+          "Noul": 0.24,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -3030,7 +3096,7 @@
         },
         "gate_3": {
           "Type": "noul",
-          "Noul": 0.05,
+          "Noul": 0.04,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -3056,7 +3122,7 @@
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
-            "Mentor engineers through code review": 0.98,
+            "Mentor engineers through code review": 0.99,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
@@ -3068,7 +3134,7 @@
             "booking": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
-            "design discussions": 0.02,
+            "design discussions": 0.01,
             "designing REST": 0,
             "event streaming": 0,
             "gRPC APIs": 0,
@@ -3084,7 +3150,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.98
+          "Confidence": 0.99
         }
       },
       "Usage": {
@@ -3111,7 +3177,7 @@
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
             "Prometheus": 0,
-            "Python for data tooling": 0.55,
+            "Python for data tooling": 0.5700000000000001,
             "SLOs": 0,
             "Terraform": 0,
             "backend software engineering experience": 0,
@@ -3127,14 +3193,14 @@
             "marketplaces": 0.01,
             "none": 0,
             "observability tooling": 0,
-            "pricing systems": 0.44,
+            "pricing systems": 0.42,
             "query tuning": 0,
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.54
+          "Confidence": 0.56
         }
       },
       "Usage": {
@@ -3164,13 +3230,13 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.45,
+            "backend software engineering experience": 0.48,
             "booking": 0,
-            "event streaming": 0.53,
+            "event streaming": 0.49,
             "none": 0.01,
-            "services in production": 0.01
+            "services in production": 0.02
           },
-          "Confidence": 0.5
+          "Confidence": 0.46
         }
       },
       "Usage": {
@@ -3230,7 +3296,7 @@
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.14,
+            "Prometheus": 0.18,
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
@@ -3246,7 +3312,7 @@
             "logistics": 0,
             "marketplaces": 0,
             "none": 0,
-            "observability tooling": 0.83,
+            "observability tooling": 0.79,
             "pricing systems": 0,
             "query tuning": 0,
             "running services on Kubernetes": 0,
@@ -3254,7 +3320,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.82
+          "Confidence": 0.78
         }
       },
       "Usage": {
@@ -3385,7 +3451,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.2,
+            "Go in production": 0.21,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
@@ -3397,11 +3463,11 @@
             "Terraform": 0,
             "backend software engineering experience": 0.01,
             "booking": 0,
-            "designing REST": 0.16,
-            "gRPC APIs": 0.63,
+            "designing REST": 0.12,
+            "gRPC APIs": 0.66,
             "none": 0
           },
-          "Confidence": 0.61
+          "Confidence": 0.64
         }
       },
       "Usage": {
@@ -3421,7 +3487,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.44,
+            "Go in production": 0.47,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
@@ -3431,7 +3497,7 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.56,
+            "backend software engineering experience": 0.53,
             "booking": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
@@ -3451,7 +3517,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.55
+          "Confidence": 0.51
         }
       },
       "Usage": {
@@ -3472,12 +3538,12 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.04,
+            "Grafana": 0.03,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.26,
+            "Prometheus": 0.27,
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
@@ -3522,10 +3588,10 @@
             "action_only": 0,
             "condition": 0,
             "generic_trait": 0,
-            "marketplaces": 0.94,
-            "people_or_context": 0.06
+            "marketplaces": 0.93,
+            "people_or_context": 0.07
           },
-          "Confidence": 0.92
+          "Confidence": 0.91
         },
         "chunk_2": {
           "Type": "choice",
@@ -3584,6 +3650,72 @@
         "CostUSD": 0.000032466
       }
     },
+    "9a2883bb854af01c32ce086d75768e502dd14e78a176210df72624c8f710aadb": {
+      "Model": "typesafe/jev-1.13-20260917",
+      "Answers": {
+        "gate_0": {
+          "Type": "noul",
+          "Noul": 0.48,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_1": {
+          "Type": "noul",
+          "Noul": 0.86,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_2": {
+          "Type": "noul",
+          "Noul": 0.26,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_3": {
+          "Type": "noul",
+          "Noul": 0.22,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_4": {
+          "Type": "noul",
+          "Noul": 0.83,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_5": {
+          "Type": "noul",
+          "Noul": 0.14,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        },
+        "gate_6": {
+          "Type": "noul",
+          "Noul": 0.17,
+          "Choice": "",
+          "Score": null,
+          "Probabilities": null,
+          "Confidence": null
+        }
+      },
+      "Usage": {
+        "InputTokens": 1328,
+        "OutputTokens": 130,
+        "CostUSD": 0.000055776
+      }
+    },
     "9b1370303dbfbb000ac18edbd98857a2d6a64bc156477b704f4a6ff5c35c48ee": {
       "Model": "typesafe/jev-1.13-20260917",
       "Answers": {
@@ -3605,7 +3737,7 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.09,
+            "backend software engineering experience": 0.1,
             "booking": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
@@ -3616,7 +3748,7 @@
             "incident reviews": 0,
             "logistics": 0,
             "marketplaces": 0,
-            "none": 0.81,
+            "none": 0.8,
             "observability tooling": 0,
             "pricing systems": 0,
             "query tuning": 0.01,
@@ -3625,53 +3757,13 @@
             "services in production": 0.03,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.8
+          "Confidence": 0.79
         }
       },
       "Usage": {
         "InputTokens": 1279,
         "OutputTokens": 303,
         "CostUSD": 0.000053718
-      }
-    },
-    "9d1f81945b8390e6ddc20acf03f70e6dc8c29fb6a4400fc1615f02ae00b4db69": {
-      "Model": "typesafe/jev-1.13-20260917",
-      "Answers": {
-        "blocker": {
-          "Type": "noul",
-          "Noul": 0.05,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "experience_short": {
-          "Type": "noul",
-          "Noul": 0.15,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "role_match": {
-          "Type": "score",
-          "Noul": null,
-          "Choice": "",
-          "Score": 3.95,
-          "Probabilities": {
-            "0": 0,
-            "1": 0,
-            "2": 0,
-            "3": 0.05,
-            "4": 0.95
-          },
-          "Confidence": 0.96
-        }
-      },
-      "Usage": {
-        "InputTokens": 1298,
-        "OutputTokens": 52,
-        "CostUSD": 0.000054516
       }
     },
     "a39f2c38b63bd32ccfb7c9667478d4ca1fc2caa4cb60e3d40232344492e728bf": {
@@ -3683,16 +3775,16 @@
           "Choice": "alternative_tool",
           "Score": null,
           "Probabilities": {
-            "alternative_tool": 0.79,
+            "alternative_tool": 0.8,
             "context_only": 0,
-            "different_skill": 0,
+            "different_skill": 0.01,
             "none": 0,
-            "partial": 0.12,
+            "partial": 0.13,
             "shared_words_only": 0,
-            "strong": 0.09,
+            "strong": 0.06,
             "weak": 0
           },
-          "Confidence": 0.76
+          "Confidence": 0.77
         },
         "req_1": {
           "Type": "choice",
@@ -3704,12 +3796,12 @@
             "context_only": 0,
             "different_skill": 0,
             "none": 0,
-            "partial": 0.02,
+            "partial": 0.03,
             "shared_words_only": 0,
-            "strong": 0.98,
+            "strong": 0.97,
             "weak": 0
           },
-          "Confidence": 0.98
+          "Confidence": 0.97
         }
       },
       "Usage": {
@@ -3775,13 +3867,13 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.45,
+            "backend software engineering experience": 0.46,
             "booking": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "event streaming": 0.54,
+            "event streaming": 0.53,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "logistics": 0,
@@ -3795,7 +3887,7 @@
             "services in production": 0.01,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.52
+          "Confidence": 0.51
         }
       },
       "Usage": {
@@ -3817,7 +3909,7 @@
         },
         "gate_1": {
           "Type": "noul",
-          "Noul": 0.89,
+          "Noul": 0.88,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -3825,7 +3917,7 @@
         },
         "gate_2": {
           "Type": "noul",
-          "Noul": 0.25,
+          "Noul": 0.24,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -3864,10 +3956,10 @@
             "action_only": 0,
             "condition": 0,
             "generic_trait": 0,
-            "people_or_context": 0.97,
-            "product": 0.03
+            "people_or_context": 0.96,
+            "product": 0.04
           },
-          "Confidence": 0.96
+          "Confidence": 0.95
         },
         "chunk_2": {
           "Type": "choice",
@@ -3880,24 +3972,24 @@
             "data": 0.01,
             "data teams": 0.01,
             "data teams to ship": 0,
-            "data teams to ship pricing experiments safely": 0.07,
+            "data teams to ship pricing experiments safely": 0.06,
             "experiments": 0.01,
-            "experiments safely": 0,
+            "experiments safely": 0.01,
             "generic_trait": 0,
             "people_or_context": 0.06,
             "pricing": 0.02,
-            "pricing experiments": 0.12,
-            "pricing experiments safely": 0.17,
+            "pricing experiments": 0.11,
+            "pricing experiments safely": 0.2,
             "safely": 0,
             "ship": 0,
             "ship pricing": 0.01,
             "ship pricing experiments": 0.09,
-            "ship pricing experiments safely": 0.41,
+            "ship pricing experiments safely": 0.39,
             "teams": 0,
             "teams to ship": 0,
             "teams to ship pricing": 0
           },
-          "Confidence": 0.38
+          "Confidence": 0.36
         }
       },
       "Usage": {
@@ -3915,12 +4007,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "booking": 0.26,
+            "booking": 0.18,
             "carrier dispatch": 0.04,
-            "required_together": 0.06,
-            "unrelated": 0.64
+            "required_together": 0.07,
+            "unrelated": 0.71
           },
-          "Confidence": 0.52
+          "Confidence": 0.61
         },
         "alt_1": {
           "Type": "choice",
@@ -3928,12 +4020,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "build Go services for quoting": 0.13,
-            "carrier dispatch": 0.12,
+            "build Go services for quoting": 0.11,
+            "carrier dispatch": 0.13,
             "required_together": 0.04,
-            "unrelated": 0.71
+            "unrelated": 0.72
           },
-          "Confidence": 0.61
+          "Confidence": 0.63
         },
         "alt_10": {
           "Type": "choice",
@@ -3941,11 +4033,11 @@
           "Choice": "Mentor engineers through code review",
           "Score": null,
           "Probabilities": {
-            "Mentor engineers through code review": 0.49,
-            "required_together": 0.04,
-            "unrelated": 0.47
+            "Mentor engineers through code review": 0.48,
+            "required_together": 0.06,
+            "unrelated": 0.46
           },
-          "Confidence": 0.23
+          "Confidence": 0.22
         },
         "alt_13": {
           "Type": "choice",
@@ -3990,12 +4082,12 @@
           "Choice": "query tuning",
           "Score": null,
           "Probabilities": {
-            "PostgreSQL skills": 0.02,
-            "query tuning": 0.77,
-            "required_together": 0.1,
-            "unrelated": 0.11
+            "PostgreSQL skills": 0.01,
+            "query tuning": 0.74,
+            "required_together": 0.12,
+            "unrelated": 0.13
           },
-          "Confidence": 0.69
+          "Confidence": 0.65
         },
         "alt_17": {
           "Type": "choice",
@@ -4004,11 +4096,11 @@
           "Score": null,
           "Probabilities": {
             "PostgreSQL skills": 0.06,
-            "required_together": 0.11,
-            "schema design": 0.53,
-            "unrelated": 0.3
+            "required_together": 0.12,
+            "schema design": 0.46,
+            "unrelated": 0.36
           },
-          "Confidence": 0.37
+          "Confidence": 0.28
         },
         "alt_18": {
           "Type": "choice",
@@ -4016,12 +4108,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "AWS": 0.17,
-            "GCP": 0.09,
-            "required_together": 0.08,
-            "unrelated": 0.66
+            "AWS": 0.12,
+            "GCP": 0.06,
+            "required_together": 0.07,
+            "unrelated": 0.75
           },
-          "Confidence": 0.55
+          "Confidence": 0.67
         },
         "alt_19": {
           "Type": "choice",
@@ -4042,12 +4134,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "booking": 0.18,
-            "build Go services for quoting": 0.05,
-            "required_together": 0.03,
-            "unrelated": 0.74
+            "booking": 0.21,
+            "build Go services for quoting": 0.06,
+            "required_together": 0.04,
+            "unrelated": 0.69
           },
-          "Confidence": 0.65
+          "Confidence": 0.59
         },
         "alt_20": {
           "Type": "choice",
@@ -4068,11 +4160,11 @@
           "Choice": "Kafka",
           "Score": null,
           "Probabilities": {
-            "Kafka": 0.95,
+            "Kafka": 0.94,
             "required_together": 0,
-            "unrelated": 0.05
+            "unrelated": 0.06
           },
-          "Confidence": 0.92
+          "Confidence": 0.91
         },
         "alt_22": {
           "Type": "choice",
@@ -4092,13 +4184,13 @@
           "Choice": "Prometheus",
           "Score": null,
           "Probabilities": {
-            "Grafana": 0.07,
-            "OpenTelemetry": 0.12,
-            "Prometheus": 0.66,
+            "Grafana": 0.08,
+            "OpenTelemetry": 0.13,
+            "Prometheus": 0.63,
             "required_together": 0,
-            "unrelated": 0.15
+            "unrelated": 0.16
           },
-          "Confidence": 0.57
+          "Confidence": 0.54
         },
         "alt_24": {
           "Type": "choice",
@@ -4106,13 +4198,13 @@
           "Choice": "Grafana",
           "Score": null,
           "Probabilities": {
-            "Grafana": 0.83,
+            "Grafana": 0.85,
             "OpenTelemetry": 0.12,
-            "observability tooling": 0.04,
+            "observability tooling": 0.03,
             "required_together": 0,
-            "unrelated": 0.01
+            "unrelated": 0
           },
-          "Confidence": 0.79
+          "Confidence": 0.81
         },
         "alt_25": {
           "Type": "choice",
@@ -4120,13 +4212,13 @@
           "Choice": "Prometheus",
           "Score": null,
           "Probabilities": {
-            "OpenTelemetry": 0.13,
-            "Prometheus": 0.81,
-            "observability tooling": 0.05,
+            "OpenTelemetry": 0.1,
+            "Prometheus": 0.85,
+            "observability tooling": 0.04,
             "required_together": 0,
             "unrelated": 0.01
           },
-          "Confidence": 0.76
+          "Confidence": 0.81
         },
         "alt_26": {
           "Type": "choice",
@@ -4134,13 +4226,13 @@
           "Choice": "Prometheus",
           "Score": null,
           "Probabilities": {
-            "Grafana": 0.13,
-            "Prometheus": 0.83,
+            "Grafana": 0.15,
+            "Prometheus": 0.81,
             "observability tooling": 0.03,
             "required_together": 0,
             "unrelated": 0.01
           },
-          "Confidence": 0.79
+          "Confidence": 0.76
         },
         "alt_27": {
           "Type": "choice",
@@ -4148,12 +4240,12 @@
           "Choice": "marketplaces",
           "Score": null,
           "Probabilities": {
-            "marketplaces": 0.91,
-            "pricing systems": 0.07,
+            "marketplaces": 0.89,
+            "pricing systems": 0.09,
             "required_together": 0,
             "unrelated": 0.02
           },
-          "Confidence": 0.88
+          "Confidence": 0.85
         },
         "alt_28": {
           "Type": "choice",
@@ -4161,12 +4253,12 @@
           "Choice": "logistics",
           "Score": null,
           "Probabilities": {
-            "logistics": 0.8200000000000001,
-            "pricing systems": 0.15,
+            "logistics": 0.78,
+            "pricing systems": 0.2,
             "required_together": 0,
-            "unrelated": 0.03
+            "unrelated": 0.02
           },
-          "Confidence": 0.76
+          "Confidence": 0.71
         },
         "alt_29": {
           "Type": "choice",
@@ -4174,12 +4266,12 @@
           "Choice": "logistics",
           "Score": null,
           "Probabilities": {
-            "logistics": 0.68,
-            "marketplaces": 0.29,
+            "logistics": 0.62,
+            "marketplaces": 0.33,
             "required_together": 0,
-            "unrelated": 0.03
+            "unrelated": 0.05
           },
-          "Confidence": 0.57
+          "Confidence": 0.49
         },
         "alt_3": {
           "Type": "choice",
@@ -4187,12 +4279,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "SLOs": 0.03,
-            "incident reviews": 0.01,
-            "required_together": 0.04,
-            "unrelated": 0.92
+            "SLOs": 0.04,
+            "incident reviews": 0.02,
+            "required_together": 0.05,
+            "unrelated": 0.89
           },
-          "Confidence": 0.89
+          "Confidence": 0.85
         },
         "alt_30": {
           "Type": "choice",
@@ -4212,11 +4304,11 @@
           "Choice": "Terraform",
           "Score": null,
           "Probabilities": {
-            "Terraform": 0.98,
+            "Terraform": 0.97,
             "required_together": 0,
-            "unrelated": 0.02
+            "unrelated": 0.03
           },
-          "Confidence": 0.97
+          "Confidence": 0.95
         },
         "alt_4": {
           "Type": "choice",
@@ -4224,12 +4316,12 @@
           "Choice": "SLOs",
           "Score": null,
           "Probabilities": {
-            "SLOs": 0.57,
-            "required_together": 0.06,
+            "SLOs": 0.54,
+            "required_together": 0.07,
             "services in production": 0.01,
-            "unrelated": 0.36
+            "unrelated": 0.38
           },
-          "Confidence": 0.43
+          "Confidence": 0.39
         },
         "alt_5": {
           "Type": "choice",
@@ -4237,12 +4329,12 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "incident reviews": 0.19,
-            "required_together": 0.04,
+            "incident reviews": 0.18,
+            "required_together": 0.03,
             "services in production": 0.01,
-            "unrelated": 0.76
+            "unrelated": 0.78
           },
-          "Confidence": 0.68
+          "Confidence": 0.71
         },
         "alt_6": {
           "Type": "choice",
@@ -4250,11 +4342,11 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "reliable under peak load": 0.1,
-            "required_together": 0.07,
-            "unrelated": 0.83
+            "reliable under peak load": 0.09,
+            "required_together": 0.05,
+            "unrelated": 0.86
           },
-          "Confidence": 0.74
+          "Confidence": 0.79
         },
         "alt_7": {
           "Type": "choice",
@@ -4262,11 +4354,11 @@
           "Choice": "unrelated",
           "Score": null,
           "Probabilities": {
-            "Model event flows on Kafka": 0.22,
-            "required_together": 0.06,
-            "unrelated": 0.72
+            "Model event flows on Kafka": 0.2,
+            "required_together": 0.07,
+            "unrelated": 0.73
           },
-          "Confidence": 0.58
+          "Confidence": 0.59
         },
         "alt_9": {
           "Type": "choice",
@@ -4274,11 +4366,11 @@
           "Choice": "design discussions",
           "Score": null,
           "Probabilities": {
-            "design discussions": 0.65,
-            "required_together": 0.02,
-            "unrelated": 0.33
+            "design discussions": 0.5599999999999999,
+            "required_together": 0.05,
+            "unrelated": 0.39
           },
-          "Confidence": 0.48
+          "Confidence": 0.34
         },
         "dup_0": {
           "Type": "choice",
@@ -4288,7 +4380,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.15,
+            "Go in production": 0.16,
             "Grafana": 0,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
@@ -4300,12 +4392,12 @@
             "SLOs": 0,
             "Terraform": 0,
             "backend software engineering experience": 0.01,
-            "booking": 0.08,
+            "booking": 0.09999999999999999,
             "broader_or_narrower": 0.05,
             "carrier dispatch": 0.04,
             "design discussions": 0,
             "designing REST": 0.02,
-            "different_thing": 0.23,
+            "different_thing": 0.28,
             "event streaming": 0,
             "gRPC APIs": 0.01,
             "incident reviews": 0,
@@ -4313,17 +4405,17 @@
             "logistics": 0.01,
             "marketplaces": 0,
             "observability tooling": 0.01,
-            "part_of_or_contains": 0.22,
-            "pricing systems": 0.1,
+            "part_of_or_contains": 0.16,
+            "pricing systems": 0.08,
             "query tuning": 0,
             "related_not_same": 0.03,
             "reliable under peak load": 0,
-            "running services on Kubernetes": 0.02,
+            "running services on Kubernetes": 0.03,
             "schema design": 0,
             "services in production": 0.01,
-            "ship pricing experiments safely": 0.01
+            "ship pricing experiments safely": 0
           },
-          "Confidence": 0.21
+          "Confidence": 0.26
         },
         "dup_1": {
           "Type": "choice",
@@ -4333,7 +4425,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0,
+            "Go in production": 0.01,
             "Grafana": 0,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
@@ -4350,7 +4442,7 @@
             "carrier dispatch": 0.01,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.55,
+            "different_thing": 0.52,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -4358,17 +4450,17 @@
             "logistics": 0.01,
             "marketplaces": 0.01,
             "observability tooling": 0.01,
-            "part_of_or_contains": 0.16,
+            "part_of_or_contains": 0.17,
             "pricing systems": 0.01,
             "query tuning": 0,
-            "related_not_same": 0.04,
+            "related_not_same": 0.05,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.54
+          "Confidence": 0.51
         },
         "dup_10": {
           "Type": "choice",
@@ -4381,7 +4473,7 @@
             "Go in production": 0,
             "Grafana": 0.01,
             "Kafka": 0,
-            "Mentor engineers through code review": 0.14,
+            "Mentor engineers through code review": 0.18000000000000002,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
@@ -4394,8 +4486,8 @@
             "broader_or_narrower": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
-            "designing REST": 0.27,
-            "different_thing": 0.42,
+            "designing REST": 0.26,
+            "different_thing": 0.4,
             "event streaming": 0,
             "gRPC APIs": 0.01,
             "incident reviews": 0,
@@ -4406,14 +4498,14 @@
             "part_of_or_contains": 0.02,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.06999999999999999,
+            "related_not_same": 0.05,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0.04,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.4
+          "Confidence": 0.38
         },
         "dup_11": {
           "Type": "choice",
@@ -4435,12 +4527,12 @@
             "SLOs": 0,
             "Terraform": 0,
             "booking": 0,
-            "broader_or_narrower": 0.09,
+            "broader_or_narrower": 0.08,
             "build Go services for quoting": 0.01,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0.01,
-            "different_thing": 0.6,
+            "different_thing": 0.62,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -4451,14 +4543,14 @@
             "part_of_or_contains": 0.08,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.06999999999999999,
+            "related_not_same": 0.04,
             "reliable under peak load": 0,
-            "running services on Kubernetes": 0.01,
+            "running services on Kubernetes": 0,
             "schema design": 0,
-            "services in production": 0.05,
+            "services in production": 0.08,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.59
+          "Confidence": 0.61
         },
         "dup_12": {
           "Type": "choice",
@@ -4478,10 +4570,10 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.03,
+            "backend software engineering experience": 0.04,
             "booking": 0,
             "broader_or_narrower": 0.02,
-            "build Go services for quoting": 0.11,
+            "build Go services for quoting": 0.09,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
@@ -4500,7 +4592,7 @@
             "reliable under peak load": 0.01,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
-            "services in production": 0.34,
+            "services in production": 0.36,
             "ship pricing experiments safely": 0
           },
           "Confidence": 0.39
@@ -4530,15 +4622,15 @@
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0.01,
-            "different_thing": 0.09999999999999999,
+            "different_thing": 0.12,
             "event streaming": 0,
-            "gRPC APIs": 0.74,
+            "gRPC APIs": 0.71,
             "incident reviews": 0,
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.12,
+            "part_of_or_contains": 0.13,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.02,
@@ -4548,7 +4640,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.73
+          "Confidence": 0.7
         },
         "dup_14": {
           "Type": "choice",
@@ -4571,19 +4663,19 @@
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
-            "broader_or_narrower": 0.02,
+            "broader_or_narrower": 0.01,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
-            "designing REST": 0.6,
-            "different_thing": 0.24000000000000002,
+            "designing REST": 0.65,
+            "different_thing": 0.21000000000000002,
             "event streaming": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.13,
+            "part_of_or_contains": 0.12,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.01,
@@ -4593,7 +4685,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.59
+          "Confidence": 0.64
         },
         "dup_15": {
           "Type": "choice",
@@ -4620,7 +4712,7 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.32,
+            "different_thing": 0.36,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -4628,17 +4720,17 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.14,
+            "part_of_or_contains": 0.17,
             "pricing systems": 0,
-            "query tuning": 0.29000000000000004,
-            "related_not_same": 0.01,
+            "query tuning": 0.23,
+            "related_not_same": 0.02,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0,
-            "schema design": 0.22,
+            "schema design": 0.21000000000000002,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.3
+          "Confidence": 0.34
         },
         "dup_16": {
           "Type": "choice",
@@ -4648,13 +4740,13 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.01,
+            "Go in production": 0,
             "Grafana": 0,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
-            "PostgreSQL skills": 0.21000000000000002,
+            "PostgreSQL skills": 0.24000000000000002,
             "Prometheus": 0,
             "Python for data tooling": 0,
             "SLOs": 0,
@@ -4666,24 +4758,24 @@
             "carrier dispatch": 0,
             "design discussions": 0.01,
             "designing REST": 0.01,
-            "different_thing": 0.46,
+            "different_thing": 0.4,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
-            "logistics": 0.01,
+            "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.15,
+            "part_of_or_contains": 0.19,
             "pricing systems": 0,
             "query tuning": 0.04,
-            "related_not_same": 0.07,
+            "related_not_same": 0.06999999999999999,
             "reliable under peak load": 0.01,
             "running services on Kubernetes": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.44
+          "Confidence": 0.38
         },
         "dup_17": {
           "Type": "choice",
@@ -4699,7 +4791,7 @@
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
-            "PostgreSQL skills": 0.09999999999999999,
+            "PostgreSQL skills": 0.12,
             "Prometheus": 0,
             "Python for data tooling": 0,
             "SLOs": 0,
@@ -4711,12 +4803,12 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.66,
+            "different_thing": 0.6,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
-            "logistics": 0,
+            "logistics": 0.02,
             "marketplaces": 0,
             "observability tooling": 0,
             "part_of_or_contains": 0.05,
@@ -4724,11 +4816,11 @@
             "related_not_same": 0.03,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0,
-            "schema design": 0.14,
+            "schema design": 0.17,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.65
+          "Confidence": 0.59
         },
         "dup_18": {
           "Type": "choice",
@@ -4751,12 +4843,12 @@
             "Terraform": 0,
             "backend software engineering experience": 0.01,
             "booking": 0,
-            "broader_or_narrower": 0.06,
+            "broader_or_narrower": 0.06999999999999999,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.63,
+            "different_thing": 0.58,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0.01,
@@ -4764,16 +4856,16 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.08,
+            "part_of_or_contains": 0.11,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.04,
+            "related_not_same": 0.03,
             "reliable under peak load": 0,
             "schema design": 0,
-            "services in production": 0.14,
+            "services in production": 0.16,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.62
+          "Confidence": 0.57
         },
         "dup_19": {
           "Type": "choice",
@@ -4781,7 +4873,7 @@
           "Choice": "different_thing",
           "Score": null,
           "Probabilities": {
-            "GCP": 0.16,
+            "GCP": 0.17,
             "Go in production": 0,
             "Grafana": 0,
             "Kafka": 0,
@@ -4795,12 +4887,12 @@
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
-            "broader_or_narrower": 0.18000000000000002,
+            "broader_or_narrower": 0.19,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.55,
+            "different_thing": 0.51,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -4808,17 +4900,17 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.02,
+            "part_of_or_contains": 0.03,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.04,
             "reliable under peak load": 0,
-            "running services on Kubernetes": 0.03,
+            "running services on Kubernetes": 0.05,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.54
+          "Confidence": 0.5
         },
         "dup_2": {
           "Type": "choice",
@@ -4841,29 +4933,29 @@
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0.02,
-            "broader_or_narrower": 0,
-            "build Go services for quoting": 0.060000000000000005,
+            "broader_or_narrower": 0.01,
+            "build Go services for quoting": 0.04,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.64,
+            "different_thing": 0.68,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
-            "logistics": 0.17,
+            "logistics": 0.16,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.060000000000000005,
-            "pricing systems": 0,
+            "part_of_or_contains": 0.02,
+            "pricing systems": 0.01,
             "query tuning": 0,
-            "related_not_same": 0.03,
+            "related_not_same": 0.04,
             "reliable under peak load": 0,
-            "running services on Kubernetes": 0.01,
+            "running services on Kubernetes": 0.02,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.63
+          "Confidence": 0.67
         },
         "dup_20": {
           "Type": "choice",
@@ -4871,7 +4963,7 @@
           "Choice": "different_thing",
           "Score": null,
           "Probabilities": {
-            "AWS": 0.16,
+            "AWS": 0.14,
             "Go in production": 0,
             "Grafana": 0,
             "Kafka": 0,
@@ -4890,7 +4982,7 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.6900000000000001,
+            "different_thing": 0.7,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -4898,17 +4990,17 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.01,
+            "part_of_or_contains": 0.02,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.02,
+            "related_not_same": 0.03,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.04,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.68
+          "Confidence": 0.69
         },
         "dup_21": {
           "Type": "choice",
@@ -4920,9 +5012,9 @@
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
-            "Kafka": 0.93,
+            "Kafka": 0.91,
             "Mentor engineers through code review": 0,
-            "Model event flows on Kafka": 0.02,
+            "Model event flows on Kafka": 0.03,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
             "Prometheus": 0,
@@ -4936,7 +5028,7 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.03,
+            "different_thing": 0.04,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
@@ -4946,14 +5038,14 @@
             "part_of_or_contains": 0.01,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0,
+            "related_not_same": 0.01,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.93
+          "Confidence": 0.91
         },
         "dup_22": {
           "Type": "choice",
@@ -4980,15 +5072,15 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.060000000000000005,
-            "event streaming": 0.9,
+            "different_thing": 0.09999999999999999,
+            "event streaming": 0.85,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.02,
+            "part_of_or_contains": 0.03,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0,
@@ -4998,7 +5090,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.9
+          "Confidence": 0.85
         },
         "dup_23": {
           "Type": "choice",
@@ -5009,13 +5101,13 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.08,
+            "Grafana": 0.06999999999999999,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
-            "OpenTelemetry": 0.15000000000000002,
+            "OpenTelemetry": 0.14,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.4,
+            "Prometheus": 0.41000000000000003,
             "Python for data tooling": 0,
             "SLOs": 0.03,
             "Terraform": 0,
@@ -5033,7 +5125,7 @@
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
-            "part_of_or_contains": 0.16,
+            "part_of_or_contains": 0.17,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.01,
@@ -5043,7 +5135,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.38
+          "Confidence": 0.39
         },
         "dup_24": {
           "Type": "choice",
@@ -5054,59 +5146,14 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.06,
+            "Grafana": 0.07,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
-            "OpenTelemetry": 0.1,
+            "OpenTelemetry": 0.09,
             "PostgreSQL skills": 0,
             "Python for data tooling": 0,
             "SLOs": 0.01,
-            "Terraform": 0,
-            "backend software engineering experience": 0,
-            "booking": 0,
-            "broader_or_narrower": 0.02,
-            "build Go services for quoting": 0.01,
-            "carrier dispatch": 0,
-            "design discussions": 0,
-            "designing REST": 0,
-            "different_thing": 0.14,
-            "event streaming": 0,
-            "gRPC APIs": 0,
-            "incident reviews": 0,
-            "infrastructure as code": 0,
-            "logistics": 0,
-            "marketplaces": 0,
-            "observability tooling": 0.6,
-            "part_of_or_contains": 0.05,
-            "pricing systems": 0,
-            "query tuning": 0,
-            "related_not_same": 0.01,
-            "reliable under peak load": 0,
-            "running services on Kubernetes": 0,
-            "schema design": 0,
-            "services in production": 0,
-            "ship pricing experiments safely": 0
-          },
-          "Confidence": 0.59
-        },
-        "dup_25": {
-          "Type": "choice",
-          "Noul": null,
-          "Choice": "observability tooling",
-          "Score": null,
-          "Probabilities": {
-            "AWS": 0,
-            "GCP": 0,
-            "Go in production": 0,
-            "Kafka": 0,
-            "Mentor engineers through code review": 0,
-            "Model event flows on Kafka": 0,
-            "OpenTelemetry": 0.02,
-            "PostgreSQL skills": 0,
-            "Prometheus": 0.04,
-            "Python for data tooling": 0,
-            "SLOs": 0,
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
@@ -5122,11 +5169,56 @@
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
-            "observability tooling": 0.6900000000000001,
-            "part_of_or_contains": 0.060000000000000005,
+            "observability tooling": 0.59,
+            "part_of_or_contains": 0.06,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.01,
+            "reliable under peak load": 0,
+            "running services on Kubernetes": 0,
+            "schema design": 0,
+            "services in production": 0,
+            "ship pricing experiments safely": 0
+          },
+          "Confidence": 0.58
+        },
+        "dup_25": {
+          "Type": "choice",
+          "Noul": null,
+          "Choice": "observability tooling",
+          "Score": null,
+          "Probabilities": {
+            "AWS": 0,
+            "GCP": 0,
+            "Go in production": 0,
+            "Kafka": 0,
+            "Mentor engineers through code review": 0,
+            "Model event flows on Kafka": 0,
+            "OpenTelemetry": 0.02,
+            "PostgreSQL skills": 0,
+            "Prometheus": 0.03,
+            "Python for data tooling": 0,
+            "SLOs": 0,
+            "Terraform": 0,
+            "backend software engineering experience": 0,
+            "booking": 0,
+            "broader_or_narrower": 0.01,
+            "build Go services for quoting": 0.01,
+            "carrier dispatch": 0,
+            "design discussions": 0,
+            "designing REST": 0,
+            "different_thing": 0.14,
+            "event streaming": 0,
+            "gRPC APIs": 0,
+            "incident reviews": 0,
+            "infrastructure as code": 0,
+            "logistics": 0,
+            "marketplaces": 0,
+            "observability tooling": 0.6900000000000001,
+            "part_of_or_contains": 0.06999999999999999,
+            "pricing systems": 0,
+            "query tuning": 0,
+            "related_not_same": 0.02,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0,
             "schema design": 0,
@@ -5144,12 +5236,12 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.01,
+            "Grafana": 0.02,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.03,
+            "Prometheus": 0.02,
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
@@ -5160,15 +5252,15 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.16,
+            "different_thing": 0.17,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
-            "observability tooling": 0.72,
-            "part_of_or_contains": 0.060000000000000005,
+            "observability tooling": 0.68,
+            "part_of_or_contains": 0.08,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.01,
@@ -5178,7 +5270,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.71
+          "Confidence": 0.67
         },
         "dup_27": {
           "Type": "choice",
@@ -5206,24 +5298,24 @@
             "carrier dispatch": 0.02,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.78,
+            "different_thing": 0.76,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
-            "marketplaces": 0.060000000000000005,
+            "marketplaces": 0.06999999999999999,
             "observability tooling": 0,
-            "part_of_or_contains": 0.02,
+            "part_of_or_contains": 0.03,
             "pricing systems": 0.04,
             "query tuning": 0,
-            "related_not_same": 0.060000000000000005,
+            "related_not_same": 0.06999999999999999,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.77
+          "Confidence": 0.75
         },
         "dup_28": {
           "Type": "choice",
@@ -5251,7 +5343,7 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.84,
+            "different_thing": 0.86,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -5261,14 +5353,14 @@
             "part_of_or_contains": 0.03,
             "pricing systems": 0.04,
             "query tuning": 0,
-            "related_not_same": 0.060000000000000005,
+            "related_not_same": 0.04,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.84
+          "Confidence": 0.86
         },
         "dup_29": {
           "Type": "choice",
@@ -5292,17 +5384,17 @@
             "backend software engineering experience": 0,
             "booking": 0.01,
             "broader_or_narrower": 0.01,
-            "build Go services for quoting": 0.09,
+            "build Go services for quoting": 0.09999999999999999,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.77,
+            "different_thing": 0.76,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
             "logistics": 0.02,
-            "marketplaces": 0.05,
+            "marketplaces": 0.04,
             "observability tooling": 0,
             "part_of_or_contains": 0.01,
             "query tuning": 0,
@@ -5311,9 +5403,9 @@
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
-            "ship pricing experiments safely": 0.01
+            "ship pricing experiments safely": 0.02
           },
-          "Confidence": 0.76
+          "Confidence": 0.75
         },
         "dup_3": {
           "Type": "choice",
@@ -5323,7 +5415,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.25,
+            "Go in production": 0.27,
             "Grafana": 0,
             "Kafka": 0,
             "Mentor engineers through code review": 0,
@@ -5336,12 +5428,12 @@
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
-            "broader_or_narrower": 0.01,
+            "broader_or_narrower": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.13,
+            "different_thing": 0.11,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0.01,
@@ -5349,16 +5441,16 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.08,
+            "part_of_or_contains": 0.09999999999999999,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.01,
             "reliable under peak load": 0,
-            "running services on Kubernetes": 0.44,
+            "running services on Kubernetes": 0.43,
             "schema design": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.42
+          "Confidence": 0.41
         },
         "dup_30": {
           "Type": "choice",
@@ -5389,21 +5481,21 @@
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
-            "infrastructure as code": 0.8200000000000001,
+            "infrastructure as code": 0.86,
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.04,
+            "part_of_or_contains": 0.03,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.09,
+            "related_not_same": 0.06999999999999999,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.81
+          "Confidence": 0.86
         },
         "dup_31": {
           "Type": "choice",
@@ -5423,7 +5515,7 @@
             "Prometheus": 0,
             "Python for data tooling": 0,
             "SLOs": 0,
-            "Terraform": 0.79,
+            "Terraform": 0.77,
             "backend software engineering experience": 0,
             "booking": 0,
             "broader_or_narrower": 0,
@@ -5441,14 +5533,14 @@
             "part_of_or_contains": 0.03,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.14,
+            "related_not_same": 0.16,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.78
+          "Confidence": 0.76
         },
         "dup_32": {
           "Type": "choice",
@@ -5467,7 +5559,7 @@
             "PostgreSQL skills": 0,
             "Prometheus": 0,
             "SLOs": 0,
-            "Terraform": 0.01,
+            "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
             "broader_or_narrower": 0,
@@ -5475,7 +5567,7 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.9400000000000001,
+            "different_thing": 0.96,
             "event streaming": 0,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -5483,7 +5575,7 @@
             "logistics": 0,
             "marketplaces": 0,
             "observability tooling": 0,
-            "part_of_or_contains": 0.01,
+            "part_of_or_contains": 0,
             "pricing systems": 0,
             "query tuning": 0,
             "related_not_same": 0.03,
@@ -5491,9 +5583,9 @@
             "running services on Kubernetes": 0,
             "schema design": 0,
             "services in production": 0,
-            "ship pricing experiments safely": 0
+            "ship pricing experiments safely": 0.01
           },
-          "Confidence": 0.94
+          "Confidence": 0.96
         },
         "dup_4": {
           "Type": "choice",
@@ -5512,33 +5604,33 @@
             "PostgreSQL skills": 0,
             "Prometheus": 0,
             "Python for data tooling": 0,
-            "SLOs": 0.11,
+            "SLOs": 0.09999999999999999,
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
-            "broader_or_narrower": 0.01,
+            "broader_or_narrower": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.76,
+            "different_thing": 0.74,
             "event streaming": 0,
             "gRPC APIs": 0,
             "infrastructure as code": 0,
             "logistics": 0,
-            "marketplaces": 0,
+            "marketplaces": 0.01,
             "observability tooling": 0,
-            "part_of_or_contains": 0.01,
+            "part_of_or_contains": 0.02,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.05,
+            "related_not_same": 0.06999999999999999,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0.05,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.75
+          "Confidence": 0.73
         },
         "dup_5": {
           "Type": "choice",
@@ -5565,10 +5657,10 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.67,
+            "different_thing": 0.7,
             "event streaming": 0,
             "gRPC APIs": 0,
-            "incident reviews": 0.09999999999999999,
+            "incident reviews": 0.09,
             "infrastructure as code": 0,
             "logistics": 0,
             "marketplaces": 0,
@@ -5576,14 +5668,14 @@
             "part_of_or_contains": 0.01,
             "pricing systems": 0,
             "query tuning": 0,
-            "related_not_same": 0.09999999999999999,
+            "related_not_same": 0.09,
             "reliable under peak load": 0,
             "running services on Kubernetes": 0.01,
             "schema design": 0,
             "services in production": 0.03,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.66
+          "Confidence": 0.69
         },
         "dup_6": {
           "Type": "choice",
@@ -5595,7 +5687,7 @@
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
-            "Kafka": 0.22,
+            "Kafka": 0.27,
             "Mentor engineers through code review": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
@@ -5610,8 +5702,8 @@
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.02,
-            "event streaming": 0.75,
+            "different_thing": 0.04,
+            "event streaming": 0.67,
             "gRPC APIs": 0,
             "incident reviews": 0,
             "infrastructure as code": 0,
@@ -5628,7 +5720,7 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.74
+          "Confidence": 0.66
         },
         "dup_7": {
           "Type": "choice",
@@ -5642,21 +5734,21 @@
             "Grafana": 0,
             "Kafka": 0.01,
             "Mentor engineers through code review": 0,
-            "Model event flows on Kafka": 0.04,
+            "Model event flows on Kafka": 0.03,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
             "Prometheus": 0,
             "Python for data tooling": 0,
-            "SLOs": 0.33,
+            "SLOs": 0.24000000000000002,
             "Terraform": 0,
             "backend software engineering experience": 0,
             "booking": 0,
-            "broader_or_narrower": 0.01,
+            "broader_or_narrower": 0.02,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
             "designing REST": 0,
-            "different_thing": 0.55,
+            "different_thing": 0.65,
             "event streaming": 0.01,
             "gRPC APIs": 0,
             "incident reviews": 0,
@@ -5673,7 +5765,7 @@
             "services in production": 0.01,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.54
+          "Confidence": 0.64
         }
       },
       "Usage": {
@@ -5693,7 +5785,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.17,
+            "Go in production": 0.14,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
@@ -5708,9 +5800,9 @@
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "design discussions": 0,
-            "designing REST": 0.15,
+            "designing REST": 0.16,
             "event streaming": 0,
-            "gRPC APIs": 0.67,
+            "gRPC APIs": 0.68,
             "incident reviews": 0,
             "logistics": 0,
             "marketplaces": 0,
@@ -5723,13 +5815,40 @@
             "services in production": 0,
             "ship pricing experiments safely": 0
           },
-          "Confidence": 0.66
+          "Confidence": 0.67
         }
       },
       "Usage": {
         "InputTokens": 1304,
         "OutputTokens": 305,
         "CostUSD": 0.000054768
+      }
+    },
+    "c0f46c2993b518101e6efac66e27385e0f7aca91d6e7c68234a3f5e06a7d8ae0": {
+      "Model": "typesafe/jev-1.13-20260917",
+      "Answers": {
+        "req_0": {
+          "Type": "choice",
+          "Noul": null,
+          "Choice": "partial",
+          "Score": null,
+          "Probabilities": {
+            "alternative_tool": 0,
+            "context_only": 0.22,
+            "different_skill": 0.25,
+            "none": 0,
+            "partial": 0.5,
+            "shared_words_only": 0.01,
+            "strong": 0.01,
+            "weak": 0.01
+          },
+          "Confidence": 0.43
+        }
+      },
+      "Usage": {
+        "InputTokens": 1007,
+        "OutputTokens": 80,
+        "CostUSD": 0.000042294
       }
     },
     "c22394ee508268419864fa72819a5f0a01b45f4ee1bdafb05928cd347555d7e4": {
@@ -5741,7 +5860,7 @@
           "Choice": "running services on Kubernetes",
           "Score": null,
           "Probabilities": {
-            "AWS": 0.15,
+            "AWS": 0.16,
             "GCP": 0,
             "Go in production": 0,
             "Grafana": 0,
@@ -5757,9 +5876,9 @@
             "booking": 0,
             "build Go services for quoting": 0,
             "none": 0,
-            "running services on Kubernetes": 0.85
+            "running services on Kubernetes": 0.84
           },
-          "Confidence": 0.84
+          "Confidence": 0.83
         }
       },
       "Usage": {
@@ -5779,7 +5898,7 @@
           "Probabilities": {
             "AWS": 0,
             "GCP": 0,
-            "Go in production": 0.45,
+            "Go in production": 0.48,
             "Grafana": 0,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
@@ -5789,13 +5908,13 @@
             "Python for data tooling": 0,
             "SLOs": 0,
             "Terraform": 0,
-            "backend software engineering experience": 0.55,
+            "backend software engineering experience": 0.52,
             "booking": 0,
             "build Go services for quoting": 0,
             "carrier dispatch": 0,
             "none": 0
           },
-          "Confidence": 0.52
+          "Confidence": 0.49
         }
       },
       "Usage": {
@@ -5856,14 +5975,14 @@
             "AWS": 0,
             "GCP": 0,
             "Go in production": 0,
-            "Grafana": 0.05,
+            "Grafana": 0.07,
             "Mentor engineers through code review": 0,
             "Model event flows on Kafka": 0,
             "OpenTelemetry": 0,
             "PostgreSQL skills": 0,
-            "Prometheus": 0.5,
+            "Prometheus": 0.46,
             "Python for data tooling": 0,
-            "SLOs": 0.03,
+            "SLOs": 0.04,
             "Terraform": 0,
             "backend software engineering experience": 0,
             "incident reviews": 0.01,
@@ -5871,47 +5990,13 @@
             "observability tooling": 0.4,
             "services in production": 0.01
           },
-          "Confidence": 0.47
+          "Confidence": 0.43
         }
       },
       "Usage": {
         "InputTokens": 897,
         "OutputTokens": 181,
         "CostUSD": 0.000037674
-      }
-    },
-    "d71ade0752e86978c0b1f89543614d9befe47bdf90d32e54288ac6b1295e4a1e": {
-      "Model": "typesafe/jev-1.13-20260917",
-      "Answers": {
-        "gate_0": {
-          "Type": "noul",
-          "Noul": 0.89,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_1": {
-          "Type": "noul",
-          "Noul": 0.43,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_2": {
-          "Type": "noul",
-          "Noul": 0.34,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        }
-      },
-      "Usage": {
-        "InputTokens": 746,
-        "OutputTokens": 58,
-        "CostUSD": 0.000031332
       }
     },
     "e19cb6fd6e22e44d55c74c6ead2a4975b19a7edcbf5e5d5aca0807edba383eb7": {
@@ -5943,7 +6028,7 @@
         },
         "gate_3": {
           "Type": "noul",
-          "Noul": 0.42,
+          "Noul": 0.46,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -5951,7 +6036,7 @@
         },
         "gate_4": {
           "Type": "noul",
-          "Noul": 0.31,
+          "Noul": 0.34,
           "Choice": "",
           "Score": null,
           "Probabilities": null,
@@ -6012,72 +6097,6 @@
         "CostUSD": 0.000047712
       }
     },
-    "e6e164d6ba92525cfbba73647137044ff7986ddfe83845ba7831aad23a28e101": {
-      "Model": "typesafe/jev-1.13-20260917",
-      "Answers": {
-        "gate_0": {
-          "Type": "noul",
-          "Noul": 0.47,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_1": {
-          "Type": "noul",
-          "Noul": 0.83,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_2": {
-          "Type": "noul",
-          "Noul": 0.25,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_3": {
-          "Type": "noul",
-          "Noul": 0.83,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_4": {
-          "Type": "noul",
-          "Noul": 0.22,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_5": {
-          "Type": "noul",
-          "Noul": 0.18,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        },
-        "gate_6": {
-          "Type": "noul",
-          "Noul": 0.18,
-          "Choice": "",
-          "Score": null,
-          "Probabilities": null,
-          "Confidence": null
-        }
-      },
-      "Usage": {
-        "InputTokens": 1328,
-        "OutputTokens": 130,
-        "CostUSD": 0.000055776
-      }
-    },
     "e985487814bde244a69f30c9ea3b1e68cb88c362b1649d68dd24c1a1846b7126": {
       "Model": "typesafe/jev-1.13-20260917",
       "Answers": {
@@ -6091,12 +6110,12 @@
             "context_only": 0,
             "different_skill": 0,
             "none": 0,
-            "partial": 0.15,
+            "partial": 0.16,
             "shared_words_only": 0,
-            "strong": 0.85,
+            "strong": 0.84,
             "weak": 0
           },
-          "Confidence": 0.83
+          "Confidence": 0.82
         }
       },
       "Usage": {

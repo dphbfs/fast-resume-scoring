@@ -100,7 +100,8 @@ type AlternativeGroup struct {
 // SchemaVersion is the version of the Result JSON contract.
 const SchemaVersion = "1"
 
-// Result is the Requirement Extractor's output (schema v1, see CLAUDE.md).
+// Result is the Requirement Extractor's output (schema v1; sample:
+// examples/requirements.json).
 type Result struct {
 	SchemaVersion     string                  `json:"schema_version"`
 	Model             string                  `json:"model"`

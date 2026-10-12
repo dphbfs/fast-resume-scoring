@@ -40,7 +40,7 @@ before. `scripts/probe_holistic.py` probes question wordings offline;
 `scripts/fit_match.py` refits the weights.
 
 **Second judge.** An independent recruiter rubric
-(`.claude/skills/recruiter-judge`) on a different model family, 3 runs,
+(`scripts/recruiter-judge.md`) on a different model family, 3 runs,
 median, with a quote required for every must-have
 (`scripts/judge.py`, `scripts/compare_judge.py`). It sees neither system's
 score. It answers the question "is the reference itself the last word?":

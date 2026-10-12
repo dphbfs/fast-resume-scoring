@@ -2,7 +2,7 @@
 
 One file per (golden Job Description, Resume) pair:
 `<resume>__<golden id>.expected.json`. Resumes live in `testdata/resumes/`
-(`syn-*` are synthetic, `real-*` are the user's masked Resumes). Input
+(`syn-*` are synthetic, `real-*` are the maintainer's masked Resumes). Input
 Requirements are the golden labels of the named Job Description. Terms
 follow `CONTEXT.md`.
 

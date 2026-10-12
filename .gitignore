@@ -32,7 +32,7 @@ go.work.sum
 # .idea/
 # .vscode/
 
-# Bulk Job Descriptions (regenerate with scripts/import_jds.py)
+# Bulk Job Descriptions (local smoke set, not committed)
 testdata/jd/
 
 # Build output
@@ -49,11 +49,18 @@ eval/cache/extract/
 # Python bytecode
 __pycache__/
 
-# Generative explanation replies (scripts/explain_reference.py)
-eval/explain/
+# Script outputs (local, not committed)
 eval/judge/
 eval/probe/
+eval/explain/
 eval/replay/
 
 # GoReleaser output
 /dist/
+
+# AI-assistant files (kept locally, not published)
+CLAUDE.md
+AGENTS.md
+.claude/
+.agents/
+.gitmodules

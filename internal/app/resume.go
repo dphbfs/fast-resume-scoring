@@ -46,7 +46,7 @@ func resumeSectionOf(heading string) domain.ResumeSection {
 	return domain.ResumeOther
 }
 
-// ParseResume turns a Resume in the markdown convention (see CLAUDE.md)
+// ParseResume turns a Resume in the markdown convention (see README.md)
 // into Evidence Units e1..eN, kept verbatim:
 //
 //   - "# Heading" starts a Resume Section; text above the first one (name,
