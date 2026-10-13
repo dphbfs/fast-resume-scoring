@@ -116,14 +116,40 @@ else
 fi
 [ "$got" = "$want" ] || die "checksum mismatch for ${archive}"
 
+# cosign_flags prints the verify-blob flags this cosign needs to read the
+# release's Sigstore bundle (signed by cosign v3), or fails when it cannot:
+# v2.5+ reads it as is, v2.4.1+ needs --new-bundle-format, older cannot.
+# An unrecognized version is tried as is.
+cosign_flags() {
+	local v major minor patch
+	v="$(cosign version 2>/dev/null | sed -n 's/^GitVersion: *v\{0,1\}//p')"
+	IFS=. read -r major minor patch <<<"${v%%-*}"
+	case "${major}.${minor}.${patch}" in
+	[0-9]*.[0-9]*.[0-9]*) ;;
+	*) return 0 ;;
+	esac
+	if ((major > 2 || (major == 2 && minor >= 5))); then
+		return 0
+	elif ((major == 2 && minor == 4 && patch >= 1)); then
+		echo --new-bundle-format
+	else
+		return 1
+	fi
+}
+
 # checksums.txt is signed keylessly in CI; check it when cosign is around.
 if command -v cosign >/dev/null 2>&1; then
-	fetch "${base}/checksums.txt.sigstore.json" "${tmp}/checksums.txt.sigstore.json" || die "download failed: checksums.txt.sigstore.json"
-	cosign verify-blob --bundle "${tmp}/checksums.txt.sigstore.json" \
-		--certificate-identity-regexp "^https://github.com/${REPO}/" \
-		--certificate-oidc-issuer https://token.actions.githubusercontent.com \
-		"${tmp}/checksums.txt" >/dev/null 2>&1 || die "cosign could not verify checksums.txt"
-	echo "Verified the release signature with cosign"
+	if flags="$(cosign_flags)"; then
+		fetch "${base}/checksums.txt.sigstore.json" "${tmp}/checksums.txt.sigstore.json" || die "download failed: checksums.txt.sigstore.json"
+		# shellcheck disable=SC2086 # flags is empty or one word
+		cosign verify-blob ${flags} --bundle "${tmp}/checksums.txt.sigstore.json" \
+			--certificate-identity-regexp "^https://github.com/${REPO}/" \
+			--certificate-oidc-issuer https://token.actions.githubusercontent.com \
+			"${tmp}/checksums.txt" >/dev/null 2>&1 || die "cosign could not verify checksums.txt"
+		echo "Verified the release signature with cosign"
+	else
+		echo "Skipped the release signature check: it needs cosign v2.4.1 or newer (the checksum was verified)" >&2
+	fi
 fi
 
 mkdir -p "${tmp}/x"
