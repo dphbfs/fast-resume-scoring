@@ -6,6 +6,13 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `install.sh` no longer fails with cosign older than v2.5: it passes
+  `--new-bundle-format` to cosign v2.4.1 to v2.4.x, and skips the
+  signature check with a warning on older versions that cannot read the
+  release's Sigstore bundle. The archive checksum is still verified.
+
 ## [0.0.5] - 2026-10-12
 
 ### Added

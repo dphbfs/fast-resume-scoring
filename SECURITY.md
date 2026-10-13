@@ -25,6 +25,12 @@ cosign verify-blob --bundle checksums.txt.sigstore.json \
 sha256sum --ignore-missing -c checksums.txt
 ```
 
+The bundle needs cosign v2.5 or newer; on v2.4.1 to v2.4.x, add
+`--new-bundle-format`. Older versions cannot read it. `install.sh` does
+this check when cosign is installed, and skips it with a warning on a
+version too old to read the bundle (the archive checksum is always
+checked).
+
 ## What this tool sends where
 
 Treat Resumes and Job Descriptions as personal data. A run sends them to:
