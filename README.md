@@ -2,11 +2,13 @@
 
 Resume scoring powered by [Jev](https://docs.typesafe.ai/introduction). Score your resume against a job posting in under a second, for about $0.0001. Use the right tools for the right job.
 
-[![CI](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml/badge.svg)](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dphbfs/fast-resume-scoring/badge)](https://scorecard.dev/viewer/?uri=github.com/dphbfs/fast-resume-scoring)
-[![Release](https://img.shields.io/github/v/release/dphbfs/fast-resume-scoring?sort=semver)](https://github.com/dphbfs/fast-resume-scoring/releases/latest)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Held-out MAE vs Opus 5](https://img.shields.io/badge/held--out_MAE_vs_Opus_5-8.6_pts-informational)](docs/final-report-v1.md)
+<p align="center">
+  <a href="https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://scorecard.dev/viewer/?uri=github.com/dphbfs/fast-resume-scoring"><img alt="OpenSSF Scorecard" src="https://api.scorecard.dev/projects/github.com/dphbfs/fast-resume-scoring/badge"></a>
+  <a href="https://github.com/dphbfs/fast-resume-scoring/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/dphbfs/fast-resume-scoring?sort=semver"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"></a>
+  <a href="docs/final-report-v1.md"><img alt="Held-out MAE vs Opus 5" src="https://img.shields.io/badge/held--out_MAE_vs_Opus_5-8.6_pts-informational"></a>
+</p>
 
 ### Why it's worth adding to your job search:
 
