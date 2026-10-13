@@ -26,7 +26,7 @@ Resume scoring powered by [Jev](https://docs.typesafe.ai/introduction). Score yo
 - **Tunable and measurable.** All prompts and weights live in one YAML
   file, and the eval commands show whether your change helped.
 
-![Claude Code scoring a resume against a job posting through the fast-resume-scoring MCP server](docs/img/demo-mcp.gif)
+![fast-resume-scoring demo: the job-fit question, Claude Code scoring a resume over MCP, speed and cost vs a frontier model, accuracy, install](docs/demo/demo.gif)
 
 ## Install
 
