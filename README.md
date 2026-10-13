@@ -1,6 +1,6 @@
 # fast-resume-scoring
 
-Resume scoring powered by [Jev](https://docs.typesafe.ai/introduction). Score your resume against a job posting in under a second, for $0.0001. Use the right tools for the right job.
+Resume scoring powered by [Jev](https://docs.typesafe.ai/introduction). Score your resume against a job posting in under a second, for about $0.0001. Use the right tools for the right job.
 
 [![CI](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml/badge.svg)](https://github.com/dphbfs/fast-resume-scoring/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dphbfs/fast-resume-scoring/badge)](https://scorecard.dev/viewer/?uri=github.com/dphbfs/fast-resume-scoring)
@@ -13,16 +13,21 @@ Resume scoring powered by [Jev](https://docs.typesafe.ai/introduction). Score yo
 - **Fast.** About 18× faster than a frontier-model prompt. Under a second
   per score, and 20 pairs take about 2 s with 4 running in parallel. The
   Opus prompt took 76 s for the same 20.
-- **Cheap.** At least 300× cheaper than a frontier-model prompt. About
-  $0.0001 per score, so 10,000 scores cost $1. The frontier-model prompt
-  costs at least $0.033 per score.
+- **Cheap.** At least 300× cheaper than a frontier-model prompt (see the
+  [comparison table](#results)). `score` is one Jev request: about
+  $0.0001 per score ($0.00009 on the held-out set), so 10,000 scores cost
+  about $1. The frontier-model prompt costs at least $0.033 per score.
+  `score` does not need `extract` or `check`.
 - **Fits your workflow.** It works as a CLI, as an MCP server so your agent (Claude Code, Codex, pi) can score postings for you, or in Docker.
 - **Accurate.** On a held-out set it agrees with Claude Opus 5 within 8.6
   points on average. An independent frontier-model judge landed at 8.8,
   so it's as close as a second opinion.
 - **Explainable.** Every score comes with its three signals. `extract` and
   `check` quote the resume lines behind each requirement, and `-debug`
-  writes a trace of every question asked.
+  writes a trace of every question asked. The breakdown is optional and
+  costs more than a score: on the example posting `extract` cost $0.0022
+  and `check` cost $0.0033, so about $0.0055 for both. That is still
+  about 6× cheaper than one frontier-model prompt.
 - **Tunable and measurable.** All prompts and weights live in one YAML
   file, and the eval commands show whether your change helped.
 
