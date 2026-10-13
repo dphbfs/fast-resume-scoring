@@ -6,16 +6,21 @@ import "math"
 // Score is null when there is nothing to score; ByTier holds only Tiers
 // with scored items; Gaps lists required items with Coverage none, by ID.
 type Fit struct {
-	Score  *int         `json:"score"`
+	// Score is the 0-100 Fit Score.
+	Score *int `json:"score"`
+	// ByTier is the unweighted 0-100 average credit within each Tier.
 	ByTier map[Tier]int `json:"by_tier"`
-	Gaps   []string     `json:"gaps"`
+	// Gaps are Requirement or Alternative Group IDs.
+	Gaps []string `json:"gaps"`
 }
 
 // FitWeights are the Fit Score's Coverage credits and Tier weights
 // (docs/adr/0002), read from the tuning file (tuning/tuning.yaml). A
 // strength or Tier without an entry counts 0.
 type FitWeights struct {
-	Credit     map[EvidenceStrength]float64
+	// Credit is what an item earns for its Coverage, from 0 to 1.
+	Credit map[EvidenceStrength]float64
+	// TierWeight is how much an item of each Tier counts in the average.
 	TierWeight map[Tier]float64
 }
 

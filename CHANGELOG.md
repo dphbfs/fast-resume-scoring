@@ -26,6 +26,8 @@ uses [Semantic Versioning](https://semver.org/).
 - README reorganized: install, usage (CLI and MCP), features, results,
   configuration, and tuning, with a demo of Claude Code calling the MCP
   server.
+- README opens with a launch demo GIF (`docs/demo/`).
+- Doc comments on the exported constants and fields in `internal/domain`.
 
 ## [0.0.4] - 2026-10-12
 

@@ -9,6 +9,7 @@ type Resume struct {
 // these kinds; anything unrecognized is ResumeOther.
 type ResumeSection string
 
+// Resume Section kinds.
 const (
 	ResumeExperience     ResumeSection = "experience"
 	ResumeProjects       ResumeSection = "projects"
@@ -23,6 +24,8 @@ const (
 // prose sentence, a skills line, or an education or certification entry.
 // Role, Company, and Dates come from the entry header above it, when any.
 type EvidenceUnit struct {
+	// ID is the key the unit is stored under in CoverageResult.EvidenceUnits
+	// (e.g. "e1"), so it is not repeated in the JSON.
 	ID            string        `json:"-"`
 	Text          string        `json:"text"`
 	ResumeSection ResumeSection `json:"resume_section"`

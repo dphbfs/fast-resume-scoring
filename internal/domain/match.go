@@ -7,8 +7,12 @@ import "math"
 // squares on the 50-pair development pool from Holistic probe answers and
 // checked with each Resume held out; refit only on development data.
 type MatchWeights struct {
-	Intercept       float64
-	RoleMatch       float64
+	// Intercept is the score before signals and the Blocker discount.
+	Intercept float64
+	// RoleMatch multiplies Holistic.RoleMatch.
+	RoleMatch float64
+	// ExperienceShort multiplies Holistic.ExperienceShort; it is negative,
+	// a penalty.
 	ExperienceShort float64
 }
 
@@ -27,11 +31,15 @@ const MatchSchemaVersion = "1"
 // MatchResult is the score output (match schema v1): the Match Score, the
 // Holistic Round answers behind it, and the tuning file that produced it.
 type MatchResult struct {
-	SchemaVersion string   `json:"schema_version"`
-	Model         string   `json:"model"`
-	Tuning        string   `json:"tuning,omitempty"`
-	MatchScore    int      `json:"match_score"`
-	Signals       Holistic `json:"signals"`
+	// SchemaVersion holds the MatchSchemaVersion constant.
+	SchemaVersion string `json:"schema_version"`
+	// Model is the Jev model that answered the Holistic Round.
+	Model string `json:"model"`
+	// Tuning is the hash of the tuning file, when known.
+	Tuning     string `json:"tuning,omitempty"`
+	MatchScore int    `json:"match_score"`
+	// Signals are the Holistic Round answers, without Model.
+	Signals Holistic `json:"signals"`
 }
 
 // NewMatchResult builds the score output for a Holistic Round answer;
