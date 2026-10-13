@@ -6,13 +6,6 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-### Fixed
-
-- `install.sh` no longer fails with cosign older than v2.5: it passes
-  `--new-bundle-format` to cosign v2.4.1 to v2.4.x, and skips the
-  signature check with a warning on older versions that cannot read the
-  release's Sigstore bundle. The archive checksum is still verified.
-
 ## [0.0.5] - 2026-10-12
 
 ### Added
@@ -22,7 +15,8 @@ uses [Semantic Versioning](https://semver.org/).
   `MCP_HTTP_TOKEN`, required on non-loopback addresses). Ships in the
   release archives and the Docker image.
 - `install.sh`: installs the binaries from a release (checksum-verified,
-  cosign-verified when available) to `~/.local/bin` or
+  cosign-verified when cosign v2.4.1 or newer is installed; older versions
+  skip the signature check with a warning) to `~/.local/bin` or
   `--installation-dir`, and the tuning file to
   `~/.config/fast-resume-scoring/`.
 - Release archives include `tuning.yaml`; the Docker image has it at
