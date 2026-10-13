@@ -5,6 +5,7 @@ package domain
 // gets no EvidenceLink.
 type EvidenceStrength string
 
+// Evidence strengths, strongest first.
 const (
 	StrengthStrong  EvidenceStrength = "strong"
 	StrengthPartial EvidenceStrength = "partial"
@@ -30,6 +31,7 @@ func (s EvidenceStrength) Rank() int {
 // it. P is Jev's probability that the unit is evidence at all
 // (strong + partial + weak).
 type EvidenceLink struct {
+	// Unit is the Evidence Unit's ID, a key of CoverageResult.EvidenceUnits.
 	Unit     string           `json:"unit"`
 	Strength EvidenceStrength `json:"strength"`
 	P        float64          `json:"p"`
@@ -58,17 +60,23 @@ const CoverageSchemaVersion = "1"
 // CoverageResult is the Resume Checker's output (coverage schema v1, see
 // README.md).
 type CoverageResult struct {
-	SchemaVersion     string                  `json:"schema_version"`
-	Model             string                  `json:"model"`
-	Requirements      []RequirementCoverage   `json:"requirements"`
-	AlternativeGroups []GroupCoverage         `json:"alternative_groups"`
-	Fit               Fit                     `json:"fit"`
-	EvidenceUnits     map[string]EvidenceUnit `json:"evidence_units"`
+	// SchemaVersion holds the CoverageSchemaVersion constant.
+	SchemaVersion string `json:"schema_version"`
+	// Model is the Jev model that produced the CoverageResult.
+	Model             string                `json:"model"`
+	Requirements      []RequirementCoverage `json:"requirements"`
+	AlternativeGroups []GroupCoverage       `json:"alternative_groups"`
+	Fit               Fit                   `json:"fit"`
+	// EvidenceUnits holds every Evidence Unit an EvidenceLink refers to, by
+	// ID.
+	EvidenceUnits map[string]EvidenceUnit `json:"evidence_units"`
 }
 
 // Holistic is the Holistic Round's judgment of the whole Resume against the
 // whole posting. It alone determines the Match Score (docs/adr/0004).
 type Holistic struct {
+	// Model is the Jev model that answered; NewMatchResult moves it to
+	// MatchResult.Model.
 	Model string `json:"model,omitempty"`
 	// RoleMatch is how closely the kind of role the candidate has been doing
 	// matches the job's kind of role, from a different profession or
